@@ -14,8 +14,16 @@
 
 #import "AppConfigure.h"
 #import "AppMarco.h"
+#import "BaseViewController.h"
+#import "BaseTool.h"
 
 #import "NetworkManager.h"
 #import "RequestApi.h"
+
+#import "UIColor+FX.h"
+
+
+/// 颜色
+#define setColor(color)     [UIColor colorWithHexString:color]
 
 #endif /* PrefixHeader_pch */
