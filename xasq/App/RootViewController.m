@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "MainViewController.h"
+#import "TacticsViewController.h"
 #import "UserViewController.h"
 
 @interface RootViewController ()
@@ -20,11 +21,15 @@
     [super viewDidLoad];
     
     MainViewController *mainVC = [[MainViewController alloc] init];
+    
+    TacticsViewController *tacticsVC = [[TacticsViewController alloc] init];
+    UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
+    
     UserViewController *userVC = [[UserViewController alloc] init];
     
-    self.viewControllers = @[mainVC,userVC];
+    self.viewControllers = @[mainVC,tacticsNVC,userVC];
     
-    NSArray *titles = @[Language(@"HomeTitle"),Language(@"UserTitle")];
+    NSArray *titles = @[@"首页",@"策略",@"我的"];
     for (int i = 0;i < self.tabBar.items.count;i++) {
         UITabBarItem *item = self.tabBar.items[i];
         item.title = titles[i];

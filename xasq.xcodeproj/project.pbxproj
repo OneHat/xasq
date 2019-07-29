@@ -20,6 +20,10 @@
 		C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108A22EAEB0700FDFDED /* NetworkManager.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
+		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
+		C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAB322EECB300086761A /* TacticsViewCell.m */; };
+		C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C2CAB422EECB300086761A /* TacticsViewCell.xib */; };
+		C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAB922EECBA60086761A /* TacticsObject.m */; };
 		C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E41EC322EEBAE900E6DF50 /* UserViewController.m */; };
 		EC74F3084881AC7459253485 /* Pods_xasq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +79,13 @@
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		C4C2CAA822EE90260086761A /* UIViewController+HUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		C4C2CAAB22EEC5B80086761A /* TacticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TacticsViewController.h; sourceTree = "<group>"; };
+		C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TacticsViewController.m; sourceTree = "<group>"; };
+		C4C2CAB222EECB300086761A /* TacticsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TacticsViewCell.h; sourceTree = "<group>"; };
+		C4C2CAB322EECB300086761A /* TacticsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TacticsViewCell.m; sourceTree = "<group>"; };
+		C4C2CAB422EECB300086761A /* TacticsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TacticsViewCell.xib; sourceTree = "<group>"; };
+		C4C2CAB822EECBA60086761A /* TacticsObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TacticsObject.h; sourceTree = "<group>"; };
+		C4C2CAB922EECBA60086761A /* TacticsObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TacticsObject.m; sourceTree = "<group>"; };
 		C4E41EC222EEBAE900E6DF50 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		C4E41EC322EEBAE900E6DF50 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +143,7 @@
 			children = (
 				C48B106D22EADE1100FDFDED /* App */,
 				C48B108022EADF7600FDFDED /* Main */,
+				C4C2CAAA22EEC57C0086761A /* Tactics */,
 				C48B107822EADF2700FDFDED /* Tool */,
 				C48B107D22EADF7600FDFDED /* User */,
 			);
@@ -207,8 +219,7 @@
 		C48B108022EADF7600FDFDED /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C48B108222EADF7600FDFDED /* MainViewController.h */,
-				C48B108122EADF7600FDFDED /* MainViewController.m */,
+				C4C2CAB022EEC6150086761A /* Controllers */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -231,6 +242,53 @@
 				C4C2CAA822EE90260086761A /* UIViewController+HUD.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		C4C2CAAA22EEC57C0086761A /* Tactics */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2CAB722EECB8A0086761A /* Models */,
+				C4C2CAB122EECB060086761A /* Views */,
+				C4C2CAAE22EEC5BD0086761A /* Controllers */,
+			);
+			path = Tactics;
+			sourceTree = "<group>";
+		};
+		C4C2CAAE22EEC5BD0086761A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2CAAB22EEC5B80086761A /* TacticsViewController.h */,
+				C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C4C2CAB022EEC6150086761A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C48B108222EADF7600FDFDED /* MainViewController.h */,
+				C48B108122EADF7600FDFDED /* MainViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C4C2CAB122EECB060086761A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2CAB222EECB300086761A /* TacticsViewCell.h */,
+				C4C2CAB322EECB300086761A /* TacticsViewCell.m */,
+				C4C2CAB422EECB300086761A /* TacticsViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4C2CAB722EECB8A0086761A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2CAB822EECBA60086761A /* TacticsObject.h */,
+				C4C2CAB922EECBA60086761A /* TacticsObject.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C4E41EC122EEBAE900E6DF50 /* Controllers */ = {
@@ -381,6 +439,7 @@
 			files = (
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
+				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,12 +507,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
+				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C48B108422EADF7600FDFDED /* MainViewController.m in Sources */,
+				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,
