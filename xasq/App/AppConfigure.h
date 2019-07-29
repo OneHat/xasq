@@ -19,7 +19,8 @@
 #define StatusBar_H         [UIApplication sharedApplication].statusBarFrame.size.height
 #define NavBar_H            44.0
 #define Bottom_H            (Iphone_x ? 34.0 : 0.0)
-
+#define NavHeight           (NavBar_H + StatusBar_H)
+#define BarHeight           (Bottom_H + 49)
 
 
 

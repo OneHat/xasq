@@ -27,6 +27,8 @@
 		C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D968C122EED0E8002150CF /* UIColor+FX.m */; };
 		C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */; };
 		C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */; };
+		C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */; };
+		C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */; };
 		C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E41EC322EEBAE900E6DF50 /* UserViewController.m */; };
 		EC74F3084881AC7459253485 /* Pods_xasq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,9 @@
 		C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavBar.m"; sourceTree = "<group>"; };
 		C4DFE3DC22EED41800C41B2B /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		C4DFE3DF22EED96000C41B2B /* UserTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
+		C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
+		C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		C4E41EC222EEBAE900E6DF50 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		C4E41EC322EEBAE900E6DF50 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +330,9 @@
 		C4E41EC522EEBAE900E6DF50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4DFE3DF22EED96000C41B2B /* UserTableViewCell.h */,
+				C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */,
+				C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +464,7 @@
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
+				C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
