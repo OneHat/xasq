@@ -1,14 +1,14 @@
 //
-//  BaseTool.m
+//  UIImage+Color.m
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/7/29.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "BaseTool.h"
+#import "UIImage+Color.h"
 
-@implementation BaseTool
+@implementation UIImage (Color)
 
 #pragma mark - 生产纯色片
 + (UIImage *)buttonImageFromColor:(UIColor *)color {

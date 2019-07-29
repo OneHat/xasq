@@ -1,5 +1,5 @@
 //
-//  BaseViewController.h
+//  UIViewController+NavBar.h
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/7/29.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseViewController : UIViewController
+@interface UIViewController (NavBar)
 
 /**
  *  设置导航左键图片
@@ -32,10 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  设置导航title颜色
  */
 - (void)setNavBarColor;
-/**
- *  去掉tableView 多余行线
- */
-- (void)setExtraCellLineHidden:(UITableView *)tableView ;
 /**
  *  导航左方法
  */

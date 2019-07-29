@@ -15,4 +15,7 @@
 
 //NSLocalizedString(key, nil)
 
+/// 颜色
+#define setColor(color) [UIColor colorWithHexString:color]
+
 #endif /* AppMarco_h */

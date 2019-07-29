@@ -1,5 +1,5 @@
 //
-//  BaseTool.h
+//  UIImage+Color.h
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/7/29.
@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseTool : NSObject
+@interface UIImage (Color)
 
 /**
  *  生成纯色片

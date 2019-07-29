@@ -21,9 +21,8 @@
 #import "RequestApi.h"
 
 #import "UIColor+FX.h"
+#import "UIImage+Color.h"
+#import "UIViewController+NavBar.h"
 
-
-/// 颜色
-#define setColor(color)     [UIColor colorWithHexString:color]
 
 #endif /* PrefixHeader_pch */

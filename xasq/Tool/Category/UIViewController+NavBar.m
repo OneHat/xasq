@@ -1,37 +1,17 @@
 //
-//  BaseViewController.m
+//  UIViewController+NavBar.m
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/7/29.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "UIViewController+NavBar.h"
 
-@interface BaseViewController ()
-
-@end
-
-@implementation BaseViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setNavBarColor];
-}
-
-// 进入页面，建议在此处添加
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-// 退出页面，建议在此处添加
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
+@implementation UIViewController (NavBar)
 
 - (void)setNavBarColor {
-    [self.navigationController.navigationBar setBackgroundImage:[BaseTool buttonImageFromColor:setColor(@"#FFFFFF")]
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage buttonImageFromColor:setColor(@"#FFFFFF")]
                                                   forBarMetrics:UIBarMetricsDefault];  //设置背景
     self.navigationItem.rightBarButtonItem.tintColor = setColor(@"#f56600");
     self.navigationController.navigationBar.tintColor = setColor(@"#f56600");
@@ -92,12 +72,6 @@
                                                           forState:UIControlStateHighlighted];
 }
 
-#pragma mark - 去掉tableView 多余行线
-- (void)setExtraCellLineHidden:(UITableView *)tableView {
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
-    [tableView setTableFooterView:view];
-}
 
 #pragma mark - 导航左方法
 - (void)leftBtnAction {
@@ -108,15 +82,5 @@
 - (void)rightBtnAction {
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

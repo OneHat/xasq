@@ -21,6 +21,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
+//    _tableView = [UITableView alloc] initWithFrame:CGRectMake(0, 0, , <#CGFloat height#>) style:<#(UITableViewStyle)#>;
 }
     
     

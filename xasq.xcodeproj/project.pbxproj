@@ -24,9 +24,9 @@
 		C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAB322EECB300086761A /* TacticsViewCell.m */; };
 		C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C2CAB422EECB300086761A /* TacticsViewCell.xib */; };
 		C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAB922EECBA60086761A /* TacticsObject.m */; };
-		C4D968BF22EECEEE002150CF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D968BB22EECEEE002150CF /* BaseViewController.m */; };
-		C4D968C022EECEEE002150CF /* BaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D968BE22EECEEE002150CF /* BaseTool.m */; };
 		C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D968C122EED0E8002150CF /* UIColor+FX.m */; };
+		C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */; };
+		C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */; };
 		C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E41EC322EEBAE900E6DF50 /* UserViewController.m */; };
 		EC74F3084881AC7459253485 /* Pods_xasq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */; };
 /* End PBXBuildFile section */
@@ -89,12 +89,12 @@
 		C4C2CAB422EECB300086761A /* TacticsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TacticsViewCell.xib; sourceTree = "<group>"; };
 		C4C2CAB822EECBA60086761A /* TacticsObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TacticsObject.h; sourceTree = "<group>"; };
 		C4C2CAB922EECBA60086761A /* TacticsObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TacticsObject.m; sourceTree = "<group>"; };
-		C4D968BB22EECEEE002150CF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		C4D968BC22EECEEE002150CF /* BaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTool.h; sourceTree = "<group>"; };
-		C4D968BD22EECEEE002150CF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		C4D968BE22EECEEE002150CF /* BaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTool.m; sourceTree = "<group>"; };
 		C4D968C122EED0E8002150CF /* UIColor+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FX.m"; sourceTree = "<group>"; };
 		C4D968C222EED0E8002150CF /* UIColor+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FX.h"; sourceTree = "<group>"; };
+		C4DFE3D922EED34000C41B2B /* UIViewController+NavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavBar.h"; sourceTree = "<group>"; };
+		C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavBar.m"; sourceTree = "<group>"; };
+		C4DFE3DC22EED41800C41B2B /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		C4E41EC222EEBAE900E6DF50 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		C4E41EC322EEBAE900E6DF50 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,7 +150,6 @@
 		C48B101922EAC5DC00FDFDED /* xasq */ = {
 			isa = PBXGroup;
 			children = (
-				C4D968BA22EECEEE002150CF /* Base */,
 				C48B106D22EADE1100FDFDED /* App */,
 				C48B108022EADF7600FDFDED /* Main */,
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
@@ -252,6 +251,10 @@
 				C4D968C122EED0E8002150CF /* UIColor+FX.m */,
 				C4C2CAA722EE90260086761A /* UIViewController+HUD.h */,
 				C4C2CAA822EE90260086761A /* UIViewController+HUD.m */,
+				C4DFE3D922EED34000C41B2B /* UIViewController+NavBar.h */,
+				C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */,
+				C4DFE3DC22EED41800C41B2B /* UIImage+Color.h */,
+				C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -301,17 +304,6 @@
 				C4C2CAB922EECBA60086761A /* TacticsObject.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C4D968BA22EECEEE002150CF /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				C4D968BC22EECEEE002150CF /* BaseTool.h */,
-				C4D968BE22EECEEE002150CF /* BaseTool.m */,
-				C4D968BD22EECEEE002150CF /* BaseViewController.h */,
-				C4D968BB22EECEEE002150CF /* BaseViewController.m */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		C4E41EC122EEBAE900E6DF50 /* Controllers */ = {
@@ -533,17 +525,17 @@
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
+				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
+				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C48B108422EADF7600FDFDED /* MainViewController.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
-				C4D968BF22EECEEE002150CF /* BaseViewController.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
-				C4D968C022EECEEE002150CF /* BaseTool.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
