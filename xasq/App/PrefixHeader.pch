@@ -14,8 +14,6 @@
 
 #import "AppConfigure.h"
 #import "AppMarco.h"
-#import "BaseViewController.h"
-#import "BaseTool.h"
 
 #import "NetworkManager.h"
 #import "RequestApi.h"
