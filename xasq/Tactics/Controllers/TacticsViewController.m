@@ -7,6 +7,7 @@
 //
 
 #import "TacticsViewController.h"
+#import "TacticsViewCell.h"
 
 @interface TacticsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -14,13 +15,19 @@
 
 @end
 
+static NSString *tacticsIdentifier = @"TacticsViewCell";
+
 @implementation TacticsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"策略";
     
-    CGRect rect = CGRectMake(StatusBar_H + NavBar_H, 0, Screen_W, Screen_H - StatusBar_H + NavBar_H - Bottom_H);
+    CGRect rect = CGRectMake(0, StatusBar_H + NavBar_H, Screen_W, Screen_H - StatusBar_H - NavBar_H - Bottom_H);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+    [_tableView registerNib:[UINib nibWithNibName:@"TacticsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:tacticsIdentifier];
+    _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
@@ -28,11 +35,12 @@
 
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@""];
+    TacticsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tacticsIdentifier];
+    
     return cell;
 }
 
