@@ -7,10 +7,12 @@
 //
 
 #import "AccountSetViewController.h"
+#import "AccountSetTableViewCell.h"
 
-@interface AccountSetViewController ()
+@interface AccountSetViewController () <UITableViewDelegate,UITableViewDataSource>
 
-
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *titleArray;
 
 @end
 
@@ -20,6 +22,37 @@
     [super viewDidLoad];
     self.title = @"账户设置";
     
+    _titleArray = @[@"修改登录密码", @"修改支付密码", @"绑定手机", @"绑定邮箱", @"Google认证"];
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    _tableView.rowHeight = 45;
+    _tableView.tableFooterView = [[UIView alloc] init];
+    [self.view addSubview:_tableView];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _titleArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AccountSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountSetTableViewCell"];
+    if (cell == nil) {
+        cell = [[[UINib nibWithNibName:@"AccountSetTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    NSString *name = _titleArray[indexPath.row];
+    cell.nameLB.text = name;
+    cell.contentLB.hidden = YES;
+    cell.arrowImageV.hidden = NO;
+    if (indexPath.row == 0) {
+        
+    }
+    
+    return cell;
 }
 
 /*

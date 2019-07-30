@@ -21,7 +21,10 @@
 #define BottomHeight        (IphoneX ? 34.0 : 0.0)
 #define NavHeight           (NavBarHeight + StatusBarHeight)
 #define BarHeight           (BottomHeight + 49)
-
+/** app版本号 */
+#define AppVersion          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+/** app build版本号 */
+#define AppBuild            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
 
 #endif /* AppConfigure_h */
