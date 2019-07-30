@@ -30,6 +30,8 @@
 		C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */; };
 		C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */; };
 		C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */; };
+		C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E522EEE59700C41B2B /* CredentialsViewController.m */; };
+		C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */; };
 		C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E41EC322EEBAE900E6DF50 /* UserViewController.m */; };
 		EC74F3084881AC7459253485 /* Pods_xasq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */; };
 /* End PBXBuildFile section */
@@ -102,6 +104,10 @@
 		C4DFE3DF22EED96000C41B2B /* UserTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
 		C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
 		C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		C4DFE3E422EEE59700C41B2B /* CredentialsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CredentialsViewController.h; sourceTree = "<group>"; };
+		C4DFE3E522EEE59700C41B2B /* CredentialsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CredentialsViewController.m; sourceTree = "<group>"; };
+		C4DFE3E722EEED2C00C41B2B /* AccountSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetViewController.h; sourceTree = "<group>"; };
+		C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetViewController.m; sourceTree = "<group>"; };
 		C4E41EC222EEBAE900E6DF50 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		C4E41EC322EEBAE900E6DF50 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +333,10 @@
 			children = (
 				C4E41EC222EEBAE900E6DF50 /* UserViewController.h */,
 				C4E41EC322EEBAE900E6DF50 /* UserViewController.m */,
+				C4DFE3E422EEE59700C41B2B /* CredentialsViewController.h */,
+				C4DFE3E522EEE59700C41B2B /* CredentialsViewController.m */,
+				C4DFE3E722EEED2C00C41B2B /* AccountSetViewController.h */,
+				C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -545,8 +555,10 @@
 			files = (
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
+				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
+				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
