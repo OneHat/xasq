@@ -146,7 +146,7 @@
                         <constraint firstItem="Ylp-oW-yHi" firstAttribute="trailing" secondItem="Z3r-tO-NYO" secondAttribute="trailing" id="zXs-lw-bPM"/>
                     </constraints>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本  2010-2019  第三世界" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuA-3R-UtJ">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本所有  2010-2019  第三世界" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuA-3R-UtJ">
                     <rect key="frame" x="113.5" y="802" width="187" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="s0t-HW-gl2"/>

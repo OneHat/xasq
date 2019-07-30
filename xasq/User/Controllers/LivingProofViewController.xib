@@ -28,6 +28,9 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="IHa-Am-ZCM"/>
                             </constraints>
+                            <connections>
+                                <action selector="alterHeadPortraitClick:" destination="-1" eventType="touchUpInside" id="Dew-Gu-2gx"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uow-Jf-wZ1">
                             <rect key="frame" x="0.0" y="50" width="414" height="50"/>

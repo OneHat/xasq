@@ -17,6 +17,8 @@
 		C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43022F00BA40090E4F1 /* LivingProofViewController.xib */; };
 		C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */; };
 		C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */; };
+		C412A43B22F020F30090E4F1 /* AlterHeadPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */; };
+		C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */; };
 		C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B102322EAC5DD00FDFDED /* Assets.xcassets */; };
 		C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */; };
 		C48B103422EAC5DD00FDFDED /* xasqTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B103322EAC5DD00FDFDED /* xasqTests.m */; };
@@ -82,6 +84,9 @@
 		C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterNicknameViewController.h; sourceTree = "<group>"; };
 		C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterNicknameViewController.m; sourceTree = "<group>"; };
 		C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterNicknameViewController.xib; sourceTree = "<group>"; };
+		C412A43822F020F30090E4F1 /* AlterHeadPortraitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterHeadPortraitViewController.h; sourceTree = "<group>"; };
+		C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterHeadPortraitViewController.m; sourceTree = "<group>"; };
+		C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterHeadPortraitViewController.xib; sourceTree = "<group>"; };
 		C48B101722EAC5DC00FDFDED /* xasq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xasq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48B102322EAC5DD00FDFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B102822EAC5DD00FDFDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -371,6 +376,9 @@
 				C412A42922EFE7FD0090E4F1 /* OurVersionViewController.h */,
 				C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */,
 				C412A42B22EFE7FD0090E4F1 /* OurVersionViewController.xib */,
+				C412A43822F020F30090E4F1 /* AlterHeadPortraitViewController.h */,
+				C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */,
+				C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */,
 				C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */,
 				C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */,
 				C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */,
@@ -523,6 +531,7 @@
 			files = (
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
+				C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */,
@@ -612,6 +621,7 @@
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
+				C412A43B22F020F30090E4F1 /* AlterHeadPortraitViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
