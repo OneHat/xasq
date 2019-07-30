@@ -26,8 +26,9 @@
     UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
     
     UserViewController *userVC = [[UserViewController alloc] init];
-    
-    self.viewControllers = @[mainVC,tacticsNVC,userVC];
+    UINavigationController *userNVC = [[UINavigationController alloc] initWithRootViewController:userVC];
+
+    self.viewControllers = @[mainVC,tacticsNVC,userNVC];
     
     NSArray *titles = @[@"首页",@"策略",@"我的"];
     for (int i = 0;i < self.tabBar.items.count;i++) {

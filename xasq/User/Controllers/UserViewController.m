@@ -8,6 +8,7 @@
 
 #import "UserViewController.h"
 #import "UserTableViewCell.h"
+#import "CredentialsViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -52,7 +53,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSString *title = _titleArray[indexPath.row];
+    if ([title isEqualToString:@"认证信息"]) {
+        CredentialsViewController *VC = [[CredentialsViewController alloc] init];
+        [self.navigationController pushViewController:VC animated:YES];
+    }
 }
     
 
