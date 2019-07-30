@@ -8,7 +8,7 @@
 
 #import "RequestApi.h"
 
-NSString *const User_Register = @"";
+NSString *const UserRegister = @"";
 
 @implementation RequestApi
 

@@ -11,12 +11,12 @@
 
 
 #ifdef DEBUG
-static NSString *xasq_BaseUrl = @"https://xasq.com/";
+static NSString *xasqBaseUrl = @"https://xasq.com/";
 #else
-static NSString *xasq_BaseUrl = @"https://xasq.com/";
+static NSString *xasqBaseUrl = @"https://xasq.com/";
 #endif
 
-const NSTimeInterval xasq_timeoutInterval = 15;
+const NSTimeInterval xasqTimeoutInterval = 15;
 
 @interface NetworkManager()
     
@@ -46,14 +46,14 @@ const NSTimeInterval xasq_timeoutInterval = 15;
         NSSet *addSet = [NSSet setWithObjects:@"text/html",nil];
         
         _sessionManager.responseSerializer.acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromSet:addSet];
-        _sessionManager.requestSerializer.timeoutInterval = xasq_timeoutInterval;
+        _sessionManager.requestSerializer.timeoutInterval = xasqTimeoutInterval;
     }
     return self;
 }
     
 - (void)getRequest:(NSString *)URLString parameters:(nullable NSDictionary * )parameters success:(nonnull SuccessBlock)success failure:(nonnull FailureBlock)failure {
     
-    NSString *url = [NSString stringWithFormat:@"%@%@",xasq_BaseUrl,URLString];
+    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
     [_sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -73,7 +73,7 @@ const NSTimeInterval xasq_timeoutInterval = 15;
 
 ///post方法请求
 - (void)postRequest:(NSString *)URLString parameters:(nullable NSDictionary *)parameters success:(SuccessBlock)success failure:(FailureBlock)failure {
-    NSString *url = [NSString stringWithFormat:@"%@%@",xasq_BaseUrl,URLString];
+    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
     
     [_sessionManager POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -11,16 +11,16 @@
 
 #pragma mark:
 
-#define Screen_W            [UIScreen mainScreen].bounds.size.width
-#define Screen_H            [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth         [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight        [UIScreen mainScreen].bounds.size.height
 
-#define Iphone_x            (Screen_H / Screen_W  > 2.0 ? YES : NO)
+#define IphoneX             (ScreenHeight / ScreenWidth  > 2.0 ? YES : NO)
 
-#define StatusBar_H         [UIApplication sharedApplication].statusBarFrame.size.height
-#define NavBar_H            44.0
-#define Bottom_H            (Iphone_x ? 34.0 : 0.0)
-#define NavHeight           (NavBar_H + StatusBar_H)
-#define BarHeight           (Bottom_H + 49)
+#define StatusBarHeight     [UIApplication sharedApplication].statusBarFrame.size.height
+#define NavBarHeight        44.0
+#define BottomHeight        (IphoneX ? 34.0 : 0.0)
+#define NavHeight           (NavBarHeight + StatusBarHeight)
+#define BarHeight           (BottomHeight + 49)
 
 
 

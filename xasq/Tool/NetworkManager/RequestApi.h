@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 ///注册接口
-FOUNDATION_EXPORT NSString *const User_Register;
+FOUNDATION_EXPORT NSString *const UserRegister;
 
 @interface RequestApi : NSObject
 
