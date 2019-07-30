@@ -7,6 +7,16 @@
 //
 
 #import "TacticsViewCell.h"
+#import "TacticsObject.h"
+
+@interface TacticsViewCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shortDescLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *rewardLabel;
+
+@end
 
 @implementation TacticsViewCell
 
@@ -19,6 +29,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)cellWithTacsics:(TacticsObject *)model {
+    _nameLabel.text = model.name;
+    _shortDescLabel.text = model.shortDes;
+    _rewardLabel.text = model.reward;
 }
 
 @end
