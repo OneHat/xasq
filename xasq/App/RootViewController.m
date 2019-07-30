@@ -11,7 +11,7 @@
 #import "TacticsViewController.h"
 #import "UserViewController.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.delegate = self;
     
     MainViewController *mainVC = [[MainViewController alloc] init];
     
@@ -36,5 +38,10 @@
     }
     
 }
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    return YES;
+}
+
 
 @end

@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class TacticsObject;
 @interface TacticsViewCell : UITableViewCell
+
+- (void)cellWithTacsics:(TacticsObject *)model;
 
 @end
 
