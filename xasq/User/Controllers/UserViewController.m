@@ -9,6 +9,10 @@
 #import "UserViewController.h"
 #import "UserTableViewCell.h"
 #import "CredentialsViewController.h"
+#import "AccountSetViewController.h"
+#import "LanguageSetViewController.h"
+#import "OurVersionViewController.h"
+#import "LivingProofViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -23,7 +27,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _titleArray = @[@"认证信息", @"账户设置", @"语言设置", @"邀请好友", @"建议与反馈", @"版本升级", @"关于我们"];
+    _titleArray = @[@"居住证明", @"认证信息", @"账户设置", @"语言设置", @"邀请好友", @"建议与反馈", @"版本升级", @"关于我们", @"联系我们"];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BarHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
@@ -39,7 +43,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return _titleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,6 +60,34 @@
     NSString *title = _titleArray[indexPath.row];
     if ([title isEqualToString:@"认证信息"]) {
         CredentialsViewController *VC = [[CredentialsViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"账户设置"]) {
+        AccountSetViewController *VC = [[AccountSetViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"语言设置"]) {
+        LanguageSetViewController *VC = [[LanguageSetViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"版本升级"]) {
+        OurVersionViewController *VC = [[OurVersionViewController alloc] init];
+        VC.type = 0;
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"关于我们"]) {
+        OurVersionViewController *VC = [[OurVersionViewController alloc] init];
+        VC.type = 1;
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"联系我们"]) {
+        OurVersionViewController *VC = [[OurVersionViewController alloc] init];
+        VC.type = 2;
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else if ([title isEqualToString:@"居住证明"]) {
+        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }
 }
