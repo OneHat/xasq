@@ -27,6 +27,14 @@
                         <constraint firstAttribute="width" secondItem="5YM-qG-WFn" secondAttribute="height" multiplier="5:3" id="rI6-AI-mtI"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1CK-OF-DXq">
+                    <rect key="frame" x="157" y="368" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="inviteAction:" destination="-1" eventType="touchUpInside" id="LLJ-LY-8bw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

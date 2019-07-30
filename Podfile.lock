@@ -18,6 +18,7 @@ PODS:
   - JPush (3.2.1):
     - JCore (< 3.0.0, >= 2.0.0)
   - MBProgressHUD (1.1.0)
+  - SAMKeychain (1.5.3)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - AFNetworking (= 3.2.1)
   - JPush (= 3.2.1)
   - MBProgressHUD (= 1.1.0)
+  - SAMKeychain (= 1.5.3)
   - SDWebImage (= 5.0.6)
 
 SPEC REPOS:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - JCore
     - JPush
     - MBProgressHUD
+    - SAMKeychain
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -41,8 +44,9 @@ SPEC CHECKSUMS:
   JCore: 4072327557f0b83cc22dd4041f2f839740c0077b
   JPush: a1ff8b8ec53fa3419b414946e4db4efa313baeae
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: e63bbb32a88d7b0909fc8eebc5a47c9b86b2a277
+PODFILE CHECKSUM: 75813989db201f5b6d3193d52cce516bd657ec45
 
 COCOAPODS: 1.7.5

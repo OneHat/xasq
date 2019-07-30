@@ -10,9 +10,11 @@
 
 static NSString *LanguageCacheKey = @"xasqLanguageCacheKey";
 
+static NSString *LanguageZhHans = @"zh-Hans";
+static NSString *LanguageEn = @"en";
+
 @implementation LanguageTool
     
-///初始化语言
 + (void)initializeLanguage {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -21,17 +23,16 @@ static NSString *LanguageCacheKey = @"xasqLanguageCacheKey";
 //        NSArray *languages = [userDefaults objectForKey:@"AppleLanguages"];
 //        NSString *localLanguge = [languages objectAtIndex:0];
 //
-//        if ([localLanguge isEqualToString:@"zh-Hans"]) {
+//        if ([localLanguge isEqualToString:LanguageZhHans]) {
 //            [userDefaults setObject:localLanguge forKey:LanguageCacheKey];
 //        } else {
-//            [userDefaults setObject:@"en" forKey:LanguageCacheKey];
+//            [userDefaults setObject:LanguageEn forKey:LanguageCacheKey];
 //        }
 //    }
     
-    [userDefaults setObject:@"zh-Hans" forKey:LanguageCacheKey];
+    [userDefaults setObject:LanguageZhHans forKey:LanguageCacheKey];
 }
-    
-///根据不同的Key取对应语言的显示值
+
 + (NSString *)languageWithKey:(NSString *)key {
     
     NSString *localLanguge = [[NSUserDefaults standardUserDefaults] objectForKey:LanguageCacheKey];
@@ -40,6 +41,24 @@ static NSString *LanguageCacheKey = @"xasqLanguageCacheKey";
     NSString *result = [[NSBundle bundleWithPath:path] localizedStringForKey:key value:nil table:nil];
     
     return result;
+}
+
++ (LanguageType)currentLanguageType {
+    LanguageType type = LanguageTypeZhHans;
+    
+    NSString *localLanguge = [[NSUserDefaults standardUserDefaults] objectForKey:LanguageCacheKey];
+    
+    if ([localLanguge isEqualToString:LanguageZhHans]) {
+        type = LanguageTypeZhHans;
+    } else if ([localLanguge isEqualToString:LanguageEn]) {
+        type = LanguageTypeEn;
+    }
+    
+    return type;
+}
+
++(NSString *)currentLanguage {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:LanguageCacheKey];
 }
     
 @end

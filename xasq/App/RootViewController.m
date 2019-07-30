@@ -23,6 +23,7 @@
     self.delegate = self;
     
     MainViewController *mainVC = [[MainViewController alloc] init];
+    UINavigationController *mainNVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
     
     TacticsViewController *tacticsVC = [[TacticsViewController alloc] init];
     UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
@@ -30,7 +31,7 @@
     UserViewController *userVC = [[UserViewController alloc] init];
     UINavigationController *userNVC = [[UINavigationController alloc] initWithRootViewController:userVC];
 
-    self.viewControllers = @[mainVC,tacticsNVC,userNVC];
+    self.viewControllers = @[mainNVC,tacticsNVC,userNVC];
     
     NSArray *titles = @[@"首页",@"策略",@"我的"];
     for (int i = 0;i < self.tabBar.items.count;i++) {

@@ -8,6 +8,8 @@ target 'xasq' do
   pod 'SDWebImage', '5.0.6'
   
   pod 'MBProgressHUD', '1.1.0'
+  
+  pod 'SAMKeychain', '1.5.3'
 
   pod 'JPush', '3.2.1'
 

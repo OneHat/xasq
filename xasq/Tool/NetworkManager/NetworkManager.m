@@ -8,7 +8,7 @@
 
 #import "NetworkManager.h"
 #import "AFNetworking.h"
-
+#import "DeviceInformation.h"
 
 #ifdef DEBUG
 static NSString *xasqBaseUrl = @"https://xasq.com/";
@@ -53,6 +53,8 @@ const NSTimeInterval xasqTimeoutInterval = 15;
     
 - (void)getRequest:(NSString *)URLString parameters:(nullable NSDictionary * )parameters success:(nonnull SuccessBlock)success failure:(nonnull FailureBlock)failure {
     
+    [self updateHTTPHeaderField];
+    
     NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
     [_sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -73,8 +75,10 @@ const NSTimeInterval xasqTimeoutInterval = 15;
 
 ///post方法请求
 - (void)postRequest:(NSString *)URLString parameters:(nullable NSDictionary *)parameters success:(SuccessBlock)success failure:(FailureBlock)failure {
-    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
     
+    [self updateHTTPHeaderField];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
     [_sessionManager POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -85,6 +89,9 @@ const NSTimeInterval xasqTimeoutInterval = 15;
 
 
 #pragma mark-
-
+///请求头信息，只要是添加设备信息
+- (void)updateHTTPHeaderField {
+    
+}
     
 @end

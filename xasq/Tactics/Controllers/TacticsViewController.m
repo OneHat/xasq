@@ -24,7 +24,7 @@ static NSString *tacticsIdentifier = @"TacticsViewCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"策略";
     
-    CGRect rect = CGRectMake(0, StatusBarHeight + NavBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavBarHeight - BottomHeight);
+    CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"TacticsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:tacticsIdentifier];
     _tableView.tableFooterView = [[UIView alloc] init];
