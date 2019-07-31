@@ -11,6 +11,10 @@
 		C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */; };
 		C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */; };
 		C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */; };
+		C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7F22F18A5E00BDE6A3 /* RetrievePasswordViewController.m */; };
+		C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8022F18A5E00BDE6A3 /* RetrievePasswordViewController.xib */; };
+		C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */; };
+		C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -87,6 +91,12 @@
 		C40C3D7922F164C800BDE6A3 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		C40C3D7E22F18A5E00BDE6A3 /* RetrievePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RetrievePasswordViewController.h; sourceTree = "<group>"; };
+		C40C3D7F22F18A5E00BDE6A3 /* RetrievePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrievePasswordViewController.m; sourceTree = "<group>"; };
+		C40C3D8022F18A5E00BDE6A3 /* RetrievePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetrievePasswordViewController.xib; sourceTree = "<group>"; };
+		C40C3D8322F190C100BDE6A3 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
+		C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -226,6 +236,12 @@
 				C40C3D7922F164C800BDE6A3 /* RegisterViewController.h */,
 				C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */,
 				C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */,
+				C40C3D7E22F18A5E00BDE6A3 /* RetrievePasswordViewController.h */,
+				C40C3D7F22F18A5E00BDE6A3 /* RetrievePasswordViewController.m */,
+				C40C3D8022F18A5E00BDE6A3 /* RetrievePasswordViewController.xib */,
+				C40C3D8322F190C100BDE6A3 /* ResetPasswordViewController.h */,
+				C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */,
+				C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -631,8 +647,10 @@
 			files = (
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
+				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
 				C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */,
+				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
@@ -718,12 +736,14 @@
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
+				C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */,
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
+				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,

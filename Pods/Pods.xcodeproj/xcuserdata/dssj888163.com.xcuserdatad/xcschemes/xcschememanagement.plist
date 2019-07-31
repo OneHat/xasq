@@ -37,7 +37,7 @@
 		<key>Pods-xasq.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>4</integer>
 		</dict>
 		<key>SAMKeychain.xcscheme</key>
 		<dict>
@@ -52,7 +52,7 @@
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>5</integer>
 		</dict>
 	</dict>
 </dict>
