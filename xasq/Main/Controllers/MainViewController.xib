@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="chartView" destination="wEM-Rz-Pzv" id="y6A-PY-R8Q"/>
                 <outlet property="friendNewsHeight" destination="daT-5A-epU" id="YBZ-Ab-O7b"/>
+                <outlet property="newsView" destination="Mn4-hG-yrb" id="mfh-GN-cCs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="cfu-hc-Xb4"/>
             </connections>
         </placeholder>
@@ -53,16 +55,16 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-AJ-ZuI">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-AJ-ZuI" userLabel="Friends View">
                                     <rect key="frame" x="10" y="40" width="355" height="50"/>
-                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="daT-5A-epU"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mn4-hG-yrb">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mn4-hG-yrb" userLabel="News View">
                                     <rect key="frame" x="10" y="90" width="355" height="90"/>
-                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="90" id="0Yo-wY-4hh"/>
                                     </constraints>
@@ -110,7 +112,7 @@
                                 <constraint firstAttribute="height" constant="100" id="zNk-8z-w3i"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEM-Rz-Pzv" userLabel="Table View">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEM-Rz-Pzv" userLabel="Chart View">
                             <rect key="frame" x="0.0" y="550" width="375" height="100"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -147,7 +149,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qww-IH-RKb" secondAttribute="trailing" id="nKc-ZJ-71W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-465" y="67"/>
+            <point key="canvasLocation" x="-860" y="59"/>
         </view>
     </objects>
 </document>

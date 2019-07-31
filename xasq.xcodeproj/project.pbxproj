@@ -42,6 +42,9 @@
 		C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */; };
 		C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */; };
 		C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */; };
+		C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */; };
+		C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */; };
+		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -145,6 +148,12 @@
 		C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActionSheet.m"; sourceTree = "<group>"; };
 		C4A1EEAA22F166A200A1DE8C /* HomeNewsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsView.h; sourceTree = "<group>"; };
 		C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsView.m; sourceTree = "<group>"; };
+		C4A1EEAF22F1906D00A1DE8C /* HomeChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartsView.h; sourceTree = "<group>"; };
+		C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartsView.m; sourceTree = "<group>"; };
+		C4A1EEB322F1911C00A1DE8C /* SegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedControl.h; sourceTree = "<group>"; };
+		C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedControl.m; sourceTree = "<group>"; };
+		C4A1EEB622F194D600A1DE8C /* NSString+Size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
+		C4A1EEB722F194D600A1DE8C /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -312,6 +321,7 @@
 		C48B107822EADF2700FDFDED /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C4A1EEB222F190BA00A1DE8C /* SegmentedControl */,
 				C4A1EE7F22EFD7BD00A1DE8C /* Device */,
 				C4C2CAA622EE8FEE0086761A /* Category */,
 				C48B108822EAE72800FDFDED /* NetworkManager */,
@@ -376,6 +386,8 @@
 				C4A1EE9222EFF70B00A1DE8C /* ContactViewCell.xib */,
 				C4A1EEAA22F166A200A1DE8C /* HomeNewsView.h */,
 				C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */,
+				C4A1EEAF22F1906D00A1DE8C /* HomeChartsView.h */,
+				C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -393,6 +405,15 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
+		C4A1EEB222F190BA00A1DE8C /* SegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1EEB322F1911C00A1DE8C /* SegmentedControl.h */,
+				C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */,
+			);
+			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
 		C4C2CAA622EE8FEE0086761A /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +424,8 @@
 				C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */,
 				C4A1EE9922F03C2E00A1DE8C /* UIView+Empty.h */,
 				C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */,
+				C4A1EEB622F194D600A1DE8C /* NSString+Size.h */,
+				C4A1EEB722F194D600A1DE8C /* NSString+Size.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -715,10 +738,12 @@
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
+				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
+				C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
@@ -732,6 +757,7 @@
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C412A43B22F020F30090E4F1 /* AlterHeadPortraitViewController.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
+				C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,

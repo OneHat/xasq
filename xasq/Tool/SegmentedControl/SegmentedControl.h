@@ -1,5 +1,5 @@
 //
-//  HomeNewsView.h
+//  SegmentedControl.h
 //  xasq
 //
 //  Created by dssj on 2019/7/31.
@@ -10,10 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-///首页的滚动消息
-@interface HomeNewsView : UIView
+@interface SegmentedControl : UIView
 
-@property (nonatomic, strong) NSArray *newsArray;
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray<NSString *> *)items;
 
 @end
 

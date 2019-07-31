@@ -1,5 +1,5 @@
 //
-//  HomeNewsView.h
+//  HomeChartsView.h
 //  xasq
 //
 //  Created by dssj on 2019/7/31.
@@ -10,10 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-///首页的滚动消息
-@interface HomeNewsView : UIView
-
-@property (nonatomic, strong) NSArray *newsArray;
+@interface HomeChartsView : UIView
 
 @end
 
