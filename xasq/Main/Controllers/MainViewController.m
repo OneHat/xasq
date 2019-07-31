@@ -8,8 +8,12 @@
 
 #import "MainViewController.h"
 #import "InviteUserViewController.h"
+#import "UIViewController+ActionSheet.h"
 
 @interface MainViewController ()
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *friendNewsHeight;
+
 
 @end
 
@@ -18,6 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (IBAction)inviteAction:(UIButton *)sender {

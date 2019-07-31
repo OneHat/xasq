@@ -23,6 +23,8 @@
 #define ThemeBlueColor        HexColor(@"#4687CA")
 #define ThemeButtonGrayColor  HexColor(@"#D8D8D8")
 #define ThemeTextGrayColor    HexColor(@"#C8C8C8")
+#define ThemeViewBackgroundColor    HexColor(@"#C8C8C8")
+
 
 
 
@@ -31,5 +33,6 @@
 #define ThemeButtonTitleFont  [UIFont systemFontOfSize:15]
 #define ThemeNormalTextFont   [UIFont systemFontOfSize:15]
 
+#define ThemeTipTextFont   [UIFont systemFontOfSize:12]
 
 #endif /* AppMarco_h */
