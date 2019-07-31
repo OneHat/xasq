@@ -13,6 +13,7 @@
 #import "LanguageSetViewController.h"
 #import "OurVersionViewController.h"
 #import "LivingProofViewController.h"
+#import "LoginViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -86,7 +87,8 @@
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"居住证明"]) {
-        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+//        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+        LoginViewController *VC = [[LoginViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }

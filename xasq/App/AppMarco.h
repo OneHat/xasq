@@ -20,19 +20,16 @@
 
 
 /// 主题颜色
-#define ThemeBlueColor        HexColor(@"#4687CA")
-#define ThemeButtonGrayColor  HexColor(@"#D8D8D8")
-#define ThemeTextGrayColor    HexColor(@"#C8C8C8")
-#define ThemeViewBackgroundColor    HexColor(@"#C8C8C8")
-
-
-
+#define ThemeColorBlue        HexColor(@"#4687CA")
+#define ThemeColorGray        HexColor(@"#D8D8D8")
+#define ThemeColorTextGray    HexColor(@"#C8C8C8")
+#define ThemeColorBackground    HexColor(@"#C8C8C8")
 
 
 /// 字体
-#define ThemeButtonTitleFont  [UIFont systemFontOfSize:15]
-#define ThemeNormalTextFont   [UIFont systemFontOfSize:15]
+#define ThemeFontButtonTitle  [UIFont systemFontOfSize:15]
+#define ThemeFontNormalText   [UIFont systemFontOfSize:15]
+#define ThemeFontTipText      [UIFont systemFontOfSize:12]
 
-#define ThemeTipTextFont   [UIFont systemFontOfSize:12]
 
 #endif /* AppMarco_h */

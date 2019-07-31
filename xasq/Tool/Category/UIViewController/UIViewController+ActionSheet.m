@@ -51,7 +51,7 @@ static char ActionSheetBlockKey;
     CGFloat actionSheetY = ScreenHeight - BottomHeight - actionSheetHeight;
     
     UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, actionSheetY, ScreenWidth, actionSheetHeight)];
-    actionSheet.backgroundColor = ThemeViewBackgroundColor;
+    actionSheet.backgroundColor = ThemeColorBackground;
     [contentViewController.view addSubview:actionSheet];
     
     if (titleExist) {
@@ -60,7 +60,7 @@ static char ActionSheetBlockKey;
         titleLabel.backgroundColor = [UIColor whiteColor];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.text = title;
-        titleLabel.font = ThemeTipTextFont;
+        titleLabel.font = ThemeFontTipText;
         [actionSheet addSubview:titleLabel];
     }
     
@@ -70,7 +70,7 @@ static char ActionSheetBlockKey;
         UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY , ScreenWidth, ItemsHeight)];
         actionButon.tag = i;
         actionButon.backgroundColor = [UIColor whiteColor];
-        actionButon.titleLabel.font = ThemeNormalTextFont;
+        actionButon.titleLabel.font = ThemeFontTipText;
         [actionButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [actionButon setTitle:items[i] forState:UIControlStateNormal];
         [actionButon addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -80,7 +80,7 @@ static char ActionSheetBlockKey;
     //关闭按钮
     UIButton *closeButon = [[UIButton alloc] initWithFrame:CGRectMake(0, actionSheetHeight - CloseHeight , ScreenWidth, CloseHeight)];
     closeButon.backgroundColor = [UIColor whiteColor];
-    closeButon.titleLabel.font = ThemeNormalTextFont;
+    closeButon.titleLabel.font = ThemeFontNormalText;
     [closeButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     if (close) {
         [closeButon setTitle:close forState:UIControlStateNormal];

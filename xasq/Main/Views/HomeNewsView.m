@@ -37,8 +37,8 @@
     
     _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - timeWidth, 0, timeWidth, height)];
     _timeLabel.textAlignment = NSTextAlignmentRight;
-    _timeLabel.textColor = ThemeTextGrayColor;
-    _timeLabel.font = ThemeNormalTextFont;
+    _timeLabel.textColor = ThemeColorTextGray;
+    _timeLabel.font = ThemeFontNormalText;
 }
 
 @end
