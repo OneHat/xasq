@@ -11,10 +11,10 @@
 @implementation UIViewController (NavBar)
 
 - (void)setNavBarColor {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage buttonImageFromColor:setColor(@"#FFFFFF")]
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage buttonImageFromColor:HexColor(@"#FFFFFF")]
                                                   forBarMetrics:UIBarMetricsDefault];  //设置背景
-    self.navigationItem.rightBarButtonItem.tintColor = setColor(@"#f56600");
-    self.navigationController.navigationBar.tintColor = setColor(@"#f56600");
+    self.navigationItem.rightBarButtonItem.tintColor = HexColor(@"#f56600");
+    self.navigationController.navigationBar.tintColor = HexColor(@"#f56600");
     if (self.navigationController.viewControllers.count > 1) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"]
                                                                                  style:UIBarButtonItemStyleDone
@@ -23,7 +23,7 @@
         self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     }
     NSDictionary *selectedTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:20],
-                                             NSForegroundColorAttributeName:setColor(@"#1B1A1D")};
+                                             NSForegroundColorAttributeName:HexColor(@"#1B1A1D")};
     [self.navigationController.navigationBar setTitleTextAttributes:selectedTextAttributes];
 }
 

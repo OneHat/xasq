@@ -8,7 +8,6 @@
 
 #import "InviteUserViewController.h"
 #import <Contacts/Contacts.h>
-#import <MessageUI/MessageUI.h>
 
 @interface InviteUserViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -89,14 +88,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MFMessageComposeViewController *messageVC = [[MFMessageComposeViewController alloc] init];
-    if ([MFMessageComposeViewController canSendText]) {
-        messageVC.body = @"sdf";
-        messageVC.recipients = @[];//接收人
-        [self presentViewController:messageVC animated:YES completion:^{
-            
-        }];
-    }
 }
 
 #pragma mark-
