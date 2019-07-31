@@ -36,6 +36,7 @@
 		C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE9122EFF70B00A1DE8C /* ContactViewCell.m */; };
 		C4A1EE9422EFF70B00A1DE8C /* ContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EE9222EFF70B00A1DE8C /* ContactViewCell.xib */; };
 		C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */; };
+		C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -129,6 +130,8 @@
 		C4A1EE9222EFF70B00A1DE8C /* ContactViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactViewCell.xib; sourceTree = "<group>"; };
 		C4A1EE9922F03C2E00A1DE8C /* UIView+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Empty.h"; sourceTree = "<group>"; };
 		C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Empty.m"; sourceTree = "<group>"; };
+		C4A1EEA722F136FB00A1DE8C /* UIViewController+ActionSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ActionSheet.h"; sourceTree = "<group>"; };
+		C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActionSheet.m"; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -324,15 +327,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C4C2CAA622EE8FEE0086761A /* Category */ = {
+		C4A1EEA322F1340600A1DE8C /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C4D968C222EED0E8002150CF /* UIColor+FX.h */,
-				C4D968C122EED0E8002150CF /* UIColor+FX.m */,
 				C4C2CAA722EE90260086761A /* UIViewController+HUD.h */,
 				C4C2CAA822EE90260086761A /* UIViewController+HUD.m */,
 				C4DFE3D922EED34000C41B2B /* UIViewController+NavBar.h */,
 				C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */,
+				C4A1EEA722F136FB00A1DE8C /* UIViewController+ActionSheet.h */,
+				C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		C4C2CAA622EE8FEE0086761A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C4A1EEA322F1340600A1DE8C /* UIViewController */,
+				C4D968C222EED0E8002150CF /* UIColor+FX.h */,
+				C4D968C122EED0E8002150CF /* UIColor+FX.m */,
 				C4DFE3DC22EED41800C41B2B /* UIImage+Color.h */,
 				C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */,
 				C4A1EE9922F03C2E00A1DE8C /* UIView+Empty.h */,
@@ -650,6 +663,7 @@
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
+				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,

@@ -35,6 +35,7 @@ static NSString *tacticsIdentifier = @"TacticsViewCell";
     [self.tableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
         [self.tableView hideEmptyView];
     }];
+    
 }
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
