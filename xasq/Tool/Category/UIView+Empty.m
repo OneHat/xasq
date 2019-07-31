@@ -17,7 +17,7 @@ static char emptyBlockKey;
 - (void)showEmptyView:(EmptyViewReason)reason refreshBlock:(nullable RefreshBlock)block; {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    ///
+    ///背景view
     UIView *backView = [[UIView alloc] initWithFrame:self.bounds];
     backView.backgroundColor = [UIColor whiteColor];
     [self addSubview:backView];
@@ -30,6 +30,7 @@ static char emptyBlockKey;
     UIFont *font = [UIFont systemFontOfSize:13];
     
     if (reason == EmptyViewReasonNoData) {
+        //没有数据
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 50)];
         imageView.backgroundColor = [UIColor lightGrayColor];
         [contentView addSubview:imageView];
@@ -42,6 +43,7 @@ static char emptyBlockKey;
         [contentView addSubview:tipLabel];
         
     } else if (reason == EmptyViewReasonNoNetwork) {
+        //没有网络
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 50)];
         imageView.backgroundColor = [UIColor lightGrayColor];
         [contentView addSubview:imageView];
