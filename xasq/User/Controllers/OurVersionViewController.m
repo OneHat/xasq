@@ -37,15 +37,6 @@
         _nameTapLB.text = @"用户协议";
         _nameBottomLB.text = @"隐私政策";
         _statementLB.hidden = NO;
-    } else if (_type == 2) {
-        self.title = @"联系我们";
-        _titleLB.text = @"用科技驱动财富";
-        _nameTapLB.text = @"商务联系";
-        _nameBottomLB.text = @"投币洽谈";
-        _conTapLB.hidden = NO;
-        _conBottomLB.hidden = NO;
-        _conTapLB.text = @"3354631532131@qq.com";
-        _conBottomLB.text = @"3354631532131@qq.com";
     }
 }
 

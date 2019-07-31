@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OurVersionViewController : UIViewController
 
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) NSInteger type;   // 0 版本升级  1 关于我们
 
 @end
 

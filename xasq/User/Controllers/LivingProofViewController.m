@@ -8,7 +8,6 @@
 
 #import "LivingProofViewController.h"
 #import "AlterNicknameViewController.h"
-#import "AlterHeadPortraitViewController.h"
 
 @interface LivingProofViewController ()
 
@@ -27,8 +26,6 @@
 
 - (IBAction)alterHeadPortraitClick:(UIButton *)sender {
     
-    AlterHeadPortraitViewController *VC = [[AlterHeadPortraitViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
     
 }
 

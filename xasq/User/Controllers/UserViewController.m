@@ -14,6 +14,7 @@
 #import "OurVersionViewController.h"
 #import "LivingProofViewController.h"
 #import "LoginViewController.h"
+#import "confirmViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -82,13 +83,12 @@
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-        OurVersionViewController *VC = [[OurVersionViewController alloc] init];
-        VC.type = 2;
+        confirmViewController *VC = [[confirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"居住证明"]) {
-//        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
-        LoginViewController *VC = [[LoginViewController alloc] init];
+        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+//        LoginViewController *VC = [[LoginViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }

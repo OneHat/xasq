@@ -15,6 +15,8 @@
 		C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8022F18A5E00BDE6A3 /* RetrievePasswordViewController.xib */; };
 		C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */; };
 		C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */; };
+		C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* confirmViewController.m */; };
+		C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -25,8 +27,6 @@
 		C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43022F00BA40090E4F1 /* LivingProofViewController.xib */; };
 		C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */; };
 		C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */; };
-		C412A43B22F020F30090E4F1 /* AlterHeadPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */; };
-		C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */; };
 		C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B102322EAC5DD00FDFDED /* Assets.xcassets */; };
 		C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */; };
 		C48B103422EAC5DD00FDFDED /* xasqTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B103322EAC5DD00FDFDED /* xasqTests.m */; };
@@ -97,6 +97,9 @@
 		C40C3D8322F190C100BDE6A3 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		C40C3D8822F199C800BDE6A3 /* confirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confirmViewController.h; sourceTree = "<group>"; };
+		C40C3D8922F199C800BDE6A3 /* confirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confirmViewController.m; sourceTree = "<group>"; };
+		C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmViewController.xib; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -112,9 +115,6 @@
 		C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterNicknameViewController.h; sourceTree = "<group>"; };
 		C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterNicknameViewController.m; sourceTree = "<group>"; };
 		C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterNicknameViewController.xib; sourceTree = "<group>"; };
-		C412A43822F020F30090E4F1 /* AlterHeadPortraitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterHeadPortraitViewController.h; sourceTree = "<group>"; };
-		C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterHeadPortraitViewController.m; sourceTree = "<group>"; };
-		C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterHeadPortraitViewController.xib; sourceTree = "<group>"; };
 		C48B101722EAC5DC00FDFDED /* xasq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xasq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48B102322EAC5DD00FDFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B102822EAC5DD00FDFDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -492,9 +492,9 @@
 				C412A42922EFE7FD0090E4F1 /* OurVersionViewController.h */,
 				C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */,
 				C412A42B22EFE7FD0090E4F1 /* OurVersionViewController.xib */,
-				C412A43822F020F30090E4F1 /* AlterHeadPortraitViewController.h */,
-				C412A43922F020F30090E4F1 /* AlterHeadPortraitViewController.m */,
-				C412A43A22F020F30090E4F1 /* AlterHeadPortraitViewController.xib */,
+				C40C3D8822F199C800BDE6A3 /* confirmViewController.h */,
+				C40C3D8922F199C800BDE6A3 /* confirmViewController.m */,
+				C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */,
 				C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */,
 				C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */,
 				C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */,
@@ -649,8 +649,8 @@
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
-				C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */,
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
+				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
@@ -750,8 +750,8 @@
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
-				C412A43B22F020F30090E4F1 /* AlterHeadPortraitViewController.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
+				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,

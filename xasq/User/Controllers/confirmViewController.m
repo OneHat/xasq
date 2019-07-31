@@ -1,22 +1,22 @@
 //
-//  AlterHeadPortraitViewController.m
+//  confirmViewController.m
 //  xasq
 //
-//  Created by dssj888@163.com on 2019/7/30.
+//  Created by dssj888@163.com on 2019/7/31.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "AlterHeadPortraitViewController.h"
+#import "confirmViewController.h"
 
-@interface AlterHeadPortraitViewController ()
+@interface confirmViewController ()
 
 @end
 
-@implementation AlterHeadPortraitViewController
+@implementation confirmViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"修改头像";
+    self.title = @"联系我们";
 }
 
 /*

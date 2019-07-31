@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"修改昵称";
+    
+    _saveBtn.layer.cornerRadius = 22.5;
+    _saveBtn.layer.masksToBounds = YES;
 }
 
 /*
