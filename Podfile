@@ -9,6 +9,8 @@ target 'xasq' do
   
   pod 'MBProgressHUD', '1.1.0'
   
+  pod 'MJRefresh', '3.2.0'
+  
   pod 'SAMKeychain', '1.5.3'
 
   pod 'JPush', '3.2.1'
