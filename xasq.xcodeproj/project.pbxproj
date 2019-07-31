@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */; };
+		C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */; };
+		C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */; };
+		C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -76,6 +80,12 @@
 		138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xasq.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		497B2F318DAF2CB6F6C9C9A9 /* Pods-xasq.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xasq.debug.xcconfig"; path = "Target Support Files/Pods-xasq/Pods-xasq.debug.xcconfig"; sourceTree = "<group>"; };
 		788A29B204A0EDAACCFEAF55 /* Pods-xasq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xasq.release.xcconfig"; path = "Target Support Files/Pods-xasq/Pods-xasq.release.xcconfig"; sourceTree = "<group>"; };
+		C40C3D7422F140BE00BDE6A3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C40C3D7922F164C800BDE6A3 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -187,6 +197,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40C3D7022F1404500BDE6A3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C40C3D7222F1404500BDE6A3 /* Controllers */,
+				C40C3D7122F1404500BDE6A3 /* Models */,
+				C40C3D7322F1404500BDE6A3 /* Views */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C40C3D7122F1404500BDE6A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C40C3D7222F1404500BDE6A3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C40C3D7422F140BE00BDE6A3 /* LoginViewController.h */,
+				C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */,
+				C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */,
+				C40C3D7922F164C800BDE6A3 /* RegisterViewController.h */,
+				C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */,
+				C40C3D7B22F164C800BDE6A3 /* RegisterViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C40C3D7322F1404500BDE6A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C48B100E22EAC5DC00FDFDED = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +264,7 @@
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
 				C48B107822EADF2700FDFDED /* Tool */,
 				C48B107D22EADF7600FDFDED /* User */,
+				C40C3D7022F1404500BDE6A3 /* Login */,
 			);
 			path = xasq;
 			sourceTree = "<group>";
@@ -581,6 +629,7 @@
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
 				C412A43C22F020F30090E4F1 /* AlterHeadPortraitViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
+				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */,
 				C4A1EE9422EFF70B00A1DE8C /* ContactViewCell.xib in Resources */,
@@ -590,6 +639,7 @@
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
 				C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */,
+				C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +719,9 @@
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
+				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
+				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
