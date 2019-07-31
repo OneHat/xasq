@@ -44,6 +44,8 @@
     if (message.length > 0) {
         hud.mode = MBProgressHUDModeText;
         hud.label.numberOfLines = 0;
+        hud.label.font = [self hudTextFont];
+        hud.margin = [self hudTextMargin];
         hud.label.text = message;
     }
     if (hide) {
