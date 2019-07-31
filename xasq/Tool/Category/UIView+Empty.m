@@ -14,7 +14,7 @@ static char emptyBlockKey;
 
 @implementation UIView (Empty)
 
-- (void)showEmptyView:(EmptyViewReason)reason refreshBlock:(nullable RefreshBlock)block; {
+- (void)showEmptyView:(EmptyViewReason)reason refreshBlock:(nullable RefreshBlock)block {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     ///
