@@ -1,8 +1,8 @@
 //
-//  AlterHeadPortraitViewController.h
+//  RetrievePasswordViewController.h
 //  xasq
 //
-//  Created by dssj888@163.com on 2019/7/30.
+//  Created by dssj888@163.com on 2019/7/31.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AlterHeadPortraitViewController : UIViewController
+@interface RetrievePasswordViewController : UIViewController
 
 @end
 

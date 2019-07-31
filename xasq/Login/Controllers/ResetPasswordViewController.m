@@ -1,28 +1,28 @@
 //
-//  AlterNicknameViewController.m
+//  ResetPasswordViewController.m
 //  xasq
 //
-//  Created by dssj888@163.com on 2019/7/30.
+//  Created by dssj888@163.com on 2019/7/31.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "AlterNicknameViewController.h"
+#import "ResetPasswordViewController.h"
 
-@interface AlterNicknameViewController ()
+@interface ResetPasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *nameTF;
-@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+
 
 @end
 
-@implementation AlterNicknameViewController
+@implementation ResetPasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"修改昵称";
+    self.title = @"找回密码"; // 重置密码
     
-    _saveBtn.layer.cornerRadius = 22.5;
-    _saveBtn.layer.masksToBounds = YES;
+    _confirmBtn.layer.cornerRadius = 22.5;
+    _confirmBtn.layer.masksToBounds = YES;
 }
 
 /*

@@ -95,6 +95,9 @@
                     <state key="normal" title="忘记密码">
                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="retrievePassword:" destination="-1" eventType="touchUpInside" id="t2E-VB-uC0"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qN-eI-oTR">
                     <rect key="frame" x="222.5" y="489.5" width="60" height="30"/>

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "RetrievePasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -48,10 +49,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+#pragma mark - 忘记密码
+- (IBAction)retrievePassword:(UIButton *)sender {
+    RetrievePasswordViewController *VC = [[RetrievePasswordViewController alloc] init];
+    [self.navigationController pushViewController:VC animated:YES];
+}
 #pragma mark - 注册
 - (IBAction)registerClick:(UIButton *)sender {
-    
     RegisterViewController *registerVC = [[RegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVC animated:YES];
 }

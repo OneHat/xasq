@@ -30,6 +30,7 @@
     
     UserViewController *userVC = [[UserViewController alloc] init];
     UINavigationController *userNVC = [[UINavigationController alloc] initWithRootViewController:userVC];
+    userNVC.navigationBar.barTintColor = [UIColor whiteColor];
 
     self.viewControllers = @[mainNVC,tacticsNVC,userNVC];
     
