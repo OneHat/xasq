@@ -20,7 +20,7 @@
 
 
 /// 主题颜色
-#define ThemeColorBlue        HexColor(@"#4687CA")
+#define ThemeColorBlue        HexColor(@"#2688D0")
 #define ThemeColorGray        HexColor(@"#D8D8D8")
 #define ThemeColorTextGray    HexColor(@"#C8C8C8")
 #define ThemeColorBackground  HexColor(@"#C8C8C8")

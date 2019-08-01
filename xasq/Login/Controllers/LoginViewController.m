@@ -31,12 +31,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // 设置导航栏背景颜色
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    //去除导航栏下方的横线
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]
-//                                                  forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc]init]];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 

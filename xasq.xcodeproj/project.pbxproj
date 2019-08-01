@@ -34,6 +34,8 @@
 		C41B127922F2AC1000375560 /* BindPhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */; };
 		C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */; };
 		C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */; };
+		C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B128022F2CCDF00375560 /* UserHeaderView.m */; };
+		C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B128222F2CCF500375560 /* UserHeaderView.xib */; };
 		C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B102322EAC5DD00FDFDED /* Assets.xcassets */; };
 		C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */; };
 		C48B103422EAC5DD00FDFDED /* xasqTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B103322EAC5DD00FDFDED /* xasqTests.m */; };
@@ -135,6 +137,9 @@
 		C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayAndLoginPasswordViewController.h; sourceTree = "<group>"; };
 		C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayAndLoginPasswordViewController.m; sourceTree = "<group>"; };
 		C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayAndLoginPasswordViewController.xib; sourceTree = "<group>"; };
+		C41B127F22F2CCDF00375560 /* UserHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
+		C41B128022F2CCDF00375560 /* UserHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
+		C41B128222F2CCF500375560 /* UserHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHeaderView.xib; sourceTree = "<group>"; };
 		C48B101722EAC5DC00FDFDED /* xasq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xasq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48B102322EAC5DD00FDFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B102822EAC5DD00FDFDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -562,6 +567,9 @@
 		C4E41EC522EEBAE900E6DF50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C41B127F22F2CCDF00375560 /* UserHeaderView.h */,
+				C41B128022F2CCDF00375560 /* UserHeaderView.m */,
+				C41B128222F2CCF500375560 /* UserHeaderView.xib */,
 				C4DFE3DF22EED96000C41B2B /* UserTableViewCell.h */,
 				C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */,
 				C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */,
@@ -715,6 +723,7 @@
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
+				C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */,
 				C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */,
 				C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */,
 			);
@@ -784,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
+				C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */,
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,

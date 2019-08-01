@@ -40,7 +40,7 @@
     footButton.frame = CGRectMake(0, 0, ScreenWidth, 50);
     [footButton setTitle:@"退出登录" forState:(UIControlStateNormal)];
     [footButton setTitleColor:ThemeColorTitle forState:(UIControlStateNormal)];
-    footButton.titleLabel.font = [UIFont systemFontOfSize:19];
+    footButton.titleLabel.font = [UIFont systemFontOfSize:15];
     footButton.backgroundColor = [UIColor whiteColor];
     _tableView.tableFooterView = footButton;
     [self.view addSubview:_tableView];

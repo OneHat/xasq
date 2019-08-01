@@ -40,10 +40,10 @@
     _registerBtn.layer.cornerRadius = 22.5;
     _registerBtn.layer.masksToBounds = YES;
     
-    NSString *titleStr = @"已有账号？立即登录";
-    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc]initWithString:titleStr];
-    [attributeStr addAttribute:NSForegroundColorAttributeName value:ThemeColorBlue range:NSMakeRange(5, titleStr.length - 5)];
-    self.loginBtn.titleLabel.attributedText = attributeStr;
+//    NSString *titleStr = @"已有账号？立即登录";
+//    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc]initWithString:titleStr];
+//    [attributeStr addAttribute:NSForegroundColorAttributeName value:ThemeColorBlue range:NSMakeRange(5, titleStr.length - 5)];
+//    self.loginBtn.titleLabel.attributedText = attributeStr;
 }
 
 - (IBAction)loginClick:(UIButton *)sender {
