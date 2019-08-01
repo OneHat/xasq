@@ -44,6 +44,10 @@
     [super viewWillAppear:animated];
 }
 
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 2;
+//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _titleArray.count;
 }
