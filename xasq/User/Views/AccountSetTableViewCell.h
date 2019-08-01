@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AccountSetTableViewCell : UITableViewCell
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLB;
 @property (weak, nonatomic) IBOutlet UILabel *contentLB;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageV;

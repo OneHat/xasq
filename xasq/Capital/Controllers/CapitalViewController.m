@@ -9,7 +9,7 @@
 #import "CapitalViewController.h"
 #import "CapitalSegmentedControl.h"
 
-#import "CapitalModuleView.h"
+//#import "CapitalModuleView.h"
 
 @interface CapitalViewController ()
 
@@ -33,8 +33,6 @@
     CapitalSegmentedControl *segmentedControl = [[CapitalSegmentedControl alloc] initWithFrame:self.segmentedView.bounds items:@[@"我的钱包",@"挖财账户"]];
     [self.segmentedView addSubview:segmentedControl];
     
-    CapitalModuleView *modulView = [[CapitalModuleView alloc] initWithFrame:CGRectMake(0, 200, ScreenWidth, 100)];
-    [self.view addSubview:modulView];
 }
 
 

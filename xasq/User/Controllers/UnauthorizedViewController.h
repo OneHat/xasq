@@ -1,8 +1,8 @@
 //
-//  CapitalModuleView.h
+//  UnauthorizedViewController.h
 //  xasq
 //
-//  Created by dssj on 2019/8/1.
+//  Created by dssj888@163.com on 2019/8/1.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CapitalModuleView : UIView
+@interface UnauthorizedViewController : UIViewController
 
 @end
 

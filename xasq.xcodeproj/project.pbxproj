@@ -37,8 +37,15 @@
 		C414004922F2D7F40010A463 /* CapitalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414004822F2D7F40010A463 /* CapitalViewController.xib */; };
 		C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalSubView.m */; };
 		C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */; };
-		C414005222F2F99B0010A463 /* CapitalModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414005122F2F99B0010A463 /* CapitalModuleView.m */; };
-		C414005422F2F9A30010A463 /* CapitalModuleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414005322F2F9A30010A463 /* CapitalModuleView.xib */; };
+		C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B126922F2898100375560 /* CredentialsViewController.xib */; };
+		C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B126C22F28D5700375560 /* UnauthorizedViewController.m */; };
+		C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B126D22F28D5700375560 /* UnauthorizedViewController.xib */; };
+		C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B127622F2AC1000375560 /* BindPhoneAndEmailViewController.m */; };
+		C41B127922F2AC1000375560 /* BindPhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */; };
+		C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */; };
+		C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */; };
+		C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B128022F2CCDF00375560 /* UserHeaderView.m */; };
+		C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B128222F2CCF500375560 /* UserHeaderView.xib */; };
 		C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B102322EAC5DD00FDFDED /* Assets.xcassets */; };
 		C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */; };
 		C48B103422EAC5DD00FDFDED /* xasqTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B103322EAC5DD00FDFDED /* xasqTests.m */; };
@@ -150,9 +157,19 @@
 		C414004B22F2EBA30010A463 /* CapitalSubView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSubView.m; sourceTree = "<group>"; };
 		C414004D22F2ECE60010A463 /* CapitalSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSegmentedControl.h; sourceTree = "<group>"; };
 		C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSegmentedControl.m; sourceTree = "<group>"; };
-		C414005022F2F99B0010A463 /* CapitalModuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalModuleView.h; sourceTree = "<group>"; };
-		C414005122F2F99B0010A463 /* CapitalModuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalModuleView.m; sourceTree = "<group>"; };
-		C414005322F2F9A30010A463 /* CapitalModuleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalModuleView.xib; sourceTree = "<group>"; };
+		C41B126922F2898100375560 /* CredentialsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsViewController.xib; sourceTree = "<group>"; };
+		C41B126B22F28D5700375560 /* UnauthorizedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnauthorizedViewController.h; sourceTree = "<group>"; };
+		C41B126C22F28D5700375560 /* UnauthorizedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnauthorizedViewController.m; sourceTree = "<group>"; };
+		C41B126D22F28D5700375560 /* UnauthorizedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnauthorizedViewController.xib; sourceTree = "<group>"; };
+		C41B127522F2AC1000375560 /* BindPhoneAndEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneAndEmailViewController.h; sourceTree = "<group>"; };
+		C41B127622F2AC1000375560 /* BindPhoneAndEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneAndEmailViewController.m; sourceTree = "<group>"; };
+		C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindPhoneAndEmailViewController.xib; sourceTree = "<group>"; };
+		C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayAndLoginPasswordViewController.h; sourceTree = "<group>"; };
+		C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayAndLoginPasswordViewController.m; sourceTree = "<group>"; };
+		C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayAndLoginPasswordViewController.xib; sourceTree = "<group>"; };
+		C41B127F22F2CCDF00375560 /* UserHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
+		C41B128022F2CCDF00375560 /* UserHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
+		C41B128222F2CCF500375560 /* UserHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHeaderView.xib; sourceTree = "<group>"; };
 		C48B101722EAC5DC00FDFDED /* xasq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xasq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48B102322EAC5DD00FDFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B102822EAC5DD00FDFDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -335,9 +352,6 @@
 			children = (
 				C414004A22F2EBA30010A463 /* CapitalSubView.h */,
 				C414004B22F2EBA30010A463 /* CapitalSubView.m */,
-				C414005022F2F99B0010A463 /* CapitalModuleView.h */,
-				C414005122F2F99B0010A463 /* CapitalModuleView.m */,
-				C414005322F2F9A30010A463 /* CapitalModuleView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -604,6 +618,10 @@
 				C412A43022F00BA40090E4F1 /* LivingProofViewController.xib */,
 				C4DFE3E422EEE59700C41B2B /* CredentialsViewController.h */,
 				C4DFE3E522EEE59700C41B2B /* CredentialsViewController.m */,
+				C41B126922F2898100375560 /* CredentialsViewController.xib */,
+				C41B126B22F28D5700375560 /* UnauthorizedViewController.h */,
+				C41B126C22F28D5700375560 /* UnauthorizedViewController.m */,
+				C41B126D22F28D5700375560 /* UnauthorizedViewController.xib */,
 				C4DFE3E722EEED2C00C41B2B /* AccountSetViewController.h */,
 				C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */,
 				C412A42422EFE0A60090E4F1 /* LanguageSetViewController.h */,
@@ -618,6 +636,12 @@
 				C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */,
 				C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */,
 				C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */,
+				C41B127522F2AC1000375560 /* BindPhoneAndEmailViewController.h */,
+				C41B127622F2AC1000375560 /* BindPhoneAndEmailViewController.m */,
+				C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */,
+				C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */,
+				C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */,
+				C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -632,6 +656,9 @@
 		C4E41EC522EEBAE900E6DF50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C41B127F22F2CCDF00375560 /* UserHeaderView.h */,
+				C41B128022F2CCDF00375560 /* UserHeaderView.m */,
+				C41B128222F2CCF500375560 /* UserHeaderView.xib */,
 				C4DFE3DF22EED96000C41B2B /* UserTableViewCell.h */,
 				C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */,
 				C4DFE3E122EED96000C41B2B /* UserTableViewCell.xib */,
@@ -766,13 +793,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C414004922F2D7F40010A463 /* CapitalViewController.xib in Resources */,
+				C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */,
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */,
 				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
-				C414005422F2F9A30010A463 /* CapitalModuleView.xib in Resources */,
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
 				C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
@@ -780,12 +807,16 @@
 				C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */,
+				C41B127922F2AC1000375560 /* BindPhoneAndEmailViewController.xib in Resources */,
+				C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */,
 				C4A1EE9422EFF70B00A1DE8C /* ContactViewCell.xib in Resources */,
 				C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
+				C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
+				C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */,
 				C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */,
 				C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */,
 			);
@@ -855,6 +886,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
+				C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */,
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
@@ -867,6 +899,7 @@
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
 				C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */,
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
+				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
@@ -894,10 +927,11 @@
 				C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */,
 				C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
+				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C48B108422EADF7600FDFDED /* MainViewController.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
-				C414005222F2F99B0010A463 /* CapitalModuleView.m in Sources */,
+				C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,
