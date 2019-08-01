@@ -41,17 +41,16 @@
                     <rect key="frame" x="0.0" y="104" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ite-25-WWG">
-                            <rect key="frame" x="323" y="0.0" width="31" height="50"/>
+                            <rect key="frame" x="346" y="0.0" width="31" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZx-J0-ux8">
-                            <rect key="frame" x="369" y="12.5" width="25" height="25"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="国家-箭头" translatesAutoresizingMaskIntoConstraints="NO" id="dZx-J0-ux8">
+                            <rect key="frame" x="387" y="19" width="7" height="12"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="d3E-pr-Lii"/>
-                                <constraint firstAttribute="height" constant="25" id="kcQ-lq-dV7"/>
+                                <constraint firstAttribute="width" constant="7" id="d3E-pr-Lii"/>
+                                <constraint firstAttribute="height" constant="12" id="kcQ-lq-dV7"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8q-vi-hhM">
@@ -83,7 +82,7 @@
                         <constraint firstAttribute="bottom" secondItem="pNS-Ta-9Gh" secondAttribute="bottom" id="V8G-zS-sXS"/>
                         <constraint firstAttribute="trailing" secondItem="dZx-J0-ux8" secondAttribute="trailing" constant="20" id="Xw1-Pt-pVr"/>
                         <constraint firstAttribute="bottom" secondItem="ite-25-WWG" secondAttribute="bottom" id="oj8-j1-wyZ"/>
-                        <constraint firstItem="dZx-J0-ux8" firstAttribute="leading" secondItem="ite-25-WWG" secondAttribute="trailing" constant="15" id="rTy-44-KIv"/>
+                        <constraint firstItem="dZx-J0-ux8" firstAttribute="leading" secondItem="ite-25-WWG" secondAttribute="trailing" constant="10" id="rTy-44-KIv"/>
                         <constraint firstItem="ite-25-WWG" firstAttribute="top" secondItem="pdc-mQ-Glb" secondAttribute="top" id="tGU-1J-7jV"/>
                     </constraints>
                 </view>
@@ -219,4 +218,7 @@
             <state key="normal" title="确认"/>
         </button>
     </objects>
+    <resources>
+        <image name="国家-箭头" width="7" height="12"/>
+    </resources>
 </document>

@@ -30,17 +30,16 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt0-8C-M2R">
-                            <rect key="frame" x="293" y="0.0" width="46" height="50"/>
+                            <rect key="frame" x="326" y="0.0" width="46" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lHT-kC-0Kq">
-                            <rect key="frame" x="359" y="10" width="30" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的-箭头" translatesAutoresizingMaskIntoConstraints="NO" id="lHT-kC-0Kq">
+                            <rect key="frame" x="387" y="17.5" width="9" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="GXJ-nc-whZ"/>
-                                <constraint firstAttribute="width" constant="30" id="Qns-iQ-7BC"/>
+                                <constraint firstAttribute="height" constant="15" id="GXJ-nc-whZ"/>
+                                <constraint firstAttribute="width" constant="9" id="Qns-iQ-7BC"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -49,8 +48,8 @@
                         <constraint firstItem="lHT-kC-0Kq" firstAttribute="centerY" secondItem="Pc2-Kd-9PS" secondAttribute="centerY" id="1J3-Xa-a3K"/>
                         <constraint firstItem="Pc2-Kd-9PS" firstAttribute="leading" secondItem="cMN-dq-CmD" secondAttribute="leading" constant="25" id="45h-2j-MCt"/>
                         <constraint firstAttribute="bottom" secondItem="Pc2-Kd-9PS" secondAttribute="bottom" id="Hvs-dP-rqh"/>
-                        <constraint firstAttribute="trailing" secondItem="lHT-kC-0Kq" secondAttribute="trailing" constant="25" id="J5P-Tc-7DD"/>
-                        <constraint firstItem="lHT-kC-0Kq" firstAttribute="leading" secondItem="mt0-8C-M2R" secondAttribute="trailing" constant="20" id="TYl-NO-NiA"/>
+                        <constraint firstAttribute="trailing" secondItem="lHT-kC-0Kq" secondAttribute="trailing" constant="18" id="J5P-Tc-7DD"/>
+                        <constraint firstItem="lHT-kC-0Kq" firstAttribute="leading" secondItem="mt0-8C-M2R" secondAttribute="trailing" constant="15" id="TYl-NO-NiA"/>
                         <constraint firstItem="Pc2-Kd-9PS" firstAttribute="top" secondItem="cMN-dq-CmD" secondAttribute="top" id="e4v-gC-xgB"/>
                         <constraint firstAttribute="bottom" secondItem="mt0-8C-M2R" secondAttribute="bottom" id="nZI-Xb-5zk"/>
                         <constraint firstAttribute="height" constant="50" id="uOP-YN-RN4"/>
@@ -60,16 +59,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poI-O5-8I7">
                     <rect key="frame" x="0.0" y="114" width="414" height="100"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ck6-7A-sIV">
-                            <rect key="frame" x="20" y="10" width="30" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="姓名" translatesAutoresizingMaskIntoConstraints="NO" id="Ck6-7A-sIV">
+                            <rect key="frame" x="21" y="14.5" width="21" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="7ZZ-b7-a5w"/>
-                                <constraint firstAttribute="width" constant="30" id="Vp9-hh-14m"/>
+                                <constraint firstAttribute="height" constant="21" id="7ZZ-b7-a5w"/>
+                                <constraint firstAttribute="width" constant="21" id="Vp9-hh-14m"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a8X-l7-NSr">
-                            <rect key="frame" x="65" y="0.0" width="314" height="50"/>
+                            <rect key="frame" x="57" y="0.0" width="322" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Lrk-eR-CS2"/>
                             </constraints>
@@ -84,16 +82,15 @@
                                 <constraint firstAttribute="height" constant="1" id="aCJ-YE-jW7"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EME-RO-euZ">
-                            <rect key="frame" x="20" y="61" width="30" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="证件号" translatesAutoresizingMaskIntoConstraints="NO" id="EME-RO-euZ">
+                            <rect key="frame" x="21" y="65.5" width="21" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="0pW-Bu-7MS"/>
-                                <constraint firstAttribute="height" constant="30" id="OdB-xc-ygp"/>
+                                <constraint firstAttribute="width" constant="21" id="0pW-Bu-7MS"/>
+                                <constraint firstAttribute="height" constant="21" id="OdB-xc-ygp"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入身份证号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QGM-IX-eSe">
-                            <rect key="frame" x="65" y="51" width="314" height="50"/>
+                            <rect key="frame" x="57" y="51" width="322" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="bZE-km-pdT"/>
                             </constraints>
@@ -113,10 +110,10 @@
                         <constraint firstItem="EME-RO-euZ" firstAttribute="centerY" secondItem="QGM-IX-eSe" secondAttribute="centerY" id="VN3-Pp-yFf"/>
                         <constraint firstItem="QGM-IX-eSe" firstAttribute="leading" secondItem="EME-RO-euZ" secondAttribute="trailing" constant="15" id="gu2-7Q-tkZ"/>
                         <constraint firstItem="a8X-l7-NSr" firstAttribute="top" secondItem="poI-O5-8I7" secondAttribute="top" id="nCj-8K-QBf"/>
-                        <constraint firstItem="Ck6-7A-sIV" firstAttribute="leading" secondItem="poI-O5-8I7" secondAttribute="leading" constant="20" id="ns5-IC-Tld"/>
+                        <constraint firstItem="Ck6-7A-sIV" firstAttribute="leading" secondItem="poI-O5-8I7" secondAttribute="leading" constant="21" id="ns5-IC-Tld"/>
                         <constraint firstItem="a8X-l7-NSr" firstAttribute="leading" secondItem="Ck6-7A-sIV" secondAttribute="trailing" constant="15" id="oZr-RG-qsy"/>
                         <constraint firstItem="Ck6-7A-sIV" firstAttribute="centerY" secondItem="a8X-l7-NSr" secondAttribute="centerY" id="pfo-av-pXK"/>
-                        <constraint firstItem="EME-RO-euZ" firstAttribute="leading" secondItem="poI-O5-8I7" secondAttribute="leading" constant="20" id="scr-xM-2oG"/>
+                        <constraint firstItem="EME-RO-euZ" firstAttribute="leading" secondItem="poI-O5-8I7" secondAttribute="leading" constant="21" id="scr-xM-2oG"/>
                         <constraint firstAttribute="trailing" secondItem="a8X-l7-NSr" secondAttribute="trailing" constant="35" id="v1g-Cz-zNY"/>
                     </constraints>
                 </view>
@@ -133,4 +130,9 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
+    <resources>
+        <image name="姓名" width="21" height="21"/>
+        <image name="我的-箭头" width="9" height="15"/>
+        <image name="证件号" width="21" height="21"/>
+    </resources>
 </document>

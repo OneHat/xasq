@@ -82,6 +82,7 @@
     }
     NSString *name = _titleArray[indexPath.row];
     cell.nameLB.text = name;
+    cell.iconImageV.image = [UIImage imageNamed:name];
     cell.contentLB.hidden = YES;
     cell.arrowImageV.hidden = NO;
     if (indexPath.row == 0) {

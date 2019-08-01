@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UserHeaderView : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *dwellBtn;  // 跳转居住证明界面
+@property (weak, nonatomic) IBOutlet UILabel *countLB;
 
 
 

@@ -89,6 +89,7 @@
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *titleArray = _titleDict[key];
     cell.titleLB.text = titleArray[indexPath.row];
+    cell.iconImageV.image = [UIImage imageNamed:titleArray[indexPath.row]];
     return cell;
 }
 

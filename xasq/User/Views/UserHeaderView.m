@@ -12,11 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _countLB.layer.cornerRadius = 7.5;
+    _countLB.layer.masksToBounds = YES;
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    NSLog(@"123");
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

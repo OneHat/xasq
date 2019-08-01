@@ -23,9 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-L4-vrE">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-L4-vrE">
                     <rect key="frame" x="162" y="124" width="90" height="90"/>
-                    <color key="backgroundColor" red="0.27450980392156865" green="0.52941176470588236" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="N5M-Qw-rg3"/>
                         <constraint firstAttribute="height" constant="90" id="YmV-jF-BMa"/>
@@ -42,11 +41,11 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tea-5c-VcS">
                     <rect key="frame" x="349" y="289" width="30" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="TGs-lQ-pFH"/>
                         <constraint firstAttribute="width" constant="30" id="XWm-2O-5hU"/>
                     </constraints>
+                    <state key="normal" image="清除"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heh-6k-Lsb">
                     <rect key="frame" x="35" y="334" width="343" height="1"/>
@@ -115,18 +114,18 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6K-qL-tCa">
                     <rect key="frame" x="25" y="64" width="30" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="44h-K3-7iK"/>
                         <constraint firstAttribute="height" constant="30" id="IhS-jY-9Ut"/>
                     </constraints>
+                    <state key="normal" image="关闭"/>
                     <connections>
                         <action selector="closeClick:" destination="-1" eventType="touchUpInside" id="PUm-uN-3fQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-YM-NaK">
                     <rect key="frame" x="349" y="350" width="30" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="闭眼"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -168,4 +167,10 @@
             <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
         </view>
     </objects>
+    <resources>
+        <image name="logo" width="90" height="90"/>
+        <image name="关闭" width="20" height="20"/>
+        <image name="清除" width="16" height="16"/>
+        <image name="闭眼" width="16" height="16"/>
+    </resources>
 </document>
