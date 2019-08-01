@@ -15,7 +15,7 @@
 
 @end
 
-static NSString *tacticsIdentifier = @"TacticsViewCell";
+static NSString *TacticsIdentifier = @"TacticsViewCell";
 
 @implementation TacticsViewController
 
@@ -26,7 +26,7 @@ static NSString *tacticsIdentifier = @"TacticsViewCell";
     
     CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
-    [_tableView registerNib:[UINib nibWithNibName:@"TacticsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:tacticsIdentifier];
+    [_tableView registerNib:[UINib nibWithNibName:@"TacticsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TacticsIdentifier];
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -43,7 +43,7 @@ static NSString *tacticsIdentifier = @"TacticsViewCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TacticsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tacticsIdentifier];
+    TacticsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TacticsIdentifier];
     
     return cell;
 }

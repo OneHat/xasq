@@ -37,7 +37,7 @@
 //    // 极光推送
 //    [self initJPUSHWithOptions:launchOptions];
     
-    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }

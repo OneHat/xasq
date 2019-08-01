@@ -27,6 +27,18 @@
 		C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43022F00BA40090E4F1 /* LivingProofViewController.xib */; };
 		C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */; };
 		C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */; };
+		C414003422F2ABB20010A463 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003322F2ABB20010A463 /* DiscoveryViewController.m */; };
+		C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003722F2AC0B0010A463 /* CapitalViewController.m */; };
+		C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */; };
+		C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */; };
+		C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */; };
+		C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004222F2CE8D0010A463 /* MinerViewController.m */; };
+		C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414004322F2CE8D0010A463 /* MinerViewController.xib */; };
+		C414004922F2D7F40010A463 /* CapitalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414004822F2D7F40010A463 /* CapitalViewController.xib */; };
+		C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalSubView.m */; };
+		C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */; };
+		C414005222F2F99B0010A463 /* CapitalModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414005122F2F99B0010A463 /* CapitalModuleView.m */; };
+		C414005422F2F9A30010A463 /* CapitalModuleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414005322F2F9A30010A463 /* CapitalModuleView.xib */; };
 		C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B102322EAC5DD00FDFDED /* Assets.xcassets */; };
 		C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */; };
 		C48B103422EAC5DD00FDFDED /* xasqTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B103322EAC5DD00FDFDED /* xasqTests.m */; };
@@ -49,6 +61,9 @@
 		C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */; };
 		C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */; };
 		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
+		C4A1EEBF22F2855500A1DE8C /* HomeChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */; };
+		C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */; };
+		C4A1EEC322F291D900A1DE8C /* HomeChartsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -118,6 +133,26 @@
 		C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterNicknameViewController.h; sourceTree = "<group>"; };
 		C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterNicknameViewController.m; sourceTree = "<group>"; };
 		C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterNicknameViewController.xib; sourceTree = "<group>"; };
+		C414003222F2ABB20010A463 /* DiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryViewController.h; sourceTree = "<group>"; };
+		C414003322F2ABB20010A463 /* DiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryViewController.m; sourceTree = "<group>"; };
+		C414003622F2AC0B0010A463 /* CapitalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalViewController.h; sourceTree = "<group>"; };
+		C414003722F2AC0B0010A463 /* CapitalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalViewController.m; sourceTree = "<group>"; };
+		C414003922F2AE110010A463 /* HomeMoreNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeMoreNewsViewController.h; sourceTree = "<group>"; };
+		C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeMoreNewsViewController.m; sourceTree = "<group>"; };
+		C414003C22F2B02D0010A463 /* HomeNewsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsViewCell.h; sourceTree = "<group>"; };
+		C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsViewCell.m; sourceTree = "<group>"; };
+		C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewsViewCell.xib; sourceTree = "<group>"; };
+		C414004122F2CE8D0010A463 /* MinerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinerViewController.h; sourceTree = "<group>"; };
+		C414004222F2CE8D0010A463 /* MinerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinerViewController.m; sourceTree = "<group>"; };
+		C414004322F2CE8D0010A463 /* MinerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinerViewController.xib; sourceTree = "<group>"; };
+		C414004822F2D7F40010A463 /* CapitalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalViewController.xib; sourceTree = "<group>"; };
+		C414004A22F2EBA30010A463 /* CapitalSubView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSubView.h; sourceTree = "<group>"; };
+		C414004B22F2EBA30010A463 /* CapitalSubView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSubView.m; sourceTree = "<group>"; };
+		C414004D22F2ECE60010A463 /* CapitalSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSegmentedControl.h; sourceTree = "<group>"; };
+		C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSegmentedControl.m; sourceTree = "<group>"; };
+		C414005022F2F99B0010A463 /* CapitalModuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalModuleView.h; sourceTree = "<group>"; };
+		C414005122F2F99B0010A463 /* CapitalModuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalModuleView.m; sourceTree = "<group>"; };
+		C414005322F2F9A30010A463 /* CapitalModuleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalModuleView.xib; sourceTree = "<group>"; };
 		C48B101722EAC5DC00FDFDED /* xasq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xasq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48B102322EAC5DD00FDFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B102822EAC5DD00FDFDED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +199,11 @@
 		C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedControl.m; sourceTree = "<group>"; };
 		C4A1EEB622F194D600A1DE8C /* NSString+Size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		C4A1EEB722F194D600A1DE8C /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
+		C4A1EEBC22F2855500A1DE8C /* HomeChartViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartViewCell.h; sourceTree = "<group>"; };
+		C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartViewCell.m; sourceTree = "<group>"; };
+		C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeChartViewCell.xib; sourceTree = "<group>"; };
+		C4A1EEC122F291D900A1DE8C /* HomeChartsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartsTableView.h; sourceTree = "<group>"; };
+		C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartsTableView.m; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -262,6 +302,46 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C414003122F2AB7E0010A463 /* DisCovery */ = {
+			isa = PBXGroup;
+			children = (
+				C414003222F2ABB20010A463 /* DiscoveryViewController.h */,
+				C414003322F2ABB20010A463 /* DiscoveryViewController.m */,
+			);
+			path = DisCovery;
+			sourceTree = "<group>";
+		};
+		C414003522F2ABE10010A463 /* Capital */ = {
+			isa = PBXGroup;
+			children = (
+				C414004722F2D2FC0010A463 /* Views */,
+				C414004622F2D2EF0010A463 /* Controllers */,
+			);
+			path = Capital;
+			sourceTree = "<group>";
+		};
+		C414004622F2D2EF0010A463 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C414003622F2AC0B0010A463 /* CapitalViewController.h */,
+				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
+				C414004822F2D7F40010A463 /* CapitalViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C414004722F2D2FC0010A463 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C414004A22F2EBA30010A463 /* CapitalSubView.h */,
+				C414004B22F2EBA30010A463 /* CapitalSubView.m */,
+				C414005022F2F99B0010A463 /* CapitalModuleView.h */,
+				C414005122F2F99B0010A463 /* CapitalModuleView.m */,
+				C414005322F2F9A30010A463 /* CapitalModuleView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C48B100E22EAC5DC00FDFDED = {
 			isa = PBXGroup;
 			children = (
@@ -288,11 +368,13 @@
 			isa = PBXGroup;
 			children = (
 				C48B106D22EADE1100FDFDED /* App */,
+				C414003522F2ABE10010A463 /* Capital */,
+				C414003122F2AB7E0010A463 /* DisCovery */,
+				C40C3D7022F1404500BDE6A3 /* Login */,
 				C48B108022EADF7600FDFDED /* Main */,
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
 				C48B107822EADF2700FDFDED /* Tool */,
 				C48B107D22EADF7600FDFDED /* User */,
-				C40C3D7022F1404500BDE6A3 /* Login */,
 			);
 			path = xasq;
 			sourceTree = "<group>";
@@ -404,6 +486,14 @@
 				C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */,
 				C4A1EEAF22F1906D00A1DE8C /* HomeChartsView.h */,
 				C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */,
+				C4A1EEBC22F2855500A1DE8C /* HomeChartViewCell.h */,
+				C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */,
+				C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */,
+				C4A1EEC122F291D900A1DE8C /* HomeChartsTableView.h */,
+				C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */,
+				C414003C22F2B02D0010A463 /* HomeNewsViewCell.h */,
+				C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */,
+				C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,6 +516,8 @@
 			children = (
 				C4A1EEB322F1911C00A1DE8C /* SegmentedControl.h */,
 				C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */,
+				C414004D22F2ECE60010A463 /* CapitalSegmentedControl.h */,
+				C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */,
 			);
 			path = SegmentedControl;
 			sourceTree = "<group>";
@@ -474,6 +566,11 @@
 				C4A1EE8922EFE7F000A1DE8C /* InviteUserViewController.h */,
 				C4A1EE8A22EFE7F000A1DE8C /* InviteUserViewController.m */,
 				C4A1EE8C22EFEE3400A1DE8C /* InviteUserViewController.xib */,
+				C414003922F2AE110010A463 /* HomeMoreNewsViewController.h */,
+				C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */,
+				C414004122F2CE8D0010A463 /* MinerViewController.h */,
+				C414004222F2CE8D0010A463 /* MinerViewController.m */,
+				C414004322F2CE8D0010A463 /* MinerViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -668,14 +765,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C414004922F2D7F40010A463 /* CapitalViewController.xib in Resources */,
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
+				C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */,
 				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
+				C414005422F2F9A30010A463 /* CapitalModuleView.xib in Resources */,
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
+				C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
+				C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */,
 				C4A1EE9422EFF70B00A1DE8C /* ContactViewCell.xib in Resources */,
@@ -758,10 +860,13 @@
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
+				C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
 				C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */,
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
+				C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */,
+				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
@@ -769,9 +874,14 @@
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
 				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
+				C4A1EEC322F291D900A1DE8C /* HomeChartsTableView.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
+				C414003422F2ABB20010A463 /* DiscoveryViewController.m in Sources */,
+				C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */,
+				C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */,
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
+				C4A1EEBF22F2855500A1DE8C /* HomeChartViewCell.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
@@ -781,11 +891,13 @@
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,
+				C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */,
 				C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C48B108422EADF7600FDFDED /* MainViewController.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
+				C414005222F2F99B0010A463 /* CapitalModuleView.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,

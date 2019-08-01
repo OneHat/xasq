@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  生成纯色片
  */
-+ (UIImage *)buttonImageFromColor:(UIColor *)color;
++ (UIImage *)imageFromColor:(UIColor *)color;
 
 @end
 

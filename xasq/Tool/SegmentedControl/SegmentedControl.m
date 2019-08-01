@@ -10,8 +10,7 @@
 #import "NSString+Size.h"
 
 const CGFloat SegmentedSpaceWidth = 10;
-const CGFloat SegmentedIndicatorWidth = 60;
-
+const CGFloat SegmentedIndicatorWidth = 50;
 
 #define ButtonTitleNormal        [UIFont systemFontOfSize:13]
 #define ButtonTitleSelect        [UIFont boldSystemFontOfSize:14]
@@ -27,8 +26,6 @@ const CGFloat SegmentedIndicatorWidth = 60;
 @property (nonatomic, strong) NSArray *items;//titles
 
 @property (nonatomic, assign) CGFloat currentX;//创建view时，x坐标的值
-
-@property (nonatomic, assign) NSInteger currentIndex;//当前显示index
 
 @property (nonatomic, strong) NSMutableArray *buttons;//按钮集合
 
@@ -98,6 +95,7 @@ const CGFloat SegmentedIndicatorWidth = 60;
     
 }
 
+//点击button
 - (void)itemClick:(UIButton *)sender {
     if (_currentIndex != sender.tag) {
         
@@ -111,13 +109,32 @@ const CGFloat SegmentedIndicatorWidth = 60;
             self.indicatorView.center = CGPointMake(sender.center.x, self.indicatorView.center.y);
         }];
         
-        
         _currentIndex = sender.tag;
         
+        if ([self.delegate respondsToSelector:@selector(segmentedControlItemSelect:)]) {
+            [self.delegate segmentedControlItemSelect:_currentIndex];
+        }
         
     }
     
 }
 
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    _currentIndex = currentIndex;
+    
+    for (UIButton *button in _buttons) {
+        button.selected = NO;
+        if (button.tag == currentIndex) {
+            button.selected = YES;
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                self.indicatorView.center = CGPointMake(button.center.x, self.indicatorView.center.y);
+            }];
+            
+            
+        }
+    }
+    
+}
 
 @end

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeChartsView : UIView
 
+@property (nonatomic, strong) void (^HomeChartsDataComplete)(CGFloat viewHeight);
+
 @end
 
 NS_ASSUME_NONNULL_END

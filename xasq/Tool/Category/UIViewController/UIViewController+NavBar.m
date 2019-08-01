@@ -10,23 +10,6 @@
 
 @implementation UIViewController (NavBar)
 
-- (void)setNavBarColor {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage buttonImageFromColor:HexColor(@"#FFFFFF")]
-                                                  forBarMetrics:UIBarMetricsDefault];  //设置背景
-    self.navigationItem.rightBarButtonItem.tintColor = HexColor(@"#f56600");
-    self.navigationController.navigationBar.tintColor = HexColor(@"#f56600");
-    if (self.navigationController.viewControllers.count > 1) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"]
-                                                                                 style:UIBarButtonItemStyleDone
-                                                                                target:self
-                                                                                action:@selector(leftBtnAction)];
-        self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    }
-    NSDictionary *selectedTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:20],
-                                             NSForegroundColorAttributeName:HexColor(@"#1B1A1D")};
-    [self.navigationController.navigationBar setTitleTextAttributes:selectedTextAttributes];
-}
-
 - (void)initLeftBtnWithImage:(UIImage *)image {
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                     style:UIBarButtonItemStylePlain
@@ -58,7 +41,6 @@
     [self.navigationItem.rightBarButtonItem setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
-#pragma mark - 设置导航右键
 - (void)initRightBtnWithTitle:(NSString *)title color:(UIColor *)color {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
                                                                               style:UIBarButtonItemStyleDone
@@ -73,14 +55,42 @@
 }
 
 
-#pragma mark - 导航左方法
+#pragma mark - 
+- (void)setNavBarTitleColor:(UIColor *)color {
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageFromColor:HexColor(@"#FFFFFF")]
+//                                                  forBarMetrics:UIBarMetricsDefault];  //设置背景
+//    self.navigationItem.rightBarButtonItem.tintColor = HexColor(@"#f56600");
+//    self.navigationController.navigationBar.tintColor = HexColor(@"#f56600");
+//    if (self.navigationController.viewControllers.count > 1) {
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"]
+//                                                                                 style:UIBarButtonItemStyleDone
+//                                                                                target:self
+//                                                                                action:@selector(leftBtnAction)];
+//        self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+//    }
+//    NSDictionary *selectedTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:20],
+//                                             NSForegroundColorAttributeName:HexColor(@"#1B1A1D")};
+//    [self.navigationController.navigationBar setTitleTextAttributes:selectedTextAttributes];
+    
+    
+    NSDictionary *textAttributes = @{NSForegroundColorAttributeName:color};
+    [self.navigationController.navigationBar setTitleTextAttributes:textAttributes];
+}
+
+#pragma mark -
 - (void)leftBtnAction {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - 导航右方法
 - (void)rightBtnAction {
     
+}
+
+#pragma mark -
+- (void)setNavBarBackGroundColor:(UIColor *)color {
+    UIImage *image = [UIImage imageFromColor:color];
+    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = image;
 }
 
 @end

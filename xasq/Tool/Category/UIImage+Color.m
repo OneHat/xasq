@@ -11,7 +11,7 @@
 @implementation UIImage (Color)
 
 #pragma mark - 生产纯色片
-+ (UIImage *)buttonImageFromColor:(UIColor *)color {
++ (UIImage *)imageFromColor:(UIColor *)color {
     CGRect rect = CGRectMake(0, 0, 20, 20);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
