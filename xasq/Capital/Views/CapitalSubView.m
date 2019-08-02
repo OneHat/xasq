@@ -89,4 +89,10 @@ static CGFloat CapitalSegmentControlH = 40;
     return headerView;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.CellSelectBlock) {
+        self.CellSelectBlock();
+    }
+}
+
 @end

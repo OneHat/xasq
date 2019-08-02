@@ -7,8 +7,8 @@
 //
 
 #import "CapitalViewController.h"
+#import "CapitalKindViewController.h"
 #import "CapitalSegmentedControl.h"
-
 #import "CapitalSubView.h"
 
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate>
@@ -58,7 +58,13 @@
     [self.view addSubview:_segmentedControl];
     
     //钱包账户
+    WeakObject
     _walletView = [[CapitalSubView alloc] initWithFrame:_scrollView.bounds];
+    _walletView.CellSelectBlock = ^{
+        CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
+        kindVC.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:kindVC animated:YES];
+    };
     [_scrollView addSubview:_walletView];
     
     //挖矿账户

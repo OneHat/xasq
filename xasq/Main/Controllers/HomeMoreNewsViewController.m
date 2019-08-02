@@ -22,7 +22,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"最新动态";
+    self.title = @"我";
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);

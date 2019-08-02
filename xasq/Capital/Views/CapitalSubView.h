@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalSubView : UIView
 
+@property (nonatomic, strong) void (^CellSelectBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

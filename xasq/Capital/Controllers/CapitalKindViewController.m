@@ -7,6 +7,7 @@
 //
 
 #import "CapitalKindViewController.h"
+#import "CapitalTopView.h"
 
 @interface CapitalKindViewController ()
 
@@ -16,17 +17,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"BTC";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    //背景
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 20)];
+    imageView.image = [UIImage imageNamed:@"capital_topBackground"];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    [self.view addSubview:imageView];
+     
+    //资产view
+    CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 20)];
+    [self.view addSubview:topView];
+    
+    ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
+    CGFloat topViewH = topView.frame.size.height;
+    imageView.frame = CGRectMake(0, 0, ScreenWidth, topViewH + NavHeight + 10);
+    
+    
+    UIView *introduceView = [[UIView alloc] init];
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

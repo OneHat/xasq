@@ -40,7 +40,6 @@
 		C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */; };
 		C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48F22F4199A005EFD81 /* CapitalTopView.m */; };
 		C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F49222F42732005EFD81 /* CapitalKindViewController.m */; };
-		C418F49522F42732005EFD81 /* CapitalKindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C418F49322F42732005EFD81 /* CapitalKindViewController.xib */; };
 		C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B126922F2898100375560 /* CredentialsViewController.xib */; };
 		C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B126C22F28D5700375560 /* UnauthorizedViewController.m */; };
 		C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B126D22F28D5700375560 /* UnauthorizedViewController.xib */; };
@@ -174,7 +173,6 @@
 		C418F48F22F4199A005EFD81 /* CapitalTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalTopView.m; sourceTree = "<group>"; };
 		C418F49122F42732005EFD81 /* CapitalKindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalKindViewController.h; sourceTree = "<group>"; };
 		C418F49222F42732005EFD81 /* CapitalKindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalKindViewController.m; sourceTree = "<group>"; };
-		C418F49322F42732005EFD81 /* CapitalKindViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalKindViewController.xib; sourceTree = "<group>"; };
 		C41B126922F2898100375560 /* CredentialsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CredentialsViewController.xib; sourceTree = "<group>"; };
 		C41B126B22F28D5700375560 /* UnauthorizedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnauthorizedViewController.h; sourceTree = "<group>"; };
 		C41B126C22F28D5700375560 /* UnauthorizedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnauthorizedViewController.m; sourceTree = "<group>"; };
@@ -373,7 +371,6 @@
 				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
 				C418F49122F42732005EFD81 /* CapitalKindViewController.h */,
 				C418F49222F42732005EFD81 /* CapitalKindViewController.m */,
-				C418F49322F42732005EFD81 /* CapitalKindViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -849,7 +846,6 @@
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
 				C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */,
-				C418F49522F42732005EFD81 /* CapitalKindViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
 				C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */,

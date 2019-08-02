@@ -48,7 +48,18 @@
     [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-10000, 0) forBarMetrics:UIBarMetricsDefault];
+    CGFloat offsetX;
+    if (ScreenWidth == 320.0) {
+        offsetX = 82.0;
+    } else if (ScreenWidth == 375.0) {
+        offsetX = 110.0;
+    } else if (ScreenWidth == 414.0) {
+        offsetX = 126.0;
+    } else {
+        offsetX = 150.0;
+    }
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(offsetX, 0) forBarMetrics:UIBarMetricsDefault];
 }
     
 /********
