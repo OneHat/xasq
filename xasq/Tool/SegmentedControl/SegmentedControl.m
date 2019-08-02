@@ -65,7 +65,10 @@ const CGFloat SegmentedIndicatorWidth = 50;
             buttonWidth = SegmentedIndicatorWidth;
         }
         
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, 0, buttonWidth, height)];
+//        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, 0, buttonWidth, height)];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(buttonX, 0, buttonWidth, height);
+        button.adjustsImageWhenHighlighted = NO;
         button.tag = i;
         
         NSDictionary *attributeNormal = @{NSFontAttributeName:ButtonTitleNormal,NSForegroundColorAttributeName:ButtonTitleColorNormal};
@@ -76,6 +79,7 @@ const CGFloat SegmentedIndicatorWidth = 50;
         
         [button setAttributedTitle:attStringNormal forState:UIControlStateNormal];
         [button setAttributedTitle:attStringSelect forState:UIControlStateSelected];
+        [button setAttributedTitle:attStringSelect forState:UIControlStateSelected | UIControlStateHighlighted];
         
         [button addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:button];

@@ -11,12 +11,13 @@
 @implementation UIViewController (NavBar)
 
 - (void)initLeftBtnWithImage:(UIImage *)image {
-    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithImage:image
-                                                                    style:UIBarButtonItemStylePlain
-                                                                   target:self
-                                                                   action:@selector(leftBtnAction)];
+    UIImage *leftImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithImage:leftImage
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(leftBtnAction)];
     self.navigationItem.leftBarButtonItem = leftBarItem;
-    [self.navigationItem.leftBarButtonItem setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 - (void)initLeftBtnWithTitle:(NSString *)title color:(UIColor *)color {
@@ -33,12 +34,13 @@
 }
 
 - (void)initRightBtnWithImage:(UIImage *)image {
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:image
+    UIImage *rightImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:rightImage
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(rightBtnAction)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
-    [self.navigationItem.rightBarButtonItem setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 - (void)initRightBtnWithTitle:(NSString *)title color:(UIColor *)color {
@@ -46,12 +48,14 @@
                                                                               style:UIBarButtonItemStyleDone
                                                                              target:self
                                                                              action:@selector(rightBtnAction)];
+    
     NSDictionary *selectedTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15],
                                              NSForegroundColorAttributeName:color};
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:selectedTextAttributes
                                                           forState:UIControlStateNormal];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:selectedTextAttributes
                                                           forState:UIControlStateHighlighted];
+    
 }
 
 

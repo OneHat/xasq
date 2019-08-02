@@ -48,9 +48,33 @@
     self.viewControllers = @[mainNVC,tacticsNVC,discoveryNVC,capitalNVC,userNVC];
     
     NSArray *titles = @[@"首页",@"策略",@"发现",@"资产",@"我的"];
+    NSArray *imagesNormal = @[@"Tab_Discovery_Normal",
+                              @"Tab_Tactics_Normal",
+                              @"Tab_Discovery_Normal",
+                              @"Tab_Capital_Normal",
+                              @"Tab_User_Normal"];
+    
+    NSArray *imagesSelect = @[@"Tab_Discovery_Select",
+                              @"Tab_Tactics_Select",
+                              @"Tab_Discovery_Select",
+                              @"Tab_Capital_Select",
+                              @"Tab_User_Select"];
+    
     for (int i = 0;i < self.tabBar.items.count;i++) {
         UITabBarItem *item = self.tabBar.items[i];
         item.title = titles[i];
+        
+        
+        NSDictionary *attributeNormal = @{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:10]};
+        NSDictionary *attributeSelect = @{NSForegroundColorAttributeName:ThemeColorBlue,NSFontAttributeName:[UIFont systemFontOfSize:10]};
+        
+        [item setTitleTextAttributes:attributeNormal forState:UIControlStateNormal];
+        [item setTitleTextAttributes:attributeSelect forState:UIControlStateSelected];
+        
+        UIImage *imageNormal = [UIImage imageNamed:imagesNormal[i]];
+        UIImage *imageSelect = [UIImage imageNamed:imagesSelect[i]];
+        [item setImage:[imageNormal imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [item setSelectedImage:[imageSelect imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     }
     
 }

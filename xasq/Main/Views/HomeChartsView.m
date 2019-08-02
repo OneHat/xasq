@@ -48,6 +48,7 @@
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_segmentedControl.frame), ScreenWidth, 0)];
         _scrollView.contentSize = CGSizeMake(ScreenWidth * items.count, 0);
         _scrollView.pagingEnabled = YES;
+        _scrollView.bounces = NO;
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
         
@@ -106,6 +107,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     int page = scrollView.contentOffset.x / scrollView.frame.size.width;
     self.segmentedControl.currentIndex = page;
+    [self.segmentedControl.delegate segmentedControlItemSelect:page];
 }
 
 

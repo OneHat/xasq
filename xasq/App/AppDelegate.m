@@ -37,7 +37,11 @@
 //    // 极光推送
 //    [self initJPUSHWithOptions:launchOptions];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    UIImage *backIndicatorImage = [[UIImage imageNamed:@"返回"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-10000, 0) forBarMetrics:UIBarMetricsDefault];
     
     return YES;
 }

@@ -47,7 +47,7 @@
     CGFloat height = CGRectGetHeight(self.frame);
     CGFloat buttonWidth = 100;
     
-    _indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, height - 3, 50, 2)];
+    _indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, height - 5, 50, 2)];
     _indicatorView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_indicatorView];
     
@@ -65,7 +65,7 @@
         
         [button setAttributedTitle:attStringNormal forState:UIControlStateNormal];
         [button setAttributedTitle:attStringSelect forState:UIControlStateSelected];
-        
+        [button setAttributedTitle:attStringSelect forState:UIControlStateSelected | UIControlStateHighlighted];
         
         [button addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
@@ -76,10 +76,6 @@
             button.selected = YES;
         }
     }
-    
-//    if (_currentX + SegmentedSpaceWidth > self.frame.size.width) {
-//        _scrollView.contentSize = CGSizeMake(_currentX + SegmentedSpaceWidth, 0);
-//    }
     
 }
 
@@ -99,10 +95,28 @@
         
         _currentIndex = sender.tag;
         
-//        if ([self.delegate respondsToSelector:@selector(segmentedControlItemSelect:)]) {
-//            [self.delegate segmentedControlItemSelect:_currentIndex];
-//        }
+        if ([self.delegate respondsToSelector:@selector(segmentedControlItemSelect:)]) {
+            [self.delegate segmentedControlItemSelect:_currentIndex];
+        }
         
+    }
+    
+}
+
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    _currentIndex = currentIndex;
+    
+    for (UIButton *button in _buttons) {
+        button.selected = NO;
+        if (button.tag == currentIndex) {
+            button.selected = YES;
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                self.indicatorView.center = CGPointMake(button.center.x, self.indicatorView.center.y);
+            }];
+            
+            
+        }
     }
     
 }

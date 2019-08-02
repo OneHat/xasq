@@ -31,9 +31,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _scrollView.bounces = NO;
-    
-//    _friendNewsHeight.constant = 0;
+    _friendNewsHeight.constant = 0;
     
     HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:_newsView.bounds];
     newsView.newsArray = @[@{@"content":@"领取了256",@"time":@"30小时之前"},
