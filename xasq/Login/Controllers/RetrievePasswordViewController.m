@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.title = @"找回密码";
     _type = 0;
-    [self initRightBtnWithTitle:@"邮箱" color:ThemeColorTitle];
+    [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
     
     _nextBtn.layer.cornerRadius = 22.5;
     _nextBtn.layer.masksToBounds = YES;
@@ -33,12 +33,12 @@
 
 - (void)rightBtnAction {
     if (_type == 0) {
-        [self initRightBtnWithTitle:@"手机号" color:ThemeColorTitle];
+        [self initRightBtnWithTitle:@"手机号" color:ThemeColorText];
         // 邮箱注册
         _type = 1;
         _accountTF.placeholder = @"请输入绑定邮箱地址";
     } else {
-        [self initRightBtnWithTitle:@"邮箱" color:ThemeColorTitle];
+        [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
         // 手机注册
         _type = 0;
         _accountTF.placeholder = @"请输入绑定手机号";

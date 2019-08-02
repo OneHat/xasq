@@ -25,13 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"账户设置";
-    self.view.backgroundColor = ThemeColorView;
+    self.view.backgroundColor = ThemeColorBackground;
     
     _titleArray = @[@"修改登录密码", @"设置支付密码", @"绑定邮箱", @"绑定手机"];
     _imageTitleArray = @[@"change_login_password", @"set_pay_password", @"binding_email", @"binding_phone"];
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
-    _tableView.backgroundColor = ThemeColorView;
+    _tableView.backgroundColor = ThemeColorBackground;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorInset = UIEdgeInsetsMake(0, 55, 0, 0);
@@ -42,7 +42,7 @@
     UIButton *footButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     footButton.frame = CGRectMake(0, 0, ScreenWidth, 50);
     [footButton setTitle:@"退出登录" forState:(UIControlStateNormal)];
-    [footButton setTitleColor:ThemeColorTitle forState:(UIControlStateNormal)];
+    [footButton setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
     footButton.titleLabel.font = [UIFont systemFontOfSize:15];
     footButton.backgroundColor = [UIColor whiteColor];
     _tableView.tableFooterView = footButton;

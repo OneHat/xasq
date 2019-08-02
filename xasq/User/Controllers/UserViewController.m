@@ -79,7 +79,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
-    view.backgroundColor = ThemeColorView;
+    view.backgroundColor = ThemeColorBackground;
     return view;
 }
 

@@ -35,7 +35,7 @@
     [super viewDidLoad];
     self.title = @"注册";
     _type = 0;
-    [self initRightBtnWithTitle:@"邮箱" color:ThemeColorTitle];
+    [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
     
     _registerBtn.layer.cornerRadius = 22.5;
     _registerBtn.layer.masksToBounds = YES;
@@ -52,7 +52,7 @@
 
 - (void)rightBtnAction {
     if (_type == 0) {
-        [self initRightBtnWithTitle:@"手机号" color:ThemeColorTitle];
+        [self initRightBtnWithTitle:@"手机号" color:ThemeColorText];
         // 邮箱注册
         _type = 1;
         _countriesLB.hidden = YES;
@@ -65,7 +65,7 @@
         _viewHeight.constant = 180;
         _accountTF.placeholder = @"请输入邮箱";
     } else {
-        [self initRightBtnWithTitle:@"邮箱" color:ThemeColorTitle];
+        [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
         // 手机注册
         _type = 0;
         _countriesLB.hidden = NO;

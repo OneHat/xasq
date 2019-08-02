@@ -23,14 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息通知";
-    self.view.backgroundColor = ThemeColorView;
+    self.view.backgroundColor = ThemeColorBackground;
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 180;
-    _tableView.backgroundColor = ThemeColorView;
+    _tableView.backgroundColor = ThemeColorBackground;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
@@ -47,13 +47,13 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    headerView.backgroundColor = ThemeColorView;
+    headerView.backgroundColor = ThemeColorBackground;
     
     UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 15, 15)];
     icon.image = [UIImage imageNamed:@"message_time"];
     [headerView addSubview:icon];
     UILabel *timeLB = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, ScreenWidth - 45, 20)];
-    timeLB.textColor = ThemeColorTitleGray;
+    timeLB.textColor = ThemeColorTextGray;
     timeLB.font = ThemeFontTipText;
     if (section == 0) {
         timeLB.text = @"昨天";
