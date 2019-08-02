@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSArray *imageTitleArray;
+
 
 @end
 
@@ -26,7 +28,8 @@
     self.view.backgroundColor = ThemeColorView;
     
     _titleArray = @[@"修改登录密码", @"设置支付密码", @"绑定邮箱", @"绑定手机"];
-    
+    _imageTitleArray = @[@"change_login_password", @"set_pay_password", @"binding_email", @"binding_phone"];
+
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.backgroundColor = ThemeColorView;
     _tableView.delegate = self;
@@ -81,8 +84,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     NSString *name = _titleArray[indexPath.row];
+    NSString *imageName = _imageTitleArray[indexPath.row];
     cell.nameLB.text = name;
-    cell.iconImageV.image = [UIImage imageNamed:name];
+    cell.iconImageV.image = [UIImage imageNamed:imageName];
     cell.contentLB.hidden = YES;
     cell.arrowImageV.hidden = NO;
     if (indexPath.row == 0) {

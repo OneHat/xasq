@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *titleDict;
+@property (nonatomic, strong) NSDictionary *imageTitleDict;
 @property (nonatomic, strong) UserHeaderView *headerView;
 
 @end
@@ -33,7 +34,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     _titleDict = @{@"0" : @[@"认证信息", @"账户设置", @"语言设置",], @"1" : @[@"版本信息", @"关于我们", @"联系我们"]};
-    
+    _imageTitleDict = @{@"0" : @[@"authentication_information", @"account_settings", @"language_settings",], @"1" : @[@"version_information", @"about_us", @"contact_us"]};
+
     _headerView = [[[UINib nibWithNibName:@"UserHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 290);
     [_headerView.dwellBtn addTarget:self action:@selector(dwellBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
@@ -88,8 +90,9 @@
     }
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *titleArray = _titleDict[key];
+    NSArray *imageTitleArray = _imageTitleDict[key];
     cell.titleLB.text = titleArray[indexPath.row];
-    cell.iconImageV.image = [UIImage imageNamed:titleArray[indexPath.row]];
+    cell.iconImageV.image = [UIImage imageNamed:imageTitleArray[indexPath.row]];
     return cell;
 }
 
