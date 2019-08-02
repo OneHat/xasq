@@ -382,13 +382,13 @@
 			isa = PBXGroup;
 			children = (
 				C48B106D22EADE1100FDFDED /* App */,
+				C48B107822EADF2700FDFDED /* Tool */,
 				C414003522F2ABE10010A463 /* Capital */,
 				C414003122F2AB7E0010A463 /* DisCovery */,
-				C40C3D7022F1404500BDE6A3 /* Login */,
 				C48B108022EADF7600FDFDED /* Main */,
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
-				C48B107822EADF2700FDFDED /* Tool */,
 				C48B107D22EADF7600FDFDED /* User */,
+				C40C3D7022F1404500BDE6A3 /* Login */,
 			);
 			path = xasq;
 			sourceTree = "<group>";
