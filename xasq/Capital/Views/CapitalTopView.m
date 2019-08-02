@@ -29,7 +29,7 @@
     [self addSubview:imageView];
     
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 100, 30)];
-    tipLabel.font = ThemeFontNormalText;
+    tipLabel.font = ThemeFontText;
     tipLabel.text = @"总资产折合";
     [self addSubview:tipLabel];
     
@@ -57,7 +57,7 @@
     
     //换算成美元数值
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 5 + CGRectGetMaxY(capitalLabel.frame), width, 30)];
-    moneyLabel.font = ThemeFontNormalText;
+    moneyLabel.font = ThemeFontText;
     moneyLabel.textColor = [UIColor whiteColor];
     moneyLabel.text = @"¥234324234234";
     [self addSubview:moneyLabel];

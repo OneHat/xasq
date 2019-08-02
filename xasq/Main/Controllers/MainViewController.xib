@@ -283,7 +283,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mn4-hG-yrb" userLabel="News View">
-                                    <rect key="frame" x="10" y="90" width="355" height="90"/>
+                                    <rect key="frame" x="0.0" y="90" width="375" height="90"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="90" id="0Yo-wY-4hh"/>
@@ -294,10 +294,10 @@
                             <constraints>
                                 <constraint firstItem="aqH-PN-Iyx" firstAttribute="top" secondItem="q2k-1y-XsR" secondAttribute="bottom" constant="-5" id="3Vl-Wi-b6B"/>
                                 <constraint firstAttribute="trailing" secondItem="Cfx-AJ-ZuI" secondAttribute="trailing" constant="10" id="6wP-cW-V4Y"/>
-                                <constraint firstItem="Mn4-hG-yrb" firstAttribute="leading" secondItem="yDo-Rn-ABT" secondAttribute="leading" constant="10" id="8qF-IA-pAa"/>
+                                <constraint firstItem="Mn4-hG-yrb" firstAttribute="leading" secondItem="yDo-Rn-ABT" secondAttribute="leading" id="8qF-IA-pAa"/>
                                 <constraint firstItem="yRm-ag-osx" firstAttribute="top" secondItem="yDo-Rn-ABT" secondAttribute="top" constant="10" id="91N-wA-maw"/>
                                 <constraint firstItem="Mn4-hG-yrb" firstAttribute="top" secondItem="Cfx-AJ-ZuI" secondAttribute="bottom" id="9Xe-6h-61Z"/>
-                                <constraint firstAttribute="trailing" secondItem="Mn4-hG-yrb" secondAttribute="trailing" constant="10" id="DGX-5Y-gjx"/>
+                                <constraint firstAttribute="trailing" secondItem="Mn4-hG-yrb" secondAttribute="trailing" id="DGX-5Y-gjx"/>
                                 <constraint firstItem="yRm-ag-osx" firstAttribute="leading" secondItem="yDo-Rn-ABT" secondAttribute="leading" constant="10" id="Kgp-eA-0OV"/>
                                 <constraint firstItem="q2k-1y-XsR" firstAttribute="top" secondItem="Mn4-hG-yrb" secondAttribute="bottom" constant="10" id="Lin-nf-tDL"/>
                                 <constraint firstAttribute="bottom" secondItem="aqH-PN-Iyx" secondAttribute="bottom" constant="10" id="OJQ-vE-Mpg"/>
@@ -352,7 +352,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qww-IH-RKb" secondAttribute="trailing" id="nKc-ZJ-71W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-1487.2" y="63.546798029556655"/>
+            <point key="canvasLocation" x="-1758" y="80"/>
         </view>
     </objects>
     <resources>

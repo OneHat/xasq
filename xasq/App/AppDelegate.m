@@ -37,16 +37,20 @@
 //    // 极光推送
 //    [self initJPUSHWithOptions:launchOptions];
     
-    UIImage *backIndicatorImage = [[UIImage imageNamed:@"返回"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
-    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-10000, 0) forBarMetrics:UIBarMetricsDefault];
+    [self setNavBarStyle];
     
     return YES;
 }
 
-
+- (void)setNavBarStyle {
+    UIImage *backIndicatorImage = [[UIImage imageNamed:@"leftBar_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-10000, 0) forBarMetrics:UIBarMetricsDefault];
+}
+    
 /********
  ********
 #pragma mark-

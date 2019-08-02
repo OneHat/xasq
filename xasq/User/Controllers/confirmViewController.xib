@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的-二维码" translatesAutoresizingMaskIntoConstraints="NO" id="8ef-r2-PgK">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_qr_code" translatesAutoresizingMaskIntoConstraints="NO" id="8ef-r2-PgK">
                     <rect key="frame" x="132" y="109" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="a5l-3B-bSU"/>
@@ -45,6 +45,6 @@
         </view>
     </objects>
     <resources>
-        <image name="我的-二维码" width="150" height="150"/>
+        <image name="user_qr_code" width="150" height="150"/>
     </resources>
 </document>

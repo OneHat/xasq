@@ -16,11 +16,13 @@
 #import "LoginViewController.h"
 #import "confirmViewController.h"
 #import "UserHeaderView.h"
+#import "messageInformViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *titleDict;
+@property (nonatomic, strong) NSDictionary *imageTitleDict;
 @property (nonatomic, strong) UserHeaderView *headerView;
 
 @end
@@ -33,11 +35,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     _titleDict = @{@"0" : @[@"认证信息", @"账户设置", @"语言设置",], @"1" : @[@"版本信息", @"关于我们", @"联系我们"]};
-    
+    _imageTitleDict = @{@"0" : @[@"authentication_information", @"account_settings", @"language_settings",], @"1" : @[@"version_information", @"about_us", @"contact_us"]};
+
     _headerView = [[[UINib nibWithNibName:@"UserHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 290);
-//    [_headerView.dwellBtn addTarget:self action:@selector(dwellBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
-    
+    [_headerView.dwellBtn addTarget:self action:@selector(dwellBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [_headerView.messageBtn addTarget:self action:@selector(messageBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BarHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -76,7 +79,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
-    view.backgroundColor = ThemeColorView;
+    view.backgroundColor = ThemeColorBackground;
     return view;
 }
 
@@ -88,8 +91,9 @@
     }
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *titleArray = _titleDict[key];
+    NSArray *imageTitleArray = _imageTitleDict[key];
     cell.titleLB.text = titleArray[indexPath.row];
-    cell.iconImageV.image = [UIImage imageNamed:titleArray[indexPath.row]];
+    cell.iconImageV.image = [UIImage imageNamed:imageTitleArray[indexPath.row]];
     return cell;
 }
 
@@ -120,12 +124,8 @@
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-        confirmViewController *VC = [[confirmViewController alloc] init];
-        VC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:VC animated:YES];
-    } else if ([title isEqualToString:@"居住证明"]) {
-        LivingProofViewController *VC = [[LivingProofViewController alloc] init];
 //        LoginViewController *VC = [[LoginViewController alloc] init];
+        confirmViewController *VC = [[confirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }
@@ -133,6 +133,12 @@
 #pragma mark - 居住证明
 - (void)dwellBtnClick {
     LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
+}
+#pragma mark - 消息通知
+- (void)messageBtnClick {
+    messageInformViewController *VC = [[messageInformViewController alloc] init];
     VC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:VC animated:YES];
 }

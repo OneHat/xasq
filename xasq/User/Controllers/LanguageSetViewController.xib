@@ -57,21 +57,21 @@
                                 <constraint firstAttribute="height" constant="1" id="pu7-nJ-xwb"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="中文" translatesAutoresizingMaskIntoConstraints="NO" id="bIm-zT-XQV">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ chinese" translatesAutoresizingMaskIntoConstraints="NO" id="bIm-zT-XQV">
                             <rect key="frame" x="18" y="12" width="30" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Qjt-o3-19X"/>
                                 <constraint firstAttribute="width" constant="30" id="gVz-ac-53l"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="英文" translatesAutoresizingMaskIntoConstraints="NO" id="Uyq-VC-IP6">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ english" translatesAutoresizingMaskIntoConstraints="NO" id="Uyq-VC-IP6">
                             <rect key="frame" x="18" y="63" width="30" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="lzj-t6-z9j"/>
                                 <constraint firstAttribute="width" constant="30" id="wmm-LQ-r6j"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的-选择" translatesAutoresizingMaskIntoConstraints="NO" id="OLm-J9-41v">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_choose" translatesAutoresizingMaskIntoConstraints="NO" id="OLm-J9-41v">
                             <rect key="frame" x="374" y="15" width="20" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="1Yy-cw-icy"/>
@@ -123,8 +123,8 @@
         </view>
     </objects>
     <resources>
-        <image name="中文" width="30" height="20"/>
-        <image name="我的-选择" width="20" height="13.5"/>
-        <image name="英文" width="30" height="20"/>
+        <image name="user_ chinese" width="30" height="20"/>
+        <image name="user_ english" width="30" height="20"/>
+        <image name="user_choose" width="20" height="13.5"/>
     </resources>
 </document>

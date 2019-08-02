@@ -78,10 +78,10 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
-    headerView.backgroundColor = ThemeColorGray;
+    headerView.backgroundColor = ThemeColorBackground;
     
     UILabel *hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 100, 0, 90, 44)];
-    hideZeroLabel.font = ThemeFontNormalText;
+    hideZeroLabel.font = ThemeFontText;
     hideZeroLabel.textAlignment = NSTextAlignmentRight;
     hideZeroLabel.text = @"隐藏0余额";
     [headerView addSubview:hideZeroLabel];

@@ -30,16 +30,16 @@
 - (void)loadSubViews {
     CGFloat height = CGRectGetHeight(self.frame);
     CGFloat width = CGRectGetWidth(self.frame);
-    CGFloat timeWidth = 100;
+    CGFloat timeWidth = 80;
     
-    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, height, height)];
+    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, height, height)];
     [self addSubview:_iconImageView];
     
-    _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(height + 10, 0, width - timeWidth, height)];
+    _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(height + 20, 0, width - timeWidth - height - 30, height)];
     _contentLabel.font = ThemeFontTipText;
     [self addSubview:_contentLabel];
     
-    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - timeWidth, 0, timeWidth, height)];
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - timeWidth - 10, 0, timeWidth, height)];
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.textColor = ThemeColorTextGray;
     _timeLabel.font = ThemeFontTipText;

@@ -33,7 +33,7 @@
     
     _friendNewsHeight.constant = 0;
     
-    HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:_newsView.bounds];
+    HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
     newsView.newsArray = @[@{@"content":@"领取了256",@"time":@"30小时之前"},
                            @{@"content":@"偷取你的",@"time":@"2小时之前"},
                            @{@"content":@"2424234234234",@"time":@"3分钟之前"}];

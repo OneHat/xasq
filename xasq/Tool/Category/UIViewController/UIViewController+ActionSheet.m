@@ -80,7 +80,7 @@ static char ActionSheetBlockKey;
     //关闭按钮
     UIButton *closeButon = [[UIButton alloc] initWithFrame:CGRectMake(0, actionSheetHeight - CloseHeight , ScreenWidth, CloseHeight)];
     closeButon.backgroundColor = [UIColor whiteColor];
-    closeButon.titleLabel.font = ThemeFontNormalText;
+    closeButon.titleLabel.font = ThemeFontText;
     [closeButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     if (close) {
         [closeButon setTitle:close forState:UIControlStateNormal];

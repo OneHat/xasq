@@ -14,7 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *dwellBtn;  // 跳转居住证明界面
 @property (weak, nonatomic) IBOutlet UILabel *countLB;
+@property (weak, nonatomic) IBOutlet UIButton *messageBtn; // 消息通知Btn
 
+@property (weak, nonatomic) IBOutlet UIButton *taskBtn; // 任务按钮
+@property (weak, nonatomic) IBOutlet UIButton *friendBtn; // 好友按钮
+@property (weak, nonatomic) IBOutlet UIImageView *taskImageV;
+@property (weak, nonatomic) IBOutlet UIImageView *friendImageV;
 
 
 
