@@ -35,7 +35,7 @@
     imageView.frame = CGRectMake(0, 0, ScreenWidth, topViewH + NavHeight + 10);
     
     
-    UIView *introduceView = [[UIView alloc] init];
+//    UIView *introduceView = [[UIView alloc] init];
     
 }
 
