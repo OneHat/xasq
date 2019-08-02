@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "confirmViewController.h"
 #import "UserHeaderView.h"
+#import "messageInformViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -39,7 +40,7 @@
     _headerView = [[[UINib nibWithNibName:@"UserHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 290);
     [_headerView.dwellBtn addTarget:self action:@selector(dwellBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
-    
+    [_headerView.messageBtn addTarget:self action:@selector(messageBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BarHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -123,8 +124,8 @@
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-        LoginViewController *VC = [[LoginViewController alloc] init];
-//        confirmViewController *VC = [[confirmViewController alloc] init];
+//        LoginViewController *VC = [[LoginViewController alloc] init];
+        confirmViewController *VC = [[confirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }
@@ -132,6 +133,12 @@
 #pragma mark - 居住证明
 - (void)dwellBtnClick {
     LivingProofViewController *VC = [[LivingProofViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
+}
+#pragma mark - 消息通知
+- (void)messageBtnClick {
+    messageInformViewController *VC = [[messageInformViewController alloc] init];
     VC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:VC animated:YES];
 }

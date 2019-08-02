@@ -24,6 +24,7 @@
 #define ThemeColorGray        HexColor(@"#D8D8D8")
 #define ThemeColorTextGray    HexColor(@"#C8C8C8")
 #define ThemeColorBackground  HexColor(@"#C8C8C8")
+#define ThemeColorTitleGray   HexColor(@"#999999")
 #define ThemeColorTitle       HexColor(@"#333333")
 #define ThemeColorView        HexColor(@"#F7F7F7")
 #define ThemeColorLine        HexColor(@"#EEEEEE")

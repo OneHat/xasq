@@ -14,6 +14,7 @@
     [super awakeFromNib];
     _countLB.layer.cornerRadius = 7.5;
     _countLB.layer.masksToBounds = YES;
+
 }
 
 
