@@ -38,12 +38,12 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(12, 45, 12, 45);
     UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
     
-    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(width - 120, 13, 90, 24)];
-    [recordButton setBackgroundImage:stretchableImage forState:UIControlStateNormal];
-    recordButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-    [recordButton setTitle:@"收支记录 " forState:UIControlStateNormal];
-    [recordButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
-    [self addSubview:recordButton];
+    _recordBtn = [[UIButton alloc] initWithFrame:CGRectMake(width - 120, 13, 90, 24)];
+    [_recordBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+    _recordBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    [_recordBtn setTitle:@"收支记录 " forState:UIControlStateNormal];
+    [_recordBtn setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
+    [self addSubview:_recordBtn];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(30, 5 + CGRectGetMaxY(tipLabel.frame), width - 60, 0.5)];
     lineView.backgroundColor = ThemeColorBlue;

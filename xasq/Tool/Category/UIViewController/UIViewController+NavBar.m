@@ -94,7 +94,7 @@
 - (void)setNavBarBackGroundColor:(UIColor *)color {
     UIImage *image = [UIImage imageFromColor:color];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = image;
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 @end

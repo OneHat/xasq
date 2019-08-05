@@ -8,7 +8,6 @@
 
 #import "CapitalSubView.h"
 #import "CapitalListViewCell.h"
-#import "CapitalTopView.h"
 
 @interface CapitalSubView () <UITableViewDataSource,UITableViewDelegate>
 
@@ -37,11 +36,11 @@ static CGFloat CapitalSegmentControlH = 40;
     CGFloat topSpaceH = CapitalSegmentControlH + NavHeight;
     
     //资产view
-    CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, topSpaceH, ScreenWidth, 20)];
-    [self addSubview:topView];
+    _topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, topSpaceH, ScreenWidth, 20)];
+    [self addSubview:_topView];
     
     ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
-    CGFloat topViewH = topView.frame.size.height;
+    CGFloat topViewH = _topView.frame.size.height;
     topImageView.frame = CGRectMake(0, 0, ScreenWidth, topSpaceH + topViewH);
     
     //充币、提币模块view

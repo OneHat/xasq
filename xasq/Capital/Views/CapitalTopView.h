@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalTopView : UIView
 
+@property (nonatomic, strong) UIButton *recordBtn; // 收支记录Btn
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 #import "CapitalKindViewController.h"
 #import "CapitalSegmentedControl.h"
 #import "CapitalSubView.h"
+#import "MentionMoneyViewController.h"
+#import "PaymentsRecordsViewController.h"
 
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate>
 
@@ -32,9 +34,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    ///
-    [self setNavBarBackGroundColor:[UIColor clearColor]];
-    [self setNavBarTitleColor:[UIColor whiteColor]];
     
     [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
     
@@ -60,8 +59,10 @@
     //钱包账户
     WeakObject
     _walletView = [[CapitalSubView alloc] initWithFrame:_scrollView.bounds];
+    [_walletView.topView.recordBtn addTarget:self action:@selector(recordBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     _walletView.CellSelectBlock = ^{
-        CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
+//        CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
+        MentionMoneyViewController *kindVC = [[MentionMoneyViewController alloc] init];
         kindVC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:kindVC animated:YES];
     };
@@ -70,6 +71,21 @@
     //挖矿账户
     _mineView = [[CapitalSubView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, _scrollView.frame.size.height)];
     [_scrollView addSubview:_mineView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    ///
+    [self setNavBarBackGroundColor:[UIColor clearColor]];
+    [self setNavBarTitleColor:[UIColor whiteColor]];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    ///
+    [self setNavBarBackGroundColor:[UIColor whiteColor]];
+    [self setNavBarTitleColor:[UIColor blackColor]];
 }
 
 #pragma mark-
@@ -82,6 +98,12 @@
     } else {
         [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
     }
+}
+#pragma mark - 收支记录页面跳转
+- (void)recordBtnClick:(UIButton *)button {
+    PaymentsRecordsViewController *VC = [[PaymentsRecordsViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark-

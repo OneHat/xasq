@@ -12,7 +12,7 @@
 
 #pragma mark - 生产纯色片
 + (UIImage *)imageFromColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0, 0, 20, 20);
+    CGRect rect = CGRectMake(0, 0, 20, 1);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [color CGColor]);

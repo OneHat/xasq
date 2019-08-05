@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+//#import "IQKeyboardManager.h"
 
 #import "JPUSHService.h"
 // iOS10 注册 APNs 所需头文件
@@ -27,6 +28,8 @@
     
     ///初始化语言
     [LanguageTool initializeLanguage];
+    
+//    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     
     RootViewController *rootVC = [[RootViewController alloc] init];
     

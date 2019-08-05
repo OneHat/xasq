@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CapitalTopView.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalSubView : UIView
+
+@property (nonatomic, strong) CapitalTopView *topView;
 
 @property (nonatomic, strong) void (^CellSelectBlock)(void);
 
