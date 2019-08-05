@@ -1,0 +1,113 @@
+//
+//  PaymentTypeView.m
+//  xasq
+//
+//  Created by dssj888@163.com on 2019/8/5.
+//  Copyright © 2019 dssj. All rights reserved.
+//
+
+#import "PaymentTypeView.h"
+#import "PaymentTypeCollectionViewCell.h"
+
+@interface PaymentTypeView () <UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *titleArray;
+
+@end
+
+@implementation PaymentTypeView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self loadSubViews];
+    }
+    return self;
+}
+    
+- (void)loadSubViews {
+    self.backgroundColor = [UIColor clearColor];
+    UIView *backgV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    backgV.backgroundColor = [UIColor blackColor];
+    backgV.alpha = 0.6;
+    backgV.userInteractionEnabled = YES;
+    [self addSubview:backgV];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clearClick:)];
+    [backgV addGestureRecognizer:tap];
+    NSInteger height = 235;
+    if (_type == 0) {
+        height = 235;
+        _titleArray = @[@"全部", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC"];
+    } else {
+        height = 90;
+        _titleArray = @[@"全部",@"奖励", @"提币"];
+    }
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    // 设置网状结构的属性
+    // 最小行间距
+    layout.minimumLineSpacing = 0;
+    // 最小列间距
+    layout.minimumInteritemSpacing = 0;
+    // 设置内边距
+    layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    // item的大小
+    layout.itemSize = CGSizeMake(90, 75);
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, height) collectionViewLayout:layout];
+    // 设置代理与数据源代理
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    _collectionView.bounces = NO;
+    _collectionView.backgroundColor = [UIColor whiteColor];
+    // 注册要使用的cell
+    [_collectionView registerNib:[UINib nibWithNibName:@"PaymentTypeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"PaymentTypeCollectionViewCell"];
+
+    [self addSubview:_collectionView];
+    
+}
+
+- (void)setType:(NSInteger)type {
+    _type = type;
+    NSInteger height = 235;
+    if (_type == 0) {
+        height = 235;
+        _titleArray = @[@"全部", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC"];
+    } else {
+        height = 85;
+        _titleArray = @[@"全部",@"奖励", @"提币"];
+    }
+    _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);
+    [_collectionView reloadData];
+
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _titleArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PaymentTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PaymentTypeCollectionViewCell" forIndexPath:indexPath];
+    cell.titleLB.text = _titleArray[indexPath.row];
+    if (indexPath.row == 0) {
+        cell.icon.image = [UIImage imageNamed:@"capital_all"];
+    }
+    return cell;
+}
+
+
+- (void)clearClick:(UITapGestureRecognizer *)tap {
+    [self removeGestureRecognizer:tap];
+    [self removeFromSuperview];
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

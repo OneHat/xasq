@@ -11,6 +11,8 @@
 #import "CapitalSearchViewController.h"
 #import "CapitalSegmentedControl.h"
 #import "CapitalMainView.h"
+#import "MentionMoneyViewController.h"
+#import "PaymentsRecordsViewController.h"
 
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate,CapitalMainViewDelegate>
 
@@ -36,9 +38,6 @@
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    ///
-    [self setNavBarBackGroundColor:[UIColor clearColor]];
-    [self setNavBarTitleColor:[UIColor whiteColor]];
     
     [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
     
@@ -76,7 +75,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    ///
+    [self setNavBarBackGroundColor:[UIColor clearColor]];
+    [self setNavBarTitleColor:[UIColor whiteColor]];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    ///
+    [self setNavBarBackGroundColor:[UIColor whiteColor]];
+    [self setNavBarTitleColor:[UIColor blackColor]];
 }
 
 #pragma mark-
@@ -89,6 +98,12 @@
     } else {
         [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
     }
+}
+#pragma mark - 收支记录页面跳转
+- (void)recordBtnClick:(UIButton *)button {
+    PaymentsRecordsViewController *VC = [[PaymentsRecordsViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark-

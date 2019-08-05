@@ -28,6 +28,7 @@
 #define ThemeColorTextGray    HexColor(@"#999999")
 #define ThemeColorText        HexColor(@"#333333")
 #define ThemeColorLine        HexColor(@"#EEEEEE")
+#define ThemeColorNavLine     HexColor(@"#DDDDDD")
 
 
 /// 字体
