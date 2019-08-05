@@ -75,17 +75,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    ///
-    [self setNavBarBackGroundColor:[UIColor clearColor]];
-    [self setNavBarTitleColor:[UIColor whiteColor]];
-
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    ///
-    [self setNavBarBackGroundColor:[UIColor whiteColor]];
-    [self setNavBarTitleColor:[UIColor blackColor]];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 #pragma mark-
@@ -98,12 +93,6 @@
     } else {
         [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
     }
-}
-#pragma mark - 收支记录页面跳转
-- (void)recordBtnClick:(UIButton *)button {
-    PaymentsRecordsViewController *VC = [[PaymentsRecordsViewController alloc] init];
-    VC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark-
@@ -139,11 +128,18 @@
 }
 
 - (void)capitalMainViewButtonModuleClick:(NSInteger)index {
-    
+    if (index == 1) {
+        //提币
+        MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
+        mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
+    }
 }
 
 - (void)capitalMainViewRecordClick {
-    
+    PaymentsRecordsViewController *recordsVC = [[PaymentsRecordsViewController alloc] init];
+    recordsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordsVC animated:YES];
 }
 
 @end

@@ -30,7 +30,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];;
 }
 
 #pragma mark - 选择币种

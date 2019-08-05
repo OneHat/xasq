@@ -75,8 +75,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self setNavBarBackGroundColor:[UIColor clearColor]];
-    [self setNavBarTitleColor:[UIColor whiteColor]];
     [self initLeftBtnWithImage:[UIImage imageNamed:@"leftBar_back_white"]];
 }
 

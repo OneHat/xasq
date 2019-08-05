@@ -32,6 +32,7 @@
                                                                        target:self
                                                                        action:@selector(leftBtnAction)];
         self.navigationItem.leftBarButtonItem = leftBarItem;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;//防止右滑返回失效
     }
     
     [self dssj_viewWillAppear:animated];

@@ -48,17 +48,20 @@ static CGFloat CapitalSegmentControlH = 40;
     CGFloat topViewH = topView.frame.size.height;
     _topCapitalViewH = topSpaceH + topViewH;
     
-//    //充币、提币模块view
-//    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, _topCapitalViewH, ScreenWidth, 10)];
-//    modulView.ButtonClickBlock = ^(NSInteger index) {
-//        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
-//            [self.delegate capitalMainViewButtonModuleClick:index];
-//        }
-//    };
-//    [self addSubview:modulView];
+    //充币、提币模块view
+    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, _topCapitalViewH, ScreenWidth, 10)];
+    modulView.ButtonClickBlock = ^(NSInteger index) {
+        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
+            [self.delegate capitalMainViewButtonModuleClick:index];
+        }
+    };
+    [self addSubview:modulView];
     
+    
+//    CGFloat tableViewY = _topCapitalViewH + 10;
+    CGFloat tableViewY = CGRectGetMaxY(modulView.frame) + 10;
     //列表
-    CGRect rect = CGRectMake(0, _topCapitalViewH + 10, ScreenWidth, self.frame.size.height - _topCapitalViewH - 10);
+    CGRect rect = CGRectMake(0, tableViewY, ScreenWidth, self.frame.size.height - tableViewY);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"CapitalListViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.tableFooterView = [[UIView alloc] init];
@@ -67,7 +70,6 @@ static CGFloat CapitalSegmentControlH = 40;
     _tableView.delegate = self;
 //    _tableView.tableHeaderView = [self tableHeaderView];
     [self addSubview:_tableView];
-    
 }
 
 
