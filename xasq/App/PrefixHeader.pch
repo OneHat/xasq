@@ -17,6 +17,7 @@
 
 #import "NetworkManager.h"
 #import "RequestApi.h"
+#import <UIImageView+WebCache.h>
 
 #import "UIViewController+HUD.h"
 

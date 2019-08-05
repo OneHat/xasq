@@ -34,7 +34,7 @@
 		C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */; };
 		C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004222F2CE8D0010A463 /* MinerViewController.m */; };
 		C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414004322F2CE8D0010A463 /* MinerViewController.xib */; };
-		C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalSubView.m */; };
+		C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalMainView.m */; };
 		C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */; };
 		C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */; };
 		C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */; };
@@ -49,6 +49,10 @@
 		C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */; };
 		C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B128022F2CCDF00375560 /* UserHeaderView.m */; };
 		C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B128222F2CCF500375560 /* UserHeaderView.xib */; };
+		C43B6BB222F7CD5500312286 /* CapitalActionModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BB122F7CD5500312286 /* CapitalActionModuleView.m */; };
+		C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */; };
+		C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */; };
+		C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBD22F8343E00312286 /* HomeBannerView.m */; };
 		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
 		C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */; };
 		C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */; };
@@ -162,8 +166,8 @@
 		C414004122F2CE8D0010A463 /* MinerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinerViewController.h; sourceTree = "<group>"; };
 		C414004222F2CE8D0010A463 /* MinerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinerViewController.m; sourceTree = "<group>"; };
 		C414004322F2CE8D0010A463 /* MinerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinerViewController.xib; sourceTree = "<group>"; };
-		C414004A22F2EBA30010A463 /* CapitalSubView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSubView.h; sourceTree = "<group>"; };
-		C414004B22F2EBA30010A463 /* CapitalSubView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSubView.m; sourceTree = "<group>"; };
+		C414004A22F2EBA30010A463 /* CapitalMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalMainView.h; sourceTree = "<group>"; };
+		C414004B22F2EBA30010A463 /* CapitalMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalMainView.m; sourceTree = "<group>"; };
 		C414004D22F2ECE60010A463 /* CapitalSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSegmentedControl.h; sourceTree = "<group>"; };
 		C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSegmentedControl.m; sourceTree = "<group>"; };
 		C418F48922F3F9F3005EFD81 /* CapitalListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalListViewCell.h; sourceTree = "<group>"; };
@@ -186,6 +190,14 @@
 		C41B127F22F2CCDF00375560 /* UserHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderView.h; sourceTree = "<group>"; };
 		C41B128022F2CCDF00375560 /* UserHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderView.m; sourceTree = "<group>"; };
 		C41B128222F2CCF500375560 /* UserHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHeaderView.xib; sourceTree = "<group>"; };
+		C43B6BB022F7CD5500312286 /* CapitalActionModuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalActionModuleView.h; sourceTree = "<group>"; };
+		C43B6BB122F7CD5500312286 /* CapitalActionModuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalActionModuleView.m; sourceTree = "<group>"; };
+		C43B6BB322F8090C00312286 /* CapitalSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSearchViewController.h; sourceTree = "<group>"; };
+		C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSearchViewController.m; sourceTree = "<group>"; };
+		C43B6BB922F82E1400312286 /* UIViewController+LeftItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LeftItem.h"; sourceTree = "<group>"; };
+		C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LeftItem.m"; sourceTree = "<group>"; };
+		C43B6BBC22F8343E00312286 /* HomeBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerView.h; sourceTree = "<group>"; };
+		C43B6BBD22F8343E00312286 /* HomeBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerView.m; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
 		C473B91222F3FD100013E77D /* messageInformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageInformViewController.m; sourceTree = "<group>"; };
 		C473B91422F400D50013E77D /* AssetDynamicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetDynamicTableViewCell.h; sourceTree = "<group>"; };
@@ -367,6 +379,8 @@
 		C414004622F2D2EF0010A463 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C43B6BB322F8090C00312286 /* CapitalSearchViewController.h */,
+				C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */,
 				C414003622F2AC0B0010A463 /* CapitalViewController.h */,
 				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
 				C418F49122F42732005EFD81 /* CapitalKindViewController.h */,
@@ -378,13 +392,15 @@
 		C414004722F2D2FC0010A463 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C414004A22F2EBA30010A463 /* CapitalSubView.h */,
-				C414004B22F2EBA30010A463 /* CapitalSubView.m */,
+				C414004A22F2EBA30010A463 /* CapitalMainView.h */,
+				C414004B22F2EBA30010A463 /* CapitalMainView.m */,
 				C418F48922F3F9F3005EFD81 /* CapitalListViewCell.h */,
 				C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */,
 				C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */,
 				C418F48E22F4199A005EFD81 /* CapitalTopView.h */,
 				C418F48F22F4199A005EFD81 /* CapitalTopView.m */,
+				C43B6BB022F7CD5500312286 /* CapitalActionModuleView.h */,
+				C43B6BB122F7CD5500312286 /* CapitalActionModuleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -541,6 +557,8 @@
 				C414003C22F2B02D0010A463 /* HomeNewsViewCell.h */,
 				C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */,
 				C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */,
+				C43B6BBC22F8343E00312286 /* HomeBannerView.h */,
+				C43B6BBD22F8343E00312286 /* HomeBannerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -554,6 +572,8 @@
 				C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */,
 				C4A1EEA722F136FB00A1DE8C /* UIViewController+ActionSheet.h */,
 				C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */,
+				C43B6BB922F82E1400312286 /* UIViewController+LeftItem.h */,
+				C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -938,6 +958,7 @@
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
+				C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */,
@@ -946,7 +967,7 @@
 				C473B91C22F40A1F0013E77D /* AccountUpgradeTableViewCell.m in Sources */,
 				C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */,
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
-				C414004C22F2EBA30010A463 /* CapitalSubView.m in Sources */,
+				C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */,
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */,
@@ -963,6 +984,7 @@
 				C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */,
 				C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */,
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
+				C43B6BB222F7CD5500312286 /* CapitalActionModuleView.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
 				C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */,
 				C4A1EEBF22F2855500A1DE8C /* HomeChartViewCell.m in Sources */,
@@ -972,12 +994,14 @@
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
 				C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */,
+				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
 				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,
 				C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */,
 				C473B92122F40F820013E77D /* CommunityDynamicTableViewCell.m in Sources */,
+				C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */,
 				C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,

@@ -44,18 +44,25 @@ static char emptyBlockKey;
         
     } else if (reason == EmptyViewReasonNoNetwork) {
         //没有网络
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 50)];
-        imageView.backgroundColor = [UIColor lightGrayColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 100)];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageNamed:@"Netwok_Error"];
         [contentView addSubview:imageView];
         
-        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 30)];
+        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10 + CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 30)];
         tipLabel.textAlignment = NSTextAlignmentCenter;
-        tipLabel.text = @"网络出问题了";
+        tipLabel.text = @"网络出错啦，请点击按钮重新加载";
         tipLabel.font = font;
+        tipLabel.textColor = ThemeColorText;
         [contentView addSubview:tipLabel];
         
-        UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 100)*0.5, CGRectGetMaxY(tipLabel.frame), 100, 40)];
-        [refreshButton setTitle:@"点击刷新" forState:UIControlStateNormal];
+        CGFloat buttonW = 160;
+        UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - buttonW)*0.5, 10 + CGRectGetMaxY(tipLabel.frame), buttonW, 40)];
+        refreshButton.layer.cornerRadius = 20;
+        refreshButton.layer.masksToBounds = YES;
+        refreshButton.layer.borderColor = ThemeColorText.CGColor;
+        refreshButton.layer.borderWidth = 0.5;
+        [refreshButton setTitle:@"重新加载" forState:UIControlStateNormal];
         refreshButton.titleLabel.font = font;
         [refreshButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [refreshButton addTarget:self action:@selector(refreshAction:) forControlEvents:UIControlEventTouchUpInside];

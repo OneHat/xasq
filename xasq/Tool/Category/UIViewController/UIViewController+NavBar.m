@@ -97,4 +97,17 @@
     self.navigationController.navigationBar.shadowImage = image;
 }
 
+- (void)setNavBarBackIndicatorImage:(nullable UIImage *)image {
+    UIImage *backImage;
+    if (image) {
+        backImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+    } else {
+        backImage = [[UIImage imageNamed:@"leftBar_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    
+    [self.navigationController.navigationBar setBackIndicatorImage:backImage];
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:backImage];
+}
+
 @end

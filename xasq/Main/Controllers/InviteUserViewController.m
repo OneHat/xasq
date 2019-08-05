@@ -55,12 +55,19 @@
 }
 
 - (void)showTableview {
+    
     CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+//    CGRect rect = CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
+    
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    if (@available(iOS 11.0, *)) {
+//        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }
 }
 
 ///拒绝访问提示信息

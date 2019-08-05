@@ -17,6 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIImage *)imageFromColor:(UIColor *)color;
 
+/**
+ *  拉伸图片
+ */
+- (UIImage *)resizeImageInCenter;
+
 @end
 
 NS_ASSUME_NONNULL_END

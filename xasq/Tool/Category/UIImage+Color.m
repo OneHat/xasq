@@ -22,4 +22,18 @@
     return img;
 }
 
+/**
+ *  拉伸图片
+ */
+- (UIImage *)resizeImageInCenter {
+    CGFloat width = self.size.width * 0.5;
+    CGFloat height = self.size.height * 0.5;
+    
+    UIEdgeInsets insets = UIEdgeInsetsMake(height, width, height, width);
+    UIImage *result = [self resizableImageWithCapInsets:insets];
+    
+    return result;
+}
+
+
 @end

@@ -11,6 +11,7 @@
 #import "HomeMoreNewsViewController.h"
 
 #import "HomeNewsView.h"
+#import "HomeBannerView.h"
 #import "HomeChartsView.h"
 
 @interface MainViewController ()
@@ -20,8 +21,9 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *chartViewHeight;
 
-@property (weak, nonatomic) IBOutlet UIView *newsView;
-@property (weak, nonatomic) IBOutlet UIView *chartView;
+@property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
+@property (weak, nonatomic) IBOutlet UIView *bannerView;//广告view
+@property (weak, nonatomic) IBOutlet UIView *chartView;//排行View
 
 @end
 
@@ -31,15 +33,25 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
     _friendNewsHeight.constant = 0;
     
+    //
     HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
     newsView.newsArray = @[@{@"content":@"领取了256",@"time":@"30小时之前"},
                            @{@"content":@"偷取你的",@"time":@"2小时之前"},
                            @{@"content":@"2424234234234",@"time":@"3分钟之前"}];
     [_newsView addSubview:newsView];
     
+    //
+    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:_bannerView.bounds];
+    [_bannerView addSubview:bannerView];
     
+    //
     HomeChartsView *chartsView = [[HomeChartsView alloc] initWithFrame:_chartView.bounds];
     chartsView.HomeChartsDataComplete = ^(CGFloat viewHeight) {
         self.chartViewHeight.constant = viewHeight;
@@ -50,12 +62,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 

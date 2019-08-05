@@ -10,7 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger,CapitalTopViewStyle) {
+    CapitalTopViewAll,//
+    CapitalTopViewHold//持有
+};
+
 @interface CapitalTopView : UIView
+
+@property (nonatomic, assign) CapitalTopViewStyle viewStyle;
+
+@property (nonatomic, strong) void (^RecordClickBlock)(void);
 
 @end
 

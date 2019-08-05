@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="bannerView" destination="h1E-Vd-Heh" id="fAV-2n-Fu6"/>
                 <outlet property="chartView" destination="wEM-Rz-Pzv" id="y6A-PY-R8Q"/>
                 <outlet property="chartViewHeight" destination="SaH-62-dx7" id="WG3-80-cyD"/>
                 <outlet property="friendNewsHeight" destination="daT-5A-epU" id="YBZ-Ab-O7b"/>
@@ -347,12 +348,12 @@
                 <constraint firstItem="h1E-Vd-Heh" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="GSr-E5-7fi"/>
                 <constraint firstItem="wEM-Rz-Pzv" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="HFa-1C-3H6"/>
                 <constraint firstItem="UzN-hs-gz1" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="JKI-xz-NA0"/>
-                <constraint firstItem="qww-IH-RKb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="b3n-q5-xF8"/>
                 <constraint firstItem="qww-IH-RKb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ivD-ga-uVQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qww-IH-RKb" secondAttribute="trailing" id="nKc-ZJ-71W"/>
+                <constraint firstItem="qww-IH-RKb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sF2-x0-gmP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-1758" y="80"/>
+            <point key="canvasLocation" x="-2324" y="33"/>
         </view>
     </objects>
     <resources>

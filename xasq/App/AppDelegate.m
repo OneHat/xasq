@@ -38,28 +38,17 @@
 //    [self initJPUSHWithOptions:launchOptions];
     
     
-    [self setNavBarStyle];
+//    [self setNavBarStyle];
     
     return YES;
 }
 
 - (void)setNavBarStyle {
     UIImage *backIndicatorImage = [[UIImage imageNamed:@"leftBar_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    UIImage *backIndicatorImage = [UIImage imageNamed:@"leftBar_back"];
     [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
     
-    CGFloat offsetX;
-    if (ScreenWidth == 320.0) {
-        offsetX = 82.0;
-    } else if (ScreenWidth == 375.0) {
-        offsetX = 110.0;
-    } else if (ScreenWidth == 414.0) {
-        offsetX = 126.0;
-    } else {
-        offsetX = 150.0;
-    }
-    
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(offsetX, 0) forBarMetrics:UIBarMetricsDefault];
 }
     
 /********
