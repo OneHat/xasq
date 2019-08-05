@@ -429,12 +429,12 @@
 		C414004622F2D2EF0010A463 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C414003622F2AC0B0010A463 /* CapitalViewController.h */,
+				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
 				C418F49122F42732005EFD81 /* CapitalKindViewController.h */,
 				C418F49222F42732005EFD81 /* CapitalKindViewController.m */,
 				C43B6BB322F8090C00312286 /* CapitalSearchViewController.h */,
 				C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */,
-				C414003622F2AC0B0010A463 /* CapitalViewController.h */,
-				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
 				C4D5EEC622F7D99900C94D9F /* MentionMoneyResultViewController.h */,
 				C4D5EEC722F7D99900C94D9F /* MentionMoneyResultViewController.m */,
 				C4D5EEC822F7D99900C94D9F /* MentionMoneyResultViewController.xib */,
@@ -512,13 +512,13 @@
 			isa = PBXGroup;
 			children = (
 				C48B106D22EADE1100FDFDED /* App */,
-				C414003522F2ABE10010A463 /* Capital */,
-				C414003122F2AB7E0010A463 /* DisCovery */,
-				C40C3D7022F1404500BDE6A3 /* Login */,
+				C48B107822EADF2700FDFDED /* Tool */,
 				C48B108022EADF7600FDFDED /* Main */,
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
-				C48B107822EADF2700FDFDED /* Tool */,
+				C414003122F2AB7E0010A463 /* DisCovery */,
+				C414003522F2ABE10010A463 /* Capital */,
 				C48B107D22EADF7600FDFDED /* User */,
+				C40C3D7022F1404500BDE6A3 /* Login */,
 			);
 			path = xasq;
 			sourceTree = "<group>";
