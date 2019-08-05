@@ -8,11 +8,14 @@
 
 #import "PaymentsRecordsViewController.h"
 #import "PaymentsRecordsTableViewCell.h"
+#import "PaymentHeaderView.h"
+#import "PaymentTypeView.h"
 
 @interface PaymentsRecordsViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) PaymentHeaderView *headerView;
+@property (nonatomic, strong) PaymentTypeView *typeView;
 @end
 
 @implementation PaymentsRecordsViewController
@@ -22,19 +25,49 @@
     self.title = @"收支记录";
     self.view.backgroundColor = ThemeColorBackground;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight - NavHeight - 50) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ThemeColorBackground;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 45;
     _tableView.tableFooterView = [[UIView alloc] init];
+    UIView *headerBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+    _headerView = [[[UINib nibWithNibName:@"PaymentHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+    _headerView.frame = CGRectMake(0, 0, ScreenWidth, 50);
+    [_headerView.typeBtn addTarget:self action:@selector(typeBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [_headerView.currencyBtn addTarget:self action:@selector(currencyBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [headerBackgroundView addSubview:_headerView];
+    [self.view addSubview:headerBackgroundView];
     [self.view addSubview:_tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];;
+}
+
+#pragma mark - 类型切换
+- (void)typeBtnClick:(UIButton *)button {
+    [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
+    [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];
+    [_headerView.currencyBtn setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
+    [_headerView.currencyBtn setImage:[UIImage imageNamed:@"capital_type"] forState:(UIControlStateNormal)];
+    [_typeView removeFromSuperview];
+    _typeView = [[PaymentTypeView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight - NavHeight - 50)];
+    _typeView.type = 0;
+    [self.view addSubview:_typeView];
+}
+#pragma mark - 币种切换
+- (void)currencyBtnClick:(UIButton *)button {
+    [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
+    [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];
+    [_headerView.typeBtn setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
+    [_headerView.typeBtn setImage:[UIImage imageNamed:@"capital_type"] forState:(UIControlStateNormal)];
+    [_typeView removeFromSuperview];
+    _typeView = [[PaymentTypeView alloc] initWithFrame:CGRectMake(0, 50, ScreenWidth, ScreenHeight - NavHeight - 50)];
+    _typeView.type = 1;
+    [self.view addSubview:_typeView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
