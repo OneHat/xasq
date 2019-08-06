@@ -10,8 +10,9 @@
 #import "MentionMoneyResultViewController.h"
 #import "SelectCurrencyViewController.h"
 #import "ProceedAccountViewController.h"
+#import "XLPasswordView.h"
 
-@interface MentionMoneyViewController ()
+@interface MentionMoneyViewController () <XLPasswordViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 
@@ -45,10 +46,46 @@
 
 - (IBAction)confirmBtnClick:(UIButton *)sender {
     
-    MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+//    MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController alloc] init];
+//    [self.navigationController pushViewController:VC animated:YES];
+    [self showSystemKeyboard];
+}
+#pragma mark - 弹出密码键盘
+- (void)showSystemKeyboard
+{
+    XLPasswordView *passwordView = [XLPasswordView passwordViewWithKeyboardType:XLPasswordViewKeyboardTypeSystem];
+    passwordView.delegate = self;
+    [passwordView showPasswordInView:self.view];
 }
 
+#pragma mark    -   XLPasswordViewDelegate
+
+/**
+ *  输入密码位数已满时调用
+ */
+- (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password
+{
+    NSLog(@"输入密码位数已满,在这里做一些事情,例如自动校验密码");
+}
+
+/**
+ *  用户输入密码时调用
+ *
+ *  @param passwordView 视图
+ *  @param password     输入的密码文本
+ */
+- (void)passwordView:(XLPasswordView *)passwordView passwordTextDidChange:(NSString *)password
+{
+    NSLog(@"%@",password);
+}
+
+/**
+ *  点击了忘记密码时调用
+ */
+- (void)passwordViewClickForgetPassword:(XLPasswordView *)passwordView
+{
+    NSLog(@"点击了忘记密码,在这里做一些事情");
+}
 /*
 #pragma mark - Navigation
 

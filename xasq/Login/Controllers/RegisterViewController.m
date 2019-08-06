@@ -21,6 +21,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaCodeLB; // 区号
 @property (weak, nonatomic) IBOutlet UIView *areaLineView; // 区号竖线
 @property (weak, nonatomic) IBOutlet UITextField *accountTF; // 账号
+@property (weak, nonatomic) IBOutlet UIButton *removeBtn; // 清除Btn
+@property (weak, nonatomic) IBOutlet UIButton *codeBtn; // 验证码Btn
+@property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
+@property (weak, nonatomic) IBOutlet UIButton *cipherBtn; // 密文切换Btn
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF; // 密码TF
 
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -40,10 +45,9 @@
     _registerBtn.layer.cornerRadius = 22.5;
     _registerBtn.layer.masksToBounds = YES;
     
-//    NSString *titleStr = @"已有账号？立即登录";
-//    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc]initWithString:titleStr];
-//    [attributeStr addAttribute:NSForegroundColorAttributeName value:ThemeColorBlue range:NSMakeRange(5, titleStr.length - 5)];
-//    self.loginBtn.titleLabel.attributedText = attributeStr;
+    [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_close"] forState:(UIControlStateNormal)];
+    [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_open"] forState:(UIControlStateSelected)];
+    
 }
 
 - (IBAction)loginClick:(UIButton *)sender {
@@ -80,6 +84,25 @@
     }
 }
 
+- (IBAction)removeBtnClick:(UIButton *)sender {
+    _accountTF.text = @"";
+}
+
+- (IBAction)CipherSwitch:(UIButton *)sender {
+    _cipherBtn.selected = !_cipherBtn.isSelected;
+    if (_cipherBtn.isSelected) {
+        _passwordTF.secureTextEntry = NO;
+    } else {
+        _passwordTF.secureTextEntry = YES;
+    }
+}
+#pragma mark - 发生验证码
+- (IBAction)codeBtnClick:(UIButton *)sender {
+}
+
+#pragma mark - 注册
+- (IBAction)registerBtnClick:(UIButton *)sender {
+}
 
 /*
 #pragma mark - Navigation

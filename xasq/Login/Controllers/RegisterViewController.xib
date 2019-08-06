@@ -17,11 +17,16 @@
                 <outlet property="areaCodeLB" destination="BqG-It-TpX" id="PgV-hH-P6y"/>
                 <outlet property="areaLineView" destination="aRk-2G-aB1" id="u0S-3l-HE7"/>
                 <outlet property="arrowImageV" destination="5Xn-im-Y0i" id="Egh-Hr-gAe"/>
+                <outlet property="cipherBtn" destination="QJ5-Sx-2v8" id="pTh-in-Z3P"/>
+                <outlet property="codeBtn" destination="7tW-nF-iTr" id="yXE-WZ-Yvk"/>
+                <outlet property="codeTF" destination="f6v-uu-KNX" id="H1n-LI-Shm"/>
                 <outlet property="countriesLB" destination="goG-Hf-G1R" id="Wif-92-hez"/>
                 <outlet property="countriesNameLB" destination="pZl-oP-6dy" id="DYr-A6-kUA"/>
                 <outlet property="lineViewTop" destination="zgW-Gv-jWI" id="UoM-UN-Gqj"/>
                 <outlet property="loginBtn" destination="RnD-rX-2aM" id="6EA-Il-KKj"/>
+                <outlet property="passwordTF" destination="FPN-uw-Tv9" id="u2t-Po-h7M"/>
                 <outlet property="registerBtn" destination="af6-RF-8se" id="tV8-kh-VeP"/>
+                <outlet property="removeBtn" destination="ZhJ-2j-dKT" id="ZLH-6U-xKB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewHeight" destination="Gnt-7I-1wL" id="J2r-Ze-V5W"/>
             </connections>
@@ -110,12 +115,15 @@
                                 <constraint firstAttribute="height" constant="30" id="twJ-fP-e7X"/>
                             </constraints>
                             <state key="normal" image="login_ remove"/>
+                            <connections>
+                                <action selector="removeBtnClick:" destination="-1" eventType="touchUpInside" id="NHh-fM-HSv"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6v-uu-KNX">
                             <rect key="frame" x="35" y="121" width="192" height="60"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tW-nF-iTr">
                             <rect key="frame" x="268" y="121" width="72" height="60"/>
@@ -126,6 +134,9 @@
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" red="0.14901960784313725" green="0.53333333333333333" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="codeBtnClick:" destination="-1" eventType="touchUpInside" id="xXU-Yo-A86"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwG-wY-DcI">
                             <rect key="frame" x="247" y="138.66666666666666" width="1" height="25"/>
@@ -148,6 +159,9 @@
                                 <constraint firstAttribute="height" constant="30" id="U7q-ee-oF8"/>
                             </constraints>
                             <state key="normal" image="login_eyes_close"/>
+                            <connections>
+                                <action selector="CipherSwitch:" destination="-1" eventType="touchUpInside" id="vCE-ht-fuN"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -212,6 +226,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="注册"/>
+                    <connections>
+                        <action selector="registerBtnClick:" destination="-1" eventType="touchUpInside" id="kRr-pw-uNa"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnD-rX-2aM">
                     <rect key="frame" x="132" y="404" width="111" height="30"/>
