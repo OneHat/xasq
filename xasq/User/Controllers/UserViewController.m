@@ -138,8 +138,8 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-//        LoginViewController *VC = [[LoginViewController alloc] init];
-        confirmViewController *VC = [[confirmViewController alloc] init];
+        LoginViewController *VC = [[LoginViewController alloc] init];
+//        confirmViewController *VC = [[confirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }
