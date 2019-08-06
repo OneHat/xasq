@@ -14,5 +14,7 @@ target 'xasq' do
   pod 'SAMKeychain', '1.5.3'
 
   pod 'JPush', '3.2.1'
+  
+  pod 'IQKeyboardManager', '6.4.0'
 
 end

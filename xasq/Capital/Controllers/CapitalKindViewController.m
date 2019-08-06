@@ -26,7 +26,21 @@
     imageView.image = [UIImage imageNamed:@"capital_topBackground"];
     imageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:imageView];
-     
+    
+    
+    //title
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"BTC";
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    [self.view addSubview:titleLabel];
+    
+    UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, StatusBarHeight, 44, 44)];
+    [eyeButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
+    [eyeButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:eyeButton];
+    
     //资产view
     CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 20)];
     topView.viewStyle = CapitalTopViewHold;
@@ -47,10 +61,10 @@
     introduceView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:introduceView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 20, 30)];
-    titleLabel.text = @"简介";
-    titleLabel.font = [UIFont boldSystemFontOfSize:26];
-    [introduceView addSubview:titleLabel];
+    UILabel *introduceTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 20, 30)];
+    introduceTitleLabel.text = @"简介";
+    introduceTitleLabel.font = [UIFont boldSystemFontOfSize:26];
+    [introduceView addSubview:introduceTitleLabel];
     
     NSString *content = @"比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生。根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的虚拟的加密数字货币。点对点的传输意味着一个去中心化的支付系统。";
     
@@ -75,7 +89,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self initLeftBtnWithImage:[UIImage imageNamed:@"leftBar_back_white"]];
+}
+
+
+- (void)backButtonAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

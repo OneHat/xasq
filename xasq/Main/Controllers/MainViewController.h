@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+FOUNDATION_EXPORT NSString * const DSSJTabBarSelectMain;
+
 @interface MainViewController : UIViewController
 
 @end

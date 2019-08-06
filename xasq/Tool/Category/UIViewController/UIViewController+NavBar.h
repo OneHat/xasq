@@ -41,17 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)rightBtnAction;
 
-/**
- *  导航栏颜色
- */
-- (void)setNavBarBackGroundColor:(UIColor *)color;
-
-
-/**
- *  返回按钮图片(如果传nil,则显示默认图片)
- */
-- (void)setNavBarBackIndicatorImage:(nullable UIImage *)image;
-
 
 @end
 
