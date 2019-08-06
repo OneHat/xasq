@@ -21,7 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *taskImageV;
 @property (weak, nonatomic) IBOutlet UIImageView *friendImageV;
 
-
+@property (nonatomic, copy) void (^dwellBtnBlock)(void);
+@property (nonatomic, copy) void (^messageBtnBlock)(void);
+@property (nonatomic, copy) void (^taskBtnBlock)(void);
+@property (nonatomic, copy) void (^friendBtnBlock)(void);
 
 @end
 

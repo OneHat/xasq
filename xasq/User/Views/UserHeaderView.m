@@ -17,6 +17,30 @@
 
 }
 
+- (IBAction)dwellBtnClick:(UIButton *)sender {
+    if (_dwellBtnBlock) {
+        _dwellBtnBlock();
+    }
+}
+
+- (IBAction)messageBtnClick:(UIButton *)sender {
+    if (_messageBtnBlock) {
+        _messageBtnBlock();
+    }
+}
+
+- (IBAction)taskBtnClick:(UIButton *)sender {
+    if (_taskBtnBlock) {
+        _taskBtnBlock();
+    }
+}
+
+- (IBAction)friendBtnClick:(UIButton *)sender {
+    if (_friendBtnBlock) {
+        _friendBtnBlock();
+    }
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
