@@ -17,8 +17,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaCodeLB; // 区号
 @property (weak, nonatomic) IBOutlet UIView *areaLineView; // 区号竖线
 @property (weak, nonatomic) IBOutlet UITextField *accountTF; // 账号
-
+@property (weak, nonatomic) IBOutlet UIButton *codeBtn; // 验证码Btn
+@property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
 @property (weak, nonatomic) IBOutlet UIButton *bindBtn;
+
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, weak) NSTimer *timer;
+
 @end
 
 @implementation BindPhoneAndEmailViewController
@@ -39,6 +44,38 @@
     _bindBtn.layer.cornerRadius = 22.5;
     _bindBtn.layer.masksToBounds = YES;
 }
+
+#pragma mark - 发送验证码
+- (IBAction)codeBtnClick:(UIButton *)sender {
+    sender.userInteractionEnabled = NO;
+    if (_count == 0) {
+        //60秒后再次启动
+        _count = 60;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                  target:self
+                                                selector:@selector(showTime)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+}
+
+- (void)showTime {
+    if (_count != 0) {
+        _codeBtn.titleLabel.text = [NSString stringWithFormat:@"%ld秒",self.count];
+        [_codeBtn setTitle:[NSString stringWithFormat:@"%ld秒",self.count]
+                  forState:UIControlStateNormal];
+        _count --;
+    }else {
+        [_codeBtn setTitle:@"获取验证码"
+                  forState:UIControlStateNormal];
+        _codeBtn.userInteractionEnabled = YES;
+        if (_timer) {
+            [_timer invalidate];
+            _timer = nil;
+        }
+    }
+}
+
 
 /*
 #pragma mark - Navigation

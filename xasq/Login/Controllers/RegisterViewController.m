@@ -30,7 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (nonatomic, assign) NSInteger type;  // 0 手机注册 1邮箱注册
-
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, weak) NSTimer *timer;
 
 @end
 
@@ -58,6 +59,8 @@
     _accountTF.text = @"";
     _codeTF.text = @"";
     _passwordTF.text = @"";
+    _count = 0;
+    [self showTime];
     if (_type == 0) {
         [self initRightBtnWithTitle:@"手机号" color:ThemeColorText];
         // 邮箱注册
@@ -99,8 +102,35 @@
         _passwordTF.secureTextEntry = YES;
     }
 }
-#pragma mark - 发生验证码
+#pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
+    sender.userInteractionEnabled = NO;
+    if (_count == 0) {
+        //60秒后再次启动
+        _count = 60;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                  target:self
+                                                selector:@selector(showTime)
+                                                userInfo:nil
+                                                 repeats:YES];
+    }
+}
+
+- (void)showTime {
+    if (_count != 0) {
+        _codeBtn.titleLabel.text = [NSString stringWithFormat:@"%ld秒",self.count];
+        [_codeBtn setTitle:[NSString stringWithFormat:@"%ld秒",self.count]
+                  forState:UIControlStateNormal];
+        _count --;
+    }else {
+        [_codeBtn setTitle:@"获取验证码"
+                  forState:UIControlStateNormal];
+        _codeBtn.userInteractionEnabled = YES;
+        if (_timer) {
+            [_timer invalidate];
+            _timer = nil;
+        }
+    }
 }
 
 #pragma mark - 注册

@@ -40,6 +40,13 @@
 }
 
 - (IBAction)closeClick:(UIButton *)sender {
+    [self isLoginSuccessful:NO];
+}
+
+- (void)isLoginSuccessful:(BOOL)isLogin {
+    if (_closeLoginBlock) {
+        _closeLoginBlock(isLogin);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

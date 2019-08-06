@@ -23,6 +23,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMN-dq-CmD">
                     <rect key="frame" x="0.0" y="54" width="414" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-cL-hB1">
+                            <rect key="frame" x="10" y="5" width="394" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <connections>
+                                <action selector="documentTypeClick:" destination="-1" eventType="touchUpInside" id="92c-sh-Fgd"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择证件类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-Kd-9PS">
                             <rect key="frame" x="25" y="0.0" width="92" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
@@ -47,10 +54,14 @@
                     <constraints>
                         <constraint firstItem="lHT-kC-0Kq" firstAttribute="centerY" secondItem="Pc2-Kd-9PS" secondAttribute="centerY" id="1J3-Xa-a3K"/>
                         <constraint firstItem="Pc2-Kd-9PS" firstAttribute="leading" secondItem="cMN-dq-CmD" secondAttribute="leading" constant="25" id="45h-2j-MCt"/>
+                        <constraint firstAttribute="bottom" secondItem="dUn-cL-hB1" secondAttribute="bottom" constant="5" id="DZc-t5-4Vw"/>
                         <constraint firstAttribute="bottom" secondItem="Pc2-Kd-9PS" secondAttribute="bottom" id="Hvs-dP-rqh"/>
                         <constraint firstAttribute="trailing" secondItem="lHT-kC-0Kq" secondAttribute="trailing" constant="18" id="J5P-Tc-7DD"/>
                         <constraint firstItem="lHT-kC-0Kq" firstAttribute="leading" secondItem="mt0-8C-M2R" secondAttribute="trailing" constant="15" id="TYl-NO-NiA"/>
+                        <constraint firstAttribute="trailing" secondItem="dUn-cL-hB1" secondAttribute="trailing" constant="10" id="VPm-iq-8dQ"/>
                         <constraint firstItem="Pc2-Kd-9PS" firstAttribute="top" secondItem="cMN-dq-CmD" secondAttribute="top" id="e4v-gC-xgB"/>
+                        <constraint firstItem="dUn-cL-hB1" firstAttribute="top" secondItem="cMN-dq-CmD" secondAttribute="top" constant="5" id="jnm-H4-gK4"/>
+                        <constraint firstItem="dUn-cL-hB1" firstAttribute="leading" secondItem="cMN-dq-CmD" secondAttribute="leading" constant="10" id="kaP-PZ-R2t"/>
                         <constraint firstAttribute="bottom" secondItem="mt0-8C-M2R" secondAttribute="bottom" id="nZI-Xb-5zk"/>
                         <constraint firstAttribute="height" constant="50" id="uOP-YN-RN4"/>
                         <constraint firstItem="mt0-8C-M2R" firstAttribute="top" secondItem="cMN-dq-CmD" secondAttribute="top" id="xqK-AT-1Gx"/>

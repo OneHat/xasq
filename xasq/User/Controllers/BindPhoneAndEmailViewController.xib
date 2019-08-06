@@ -17,6 +17,8 @@
                 <outlet property="areaCodeLB" destination="IR3-wx-hvl" id="yGF-sR-HXT"/>
                 <outlet property="areaLineView" destination="qke-gO-pce" id="iCD-Ma-Atf"/>
                 <outlet property="bindBtn" destination="6gQ-WB-o1g" id="AyG-jN-syY"/>
+                <outlet property="codeBtn" destination="42e-Y8-7mG" id="Np4-rc-htm"/>
+                <outlet property="codeTF" destination="1Sf-M5-eqM" id="zIT-cC-3CL"/>
                 <outlet property="countrieView" destination="pdc-mQ-Glb" id="5RV-7E-cfv"/>
                 <outlet property="lineViewTop" destination="ZK0-dK-Doh" id="tlm-hY-gSx"/>
                 <outlet property="titleLB" destination="ET9-SO-qAO" id="EMo-Zz-Nus"/>
@@ -162,6 +164,9 @@
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" red="0.14901960780000001" green="0.53333333329999999" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="codeBtnClick:" destination="-1" eventType="touchUpInside" id="TkL-HV-c2X"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

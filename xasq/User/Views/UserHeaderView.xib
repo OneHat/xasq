@@ -23,6 +23,9 @@
                         <constraint firstAttribute="width" constant="30" id="bxY-kD-UPj"/>
                     </constraints>
                     <state key="normal" image="user_message"/>
+                    <connections>
+                        <action selector="messageBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="3BT-w3-9YF"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI1-Ea-XUe">
                     <rect key="frame" x="376" y="13" width="15" height="15"/>
@@ -40,6 +43,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="odh-J7-FHv"/>
                     </constraints>
+                    <connections>
+                        <action selector="dwellBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="m1X-S6-QTU"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_portrait" translatesAutoresizingMaskIntoConstraints="NO" id="g31-U7-nWp">
                     <rect key="frame" x="18" y="64" width="55" height="55"/>
@@ -96,6 +102,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="Pnc-Mj-cJi"/>
                     </constraints>
+                    <connections>
+                        <action selector="taskBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="c7l-gy-AoN"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_task" translatesAutoresizingMaskIntoConstraints="NO" id="Y9F-KS-Sya">
                     <rect key="frame" x="146" y="224" width="40" height="40"/>
@@ -109,6 +118,9 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kH7-sM-t1D">
                     <rect key="frame" x="212" y="209" width="184" height="70"/>
+                    <connections>
+                        <action selector="friendBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="y7y-J7-3Al"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_friend" translatesAutoresizingMaskIntoConstraints="NO" id="mwB-I5-jke">
                     <rect key="frame" x="340" y="224" width="40" height="40"/>

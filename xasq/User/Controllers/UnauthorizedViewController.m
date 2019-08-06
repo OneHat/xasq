@@ -7,6 +7,7 @@
 //
 
 #import "UnauthorizedViewController.h"
+#import "UIViewController+ActionSheet.h"
 
 @interface UnauthorizedViewController ()
 
@@ -18,6 +19,15 @@
     [super viewDidLoad];
     self.title = @"认证信息"; // 未认证
 }
+
+- (IBAction)documentTypeClick:(UIButton *)sender {
+    
+    [self actionSheetWithItems:@[@"身份证", @"驾照", @"护照"] complete:^(NSInteger index) {
+        
+    }];
+
+}
+
 
 /*
 #pragma mark - Navigation
