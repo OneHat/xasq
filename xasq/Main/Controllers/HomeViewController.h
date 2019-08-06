@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  HomeViewController.h
 //  xasq
 //
 //  Created by dssj on 2019/7/26.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString * const DSSJTabBarSelectMain;
+FOUNDATION_EXPORT NSString * const DSSJTabBarSelectHome;
 
-@interface MainViewController : UIViewController
+@interface HomeViewController : UIViewController
 
 @end
 

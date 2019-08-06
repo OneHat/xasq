@@ -1,5 +1,5 @@
 //
-//  HomeChartsView.h
+//  HomeRankView.h
 //  xasq
 //
 //  Created by dssj on 2019/7/31.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeChartsView : UIView
+@interface HomeRankView : UIView
 
-@property (nonatomic, strong) void (^HomeChartsDataComplete)(CGFloat viewHeight);
+@property (nonatomic, strong) void (^HomeRankDataComplete)(CGFloat viewHeight);
 
 @end
 

@@ -57,8 +57,8 @@ static char emptyBlockKey;
         [contentView addSubview:tipLabel];
         
         CGFloat buttonW = 160;
-        UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - buttonW)*0.5, 10 + CGRectGetMaxY(tipLabel.frame), buttonW, 40)];
-        refreshButton.layer.cornerRadius = 20;
+        UIButton *refreshButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - buttonW)*0.5, 10 + CGRectGetMaxY(tipLabel.frame), buttonW, 36)];
+        refreshButton.layer.cornerRadius = CGRectGetHeight(refreshButton.frame) * 0.5;
         refreshButton.layer.masksToBounds = YES;
         refreshButton.layer.borderColor = ThemeColorText.CGColor;
         refreshButton.layer.borderWidth = 0.5;

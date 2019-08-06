@@ -1,5 +1,5 @@
 //
-//  HomeChartViewCell.h
+//  HomeRankViewCell.h
 //  xasq
 //
 //  Created by dssj on 2019/8/1.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeChartViewCell : UITableViewCell
+@interface HomeRankViewCell : UITableViewCell
 
 @end
 

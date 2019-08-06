@@ -1,35 +1,35 @@
 //
-//  HomeChartsView.m
+//  HomeRankView.m
 //  xasq
 //
 //  Created by dssj on 2019/7/31.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "HomeChartsView.h"
+#import "HomeRankView.h"
 #import "SegmentedControl.h"
 
-#import "HomeChartsTableView.h"
+#import "HomeRankTableView.h"
 
-@interface HomeChartsView ()<SegmentedControlDelegate,UIScrollViewDelegate>
+@interface HomeRankView ()<SegmentedControlDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) SegmentedControl *segmentedControl;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) HomeChartsTableView *powerChartView;//算力排行
-@property (nonatomic, strong) HomeChartsTableView *levelChartView;//等级排行
-@property (nonatomic, strong) HomeChartsTableView *inviteChartView;//邀请排行
+@property (nonatomic, strong) HomeRankTableView *powerChartView;//算力排行
+@property (nonatomic, strong) HomeRankTableView *levelChartView;//等级排行
+@property (nonatomic, strong) HomeRankTableView *inviteChartView;//邀请排行
 
 @property (nonatomic, strong) NSArray *powerChartDatas;//邀请排行数据
 
 @end
 
-@implementation HomeChartsView
+@implementation HomeRankView
 
-- (HomeChartsTableView *)powerChartView {
+- (HomeRankTableView *)powerChartView {
     if (!_powerChartView) {
-        _powerChartView = [[HomeChartsTableView alloc] initWithFrame:CGRectZero];
+        _powerChartView = [[HomeRankTableView alloc] initWithFrame:CGRectZero];
         [_scrollView addSubview:_powerChartView];
     }
     return _powerChartView;
@@ -95,8 +95,8 @@
         
         self.scrollView.frame = CGRectMake(0, CGRectGetHeight(self.segmentedControl.frame), ScreenWidth, viewHeight + CGRectGetHeight(self.segmentedControl.frame));
         
-        if (self.HomeChartsDataComplete) {
-            self.HomeChartsDataComplete(viewHeight + CGRectGetHeight(self.segmentedControl.frame));
+        if (self.HomeRankDataComplete) {
+            self.HomeRankDataComplete(viewHeight + CGRectGetHeight(self.segmentedControl.frame));
         }
         
     });

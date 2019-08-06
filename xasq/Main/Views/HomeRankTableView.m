@@ -1,34 +1,34 @@
 //
-//  HomeChartsTableView.m
+//  HomeRankTableView.m
 //  xasq
 //
 //  Created by dssj on 2019/8/1.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "HomeChartsTableView.h"
-#import "HomeChartViewCell.h"
+#import "HomeRankTableView.h"
+#import "HomeRankViewCell.h"
 
-static NSString *homeChartCellIdentifier = @"homeChartCell";
+static NSString *homeRankCellIdentifier = @"homeRankCell";
 
-@interface HomeChartsTableView ()<UITableViewDataSource,UITableViewDelegate>
+@interface HomeRankTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation HomeChartsTableView
+@implementation HomeRankTableView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableView.scrollEnabled = NO;
-        [_tableView registerNib:[UINib nibWithNibName:@"HomeChartViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:homeChartCellIdentifier];
+        [_tableView registerNib:[UINib nibWithNibName:@"HomeRankViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:homeRankCellIdentifier];
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        _tableView.rowHeight = 50;
+        _tableView.rowHeight = 55;
         
         [self addSubview:_tableView];
         
@@ -52,7 +52,7 @@ static NSString *homeChartCellIdentifier = @"homeChartCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeChartViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeChartCellIdentifier];
+    HomeRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeRankCellIdentifier];
     return cell;
 }
 

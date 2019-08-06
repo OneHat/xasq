@@ -1,5 +1,5 @@
 //
-//  HomeChartsTableView.h
+//  HomeRankTableView.h
 //  xasq
 //
 //  Created by dssj on 2019/8/1.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeChartsTableView : UIView
+@interface HomeRankTableView : UIView
 
 @property (nonatomic, strong) NSArray *dataArray;
 

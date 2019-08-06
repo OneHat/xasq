@@ -1,22 +1,22 @@
 //
-//  MainViewController.m
+//  HomeViewController.m
 //  xasq
 //
 //  Created by dssj on 2019/7/26.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "HomeViewController.h"
 #import "InviteUserViewController.h"
 #import "HomeMoreNewsViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
-#import "HomeChartsView.h"
+#import "HomeRankView.h"
 
-NSString * const DSSJTabBarSelectMain = @"DSSJTabBarSelectMainViewController";
+NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
-@interface MainViewController ()
+@interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *friendNewsHeight;
@@ -25,7 +25,7 @@ NSString * const DSSJTabBarSelectMain = @"DSSJTabBarSelectMainViewController";
 
 @property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
 @property (weak, nonatomic) IBOutlet UIView *bannerView;//广告view
-@property (weak, nonatomic) IBOutlet UIView *chartView;//排行View
+@property (weak, nonatomic) IBOutlet UIView *rankView;//排行View
 
 //隐藏导航栏时，是否需要动画
 //从子页面需要，防止右滑返回时navbar不协调
@@ -34,7 +34,7 @@ NSString * const DSSJTabBarSelectMain = @"DSSJTabBarSelectMainViewController";
 
 @end
 
-@implementation MainViewController
+@implementation HomeViewController
     
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,18 +55,18 @@ NSString * const DSSJTabBarSelectMain = @"DSSJTabBarSelectMainViewController";
     [_newsView addSubview:newsView];
     
     //广告banner
-    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:_bannerView.bounds];
+    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_bannerView.frame))];
     [_bannerView addSubview:bannerView];
     
     //排行
-    HomeChartsView *chartsView = [[HomeChartsView alloc] initWithFrame:_chartView.bounds];
-    chartsView.HomeChartsDataComplete = ^(CGFloat viewHeight) {
+    HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
+    rankView.HomeRankDataComplete = ^(CGFloat viewHeight) {
         self.chartViewHeight.constant = viewHeight;
     };
-    [_chartView addSubview:chartsView];
+    [_rankView addSubview:rankView];
     
     //
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMainHideAnimation) name:DSSJTabBarSelectMain object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMainHideAnimation) name:DSSJTabBarSelectHome object:nil];
     
 }
 

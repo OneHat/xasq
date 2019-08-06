@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "MainViewController.h"
+#import "HomeViewController.h"
 #import "TacticsViewController.h"
 #import "DiscoveryViewController.h"
 #import "CapitalViewController.h"
@@ -25,7 +25,7 @@
     self.delegate = self;
     
     //首页
-    MainViewController *mainVC = [[MainViewController alloc] init];
+    HomeViewController *mainVC = [[HomeViewController alloc] init];
     UINavigationController *mainNVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
     
     //策略
@@ -83,8 +83,8 @@
     UINavigationController *NVC = (UINavigationController *)viewController;
     UIViewController *selectVC = NVC.topViewController;
     
-    if ([selectVC isKindOfClass:[MainViewController class]]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectMain object:nil];
+    if ([selectVC isKindOfClass:[HomeViewController class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
         
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];

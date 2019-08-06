@@ -59,6 +59,12 @@
 		C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */; };
 		C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */; };
 		C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBD22F8343E00312286 /* HomeBannerView.m */; };
+		C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC022F929FB00312286 /* HomeRankView.m */; };
+		C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BC222F92AE300312286 /* HomeRankViewCell.xib */; };
+		C43B6BC622F92AE400312286 /* HomeRankViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC422F92AE400312286 /* HomeRankViewCell.m */; };
+		C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BC722F92BEC00312286 /* HomeViewController.xib */; };
+		C43B6BCB22F92BED00312286 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC822F92BEC00312286 /* HomeViewController.m */; };
+		C43B6BCE22F92EB300312286 /* HomeRankTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BCD22F92EB300312286 /* HomeRankTableView.m */; };
 		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
 		C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */; };
 		C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */; };
@@ -74,7 +80,6 @@
 		C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B107122EADE1100FDFDED /* AppDelegate.m */; };
 		C48B107622EADE3C00FDFDED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B107522EADE3C00FDFDED /* main.m */; };
 		C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B107A22EADF2700FDFDED /* LanguageTool.m */; };
-		C48B108422EADF7600FDFDED /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108122EADF7600FDFDED /* MainViewController.m */; };
 		C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108522EADF9B00FDFDED /* RootViewController.m */; };
 		C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108A22EAEB0700FDFDED /* NetworkManager.m */; };
 		C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */; };
@@ -85,12 +90,8 @@
 		C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */; };
 		C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */; };
 		C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */; };
-		C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */; };
 		C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */; };
 		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
-		C4A1EEBF22F2855500A1DE8C /* HomeChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */; };
-		C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */; };
-		C4A1EEC322F291D900A1DE8C /* HomeChartsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -117,7 +118,6 @@
 		C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EEEF22F81F1000C94D9F /* PaymentTypeCollectionViewCell.m */; };
 		C4D5EEF222F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D5EEF022F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib */; };
 		C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D968C122EED0E8002150CF /* UIColor+FX.m */; };
-		C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D968C522EEDFE8002150CF /* MainViewController.xib */; };
 		C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */; };
 		C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3DD22EED41800C41B2B /* UIImage+Color.m */; };
 		C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E022EED96000C41B2B /* UserTableViewCell.m */; };
@@ -235,6 +235,16 @@
 		C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LeftItem.m"; sourceTree = "<group>"; };
 		C43B6BBC22F8343E00312286 /* HomeBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerView.h; sourceTree = "<group>"; };
 		C43B6BBD22F8343E00312286 /* HomeBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerView.m; sourceTree = "<group>"; };
+		C43B6BBF22F929FB00312286 /* HomeRankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRankView.h; sourceTree = "<group>"; };
+		C43B6BC022F929FB00312286 /* HomeRankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRankView.m; sourceTree = "<group>"; };
+		C43B6BC222F92AE300312286 /* HomeRankViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRankViewCell.xib; sourceTree = "<group>"; };
+		C43B6BC322F92AE400312286 /* HomeRankViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRankViewCell.h; sourceTree = "<group>"; };
+		C43B6BC422F92AE400312286 /* HomeRankViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRankViewCell.m; sourceTree = "<group>"; };
+		C43B6BC722F92BEC00312286 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		C43B6BC822F92BEC00312286 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C43B6BC922F92BEC00312286 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		C43B6BCC22F92EB300312286 /* HomeRankTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRankTableView.h; sourceTree = "<group>"; };
+		C43B6BCD22F92EB300312286 /* HomeRankTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRankTableView.m; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
 		C473B91222F3FD100013E77D /* messageInformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageInformViewController.m; sourceTree = "<group>"; };
 		C473B91422F400D50013E77D /* AssetDynamicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetDynamicTableViewCell.h; sourceTree = "<group>"; };
@@ -266,8 +276,6 @@
 		C48B107722EADE6200FDFDED /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C48B107A22EADF2700FDFDED /* LanguageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTool.m; sourceTree = "<group>"; };
 		C48B107B22EADF2700FDFDED /* LanguageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTool.h; sourceTree = "<group>"; };
-		C48B108122EADF7600FDFDED /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C48B108222EADF7600FDFDED /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C48B108522EADF9B00FDFDED /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C48B108622EADF9B00FDFDED /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C48B108922EAEB0700FDFDED /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
@@ -286,17 +294,10 @@
 		C4A1EEA822F136FB00A1DE8C /* UIViewController+ActionSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActionSheet.m"; sourceTree = "<group>"; };
 		C4A1EEAA22F166A200A1DE8C /* HomeNewsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNewsView.h; sourceTree = "<group>"; };
 		C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNewsView.m; sourceTree = "<group>"; };
-		C4A1EEAF22F1906D00A1DE8C /* HomeChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartsView.h; sourceTree = "<group>"; };
-		C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartsView.m; sourceTree = "<group>"; };
 		C4A1EEB322F1911C00A1DE8C /* SegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedControl.h; sourceTree = "<group>"; };
 		C4A1EEB422F1911C00A1DE8C /* SegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedControl.m; sourceTree = "<group>"; };
 		C4A1EEB622F194D600A1DE8C /* NSString+Size.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Size.h"; sourceTree = "<group>"; };
 		C4A1EEB722F194D600A1DE8C /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
-		C4A1EEBC22F2855500A1DE8C /* HomeChartViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartViewCell.h; sourceTree = "<group>"; };
-		C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartViewCell.m; sourceTree = "<group>"; };
-		C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeChartViewCell.xib; sourceTree = "<group>"; };
-		C4A1EEC122F291D900A1DE8C /* HomeChartsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeChartsTableView.h; sourceTree = "<group>"; };
-		C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeChartsTableView.m; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -341,7 +342,6 @@
 		C4D5EEF022F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		C4D968C122EED0E8002150CF /* UIColor+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FX.m"; sourceTree = "<group>"; };
 		C4D968C222EED0E8002150CF /* UIColor+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FX.h"; sourceTree = "<group>"; };
-		C4D968C522EEDFE8002150CF /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C4DFE3D922EED34000C41B2B /* UIViewController+NavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavBar.h"; sourceTree = "<group>"; };
 		C4DFE3DA22EED34000C41B2B /* UIViewController+NavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavBar.m"; sourceTree = "<group>"; };
 		C4DFE3DC22EED41800C41B2B /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -672,20 +672,20 @@
 				C4A1EE9022EFF70B00A1DE8C /* ContactViewCell.h */,
 				C4A1EE9122EFF70B00A1DE8C /* ContactViewCell.m */,
 				C4A1EE9222EFF70B00A1DE8C /* ContactViewCell.xib */,
+				C43B6BBC22F8343E00312286 /* HomeBannerView.h */,
+				C43B6BBD22F8343E00312286 /* HomeBannerView.m */,
 				C4A1EEAA22F166A200A1DE8C /* HomeNewsView.h */,
 				C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */,
-				C4A1EEAF22F1906D00A1DE8C /* HomeChartsView.h */,
-				C4A1EEB022F1906D00A1DE8C /* HomeChartsView.m */,
-				C4A1EEBC22F2855500A1DE8C /* HomeChartViewCell.h */,
-				C4A1EEBD22F2855500A1DE8C /* HomeChartViewCell.m */,
-				C4A1EEBE22F2855500A1DE8C /* HomeChartViewCell.xib */,
-				C4A1EEC122F291D900A1DE8C /* HomeChartsTableView.h */,
-				C4A1EEC222F291D900A1DE8C /* HomeChartsTableView.m */,
 				C414003C22F2B02D0010A463 /* HomeNewsViewCell.h */,
 				C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */,
 				C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */,
-				C43B6BBC22F8343E00312286 /* HomeBannerView.h */,
-				C43B6BBD22F8343E00312286 /* HomeBannerView.m */,
+				C43B6BCC22F92EB300312286 /* HomeRankTableView.h */,
+				C43B6BCD22F92EB300312286 /* HomeRankTableView.m */,
+				C43B6BBF22F929FB00312286 /* HomeRankView.h */,
+				C43B6BC022F929FB00312286 /* HomeRankView.m */,
+				C43B6BC322F92AE400312286 /* HomeRankViewCell.h */,
+				C43B6BC422F92AE400312286 /* HomeRankViewCell.m */,
+				C43B6BC222F92AE300312286 /* HomeRankViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -754,9 +754,9 @@
 		C4C2CAB022EEC6150086761A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C48B108222EADF7600FDFDED /* MainViewController.h */,
-				C48B108122EADF7600FDFDED /* MainViewController.m */,
-				C4D968C522EEDFE8002150CF /* MainViewController.xib */,
+				C43B6BC922F92BEC00312286 /* HomeViewController.h */,
+				C43B6BC822F92BEC00312286 /* HomeViewController.m */,
+				C43B6BC722F92BEC00312286 /* HomeViewController.xib */,
 				C4A1EE8922EFE7F000A1DE8C /* InviteUserViewController.h */,
 				C4A1EE8A22EFE7F000A1DE8C /* InviteUserViewController.m */,
 				C4A1EE8C22EFEE3400A1DE8C /* InviteUserViewController.xib */,
@@ -1002,19 +1002,19 @@
 				C4D5EED722F7F90400C94D9F /* ProceedAccountTableViewCell.xib in Resources */,
 				C4D5EEF222F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
-				C4A1EEC022F2855500A1DE8C /* HomeChartViewCell.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
-				C4D968C622EEDFE8002150CF /* MainViewController.xib in Resources */,
 				C41B127922F2AC1000375560 /* BindPhoneAndEmailViewController.xib in Resources */,
 				C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */,
 				C4A1EE9422EFF70B00A1DE8C /* ContactViewCell.xib in Resources */,
 				C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */,
+				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C41335E122F90B57007B55D3 /* XLPasswordView.bundle in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C473B92222F40F820013E77D /* CommunityDynamicTableViewCell.xib in Resources */,
+				C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */,
 				C473B91D22F40A1F0013E77D /* AccountUpgradeTableViewCell.xib in Resources */,
 				C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
@@ -1090,6 +1090,7 @@
 				C41335E322F90B57007B55D3 /* XLPasswordView.m in Sources */,
 				C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */,
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
+				C43B6BC622F92AE400312286 /* HomeRankViewCell.m in Sources */,
 				C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */,
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4D5EEC422F7B96A00C94D9F /* MentionMoneyViewController.m in Sources */,
@@ -1112,7 +1113,6 @@
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
-				C4A1EEB122F1906D00A1DE8C /* HomeChartsView.m in Sources */,
 				C41335DD22F90B57007B55D3 /* UIView+XLPasswordView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
@@ -1123,7 +1123,6 @@
 				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
 				C4D5EEDD22F7FE7700C94D9F /* PaymentsRecordsViewController.m in Sources */,
 				C41335DE22F90B57007B55D3 /* UIImage+XLPasswordView.m in Sources */,
-				C4A1EEC322F291D900A1DE8C /* HomeChartsTableView.m in Sources */,
 				C4D5EED622F7F90400C94D9F /* ProceedAccountTableViewCell.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
 				C41335E022F90B57007B55D3 /* XLRandomKeyboard.m in Sources */,
@@ -1136,13 +1135,13 @@
 				C4D5EED122F7F15F00C94D9F /* SelectCurrencyTableViewCell.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
 				C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */,
-				C4A1EEBF22F2855500A1DE8C /* HomeChartViewCell.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4D5EEE522F80CE300C94D9F /* PaymentHeaderView.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
+				C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */,
 				C4A1EEB522F1911C00A1DE8C /* SegmentedControl.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
 				C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */,
@@ -1156,15 +1155,16 @@
 				C4D5EEED22F8161B00C94D9F /* PaymentCurrencyView.m in Sources */,
 				C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
+				C43B6BCE22F92EB300312286 /* HomeRankTableView.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
-				C48B108422EADF7600FDFDED /* MainViewController.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
 				C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,
+				C43B6BCB22F92BED00312286 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
