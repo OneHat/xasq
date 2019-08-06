@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-xasq/Pods-xasq-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
 ${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework

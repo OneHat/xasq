@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-//#import "IQKeyboardManager.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 #import "JPUSHService.h"
 // iOS10 注册 APNs 所需头文件
@@ -29,8 +29,6 @@
     ///初始化语言
     [LanguageTool initializeLanguage];
     
-//    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
-    
     RootViewController *rootVC = [[RootViewController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -38,21 +36,13 @@
     self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
     
+    //键盘遮挡
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+    
 //    // 极光推送
 //    [self initJPUSHWithOptions:launchOptions];
     
-    
-//    [self setNavBarStyle];
-    
     return YES;
-}
-
-- (void)setNavBarStyle {
-    UIImage *backIndicatorImage = [[UIImage imageNamed:@"leftBar_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    UIImage *backIndicatorImage = [UIImage imageNamed:@"leftBar_back"];
-    [[UINavigationBar appearance] setBackIndicatorImage:backIndicatorImage];
-    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backIndicatorImage];
-    
 }
     
 /********

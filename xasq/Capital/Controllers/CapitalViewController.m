@@ -14,6 +14,8 @@
 #import "MentionMoneyViewController.h"
 #import "PaymentsRecordsViewController.h"
 
+NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewController";
+
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate,CapitalMainViewDelegate>
 
 @property (strong, nonatomic) CapitalSegmentedControl *segmentedControl;
@@ -24,6 +26,9 @@
 @property (strong, nonatomic) CapitalMainView *mineView;//挖矿账户
 
 @property (assign, nonatomic) BOOL isHideMoney;//是否隐藏金额
+
+//参考MainViewController（首页）
+@property (assign, nonatomic) BOOL hideNavBarAnimation;
 
 @end
 
@@ -38,15 +43,12 @@
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    
-    [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
-    
-    //////
-    
+    //最先add的view
     UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
     topImageView.image = [UIImage imageNamed:@"capital_topBackground"];
     [self.view addSubview:topImageView];
     
+    //第二add的view
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - BottomHeight - 49)];
     _scrollView.contentSize = CGSizeMake(ScreenWidth * 2, 0);
     _scrollView.showsHorizontalScrollIndicator = NO;
@@ -55,6 +57,21 @@
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
+    //第三add的view
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"资产";
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    [self.view addSubview:titleLabel];
+    
+    UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 50, StatusBarHeight, 44, 44)];
+    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
+    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
+    [eyeButton addTarget:self action:@selector(eyeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:eyeButton];
+    
+    //第四add的view
     CGRect segmentFrame = CGRectMake(0, NavHeight - 10, ScreenWidth, 44);
     _segmentedControl = [[CapitalSegmentedControl alloc] initWithFrame:segmentFrame items:@[@"我的钱包",@"挖财账户"]];
     _segmentedControl.delegate = self;
@@ -71,11 +88,15 @@
     [_scrollView addSubview:_mineView];
     
     topImageView.frame = CGRectMake(0, 0, ScreenWidth, _walletView.topCapitalViewH);
+    
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCapitalHideAnimation) name:DSSJTabBarSelectCapital object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
+    _hideNavBarAnimation = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -83,16 +104,14 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)changeCapitalHideAnimation {
+    _hideNavBarAnimation = NO;
+}
+
 #pragma mark-
-- (void)rightBtnAction {
+- (void)eyeButtonAction:(UIButton *)sender {
     _isHideMoney = !_isHideMoney;
-    
-    if (_isHideMoney) {
-        [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeClose"]];
-        
-    } else {
-        [self initRightBtnWithImage:[UIImage imageNamed:@"capital_eyeOpen"]];
-    }
+    sender.selected = !sender.selected;
 }
 
 #pragma mark-

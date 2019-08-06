@@ -90,24 +90,4 @@
     
 }
 
-#pragma mark -
-- (void)setNavBarBackGroundColor:(UIColor *)color {
-    UIImage *image = [UIImage imageFromColor:color];
-    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
-}
-
-- (void)setNavBarBackIndicatorImage:(nullable UIImage *)image {
-    UIImage *backImage;
-    if (image) {
-        backImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
-    } else {
-        backImage = [[UIImage imageNamed:@"leftBar_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    
-    [self.navigationController.navigationBar setBackIndicatorImage:backImage];
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:backImage];
-}
-
 @end

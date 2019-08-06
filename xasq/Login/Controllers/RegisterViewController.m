@@ -55,6 +55,9 @@
 }
 
 - (void)rightBtnAction {
+    _accountTF.text = @"";
+    _codeTF.text = @"";
+    _passwordTF.text = @"";
     if (_type == 0) {
         [self initRightBtnWithTitle:@"手机号" color:ThemeColorText];
         // 邮箱注册

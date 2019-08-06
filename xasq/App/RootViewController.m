@@ -80,7 +80,25 @@
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    UINavigationController *NVC = (UINavigationController *)viewController;
+    UIViewController *selectVC = NVC.topViewController;
+    
+    if ([selectVC isKindOfClass:[MainViewController class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectMain object:nil];
+        
+    } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
+        
+    } else if ([selectVC isKindOfClass:[UserViewController class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
+    }
+    
     return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    
 }
 
 

@@ -18,12 +18,17 @@
 #import "UserHeaderView.h"
 #import "messageInformViewController.h"
 
+NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
+
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSDictionary *titleDict;
 @property (nonatomic, strong) NSDictionary *imageTitleDict;
 @property (nonatomic, strong) UserHeaderView *headerView;
+
+//参考MainViewController（首页）
+@property (assign, nonatomic) BOOL hideNavBarAnimation;
 
 @end
 
@@ -51,11 +56,15 @@
     _tableView.tableHeaderView = _headerView;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
+    
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserHideAnimation) name:DSSJTabBarSelectUser object:nil];
 }
     
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
+    _hideNavBarAnimation = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -63,6 +72,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)changeUserHideAnimation {
+    _hideNavBarAnimation = NO;
+}
+
+#pragma mark-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _titleDict.count;
 }
