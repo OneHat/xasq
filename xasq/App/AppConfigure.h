@@ -9,7 +9,7 @@
 #ifndef AppConfigure_h
 #define AppConfigure_h
 
-#pragma mark:
+#pragma mark -
 
 #define ScreenWidth         [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight        [UIScreen mainScreen].bounds.size.height
@@ -21,10 +21,23 @@
 #define BottomHeight        (IphoneX ? 34.0 : 0.0)
 #define NavHeight           (NavBarHeight + StatusBarHeight)
 #define BarHeight           (BottomHeight + 49)
-/** app版本号 */
-#define AppVersion          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-/** app build版本号 */
-#define AppBuild            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+
+#pragma mark -
+/// 主题颜色
+#define ThemeColorBlue        HexColor(@"#2688D0")
+#define ThemeColorBackground  HexColor(@"#F7F7F7")
+#define ThemeColorTextGray    HexColor(@"#999999")
+#define ThemeColorText        HexColor(@"#333333")
+#define ThemeColorLine        HexColor(@"#EEEEEE")
+#define ThemeColorNavLine     HexColor(@"#DDDDDD")
+
+/// 字体
+#define ThemeFontText         [UIFont systemFontOfSize:15]
+#define ThemeFontMiddleText   [UIFont systemFontOfSize:14]
+#define ThemeFontSmallText    [UIFont systemFontOfSize:13]
+#define ThemeFontTipText      [UIFont systemFontOfSize:12]
+
+#pragma mark -
 
 
 #endif /* AppConfigure_h */

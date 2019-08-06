@@ -11,10 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, LanguageType) {
-    ///中文简体
+    ///简体中文
     LanguageTypeZhHans,
     ///英文
     LanguageTypeEn,
+    ///繁体中文
+    LanguageTypeZhHk,
+    ///VN
+    LanguageTypeVn,
 };
 
 @interface LanguageTool : NSObject
@@ -28,8 +32,8 @@ typedef NS_ENUM(NSInteger, LanguageType) {
 ///当前语言类型
 + (LanguageType)currentLanguageType;
 
-///当前语言
-+ (NSString *)currentLanguage;
+/////当前语言
+//+ (NSString *)currentLanguage;
 
 @end
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LaunchViewController">
+            <connections>
+                <outlet property="secondLabel" destination="Gac-CC-OFA" id="dnm-GY-m5Q"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gac-CC-OFA">
+                    <rect key="frame" x="364" y="49" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Gac-CC-OFA" secondAttribute="height" multiplier="1:1" id="CZD-4w-0Pl"/>
+                        <constraint firstAttribute="width" constant="40" id="xLE-Uy-B1V"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxM-Cw-Q6y">
+                    <rect key="frame" x="364" y="49" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="3oV-d3-OsC"/>
+                        <constraint firstAttribute="width" secondItem="ZxM-Cw-Q6y" secondAttribute="height" multiplier="1:1" id="DkU-wc-Ler"/>
+                    </constraints>
+                    <connections>
+                        <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="fG4-Sy-tSA"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4me-Ro-AvP">
+                    <rect key="frame" x="0.0" y="734" width="414" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49p-7M-sey">
+                            <rect key="frame" x="207" y="43.5" width="156" height="41"/>
+                            <string key="text">西岸社区
+感受数字货币的力量</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-Ki-pDg">
+                            <rect key="frame" x="137" y="34" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="mI2-Ki-pDg" secondAttribute="height" multiplier="1:1" id="9QY-4o-Zfk"/>
+                                <constraint firstAttribute="width" constant="60" id="F3j-F4-4SQ"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="49p-7M-sey" firstAttribute="leading" secondItem="mI2-Ki-pDg" secondAttribute="trailing" constant="10" id="8Mt-xM-ykj"/>
+                        <constraint firstItem="49p-7M-sey" firstAttribute="centerY" secondItem="mI2-Ki-pDg" secondAttribute="centerY" id="GYk-2m-LNP"/>
+                        <constraint firstItem="mI2-Ki-pDg" firstAttribute="centerY" secondItem="4me-Ro-AvP" secondAttribute="centerY" id="Yl6-bS-RIb"/>
+                        <constraint firstAttribute="height" constant="128" id="gf8-6J-9af"/>
+                        <constraint firstItem="mI2-Ki-pDg" firstAttribute="centerX" secondItem="4me-Ro-AvP" secondAttribute="centerX" constant="-40" id="tYV-Vm-hHg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="4me-Ro-AvP" secondAttribute="bottom" id="0C2-VF-Ghc"/>
+                <constraint firstItem="Gac-CC-OFA" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="5" id="GK5-bF-suU"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4me-Ro-AvP" secondAttribute="trailing" id="PC4-m2-ULy"/>
+                <constraint firstItem="ZxM-Cw-Q6y" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="5" id="aTM-g1-GjL"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="ZxM-Cw-Q6y" secondAttribute="trailing" constant="10" id="n4R-Bx-cL7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Gac-CC-OFA" secondAttribute="trailing" constant="10" id="sZu-bv-cx3"/>
+                <constraint firstItem="4me-Ro-AvP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ttH-Ww-MD0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-500.00000000000006" y="214.95535714285714"/>
+        </view>
+    </objects>
+</document>

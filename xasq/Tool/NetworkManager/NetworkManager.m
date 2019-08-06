@@ -89,9 +89,14 @@ const NSTimeInterval xasqTimeoutInterval = 15;
 
 
 #pragma mark-
-///请求头信息，只要是添加设备信息
+///请求头信息
 - (void)updateHTTPHeaderField {
-    
+    //Content-Language:zh-hk,en-us,vn,zh-cn
+    if ([UserDataManager authorization]) {
+        [_sessionManager.requestSerializer setValue:[UserDataManager authorization] forHTTPHeaderField:@"Authorization"];
+    }
+    [_sessionManager.requestSerializer setValue:@"zh-cn" forHTTPHeaderField:@"Content-Language"];
+    [_sessionManager.requestSerializer setValue:@"ios.xasq" forHTTPHeaderField:@"Content-origin"];
 }
     
 @end

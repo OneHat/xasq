@@ -17,46 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uA-qS-vu1">
-                                <rect key="frame" x="0.0" y="734" width="414" height="128"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sSf-Da-UBC">
-                                        <rect key="frame" x="0.0" y="24" width="414" height="80"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bei-ks-Iqj">
-                                                <rect key="frame" x="0.0" y="0.0" width="202" height="80"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2q-SI-opX">
-                                                <rect key="frame" x="212" y="0.0" width="202" height="80"/>
-                                                <string key="text">西岸社区
-感受数字货币的力量</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="2QJ-vr-yXq"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="sSf-Da-UBC" firstAttribute="centerY" secondItem="5uA-qS-vu1" secondAttribute="centerY" id="4zy-dp-fM0"/>
-                                    <constraint firstItem="sSf-Da-UBC" firstAttribute="leading" secondItem="5uA-qS-vu1" secondAttribute="leading" id="VQ6-1a-iZI"/>
-                                    <constraint firstAttribute="height" constant="128" id="cQV-R9-0qb"/>
-                                    <constraint firstAttribute="trailing" secondItem="sSf-Da-UBC" secondAttribute="trailing" id="oAQ-kQ-h6L"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="5uA-qS-vu1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TcM-dF-z2d"/>
-                            <constraint firstItem="5uA-qS-vu1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tBC-6s-mlj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5uA-qS-vu1" secondAttribute="trailing" id="wID-mS-THL"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SegmentedControl : UIView
 
-@property (nonatomic, assign) NSInteger currentIndex;//当前显示index
+@property (nonatomic, assign) NSInteger selectIndex;//当前显示index
 
 @property (nonatomic, weak) id<SegmentedControlDelegate> delegate;
 

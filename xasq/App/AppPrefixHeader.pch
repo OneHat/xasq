@@ -27,4 +27,6 @@
 
 #import "UIView+Empty.h"
 
+#import "UserDataManager.h"
+
 #endif /* PrefixHeader_pch */

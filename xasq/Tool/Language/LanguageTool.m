@@ -12,6 +12,8 @@ static NSString *LanguageCacheKey = @"xasqLanguageCacheKey";
 
 static NSString *LanguageZhHans = @"zh-Hans";
 static NSString *LanguageEn = @"en";
+static NSString *LanguageZhHK = @"zh-HK";
+static NSString *LanguageVn = @"vi-VN";
 
 @implementation LanguageTool
     
@@ -50,8 +52,15 @@ static NSString *LanguageEn = @"en";
     
     if ([localLanguge isEqualToString:LanguageZhHans]) {
         type = LanguageTypeZhHans;
+        
     } else if ([localLanguge isEqualToString:LanguageEn]) {
         type = LanguageTypeEn;
+        
+    } else if ([localLanguge isEqualToString:LanguageZhHK]) {
+        type = LanguageTypeZhHk;
+        
+    } else if ([localLanguge isEqualToString:LanguageVn]) {
+        type = LanguageTypeVn;
     }
     
     return type;

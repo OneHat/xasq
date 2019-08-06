@@ -22,20 +22,10 @@
 //weak
 #define WeakObject           __weak typeof(self) weakSelf = self;
 
-/// 主题颜色
-#define ThemeColorBlue        HexColor(@"#2688D0")
-#define ThemeColorBackground  HexColor(@"#F7F7F7")
-#define ThemeColorTextGray    HexColor(@"#999999")
-#define ThemeColorText        HexColor(@"#333333")
-#define ThemeColorLine        HexColor(@"#EEEEEE")
-#define ThemeColorNavLine     HexColor(@"#DDDDDD")
+/** app版本号 */
+#define AppVersion          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define AppBuild            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
-
-/// 字体
-#define ThemeFontText         [UIFont systemFontOfSize:15]
-#define ThemeFontMiddleText   [UIFont systemFontOfSize:14]
-#define ThemeFontSmallText    [UIFont systemFontOfSize:13]
-#define ThemeFontTipText      [UIFont systemFontOfSize:12]
 
 
 #endif /* AppMarco_h */

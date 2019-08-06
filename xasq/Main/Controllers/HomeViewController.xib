@@ -13,10 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
                 <outlet property="bannerView" destination="h1E-Vd-Heh" id="fAV-2n-Fu6"/>
-                <outlet property="chartViewHeight" destination="SaH-62-dx7" id="WG3-80-cyD"/>
+                <outlet property="bannerViewHeight" destination="zNk-8z-w3i" id="hTm-kt-1FS"/>
                 <outlet property="friendNewsHeight" destination="daT-5A-epU" id="YBZ-Ab-O7b"/>
                 <outlet property="newsView" destination="Mn4-hG-yrb" id="mfh-GN-cCs"/>
                 <outlet property="rankView" destination="wEM-Rz-Pzv" id="xMj-9M-APo"/>
+                <outlet property="rankViewHeight" destination="SaH-62-dx7" id="XQc-9n-1d1"/>
                 <outlet property="scrollView" destination="qww-IH-RKb" id="9kL-Q4-AfE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="cfu-hc-Xb4"/>
             </connections>
@@ -81,7 +82,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-xR-2KU">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-xR-2KU" userLabel="世界">
                                     <rect key="frame" x="20.666666666666671" y="301" width="39" height="39"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Hak-xR-2KU" secondAttribute="height" multiplier="1:1" id="Htd-az-l3W"/>
@@ -89,15 +90,18 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xwt-tO-SGt">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xwt-tO-SGt" userLabel="矿工">
                                     <rect key="frame" x="75.666666666666671" y="301" width="39" height="39"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Xwt-tO-SGt" secondAttribute="height" multiplier="1:1" id="bpO-nC-Hi6"/>
                                         <constraint firstAttribute="width" constant="39" id="jrc-tv-r7n"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="minerAction:" destination="-1" eventType="touchUpInside" id="aIa-dR-t1M"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Db-Nu-RfH">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Db-Nu-RfH" userLabel="任务">
                                     <rect key="frame" x="130.66666666666666" y="301" width="39" height="39"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="39" id="9SZ-pe-Dm4"/>
@@ -108,7 +112,7 @@
                                         <action selector="taskAction:" destination="-1" eventType="touchUpInside" id="y6T-YA-xwh"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-6k-cXW">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgj-6k-cXW" userLabel="好友">
                                     <rect key="frame" x="260.66666666666669" y="301" width="39" height="39"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hgj-6k-cXW" secondAttribute="height" multiplier="1:1" id="NeY-gm-KG4"/>
@@ -119,7 +123,7 @@
                                         <action selector="friendsAction:" destination="-1" eventType="touchUpInside" id="BKa-rF-owm"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-67-XiM">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-67-XiM" userLabel="邀请">
                                     <rect key="frame" x="315.66666666666669" y="301" width="39" height="39"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mQt-67-XiM" secondAttribute="height" multiplier="1:1" id="9iL-TX-8c6"/>
@@ -353,7 +357,7 @@
                 <constraint firstItem="qww-IH-RKb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sF2-x0-gmP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-3327" y="73"/>
+            <point key="canvasLocation" x="-3881" y="68"/>
         </view>
     </objects>
     <resources>

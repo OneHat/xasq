@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"BTC";
     self.view.backgroundColor = ThemeColorBackground;
     
     //背景
@@ -36,10 +35,10 @@
     titleLabel.font = [UIFont systemFontOfSize:17];
     [self.view addSubview:titleLabel];
     
-    UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, StatusBarHeight, 44, 44)];
-    [eyeButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
-    [eyeButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:eyeButton];
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, StatusBarHeight, 44, 44)];
+    [backButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
     
     //资产view
     CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 20)];
@@ -90,7 +89,6 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self initLeftBtnWithImage:[UIImage imageNamed:@"leftBar_back_white"]];
 }
 
 

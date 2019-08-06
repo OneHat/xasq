@@ -9,10 +9,12 @@
 #import "HomeViewController.h"
 #import "InviteUserViewController.h"
 #import "HomeMoreNewsViewController.h"
+#import "MinerViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
 #import "HomeRankView.h"
+#import "LaunchViewController.h"
 
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
@@ -20,8 +22,8 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *friendNewsHeight;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *chartViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
 
 @property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
 @property (weak, nonatomic) IBOutlet UIView *bannerView;//广告view
@@ -61,13 +63,14 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
     //排行
     HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
     rankView.HomeRankDataComplete = ^(CGFloat viewHeight) {
-        self.chartViewHeight.constant = viewHeight;
+        self.rankViewHeight.constant = viewHeight;
     };
     [_rankView addSubview:rankView];
     
     //
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeMainHideAnimation) name:DSSJTabBarSelectHome object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeMainHideAnimation)
+                                                 name:DSSJTabBarSelectHome object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -108,6 +111,11 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 - (IBAction)taskAction:(UIButton *)sender {
 }
 
+- (IBAction)minerAction:(id)sender {
+    MinerViewController *minerVC = [[MinerViewController alloc] init];
+    minerVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:minerVC animated:YES];
+}
 
 - (IBAction)moreNewsAction:(UIButton *)sender {
     HomeMoreNewsViewController *moreNewsVC = [[HomeMoreNewsViewController alloc] init];

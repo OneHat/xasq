@@ -25,8 +25,8 @@
     self.delegate = self;
     
     //首页
-    HomeViewController *mainVC = [[HomeViewController alloc] init];
-    UINavigationController *mainNVC = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    UINavigationController *homeNVC = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
     //策略
     TacticsViewController *tacticsVC = [[TacticsViewController alloc] init];
@@ -45,16 +45,16 @@
     UINavigationController *userNVC = [[UINavigationController alloc] initWithRootViewController:userVC];
     userNVC.navigationBar.barTintColor = [UIColor whiteColor];
 
-    self.viewControllers = @[mainNVC,tacticsNVC,discoveryNVC,capitalNVC,userNVC];
+    self.viewControllers = @[homeNVC,tacticsNVC,discoveryNVC,capitalNVC,userNVC];
     
     NSArray *titles = @[@"首页",@"策略",@"发现",@"资产",@"我的"];
-    NSArray *imagesNormal = @[@"Tab_Discovery_Normal",
+    NSArray *imagesNormal = @[@"Tab_Home_Normal",
                               @"Tab_Tactics_Normal",
                               @"Tab_Discovery_Normal",
                               @"Tab_Capital_Normal",
                               @"Tab_User_Normal"];
     
-    NSArray *imagesSelect = @[@"Tab_Discovery_Select",
+    NSArray *imagesSelect = @[@"Tab_Home_Select",
                               @"Tab_Tactics_Select",
                               @"Tab_Discovery_Select",
                               @"Tab_Capital_Select",
@@ -63,7 +63,6 @@
     for (int i = 0;i < self.tabBar.items.count;i++) {
         UITabBarItem *item = self.tabBar.items[i];
         item.title = titles[i];
-        
         
         NSDictionary *attributeNormal = @{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:10]};
         NSDictionary *attributeSelect = @{NSForegroundColorAttributeName:ThemeColorBlue,NSFontAttributeName:[UIFont systemFontOfSize:10]};

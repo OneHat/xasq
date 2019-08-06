@@ -41,7 +41,7 @@ const CGFloat SegmentedIndicatorWidth = 50;
         [self addSubview:_scrollView];
         
         _items = items;
-        _currentIndex = 0;
+        _selectIndex = 0;
         _buttons = [NSMutableArray array];
         
         [self loadSubViews];
@@ -101,7 +101,7 @@ const CGFloat SegmentedIndicatorWidth = 50;
 
 //点击button
 - (void)itemClick:(UIButton *)sender {
-    if (_currentIndex != sender.tag) {
+    if (_selectIndex != sender.tag) {
         
         for (UIButton *button in _buttons) {
             button.selected = NO;
@@ -113,18 +113,18 @@ const CGFloat SegmentedIndicatorWidth = 50;
             self.indicatorView.center = CGPointMake(sender.center.x, self.indicatorView.center.y);
         }];
         
-        _currentIndex = sender.tag;
+        _selectIndex = sender.tag;
         
         if ([self.delegate respondsToSelector:@selector(segmentedControlItemSelect:)]) {
-            [self.delegate segmentedControlItemSelect:_currentIndex];
+            [self.delegate segmentedControlItemSelect:_selectIndex];
         }
         
     }
     
 }
 
-- (void)setCurrentIndex:(NSInteger)currentIndex {
-    _currentIndex = currentIndex;
+- (void)setSelectIndex:(NSInteger)currentIndex {
+    _selectIndex = currentIndex;
     
     for (UIButton *button in _buttons) {
         button.selected = NO;

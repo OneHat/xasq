@@ -48,6 +48,7 @@
 }
 
 - (void)setNewsData:(NSDictionary *)news {
+//    [_iconImageView sd_setImageWithURL:<#(nullable NSURL *)#>]
     _contentLabel.text = news[@"content"];
     _timeLabel.text = news[@"time"];
 }
@@ -95,7 +96,7 @@
     }
     
     [NSTimer scheduledTimerWithTimeInterval:3.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self addNews];
+        [self loadNextNews];
     }];
     
 }
@@ -106,7 +107,7 @@
     [self loadSubViews];
 }
 
-- (void)addNews {
+- (void)loadNextNews {
     
     for (OneNewsView *view in self.viewArray) {
         

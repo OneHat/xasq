@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "LaunchViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 #import "JPUSHService.h"
@@ -15,6 +16,9 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
+
+#import "ApplicationData.h"
+#import "UserGuideViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,11 +33,29 @@
     ///初始化语言
     [LanguageTool initializeLanguage];
     
-    RootViewController *rootVC = [[RootViewController alloc] init];
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = rootVC;
+    
+    if ([ApplicationData checkVersion]) {
+        //新版版
+        UserGuideViewController *guideVC = [[UserGuideViewController alloc] init];
+        guideVC.DissmissGuideBlock = ^{
+            RootViewController *rootVC = [[RootViewController alloc] init];
+            self.window.rootViewController = rootVC;
+            
+            // 存储新版本
+            [ApplicationData saveNewVersion];
+        };
+        self.window.rootViewController = guideVC;
+    } else {
+        LaunchViewController *launchVC = [[LaunchViewController alloc] init];
+        launchVC.DissmissLaunchBlock = ^{
+            RootViewController *rootVC = [[RootViewController alloc] init];
+            self.window.rootViewController = rootVC;
+        };
+        self.window.rootViewController = launchVC;
+    }
+    
     [self.window makeKeyAndVisible];
     
     //键盘遮挡

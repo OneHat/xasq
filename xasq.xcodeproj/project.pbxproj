@@ -39,7 +39,6 @@
 		C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003D22F2B02D0010A463 /* HomeNewsViewCell.m */; };
 		C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */; };
 		C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004222F2CE8D0010A463 /* MinerViewController.m */; };
-		C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414004322F2CE8D0010A463 /* MinerViewController.xib */; };
 		C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalMainView.m */; };
 		C414004F22F2ECE60010A463 /* CapitalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004E22F2ECE60010A463 /* CapitalSegmentedControl.m */; };
 		C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */; };
@@ -65,6 +64,15 @@
 		C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BC722F92BEC00312286 /* HomeViewController.xib */; };
 		C43B6BCB22F92BED00312286 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC822F92BEC00312286 /* HomeViewController.m */; };
 		C43B6BCE22F92EB300312286 /* HomeRankTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BCD22F92EB300312286 /* HomeRankTableView.m */; };
+		C43B6BD422F948F400312286 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BD222F948F400312286 /* LaunchViewController.m */; };
+		C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BD322F948F400312286 /* LaunchViewController.xib */; };
+		C43B6BD922F9514100312286 /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BD722F9514100312286 /* UserGuideViewController.m */; };
+		C43B6BDF22F957DD00312286 /* ApplicationData.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BDE22F957DD00312286 /* ApplicationData.m */; };
+		C43B6BE522F9580900312286 /* UserDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BE422F9580900312286 /* UserDataManager.m */; };
+		C43B6BED22F9731400312286 /* InviteCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BEC22F9731400312286 /* InviteCodeView.m */; };
+		C43B6BEF22F9732000312286 /* InviteCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BEE22F9732000312286 /* InviteCodeView.xib */; };
+		C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BF122F981DE00312286 /* MinerInfomationView.m */; };
+		C43B6BF422F981F300312286 /* MinerInfomationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BF322F981F300312286 /* MinerInfomationView.xib */; };
 		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
 		C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */; };
 		C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */; };
@@ -202,7 +210,6 @@
 		C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNewsViewCell.xib; sourceTree = "<group>"; };
 		C414004122F2CE8D0010A463 /* MinerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinerViewController.h; sourceTree = "<group>"; };
 		C414004222F2CE8D0010A463 /* MinerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinerViewController.m; sourceTree = "<group>"; };
-		C414004322F2CE8D0010A463 /* MinerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinerViewController.xib; sourceTree = "<group>"; };
 		C414004A22F2EBA30010A463 /* CapitalMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalMainView.h; sourceTree = "<group>"; };
 		C414004B22F2EBA30010A463 /* CapitalMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalMainView.m; sourceTree = "<group>"; };
 		C414004D22F2ECE60010A463 /* CapitalSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSegmentedControl.h; sourceTree = "<group>"; };
@@ -245,6 +252,22 @@
 		C43B6BC922F92BEC00312286 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C43B6BCC22F92EB300312286 /* HomeRankTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRankTableView.h; sourceTree = "<group>"; };
 		C43B6BCD22F92EB300312286 /* HomeRankTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRankTableView.m; sourceTree = "<group>"; };
+		C43B6BD122F948F400312286 /* LaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		C43B6BD222F948F400312286 /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		C43B6BD322F948F400312286 /* LaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
+		C43B6BD622F9514100312286 /* UserGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserGuideViewController.h; sourceTree = "<group>"; };
+		C43B6BD722F9514100312286 /* UserGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserGuideViewController.m; sourceTree = "<group>"; };
+		C43B6BDB22F9540E00312286 /* AppCacheKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppCacheKey.h; sourceTree = "<group>"; };
+		C43B6BDD22F957DD00312286 /* ApplicationData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationData.h; sourceTree = "<group>"; };
+		C43B6BDE22F957DD00312286 /* ApplicationData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationData.m; sourceTree = "<group>"; };
+		C43B6BE322F9580900312286 /* UserDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDataManager.h; sourceTree = "<group>"; };
+		C43B6BE422F9580900312286 /* UserDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDataManager.m; sourceTree = "<group>"; };
+		C43B6BEB22F9731400312286 /* InviteCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteCodeView.h; sourceTree = "<group>"; };
+		C43B6BEC22F9731400312286 /* InviteCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteCodeView.m; sourceTree = "<group>"; };
+		C43B6BEE22F9732000312286 /* InviteCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteCodeView.xib; sourceTree = "<group>"; };
+		C43B6BF022F981DE00312286 /* MinerInfomationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinerInfomationView.h; sourceTree = "<group>"; };
+		C43B6BF122F981DE00312286 /* MinerInfomationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinerInfomationView.m; sourceTree = "<group>"; };
+		C43B6BF322F981F300312286 /* MinerInfomationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinerInfomationView.xib; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
 		C473B91222F3FD100013E77D /* messageInformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageInformViewController.m; sourceTree = "<group>"; };
 		C473B91422F400D50013E77D /* AssetDynamicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetDynamicTableViewCell.h; sourceTree = "<group>"; };
@@ -273,7 +296,7 @@
 		C48B107022EADE1100FDFDED /* AppConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfigure.h; sourceTree = "<group>"; };
 		C48B107122EADE1100FDFDED /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C48B107522EADE3C00FDFDED /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C48B107722EADE6200FDFDED /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C48B107722EADE6200FDFDED /* AppPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppPrefixHeader.pch; sourceTree = "<group>"; };
 		C48B107A22EADF2700FDFDED /* LanguageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTool.m; sourceTree = "<group>"; };
 		C48B107B22EADF2700FDFDED /* LanguageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTool.h; sourceTree = "<group>"; };
 		C48B108522EADF9B00FDFDED /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -453,13 +476,13 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		C414003122F2AB7E0010A463 /* DisCovery */ = {
+		C414003122F2AB7E0010A463 /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
 				C414003222F2ABB20010A463 /* DiscoveryViewController.h */,
 				C414003322F2ABB20010A463 /* DiscoveryViewController.m */,
 			);
-			path = DisCovery;
+			path = Discovery;
 			sourceTree = "<group>";
 		};
 		C414003522F2ABE10010A463 /* Capital */ = {
@@ -531,6 +554,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C43B6BD022F9487E00312286 /* UserGuide */ = {
+			isa = PBXGroup;
+			children = (
+				C43B6BD122F948F400312286 /* LaunchViewController.h */,
+				C43B6BD222F948F400312286 /* LaunchViewController.m */,
+				C43B6BD322F948F400312286 /* LaunchViewController.xib */,
+				C43B6BD622F9514100312286 /* UserGuideViewController.h */,
+				C43B6BD722F9514100312286 /* UserGuideViewController.m */,
+			);
+			path = UserGuide;
+			sourceTree = "<group>";
+		};
+		C43B6BDC22F9576800312286 /* LocalDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				C43B6BDD22F957DD00312286 /* ApplicationData.h */,
+				C43B6BDE22F957DD00312286 /* ApplicationData.m */,
+				C43B6BE322F9580900312286 /* UserDataManager.h */,
+				C43B6BE422F9580900312286 /* UserDataManager.m */,
+			);
+			path = LocalDataManager;
+			sourceTree = "<group>";
+		};
 		C48B100E22EAC5DC00FDFDED = {
 			isa = PBXGroup;
 			children = (
@@ -556,11 +602,12 @@
 		C48B101922EAC5DC00FDFDED /* xasq */ = {
 			isa = PBXGroup;
 			children = (
+				C43B6BD022F9487E00312286 /* UserGuide */,
 				C48B106D22EADE1100FDFDED /* App */,
 				C48B107822EADF2700FDFDED /* Tool */,
 				C48B108022EADF7600FDFDED /* Main */,
 				C4C2CAAA22EEC57C0086761A /* Tactics */,
-				C414003122F2AB7E0010A463 /* DisCovery */,
+				C414003122F2AB7E0010A463 /* Discovery */,
 				C414003522F2ABE10010A463 /* Capital */,
 				C48B107D22EADF7600FDFDED /* User */,
 				C40C3D7022F1404500BDE6A3 /* Login */,
@@ -589,16 +636,17 @@
 		C48B106D22EADE1100FDFDED /* App */ = {
 			isa = PBXGroup;
 			children = (
+				C43B6BDB22F9540E00312286 /* AppCacheKey.h */,
 				C48B107022EADE1100FDFDED /* AppConfigure.h */,
 				C48B106E22EADE1100FDFDED /* AppDelegate.h */,
 				C48B107122EADE1100FDFDED /* AppDelegate.m */,
 				C48B106F22EADE1100FDFDED /* AppMarco.h */,
+				C48B107722EADE6200FDFDED /* AppPrefixHeader.pch */,
 				C48B102322EAC5DD00FDFDED /* Assets.xcassets */,
 				C48B102822EAC5DD00FDFDED /* Info.plist */,
 				C48B102522EAC5DD00FDFDED /* LaunchScreen.storyboard */,
 				C48B105022EAC80C00FDFDED /* Localizable.strings */,
 				C48B107522EADE3C00FDFDED /* main.m */,
-				C48B107722EADE6200FDFDED /* PrefixHeader.pch */,
 				C48B108622EADF9B00FDFDED /* RootViewController.h */,
 				C48B108522EADF9B00FDFDED /* RootViewController.m */,
 			);
@@ -608,6 +656,7 @@
 		C48B107822EADF2700FDFDED /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C43B6BDC22F9576800312286 /* LocalDataManager */,
 				C4C2CAA622EE8FEE0086761A /* Category */,
 				C4A1EE7F22EFD7BD00A1DE8C /* Device */,
 				C48B107922EADF2700FDFDED /* Language */,
@@ -686,6 +735,12 @@
 				C43B6BC322F92AE400312286 /* HomeRankViewCell.h */,
 				C43B6BC422F92AE400312286 /* HomeRankViewCell.m */,
 				C43B6BC222F92AE300312286 /* HomeRankViewCell.xib */,
+				C43B6BEB22F9731400312286 /* InviteCodeView.h */,
+				C43B6BEC22F9731400312286 /* InviteCodeView.m */,
+				C43B6BEE22F9732000312286 /* InviteCodeView.xib */,
+				C43B6BF022F981DE00312286 /* MinerInfomationView.h */,
+				C43B6BF122F981DE00312286 /* MinerInfomationView.m */,
+				C43B6BF322F981F300312286 /* MinerInfomationView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -764,7 +819,6 @@
 				C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */,
 				C414004122F2CE8D0010A463 /* MinerViewController.h */,
 				C414004222F2CE8D0010A463 /* MinerViewController.m */,
-				C414004322F2CE8D0010A463 /* MinerViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -997,7 +1051,6 @@
 				C4D5EEC522F7B96A00C94D9F /* MentionMoneyViewController.xib in Resources */,
 				C4D5EEE722F80CEF00C94D9F /* PaymentHeaderView.xib in Resources */,
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
-				C414004522F2CE8D0010A463 /* MinerViewController.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C4D5EED722F7F90400C94D9F /* ProceedAccountTableViewCell.xib in Resources */,
 				C4D5EEF222F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib in Resources */,
@@ -1010,12 +1063,15 @@
 				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C41335E122F90B57007B55D3 /* XLPasswordView.bundle in Resources */,
+				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C473B92222F40F820013E77D /* CommunityDynamicTableViewCell.xib in Resources */,
+				C43B6BEF22F9732000312286 /* InviteCodeView.xib in Resources */,
 				C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */,
 				C473B91D22F40A1F0013E77D /* AccountUpgradeTableViewCell.xib in Resources */,
+				C43B6BF422F981F300312286 /* MinerInfomationView.xib in Resources */,
 				C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
 				C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */,
@@ -1099,6 +1155,8 @@
 				C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
+				C43B6BE522F9580900312286 /* UserDataManager.m in Sources */,
+				C43B6BDF22F957DD00312286 /* ApplicationData.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
@@ -1115,10 +1173,12 @@
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C41335DD22F90B57007B55D3 /* UIView+XLPasswordView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
+				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
+				C43B6BD922F9514100312286 /* UserGuideViewController.m in Sources */,
 				C4D5EEDA22F7F91B00C94D9F /* ProceedAccountViewController.m in Sources */,
 				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
 				C4D5EEDD22F7FE7700C94D9F /* PaymentsRecordsViewController.m in Sources */,
@@ -1133,6 +1193,7 @@
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
 				C43B6BB222F7CD5500312286 /* CapitalActionModuleView.m in Sources */,
 				C4D5EED122F7F15F00C94D9F /* SelectCurrencyTableViewCell.m in Sources */,
+				C43B6BED22F9731400312286 /* InviteCodeView.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
 				C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
@@ -1160,6 +1221,7 @@
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
 				C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */,
+				C43B6BD422F948F400312286 /* LaunchViewController.m in Sources */,
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
@@ -1342,7 +1404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/AppPrefixHeader.pch";
 				INFOPLIST_FILE = xasq/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1363,7 +1425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/AppPrefixHeader.pch";
 				INFOPLIST_FILE = xasq/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -17,6 +17,9 @@ static NSString *homeRankCellIdentifier = @"homeRankCell";
 
 @end
 
+
+const CGFloat RowHeight = 55.0;
+
 @implementation HomeRankTableView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -28,7 +31,7 @@ static NSString *homeRankCellIdentifier = @"homeRankCell";
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        _tableView.rowHeight = 55;
+        _tableView.rowHeight = RowHeight;
         
         [self addSubview:_tableView];
         
@@ -40,8 +43,11 @@ static NSString *homeRankCellIdentifier = @"homeRankCell";
 - (void)setDataArray:(NSArray *)dataArray {
     _dataArray = dataArray;
     
-    self.frame = CGRectMake(0, 0, ScreenWidth, dataArray.count * 50);
-    self.tableView.frame = CGRectMake(0, 0, ScreenWidth, dataArray.count * 50);
+    CGRect rect = self.frame;
+    rect.size.height = dataArray.count * RowHeight;
+    self.frame = rect;
+    
+    self.tableView.frame = CGRectMake(0, 0, ScreenWidth, dataArray.count * RowHeight);
     
     [self.tableView reloadData];
 }
