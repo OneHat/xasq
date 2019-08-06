@@ -8,6 +8,7 @@
 
 #import "LivingProofViewController.h"
 #import "AlterNicknameViewController.h"
+#import "UIViewController+ActionSheet.h"
 
 @interface LivingProofViewController ()
 
@@ -23,10 +24,16 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 
 - (IBAction)alterHeadPortraitClick:(UIButton *)sender {
     
-    
+    [self actionSheetWithItems:@[@"拍摄", @"从手机相册选择"] complete:^(NSInteger index) {
+        
+    }];
 }
 
 - (IBAction)nickNameClick:(UIButton *)sender {

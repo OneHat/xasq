@@ -10,8 +10,8 @@
 #import <objc/runtime.h>
 
 const CGFloat TitleHeight = 30.0;
-const CGFloat ItemsHeight = 44.0;
-const CGFloat CloseHeight = 44.0;
+const CGFloat ItemsHeight = 50.0;
+const CGFloat CloseHeight = 50.0;
 const CGFloat SpaceHeight = 10.0;
 
 static char ActionSheetBlockKey;
@@ -36,6 +36,8 @@ static char ActionSheetBlockKey;
     contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
     contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:contentViewController action:@selector(closeAction:)];
+    [contentViewController.view addGestureRecognizer:tap];
     
     //标题高度
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -50,7 +52,7 @@ static char ActionSheetBlockKey;
     CGFloat actionSheetHeight = items.count * ItemsHeight + titleHeight + CloseHeight + SpaceHeight;
     CGFloat actionSheetY = ScreenHeight - BottomHeight - actionSheetHeight;
     
-    UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, actionSheetY, ScreenWidth, actionSheetHeight)];
+    UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, actionSheetHeight)];
     actionSheet.backgroundColor = ThemeColorBackground;
     [contentViewController.view addSubview:actionSheet];
     
@@ -70,7 +72,7 @@ static char ActionSheetBlockKey;
         UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY , ScreenWidth, ItemsHeight)];
         actionButon.tag = i;
         actionButon.backgroundColor = [UIColor whiteColor];
-        actionButon.titleLabel.font = ThemeFontTipText;
+        actionButon.titleLabel.font = ThemeFontText;
         [actionButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [actionButon setTitle:items[i] forState:UIControlStateNormal];
         [actionButon addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -94,6 +96,9 @@ static char ActionSheetBlockKey;
     
     
     [self presentViewController:contentViewController animated:NO completion:^{
+        [UIView animateWithDuration:0.3 animations:^{
+            actionSheet.frame = CGRectMake(0, actionSheetY, ScreenWidth, actionSheetHeight);
+        }];
     }];
 }
 
