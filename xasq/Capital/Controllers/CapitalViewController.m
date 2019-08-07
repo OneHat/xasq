@@ -66,6 +66,7 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
     [self.view addSubview:titleLabel];
     
     UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 50, StatusBarHeight, 44, 44)];
+    eyeButton.adjustsImageWhenHighlighted = NO;
     [eyeButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
     [eyeButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
     [eyeButton addTarget:self action:@selector(eyeButtonAction:) forControlEvents:UIControlEventTouchUpInside];

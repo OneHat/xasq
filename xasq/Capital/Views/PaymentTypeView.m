@@ -70,7 +70,7 @@
 - (void)setType:(NSInteger)type {
     _type = type;
     NSInteger height = 235;
-    if (_type == 0) {
+    if (_type == 1) {
         height = 235;
         _titleArray = @[@"全部", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC"];
     } else {

@@ -10,6 +10,11 @@
 
 @interface LanguageSetViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *topSelection;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomSelection;
+@property (weak, nonatomic) IBOutlet UIButton *chineseBtn;
+@property (weak, nonatomic) IBOutlet UIButton *englishBtn;
+
 @end
 
 @implementation LanguageSetViewController
@@ -18,6 +23,18 @@
     [super viewDidLoad];
     self.title = @"语言设置";
 }
+
+- (IBAction)selectionChinese:(UIButton *)sender {
+    _topSelection.image = [UIImage imageNamed:@"user_choose"];
+    _bottomSelection.image = nil;
+}
+
+- (IBAction)SelectionEnglish:(UIButton *)sender {
+    _topSelection.image = nil;
+    _bottomSelection.image = [UIImage imageNamed:@"user_choose"];
+}
+
+
 
 /*
 #pragma mark - Navigation

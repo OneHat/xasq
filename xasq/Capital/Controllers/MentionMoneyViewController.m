@@ -11,6 +11,7 @@
 #import "SelectCurrencyViewController.h"
 #import "ProceedAccountViewController.h"
 #import "XLPasswordView.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface MentionMoneyViewController () <XLPasswordViewDelegate>
 
@@ -31,6 +32,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
 #pragma mark - 选择币种

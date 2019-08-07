@@ -120,10 +120,15 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
         cell = [[[UINib nibWithNibName:@"UserTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.rightLB.hidden = YES;
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *titleArray = _titleDict[key];
     NSArray *imageTitleArray = _imageTitleDict[key];
     cell.titleLB.text = titleArray[indexPath.row];
+    if ([titleArray[indexPath.row] isEqualToString:@"版本信息"]) {
+        cell.rightLB.text = [NSString stringWithFormat:@"v%@",AppVersion];
+        cell.rightLB.hidden = NO;
+    }
     cell.iconImageV.image = [UIImage imageNamed:imageTitleArray[indexPath.row]];
     return cell;
 }

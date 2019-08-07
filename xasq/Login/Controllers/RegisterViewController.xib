@@ -108,7 +108,7 @@
                                 <constraint firstAttribute="width" constant="1" id="NyI-Pr-o4r"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhJ-2j-dKT">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhJ-2j-dKT">
                             <rect key="frame" x="310" y="75.666666666666657" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="kJh-v8-b1A"/>
@@ -152,7 +152,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ5-Sx-2v8">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ5-Sx-2v8">
                             <rect key="frame" x="310" y="195.66666666666666" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="LZh-Bt-8Xn"/>

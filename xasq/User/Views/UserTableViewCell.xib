@@ -42,13 +42,24 @@
                             <constraint firstAttribute="width" constant="9" id="DwB-es-TZs"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yk-mU-nt0">
+                        <rect key="frame" x="278" y="12.5" width="0.0" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="pim-Ty-n1c"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="jdR-jA-yvK" secondAttribute="trailing" constant="18" id="2vy-3p-0An"/>
                     <constraint firstItem="2nf-xs-pdi" firstAttribute="leading" secondItem="ClZ-S3-N13" secondAttribute="trailing" constant="10" id="3uB-VX-p0a"/>
+                    <constraint firstItem="4yk-mU-nt0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8tr-MX-LuE"/>
                     <constraint firstItem="jdR-jA-yvK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MMF-EH-8sK"/>
                     <constraint firstItem="ClZ-S3-N13" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NXu-1y-ksk"/>
                     <constraint firstItem="2nf-xs-pdi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PkD-zj-o0q"/>
+                    <constraint firstItem="jdR-jA-yvK" firstAttribute="leading" secondItem="4yk-mU-nt0" secondAttribute="trailing" constant="15" id="SW4-qn-838"/>
                     <constraint firstItem="ClZ-S3-N13" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mvJ-Du-ORJ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -56,6 +67,7 @@
             <connections>
                 <outlet property="arrowImageV" destination="jdR-jA-yvK" id="3l1-BL-YxC"/>
                 <outlet property="iconImageV" destination="ClZ-S3-N13" id="nN1-DP-4GB"/>
+                <outlet property="rightLB" destination="4yk-mU-nt0" id="OtK-S1-y9P"/>
                 <outlet property="titleLB" destination="2nf-xs-pdi" id="wBB-5X-7fg"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.34375"/>
