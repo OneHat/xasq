@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//名称
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;//个数
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;//美元
+@property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @end
 
@@ -30,6 +31,8 @@
     
     self.moneyLabel.font = ThemeFontTipText;
     self.moneyLabel.textColor = ThemeColorTextGray;
+    
+    self.bottomLine.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

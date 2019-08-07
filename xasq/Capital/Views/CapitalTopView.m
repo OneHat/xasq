@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) UILabel *styleLabel;
 
+@property (nonatomic, strong) UILabel *capitalLabel;
+@property (nonatomic, strong) UILabel *moneyLabel;
+
 @end
 
 @implementation CapitalTopView
@@ -19,6 +22,11 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        CGRect rect = self.frame;
+        rect.size.height = 140;
+        self.frame = rect;
+        
         self.clipsToBounds = YES;
         [self loadSubViews];
     }
@@ -34,7 +42,7 @@
     
     //背景
     UIImage *bgImage = [UIImage imageNamed:@"capital_RecordBG"];
-    UIImageView *imageView = [[UIImageView alloc] init];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, width - 20, CGRectGetHeight(self.frame))];
     imageView.image = [bgImage resizeImageInCenter];
     [self addSubview:imageView];
     
@@ -55,8 +63,9 @@
     [self addSubview:recordButton];
     
     //分割线
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(30, 10 + CGRectGetMaxY(tipLabel.frame), width - 60, 0.5)];
-    lineView.backgroundColor = RGBColorA(38, 116, 2.8, 0.6);
+//    10 + CGRectGetMaxY(tipLabel.frame)
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(30, 50, width - 60, 1)];
+    lineView.backgroundColor = HexColor(@"1A5988");
     [self addSubview:lineView];
     
     //资产数值
@@ -65,19 +74,15 @@
     capitalLabel.text = @"0.00TC";
     capitalLabel.textColor = textOrangeColor;
     [self addSubview:capitalLabel];
+    _capitalLabel = capitalLabel;
     
     //换算成美元数值
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 5 + CGRectGetMaxY(capitalLabel.frame), width, 30)];
-    moneyLabel.font = ThemeFontText;
+    moneyLabel.font = [UIFont systemFontOfSize:18];
     moneyLabel.textColor = [UIColor whiteColor];
-    moneyLabel.text = @"¥000";
+    moneyLabel.text = @"$000";
     [self addSubview:moneyLabel];
-    
-    CGRect rect = self.frame;
-    rect.size.height = 5 + CGRectGetMaxY(moneyLabel.frame);
-    self.frame = rect;
-    
-    imageView.frame = CGRectMake(10, 0, width - 20, self.frame.size.height);
+    _moneyLabel = moneyLabel;
 }
 
 - (void)setViewStyle:(CapitalTopViewStyle)viewStyle {
@@ -88,6 +93,19 @@
     } else if (_viewStyle == CapitalTopViewHold) {
         _styleLabel.text = @"持有";
     }
+}
+
+- (void)setHideMoney:(BOOL)hideMoney {
+    _hideMoney = hideMoney;
+    
+    if (_hideMoney) {
+        _capitalLabel.text = @"***";
+        _moneyLabel.text = @"***";
+    } else {
+        _capitalLabel.text = @"0.00BTC";
+        _moneyLabel.text = @"$000";
+    }
+    
 }
 
 #pragma mark -

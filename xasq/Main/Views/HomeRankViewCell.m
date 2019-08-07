@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+@property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @end
 
@@ -34,6 +35,8 @@
     _areaLabel.textColor = ThemeColorTextGray;
     
     _valueLabel.textColor = ThemeColorTextGray;
+    
+    _bottomLine.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -13,8 +13,9 @@
 
 @interface CapitalMainView () <UITableViewDataSource,UITableViewDelegate>
 
-//@property (nonatomic, strong) CapitalActionModuleView *moduleView;
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) CapitalTopView *topView;//资产数值
 
 @end
 
@@ -43,6 +44,7 @@ static CGFloat CapitalSegmentControlH = 40;
         }
     };
     [self addSubview:topView];
+    _topView = topView;
     
     ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
     CGFloat topViewH = topView.frame.size.height;
@@ -57,21 +59,23 @@ static CGFloat CapitalSegmentControlH = 40;
     };
     [self addSubview:modulView];
     
-    
-//    CGFloat tableViewY = _topCapitalViewH + 10;
-    CGFloat tableViewY = CGRectGetMaxY(modulView.frame) + 10;
     //列表
+    CGFloat tableViewY = _topCapitalViewH + 10;
     CGRect rect = CGRectMake(0, tableViewY, ScreenWidth, self.frame.size.height - tableViewY);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"CapitalListViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableFooterView = [[UIView alloc] init];
-    _tableView.rowHeight = 55;
+    _tableView.rowHeight = 60;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-//    _tableView.tableHeaderView = [self tableHeaderView];
+    _tableView.tableHeaderView = [self tableHeaderView];
     [self addSubview:_tableView];
 }
 
+- (void)setHideMoney:(BOOL)hideMoney {
+    _topView.hideMoney = hideMoney;
+}
 
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -89,28 +93,39 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    CGFloat height = 50;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, height)];
     headerView.backgroundColor = ThemeColorBackground;
     
     //搜索
-    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:searchButton];
-    
-    UILabel *searchLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 90, 44)];
+    UILabel *searchLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 90, height)];
     searchLabel.textColor = ThemeColorTextGray;
     searchLabel.font = ThemeFontSmallText;
     searchLabel.text = @"搜索币种";
     [headerView addSubview:searchLabel];
     
+    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, 80, height)];
+    searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
+    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:searchButton];
+    
     //隐藏0余额
-    UILabel *hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - 100, 0, 90, 44)];
+    CGSize size = [@"隐藏0余额" sizeWithAttributes:@{NSFontAttributeName:ThemeFontSmallText}];
+    CGFloat labelWidth = ceil(size.width);
+    
+    UILabel *hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 10, 0, labelWidth, height)];
     hideZeroLabel.textColor = ThemeColorTextGray;
     hideZeroLabel.font = ThemeFontSmallText;
     hideZeroLabel.textAlignment = NSTextAlignmentRight;
     hideZeroLabel.text = @"隐藏0余额";
     [headerView addSubview:hideZeroLabel];
+    
+    UIButton *checkButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height)];
+    [checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
+    [checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
+    [checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:checkButton];
     
     return headerView;
 }
@@ -121,13 +136,7 @@ static CGFloat CapitalSegmentControlH = 40;
     }
 }
 
-- (void)searchButtonClick {
-    if ([self.delegate respondsToSelector:@selector(capitalMainViewSearchClick)]) {
-        [self.delegate capitalMainViewSearchClick];
-    }
-}
-
-#pragma mark-
+#pragma mark -
 - (UIView *)tableHeaderView {
     CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
     modulView.ButtonClickBlock = ^(NSInteger index) {
@@ -136,6 +145,17 @@ static CGFloat CapitalSegmentControlH = 40;
         }
     };
     return modulView;
+}
+
+#pragma mark -
+- (void)searchButtonClick {
+    if ([self.delegate respondsToSelector:@selector(capitalMainViewSearchClick)]) {
+        [self.delegate capitalMainViewSearchClick];
+    }
+}
+
+- (void)checkButtonClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
 }
 
 @end

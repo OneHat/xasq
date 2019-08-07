@@ -14,7 +14,7 @@
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
 #import "HomeRankView.h"
-#import "LaunchViewController.h"
+#import "RewardBallView.h"
 
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
@@ -71,6 +71,15 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changeMainHideAnimation)
                                                  name:DSSJTabBarSelectHome object:nil];
+//    //能量球
+//    NSInteger count = 5;//个数
+//    CGFloat viewX = (ScreenWidth - 40 * count) * 0.5;
+//    for (int i = 0; i < count; i++) {
+//        
+//        CGRect rect = CGRectMake(viewX + 40 * i, 150 + (arc4random() % 30) * pow(-1, i), 0, 0);
+//        RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rect];
+//        [self.view addSubview:ballView];
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

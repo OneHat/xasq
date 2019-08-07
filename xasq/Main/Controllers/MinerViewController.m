@@ -7,9 +7,13 @@
 //
 
 #import "MinerViewController.h"
+#import "MinerInfomationView.h"
 #import "InviteCodeView.h"
+#import "InviteHistoryViewCell.h"
 
-@interface MinerViewController ()
+@interface MinerViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -22,12 +26,31 @@
     //title
     [self initTitle];
     
-    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, 100, ScreenWidth, 140)];
-    [self.view addSubview:inviteCodeView];
+    MinerInfomationView *infomationView = [[MinerInfomationView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 160)];
+    [self.view addSubview:infomationView];
+    
+    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 140)];
+//    [self.view addSubview:inviteCodeView];
+    
+    CGRect rect = CGRectMake(0, 10 + CGRectGetMaxY(infomationView.frame), ScreenWidth, ScreenHeight - 10 - CGRectGetMaxY(infomationView.frame));
+    _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+    [_tableView registerNib:[UINib nibWithNibName:@"InviteHistoryViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    _tableView.tableFooterView = [[UIView alloc] init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.rowHeight = 50;
+    _tableView.tableHeaderView = inviteCodeView;
+    [self.view addSubview:_tableView];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)initTitle {
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 150)];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160)];
     topView.backgroundColor = RGBColor(36, 69, 104);
     [self.view addSubview:topView];
     
@@ -44,10 +67,15 @@
     [self.view addSubview:backButton];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+#pragma mark-
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 15;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    InviteHistoryViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    return cell;
 }
 
 #pragma mark-

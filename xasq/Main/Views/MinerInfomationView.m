@@ -10,12 +10,17 @@
 
 @implementation MinerInfomationView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        
+        UIView *contentView = [[NSBundle mainBundle] loadNibNamed:@"MinerInfomationView" owner:self options:nil].firstObject;
+        contentView.backgroundColor = [UIColor clearColor];
+        contentView.frame = self.bounds;
+        [self addSubview:contentView];
+    }
+    return self;
 }
-*/
 
 @end

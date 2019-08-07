@@ -9,7 +9,7 @@
 #import "HomeRankTableView.h"
 #import "HomeRankViewCell.h"
 
-static NSString *homeRankCellIdentifier = @"homeRankCell";
+static NSString *HomeRankCellIdentifier = @"HomeRankCell";
 
 @interface HomeRankTableView ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -25,17 +25,17 @@ const CGFloat RowHeight = 55.0;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.clipsToBounds = YES;
+        
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableView.scrollEnabled = NO;
-        [_tableView registerNib:[UINib nibWithNibName:@"HomeRankViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:homeRankCellIdentifier];
+        [_tableView registerNib:[UINib nibWithNibName:@"HomeRankViewCell" bundle:nil] forCellReuseIdentifier:HomeRankCellIdentifier];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.rowHeight = RowHeight;
-        
         [self addSubview:_tableView];
-        
-        self.clipsToBounds = YES;
     }
     return self;
 }
@@ -48,7 +48,6 @@ const CGFloat RowHeight = 55.0;
     self.frame = rect;
     
     self.tableView.frame = CGRectMake(0, 0, ScreenWidth, dataArray.count * RowHeight);
-    
     [self.tableView reloadData];
 }
 
@@ -58,7 +57,7 @@ const CGFloat RowHeight = 55.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeRankCellIdentifier];
+    HomeRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeRankCellIdentifier];
     return cell;
 }
 

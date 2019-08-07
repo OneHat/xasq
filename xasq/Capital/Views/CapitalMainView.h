@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalMainView : UIView
 
-
-@property (nonatomic, assign, readonly) CGFloat topCapitalViewH;
+@property (nonatomic, assign, readonly) CGFloat topCapitalViewH;//
+@property (nonatomic, assign) BOOL hideMoney;//
 
 @property (nonatomic, weak) id<CapitalMainViewDelegate> delegate;
 

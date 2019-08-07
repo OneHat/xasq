@@ -49,8 +49,7 @@
     CGFloat imageViewH = topView.frame.size.height + NavHeight + 10;
     imageView.frame = CGRectMake(0, 0, ScreenWidth, imageViewH);
     
-    
-    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, imageViewH, ScreenWidth, 10)];
+    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 10)];
     modulView.ButtonClickBlock = ^(NSInteger index) {
         
     };

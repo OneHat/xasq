@@ -21,6 +21,10 @@ typedef NS_ENUM(NSInteger,CapitalTopViewStyle) {
 
 @property (nonatomic, strong) void (^RecordClickBlock)(void);
 
+@property (nonatomic, assign) BOOL hideMoney;
+
+@property (nonatomic, strong) NSDictionary *capitalData;
+
 @end
 
 NS_ASSUME_NONNULL_END

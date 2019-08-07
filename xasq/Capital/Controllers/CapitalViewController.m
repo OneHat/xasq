@@ -112,6 +112,9 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 - (void)eyeButtonAction:(UIButton *)sender {
     _isHideMoney = !_isHideMoney;
     sender.selected = !sender.selected;
+    
+    _walletView.hideMoney = _isHideMoney;
+    _mineView.hideMoney = _isHideMoney;
 }
 
 #pragma mark-
@@ -134,13 +137,14 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 
 #pragma mark - CapitalMainViewDelegate
 - (void)capitalMainViewCellSelect:(NSInteger)index {
-    //
+    //某一币种
     CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
     kindVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:kindVC animated:YES];
 }
 
 - (void)capitalMainViewSearchClick {
+    //搜索
     CapitalSearchViewController *searchVC = [[CapitalSearchViewController alloc] init];
     searchVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:searchVC animated:YES];
@@ -156,6 +160,7 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 }
 
 - (void)capitalMainViewRecordClick {
+    //收支记录
     PaymentsRecordsViewController *recordsVC = [[PaymentsRecordsViewController alloc] init];
     recordsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:recordsVC animated:YES];

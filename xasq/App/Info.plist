@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>访问您的相机，更换头像</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>访问您的相册，更换头像</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>访问您的行走步数，赠送奖励</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -28,9 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSContactsUsageDescription</key>
-	<string>访问您的通讯录，添加好友</string>
-	<key>NSMotionUsageDescription</key>
-	<string>访问您的行走步数，赠送奖励</string>
+	<string>访问您的通讯录，为您添加好友</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

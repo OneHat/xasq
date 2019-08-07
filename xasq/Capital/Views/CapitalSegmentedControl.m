@@ -17,12 +17,9 @@
 
 @interface CapitalSegmentedControl ()
 
-//@property (nonatomic, strong) UIScrollView *scrollView;
-
 @property (nonatomic, strong) UIView *indicatorView;//指示器
 
 @property (nonatomic, strong) NSArray *items;//titles
-
 @property (nonatomic, strong) NSMutableArray *buttons;//按钮集合
 
 @end
@@ -47,7 +44,7 @@
     CGFloat height = CGRectGetHeight(self.frame);
     CGFloat buttonWidth = 100;
     
-    _indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, height - 5, 50, 2)];
+    _indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, height - 5, 79, 2)];
     _indicatorView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_indicatorView];
     
