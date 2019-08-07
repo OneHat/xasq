@@ -13,8 +13,11 @@
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageV;
+@property (weak, nonatomic) IBOutlet UITextField *accountTF; // 账号
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *removeBtn; // 清除Btn
+@property (weak, nonatomic) IBOutlet UIButton *cipherBtn; // 密文切换Btn
 
 
 @end
@@ -26,7 +29,8 @@
     
     _loginBtn.layer.cornerRadius = 22.5;
     _loginBtn.layer.masksToBounds = YES;
-    
+    [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_close"] forState:(UIControlStateNormal)];
+    [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_open"] forState:(UIControlStateSelected)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +52,19 @@
         _closeLoginBlock(isLogin);
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)removeBtnClick:(UIButton *)sender {
+    _accountTF.text = @"";
+}
+
+- (IBAction)CipherSwitch:(UIButton *)sender {
+    _cipherBtn.selected = !_cipherBtn.isSelected;
+    if (_cipherBtn.isSelected) {
+        _passwordTF.secureTextEntry = NO;
+    } else {
+        _passwordTF.secureTextEntry = YES;
+    }
 }
 
 #pragma mark - 忘记密码
