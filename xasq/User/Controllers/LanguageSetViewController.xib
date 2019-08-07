@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguageSetViewController">
             <connections>
+                <outlet property="bottomSelection" destination="amM-U6-616" id="E9h-Ib-Q6b"/>
+                <outlet property="chineseBtn" destination="Zhe-A0-vSs" id="BKH-SQ-OPZ"/>
+                <outlet property="englishBtn" destination="7Ff-Tg-ovs" id="zx6-sp-2k6"/>
+                <outlet property="topSelection" destination="OLm-J9-41v" id="x61-l5-5Q5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,12 +32,18 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="rAp-WZ-5tv"/>
                             </constraints>
+                            <connections>
+                                <action selector="selectionChinese:" destination="-1" eventType="touchUpInside" id="8ky-dW-Kwx"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ff-Tg-ovs">
                             <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Cxs-Su-VZU"/>
                             </constraints>
+                            <connections>
+                                <action selector="SelectionEnglish:" destination="-1" eventType="touchUpInside" id="HY1-CY-jp6"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简体中文" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8D-sn-hTL">
                             <rect key="frame" x="66" y="7" width="61.5" height="30"/>
