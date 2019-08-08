@@ -357,7 +357,7 @@
                 <constraint firstItem="qww-IH-RKb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sF2-x0-gmP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-3881" y="68"/>
+            <point key="canvasLocation" x="-4500" y="93"/>
         </view>
     </objects>
     <resources>

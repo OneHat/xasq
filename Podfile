@@ -1,5 +1,5 @@
 
-platform :ios,'8.0'
+platform :ios,'10.0'
 use_frameworks!
 
 target 'xasq' do
@@ -16,5 +16,8 @@ target 'xasq' do
   pod 'JPush', '3.2.1'
   
   pod 'IQKeyboardManager', '6.4.0'
+  
+  pod 'WechatOpenSDK', '1.8.4'
+  pod 'AlipaySDK-iOS', '15.5.9'
 
 end

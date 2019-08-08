@@ -10,6 +10,7 @@
 #import "InviteUserViewController.h"
 #import "HomeMoreNewsViewController.h"
 #import "MinerViewController.h"
+#import "TaskViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -118,6 +119,9 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
 
 - (IBAction)taskAction:(UIButton *)sender {
+    TaskViewController *taskVC = [[TaskViewController alloc] init];
+    taskVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:taskVC animated:YES];
 }
 
 - (IBAction)minerAction:(id)sender {
