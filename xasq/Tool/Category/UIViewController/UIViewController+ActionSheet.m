@@ -96,7 +96,7 @@ static char ActionSheetBlockKey;
     
     
     [self presentViewController:contentViewController animated:NO completion:^{
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             actionSheet.frame = CGRectMake(0, actionSheetY, ScreenWidth, actionSheetHeight);
         }];
     }];
