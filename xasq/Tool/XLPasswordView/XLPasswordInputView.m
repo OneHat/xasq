@@ -215,6 +215,7 @@
     [textField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
     textField.tintColor = [UIColor clearColor];
     textField.textColor = [UIColor clearColor];
+    
     UIImageView *imageView = [[UIImageView alloc] init];
     self.backgroundImageView = imageView;
     [self addSubview:imageView];
@@ -315,14 +316,14 @@
     [self textChange:self.textField];
 }
 
-- (BOOL)becomeFirstResponder
-{
-    return [self.textField becomeFirstResponder];
-}
+//- (BOOL)becomeFirstResponder
+//{
+//    return [self.textField becomeFirstResponder];
+//}
 
-- (BOOL)resignFirstResponder
-{
-    return [self.textField resignFirstResponder];
-}
+//- (BOOL)resignFirstResponder
+//{
+//    return [self.textField resignFirstResponder];
+//}
 
 @end

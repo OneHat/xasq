@@ -17,6 +17,12 @@
 		C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */; };
 		C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* confirmViewController.m */; };
 		C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */; };
+		C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */; };
+		C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */; };
+		C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0222FBFDEC00E43F8C /* XLRandomKeyboard.m */; };
+		C40DEF0E22FBFDEC00E43F8C /* XLPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40DEF0522FBFDEC00E43F8C /* XLPasswordView.bundle */; };
+		C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0722FBFDEC00E43F8C /* XLPasswordInputView.m */; };
+		C40DEF1022FBFDEC00E43F8C /* XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0922FBFDEC00E43F8C /* XLPasswordView.m */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -27,12 +33,6 @@
 		C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43022F00BA40090E4F1 /* LivingProofViewController.xib */; };
 		C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */; };
 		C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */; };
-		C41335DD22F90B57007B55D3 /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41335D222F90B57007B55D3 /* UIView+XLPasswordView.m */; };
-		C41335DE22F90B57007B55D3 /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41335D322F90B57007B55D3 /* UIImage+XLPasswordView.m */; };
-		C41335E022F90B57007B55D3 /* XLRandomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C41335D522F90B57007B55D3 /* XLRandomKeyboard.m */; };
-		C41335E122F90B57007B55D3 /* XLPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C41335D822F90B57007B55D3 /* XLPasswordView.bundle */; };
-		C41335E222F90B57007B55D3 /* XLPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41335DA22F90B57007B55D3 /* XLPasswordInputView.m */; };
-		C41335E322F90B57007B55D3 /* XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41335DC22F90B57007B55D3 /* XLPasswordView.m */; };
 		C414003422F2ABB20010A463 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003322F2ABB20010A463 /* DiscoveryViewController.m */; };
 		C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003722F2AC0B0010A463 /* CapitalViewController.m */; };
 		C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */; };
@@ -176,6 +176,18 @@
 		C40C3D8822F199C800BDE6A3 /* confirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confirmViewController.h; sourceTree = "<group>"; };
 		C40C3D8922F199C800BDE6A3 /* confirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confirmViewController.m; sourceTree = "<group>"; };
 		C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmViewController.xib; sourceTree = "<group>"; };
+		C40DEEFC22FBFDEC00E43F8C /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
+		C40DEEFD22FBFDEC00E43F8C /* UIImage+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLPasswordView.h"; sourceTree = "<group>"; };
+		C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLPasswordView.m"; sourceTree = "<group>"; };
+		C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XLPasswordView.m"; sourceTree = "<group>"; };
+		C40DEF0222FBFDEC00E43F8C /* XLRandomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLRandomKeyboard.m; sourceTree = "<group>"; };
+		C40DEF0322FBFDEC00E43F8C /* XLPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordInputView.h; sourceTree = "<group>"; };
+		C40DEF0422FBFDEC00E43F8C /* XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordView.h; sourceTree = "<group>"; };
+		C40DEF0522FBFDEC00E43F8C /* XLPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XLPasswordView.bundle; sourceTree = "<group>"; };
+		C40DEF0622FBFDEC00E43F8C /* XLPasswordViewTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordViewTypeDefine.h; sourceTree = "<group>"; };
+		C40DEF0722FBFDEC00E43F8C /* XLPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordInputView.m; sourceTree = "<group>"; };
+		C40DEF0822FBFDEC00E43F8C /* XLRandomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRandomKeyboard.h; sourceTree = "<group>"; };
+		C40DEF0922FBFDEC00E43F8C /* XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordView.m; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -191,18 +203,6 @@
 		C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlterNicknameViewController.h; sourceTree = "<group>"; };
 		C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlterNicknameViewController.m; sourceTree = "<group>"; };
 		C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlterNicknameViewController.xib; sourceTree = "<group>"; };
-		C41335CF22F90B57007B55D3 /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
-		C41335D022F90B57007B55D3 /* UIImage+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLPasswordView.h"; sourceTree = "<group>"; };
-		C41335D222F90B57007B55D3 /* UIView+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLPasswordView.m"; sourceTree = "<group>"; };
-		C41335D322F90B57007B55D3 /* UIImage+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XLPasswordView.m"; sourceTree = "<group>"; };
-		C41335D522F90B57007B55D3 /* XLRandomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLRandomKeyboard.m; sourceTree = "<group>"; };
-		C41335D622F90B57007B55D3 /* XLPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordInputView.h; sourceTree = "<group>"; };
-		C41335D722F90B57007B55D3 /* XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordView.h; sourceTree = "<group>"; };
-		C41335D822F90B57007B55D3 /* XLPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XLPasswordView.bundle; sourceTree = "<group>"; };
-		C41335D922F90B57007B55D3 /* XLPasswordViewTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLPasswordViewTypeDefine.h; sourceTree = "<group>"; };
-		C41335DA22F90B57007B55D3 /* XLPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordInputView.m; sourceTree = "<group>"; };
-		C41335DB22F90B57007B55D3 /* XLRandomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRandomKeyboard.h; sourceTree = "<group>"; };
-		C41335DC22F90B57007B55D3 /* XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordView.m; sourceTree = "<group>"; };
 		C414003222F2ABB20010A463 /* DiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryViewController.h; sourceTree = "<group>"; };
 		C414003322F2ABB20010A463 /* DiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryViewController.m; sourceTree = "<group>"; };
 		C414003622F2AC0B0010A463 /* CapitalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalViewController.h; sourceTree = "<group>"; };
@@ -459,29 +459,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C41335CD22F90B57007B55D3 /* XLPasswordView */ = {
+		C40DEEFA22FBFDEC00E43F8C /* XLPasswordView */ = {
 			isa = PBXGroup;
 			children = (
-				C41335CE22F90B57007B55D3 /* Category */,
-				C41335D522F90B57007B55D3 /* XLRandomKeyboard.m */,
-				C41335D622F90B57007B55D3 /* XLPasswordInputView.h */,
-				C41335D722F90B57007B55D3 /* XLPasswordView.h */,
-				C41335D822F90B57007B55D3 /* XLPasswordView.bundle */,
-				C41335D922F90B57007B55D3 /* XLPasswordViewTypeDefine.h */,
-				C41335DA22F90B57007B55D3 /* XLPasswordInputView.m */,
-				C41335DB22F90B57007B55D3 /* XLRandomKeyboard.h */,
-				C41335DC22F90B57007B55D3 /* XLPasswordView.m */,
+				C40DEEFB22FBFDEC00E43F8C /* Category */,
+				C40DEF0222FBFDEC00E43F8C /* XLRandomKeyboard.m */,
+				C40DEF0322FBFDEC00E43F8C /* XLPasswordInputView.h */,
+				C40DEF0422FBFDEC00E43F8C /* XLPasswordView.h */,
+				C40DEF0522FBFDEC00E43F8C /* XLPasswordView.bundle */,
+				C40DEF0622FBFDEC00E43F8C /* XLPasswordViewTypeDefine.h */,
+				C40DEF0722FBFDEC00E43F8C /* XLPasswordInputView.m */,
+				C40DEF0822FBFDEC00E43F8C /* XLRandomKeyboard.h */,
+				C40DEF0922FBFDEC00E43F8C /* XLPasswordView.m */,
 			);
 			path = XLPasswordView;
 			sourceTree = "<group>";
 		};
-		C41335CE22F90B57007B55D3 /* Category */ = {
+		C40DEEFB22FBFDEC00E43F8C /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				C41335CF22F90B57007B55D3 /* UIView+XLPasswordView.h */,
-				C41335D222F90B57007B55D3 /* UIView+XLPasswordView.m */,
-				C41335D022F90B57007B55D3 /* UIImage+XLPasswordView.h */,
-				C41335D322F90B57007B55D3 /* UIImage+XLPasswordView.m */,
+				C40DEEFC22FBFDEC00E43F8C /* UIView+XLPasswordView.h */,
+				C40DEEFD22FBFDEC00E43F8C /* UIImage+XLPasswordView.h */,
+				C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */,
+				C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -683,7 +683,7 @@
 				C48B107922EADF2700FDFDED /* Language */,
 				C48B108822EAE72800FDFDED /* NetworkManager */,
 				C4A1EEB222F190BA00A1DE8C /* SegmentedControl */,
-				C41335CD22F90B57007B55D3 /* XLPasswordView */,
+				C40DEEFA22FBFDEC00E43F8C /* XLPasswordView */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1087,10 +1087,10 @@
 				C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */,
 				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
-				C41335E122F90B57007B55D3 /* XLPasswordView.bundle in Resources */,
 				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
+				C40DEF0E22FBFDEC00E43F8C /* XLPasswordView.bundle in Resources */,
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C473B92222F40F820013E77D /* CommunityDynamicTableViewCell.xib in Resources */,
 				C43B6BEF22F9732000312286 /* InviteCodeView.xib in Resources */,
@@ -1168,7 +1168,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41335E322F90B57007B55D3 /* XLPasswordView.m in Sources */,
 				C43B6C0C22FAD21100312286 /* CapitalSegmentedControl.m in Sources */,
 				C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */,
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
@@ -1188,7 +1187,6 @@
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
-				C41335E222F90B57007B55D3 /* XLPasswordInputView.m in Sources */,
 				C4D5EEE122F7FF2500C94D9F /* PaymentsRecordsTableViewCell.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
 				C4D5EEC922F7D99900C94D9F /* MentionMoneyResultViewController.m in Sources */,
@@ -1199,8 +1197,8 @@
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
-				C41335DD22F90B57007B55D3 /* UIView+XLPasswordView.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
+				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
@@ -1210,10 +1208,8 @@
 				C4D5EEDA22F7F91B00C94D9F /* ProceedAccountViewController.m in Sources */,
 				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
 				C4D5EEDD22F7FE7700C94D9F /* PaymentsRecordsViewController.m in Sources */,
-				C41335DE22F90B57007B55D3 /* UIImage+XLPasswordView.m in Sources */,
 				C4D5EED622F7F90400C94D9F /* ProceedAccountTableViewCell.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
-				C41335E022F90B57007B55D3 /* XLRandomKeyboard.m in Sources */,
 				C414003422F2ABB20010A463 /* DiscoveryViewController.m in Sources */,
 				C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */,
 				C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */,
@@ -1230,9 +1226,12 @@
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4D5EEE522F80CE300C94D9F /* PaymentHeaderView.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
+				C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */,
 				C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
+				C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */,
 				C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */,
+				C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */,
 				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C43B6BFC22FA951D00312286 /* RewardBallView.m in Sources */,
@@ -1253,6 +1252,7 @@
 				C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */,
 				C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */,
 				C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */,
+				C40DEF1022FBFDEC00E43F8C /* XLPasswordView.m in Sources */,
 				C48B107622EADE3C00FDFDED /* main.m in Sources */,
 				C43B6BCB22F92BED00312286 /* HomeViewController.m in Sources */,
 			);
