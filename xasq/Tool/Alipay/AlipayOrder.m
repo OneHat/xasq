@@ -9,28 +9,7 @@
 #import "AlipayOrder.h"
 #import <AlipaySDK/AlipaySDK.h>
 
-
-@interface APBizContent : NSObject
-
-// NOTE: (非必填项)商品描述
-@property (nonatomic, copy) NSString *body;
-
-// NOTE: 商品的标题/交易标题/订单标题/订单关键字等。
-@property (nonatomic, copy) NSString *subject;
-
-// NOTE: 商户网站唯一订单号
-@property (nonatomic, copy) NSString *out_trade_no;
-
-// NOTE: 该笔订单允许的最晚付款时间，逾期将关闭交易。
-//       取值范围：1m～15d m-分钟，h-小时，d-天，1c-当天(1c-当天的情况下，无论交易何时创建，都在0点关闭)
-//       该参数数值不接受小数点， 如1.5h，可转换为90m。
-@property (nonatomic, copy) NSString *timeout_express;
-
-// NOTE: 订单总金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000]
-@property (nonatomic, copy) NSString *total_amount;
-
-// NOTE: 收款支付宝用户ID。 如果该值为空，则默认为商户签约账号对应的支付宝用户ID (如 2088102147948060)
-@property (nonatomic, copy) NSString *seller_id;
+@interface APBizContent ()
 
 // NOTE: 销售产品码，商家和支付宝签约的产品码 (如 QUICK_MSECURITY_PAY)
 @property (nonatomic, copy) NSString *product_code;
@@ -39,6 +18,14 @@
 
 @implementation APBizContent
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _product_code = @"QUICK_MSECURITY_PAY";
+    }
+    return self;
+}
+
 - (NSString *)description {
     
     NSMutableDictionary *tmpDict = [NSMutableDictionary new];
@@ -46,8 +33,7 @@
     [tmpDict addEntriesFromDictionary:@{@"subject":_subject?:@"",
                                         @"out_trade_no":_out_trade_no?:@"",
                                         @"total_amount":_total_amount?:@"",
-                                        @"seller_id":_seller_id?:@"",
-                                        @"product_code":_product_code?:@"QUICK_MSECURITY_PAY"}];
+                                        @"product_code":_product_code}];
     
     // NOTE: 增加可变部分数据
     if (_body.length > 0) {
@@ -74,26 +60,20 @@
 // NOTE: 支付宝分配给开发者的应用ID(如2014072300007148)
 @property (nonatomic, copy) NSString *app_id;
 
-//// NOTE: 支付接口名称 alipay.trade.app.pay
-//@property (nonatomic, copy) NSString *method;
+// NOTE: 支付接口名称 alipay.trade.app.pay
+@property (nonatomic, copy) NSString *method;
 
-//// NOTE: (非必填项)仅支持JSON
-//@property (nonatomic, copy) NSString *format;
+// NOTE: (非必填项)仅支持JSON
+@property (nonatomic, copy) NSString *format;
 
-// NOTE: (非必填项)HTTP/HTTPS开头字符串
-@property (nonatomic, copy) NSString *return_url;
-
-//// NOTE: 参数编码格式，如utf-8,gbk,gb2312等
-//@property (nonatomic, copy) NSString *charset;
+// NOTE: 参数编码格式，如utf-8,gbk,gb2312等
+@property (nonatomic, copy) NSString *charset;
 
 // NOTE: 请求发送的时间，格式"yyyy-MM-dd HH:mm:ss"
 @property (nonatomic, copy) NSString *timestamp;
 
-//// NOTE: 请求调用的接口版本，固定为：1.0
-//@property (nonatomic, copy) NSString *version;
-
-// NOTE: 支付宝服务器主动通知商户服务器里指定的页面http路径(本Demo仅做展示所用，商户需要配置这个参数)
-@property (nonatomic, copy) NSString *notify_url;
+// NOTE: 请求调用的接口版本，固定为：1.0
+@property (nonatomic, copy) NSString *version;
 
 // NOTE: (非必填项)商户授权令牌，通过该令牌来帮助商户发起请求，完成业务(如201510BBaabdb44d8fd04607abf8d5931ec75D84)
 @property (nonatomic, copy) NSString *app_auth_token;
@@ -101,11 +81,23 @@
 // NOTE: 签名类型
 @property (nonatomic, copy) NSString *sign_type;
 
-
-
 @end
 
 @implementation AlipayOrder
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _app_id = @"";
+        
+        _method = @"alipay.trade.app.pay";
+        _format = @"JSON";
+        _charset = @"utf-8";
+        _sign_type = @"RSA2";//RSA、RSA2
+        _version = @"1.0";
+    }
+    return self;
+}
 
 - (NSString *)orderInfoEncoded:(BOOL)bEncoded {
     if (_app_id.length <= 0) {
@@ -115,29 +107,16 @@
     // NOTE: 增加不变部分数据
     NSMutableDictionary *tmpDict = [NSMutableDictionary new];
     [tmpDict addEntriesFromDictionary:@{@"app_id":_app_id,
-                                        @"method":@"alipay.trade.app.pay",
-                                        @"charset":@"utf-8",
+                                        @"method":_method,
+                                        @"format":_format,
+                                        @"charset":_charset,
                                         @"timestamp":self.timestamp,
-                                        @"version":@"1.0",
+                                        @"version":_version,
                                         @"biz_content":_biz_content.description?:@"",
-                                        @"sign_type":_sign_type?:@"RSA"}];
-    
-    
-    // NOTE: 增加可变部分数据
-//    if (_format.length > 0) {
-//        [tmpDict setObject:_format forKey:@"format"];
-//    }
-    
-    if (_return_url.length > 0) {
-        [tmpDict setObject:_return_url forKey:@"return_url"];
-    }
+                                        @"sign_type":_sign_type}];
     
     if (_notify_url.length > 0) {
         [tmpDict setObject:_notify_url forKey:@"notify_url"];
-    }
-    
-    if (_app_auth_token.length > 0) {
-        [tmpDict setObject:_app_auth_token forKey:@"app_auth_token"];
     }
     
     // NOTE: 排序，得出最终请求字串

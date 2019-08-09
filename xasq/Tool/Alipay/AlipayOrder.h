@@ -10,7 +10,31 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface APBizContent : NSObject
+
+// NOTE: (非必填项)商品描述
+@property (nonatomic, copy) NSString *body;
+
+// NOTE: 商品的标题/交易标题/订单标题/订单关键字等。
+@property (nonatomic, copy) NSString *subject;
+
+// NOTE: 商户网站唯一订单号
+@property (nonatomic, copy) NSString *out_trade_no;
+
+// NOTE: 该笔订单允许的最晚付款时间，逾期将关闭交易。
+//       取值范围：1m～15d m-分钟，h-小时，d-天，1c-当天(1c-当天的情况下，无论交易何时创建，都在0点关闭)
+//       该参数数值不接受小数点， 如1.5h，可转换为90m。
+@property (nonatomic, copy) NSString *timeout_express;
+
+// NOTE: 订单总金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000]
+@property (nonatomic, copy) NSString *total_amount;
+
+@end
+
 @interface AlipayOrder : NSObject
+
+// NOTE: 支付宝服务器主动通知商户服务器里指定的页面https路径
+@property (nonatomic, copy) NSString *notify_url;
 
 /**
  *  获取订单信息串

@@ -48,7 +48,9 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    _friendNewsHeight.constant = 0;
+    if (![UserDataManager isLogin]) {
+        _friendNewsHeight.constant = 0;
+    }
     
     //动态
     HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
