@@ -25,6 +25,9 @@
 		C40DEF0E22FBFDEC00E43F8C /* XLPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40DEF0522FBFDEC00E43F8C /* XLPasswordView.bundle */; };
 		C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0722FBFDEC00E43F8C /* XLPasswordInputView.m */; };
 		C40DEF1022FBFDEC00E43F8C /* XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0922FBFDEC00E43F8C /* XLPasswordView.m */; };
+		C40F055322FD05B600942908 /* MobilePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40F055222FD05B600942908 /* MobilePhoneViewController.m */; };
+		C40F055722FD06C400942908 /* MobilePhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40F055522FD06C400942908 /* MobilePhoneTableViewCell.m */; };
+		C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -195,6 +198,11 @@
 		C40DEF0722FBFDEC00E43F8C /* XLPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordInputView.m; sourceTree = "<group>"; };
 		C40DEF0822FBFDEC00E43F8C /* XLRandomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLRandomKeyboard.h; sourceTree = "<group>"; };
 		C40DEF0922FBFDEC00E43F8C /* XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLPasswordView.m; sourceTree = "<group>"; };
+		C40F055122FD05B600942908 /* MobilePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobilePhoneViewController.h; sourceTree = "<group>"; };
+		C40F055222FD05B600942908 /* MobilePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobilePhoneViewController.m; sourceTree = "<group>"; };
+		C40F055422FD06C400942908 /* MobilePhoneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobilePhoneTableViewCell.h; sourceTree = "<group>"; };
+		C40F055522FD06C400942908 /* MobilePhoneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobilePhoneTableViewCell.m; sourceTree = "<group>"; };
+		C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobilePhoneTableViewCell.xib; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -475,6 +483,8 @@
 				C40C3D8322F190C100BDE6A3 /* ResetPasswordViewController.h */,
 				C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */,
 				C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */,
+				C40F055122FD05B600942908 /* MobilePhoneViewController.h */,
+				C40F055222FD05B600942908 /* MobilePhoneViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -482,6 +492,9 @@
 		C40C3D7322F1404500BDE6A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C40F055422FD06C400942908 /* MobilePhoneTableViewCell.h */,
+				C40F055522FD06C400942908 /* MobilePhoneTableViewCell.m */,
+				C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -684,9 +697,9 @@
 		C48B106D22EADE1100FDFDED /* App */ = {
 			isa = PBXGroup;
 			children = (
-				C48B107022EADE1100FDFDED /* AppConfigure.h */,
 				C48B106E22EADE1100FDFDED /* AppDelegate.h */,
 				C48B107122EADE1100FDFDED /* AppDelegate.m */,
+				C48B107022EADE1100FDFDED /* AppConfigure.h */,
 				C48B106F22EADE1100FDFDED /* AppMarco.h */,
 				C48B107722EADE6200FDFDED /* AppPrefixHeader.pch */,
 				C48B102322EAC5DD00FDFDED /* Assets.xcassets */,
@@ -711,8 +724,6 @@
 				C4A1EE7F22EFD7BD00A1DE8C /* Device */,
 				C48B107922EADF2700FDFDED /* Language */,
 				C48B108822EAE72800FDFDED /* NetworkManager */,
-				C41335CD22F90B57007B55D3 /* XLPasswordView */,
-				C4A1EEB222F190BA00A1DE8C /* SegmentedControl */,
 				C40DEEFA22FBFDEC00E43F8C /* XLPasswordView */,
 			);
 			path = Tool;
@@ -1115,6 +1126,7 @@
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
+				C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
 				C40DEF0E22FBFDEC00E43F8C /* XLPasswordView.bundle in Resources */,
 				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
@@ -1261,6 +1273,7 @@
 				C414003B22F2AE110010A463 /* HomeMoreNewsViewController.m in Sources */,
 				C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */,
 				C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */,
+				C40F055722FD06C400942908 /* MobilePhoneTableViewCell.m in Sources */,
 				C43B6BB222F7CD5500312286 /* CapitalActionModuleView.m in Sources */,
 				C4D5EED122F7F15F00C94D9F /* SelectCurrencyTableViewCell.m in Sources */,
 				C43B6BED22F9731400312286 /* InviteCodeView.m in Sources */,
@@ -1284,6 +1297,7 @@
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,
 				C473B92122F40F820013E77D /* CommunityDynamicTableViewCell.m in Sources */,
+				C40F055322FD05B600942908 /* MobilePhoneViewController.m in Sources */,
 				C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */,
 				C4D5EEED22F8161B00C94D9F /* PaymentCurrencyView.m in Sources */,
 				C4A1EE9322EFF70B00A1DE8C /* ContactViewCell.m in Sources */,

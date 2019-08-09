@@ -11,6 +11,9 @@
 
 @interface UnauthorizedViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *documentLB;
+
+
 @end
 
 @implementation UnauthorizedViewController
@@ -21,9 +24,15 @@
 }
 
 - (IBAction)documentTypeClick:(UIButton *)sender {
-    
+    WeakObject;
     [self actionSheetWithItems:@[@"身份证", @"驾照", @"护照"] complete:^(NSInteger index) {
-        
+        if (index == 0) {
+            weakSelf.documentLB.text = @"身份证";
+        } else if (index == 1) {
+            weakSelf.documentLB.text = @"驾照";
+        } else {
+            weakSelf.documentLB.text = @"护照";
+        }
     }];
 
 }

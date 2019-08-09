@@ -7,6 +7,7 @@
 //
 
 #import "PayAndLoginPasswordViewController.h"
+#import "UIViewController+ActionSheet.h"
 
 @interface PayAndLoginPasswordViewController ()
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;  // 新密码
 @property (weak, nonatomic) IBOutlet UITextField *affirmPasswordTF; // 确认密码
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
+@property (weak, nonatomic) IBOutlet UILabel *channelLB;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn; // 验证码Btn
 @property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
 @property (weak, nonatomic) IBOutlet UIButton *affirmBtn; // 确认按钮
@@ -47,6 +49,18 @@
     
     _affirmBtn.layer.cornerRadius = 22.5;
     _affirmBtn.layer.masksToBounds = YES;
+}
+
+#pragma mark - 选择渠道
+- (IBAction)channelTypeClick:(UIButton *)sender {
+    WeakObject;
+    [self actionSheetWithItems:@[@"手机号", @"邮箱"] complete:^(NSInteger index) {
+        if (index == 0) {
+            weakSelf.channelLB.text = @"手机号";
+        } else {
+            weakSelf.channelLB.text = @"邮箱";
+        }
+    }];
 }
 
 #pragma mark - 发送验证码
