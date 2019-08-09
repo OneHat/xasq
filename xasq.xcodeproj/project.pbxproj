@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C400439422FC229C00DC4B80 /* AlipayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439322FC229C00DC4B80 /* AlipayOrder.m */; };
+		C400439822FC28CE00DC4B80 /* WechatShare.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439722FC28CE00DC4B80 /* WechatShare.m */; };
 		C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */; };
 		C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */; };
 		C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */; };
@@ -137,6 +139,7 @@
 		C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E522EEE59700C41B2B /* CredentialsViewController.m */; };
 		C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */; };
 		C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E41EC322EEBAE900E6DF50 /* UserViewController.m */; };
+		C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E5B65622FBAD15005C5EB9 /* TaskViewController.m */; };
 		EC74F3084881AC7459253485 /* Pods_xasq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +164,10 @@
 		138DB5B4132C8CCB5B6E9A65 /* Pods_xasq.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xasq.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		497B2F318DAF2CB6F6C9C9A9 /* Pods-xasq.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xasq.debug.xcconfig"; path = "Target Support Files/Pods-xasq/Pods-xasq.debug.xcconfig"; sourceTree = "<group>"; };
 		788A29B204A0EDAACCFEAF55 /* Pods-xasq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xasq.release.xcconfig"; path = "Target Support Files/Pods-xasq/Pods-xasq.release.xcconfig"; sourceTree = "<group>"; };
+		C400439222FC229C00DC4B80 /* AlipayOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlipayOrder.h; sourceTree = "<group>"; };
+		C400439322FC229C00DC4B80 /* AlipayOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlipayOrder.m; sourceTree = "<group>"; };
+		C400439622FC28CE00DC4B80 /* WechatShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatShare.h; sourceTree = "<group>"; };
+		C400439722FC28CE00DC4B80 /* WechatShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatShare.m; sourceTree = "<group>"; };
 		C40C3D7422F140BE00BDE6A3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -388,6 +395,8 @@
 		C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetViewController.m; sourceTree = "<group>"; };
 		C4E41EC222EEBAE900E6DF50 /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		C4E41EC322EEBAE900E6DF50 /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		C4E5B65522FBAD15005C5EB9 /* TaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		C4E5B65622FBAD15005C5EB9 /* TaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +425,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C400439122FC225A00DC4B80 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				C400439222FC229C00DC4B80 /* AlipayOrder.h */,
+				C400439322FC229C00DC4B80 /* AlipayOrder.m */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		C400439522FC288400DC4B80 /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				C400439622FC28CE00DC4B80 /* WechatShare.h */,
+				C400439722FC28CE00DC4B80 /* WechatShare.m */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
 		C40C3D7022F1404500BDE6A3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,12 +703,15 @@
 		C48B107822EADF2700FDFDED /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C400439522FC288400DC4B80 /* Wechat */,
+				C400439122FC225A00DC4B80 /* Alipay */,
 				C43B6BFD22FAA68500312286 /* CMPedometer */,
 				C43B6BDC22F9576800312286 /* LocalDataManager */,
 				C4C2CAA622EE8FEE0086761A /* Category */,
 				C4A1EE7F22EFD7BD00A1DE8C /* Device */,
 				C48B107922EADF2700FDFDED /* Language */,
 				C48B108822EAE72800FDFDED /* NetworkManager */,
+				C41335CD22F90B57007B55D3 /* XLPasswordView */,
 				C4A1EEB222F190BA00A1DE8C /* SegmentedControl */,
 				C40DEEFA22FBFDEC00E43F8C /* XLPasswordView */,
 			);
@@ -788,13 +818,6 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
-		C4A1EEB222F190BA00A1DE8C /* SegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SegmentedControl;
-			sourceTree = "<group>";
-		};
 		C4C2CAA622EE8FEE0086761A /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,6 +866,8 @@
 				C414003A22F2AE110010A463 /* HomeMoreNewsViewController.m */,
 				C414004122F2CE8D0010A463 /* MinerViewController.h */,
 				C414004222F2CE8D0010A463 /* MinerViewController.m */,
+				C4E5B65522FBAD15005C5EB9 /* TaskViewController.h */,
+				C4E5B65622FBAD15005C5EB9 /* TaskViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -967,6 +992,7 @@
 				C48B101422EAC5DC00FDFDED /* Frameworks */,
 				C48B101522EAC5DC00FDFDED /* Resources */,
 				1FB83D5B9368F276DE555721 /* [CP] Embed Pods Frameworks */,
+				7C2FDBA8A8EAFB4A64C6FBD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1161,6 +1187,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7C2FDBA8A8EAFB4A64C6FBD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-xasq/Pods-xasq-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-xasq/Pods-xasq-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-xasq/Pods-xasq-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1174,6 +1217,7 @@
 				C43B6BC622F92AE400312286 /* HomeRankViewCell.m in Sources */,
 				C43B6BF822FA7D6A00312286 /* InviteHistoryViewCell.m in Sources */,
 				C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */,
+				C400439822FC28CE00DC4B80 /* WechatShare.m in Sources */,
 				C43B6C0322FAA7CD00312286 /* UserStepManager.m in Sources */,
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4D5EEC422F7B96A00C94D9F /* MentionMoneyViewController.m in Sources */,
@@ -1185,6 +1229,7 @@
 				C43B6BE522F9580900312286 /* UserDataManager.m in Sources */,
 				C43B6BDF22F957DD00312286 /* ApplicationData.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
+				C400439422FC229C00DC4B80 /* AlipayOrder.m in Sources */,
 				C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */,
 				C4E41EC622EEBAE900E6DF50 /* UserViewController.m in Sources */,
 				C4D5EEE122F7FF2500C94D9F /* PaymentsRecordsTableViewCell.m in Sources */,
@@ -1198,6 +1243,7 @@
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
+				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
