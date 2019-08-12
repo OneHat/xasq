@@ -18,7 +18,7 @@ static NSString *xasqBaseUrlCommunity = @"http://192.168.100.200:8481/";
 static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #endif
 
-const NSTimeInterval xasqTimeoutInterval = 15;
+const NSTimeInterval xasqTimeoutInterval = 30;
 
 @interface NetworkManager()
     
