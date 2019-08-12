@@ -21,7 +21,7 @@ static NSString *LanguageVn = @"vi-VN";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
 //    //第一次进入，没有设置过语言
-//    if (![userDefaults objectForKey:@"LanguageCacheKey"]) {
+//    if (![userDefaults objectForKey:LanguageCacheKey]) {
 //        NSArray *languages = [userDefaults objectForKey:@"AppleLanguages"];
 //        NSString *localLanguge = [languages objectAtIndex:0];
 //
@@ -64,10 +64,6 @@ static NSString *LanguageVn = @"vi-VN";
     }
     
     return type;
-}
-
-+(NSString *)currentLanguage {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:LanguageCacheKey];
 }
     
 @end

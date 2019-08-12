@@ -56,21 +56,24 @@ const NSTimeInterval xasqTimeoutInterval = 15;
     [self updateHTTPHeaderField];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
-    [_sessionManager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSLog(@"%@",responseObject);
-        
-        if (success) {
-            
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        if (failure) {
-            
-        }
-    }];
+    [_sessionManager GET:url
+              parameters:[self updateParameters:parameters]
+                progress:^(NSProgress * _Nonnull downloadProgress) {}
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     
+                     NSInteger code = [responseObject[@"code"] integerValue];
+                     if (code == 200) {
+                         success(responseObject);
+                     } else {
+                         NSError *result = [self handleResponseObject:responseObject];
+                         failure(result);
+                     }
+                     
+                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     
+                     NSError *result = [self handleError:error];
+                     failure(result);
+                 }];
 }
 
 ///post方法请求
@@ -79,14 +82,39 @@ const NSTimeInterval xasqTimeoutInterval = 15;
     [self updateHTTPHeaderField];
     
     NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
-    [_sessionManager POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
+    [_sessionManager POST:url
+               parameters:[self updateParameters:parameters]
+                 progress:^(NSProgress * _Nonnull downloadProgress) {}
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                      NSInteger code = [responseObject[@"code"] integerValue];
+                      if (code == 200) {
+                          success(responseObject);
+                      } else {
+                          NSError *result = [self handleResponseObject:responseObject];
+                          failure(result);
+                      }
+                      
+                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                      NSError *result = [self handleError:error];
+                      failure(result);
+                  }];
 }
 
+#pragma mark-
+- (NSError *)handleError:(NSError *)error {
+    NSDictionary *info = @{ErrorMessageKeyXasq:@"网络错误"};
+    NSError *result = [NSError errorWithDomain:error.domain code:error.code userInfo:info];
+    return result;
+}
+
+- (NSError *)handleResponseObject:(NSDictionary *)responseObject {
+    NSInteger code = [responseObject[@"code"] integerValue];
+    NSString *message = responseObject[@"msg"];
+    
+    NSDictionary *info = @{ErrorMessageKeyXasq:message};
+    NSError *result = [NSError errorWithDomain:message code:code userInfo:info];
+    return result;
+}
 
 #pragma mark-
 ///请求头信息
@@ -95,8 +123,29 @@ const NSTimeInterval xasqTimeoutInterval = 15;
     if ([UserDataManager authorization]) {
         [_sessionManager.requestSerializer setValue:[UserDataManager authorization] forHTTPHeaderField:@"Authorization"];
     }
-    [_sessionManager.requestSerializer setValue:@"zh-cn" forHTTPHeaderField:@"Content-Language"];
+    [_sessionManager.requestSerializer setValue:[self currentLanguage] forHTTPHeaderField:@"Content-Language"];
     [_sessionManager.requestSerializer setValue:@"ios.xasq" forHTTPHeaderField:@"Content-origin"];
+}
+
+- (NSDictionary *)updateParameters:(NSDictionary *)parameters {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+    if (parameters) {
+        [result addEntriesFromDictionary:parameters];
+    }
+    
+    return result;
+}
+
+- (NSString *)currentLanguage {
+    if ([LanguageTool currentLanguageType] == LanguageTypeZhHans) {
+        return @"zh-cn";
+        
+    } else if ([LanguageTool currentLanguageType] == LanguageTypeEn) {
+        return @"en-us";
+    }
+    
+    return @"zh-cn";;
 }
     
 @end

@@ -36,15 +36,29 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    //设置rootViewController
+    [self launchRootController];
+    
+    [self.window makeKeyAndVisible];
+    
+    //键盘遮挡
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+    
+//    // 极光推送
+//    [self initJPUSHWithOptions:launchOptions];
+    
+    return YES;
+}
+
+- (void)launchRootController {
     if ([ApplicationData checkVersion]) {
-        //新版版
+        //新版本
         UserGuideViewController *guideVC = [[UserGuideViewController alloc] init];
         guideVC.DissmissGuideBlock = ^{
-            RootViewController *rootVC = [[RootViewController alloc] init];
-            self.window.rootViewController = rootVC;
-            
             // 存储新版本
             [ApplicationData saveNewVersion];
+            [self launchRootController];
+
         };
         self.window.rootViewController = guideVC;
     } else {
@@ -56,15 +70,6 @@
         self.window.rootViewController = launchVC;
     }
     
-    [self.window makeKeyAndVisible];
-    
-    //键盘遮挡
-    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
-    
-//    // 极光推送
-//    [self initJPUSHWithOptions:launchOptions];
-    
-    return YES;
 }
     
 /********

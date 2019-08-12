@@ -8,6 +8,8 @@
 
 #import "RequestApi.h"
 
+NSString *const ErrorMessageKeyXasq = @"ErrorMessageKeyXasq";
+
 NSString *const UserRegister = @"user/register";
 NSString *const UserLoginMobile = @"user/login/mobile";
 NSString *const UserLoginEmail = @"user/login/email";
