@@ -52,10 +52,10 @@
 }
 
 - (void)quitLoginClick {
-    [UserDataManager deleteLoginStatus];
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否退出登录?" preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
+        [[UserDataManager shareManager] deleteLoginStatus];
         NSArray *VCArr = self.navigationController.viewControllers;
         UIViewController *topVC = VCArr.firstObject;
         UITabBarController *tabbarVC = topVC.tabBarController;

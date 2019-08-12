@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shareManager;
 
 /// userId 判断是否登录
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong, nullable) NSString *userId;
 /**
  *
  *  "userName":"185707767",      用户名
@@ -28,10 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  "nickName":"杀手十七",         昵称
  *  "level":"lv1"                等级
  */
-@property (nonatomic, strong) NSDictionary *userData;
+@property (nonatomic, strong, nullable) NSDictionary *userData;
 
 ///退出登录后,删除登录状态
-+ (void)deleteLoginStatus;
+- (void)deleteLoginStatus;
 
 
 

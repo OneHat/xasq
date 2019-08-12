@@ -95,16 +95,21 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
         
     } else if ([selectVC isKindOfClass:[UserViewController class]]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
-        if (![UserDataManager shareManager].userId) {
+        
+        NSString *userId = [UserDataManager shareManager].userId;
+        if (!userId) {
             LoginViewController *VC = [[LoginViewController alloc] init];
             VC.closeLoginBlock = ^(BOOL isLogin) {
-                if (!isLogin) {
-                    tabBarController.selectedIndex = 0;
+                if (isLogin) {
+                    tabBarController.selectedIndex = 4;
                 }
             };
-            VC.hidesBottomBarWhenPushed = YES;
-            [selectVC.navigationController pushViewController:VC animated:YES];
+//            VC.hidesBottomBarWhenPushed = YES;
+//            [selectVC.navigationController pushViewController:VC animated:YES];
+            [self presentViewController:VC animated:NO completion:nil];
+            return NO;
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
         }
     }
     
