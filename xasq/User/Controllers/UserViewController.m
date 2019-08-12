@@ -82,6 +82,9 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
     _hideNavBarAnimation = YES;
+    if ([UserDataManager shareManager].userId) {
+        [self getUserinfoData];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -91,6 +94,22 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
 
 - (void)changeUserHideAnimation {
     _hideNavBarAnimation = NO;
+}
+
+- (void)getUserinfoData {
+    WeakObject;
+    NSDictionary *dict = @{@"userId"          :   [UserDataManager shareManager].userId,
+                           @"sysVersion"      :   AppVersion,
+                           };
+    [[NetworkManager sharedManager] getRequest:UserInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
+        if (data) {
+            [UserDataManager shareManager].userData = data[@"data"];
+            weakSelf.headerView.nameLB.text = data[@"data"][@"userName"];
+            [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:data[@"headImg"]] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
 }
 
 #pragma mark-

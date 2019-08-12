@@ -12,6 +12,7 @@
 #import "DiscoveryViewController.h"
 #import "CapitalViewController.h"
 #import "UserViewController.h"
+#import "LoginViewController.h"
 
 @interface RootViewController ()<UITabBarControllerDelegate>
 
@@ -86,7 +87,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
         
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
-        if (![UserDataManager isLogin]) {
+        if (![UserDataManager shareManager].userId) {
             
             return NO;
         }
@@ -95,6 +96,16 @@
         
     } else if ([selectVC isKindOfClass:[UserViewController class]]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
+        if (![UserDataManager shareManager].userId) {
+            LoginViewController *VC = [[LoginViewController alloc] init];
+            VC.closeLoginBlock = ^(BOOL isLogin) {
+                if (!isLogin) {
+                    tabBarController.selectedIndex = 0;
+                }
+            };
+            VC.hidesBottomBarWhenPushed = YES;
+            [selectVC.navigationController pushViewController:VC animated:YES];
+        }
     }
     
     return YES;
