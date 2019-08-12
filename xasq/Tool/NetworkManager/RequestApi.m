@@ -10,7 +10,7 @@
 
 NSString *const ErrorMessageKeyXasq = @"ErrorMessageKeyXasq";
 
-NSString *const UserRegister = @"user/register";
+NSString *const UserRegister = @"user/register/standard";
 NSString *const UserLoginMobile = @"user/login/mobile";
 NSString *const UserLoginEmail = @"user/login/email";
 

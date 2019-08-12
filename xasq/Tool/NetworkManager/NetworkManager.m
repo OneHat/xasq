@@ -11,9 +11,9 @@
 #import "DeviceInformation.h"
 
 #ifdef DEBUG
-static NSString *xasqBaseUrl = @"https://xasq.com/";
+static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #else
-static NSString *xasqBaseUrl = @"https://xasq.com/";
+static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #endif
 
 const NSTimeInterval xasqTimeoutInterval = 15;
