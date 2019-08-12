@@ -57,8 +57,11 @@ const NSTimeInterval xasqTimeoutInterval = 15;
     
     [self updateHTTPHeaderField];
     
-    [_sessionManager GET:[self baseUrlWithPath:URLString]
-              parameters:[self updateParameters:parameters]
+    NSString *absoluteString = [self baseUrlWithPath:URLString];
+    NSDictionary *parameter = [self updateParameters:parameters];
+    
+    [_sessionManager GET:absoluteString
+              parameters:parameter
                 progress:^(NSProgress * _Nonnull downloadProgress) {}
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                      
@@ -81,9 +84,11 @@ const NSTimeInterval xasqTimeoutInterval = 15;
 - (void)postRequest:(NSString *)URLString parameters:(nullable NSDictionary *)parameters success:(SuccessBlock)success failure:(FailureBlock)failure {
     
     [self updateHTTPHeaderField];
+    NSString *absoluteString = [self baseUrlWithPath:URLString];
+    NSDictionary *parameter = [self updateParameters:parameters];
     
-    [_sessionManager POST:[self baseUrlWithPath:URLString]
-               parameters:[self updateParameters:parameters]
+    [_sessionManager POST:absoluteString
+               parameters:parameter
                  progress:^(NSProgress * _Nonnull downloadProgress) {}
                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                       NSInteger code = [responseObject[@"code"] integerValue];

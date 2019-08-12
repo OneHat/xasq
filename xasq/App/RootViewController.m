@@ -86,6 +86,11 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
         
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
+        if (![UserDataManager isLogin]) {
+            
+            return NO;
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
         
     } else if ([selectVC isKindOfClass:[UserViewController class]]) {

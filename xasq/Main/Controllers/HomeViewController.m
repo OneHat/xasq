@@ -83,6 +83,14 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 //        RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rect];
 //        [self.view addSubview:ballView];
 //    }
+    
+    
+    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"0"} success:^(NSDictionary * _Nonnull data) {
+        
+        NSLog(@"%@",data);
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

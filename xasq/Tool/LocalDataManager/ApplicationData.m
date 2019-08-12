@@ -7,23 +7,45 @@
 //
 
 #import "ApplicationData.h"
+#import <YYModel/YYModel.h>
 
- NSString * const DSSJLastVersion = @"DSSJApplicationLastVersion";
+NSString * const DSSJLastVersion = @"DSSJApplicationLastVersion";
+
+@implementation UpdateInfoObject
+
++ (instancetype)modelWithDictionary:(NSDictionary *)dict {
+    
+    return [UpdateInfoObject yy_modelWithDictionary:dict];
+}
+
+
+@end
+
 
 @implementation ApplicationData
 
++ (instancetype)shareData {
+    static id sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+    
+}
+
 #pragma mark -
-+(void)saveNewVersion {
+- (void)saveNewVersion {
     [[NSUserDefaults standardUserDefaults] setObject:AppVersion forKey:DSSJLastVersion];
 }
 
-+ (NSString *)lastVersion {
+- (NSString *)lastVersion {
     return [[NSUserDefaults standardUserDefaults] objectForKey:DSSJLastVersion];
 }
 
 #pragma mark -
-+ (BOOL)checkVersion {
-    NSString *lastVersion = [ApplicationData lastVersion];
+- (BOOL)isFirstLanuch {
+    NSString *lastVersion = [self lastVersion];
     if (!lastVersion) {
         return YES;
     }

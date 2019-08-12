@@ -20,4 +20,7 @@ target 'xasq' do
   pod 'WechatOpenSDK', '1.8.4'
   pod 'AlipaySDK-iOS', '15.5.9'
 
+  pod 'YYModel', '1.0.4'
+  
+  
 end

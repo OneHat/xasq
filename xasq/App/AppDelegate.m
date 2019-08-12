@@ -51,12 +51,12 @@
 }
 
 - (void)launchRootController {
-    if ([ApplicationData checkVersion]) {
+    if ([[ApplicationData shareData] isFirstLanuch]) {
         //新版本
         UserGuideViewController *guideVC = [[UserGuideViewController alloc] init];
         guideVC.DissmissGuideBlock = ^{
             // 存储新版本
-            [ApplicationData saveNewVersion];
+            [[ApplicationData shareData] saveNewVersion];
             [self launchRootController];
 
         };
@@ -71,7 +71,21 @@
     }
     
 }
-    
+
+- (void)checkNewVersion {
+    NSString *currentVersion = [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""];
+    [[NetworkManager sharedManager] getRequest:OperationSystemVersion parameters:@{@"currentVersion":currentVersion} success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *updateInfo = data[@"data"];
+        if (updateInfo.allKeys.count > 0) {
+            [ApplicationData shareData].showNewVersion = YES;
+            [ApplicationData shareData].updateInfo = [UpdateInfoObject modelWithDictionary:updateInfo];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+
 /********
  ********
 #pragma mark-
