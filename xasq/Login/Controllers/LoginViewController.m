@@ -44,10 +44,10 @@
 }
 
 - (IBAction)closeClick:(UIButton *)sender {
-    [self isLoginSuccessful:NO];
+    [self isLoginSuccessfull:NO];
 }
 
-- (void)isLoginSuccessful:(BOOL)isLogin {
+- (void)isLoginSuccessfull:(BOOL)isLogin {
     if (_closeLoginBlock) {
         _closeLoginBlock(isLogin);
     }
@@ -75,7 +75,35 @@
         [self showMessage:@"请输入密码"];
         return;
     }
-    
+    _loginBtn.userInteractionEnabled = NO;
+    [self loading];
+    WeakObject;
+    NSString *URLStr;
+    if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
+        // 邮箱登录
+        URLStr = UserLoginEmail;
+    } else {
+        // 手机号登录
+        URLStr = UserLoginMobile;
+    }
+    NSDictionary *dict = @{@"loginName"     :   _accountTF.text,
+                           @"password"      :   _passwordTF.text,
+                           @"loginAddress"  :   @"上海",
+                           };
+    [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        weakSelf.loginBtn.userInteractionEnabled = YES;
+        [weakSelf hideHUD];
+        [self showMessage:@"登录成功"];
+        if (data) {
+            [UserDataManager shareManager].userId = data[@"data"][@"userId"];
+            [UserDataManager saveAuthorization:data[@"data"][@"accessToken"]];
+        }
+        [self isLoginSuccessfull:YES];
+    } failure:^(NSError * _Nonnull error) {
+        weakSelf.loginBtn.userInteractionEnabled = YES;
+        [weakSelf hideHUD];
+        [self showErrow:error];
+    }];
 }
 
 #pragma mark - 忘记密码

@@ -157,19 +157,24 @@
         [self showMessage:@"请输入密码"];
         return;
     }
-    NSDictionary *dict = @{@"userName" : _accountTF.text, @"language" : @"zh-cn", @"countryCode" : @"86", @"mobile" : _accountTF.text, @"password" : _passwordTF.text, @"validCode" : _codeTF.text, @"validCodeType" : @"mobile"};
+    NSString *typeStr;
+    if (_type == 0) {
+        typeStr = @"mobile";
+    } else {
+        typeStr = @"email";
+    }
+    NSDictionary *dict = @{@"userName"      :   _accountTF.text,
+                           @"language"      :   @"zh-cn",
+                           @"countryCode"   :   _areaCodeLB.text,
+                           typeStr          :   _accountTF.text,
+                           @"password"      :   _passwordTF.text,
+                           @"validCode"     :   _codeTF.text,
+                           @"validCodeType" :   typeStr,
+                           @"userType"      :   @"0"};
     [[NetworkManager sharedManager] postRequest:UserRegister parameters:dict success:^(NSDictionary * _Nonnull data) {
-        if (data) {
-            
-        } else {
-            
-        }
+        [self showMessage:@"注册成功"];
     } failure:^(NSError * _Nonnull error) {
-        if (error) {
-            
-        } else {
-            
-        }
+        [self showErrow:error];
     }];
 }
 

@@ -12,11 +12,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserDataManager : NSObject
 
-///是否登录，已经登录返回YES，否则返回NO
-+ (BOOL)isLogin;
++ (instancetype)shareManager;
 
-///登录成功后,保存登录状态
-+ (void)saveLoginStatus;
+/// userId 判断是否登录
+@property (nonatomic, strong) NSString *userId;
+/**
+ *
+ *  "userName":"185707767",      用户名
+ *  "areaCode":"012",            地区
+ *  "mobile":"18570747167",      手机号
+ *  "email":"741794681@qq.com",  邮箱
+ *  "status":"0",
+ *  "userType":0,
+ *  "headImg":"xx/xxx/xx.png",   头像
+ *  "nickName":"杀手十七",         昵称
+ *  "level":"lv1"                等级
+ */
+@property (nonatomic, strong) NSDictionary *userData;
 
 ///退出登录后,删除登录状态
 + (void)deleteLoginStatus;
@@ -31,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///登录成功,存储唯一标识到本地
 + (void)deleteAuthorization;
+
+
 
 @end
 

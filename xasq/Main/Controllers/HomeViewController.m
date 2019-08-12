@@ -48,7 +48,7 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    if (![UserDataManager isLogin]) {
+    if (![UserDataManager shareManager].userId) {
         _friendNewsHeight.constant = 0;
     }
     

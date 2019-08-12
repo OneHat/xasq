@@ -8,21 +8,46 @@
 
 #import "UserDataManager.h"
 
-NSString * const DSSJUserLoginStatus = @"DSSJUserLoginStatus";
 NSString * const DSSJUserLoginAuthorization = @"DSSJUserLoginAuthorization";
+NSString * const DSSJUserId = @"DSSJUserId";
+NSString * const DSSJUserData = @"DSSJUserData";
+
 
 @implementation UserDataManager
 
-+ (BOOL)isLogin {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:DSSJUserLoginStatus];
++ (instancetype)shareManager {
+    static id sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+    
 }
 
-+ (void)saveLoginStatus {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DSSJUserLoginStatus];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.userId = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserId];
+        self.userData = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserData];
+    }
+    return self;
+}
+
+- (void)setUserId:(NSString *)userId {
+    _userId = userId;
+    [[NSUserDefaults standardUserDefaults] setObject:userId forKey:DSSJUserId];
+}
+
+- (void)setUserData:(NSDictionary *)userData {
+    _userData = userData;
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:DSSJUserData];
 }
 
 + (void)deleteLoginStatus {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserLoginStatus];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserData];
 }
 
 #pragma mark -

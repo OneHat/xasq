@@ -54,8 +54,8 @@
                         <constraint firstAttribute="height" constant="55" id="TfJ-Hg-L0T"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="158****8888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVT-zz-KOM">
-                    <rect key="frame" x="91" y="64" width="141" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVT-zz-KOM">
+                    <rect key="frame" x="91" y="64" width="20.5" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="uC9-wg-2Id"/>
                     </constraints>
@@ -63,8 +63,8 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国大陆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5j-Kj-fBr">
-                    <rect key="frame" x="91" y="99" width="54" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5j-Kj-fBr">
+                    <rect key="frame" x="91" y="99" width="12.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="HT8-Gh-62g"/>
                     </constraints>
@@ -241,6 +241,9 @@
                 <outlet property="friendBtn" destination="kH7-sM-t1D" id="UfO-TO-mxU"/>
                 <outlet property="friendImageV" destination="mwB-I5-jke" id="HZm-4r-6HA"/>
                 <outlet property="messageBtn" destination="ZVB-CE-bTs" id="aqZ-Wq-mhJ"/>
+                <outlet property="nameLB" destination="rVT-zz-KOM" id="4sU-cZ-F3z"/>
+                <outlet property="portraitImageV" destination="g31-U7-nWp" id="X1I-Ee-YqQ"/>
+                <outlet property="regionLB" destination="x5j-Kj-fBr" id="cZE-47-8aW"/>
                 <outlet property="taskBtn" destination="ZHp-LN-o0z" id="W7c-Y5-XUU"/>
                 <outlet property="taskImageV" destination="Y9F-KS-Sya" id="gIQ-Lk-UOE"/>
             </connections>

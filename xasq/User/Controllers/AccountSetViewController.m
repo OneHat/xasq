@@ -45,9 +45,29 @@
     [footButton setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
     footButton.titleLabel.font = [UIFont systemFontOfSize:15];
     footButton.backgroundColor = [UIColor whiteColor];
+    [footButton addTarget:self action:@selector(quitLoginClick) forControlEvents:(UIControlEventTouchUpInside)];
     _tableView.tableFooterView = footButton;
     [self.view addSubview:_tableView];
     
+}
+
+- (void)quitLoginClick {
+    [UserDataManager deleteLoginStatus];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否退出登录?" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSArray *VCArr = self.navigationController.viewControllers;
+        UIViewController *topVC = VCArr.firstObject;
+        UITabBarController *tabbarVC = topVC.tabBarController;
+        tabbarVC.selectedIndex = 0;
+        [self.navigationController popViewControllerAnimated:NO];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertVC addAction:determine];
+    [alertVC addAction:cancel];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
