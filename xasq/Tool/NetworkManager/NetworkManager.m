@@ -11,7 +11,9 @@
 #import "DeviceInformation.h"
 
 #ifdef DEBUG
-static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
+static NSString *xasqBaseUrlUser = @"http://192.168.100.200:8081/";
+static NSString *xasqBaseUrlOperation = @"http://192.168.100.200:8281/";
+static NSString *xasqBaseUrlCommunity = @"http://192.168.100.200:8481/";
 #else
 static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #endif
@@ -55,8 +57,7 @@ const NSTimeInterval xasqTimeoutInterval = 30;
     
     [self updateHTTPHeaderField];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
-    [_sessionManager GET:url
+    [_sessionManager GET:[self baseUrlWithPath:URLString]
               parameters:[self updateParameters:parameters]
                 progress:^(NSProgress * _Nonnull downloadProgress) {}
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -81,8 +82,7 @@ const NSTimeInterval xasqTimeoutInterval = 30;
     
     [self updateHTTPHeaderField];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@",xasqBaseUrl,URLString];
-    [_sessionManager POST:url
+    [_sessionManager POST:[self baseUrlWithPath:URLString]
                parameters:[self updateParameters:parameters]
                  progress:^(NSProgress * _Nonnull downloadProgress) {}
                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -135,6 +135,23 @@ const NSTimeInterval xasqTimeoutInterval = 30;
     }
     
     return result;
+}
+
+- (NSString *)baseUrlWithPath:(NSString *)path {
+    NSString *urlString = @"";
+    
+    if ([path hasPrefix:@"user"]) {
+        urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlUser,path];
+        
+    } else if ([path hasPrefix:@"operation"]) {
+        urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlOperation,path];
+        
+    } else if ([path hasPrefix:@"community"]) {
+        urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlCommunity,path];
+        
+    }
+    
+    return urlString;
 }
 
 - (NSString *)currentLanguage {
