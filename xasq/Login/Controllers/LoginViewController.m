@@ -51,7 +51,13 @@
     if (_closeLoginBlock) {
         _closeLoginBlock(isLogin);
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+    
 }
 
 - (IBAction)removeBtnClick:(UIButton *)sender {
@@ -95,7 +101,7 @@
         [weakSelf hideHUD];
         [self showMessage:@"登录成功"];
         if (data) {
-            [UserDataManager shareManager].userId = data[@"data"][@"userId"];
+            [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
             [UserDataManager saveAuthorization:data[@"data"][@"accessToken"]];
         }
         [self isLoginSuccessfull:YES];

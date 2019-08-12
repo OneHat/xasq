@@ -45,7 +45,9 @@ NSString * const DSSJUserData = @"DSSJUserData";
     [[NSUserDefaults standardUserDefaults] setObject:userData forKey:DSSJUserData];
 }
 
-+ (void)deleteLoginStatus {
+- (void)deleteLoginStatus {
+    self.userId = nil;
+    self.userData = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserId];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserData];
 }
