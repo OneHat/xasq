@@ -52,11 +52,7 @@
         _closeLoginBlock(isLogin);
     }
     
-    if (self.navigationController) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

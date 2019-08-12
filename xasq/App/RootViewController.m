@@ -100,14 +100,15 @@
         if (!userId) {
             LoginViewController *VC = [[LoginViewController alloc] init];
             VC.closeLoginBlock = ^(BOOL isLogin) {
-                if (isLogin) {
-                    tabBarController.selectedIndex = 4;
+                
+                if (!isLogin) {
+                    tabBarController.selectedIndex = 0;
                 }
             };
-//            VC.hidesBottomBarWhenPushed = YES;
-//            [selectVC.navigationController pushViewController:VC animated:YES];
-            [self presentViewController:VC animated:NO completion:nil];
-            return NO;
+            
+            VC.hidesBottomBarWhenPushed = YES;
+            [NVC pushViewController:VC animated:NO];
+            
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
         }
