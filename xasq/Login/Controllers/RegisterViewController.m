@@ -63,7 +63,7 @@
     [self showTime];
     if (_type == 0) {
         [self initRightBtnWithTitle:@"手机号" color:ThemeColorText];
-        // 邮箱注册
+        // 切换邮箱注册
         _type = 1;
         _countriesLB.hidden = YES;
         _countriesNameLB.hidden = YES;
@@ -76,7 +76,7 @@
         _accountTF.placeholder = @"请输入邮箱";
     } else {
         [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
-        // 手机注册
+        // 切换手机注册
         _type = 0;
         _countriesLB.hidden = NO;
         _countriesNameLB.hidden = NO;
@@ -104,6 +104,14 @@
 }
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
+    if (_accountTF.text.length == 0) {
+        if (_type == 0) {
+            [self showMessage:@"请输入手机号"];
+        } else {
+            [self showMessage:@"请输入邮箱账号"];
+        }
+        return;
+    }
     sender.userInteractionEnabled = NO;
     if (_count == 0) {
         //60秒后再次启动

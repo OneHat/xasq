@@ -66,6 +66,17 @@
         _passwordTF.secureTextEntry = YES;
     }
 }
+#pragma mark - 登录
+- (IBAction)loginClick:(UIButton *)sender {
+    if (_accountTF.text.length == 0) {
+        [self showMessage:@"请输入账号"];
+        return;
+    } else if (_passwordTF.text.length == 0) {
+        [self showMessage:@"请输入密码"];
+        return;
+    }
+    
+}
 
 #pragma mark - 忘记密码
 - (IBAction)retrievePassword:(UIButton *)sender {

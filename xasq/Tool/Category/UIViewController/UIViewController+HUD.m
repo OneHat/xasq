@@ -49,7 +49,7 @@
         hud.label.text = message;
     }
     if (hide) {
-        [hud hideAnimated:YES afterDelay:2.0];
+        [hud hideAnimated:YES afterDelay:1.5];
     }
     
     return hud;
