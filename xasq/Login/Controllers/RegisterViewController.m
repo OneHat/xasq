@@ -143,6 +143,34 @@
 
 #pragma mark - 注册
 - (IBAction)registerBtnClick:(UIButton *)sender {
+    if (_accountTF.text.length == 0) {
+        if (_type == 0) {
+            [self showMessage:@"请输入手机号"];
+        } else {
+            [self showMessage:@"请输入邮箱账号"];
+        }
+        return;
+    } else if (_codeTF.text.length == 0) {
+        [self showMessage:@"请输入验证码"];
+        return;
+    } else if (_passwordTF.text.length == 0) {
+        [self showMessage:@"请输入密码"];
+        return;
+    }
+    NSDictionary *dict = @{@"userName" : _accountTF.text, @"language" : @"zh-cn", @"countryCode" : @"86", @"mobile" : _accountTF.text, @"password" : _passwordTF.text, @"validCode" : _codeTF.text, @"validCodeType" : @"mobile"};
+    [[NetworkManager sharedManager] postRequest:UserRegister parameters:dict success:^(NSDictionary * _Nonnull data) {
+        if (data) {
+            
+        } else {
+            
+        }
+    } failure:^(NSError * _Nonnull error) {
+        if (error) {
+            
+        } else {
+            
+        }
+    }];
 }
 
 /*
