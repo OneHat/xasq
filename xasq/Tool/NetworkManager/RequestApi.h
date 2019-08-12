@@ -10,6 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 错误信息
+FOUNDATION_EXPORT NSString *const ErrorMessageKeyXasq;
+
+
 //********************************用户模块
 /// 注册 POST
 FOUNDATION_EXPORT NSString *const UserRegister;

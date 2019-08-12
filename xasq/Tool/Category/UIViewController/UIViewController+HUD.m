@@ -24,7 +24,8 @@
 }
 
 - (void)showErrow:(NSError *)error {
-    
+    NSString *text = error.userInfo[ErrorMessageKeyXasq];
+    [self showMessage:text toView:self.view hide:YES];
 }
 
 - (void)hideHUD {

@@ -32,9 +32,6 @@ typedef NS_ENUM(NSInteger, LanguageType) {
 ///当前语言类型
 + (LanguageType)currentLanguageType;
 
-/////当前语言
-//+ (NSString *)currentLanguage;
-
 @end
 
 NS_ASSUME_NONNULL_END
