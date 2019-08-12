@@ -47,6 +47,8 @@
 //    // 极光推送
 //    [self initJPUSHWithOptions:launchOptions];
     
+    [self checkNewVersion];
+    
     return YES;
 }
 
@@ -77,7 +79,7 @@
     [[NetworkManager sharedManager] getRequest:OperationSystemVersion parameters:@{@"currentVersion":currentVersion} success:^(NSDictionary * _Nonnull data) {
         
         NSDictionary *updateInfo = data[@"data"];
-        if (updateInfo.allKeys.count > 0) {
+        if ([updateInfo isKindOfClass:[NSDictionary class]] && updateInfo.allKeys.count > 0) {
             [ApplicationData shareData].showNewVersion = YES;
             [ApplicationData shareData].updateInfo = [UpdateInfoObject modelWithDictionary:updateInfo];
         }

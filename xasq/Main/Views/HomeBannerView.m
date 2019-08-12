@@ -198,7 +198,7 @@
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
         CGFloat pageWidth = self.imageArray.count * 20;
-        CGRect pageRect = CGRectMake(width - pageWidth, height - 15, pageWidth, 10);
+        CGRect pageRect = CGRectMake((width - pageWidth) * 0.5, height - 15, pageWidth, 10);
         _pageControl = [[UIPageControl alloc] initWithFrame:pageRect];
         _pageControl.pageIndicatorTintColor = [UIColor whiteColor];
         _pageControl.currentPageIndicatorTintColor = ThemeColorBlue;

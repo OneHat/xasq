@@ -17,6 +17,10 @@
 #import "HomeRankView.h"
 #import "RewardBallView.h"
 
+#import "ApplicationData.h"
+#import "BannerObject.h"
+#import "HomeBannerView.h"
+
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
 @interface HomeViewController ()
@@ -48,9 +52,7 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    if (![UserDataManager isLogin]) {
-        _friendNewsHeight.constant = 0;
-    }
+    _friendNewsHeight.constant = 0.0;
     
     //动态
     HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90)];
@@ -60,8 +62,9 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
     [_newsView addSubview:newsView];
     
     //广告banner
-    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_bannerView.frame))];
+    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:_bannerView.bounds];
     [_bannerView addSubview:bannerView];
+    _bannerViewHeight.constant = 0.0;
     
     //排行
     HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
@@ -85,18 +88,61 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 //    }
     
     
-    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"0"} success:^(NSDictionary * _Nonnull data) {
+    //获取banner
+    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"2"} success:^(NSDictionary * _Nonnull data) {
         
-        NSLog(@"%@",data);
+        NSArray *bannerList = [BannerObject modelWithArray:data[@"data"]];
+        if (bannerList.count > 0) {
+            self.bannerViewHeight.constant = 100;
+        }
+        NSMutableArray *imageArray = [NSMutableArray array];
+        for (BannerObject *obj in bannerList) {
+            [imageArray addObject:obj.imgPath];
+        }
+        bannerView.imageArray = imageArray;
         
     } failure:^(NSError * _Nonnull error) {
     }];
+    
+    
+//    [[NetworkManager sharedManager] getRequest:CommunityAreaList parameters:nil success:^(NSDictionary * _Nonnull data) {
+//
+//        NSArray *dataList = data[@"data"];
+//        NSLog(@"");
+//
+//        [self showMessage:data[@"msg"] complete:^{
+//            NSLog(@"454353534534");
+//        }];
+//
+//
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+    
+//    [[NetworkManager sharedManager] getRequest:CommunityArea parameters:@{@"id":@"1"} success:^(NSDictionary * _Nonnull data) {
+//
+//        NSDictionary *dataList = data[@"data"];
+//
+//        [self showMessage:data[@"msg"] complete:^{
+//            NSLog(@"454353534534");
+//        }];
+//
+//
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
     _hideNavBarAnimation = YES;
+    
+//    if ([ApplicationData shareData].showNewVersion) {
+//        [self showMessage:[ApplicationData shareData].updateInfo.upgradeDesc];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

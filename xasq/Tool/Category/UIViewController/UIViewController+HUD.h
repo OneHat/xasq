@@ -10,13 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^HideCompleteBlock)(void);
+
 @interface UIViewController (HUD)
 
 ///加载
 - (void)loading;
 - (void)loadingWithText:(NSString *)text;
 
-///自动消失的HUD，
+///自动消失的HUD
+- (void)showMessage:(NSString *)text complete:(nullable HideCompleteBlock)complete;
+- (void)showErrow:(NSError *)error complete:(nullable HideCompleteBlock)complete;
+
 - (void)showMessage:(NSString *)text;
 - (void)showErrow:(NSError *)error;
 

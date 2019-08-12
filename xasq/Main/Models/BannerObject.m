@@ -12,7 +12,17 @@
 @implementation BannerObject
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict {
-    return [BannerObject yy_modelWithDictionary:dict];
+    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
+        return [BannerObject yy_modelWithDictionary:dict];
+    }
+    return nil;
+}
+
++ (NSArray *)modelWithArray:(NSArray *)array {
+    if (array && [array isKindOfClass:[NSArray class]]) {
+        return [NSArray yy_modelArrayWithClass:[BannerObject class] json:array];
+    }
+    return nil;
 }
 
 @end

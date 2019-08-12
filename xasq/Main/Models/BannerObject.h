@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger rank;//排序
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;
++ (NSArray *)modelWithArray:(NSArray *)array;
 
 @end
 

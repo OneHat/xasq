@@ -18,6 +18,13 @@
     [super viewDidLoad];
     self.title = @"任务";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    [[NetworkManager sharedManager] getRequest:CommunityTask parameters:@{} success:^(NSDictionary * _Nonnull data) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 @end

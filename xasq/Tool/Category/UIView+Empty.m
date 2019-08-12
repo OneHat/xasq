@@ -9,8 +9,8 @@
 #import "UIView+Empty.h"
 #import <objc/runtime.h>
 
-static char emptyViewKey;
-static char emptyBlockKey;
+static char EmptyViewKey;
+static char EmptyBlockKey;
 
 @implementation UIView (Empty)
 
@@ -69,20 +69,20 @@ static char emptyBlockKey;
         [contentView addSubview:refreshButton];
     }
     
-    objc_setAssociatedObject(self, &emptyViewKey, backView, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, &EmptyViewKey, backView, OBJC_ASSOCIATION_RETAIN);
     if (block) {
-        objc_setAssociatedObject(self, &emptyBlockKey, block, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(self, &EmptyBlockKey, block, OBJC_ASSOCIATION_RETAIN);
     }
 }
 
 - (void)hideEmptyView {
-    UIView *emptyView = objc_getAssociatedObject(self, &emptyViewKey);
+    UIView *emptyView = objc_getAssociatedObject(self, &EmptyViewKey);
     [emptyView removeFromSuperview];
 }
 
 #pragma mark-
 - (void)refreshAction:(UIButton *)sender {
-    RefreshBlock block = objc_getAssociatedObject(self, &emptyBlockKey);
+    RefreshBlock block = objc_getAssociatedObject(self, &EmptyBlockKey);
     if (block) {
         block();
     }

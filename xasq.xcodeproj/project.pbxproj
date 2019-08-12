@@ -110,6 +110,7 @@
 		C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */; };
 		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
 		C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD223014D86007C1137 /* BannerObject.m */; };
+		C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaObject.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -349,6 +350,8 @@
 		C4A1EEB722F194D600A1DE8C /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		C4B9FCD123014D86007C1137 /* BannerObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerObject.h; sourceTree = "<group>"; };
 		C4B9FCD223014D86007C1137 /* BannerObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerObject.m; sourceTree = "<group>"; };
+		C4B9FCD423017C84007C1137 /* MiningAreaObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiningAreaObject.h; sourceTree = "<group>"; };
+		C4B9FCD523017C84007C1137 /* MiningAreaObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiningAreaObject.m; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -838,6 +841,8 @@
 			children = (
 				C4B9FCD123014D86007C1137 /* BannerObject.h */,
 				C4B9FCD223014D86007C1137 /* BannerObject.m */,
+				C4B9FCD423017C84007C1137 /* MiningAreaObject.h */,
+				C4B9FCD523017C84007C1137 /* MiningAreaObject.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1307,6 +1312,7 @@
 				C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */,
 				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
+				C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */,
 				C43B6BFC22FA951D00312286 /* RewardBallView.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,

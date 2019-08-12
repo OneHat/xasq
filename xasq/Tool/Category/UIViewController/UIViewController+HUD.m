@@ -8,6 +8,11 @@
 
 #import "UIViewController+HUD.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <objc/runtime.h>
+
+static char HUDBlockKey;
+
+const NSTimeInterval HideDuration = 1.5;
 
 @implementation UIViewController (HUD)
 
@@ -19,13 +24,24 @@
     [self showMessage:text toView:self.view hide:NO];
 }
 
+- (void)showMessage:(NSString *)text complete:(nullable HideCompleteBlock)complete {
+    [self showMessage:text toView:self.view hide:YES];
+    if (complete) {
+        objc_setAssociatedObject(self, &HUDBlockKey, complete, OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
 - (void)showMessage:(NSString *)text {
+    [self showMessage:text complete:nil];
+}
+
+- (void)showErrow:(NSError *)error complete:(nullable HideCompleteBlock)complete {
+    NSString *text = error.userInfo[ErrorMessageKeyXasq];
     [self showMessage:text toView:self.view hide:YES];
 }
 
 - (void)showErrow:(NSError *)error {
-    NSString *text = error.userInfo[ErrorMessageKeyXasq];
-    [self showMessage:text toView:self.view hide:YES];
+    [self showErrow:error complete:nil];
 }
 
 - (void)hideHUD {
@@ -50,7 +66,14 @@
         hud.label.text = message;
     }
     if (hide) {
-        [hud hideAnimated:YES afterDelay:1.5];
+        [hud hideAnimated:YES afterDelay:HideDuration];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(HideDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            HideCompleteBlock block = objc_getAssociatedObject(self, &HUDBlockKey);
+            if (block) {
+                block();
+            }
+        });
     }
     
     return hud;
