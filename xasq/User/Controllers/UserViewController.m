@@ -99,9 +99,9 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
 - (void)getUserinfoData {
     WeakObject;
     NSDictionary *dict = @{@"userId"          :   [UserDataManager shareManager].userId,
-                           @"sysVersion"      :   AppVersion,
+                           @"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
                            };
-    [[NetworkManager sharedManager] getRequest:UserInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSDictionary *userData = data[@"data"];
         
         if (userData) {
@@ -111,7 +111,7 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
                                                   placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         }
     } failure:^(NSError * _Nonnull error) {
-        [self showErrow:error];
+//        [self showErrow:error];
     }];
 }
 
@@ -182,8 +182,7 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-        LoginViewController *VC = [[LoginViewController alloc] init];
-//        confirmViewController *VC = [[confirmViewController alloc] init];
+        confirmViewController *VC = [[confirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }

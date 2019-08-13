@@ -95,12 +95,14 @@
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];
-        [self showMessage:@"登录成功"];
         if (data) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
             [UserDataManager shareManager].authorization = data[@"data"][@"accessToken"];
         }
-        [self isLoginSuccessfull:YES];
+        [self showMessage:@"登录成功" complete:^{
+            [self isLoginSuccessfull:YES];
+        }];
+        
     } failure:^(NSError * _Nonnull error) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];

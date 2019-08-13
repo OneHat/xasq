@@ -191,6 +191,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="确认绑定"/>
+                    <connections>
+                        <action selector="bindBtnClick:" destination="-1" eventType="touchUpInside" id="vG0-Tk-y2J"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

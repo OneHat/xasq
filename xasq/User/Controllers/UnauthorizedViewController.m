@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *documentLB;
 
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
 
@@ -21,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"认证信息"; // 未认证
+    
+    _nextBtn.layer.cornerRadius = 22.5;
+    _nextBtn.layer.masksToBounds = YES;
 }
 
 - (IBAction)documentTypeClick:(UIButton *)sender {
@@ -35,6 +39,10 @@
         }
     }];
 
+}
+
+
+- (IBAction)nextBtnClick:(UIButton *)sender {
 }
 
 

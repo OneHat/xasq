@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         if (_type == 0) {
-        self.title = @"修改密码";
+        self.title = @"修改登录密码";
             _affirmBtnTop.constant = 50;
     } else {
         self.title = @"设置支付密码";
@@ -65,16 +65,40 @@
 
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
-    sender.userInteractionEnabled = NO;
-    if (_count == 0) {
-        //60秒后再次启动
-        _count = 60;
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                  target:self
-                                                selector:@selector(showTime)
-                                                userInfo:nil
-                                                 repeats:YES];
+    NSString *urlStr,*nameStr;
+    if ([_channelLB.text isEqualToString:@"手机号"]) {
+        if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
+            [self showMessage:@"请先绑定手机号"];
+            return;
+        }
+        urlStr = UserSendMobile;
+        nameStr = @"mobile";
+    } else {
+        if ([UserDataManager shareManager].usermodel.email.length == 0) {
+            [self showMessage:@"请先绑定邮箱"];
+            return;
+        }
+        urlStr = UserSendEmail;
+        nameStr = @"email";
     }
+    sender.userInteractionEnabled = NO;
+    WeakObject;
+    NSDictionary *dict = @{nameStr : _codeTF.text};
+    [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"验证码发送成功"];
+        if (weakSelf.count == 0) {
+            //60秒后再次启动
+            weakSelf.count = 60;
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                              target:self
+                                                            selector:@selector(showTime)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+        weakSelf.codeBtn.userInteractionEnabled = YES;
+    }];
 }
 
 - (void)showTime {
@@ -93,6 +117,78 @@
         }
     }
 }
+#pragma mark - 确认修改
+- (IBAction)affirmBtnClick:(UIButton *)sender {
+    if (_type == 0) {
+        // 修改登录密码
+        if (_oldPasswordTF.text.length == 0) {
+            [self showMessage:@"请输入旧密码"];
+            return;
+        } else if (_passwordTF.text.length == 0) {
+            [self showMessage:@"请输入新密码"];
+            return;
+        } else if (_affirmPasswordTF.text.length == 0) {
+            [self showMessage:@"请输入确认密码"];
+            return;
+        } else if (![_passwordTF.text isEqualToString:_affirmPasswordTF.text]) {
+            [self showMessage:@"密码不一致"];
+            return;
+        }
+        [self loading];
+        NSDictionary *dict = @{@"loginName"   : [UserDataManager shareManager].usermodel.userName,
+                               @"oldPassword" : _oldPasswordTF.text,
+                               @"newPassword" : _passwordTF.text,
+                               @"type"        : @"0"
+                               };
+        [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
+            [self hideHUD];
+            [self showMessage:@"修改成功" complete:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(NSError * _Nonnull error) {
+            [self hideHUD];
+            [self showErrow:error];
+        }];
+    } else {
+        // 修改支付密码
+        if (_passwordTF.text.length == 0) {
+            [self showMessage:@"请输入支付密码"];
+            return;
+        } else if (_affirmPasswordTF.text.length == 0) {
+            [self showMessage:@"请输入确认支付密码"];
+            return;
+        } else if (_codeTF.text.length == 0) {
+            [self showMessage:@"请输入验证码"];
+            return;
+        } else if (![_passwordTF.text isEqualToString:_affirmPasswordTF.text]) {
+            [self showMessage:@"密码不一致"];
+            return;
+        }
+        [self loading];
+        NSString *nameStr;
+        if ([_channelLB.text isEqualToString:@"手机号"]) {
+            nameStr = @"mobile";
+        } else {
+            nameStr = @"email";
+        }
+        NSDictionary *dict = @{@"loginName"     : [UserDataManager shareManager].usermodel.userName,
+                               @"newPassword"   : _passwordTF.text,
+                               @"validCode"     : _codeTF.text,
+                               @"validCodeType" : nameStr,
+                               @"type"          : @"1"
+                               };
+        [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
+            [self hideHUD];
+            [self showMessage:@"修改成功" complete:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } failure:^(NSError * _Nonnull error) {
+            [self hideHUD];
+            [self showErrow:error];
+        }];
+    }
+}
+
 
 /*
 #pragma mark - Navigation

@@ -14,7 +14,7 @@ NSString *const UserRegister = @"user/register/standard";
 NSString *const UserLoginMobile = @"user/login/mobile";
 NSString *const UserLoginEmail = @"user/login/email";
 
-NSString *const UserInfo = @"user/info";
+NSString *const UserHomePageInfo = @"user/home/page/info";
 NSString *const UserGoogleBind = @"user/google/bind";
 NSString *const UserEmailBind = @"user/email/bind";
 NSString *const UserInviteAddresslist = @"user/invite/addresslist";
@@ -30,6 +30,8 @@ NSString *const UserInviteQrcode = @"user/invite/qrcode";
 NSString *const UserSignIn = @"user/sign/in";
 NSString *const UserPwdLoginModify = @"user/pwd/login/modify";
 NSString *const UserSignInfo = @"user/sign/info";
+NSString *const UserSendEmail = @"user/send/email";
+NSString *const UserSendMobile = @"user/send/mobile";
 
 NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
 NSString *const ApiAccountOpenAccount = @"api/account/openAccount";
