@@ -98,7 +98,7 @@
         [self showMessage:@"登录成功"];
         if (data) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
-            [UserDataManager saveAuthorization:data[@"data"][@"accessToken"]];
+            [UserDataManager shareManager].authorization = data[@"data"][@"accessToken"];
         }
         [self isLoginSuccessfull:YES];
     } failure:^(NSError * _Nonnull error) {

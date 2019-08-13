@@ -7,6 +7,7 @@
 //
 
 #import "HomeBannerView.h"
+#import "BannerObject.h"
 
 @interface HomeBannerView ()<UIScrollViewDelegate>
 {
@@ -58,7 +59,9 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width * i, 0, width, height)];
         imageView.userInteractionEnabled = YES;
-        NSURL *url = [NSURL URLWithString:imageArray[index]];
+        
+        BannerObject *bannerObj = imageArray[index];
+        NSURL *url = [NSURL URLWithString:bannerObj.imgPath];
         [imageView sd_setImageWithURL:url placeholderImage:nil];
         [self.scrollView addSubview:imageView];
         
@@ -131,10 +134,12 @@
     NSInteger leftPage = (self.imageArray.count + self.currentPage - 1 ) % self.imageArray.count;
     NSInteger rightPage = (self.currentPage + 1 ) % self.imageArray.count;
     
-    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:self.imageArray[leftPage]]
+    BannerObject *leftBanner = self.imageArray[leftPage];
+    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftBanner.imgPath]
                           placeholderImage:nil];
     
-    [self.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageArray[self.currentPage]]
+    BannerObject *currentBanner = self.imageArray[self.currentPage];
+    [self.centerImageView sd_setImageWithURL:[NSURL URLWithString:currentBanner.imgPath]
                             placeholderImage:nil];
     //    [self.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageArray[self.currentPage]]
     //                            placeholderImage:nil
@@ -142,7 +147,8 @@
     //                                       self.centerImageView.image = [self scaleImageWithSize:CGSizeMake(width, height) image:image];
     //                            }];
     
-    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:self.imageArray[rightPage]]
+    BannerObject *rightBanner = self.imageArray[rightPage];
+    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightBanner.imgPath]
                            placeholderImage:nil];
     
     if (animated) {

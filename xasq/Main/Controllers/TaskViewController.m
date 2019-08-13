@@ -20,8 +20,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    [[NetworkManager sharedManager] getRequest:CommunityTask parameters:@{} success:^(NSDictionary * _Nonnull data) {
-        
+    [[NetworkManager sharedManager] getRequest:CommunityTask parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
     } failure:^(NSError * _Nonnull error) {
         
     }];

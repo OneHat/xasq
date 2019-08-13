@@ -102,10 +102,13 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
                            @"sysVersion"      :   AppVersion,
                            };
     [[NetworkManager sharedManager] getRequest:UserInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
-        if (data) {
-            [UserDataManager shareManager].userData = data[@"data"];
-            weakSelf.headerView.nameLB.text = data[@"data"][@"userName"];
-            [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:data[@"headImg"]] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
+        NSDictionary *userData = data[@"data"];
+        
+        if (userData) {
+            [[UserDataManager shareManager] saveUserData:userData];
+            weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
+            [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg]
+                                                  placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];

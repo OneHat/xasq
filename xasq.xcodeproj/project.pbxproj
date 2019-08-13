@@ -111,6 +111,7 @@
 		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
 		C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD223014D86007C1137 /* BannerObject.m */; };
 		C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaObject.m */; };
+		C4B9FCD9230253D6007C1137 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD8230253D6007C1137 /* UserModel.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -352,6 +353,8 @@
 		C4B9FCD223014D86007C1137 /* BannerObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerObject.m; sourceTree = "<group>"; };
 		C4B9FCD423017C84007C1137 /* MiningAreaObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiningAreaObject.h; sourceTree = "<group>"; };
 		C4B9FCD523017C84007C1137 /* MiningAreaObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiningAreaObject.m; sourceTree = "<group>"; };
+		C4B9FCD7230253D6007C1137 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		C4B9FCD8230253D6007C1137 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -631,6 +634,8 @@
 				C43B6BDE22F957DD00312286 /* ApplicationData.m */,
 				C43B6BE322F9580900312286 /* UserDataManager.h */,
 				C43B6BE422F9580900312286 /* UserDataManager.m */,
+				C4B9FCD7230253D6007C1137 /* UserModel.h */,
+				C4B9FCD8230253D6007C1137 /* UserModel.m */,
 			);
 			path = LocalDataManager;
 			sourceTree = "<group>";
@@ -1257,6 +1262,7 @@
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C43B6BE522F9580900312286 /* UserDataManager.m in Sources */,
+				C4B9FCD9230253D6007C1137 /* UserModel.m in Sources */,
 				C43B6BDF22F957DD00312286 /* ApplicationData.m in Sources */,
 				C4DFE3E622EEE59700C41B2B /* CredentialsViewController.m in Sources */,
 				C400439422FC229C00DC4B80 /* AlipayOrder.m in Sources */,

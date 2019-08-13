@@ -12,7 +12,6 @@ NSString * const DSSJUserLoginAuthorization = @"DSSJUserLoginAuthorization";
 NSString * const DSSJUserId = @"DSSJUserId";
 NSString * const DSSJUserData = @"DSSJUserData";
 
-
 @implementation UserDataManager
 
 + (instancetype)shareManager {
@@ -25,12 +24,14 @@ NSString * const DSSJUserData = @"DSSJUserData";
     
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.userId = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserId];
-        self.userData = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserData];
+        self.authorization = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserLoginAuthorization];
+        
+        NSDictionary *userData = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserData];
+        self.usermodel = [UserModel modelWithDictionary:userData];
     }
     return self;
 }
@@ -40,29 +41,25 @@ NSString * const DSSJUserData = @"DSSJUserData";
     [[NSUserDefaults standardUserDefaults] setObject:userId forKey:DSSJUserId];
 }
 
-- (void)setUserData:(NSDictionary *)userData {
-    _userData = userData;
-    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:DSSJUserData];
+- (void)setAuthorization:(NSString *)authorization {
+    _authorization = authorization;
+    [[NSUserDefaults standardUserDefaults] setObject:authorization forKey:DSSJUserLoginAuthorization];
 }
 
 - (void)deleteLoginStatus {
     self.userId = nil;
-    self.userData = nil;
+    self.usermodel = nil;
+    self.authorization = nil;
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserId];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserData];
-}
-
-#pragma mark -
-+ (NSString *)authorization {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:DSSJUserLoginAuthorization];
-}
-
-+ (void)saveAuthorization:(NSString *)authorization {
-    [[NSUserDefaults standardUserDefaults] setObject:authorization forKey:DSSJUserLoginAuthorization];
-}
-
-+ (void)deleteAuthorization {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserLoginAuthorization];
+}
+
+- (void)saveUserData:(NSDictionary *)userData {
+    self.usermodel = [UserModel modelWithDictionary:userData];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:userData forKey:DSSJUserData];
 }
 
 @end

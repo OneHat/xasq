@@ -23,6 +23,8 @@
 
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
+static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
+
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -31,7 +33,10 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
 
 @property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
-@property (weak, nonatomic) IBOutlet UIView *bannerView;//广告view
+
+@property (weak, nonatomic) IBOutlet UIView *bannerBackView;//广告view
+@property (nonatomic, strong) HomeBannerView *bannerView;
+
 @property (weak, nonatomic) IBOutlet UIView *rankView;//排行View
 
 //隐藏导航栏时，是否需要动画
@@ -64,9 +69,16 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
     [_newsView addSubview:newsView];
     
     //广告banner
-    HomeBannerView *bannerView = [[HomeBannerView alloc] initWithFrame:_bannerView.bounds];
-    [_bannerView addSubview:bannerView];
+    _bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    [_bannerBackView addSubview:_bannerView];
     _bannerViewHeight.constant = 0.0;
+    
+    NSArray *cacheBannerList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeBannerADCacheKey];
+    NSArray *bannerList = [BannerObject modelWithArray:cacheBannerList];
+    if (bannerList.count > 0) {
+        _bannerViewHeight.constant = 0.0;
+        _bannerView.imageArray = bannerList;
+    }
     
     //排行
     HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
@@ -91,20 +103,7 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
     
     
     //获取banner
-    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"2"} success:^(NSDictionary * _Nonnull data) {
-        
-        NSArray *bannerList = [BannerObject modelWithArray:data[@"data"]];
-        if (bannerList.count > 0) {
-            self.bannerViewHeight.constant = 100;
-        }
-        NSMutableArray *imageArray = [NSMutableArray array];
-        for (BannerObject *obj in bannerList) {
-            [imageArray addObject:obj.imgPath];
-        }
-        bannerView.imageArray = imageArray;
-        
-    } failure:^(NSError * _Nonnull error) {
-    }];
+    [self getHomeBannerData];
     
     
 //    [[NetworkManager sharedManager] getRequest:CommunityAreaList parameters:nil success:^(NSDictionary * _Nonnull data) {
@@ -154,6 +153,23 @@ NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
 - (void)changeMainHideAnimation {
     _hideNavBarAnimation = NO;
+}
+
+- (void)getHomeBannerData {
+    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"2"} success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *dataList = data[@"data"];
+        if (dataList && [dataList isKindOfClass:[NSArray class]] && dataList.count > 0) {
+            [[NSUserDefaults standardUserDefaults] setObject:dataList forKey:HomeBannerADCacheKey];
+            
+            NSArray *bannerList = [BannerObject modelWithArray:dataList];
+            
+            self.bannerViewHeight.constant = 100;
+            self.bannerView.imageArray = bannerList;
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
 }
 
 #pragma mark - 本页面按钮事件

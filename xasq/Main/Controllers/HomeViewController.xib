@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
-                <outlet property="bannerView" destination="h1E-Vd-Heh" id="fAV-2n-Fu6"/>
+                <outlet property="bannerBackView" destination="h1E-Vd-Heh" id="9Py-EC-HPM"/>
                 <outlet property="bannerViewHeight" destination="zNk-8z-w3i" id="hTm-kt-1FS"/>
                 <outlet property="friendNewsHeight" destination="daT-5A-epU" id="YBZ-Ab-O7b"/>
                 <outlet property="newsView" destination="Mn4-hG-yrb" id="mfh-GN-cCs"/>

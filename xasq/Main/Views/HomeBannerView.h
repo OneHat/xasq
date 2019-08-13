@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeBannerView : UIView
 
-@property (nonatomic, copy) NSArray *imageArray;
+@property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, copy) void (^ImageClickBlock)(NSInteger index);
 
 - (void)openTimer;

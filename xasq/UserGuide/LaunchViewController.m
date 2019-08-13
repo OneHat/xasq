@@ -7,13 +7,19 @@
 //
 
 #import "LaunchViewController.h"
+#import "BannerObject.h"
 
 @interface LaunchViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *secondLabel;
 @property (nonatomic, assign) NSInteger second;
 
+@property (weak, nonatomic) IBOutlet UIImageView *launchImageView;
+@property (strong, nonatomic) UIImage *launchImage;
+
 @end
+
+static NSString *LaunchADCacheKey = @"LaunchADCacheKey";
 
 @implementation LaunchViewController
 
@@ -22,6 +28,30 @@
     
     _second = 2;
     _secondLabel.hidden = YES;
+    
+    NSDictionary *cacheAD = [[NSUserDefaults standardUserDefaults] objectForKey:LaunchADCacheKey];
+    if (cacheAD) {
+        BannerObject *obj = [BannerObject modelWithDictionary:cacheAD];
+        
+        NSURL *url = [NSURL URLWithString:obj.imgPath];
+        [_launchImageView sd_setImageWithURL:url];
+    }
+    
+    //获取banner
+    [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"1"} success:^(NSDictionary * _Nonnull data) {
+        NSArray *dataList = data[@"data"];
+        if (dataList && [dataList isKindOfClass:[NSArray class]] && dataList.count > 0) {
+            NSDictionary *firstAD = dataList.firstObject;
+            [[NSUserDefaults standardUserDefaults] setObject:firstAD forKey:LaunchADCacheKey];
+            
+            BannerObject *newObj = [BannerObject modelWithDictionary:firstAD];
+            UIImageView *temp = [[UIImageView alloc] init];
+            [temp sd_setImageWithURL:[NSURL URLWithString:newObj.imgPath]];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
