@@ -46,7 +46,7 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 290);
     WeakObject;
     _headerView.dwellBtnBlock = ^{
-        // 居住证明界面
+        // 用户信息界面
         LivingProofViewController *VC = [[LivingProofViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:VC animated:YES];

@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///登录成功后返回的唯一标识
 @property (nonatomic, strong,nullable) NSString *authorization;
 
+///上次登录账号
+@property (nonatomic, strong,nullable) NSString *loginAccount;
+
 ///用户模型
 @property (nonatomic, strong,nullable) UserModel *usermodel;
 

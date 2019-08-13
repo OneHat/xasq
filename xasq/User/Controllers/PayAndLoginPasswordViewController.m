@@ -135,7 +135,7 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"loginName"   : [UserDataManager shareManager].usermodel.userName,
+        NSDictionary *dict = @{@"userName"   : [UserDataManager shareManager].usermodel.userName,
                                @"oldPassword" : _oldPasswordTF.text,
                                @"newPassword" : _passwordTF.text,
                                @"type"        : @"0"
@@ -171,7 +171,7 @@
         } else {
             nameStr = @"email";
         }
-        NSDictionary *dict = @{@"loginName"     : [UserDataManager shareManager].usermodel.userName,
+        NSDictionary *dict = @{@"userName"     : [UserDataManager shareManager].usermodel.userName,
                                @"newPassword"   : _passwordTF.text,
                                @"validCode"     : _codeTF.text,
                                @"validCodeType" : nameStr,
