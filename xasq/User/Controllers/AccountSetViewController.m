@@ -37,7 +37,6 @@
     _tableView.separatorInset = UIEdgeInsetsMake(0, 55, 0, 0);
     _tableView.separatorColor = ThemeColorLine;
     _tableView.rowHeight = 45;
-    _tableView.tableFooterView = [[UIView alloc] init];
     
     UIButton *footButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     footButton.frame = CGRectMake(0, 0, ScreenWidth, 50);
@@ -49,6 +48,11 @@
     _tableView.tableFooterView = footButton;
     [self.view addSubview:_tableView];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)quitLoginClick {
@@ -109,8 +113,20 @@
     cell.iconImageV.image = [UIImage imageNamed:imageName];
     cell.contentLB.hidden = YES;
     cell.arrowImageV.hidden = NO;
-    if (indexPath.row == 0) {
-        
+    if (indexPath.row == 2) {
+        cell.contentLB.hidden = NO;
+        if ([UserDataManager shareManager].usermodel.email.length > 0) {
+            cell.contentLB.text = [UserDataManager shareManager].usermodel.email;
+        } else {
+            cell.contentLB.text = @"未绑定";
+        }
+    } else if (indexPath.row == 3) {
+        cell.contentLB.hidden = NO;
+        if ([UserDataManager shareManager].usermodel.mobile.length > 0) {
+            cell.contentLB.text = [UserDataManager shareManager].usermodel.mobile;
+        } else {
+            cell.contentLB.text = @"未绑定";
+        }
     }
     
     return cell;

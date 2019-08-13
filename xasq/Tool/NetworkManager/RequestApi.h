@@ -23,7 +23,7 @@ FOUNDATION_EXPORT NSString *const UserLoginMobile;
 FOUNDATION_EXPORT NSString *const UserLoginEmail;
 
 /// 用户基本信息 GET
-FOUNDATION_EXPORT NSString *const UserInfo;
+FOUNDATION_EXPORT NSString *const UserHomePageInfo;
 /// 谷歌绑定 POST
 FOUNDATION_EXPORT NSString *const UserGoogleBind;
 /// 邮箱绑定 POST
@@ -54,7 +54,10 @@ FOUNDATION_EXPORT NSString *const UserSignIn;
 FOUNDATION_EXPORT NSString *const UserPwdLoginModify;
 /// 查询签到信息 GET
 FOUNDATION_EXPORT NSString *const UserSignInfo;
-
+/// 发送邮箱验证码接口 POST
+FOUNDATION_EXPORT NSString *const UserSendEmail;
+/// 发送手机验证码接口 POST
+FOUNDATION_EXPORT NSString *const UserSendMobile;
 
 //********************************资产账单
 ///查看个人总帐单 POST

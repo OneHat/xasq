@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"居住证明";
+    self.title = @"用户信息";
     
 }
 

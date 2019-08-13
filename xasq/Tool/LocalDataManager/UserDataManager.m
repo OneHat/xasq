@@ -9,6 +9,7 @@
 #import "UserDataManager.h"
 
 NSString * const DSSJUserLoginAuthorization = @"DSSJUserLoginAuthorization";
+NSString * const DSSJLoginAccount = @"DSSJLoginAccount";
 NSString * const DSSJUserId = @"DSSJUserId";
 NSString * const DSSJUserData = @"DSSJUserData";
 
@@ -29,7 +30,7 @@ NSString * const DSSJUserData = @"DSSJUserData";
     if (self) {
         self.userId = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserId];
         self.authorization = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserLoginAuthorization];
-        
+        self.loginAccount = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJLoginAccount];
         NSDictionary *userData = [[NSUserDefaults standardUserDefaults] objectForKey:DSSJUserData];
         self.usermodel = [UserModel modelWithDictionary:userData];
     }
@@ -46,13 +47,16 @@ NSString * const DSSJUserData = @"DSSJUserData";
     [[NSUserDefaults standardUserDefaults] setObject:authorization forKey:DSSJUserLoginAuthorization];
 }
 
+- (void)setLoginAccount:(NSString *)loginAccount {
+    _loginAccount = loginAccount;
+    [[NSUserDefaults standardUserDefaults] setObject:loginAccount forKey:DSSJLoginAccount];
+}
+
 - (void)deleteLoginStatus {
     self.userId = nil;
-    self.usermodel = nil;
     self.authorization = nil;
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserId];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserData];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DSSJUserLoginAuthorization];
 }
 

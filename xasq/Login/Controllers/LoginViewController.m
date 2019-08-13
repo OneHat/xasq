@@ -10,7 +10,7 @@
 #import "RegisterViewController.h"
 #import "RetrievePasswordViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageV;
 @property (weak, nonatomic) IBOutlet UITextField *accountTF; // 账号
@@ -31,16 +31,23 @@
     _loginBtn.layer.masksToBounds = YES;
     [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_close"] forState:(UIControlStateNormal)];
     [_cipherBtn setImage:[UIImage imageNamed:@"login_eyes_open"] forState:(UIControlStateSelected)];
+    _accountTF.text = [UserDataManager shareManager].loginAccount;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return NO;
 }
 
 - (IBAction)closeClick:(UIButton *)sender {
@@ -95,12 +102,14 @@
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];
-        [self showMessage:@"登录成功"];
         if (data) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
             [UserDataManager shareManager].authorization = data[@"data"][@"accessToken"];
         }
-        [self isLoginSuccessfull:YES];
+        [self showMessage:@"登录成功" complete:^{
+            [self isLoginSuccessfull:YES];
+        }];
+        
     } failure:^(NSError * _Nonnull error) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];

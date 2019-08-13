@@ -47,16 +47,36 @@
 
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
-    sender.userInteractionEnabled = NO;
-    if (_count == 0) {
-        //60秒后再次启动
-        _count = 60;
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                  target:self
-                                                selector:@selector(showTime)
-                                                userInfo:nil
-                                                 repeats:YES];
+    if (_accountTF.text.length == 0) {
+        [self showMessage:@"请输入绑定账号"];
+        return;
     }
+    WeakObject;
+    NSString *urlStr,*nameStr;
+    if (_type == 0) {
+        urlStr = UserSendMobile;
+        nameStr = @"mobile";
+    } else {
+        urlStr = UserSendEmail;
+        nameStr = @"email";
+    }
+    sender.userInteractionEnabled = NO;
+    NSDictionary *dict = @{nameStr : _accountTF.text};
+    [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"验证码发送成功"];
+        if (weakSelf.count == 0) {
+            //60秒后再次启动
+            weakSelf.count = 60;
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                              target:self
+                                                            selector:@selector(showTime)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+        weakSelf.codeBtn.userInteractionEnabled = YES;
+    }];
 }
 
 - (void)showTime {
@@ -75,6 +95,46 @@
         }
     }
 }
+#pragma mark - 绑定
+- (IBAction)bindBtnClick:(UIButton *)sender {
+    if (_accountTF.text.length == 0) {
+        [self showMessage:@"请输入绑定账号"];
+        return;
+    } else if (_codeTF.text.length == 0) {
+        [self showMessage:@"请输入验证码"];
+        return;
+    }
+    WeakObject;
+    NSString *urlStr,*nameStr;
+    if (_type == 0) {
+        urlStr = UserMobileBind;
+        nameStr = @"mobile";
+    } else {
+        urlStr = UserEmailBind;
+        nameStr = @"email";
+    }
+    [self loading];
+    NSDictionary *dict = @{@"userId"      : [UserDataManager shareManager].userId,
+                           @"areaCode"    : _areaCodeLB.text,
+                           nameStr        : _accountTF.text,
+                           @"validCode_1" : _codeTF.text,
+                           };
+    [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self hideHUD];
+        if (weakSelf.type == 0) {
+            [UserDataManager shareManager].usermodel.mobile = weakSelf.accountTF.text;
+        } else {
+            [UserDataManager shareManager].usermodel.email = weakSelf.accountTF.text;
+        }
+        [self showMessage:@"绑定成功" complete:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(NSError * _Nonnull error) {
+        [self hideHUD];
+        [self showErrow:error];
+    }];
+}
+
 
 
 /*

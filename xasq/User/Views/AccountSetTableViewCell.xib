@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm7-Qu-6e2">
-                        <rect key="frame" x="218.5" y="10" width="136.5" height="30"/>
+                        <rect key="frame" x="196.5" y="10" width="136.5" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="sfw-GS-doO"/>
                         </constraints>
@@ -55,10 +55,10 @@
                 <constraints>
                     <constraint firstItem="CIi-UL-omc" firstAttribute="leading" secondItem="ecW-a8-HvJ" secondAttribute="trailing" constant="15" id="0eY-Y5-BIJ"/>
                     <constraint firstItem="CIi-UL-omc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2qY-rn-FRi"/>
+                    <constraint firstItem="TMe-rg-Czz" firstAttribute="leading" secondItem="rm7-Qu-6e2" secondAttribute="trailing" constant="15" id="8yL-o0-qj5"/>
                     <constraint firstItem="TMe-rg-Czz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ikk-71-sFH"/>
                     <constraint firstItem="ecW-a8-HvJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Mkf-aZ-Sv9"/>
                     <constraint firstItem="rm7-Qu-6e2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QxX-W6-TIO"/>
-                    <constraint firstAttribute="trailing" secondItem="rm7-Qu-6e2" secondAttribute="trailing" constant="20" id="RtE-bx-kGf"/>
                     <constraint firstItem="CIi-UL-omc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ucq-Yh-80F"/>
                     <constraint firstItem="ecW-a8-HvJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aJ5-2B-kvd"/>
                     <constraint firstAttribute="trailing" secondItem="TMe-rg-Czz" secondAttribute="trailing" constant="18" id="zdC-Qq-joQ"/>
