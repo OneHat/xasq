@@ -11,6 +11,7 @@
 #import "HomeMoreNewsViewController.h"
 #import "MinerViewController.h"
 #import "TaskViewController.h"
+#import "LoginViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -20,6 +21,7 @@
 #import "ApplicationData.h"
 #import "BannerObject.h"
 #import "HomeBannerView.h"
+#import "UIViewController+ActionSheet.h"
 
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
@@ -28,7 +30,6 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *friendNewsHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
 
@@ -55,10 +56,6 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
-    if (![UserDataManager shareManager].userId) {
-        _friendNewsHeight.constant = 0;
     }
     
     //动态
@@ -106,34 +103,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     [self getHomeBannerData];
     
     
-//    [[NetworkManager sharedManager] getRequest:CommunityAreaList parameters:nil success:^(NSDictionary * _Nonnull data) {
-//
-//        NSArray *dataList = data[@"data"];
-//        NSLog(@"");
-//
-//        [self showMessage:data[@"msg"] complete:^{
-//            NSLog(@"454353534534");
-//        }];
-//
-//
-//
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
     
-//    [[NetworkManager sharedManager] getRequest:CommunityArea parameters:@{@"id":@"1"} success:^(NSDictionary * _Nonnull data) {
-//
-//        NSDictionary *dataList = data[@"data"];
-//
-//        [self showMessage:data[@"msg"] complete:^{
-//            NSLog(@"454353534534");
-//        }];
-//
-//
-//
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -193,9 +163,16 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
 
 - (IBAction)taskAction:(UIButton *)sender {
-    TaskViewController *taskVC = [[TaskViewController alloc] init];
-    taskVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:taskVC animated:YES];
+    if ([UserDataManager shareManager].userId) {
+        TaskViewController *taskVC = [[TaskViewController alloc] init];
+        taskVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:taskVC animated:YES];
+        
+    } else {
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 
 - (IBAction)minerAction:(id)sender {
@@ -208,6 +185,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     HomeMoreNewsViewController *moreNewsVC = [[HomeMoreNewsViewController alloc] init];
     moreNewsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreNewsVC animated:YES];
+    
 }
 
 @end

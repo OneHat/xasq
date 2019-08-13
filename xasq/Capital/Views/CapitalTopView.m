@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UILabel *capitalLabel;
 @property (nonatomic, strong) UILabel *moneyLabel;
 
+@property (nonatomic, strong) UIButton *recordButton;
+
 @end
 
 @implementation CapitalTopView
@@ -61,6 +63,7 @@
     [recordButton setTitleColor:buttonTitleColor forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(recordClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:recordButton];
+    _recordButton = recordButton;
     
     //分割线
 //    10 + CGRectGetMaxY(tipLabel.frame)
@@ -92,6 +95,7 @@
         _styleLabel.text = @"总资产折合";
     } else if (_viewStyle == CapitalTopViewHold) {
         _styleLabel.text = @"持有";
+        _recordButton.hidden = YES;
     }
 }
 

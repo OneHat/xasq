@@ -8,11 +8,23 @@
 
 #import "InviteHistoryViewCell.h"
 
+@interface InviteHistoryViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+
+@end
+
 @implementation InviteHistoryViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    _timeLabel.textColor = ThemeColorTextGray;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

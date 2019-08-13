@@ -112,6 +112,10 @@
 		C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD223014D86007C1137 /* BannerObject.m */; };
 		C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaObject.m */; };
 		C4B9FCD9230253D6007C1137 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD8230253D6007C1137 /* UserModel.m */; };
+		C4B9FCDC2302693B007C1137 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDB2302693B007C1137 /* TaskModel.m */; };
+		C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */; };
+		C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCE32302852E007C1137 /* TaskViewCell.m */; };
+		C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B9FCE42302852E007C1137 /* TaskViewCell.xib */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -355,6 +359,13 @@
 		C4B9FCD523017C84007C1137 /* MiningAreaObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiningAreaObject.m; sourceTree = "<group>"; };
 		C4B9FCD7230253D6007C1137 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		C4B9FCD8230253D6007C1137 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		C4B9FCDA2302693B007C1137 /* TaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
+		C4B9FCDB2302693B007C1137 /* TaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
+		C4B9FCDD23026CC4007C1137 /* MyTaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskModel.h; sourceTree = "<group>"; };
+		C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskModel.m; sourceTree = "<group>"; };
+		C4B9FCE22302852E007C1137 /* TaskViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewCell.h; sourceTree = "<group>"; };
+		C4B9FCE32302852E007C1137 /* TaskViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewCell.m; sourceTree = "<group>"; };
+		C4B9FCE42302852E007C1137 /* TaskViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewCell.xib; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -822,6 +833,9 @@
 				C43B6BF722FA7D6A00312286 /* InviteHistoryViewCell.xib */,
 				C43B6BFA22FA951D00312286 /* RewardBallView.h */,
 				C43B6BFB22FA951D00312286 /* RewardBallView.m */,
+				C4B9FCE22302852E007C1137 /* TaskViewCell.h */,
+				C4B9FCE32302852E007C1137 /* TaskViewCell.m */,
+				C4B9FCE42302852E007C1137 /* TaskViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -848,6 +862,10 @@
 				C4B9FCD223014D86007C1137 /* BannerObject.m */,
 				C4B9FCD423017C84007C1137 /* MiningAreaObject.h */,
 				C4B9FCD523017C84007C1137 /* MiningAreaObject.m */,
+				C4B9FCDA2302693B007C1137 /* TaskModel.h */,
+				C4B9FCDB2302693B007C1137 /* TaskModel.m */,
+				C4B9FCDD23026CC4007C1137 /* MyTaskModel.h */,
+				C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1125,6 +1143,7 @@
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C4D5EEE222F7FF2500C94D9F /* PaymentsRecordsTableViewCell.xib in Resources */,
+				C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */,
 				C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */,
 				C4D5EED222F7F15F00C94D9F /* SelectCurrencyTableViewCell.xib in Resources */,
 				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
@@ -1257,6 +1276,7 @@
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4D5EEC422F7B96A00C94D9F /* MentionMoneyViewController.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
+				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
 				C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
@@ -1279,6 +1299,7 @@
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
+				C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */,
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
@@ -1320,6 +1341,7 @@
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */,
 				C43B6BFC22FA951D00312286 /* RewardBallView.m in Sources */,
+				C4B9FCDC2302693B007C1137 /* TaskModel.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,
 				C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */,
 				C473B92122F40F820013E77D /* CommunityDynamicTableViewCell.m in Sources */,

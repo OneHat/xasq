@@ -14,6 +14,7 @@
 @interface MinerViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) NSInteger currentIndex;//
 
 @end
 
@@ -25,23 +26,16 @@
     
     //title
     [self initTitle];
-    
-    MinerInfomationView *infomationView = [[MinerInfomationView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 160)];
-    [self.view addSubview:infomationView];
-    
-    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 140)];
-//    [self.view addSubview:inviteCodeView];
-    
-    CGRect rect = CGRectMake(0, 10 + CGRectGetMaxY(infomationView.frame), ScreenWidth, ScreenHeight - 10 - CGRectGetMaxY(infomationView.frame));
+
+    CGRect rect = CGRectMake(0, NavHeight + 10, ScreenWidth, ScreenHeight - NavHeight - 10);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"InviteHistoryViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.rowHeight = 50;
-    _tableView.tableHeaderView = inviteCodeView;
+    _tableView.rowHeight = 56;
+    _tableView.tableHeaderView = [self headerView];
     [self.view addSubview:_tableView];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,7 +44,7 @@
 }
 
 - (void)initTitle {
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160)];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
     topView.backgroundColor = RGBColor(36, 69, 104);
     [self.view addSubview:topView];
     
@@ -67,8 +61,26 @@
     [self.view addSubview:backButton];
 }
 
-#pragma mark-
+- (UIView *)headerView {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 300)];
+//    headerView.backgroundColor = RGBColor(36, 69, 104);
+    
+    UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -ScreenHeight, ScreenWidth, ScreenHeight + 80)];
+    colorView.backgroundColor = RGBColor(36, 69, 104);
+    [headerView addSubview:colorView];
+    
+    MinerInfomationView *infomationView = [[MinerInfomationView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160)];
+    infomationView.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:infomationView];
+    
+    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 140)];
+    [headerView addSubview:inviteCodeView];
+    
+    
+    return headerView;
+}
 
+#pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 15;
 }
@@ -78,9 +90,61 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 66;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 66)];
+    headerView.backgroundColor = ThemeColorBackground;
+    
+    UIView *indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 54, 44, 2)];
+    indicatorView.backgroundColor = ThemeColorBlue;
+    [headerView addSubview:indicatorView];
+    
+    CGSize size = [@"累计助力" sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16]}];
+    CGFloat width = ceil(size.width);
+    
+    for (int i = 0; i < 3; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 10, width, 20)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = ThemeFontText;
+        label.text = @"累计助力";
+        [headerView addSubview:label];
+        
+        UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 30, width, 20)];
+        numberLabel.textAlignment = NSTextAlignmentCenter;
+        numberLabel.font = ThemeFontSmallText;
+        numberLabel.text = @"+666";
+        [headerView addSubview:numberLabel];
+        
+        if (_currentIndex == i) {
+            indicatorView.center = CGPointMake(label.center.x, indicatorView.center.y);
+            label.textColor = [UIColor blackColor ];
+            numberLabel.textColor = ThemeColorBlue;
+            
+        } else {
+            label.textColor = ThemeColorTextGray;
+            numberLabel.textColor = ThemeColorTextGray;
+        }
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 10, width, 46)];
+        button.tag = i;
+        [button addTarget:self action:@selector(changeAction:) forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:button];
+    }
+    
+    return headerView;
+}
+
 #pragma mark-
 - (void)backButtonAction {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)changeAction:(UIButton *)sender {
+    _currentIndex = sender.tag;
+    [self.tableView reloadData];
 }
 
 @end

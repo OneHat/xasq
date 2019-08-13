@@ -89,7 +89,7 @@
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
         if (![UserDataManager shareManager].userId) {
             
-            return NO;
+//            return NO;
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];

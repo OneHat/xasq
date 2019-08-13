@@ -9,12 +9,21 @@
 #import "UIViewController+ActionSheet.h"
 #import <objc/runtime.h>
 
-const CGFloat TitleHeight = 30.0;
-const CGFloat ItemsHeight = 50.0;
-const CGFloat CloseHeight = 50.0;
-const CGFloat SpaceHeight = 10.0;
+///********  ActionSheet
+const CGFloat SheetTitleHeight = 30.0;
+const CGFloat SheetItemsHeight = 50.0;
+const CGFloat SheetCloseHeight = 50.0;
+const CGFloat SheetSpaceHeight = 10.0;
 
 static char ActionSheetBlockKey;
+
+///********  Alert
+const CGFloat AlertTitleHeight = 40.0;
+const CGFloat AlertMessageHeight = 100.0;
+const CGFloat AlertActionHeight = 32.0;
+const CGFloat AlertSpaceWidth = 10.0;
+
+static char AlertBlockKey;
 
 @implementation UIViewController (ActionSheet)
 
@@ -42,14 +51,14 @@ static char ActionSheetBlockKey;
     //标题高度
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     BOOL titleExist = title.length > 0;
-    CGFloat titleHeight = titleExist ? TitleHeight :0.0;
+    CGFloat titleHeight = titleExist ? SheetTitleHeight :0.0;
     
     //items最多显示8个
     if (items.count > 8) {
         items = [items subarrayWithRange:NSMakeRange(0, 8)];
     }
     
-    CGFloat actionSheetHeight = items.count * ItemsHeight + titleHeight + CloseHeight + SpaceHeight;
+    CGFloat actionSheetHeight = items.count * SheetItemsHeight + titleHeight + SheetCloseHeight + SheetSpaceHeight;
     CGFloat actionSheetY = ScreenHeight - BottomHeight - actionSheetHeight;
     
     UIView *actionSheet = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, actionSheetHeight)];
@@ -68,8 +77,8 @@ static char ActionSheetBlockKey;
     
     //按钮
     for (int i = 0; i < items.count; i++) {
-        CGFloat buttonY = titleHeight + i * ItemsHeight + 0.5 * (i + 1);
-        UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY , ScreenWidth, ItemsHeight)];
+        CGFloat buttonY = titleHeight + i * SheetItemsHeight + 0.5 * (i + 1);
+        UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY , ScreenWidth, SheetItemsHeight)];
         actionButon.tag = i;
         actionButon.backgroundColor = [UIColor whiteColor];
         actionButon.titleLabel.font = ThemeFontText;
@@ -80,7 +89,7 @@ static char ActionSheetBlockKey;
     }
     
     //关闭按钮
-    UIButton *closeButon = [[UIButton alloc] initWithFrame:CGRectMake(0, actionSheetHeight - CloseHeight , ScreenWidth, CloseHeight)];
+    UIButton *closeButon = [[UIButton alloc] initWithFrame:CGRectMake(0, actionSheetHeight - SheetCloseHeight , ScreenWidth, SheetCloseHeight)];
     closeButon.backgroundColor = [UIColor whiteColor];
     closeButon.titleLabel.font = ThemeFontText;
     [closeButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -102,7 +111,6 @@ static char ActionSheetBlockKey;
     }];
 }
 
-#pragma mark-
 //关闭
 - (void)closeAction:(UIButton *)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -113,6 +121,116 @@ static char ActionSheetBlockKey;
     [self dismissViewControllerAnimated:NO completion:nil];
     
     ActionSheetSelect block = objc_getAssociatedObject(self, &ActionSheetBlockKey);
+    if (block) {
+        block(sender.tag);
+    }
+}
+
+
+#pragma mark ------    Alert
+- (void)alertWithMessage:(NSString *)message
+                   items:(NSArray<NSString *> *)items
+                  action:(AlertActionClick)action {
+    [self alertWithTitle:nil message:message items:items action:action];
+}
+
+- (void)alertWithTitle:(nullable NSString *)title message:(NSString *)message items:(NSArray<NSString *> *)items action:(AlertActionClick)action {
+    
+    if (items.count == 0) {
+        return;
+    }
+    
+    //弹出controller
+    UIViewController *contentViewController = [[UIViewController alloc] init];
+    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+    contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    //标题高度
+    title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    BOOL titleExist = title.length > 0;
+    CGFloat titleHeight = titleExist ? AlertTitleHeight :0.0;
+    
+    //items最多显示3个
+    if (items.count > 3) {
+        items = [items subarrayWithRange:NSMakeRange(0, 3)];
+    }
+    
+    CGFloat alertHeight = titleHeight + AlertMessageHeight + AlertActionHeight + 20;
+    CGFloat alertWidth = ScreenWidth - 20 * 2;
+    CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5;
+    
+    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(20, actionSheetY, alertWidth, alertHeight)];
+    alertView.layer.cornerRadius = 5;
+    alertView.layer.masksToBounds = YES;
+    alertView.backgroundColor = [UIColor whiteColor];
+    [contentViewController.view addSubview:alertView];
+    
+    if (titleExist) {
+        //标题
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, alertWidth, titleHeight)];
+        titleLabel.backgroundColor = [UIColor whiteColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.text = title;
+        titleLabel.font = ThemeFontText;
+        [alertView addSubview:titleLabel];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), alertWidth, 1)];
+        lineView.backgroundColor = ThemeColorLine;
+        [alertView addSubview:lineView];
+    }
+    
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(AlertSpaceWidth,  titleHeight, alertWidth - AlertSpaceWidth * 2, AlertMessageHeight)];
+    messageLabel.numberOfLines = 0;
+    messageLabel.text = message;
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    [alertView addSubview:messageLabel];
+    
+    CGFloat spaceWidth = 10;
+    CGFloat alertActionWidth = (alertWidth - (items.count + 1) * spaceWidth) / items.count;
+    alertActionWidth = ceil(alertActionWidth);
+    if (items.count == 1) {
+        ///只有一个按钮的时候
+        alertActionWidth = 120;
+        spaceWidth = (alertWidth - alertActionWidth) * 0.5;
+    }
+    
+    CGFloat buttonY = CGRectGetMaxY(messageLabel.frame);
+    
+    //按钮
+    for (int i = 0; i < items.count; i++) {
+        CGFloat buttonX = (spaceWidth + alertActionWidth) * i + spaceWidth;
+        UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(buttonX, buttonY, alertActionWidth, AlertActionHeight)];
+        actionButon.tag = i;
+        actionButon.backgroundColor = [UIColor whiteColor];
+        actionButon.titleLabel.font = ThemeFontText;
+        [actionButon setTitle:items[i] forState:UIControlStateNormal];
+        
+        actionButon.layer.masksToBounds = YES;
+        actionButon.layer.cornerRadius = AlertActionHeight * 0.5;
+        actionButon.layer.borderColor = ThemeColorBlue.CGColor;
+        actionButon.layer.borderWidth = 0.5;
+        [actionButon addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [alertView addSubview:actionButon];
+        
+        if (i == items.count - 1) {
+            [actionButon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [actionButon setBackgroundColor:ThemeColorBlue];
+        } else {
+            [actionButon setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
+            [actionButon setBackgroundColor:[UIColor whiteColor]];
+            
+        }
+    }
+    
+    objc_setAssociatedObject(self, &AlertBlockKey, action, OBJC_ASSOCIATION_RETAIN);
+    [self presentViewController:contentViewController animated:NO completion:^{
+    }];
+}
+
+- (void)alertAction:(UIButton *)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    AlertActionClick block = objc_getAssociatedObject(self, &AlertBlockKey);
     if (block) {
         block(sender.tag);
     }

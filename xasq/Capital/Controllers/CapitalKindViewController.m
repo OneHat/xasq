@@ -9,8 +9,11 @@
 #import "CapitalKindViewController.h"
 #import "CapitalTopView.h"
 #import "CapitalActionModuleView.h"
+#import "PaymentsRecordsTableViewCell.h"
 
-@interface CapitalKindViewController ()
+@interface CapitalKindViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -26,7 +29,6 @@
     imageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:imageView];
     
-    
     //title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -41,47 +43,44 @@
     [self.view addSubview:backButton];
     
     //资产view
-    CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight + 10, ScreenWidth, 20)];
+    CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, 20)];
     topView.viewStyle = CapitalTopViewHold;
     [self.view addSubview:topView];
     
     ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
-    CGFloat imageViewH = topView.frame.size.height + NavHeight + 10;
+    CGFloat imageViewH = topView.frame.size.height + NavHeight;
     imageView.frame = CGRectMake(0, 0, ScreenWidth, imageViewH);
     
-    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 10)];
-    modulView.ButtonClickBlock = ^(NSInteger index) {
-        
-    };
-    [self.view addSubview:modulView];
+//    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 10)];
+//    modulView.ButtonClickBlock = ^(NSInteger index) {
+//    };
+//    [self.view addSubview:modulView];
     
-    UIScrollView *introduceView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(modulView.frame) + 10, ScreenWidth, ScreenHeight - CGRectGetMaxY(modulView.frame) - 10)];
-    introduceView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:introduceView];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 30)];
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backView];
     
-    UILabel *introduceTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 20, 30)];
-    introduceTitleLabel.text = @"简介";
-    introduceTitleLabel.font = [UIFont boldSystemFontOfSize:26];
-    [introduceView addSubview:introduceTitleLabel];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, 30)];
+    label.backgroundColor = [UIColor whiteColor];
+    label.text = @"收支记录";
+    label.font = [UIFont boldSystemFontOfSize:18];
+    [backView addSubview:label];
     
-    NSString *content = @"比特币（Bitcoin）的概念最初由中本聪在2008年11月1日提出，并于2009年1月3日正式诞生。根据中本聪的思路设计发布的开源软件以及建构其上的P2P网络。比特币是一种P2P形式的虚拟的加密数字货币。点对点的传输意味着一个去中心化的支付系统。";
+    UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    recordButton.frame = CGRectMake(ScreenWidth - 100, 0, 80, 30);
+    [recordButton setTitle:@"筛选" forState:UIControlStateNormal];
+    [recordButton setTitleColor:ThemeColorText forState:UIControlStateNormal];
+    [backView addSubview:recordButton];
     
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 1.1;//设置行间距
-    paragraphStyle.lineHeightMultiple = 1.5;
-    
-    NSDictionary *attributes = @{NSFontAttributeName:ThemeFontText,NSParagraphStyleAttributeName:paragraphStyle};
-    NSAttributedString *attributesString = [[NSAttributedString alloc] initWithString:content attributes:attributes];
-    
-    CGSize size = [content boundingRectWithSize:CGSizeMake(ScreenWidth-10, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
-    
-    UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50,  ScreenWidth-20, ceil(size.height))];
-    contentLabel.numberOfLines = 0;
-    contentLabel.font = ThemeFontText;
-    contentLabel.attributedText = attributesString;
-    [introduceView addSubview:contentLabel];
-    
-    introduceView.contentSize = CGSizeMake(0,ceil(size.height) + 60);
+    CGRect rect = CGRectMake(0, CGRectGetMaxY(backView.frame), ScreenWidth, ScreenHeight - imageViewH - 10);
+    _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+    [_tableView registerNib:[UINib nibWithNibName:@"PaymentsRecordsTableViewCell" bundle:nil] forCellReuseIdentifier:@"PaymentsRecordsTableViewCell"];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.tableFooterView = [[UIView alloc] init];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.rowHeight = 45;
+    [self.view addSubview:_tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -90,9 +89,35 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
-
 - (void)backButtonAction {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark -
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PaymentsRecordsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PaymentsRecordsTableViewCell"];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    UILabel *titleLB = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth - 40, 30)];
+    titleLB.textColor = ThemeColorTextGray;
+    titleLB.font = ThemeFontTipText;
+    titleLB.text = @"26日-星期五";
+    [headerView addSubview:titleLB];
+    
+    return headerView;
+}
+
 
 @end
