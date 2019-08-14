@@ -13,6 +13,7 @@
 #import "TaskViewController.h"
 #import "LoginViewController.h"
 #import "WebViewController.h"
+#import "CalculateRecordViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -195,7 +196,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
             NSDictionary *stepReward = dateList.firstObject;
             
-            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
+//            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
             
         }
         

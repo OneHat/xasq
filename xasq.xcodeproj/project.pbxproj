@@ -99,6 +99,11 @@
 		C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B107A22EADF2700FDFDED /* LanguageTool.m */; };
 		C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108522EADF9B00FDFDED /* RootViewController.m */; };
 		C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108A22EAEB0700FDFDED /* NetworkManager.m */; };
+		C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */; };
+		C49621792303E8200086A959 /* ChangePhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */; };
+		C496217C23042C5C0086A959 /* CalculateRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C496217B23042C5C0086A959 /* CalculateRecordViewController.m */; };
+		C496218023042C810086A959 /* CalculateRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C496217E23042C810086A959 /* CalculateRecordTableViewCell.m */; };
+		C496218123042C810086A959 /* CalculateRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C496217F23042C810086A959 /* CalculateRecordTableViewCell.xib */; };
 		C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */; };
 		C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8A22EFE7F000A1DE8C /* InviteUserViewController.m */; };
 		C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EE8C22EFEE3400A1DE8C /* InviteUserViewController.xib */; };
@@ -340,6 +345,14 @@
 		C48B108622EADF9B00FDFDED /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C48B108922EAEB0700FDFDED /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		C48B108A22EAEB0700FDFDED /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		C49621752303E8200086A959 /* ChangePhoneAndEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePhoneAndEmailViewController.h; sourceTree = "<group>"; };
+		C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneAndEmailViewController.m; sourceTree = "<group>"; };
+		C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhoneAndEmailViewController.xib; sourceTree = "<group>"; };
+		C496217A23042C5C0086A959 /* CalculateRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculateRecordViewController.h; sourceTree = "<group>"; };
+		C496217B23042C5C0086A959 /* CalculateRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculateRecordViewController.m; sourceTree = "<group>"; };
+		C496217D23042C810086A959 /* CalculateRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculateRecordTableViewCell.h; sourceTree = "<group>"; };
+		C496217E23042C810086A959 /* CalculateRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculateRecordTableViewCell.m; sourceTree = "<group>"; };
+		C496217F23042C810086A959 /* CalculateRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculateRecordTableViewCell.xib; sourceTree = "<group>"; };
 		C4A1EE8022EFD83100A1DE8C /* DeviceInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
 		C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
 		C4A1EE8922EFE7F000A1DE8C /* InviteUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteUserViewController.h; sourceTree = "<group>"; };
@@ -853,6 +866,9 @@
 				C4B9FCED2303DBA4007C1137 /* FriendsRankViewCell.h */,
 				C4B9FCEE2303DBA4007C1137 /* FriendsRankViewCell.m */,
 				C4B9FCEF2303DBA4007C1137 /* FriendsRankViewCell.xib */,
+				C496217D23042C810086A959 /* CalculateRecordTableViewCell.h */,
+				C496217E23042C810086A959 /* CalculateRecordTableViewCell.m */,
+				C496217F23042C810086A959 /* CalculateRecordTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -943,6 +959,8 @@
 				C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */,
 				C4B9FCF823042F2A007C1137 /* WebViewController.h */,
 				C4B9FCF923042F2A007C1137 /* WebViewController.m */,
+				C496217A23042C5C0086A959 /* CalculateRecordViewController.h */,
+				C496217B23042C5C0086A959 /* CalculateRecordViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -997,6 +1015,9 @@
 				C41B127522F2AC1000375560 /* BindPhoneAndEmailViewController.h */,
 				C41B127622F2AC1000375560 /* BindPhoneAndEmailViewController.m */,
 				C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */,
+				C49621752303E8200086A959 /* ChangePhoneAndEmailViewController.h */,
+				C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */,
+				C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */,
 				C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */,
 				C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */,
 				C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */,
@@ -1162,6 +1183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C496218123042C810086A959 /* CalculateRecordTableViewCell.xib in Resources */,
 				C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */,
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
@@ -1191,6 +1213,7 @@
 				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
+				C49621792303E8200086A959 /* ChangePhoneAndEmailViewController.xib in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
@@ -1322,6 +1345,7 @@
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
+				C496218023042C810086A959 /* CalculateRecordTableViewCell.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */,
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
@@ -1353,6 +1377,7 @@
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
+				C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4D5EEE522F80CE300C94D9F /* PaymentHeaderView.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
@@ -1362,6 +1387,7 @@
 				C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
 				C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */,
+				C496217C23042C5C0086A959 /* CalculateRecordViewController.m in Sources */,
 				C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */,
 				C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */,
 				C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */,

@@ -58,6 +58,10 @@ FOUNDATION_EXPORT NSString *const UserSignInfo;
 FOUNDATION_EXPORT NSString *const UserSendEmail;
 /// 发送手机验证码接口 POST
 FOUNDATION_EXPORT NSString *const UserSendMobile;
+/// 设置用户头像接口 POST
+FOUNDATION_EXPORT NSString *const UserSetIcon;
+/// 设置用户昵称接口 POST
+FOUNDATION_EXPORT NSString *const UserSetNickname;
 
 //********************************资产账单
 ///查看个人总帐单 POST

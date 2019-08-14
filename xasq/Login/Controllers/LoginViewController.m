@@ -105,6 +105,7 @@
         if (data) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
             [UserDataManager shareManager].authorization = data[@"data"][@"accessToken"];
+            [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
         }
         [self showMessage:@"登录成功" complete:^{
             [self isLoginSuccessfull:YES];

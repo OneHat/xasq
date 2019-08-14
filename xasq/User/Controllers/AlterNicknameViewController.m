@@ -25,6 +25,28 @@
     _saveBtn.layer.masksToBounds = YES;
 }
 
+- (IBAction)saveBtnClick:(UIButton *)sender {
+    if (_nameTF.text.length == 0) {
+        [self showMessage:@"请输入昵称"];
+        return;
+    }
+    [self loading];
+    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
+                           @"nickName" : _nameTF.text
+                           };
+    [[NetworkManager sharedManager] postRequest:UserSetNickname parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self hideHUD];
+        [UserDataManager shareManager].usermodel.nickName = self->_nameTF.text;
+        [self showMessage:@"修改成功" complete:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } failure:^(NSError * _Nonnull error) {
+        [self hideHUD];
+        [self showErrow:error];
+    }];
+}
+
+
 /*
 #pragma mark - Navigation
 
