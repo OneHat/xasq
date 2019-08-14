@@ -12,6 +12,7 @@
 #import "MinerViewController.h"
 #import "TaskViewController.h"
 #import "LoginViewController.h"
+#import "CalculateRecordViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -159,6 +160,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 }
 
 - (IBAction)friendsAction:(UIButton *)sender {
+    CalculateRecordViewController *VC = [[CalculateRecordViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 
