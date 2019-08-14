@@ -9,6 +9,7 @@
 #import "UserViewController.h"
 #import "UserTableViewCell.h"
 #import "CredentialsViewController.h"
+#import "UnauthorizedViewController.h"
 #import "AccountSetViewController.h"
 #import "LanguageSetViewController.h"
 #import "OurVersionViewController.h"
@@ -160,9 +161,17 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
     NSArray *titleArray = _titleDict[key];
     NSString *title = titleArray[indexPath.row];
     if ([title isEqualToString:@"认证信息"]) {
-        CredentialsViewController *VC = [[CredentialsViewController alloc] init];
-        VC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:VC animated:YES];
+        if ([UserDataManager shareManager].usermodel.authStatus) {
+            // 已认证
+            CredentialsViewController *VC = [[CredentialsViewController alloc] init];
+            VC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:VC animated:YES];
+        } else {
+            // 未认证
+            UnauthorizedViewController *VC = [[UnauthorizedViewController alloc] init];
+            VC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:VC animated:YES];
+        }
     } else if ([title isEqualToString:@"账户设置"]) {
         AccountSetViewController *VC = [[AccountSetViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
