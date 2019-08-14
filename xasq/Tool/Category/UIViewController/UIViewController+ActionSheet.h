@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+///ActionSheet
 typedef void(^ActionSheetSelect)(NSInteger index);
 
+///Alert
 typedef void(^AlertActionClick)(NSInteger index);
 
 @interface UIViewController (ActionSheet)
@@ -25,9 +27,8 @@ typedef void(^AlertActionClick)(NSInteger index);
                        items:(NSArray<NSString *> *)items
                     complete:(ActionSheetSelect)complete;
 
-
-#pragma mark -
-//没有标题
+#pragma mark - Alert
+///
 - (void)alertWithMessage:(NSString *)message
                  items:(NSArray<NSString *> *)items
                 action:(AlertActionClick)action;
@@ -37,7 +38,10 @@ typedef void(^AlertActionClick)(NSInteger index);
                  items:(NSArray<NSString *> *)items
                 action:(AlertActionClick)action;
 
-
+///固定样式的输入框
+- (void)alertInputWithTitle:(nullable NSString *)title
+                      items:(NSArray<NSString *> *)items
+                     action:(AlertActionClick)action;
 
 @end
 

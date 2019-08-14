@@ -71,7 +71,7 @@ static char EmptyBlockKey;
     
     objc_setAssociatedObject(self, &EmptyViewKey, backView, OBJC_ASSOCIATION_RETAIN);
     if (block) {
-        objc_setAssociatedObject(self, &EmptyBlockKey, block, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject(self, &EmptyBlockKey, block, OBJC_ASSOCIATION_COPY);
     }
 }
 

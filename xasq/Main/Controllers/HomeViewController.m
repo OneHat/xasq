@@ -185,7 +185,6 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     HomeMoreNewsViewController *moreNewsVC = [[HomeMoreNewsViewController alloc] init];
     moreNewsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreNewsVC animated:YES];
-    
 }
 
 @end

@@ -44,6 +44,10 @@ const NSTimeInterval HideDuration = 1.5;
     [self showErrow:error complete:nil];
 }
 
+- (void)showMessageToWindow:(NSString *)text {
+    [self showMessage:text toView:nil hide:YES];
+}
+
 - (void)hideHUD {
     [self hideHUDForView:self.view animated:YES];
 }

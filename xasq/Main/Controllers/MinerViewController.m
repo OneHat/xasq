@@ -11,10 +11,15 @@
 #import "InviteCodeView.h"
 #import "InviteHistoryViewCell.h"
 
-@interface MinerViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "XLPasswordInputView.h"
+#import "UIViewcontroller+ActionSheet.h"
+
+@interface MinerViewController ()<UITableViewDataSource,UITableViewDelegate,XLPasswordInputViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSInteger currentIndex;//
+
+@property (nonatomic, strong) NSString *bindCode;
 
 @end
 
@@ -62,8 +67,7 @@
 }
 
 - (UIView *)headerView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 300)];
-//    headerView.backgroundColor = RGBColor(36, 69, 104);
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 350)];
     
     UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -ScreenHeight, ScreenWidth, ScreenHeight + 80)];
     colorView.backgroundColor = RGBColor(36, 69, 104);
@@ -73,9 +77,16 @@
     infomationView.backgroundColor = [UIColor clearColor];
     [headerView addSubview:infomationView];
     
-    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 140)];
-    [headerView addSubview:inviteCodeView];
+    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 190)];
+    inviteCodeView.buttonClickBlock = ^(InviteCodeViewButtonStyle style) {
+        if (style == InviteCodeViewButtonStyleCopy) {
+            [self showMessage:@"复制成功"];
+        } else if (style == InviteCodeViewButtonStyleBind) {
+            [self bindCodeAction];
+        }
+    };
     
+    [headerView addSubview:inviteCodeView];
     
     return headerView;
 }
@@ -145,6 +156,29 @@
 - (void)changeAction:(UIButton *)sender {
     _currentIndex = sender.tag;
     [self.tableView reloadData];
+}
+
+- (void)bindCodeAction {
+    
+    [self alertInputWithTitle:@"绑定邀请" items:@[@"取消",@"确定"] action:^(NSInteger index) {
+        if (index == 0) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        } else {
+            if (self.bindCode.length == 6) {
+                [self dismissViewControllerAnimated:NO completion:nil];
+                [self showMessage:[NSString stringWithFormat:@"邀请码:%@",self.bindCode]];
+                
+            } else {
+                [self showMessageToWindow:@"请输入完整的邀请码"];
+            }
+        }
+        
+    }];
+}
+
+#pragma mark -
+- (void)passwordInputView:(XLPasswordInputView *)passwordInputView inputPassword:(NSString *)password {
+    _bindCode = password;
 }
 
 @end

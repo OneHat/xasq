@@ -8,6 +8,7 @@
 
 #import "UIViewController+ActionSheet.h"
 #import <objc/runtime.h>
+#import "XLPasswordInputView.h"
 
 ///********  ActionSheet
 const CGFloat SheetTitleHeight = 30.0;
@@ -27,6 +28,16 @@ static char AlertBlockKey;
 
 @implementation UIViewController (ActionSheet)
 
+- (UIViewController *)customerController {
+    //弹出controller
+    UIViewController *contentViewController = [[UIViewController alloc] init];
+    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+    contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    return contentViewController;
+}
+
+#pragma mark -
 /// 没有标题，关闭按钮默认“关闭”
 - (void)actionSheetWithItems:(NSArray<NSString *> *)items complete:(nonnull ActionSheetSelect)complete {
     [self actionSheetWithTitle:nil close:nil items:items complete:complete];
@@ -41,11 +52,9 @@ static char AlertBlockKey;
     }
     
     //弹出controller
-    UIViewController *contentViewController = [[UIViewController alloc] init];
-    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
-    contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    UIViewController *contentViewController = [self customerController];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:contentViewController action:@selector(closeAction:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:contentViewController action:@selector(sheetCloseAction:)];
     [contentViewController.view addGestureRecognizer:tap];
     
     //标题高度
@@ -84,7 +93,7 @@ static char AlertBlockKey;
         actionButon.titleLabel.font = ThemeFontText;
         [actionButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [actionButon setTitle:items[i] forState:UIControlStateNormal];
-        [actionButon addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [actionButon addTarget:self action:@selector(sheetButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [actionSheet addSubview:actionButon];
     }
     
@@ -98,11 +107,10 @@ static char AlertBlockKey;
     } else {
         [closeButon setTitle:@"关闭" forState:UIControlStateNormal];
     }
-    [closeButon addTarget:self action:@selector(closeAction:) forControlEvents:UIControlEventTouchUpInside];
+    [closeButon addTarget:self action:@selector(sheetCloseAction:) forControlEvents:UIControlEventTouchUpInside];
     [actionSheet addSubview:closeButon];
     
-    objc_setAssociatedObject(self, &ActionSheetBlockKey, complete, OBJC_ASSOCIATION_RETAIN);
-    
+    objc_setAssociatedObject(self, &ActionSheetBlockKey, complete, OBJC_ASSOCIATION_COPY);
     
     [self presentViewController:contentViewController animated:NO completion:^{
         [UIView animateWithDuration:0.2 animations:^{
@@ -112,12 +120,12 @@ static char AlertBlockKey;
 }
 
 //关闭
-- (void)closeAction:(UIButton *)sender {
+- (void)sheetCloseAction:(UIButton *)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 //点击item
-- (void)buttonAction:(UIButton *)sender {
+- (void)sheetButtonAction:(UIButton *)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
     
     ActionSheetSelect block = objc_getAssociatedObject(self, &ActionSheetBlockKey);
@@ -125,7 +133,6 @@ static char AlertBlockKey;
         block(sender.tag);
     }
 }
-
 
 #pragma mark ------    Alert
 - (void)alertWithMessage:(NSString *)message
@@ -136,19 +143,28 @@ static char AlertBlockKey;
 
 - (void)alertWithTitle:(nullable NSString *)title message:(NSString *)message items:(NSArray<NSString *> *)items action:(AlertActionClick)action {
     
+    [self alertWithTitle:title message:message items:items action:action input:NO];
+}
+
+- (void)alertInputWithTitle:(nullable NSString *)title items:(NSArray<NSString *> *)items action:(AlertActionClick)action {
+    
+    [self alertWithTitle:title message:nil items:items action:action input:YES];
+}
+
+///私有方法
+- (void)alertWithTitle:(nullable NSString *)title message:(NSString *)message items:(NSArray<NSString *> *)items action:(AlertActionClick)action input:(BOOL)input {
+    
     if (items.count == 0) {
         return;
     }
     
     //弹出controller
-    UIViewController *contentViewController = [[UIViewController alloc] init];
-    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
-    contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    UIViewController *contentViewController = [self customerController];
     
     //标题高度
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     BOOL titleExist = title.length > 0;
-    CGFloat titleHeight = titleExist ? AlertTitleHeight :0.0;
+    CGFloat titleHeight = titleExist ? AlertTitleHeight :10.0;
     
     //items最多显示3个
     if (items.count > 3) {
@@ -179,11 +195,26 @@ static char AlertBlockKey;
         [alertView addSubview:lineView];
     }
     
-    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(AlertSpaceWidth,  titleHeight, alertWidth - AlertSpaceWidth * 2, AlertMessageHeight)];
-    messageLabel.numberOfLines = 0;
-    messageLabel.text = message;
-    messageLabel.textAlignment = NSTextAlignmentCenter;
-    [alertView addSubview:messageLabel];
+    if (input) {
+        XLPasswordInputView *passwordInputView = [XLPasswordInputView passwordInputViewWithPasswordLength:6];
+        passwordInputView.gridLineColor = [UIColor colorWithHexString:@"ccccce"];
+        passwordInputView.gridLineWidth = 1;
+        passwordInputView.dotColor = [UIColor colorWithHexString:@"ccccce"];
+        passwordInputView.dotWidth = 12;
+        passwordInputView.secureTextEntry = NO;
+        passwordInputView.delegate = self;
+        CGFloat gridWidth = 54 * (alertWidth / 375.0);
+        CGRect frame = CGRectMake((alertWidth - 6 * gridWidth) * 0.5, titleHeight + (AlertMessageHeight - gridWidth) * 0.5, 6 * gridWidth, gridWidth);
+        passwordInputView.frame = frame;
+        [alertView addSubview:passwordInputView];
+        
+    } else {
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(AlertSpaceWidth,  titleHeight, alertWidth - AlertSpaceWidth * 2, AlertMessageHeight)];
+        messageLabel.numberOfLines = 0;
+        messageLabel.text = message;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        [alertView addSubview:messageLabel];
+    }
     
     CGFloat spaceWidth = 10;
     CGFloat alertActionWidth = (alertWidth - (items.count + 1) * spaceWidth) / items.count;
@@ -194,7 +225,7 @@ static char AlertBlockKey;
         spaceWidth = (alertWidth - alertActionWidth) * 0.5;
     }
     
-    CGFloat buttonY = CGRectGetMaxY(messageLabel.frame);
+    CGFloat buttonY = titleHeight + AlertMessageHeight;
     
     //按钮
     for (int i = 0; i < items.count; i++) {
@@ -209,7 +240,7 @@ static char AlertBlockKey;
         actionButon.layer.cornerRadius = AlertActionHeight * 0.5;
         actionButon.layer.borderColor = ThemeColorBlue.CGColor;
         actionButon.layer.borderWidth = 0.5;
-        [actionButon addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [actionButon addTarget:self action:@selector(alertButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [alertView addSubview:actionButon];
         
         if (i == items.count - 1) {
@@ -222,13 +253,14 @@ static char AlertBlockKey;
         }
     }
     
-    objc_setAssociatedObject(self, &AlertBlockKey, action, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, &AlertBlockKey, action, OBJC_ASSOCIATION_COPY);
+    
     [self presentViewController:contentViewController animated:NO completion:^{
     }];
 }
 
-- (void)alertAction:(UIButton *)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+- (void)alertButtonAction:(UIButton *)sender {
+//    [self dismissViewControllerAnimated:NO completion:nil];
     
     AlertActionClick block = objc_getAssociatedObject(self, &AlertBlockKey);
     if (block) {
