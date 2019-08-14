@@ -100,6 +100,8 @@
 		C48B107C22EADF2700FDFDED /* LanguageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B107A22EADF2700FDFDED /* LanguageTool.m */; };
 		C48B108722EADF9C00FDFDED /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108522EADF9B00FDFDED /* RootViewController.m */; };
 		C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B108A22EAEB0700FDFDED /* NetworkManager.m */; };
+		C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */; };
+		C49621792303E8200086A959 /* ChangePhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */; };
 		C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */; };
 		C4A1EE8B22EFE7F000A1DE8C /* InviteUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8A22EFE7F000A1DE8C /* InviteUserViewController.m */; };
 		C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EE8C22EFEE3400A1DE8C /* InviteUserViewController.xib */; };
@@ -337,6 +339,9 @@
 		C48B108622EADF9B00FDFDED /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C48B108922EAEB0700FDFDED /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		C48B108A22EAEB0700FDFDED /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		C49621752303E8200086A959 /* ChangePhoneAndEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePhoneAndEmailViewController.h; sourceTree = "<group>"; };
+		C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneAndEmailViewController.m; sourceTree = "<group>"; };
+		C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhoneAndEmailViewController.xib; sourceTree = "<group>"; };
 		C4A1EE8022EFD83100A1DE8C /* DeviceInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
 		C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
 		C4A1EE8922EFE7F000A1DE8C /* InviteUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteUserViewController.h; sourceTree = "<group>"; };
@@ -974,6 +979,9 @@
 				C41B127522F2AC1000375560 /* BindPhoneAndEmailViewController.h */,
 				C41B127622F2AC1000375560 /* BindPhoneAndEmailViewController.m */,
 				C41B127722F2AC1000375560 /* BindPhoneAndEmailViewController.xib */,
+				C49621752303E8200086A959 /* ChangePhoneAndEmailViewController.h */,
+				C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */,
+				C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */,
 				C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */,
 				C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */,
 				C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */,
@@ -1167,6 +1175,7 @@
 				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
+				C49621792303E8200086A959 /* ChangePhoneAndEmailViewController.xib in Resources */,
 				C4C2CAB622EECB300086761A /* TacticsViewCell.xib in Resources */,
 				C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
@@ -1327,6 +1336,7 @@
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
+				C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,
 				C4D5EEE522F80CE300C94D9F /* PaymentHeaderView.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
