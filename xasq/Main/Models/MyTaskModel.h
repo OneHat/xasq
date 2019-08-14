@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyTaskModel : NSObject
 
-@property (nonatomic, assign) NSInteger ID;
+//@property (nonatomic, assign) NSInteger ID;
 
-///算力加成系数
-@property (nonatomic, strong) NSDecimalNumber *addRatio;
+/////算力加成系数
+//@property (nonatomic, strong) NSDecimalNumber *addRatio;
 
 ///任务奖励币种
 @property (nonatomic, strong) NSString *currencyCode;

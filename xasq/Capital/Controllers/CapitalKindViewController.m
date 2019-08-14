@@ -7,9 +7,10 @@
 //
 
 #import "CapitalKindViewController.h"
+#import "MentionMoneyViewController.h"
 #import "CapitalTopView.h"
-#import "CapitalActionModuleView.h"
 #import "PaymentsRecordsTableViewCell.h"
+#import "CapitalViewController.h"
 
 @interface CapitalKindViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -45,16 +46,17 @@
     //资产view
     CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, 20)];
     topView.viewStyle = CapitalTopViewHold;
+    topView.DrawClickBlock = ^{
+        //提币
+        MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
+        mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
+    };
     [self.view addSubview:topView];
     
     ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
     CGFloat imageViewH = topView.frame.size.height + NavHeight;
     imageView.frame = CGRectMake(0, 0, ScreenWidth, imageViewH);
-    
-//    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 10)];
-//    modulView.ButtonClickBlock = ^(NSInteger index) {
-//    };
-//    [self.view addSubview:modulView];
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, imageViewH + 10, ScreenWidth, 30)];
     backView.backgroundColor = [UIColor whiteColor];
@@ -81,12 +83,22 @@
     _tableView.delegate = self;
     _tableView.rowHeight = 45;
     [self.view addSubview:_tableView];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)backButtonAction {

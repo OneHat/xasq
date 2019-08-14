@@ -7,17 +7,18 @@
 //
 
 #import "CapitalTopView.h"
-
+#import "CapitalDataManager.h"
 @interface CapitalTopView ()
 
 @property (nonatomic, strong) UILabel *styleLabel;
+@property (nonatomic, strong) UIButton *eyeButton;
 
 @property (nonatomic, strong) UILabel *capitalLabel;
 @property (nonatomic, strong) UILabel *moneyLabel;
 
-@property (nonatomic, strong) UIButton *recordButton;
-
 @end
+
+NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatus";
 
 @implementation CapitalTopView
 
@@ -31,6 +32,8 @@
         
         self.clipsToBounds = YES;
         [self loadSubViews];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeHideMony) name:CapitalChangeHideMoneyStatus object:nil];
     }
     return self;
 }
@@ -48,22 +51,29 @@
     imageView.image = [bgImage resizeImageInCenter];
     [self addSubview:imageView];
     
-    UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 100, 30)];
-    tipLabel.font = ThemeFontText;
-    tipLabel.textColor = textOrangeColor;
-    _styleLabel = tipLabel;
-    [self addSubview:tipLabel];
+    _styleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, 100, 30)];
+    _styleLabel.font = ThemeFontText;
+    _styleLabel.textColor = textOrangeColor;
+    [self addSubview:_styleLabel];
+    
+    UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(130, 10, 30, 30)];
+//    eyeButton.adjustsImageWhenHighlighted = NO;
+    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
+    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
+    [eyeButton addTarget:self action:@selector(eyeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    eyeButton.selected = [CapitalDataManager shareManager].hideMoney;
+    [self addSubview:eyeButton];
+    _eyeButton = eyeButton;
     
     //
     UIImage *buttonImage = [UIImage imageNamed:@"capital_recordButton"];
-    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(width - 120, 15, 90, 24)];
-    [recordButton setBackgroundImage:[buttonImage resizeImageInCenter] forState:UIControlStateNormal];
-    recordButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-    [recordButton setTitle:@"收支记录 " forState:UIControlStateNormal];
-    [recordButton setTitleColor:buttonTitleColor forState:UIControlStateNormal];
-    [recordButton addTarget:self action:@selector(recordClick) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:recordButton];
-    _recordButton = recordButton;
+    UIButton *drawButton = [[UIButton alloc] initWithFrame:CGRectMake(width - 100, 15, 70, 24)];
+    [drawButton setBackgroundImage:[buttonImage resizeImageInCenter] forState:UIControlStateNormal];
+    drawButton.titleLabel.font = ThemeFontSmallText;
+    [drawButton setTitle:@"提币 " forState:UIControlStateNormal];
+    [drawButton setTitleColor:buttonTitleColor forState:UIControlStateNormal];
+    [drawButton addTarget:self action:@selector(drawClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:drawButton];
     
     //分割线
 //    10 + CGRectGetMaxY(tipLabel.frame)
@@ -86,6 +96,8 @@
     moneyLabel.text = @"$000";
     [self addSubview:moneyLabel];
     _moneyLabel = moneyLabel;
+    
+    [self changeHideMony];
 }
 
 - (void)setViewStyle:(CapitalTopViewStyle)viewStyle {
@@ -95,14 +107,31 @@
         _styleLabel.text = @"总资产折合";
     } else if (_viewStyle == CapitalTopViewHold) {
         _styleLabel.text = @"持有";
-        _recordButton.hidden = YES;
+    }
+    
+    CGSize size = [_styleLabel.text sizeWithAttributes:@{NSFontAttributeName:_styleLabel.font}];
+    
+    _styleLabel.frame = CGRectMake(30, 10, ceil(size.width), 30);
+    _eyeButton.frame = CGRectMake(CGRectGetMaxX(_styleLabel.frame), 10, 30, 30);
+}
+
+#pragma mark -
+- (void)drawClick {
+    if (self.DrawClickBlock) {
+        self.DrawClickBlock();
     }
 }
 
-- (void)setHideMoney:(BOOL)hideMoney {
-    _hideMoney = hideMoney;
+- (void)eyeButtonAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
     
-    if (_hideMoney) {
+    [CapitalDataManager shareManager].hideMoney = ![CapitalDataManager shareManager].hideMoney;
+    [[NSNotificationCenter defaultCenter] postNotificationName:CapitalChangeHideMoneyStatus object:nil];
+}
+
+- (void)changeHideMony {
+    
+    if ([CapitalDataManager shareManager].hideMoney) {
         _capitalLabel.text = @"***";
         _moneyLabel.text = @"***";
     } else {
@@ -110,13 +139,11 @@
         _moneyLabel.text = @"$000";
     }
     
+    _eyeButton.selected = [CapitalDataManager shareManager].hideMoney;
 }
 
-#pragma mark -
-- (void)recordClick {
-    if (_RecordClickBlock) {
-        _RecordClickBlock();
-    }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -12,10 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol CapitalMainViewDelegate <NSObject>
 
-//收支记录
-- (void)capitalMainViewRecordClick;
-//充币、提币、资金划转、交易
-- (void)capitalMainViewButtonModuleClick:(NSInteger)index;
+//提币
+- (void)capitalMainViewDrawClick;
 //点击币种
 - (void)capitalMainViewCellSelect:(NSInteger)index;
 //搜索
@@ -26,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CapitalMainView : UIView
 
 @property (nonatomic, assign, readonly) CGFloat topCapitalViewH;//
-@property (nonatomic, assign) BOOL hideMoney;//
 
 @property (nonatomic, weak) id<CapitalMainViewDelegate> delegate;
 

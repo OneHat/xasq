@@ -59,7 +59,6 @@
 		C41B128122F2CCDF00375560 /* UserHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B128022F2CCDF00375560 /* UserHeaderView.m */; };
 		C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41B128222F2CCF500375560 /* UserHeaderView.xib */; };
 		C43B6BB222F7CD5500312286 /* CapitalActionModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BB122F7CD5500312286 /* CapitalActionModuleView.m */; };
-		C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */; };
 		C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */; };
 		C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BBD22F8343E00312286 /* HomeBannerView.m */; };
 		C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC022F929FB00312286 /* HomeRankView.m */; };
@@ -116,6 +115,12 @@
 		C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */; };
 		C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCE32302852E007C1137 /* TaskViewCell.m */; };
 		C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B9FCE42302852E007C1137 /* TaskViewCell.xib */; };
+		C4B9FCEC2303DAE9007C1137 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */; };
+		C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCEE2303DBA4007C1137 /* FriendsRankViewCell.m */; };
+		C4B9FCF12303DBA4007C1137 /* FriendsRankViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B9FCEF2303DBA4007C1137 /* FriendsRankViewCell.xib */; };
+		C4B9FCF42303E120007C1137 /* RewardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF32303E120007C1137 /* RewardModel.m */; };
+		C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF62303FF0F007C1137 /* CapitalDataManager.m */; };
+		C4B9FCFA23042F2A007C1137 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF923042F2A007C1137 /* WebViewController.m */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -260,8 +265,6 @@
 		C41B128222F2CCF500375560 /* UserHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHeaderView.xib; sourceTree = "<group>"; };
 		C43B6BB022F7CD5500312286 /* CapitalActionModuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalActionModuleView.h; sourceTree = "<group>"; };
 		C43B6BB122F7CD5500312286 /* CapitalActionModuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalActionModuleView.m; sourceTree = "<group>"; };
-		C43B6BB322F8090C00312286 /* CapitalSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalSearchViewController.h; sourceTree = "<group>"; };
-		C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalSearchViewController.m; sourceTree = "<group>"; };
 		C43B6BB922F82E1400312286 /* UIViewController+LeftItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LeftItem.h"; sourceTree = "<group>"; };
 		C43B6BBA22F82E1400312286 /* UIViewController+LeftItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LeftItem.m"; sourceTree = "<group>"; };
 		C43B6BBC22F8343E00312286 /* HomeBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerView.h; sourceTree = "<group>"; };
@@ -366,6 +369,17 @@
 		C4B9FCE22302852E007C1137 /* TaskViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewCell.h; sourceTree = "<group>"; };
 		C4B9FCE32302852E007C1137 /* TaskViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewCell.m; sourceTree = "<group>"; };
 		C4B9FCE42302852E007C1137 /* TaskViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewCell.xib; sourceTree = "<group>"; };
+		C4B9FCEA2303DAE9007C1137 /* FriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		C4B9FCED2303DBA4007C1137 /* FriendsRankViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsRankViewCell.h; sourceTree = "<group>"; };
+		C4B9FCEE2303DBA4007C1137 /* FriendsRankViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsRankViewCell.m; sourceTree = "<group>"; };
+		C4B9FCEF2303DBA4007C1137 /* FriendsRankViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsRankViewCell.xib; sourceTree = "<group>"; };
+		C4B9FCF22303E120007C1137 /* RewardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardModel.h; sourceTree = "<group>"; };
+		C4B9FCF32303E120007C1137 /* RewardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewardModel.m; sourceTree = "<group>"; };
+		C4B9FCF52303FF0F007C1137 /* CapitalDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalDataManager.h; sourceTree = "<group>"; };
+		C4B9FCF62303FF0F007C1137 /* CapitalDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalDataManager.m; sourceTree = "<group>"; };
+		C4B9FCF823042F2A007C1137 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		C4B9FCF923042F2A007C1137 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -571,8 +585,6 @@
 				C414003722F2AC0B0010A463 /* CapitalViewController.m */,
 				C418F49122F42732005EFD81 /* CapitalKindViewController.h */,
 				C418F49222F42732005EFD81 /* CapitalKindViewController.m */,
-				C43B6BB322F8090C00312286 /* CapitalSearchViewController.h */,
-				C43B6BB422F8090C00312286 /* CapitalSearchViewController.m */,
 				C4D5EEC122F7B96A00C94D9F /* MentionMoneyViewController.h */,
 				C4D5EEC222F7B96A00C94D9F /* MentionMoneyViewController.m */,
 				C4D5EEC322F7B96A00C94D9F /* MentionMoneyViewController.xib */,
@@ -647,6 +659,8 @@
 				C43B6BE422F9580900312286 /* UserDataManager.m */,
 				C4B9FCD7230253D6007C1137 /* UserModel.h */,
 				C4B9FCD8230253D6007C1137 /* UserModel.m */,
+				C4B9FCF52303FF0F007C1137 /* CapitalDataManager.h */,
+				C4B9FCF62303FF0F007C1137 /* CapitalDataManager.m */,
 			);
 			path = LocalDataManager;
 			sourceTree = "<group>";
@@ -773,8 +787,8 @@
 		C48B108022EADF7600FDFDED /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C4B9FCD023014D5F007C1137 /* Models */,
 				C4C2CAB022EEC6150086761A /* Controllers */,
+				C4B9FCD023014D5F007C1137 /* Models */,
 				C4A1EE8F22EFF54900A1DE8C /* Views */,
 			);
 			path = Main;
@@ -836,6 +850,9 @@
 				C4B9FCE22302852E007C1137 /* TaskViewCell.h */,
 				C4B9FCE32302852E007C1137 /* TaskViewCell.m */,
 				C4B9FCE42302852E007C1137 /* TaskViewCell.xib */,
+				C4B9FCED2303DBA4007C1137 /* FriendsRankViewCell.h */,
+				C4B9FCEE2303DBA4007C1137 /* FriendsRankViewCell.m */,
+				C4B9FCEF2303DBA4007C1137 /* FriendsRankViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -866,6 +883,8 @@
 				C4B9FCDB2302693B007C1137 /* TaskModel.m */,
 				C4B9FCDD23026CC4007C1137 /* MyTaskModel.h */,
 				C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */,
+				C4B9FCF22303E120007C1137 /* RewardModel.h */,
+				C4B9FCF32303E120007C1137 /* RewardModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -920,6 +939,10 @@
 				C414004222F2CE8D0010A463 /* MinerViewController.m */,
 				C4E5B65522FBAD15005C5EB9 /* TaskViewController.h */,
 				C4E5B65622FBAD15005C5EB9 /* TaskViewController.m */,
+				C4B9FCEA2303DAE9007C1137 /* FriendsViewController.h */,
+				C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */,
+				C4B9FCF823042F2A007C1137 /* WebViewController.h */,
+				C4B9FCF923042F2A007C1137 /* WebViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1149,6 +1172,7 @@
 				C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */,
 				C4D5EECA22F7D99900C94D9F /* MentionMoneyResultViewController.xib in Resources */,
 				C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */,
+				C4B9FCF12303DBA4007C1137 /* FriendsRankViewCell.xib in Resources */,
 				C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */,
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
 				C4D5EEC522F7B96A00C94D9F /* MentionMoneyViewController.xib in Resources */,
@@ -1278,7 +1302,6 @@
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
-				C43B6BB522F8090C00312286 /* CapitalSearchViewController.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C43B6BE522F9580900312286 /* UserDataManager.m in Sources */,
@@ -1291,6 +1314,7 @@
 				C4D5EEE122F7FF2500C94D9F /* PaymentsRecordsTableViewCell.m in Sources */,
 				C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */,
 				C4D5EEC922F7D99900C94D9F /* MentionMoneyResultViewController.m in Sources */,
+				C4B9FCFA23042F2A007C1137 /* WebViewController.m in Sources */,
 				C473B91C22F40A1F0013E77D /* AccountUpgradeTableViewCell.m in Sources */,
 				C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */,
 				C4A1EEA922F136FB00A1DE8C /* UIViewController+ActionSheet.m in Sources */,
@@ -1303,7 +1327,9 @@
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
+				C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
+				C4B9FCEC2303DAE9007C1137 /* FriendsViewController.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
@@ -1331,7 +1357,9 @@
 				C4D5EEE522F80CE300C94D9F /* PaymentHeaderView.m in Sources */,
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
 				C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */,
+				C4B9FCF42303E120007C1137 /* RewardModel.m in Sources */,
 				C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */,
+				C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
 				C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */,
 				C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */,

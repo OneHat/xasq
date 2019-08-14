@@ -65,7 +65,10 @@ typedef NS_ENUM(NSInteger, StepCountDateType) {
                                                  readTypes:[NSSet setWithObject:stepCountType]
                                                 completion:^(BOOL success, NSError * _Nullable error) {
                                                     if (success && completion) {
-                                                        completion();
+                                                        
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            completion();
+                                                        });
                                                     }
                                                 }];
     } else if (status == HKAuthorizationStatusSharingDenied) {

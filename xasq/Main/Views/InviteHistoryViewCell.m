@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end
 
@@ -25,6 +26,8 @@
     [super awakeFromNib];
     
     _timeLabel.textColor = ThemeColorTextGray;
+    
+    _lineView.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
