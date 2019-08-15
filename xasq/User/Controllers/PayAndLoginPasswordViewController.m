@@ -83,7 +83,9 @@
     }
     sender.userInteractionEnabled = NO;
     WeakObject;
-    NSDictionary *dict = @{nameStr : _codeTF.text};
+    NSDictionary *dict = @{nameStr     : _codeTF.text,
+                           @"codeLogo" : @"2"
+                           };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
         if (weakSelf.count == 0) {

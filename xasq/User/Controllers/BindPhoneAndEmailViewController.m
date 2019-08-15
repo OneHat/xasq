@@ -52,16 +52,20 @@
         return;
     }
     WeakObject;
-    NSString *urlStr,*nameStr;
+    NSString *urlStr,*nameStr,*codeLogo;
     if (_type == 0) {
         urlStr = UserSendMobile;
         nameStr = @"mobile";
+        codeLogo = @"4";
     } else {
         urlStr = UserSendEmail;
         nameStr = @"email";
+        codeLogo = @"5";
     }
     sender.userInteractionEnabled = NO;
-    NSDictionary *dict = @{nameStr : _accountTF.text};
+    NSDictionary *dict = @{nameStr     : _accountTF.text,
+                           @"codeLogo" : codeLogo
+                           };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
         if (weakSelf.count == 0) {

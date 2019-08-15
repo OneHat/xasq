@@ -122,7 +122,9 @@
         urlStr = UserSendEmail;
         nameStr = @"email";
     }
-    NSDictionary *dict = @{nameStr : _accountTF.text};
+    NSDictionary *dict = @{nameStr : _accountTF.text,
+                           @"codeLogo" : @"0"
+                           };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
         if (weakSelf.count == 0) {
