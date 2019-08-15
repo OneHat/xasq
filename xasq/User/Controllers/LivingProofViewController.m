@@ -40,7 +40,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _nicknameLB.text = [UserDataManager shareManager].usermodel.nickName;
+    if ([UserDataManager shareManager].usermodel.nickName.length > 0) {
+        _nicknameLB.text = [UserDataManager shareManager].usermodel.nickName;
+    } else {
+        _nicknameLB.text = @"去设置";
+    }
 }
 
 - (IBAction)certificationClick:(UIButton *)sender {
@@ -61,6 +65,7 @@
 - (IBAction)nickNameClick:(UIButton *)sender {
     
     AlterNicknameViewController *VC = [[AlterNicknameViewController alloc] init];
+    VC.nickname = [UserDataManager shareManager].usermodel.nickName;
     [self.navigationController pushViewController:VC animated:YES];
 }
 

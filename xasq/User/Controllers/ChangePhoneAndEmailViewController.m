@@ -7,17 +7,44 @@
 //
 
 #import "ChangePhoneAndEmailViewController.h"
+#import "ReplacePhoneAndEmailViewController.h"
 
 @interface ChangePhoneAndEmailViewController ()
 
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLB;
+
+@property (weak, nonatomic) IBOutlet UILabel *accountLB;
+
+@property (weak, nonatomic) IBOutlet UIButton *replaceBtn;
 @end
 
 @implementation ChangePhoneAndEmailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    if (_type == 0) {
+        self.title = @"更换绑定手机";
+        _titleLB.text = @"已绑定手机";
+        _accountLB.text = [UserDataManager shareManager].usermodel.mobile;
+        [_replaceBtn setTitle:@"更换绑定手机" forState:(UIControlStateNormal)];
+    } else {
+        self.title = @"更换绑定邮箱";
+        _titleLB.text = @"已绑定邮箱";
+        _accountLB.text = [UserDataManager shareManager].usermodel.email;
+        [_replaceBtn setTitle:@"更换绑定邮箱" forState:(UIControlStateNormal)];
+    }
+    _replaceBtn.layer.cornerRadius = 22.5;
+    _replaceBtn.layer.masksToBounds = YES;
 }
+
+- (IBAction)replaceBtnClick:(UIButton *)sender {
+    
+    ReplacePhoneAndEmailViewController *VC = [[ReplacePhoneAndEmailViewController alloc] init];
+    VC.type = _type;
+    [self.navigationController pushViewController:VC animated:YES];
+}
+
 
 /*
 #pragma mark - Navigation
