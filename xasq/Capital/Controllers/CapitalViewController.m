@@ -22,7 +22,7 @@
 @property (strong, nonatomic) CapitalMainView *walletView;//钱包账户
 @property (strong, nonatomic) CapitalMainView *mineView;//挖矿账户
 
-//参考MainViewController（首页）
+//参考HomeViewController（首页）
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
 
 @end

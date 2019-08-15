@@ -148,6 +148,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
                                              selector:@selector(userLoginSuccess)
                                                  name:DSSJUserLoginSuccessNotification
                                                object:nil];
+    
+//    self.userHeaderImageView.layer.cornerRadius = 5;
+//    self.userHeaderImageView.layer.cornerRadius = 5;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -331,15 +334,15 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 //    } else if (type == 2) {
 //        [self getUserPowerReward];
 //    } else if (type == 3) {
-//        
+//
 //        NSDictionary *parameters = @{@"bId":@"929144389521117184",@"userId":@"11",@"sourceUserId":[UserDataManager shareManager].userId};
-//        
+//
 //        [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-//            
+//
 //        } failure:^(NSError * _Nonnull error) {
 //            [self showErrow:error];
 //        }];
-//        
+//
 //    }
 //    return;
     

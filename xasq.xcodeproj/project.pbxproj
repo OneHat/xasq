@@ -128,6 +128,7 @@
 		C4B9FCF42303E120007C1137 /* RewardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF32303E120007C1137 /* RewardModel.m */; };
 		C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF62303FF0F007C1137 /* CapitalDataManager.m */; };
 		C4B9FCFA23042F2A007C1137 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCF923042F2A007C1137 /* WebViewController.m */; };
+		C4B9FCFC230578FD007C1137 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B9FCFB230578FD007C1137 /* TaskViewController.xib */; };
 		C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA122EE8A480086761A /* RequestApi.m */; };
 		C4C2CAA922EE90260086761A /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAA822EE90260086761A /* UIViewController+HUD.m */; };
 		C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C2CAAC22EEC5B80086761A /* TacticsViewController.m */; };
@@ -398,6 +399,7 @@
 		C4B9FCF62303FF0F007C1137 /* CapitalDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalDataManager.m; sourceTree = "<group>"; };
 		C4B9FCF823042F2A007C1137 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		C4B9FCF923042F2A007C1137 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		C4B9FCFB230578FD007C1137 /* TaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
 		C4C2CAA022EE8A480086761A /* RequestApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestApi.h; sourceTree = "<group>"; };
 		C4C2CAA122EE8A480086761A /* RequestApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestApi.m; sourceTree = "<group>"; };
 		C4C2CAA722EE90260086761A /* UIViewController+HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
@@ -963,6 +965,7 @@
 				C414004222F2CE8D0010A463 /* MinerViewController.m */,
 				C4E5B65522FBAD15005C5EB9 /* TaskViewController.h */,
 				C4E5B65622FBAD15005C5EB9 /* TaskViewController.m */,
+				C4B9FCFB230578FD007C1137 /* TaskViewController.xib */,
 				C4B9FCEA2303DAE9007C1137 /* FriendsViewController.h */,
 				C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */,
 				C4B9FCF823042F2A007C1137 /* WebViewController.h */,
@@ -1195,6 +1198,7 @@
 				C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */,
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
+				C4B9FCFC230578FD007C1137 /* TaskViewController.xib in Resources */,
 				C4D5EEE222F7FF2500C94D9F /* PaymentsRecordsTableViewCell.xib in Resources */,
 				C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */,
 				C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */,

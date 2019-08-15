@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController">
+            <connections>
+                <outlet property="headerImageView" destination="RWn-ls-E6E" id="knk-1t-jKC"/>
+                <outlet property="headerImageViewTop" destination="6ne-du-CJb" id="efe-bd-1IH"/>
+                <outlet property="view" destination="iN0-l3-epB" id="SZk-AW-mxM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="task_background" translatesAutoresizingMaskIntoConstraints="NO" id="9ZD-jD-dPl">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="fgZ-pg-EUP"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RWn-ls-E6E">
+                    <rect key="frame" x="20" y="132" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="LJl-3d-SRf"/>
+                        <constraint firstAttribute="width" secondItem="RWn-ls-E6E" secondAttribute="height" multiplier="1:1" id="r3k-cq-hYd"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6X-LG-dmd">
+                    <rect key="frame" x="314" y="140.5" width="100" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="ihk-1l-4lc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="每日签到 " backgroundImage="task_daysign"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RA-sd-9Te">
+                    <rect key="frame" x="75" y="132" width="42" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="M8L-CK-aXp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前算力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAv-rx-nej">
+                    <rect key="frame" x="75" y="158" width="61.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RWn-ls-E6E" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="88" id="6ne-du-CJb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9ZD-jD-dPl" secondAttribute="trailing" id="7Tw-BM-piq"/>
+                <constraint firstItem="3RA-sd-9Te" firstAttribute="leading" secondItem="RWn-ls-E6E" secondAttribute="trailing" constant="10" id="7iB-sS-lLk"/>
+                <constraint firstItem="RWn-ls-E6E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="FxY-05-oDY"/>
+                <constraint firstItem="3RA-sd-9Te" firstAttribute="top" secondItem="RWn-ls-E6E" secondAttribute="top" id="Ml4-6r-Mt6"/>
+                <constraint firstItem="yAv-rx-nej" firstAttribute="top" secondItem="3RA-sd-9Te" secondAttribute="bottom" id="Od2-f2-Yes"/>
+                <constraint firstItem="G6X-LG-dmd" firstAttribute="centerY" secondItem="RWn-ls-E6E" secondAttribute="centerY" id="ROB-q1-geD"/>
+                <constraint firstItem="yAv-rx-nej" firstAttribute="leading" secondItem="RWn-ls-E6E" secondAttribute="trailing" constant="10" id="ZcF-W1-XD1"/>
+                <constraint firstItem="9ZD-jD-dPl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iml-Ig-aJN"/>
+                <constraint firstItem="9ZD-jD-dPl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mNA-fv-cb3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="G6X-LG-dmd" secondAttribute="trailing" id="zXD-V5-uPD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-1526" y="-3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="task_background" width="375" height="327.5"/>
+        <image name="task_daysign" width="90" height="28"/>
+    </resources>
+</document>

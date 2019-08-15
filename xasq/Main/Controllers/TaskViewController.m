@@ -17,67 +17,49 @@
 @property (nonatomic, strong) SegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) UITableView *myTableView;//我的任务
-@property (nonatomic, strong) UITableView *highTableView;//高分任务
-@property (nonatomic, strong) UITableView *recommondTableView;//推荐任务
+@property (nonatomic, strong) UITableView *dayTableView;//每日任务
+@property (nonatomic, strong) UITableView *weekTableView;//每周任务
 
-@property (nonatomic, strong) NSArray *recommondArray;
-@property (nonatomic, strong) NSArray *myArray;
-@property (nonatomic, strong) NSArray *highArray;
+@property (nonatomic, strong) NSArray *dayArray;
+@property (nonatomic, strong) NSArray *weekArray;
+
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageViewTop;
 
 @end
 
 @implementation TaskViewController
 
-- (UITableView *)recommondTableView {
-    if (!_recommondTableView) {
-        _recommondTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_scrollView.frame)) style:UITableViewStylePlain];
-        [_recommondTableView registerNib:[UINib nibWithNibName:@"TaskViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-        _recommondTableView.tableFooterView = [[UIView alloc] init];
-        _recommondTableView.dataSource = self;
-        _recommondTableView.delegate = self;
-        _recommondTableView.rowHeight = 56;
-        [self.scrollView addSubview:_recommondTableView];
+- (UITableView *)dayTableView {
+    if (!_dayTableView) {
+        _dayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_scrollView.frame), CGRectGetHeight(_scrollView.frame)) style:UITableViewStylePlain];
+        [_dayTableView registerNib:[UINib nibWithNibName:@"TaskViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        _dayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _dayTableView.tableFooterView = [[UIView alloc] init];
+        _dayTableView.dataSource = self;
+        _dayTableView.delegate = self;
+        _dayTableView.rowHeight = 70;
+        [self.scrollView addSubview:_dayTableView];
     }
-    return _recommondTableView;
+    return _dayTableView;
 }
 
-- (UITableView *)highTableView {
-    if (!_highTableView) {
-        _highTableView = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, CGRectGetHeight(_scrollView.frame)) style:UITableViewStylePlain];
-        [_highTableView registerNib:[UINib nibWithNibName:@"TaskViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-        _highTableView.tableFooterView = [[UIView alloc] init];
-        _highTableView.dataSource = self;
-        _highTableView.delegate = self;
+- (UITableView *)weekTableView {
+    if (!_weekTableView) {
+        _weekTableView = [[UITableView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_scrollView.frame), 0, CGRectGetWidth(_scrollView.frame), CGRectGetHeight(_scrollView.frame)) style:UITableViewStylePlain];
+        [_weekTableView registerNib:[UINib nibWithNibName:@"TaskViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        _weekTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _weekTableView.tableFooterView = [[UIView alloc] init];
+        _weekTableView.dataSource = self;
+        _weekTableView.delegate = self;
+        _weekTableView.rowHeight = 70;
     }
-    return _recommondTableView;
-}
-
-- (UITableView *)myTableView {
-    if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(ScreenWidth * 2, 0, ScreenWidth, CGRectGetHeight(_scrollView.frame)) style:UITableViewStylePlain];
-        [_myTableView registerNib:[UINib nibWithNibName:@"TaskViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-        _myTableView.tableFooterView = [[UIView alloc] init];
-        _myTableView.dataSource = self;
-        _myTableView.delegate = self;
-    }
-    return _myTableView;
+    return _dayTableView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    if (![UserDataManager shareManager].userId) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    //背景
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160)];
-    imageView.image = [UIImage imageNamed:@"capital_topBackground"];
-    imageView.contentMode = UIViewContentModeScaleToFill;
-    [self.view addSubview:imageView];
-    
+    self.view.backgroundColor = ThemeColorBackground;
     
     //title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
@@ -92,22 +74,32 @@
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
+    _headerImageViewTop.constant = NavHeight;
     
-    NSArray *items = @[@"推荐任务",@"高分任务",@"我的任务"];
-    _segmentedControl = [[SegmentedControl alloc] initWithFrame:CGRectMake(0, 200, ScreenWidth, 40)
+    ///
+    CGFloat viewWidth = ScreenWidth - 20;
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(_headerImageView.frame), viewWidth, ScreenHeight - 20 - CGRectGetMaxY(_headerImageView.frame) - BottomHeight)];
+    backgroundView.backgroundColor = [UIColor whiteColor];
+    backgroundView.layer.cornerRadius = 5;
+    [self.view addSubview:backgroundView];
+    
+    
+    NSArray *items = @[@"每日任务",@"每周任务"];
+    _segmentedControl = [[SegmentedControl alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 40)
                                                           items:items];
     _segmentedControl.delegate = self;
-    [self.view addSubview:_segmentedControl];
+    [backgroundView addSubview:_segmentedControl];
     
-    CGRect rect = CGRectMake(0, CGRectGetMaxY(_segmentedControl.frame), ScreenWidth, ScreenHeight - CGRectGetMaxY(_segmentedControl.frame));
+    CGRect rect = CGRectMake(0, 50, viewWidth, CGRectGetHeight(backgroundView.frame) - 60);
     _scrollView = [[UIScrollView alloc] initWithFrame:rect];
-    _scrollView.contentSize = CGSizeMake(ScreenWidth * items.count, 0);
+    _scrollView.contentSize = CGSizeMake(viewWidth * items.count, 0);
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
     _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
+    [backgroundView addSubview:_scrollView];
     
+    [_scrollView addSubview:self.dayTableView];
     
 //    [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
 //        NSLog(@"%@",data);
@@ -125,15 +117,15 @@
 //    [[NetworkManager sharedManager] getRequest:CommunityTaskRecommend parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
 //        NSArray *dataArray = data[@"data"];
 //        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
-//            self.recommondArray = [TaskModel modelWithArray:dataArray];
-//            [self.recommondTableView reloadData];
+//            self.dayArray = [TaskModel modelWithArray:dataArray];
+//            [self.dayTableView reloadData];
 //
 //        } else {
-//            [self.recommondTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+//            [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
 //        }
 //
 //    } failure:^(NSError * _Nonnull error) {
-//
+//        [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
 //    }];
     
 //    [[NetworkManager sharedManager] getRequest:CommunityTaskPower parameters:nil success:^(NSDictionary * _Nonnull data) {
@@ -151,14 +143,13 @@
 
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.recommondTableView) {
-        return self.recommondArray.count;
+    return 10;
+    if (tableView == self.dayTableView) {
+        return self.dayArray.count;
         
-    } else if (tableView == self.highTableView) {
-        return self.highArray.count;
+    } else if (tableView == self.weekTableView) {
+        return self.weekArray.count;
         
-    } else if (tableView == self.myTableView) {
-        return self.myArray.count;
     }
     return 0;
 }
@@ -166,18 +157,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    if (tableView == self.recommondTableView) {
-        TaskModel *model = self.recommondArray[indexPath.row];
+    if (tableView == self.dayTableView) {
+        TaskModel *model = self.dayArray[indexPath.row];
         cell.task = model;
         
-    } else if (tableView == self.highTableView) {
+    } else if (tableView == self.weekTableView) {
 //        TaskModel *model = self.highArray[indexPath.row];
         
-    } else if (tableView == self.myTableView) {
-//        MyTaskModel *model = self.myArray[indexPath.row];
     }
     
     return cell;
+}
+
+#pragma mark -
+- (void)segmentedControlItemSelect:(NSInteger)index {
+    self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame) * index, 0);
+    
+    if (index) {
+        
+    } else {
+        
+    }
 }
 
 #pragma mark - 网络请求
@@ -201,11 +201,6 @@
         
     } failure:^(NSError * _Nonnull error) {
     }];
-}
-
-#pragma mark -
-- (void)segmentedControlItemSelect:(NSInteger)index {
-    
 }
 
 @end

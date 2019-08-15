@@ -20,8 +20,7 @@ static char ActionSheetBlockKey;
 
 ///********  Alert
 const CGFloat AlertTitleHeight = 40.0;
-const CGFloat AlertMessageHeight = 120.0;
-const CGFloat AlertActionHeight = 32.0;
+const CGFloat AlertActionHeight = 36.0;
 const CGFloat AlertSpaceWidth = 10.0;
 
 static char AlertBlockKey;
@@ -158,6 +157,8 @@ static char AlertBlockKey;
         return;
     }
     
+    CGFloat AlertMessageHeight = ScreenWidth / 375.0 * 150.0;
+
     //弹出controller
     UIViewController *contentViewController = [self customerController];
     
@@ -173,7 +174,7 @@ static char AlertBlockKey;
     
     CGFloat alertHeight = titleHeight + AlertMessageHeight + AlertActionHeight + 20;
     CGFloat alertWidth = ScreenWidth - 30 * 2;
-    CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5;
+    CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5-50;
     
     UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(30, actionSheetY, alertWidth, alertHeight)];
     alertView.layer.cornerRadius = 5;
@@ -200,8 +201,9 @@ static char AlertBlockKey;
         passwordInputView.gridLineColor = [UIColor colorWithHexString:@"ccccce"];
         passwordInputView.gridLineWidth = 1;
         passwordInputView.dotColor = [UIColor colorWithHexString:@"ccccce"];
-        passwordInputView.dotWidth = 12;
+        passwordInputView.dotWidth = 20;
         passwordInputView.secureTextEntry = NO;
+        passwordInputView.keyboardType = UIKeyboardTypeASCIICapable;
         passwordInputView.delegate = self;
         CGFloat gridWidth = 54 * (alertWidth / 375.0);
         CGRect frame = CGRectMake((alertWidth - 6 * gridWidth) * 0.5, titleHeight + (AlertMessageHeight - gridWidth) * 0.5, 6 * gridWidth, gridWidth);

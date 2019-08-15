@@ -10,7 +10,7 @@
 #import "UIView+XLPasswordView.h"
 #import "UIImage+XLPasswordView.h"
 
-@interface XLPasswordInputView ()
+@interface XLPasswordInputView ()<UITextFieldDelegate>
 
 /**
  * 密码框图片
@@ -177,6 +177,11 @@
     _textColor = textColor;
     [self refreshUI];
 }
+- (void)setKeyboardType:(UIKeyboardType)keyboardType {
+    _keyboardType = keyboardType;
+    self.textField.keyboardType = keyboardType;
+}
+
 #pragma mark    -   initial
 
 - (void)awakeFromNib
@@ -209,12 +214,14 @@
     _textColor = [UIColor blackColor];
     
     UITextField *textField = [[UITextField alloc] init];
+    
     [self addSubview:textField];
     self.textField = textField;
     textField.keyboardType = UIKeyboardTypeNumberPad;
-    [textField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+//    [textField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
     textField.tintColor = [UIColor clearColor];
     textField.textColor = [UIColor clearColor];
+    textField.delegate = self;
     
     UIImageView *imageView = [[UIImageView alloc] init];
     self.backgroundImageView = imageView;
@@ -269,6 +276,39 @@
     
     [self setNeedsLayout];
     [self layoutIfNeeded];
+    
+    NSLog(@"===%@",text);
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (![string isEqualToString:@""]) {
+        textField.text = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    } else {
+        textField.text = [textField.text substringToIndex:textField.text.length - 1];
+    }
+    
+    NSString *text = textField.text;
+    if (text.length > _passwordLength) {
+        //substringToIndex,index从0开始, 不包含最后index所指的那个字符,在这里接到的子串不包含6所指的字符
+        text = [text substringToIndex:_passwordLength];
+        textField.text = text;
+    }
+    // 刷新位数
+    self.inputCount = textField.text.length;
+    
+    if (self.passwordBlock) {
+        self.passwordBlock(text);
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(passwordInputView:inputPassword:)]) {
+        [self.delegate passwordInputView:self inputPassword:self.password];
+    }
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+    
+    return NO;
 }
 
 #pragma mark    -   public method

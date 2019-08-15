@@ -105,6 +105,7 @@ static CGFloat CapitalSegmentControlH = 40;
     searchField.leftViewMode = UITextFieldViewModeAlways;
     searchField.font = ThemeFontSmallText;
     searchField.placeholder = @"搜索币种";
+    searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [headerView addSubview:searchField];
     
     
@@ -152,8 +153,11 @@ static CGFloat CapitalSegmentControlH = 40;
     }
 }
 
+///隐藏0余额按钮
 - (void)checkButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
+    
+    
 }
 
 #pragma mark - UITextFieldDelegate

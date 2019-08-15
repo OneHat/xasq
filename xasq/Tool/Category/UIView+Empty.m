@@ -31,11 +31,12 @@ static char EmptyBlockKey;
     
     if (reason == EmptyViewReasonNoData) {
         //没有数据
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 50)];
-        imageView.backgroundColor = [UIColor lightGrayColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 100)];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageNamed:@"data_error"];
         [contentView addSubview:imageView];
         
-        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 60)];
+        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10 + CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 60)];
         tipLabel.numberOfLines = 0;
         tipLabel.font = font;
         tipLabel.textAlignment = NSTextAlignmentCenter;
@@ -46,7 +47,7 @@ static char EmptyBlockKey;
         //没有网络
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 100)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.image = [UIImage imageNamed:@"Netwok_Error"];
+        imageView.image = [UIImage imageNamed:@"netwok_error"];
         [contentView addSubview:imageView];
         
         UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10 + CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 30)];

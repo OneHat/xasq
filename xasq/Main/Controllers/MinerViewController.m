@@ -75,7 +75,7 @@
 }
 
 - (UIView *)headerView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 350)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 380)];
     
     UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -ScreenHeight, ScreenWidth, ScreenHeight + 80)];
     colorView.backgroundColor = RGBColor(36, 69, 104);
@@ -85,7 +85,7 @@
     infomationView.backgroundColor = [UIColor clearColor];
     [headerView addSubview:infomationView];
     
-    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 190)];
+    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 220)];
     inviteCodeView.buttonClickBlock = ^(InviteCodeViewButtonStyle style) {
         if (style == InviteCodeViewButtonStyleCopy) {
             [self showMessage:@"复制成功"];

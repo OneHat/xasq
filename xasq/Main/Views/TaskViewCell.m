@@ -34,8 +34,6 @@
 
 - (void)setTask:(TaskModel *)task {
     _task = task;
-    
-    _nameLabel.text = task.name;
 }
 
 @end

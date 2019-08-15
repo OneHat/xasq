@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSDictionary *imageTitleDict;
 @property (nonatomic, strong) UserHeaderView *headerView;
 
-//参考MainViewController（首页）
+//参考HomeViewController（首页）
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
 
 @end

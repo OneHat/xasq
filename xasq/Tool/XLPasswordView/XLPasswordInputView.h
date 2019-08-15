@@ -88,4 +88,9 @@
  */
 - (void)clearPassword;
 
+/**
+ *  keyboardType
+ */
+@property (nonatomic , assign) UIKeyboardType keyboardType;
+
 @end
