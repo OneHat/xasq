@@ -12,6 +12,7 @@
 @interface CalculateRecordViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *rewards;
 
 @end
 
@@ -30,10 +31,25 @@
     _tableView.rowHeight = 60;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
+    
+    if (![UserDataManager shareManager].userId) {
+        return;
+    }
+    [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *rewards = data[@"data"];
+        if (rewards && [rewards isKindOfClass:[NSArray class]]) {
+            self.rewards = data[@"data"];
+            [self.tableView reloadData];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
+    return self.rewards.count;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -52,17 +68,14 @@
         cell = [[[UINib nibWithNibName:@"CalculateRecordTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    NSDictionary *reward = self.rewards[indexPath.row];
+    
+    cell.nameLabel.text = reward[@"taskName"];
+    cell.timeLabel.text = reward[@"createdOn"];
+    cell.numberLabel.text = [NSString stringWithFormat:@"+%@",reward[@"rewardPower"]];
+    
     return cell;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

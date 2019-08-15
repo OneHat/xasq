@@ -21,6 +21,9 @@
 
 @property (nonatomic, strong) NSString *bindCode;
 
+//@property (nonatomic, strong) MinerInfomationView *bindCode;
+@property (nonatomic, strong) InviteCodeView *inviteCodeView;
+
 @end
 
 @implementation MinerViewController
@@ -42,6 +45,10 @@
     _tableView.rowHeight = 56;
     _tableView.tableHeaderView = [self headerView];
     [self.view addSubview:_tableView];
+    
+    [self getqrcode];
+    
+    [self getInviteFirst];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,8 +93,8 @@
             [self bindCodeAction];
         }
     };
-    
     [headerView addSubview:inviteCodeView];
+    _inviteCodeView = inviteCodeView;
     
     return headerView;
 }
@@ -155,8 +162,11 @@
 }
 
 - (void)changeAction:(UIButton *)sender {
-    _currentIndex = sender.tag;
-    [self.tableView reloadData];
+    
+    if (_currentIndex != sender.tag) {
+        _currentIndex = sender.tag;
+        [self.tableView reloadData];
+    }
 }
 
 - (void)bindCodeAction {
@@ -165,15 +175,60 @@
         if (index == 0) {
             [self dismissViewControllerAnimated:NO completion:nil];
         } else {
-            if (self.bindCode.length == 6) {
+            
+            if (self.bindCode.length == 6 && self.bindCode.integerValue > 1) {
                 [self dismissViewControllerAnimated:NO completion:nil];
-                [self showMessage:[NSString stringWithFormat:@"邀请码:%@",self.bindCode]];
-                
+                [self bindInviteCode:self.bindCode];
             } else {
-                [self showMessageToWindow:@"请输入完整的邀请码"];
+                [self showMessageToWindow:@"请输入正确的邀请码"];
             }
         }
         
+    }];
+}
+
+#pragma mark -
+//获取邀请码
+- (void)getqrcode  {
+    [[NetworkManager sharedManager] getRequest:UserInviteQrcode parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        self.inviteCodeView.inviteCode = data[@"data"][@"inviteCode"];
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+//查询所有邀请
+- (void)getInviteAll  {
+    [[NetworkManager sharedManager] getRequest:UserInviteAll parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+//查询一级邀请
+- (void)getInviteFirst  {
+    [[NetworkManager sharedManager] getRequest:UserInviteFirst parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+//查询二级邀请
+- (void)getInviteSecond  {
+    [[NetworkManager sharedManager] getRequest:UserInviteSecond parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+//邀请人绑定
+- (void)bindInviteCode:(NSString *)code  {
+    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
+                                 @"inviteCode":code,
+                                 @"bindType":@"0"//绑定类型 0-app绑定 1-H5绑定
+                                 };
+    
+    [[NetworkManager sharedManager] postRequest:UserInviteBind parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"绑定成功"];
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
     }];
 }
 

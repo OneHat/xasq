@@ -122,26 +122,25 @@
 //        
 //    }];
     
-    [[NetworkManager sharedManager] getRequest:CommunityTaskRecommend parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
-        NSArray *dataArray = data[@"data"];
-        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
-            self.recommondArray = [TaskModel modelWithArray:dataArray];
-            [self.recommondTableView reloadData];
-            
-        } else {
-            [self.recommondTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
-        }
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
+//    [[NetworkManager sharedManager] getRequest:CommunityTaskRecommend parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+//        NSArray *dataArray = data[@"data"];
+//        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
+//            self.recommondArray = [TaskModel modelWithArray:dataArray];
+//            [self.recommondTableView reloadData];
+//
+//        } else {
+//            [self.recommondTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+//        }
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
     
 //    [[NetworkManager sharedManager] getRequest:CommunityTaskPower parameters:nil success:^(NSDictionary * _Nonnull data) {
 //        NSLog(@"%@",data);
 //    } failure:^(NSError * _Nonnull error) {
 //        
 //    }];
-    
     
 }
 
@@ -172,13 +171,36 @@
         cell.task = model;
         
     } else if (tableView == self.highTableView) {
-        TaskModel *model = self.highArray[indexPath.row];
+//        TaskModel *model = self.highArray[indexPath.row];
         
     } else if (tableView == self.myTableView) {
-        MyTaskModel *model = self.myArray[indexPath.row];
+//        MyTaskModel *model = self.myArray[indexPath.row];
     }
     
     return cell;
+}
+
+#pragma mark - 网络请求
+- (void)getSignInfo {
+    [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:nil success:^(NSDictionary * _Nonnull data) {
+        //"signDate"："2019-01-01"，"keepSign":3
+        NSDictionary *signInfo = data[@"data"];
+        if (signInfo && [signInfo isKindOfClass:[NSDictionary class]]) {
+//            NSString *signDate = signInfo[@"signDate"];
+            
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+
+- (void)userSign {
+    [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        [self showMessage:@"签到成功"];
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
 }
 
 #pragma mark -

@@ -102,14 +102,19 @@
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];
-        if (data) {
-            [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",data[@"data"][@"userId"]];
-            [UserDataManager shareManager].authorization = data[@"data"][@"accessToken"];
+        
+        NSDictionary *dataInfo = data[@"data"];
+        if (dataInfo && [dataInfo isKindOfClass:[NSDictionary class]]) {
+            [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",dataInfo[@"userId"]];
+            [UserDataManager shareManager].authorization = dataInfo[@"accessToken"];
             [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
+            
+            [self showMessage:@"登录成功" complete:^{
+                [self isLoginSuccessfull:YES];
+            }];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJUserLoginSuccessNotification object:nil];
         }
-        [self showMessage:@"登录成功" complete:^{
-            [self isLoginSuccessfull:YES];
-        }];
         
     } failure:^(NSError * _Nonnull error) {
         weakSelf.loginBtn.userInteractionEnabled = YES;

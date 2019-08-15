@@ -67,6 +67,11 @@
     self.totalInviteLabel.textColor = ThemeColorBlue;
 }
 
+- (void)setInviteCode:(NSString *)inviteCode {
+    _inviteCode = inviteCode;
+    self.myCodeLabel.text = _inviteCode;;
+}
+
 - (IBAction)bindInvite:(UIButton *)sender {
     if (self.buttonClickBlock) {
         self.buttonClickBlock(InviteCodeViewButtonStyleBind);
@@ -79,7 +84,8 @@
 - (IBAction)copyMyCode:(UIButton *)sender {
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"666888";
+    pasteboard.string = _inviteCode;
+    pasteboard.string = @"西游记";
     
     if (self.buttonClickBlock) {
         self.buttonClickBlock(InviteCodeViewButtonStyleCopy);

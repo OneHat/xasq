@@ -62,6 +62,8 @@ FOUNDATION_EXPORT NSString *const UserSendMobile;
 FOUNDATION_EXPORT NSString *const UserSetIcon;
 /// 设置用户昵称接口 POST
 FOUNDATION_EXPORT NSString *const UserSetNickname;
+/// 同步步行步数 POST
+FOUNDATION_EXPORT NSString *const UserSyncWalk;
 
 //********************************资产账单
 ///查看个人总帐单 POST
@@ -94,7 +96,7 @@ FOUNDATION_EXPORT NSString *const CommunitySendPower;
 FOUNDATION_EXPORT NSString *const CommunityTask;
 ///用户算力记录 Get
 FOUNDATION_EXPORT NSString *const CommunityPowerRecord;
-///用户收取/领取的录 POST
+///用户收取/领取的录 GET
 FOUNDATION_EXPORT NSString *const CommunityAreaTakeRecord;
 ///用户收币 POST
 FOUNDATION_EXPORT NSString *const CommunityAreaTakeCurrency;
@@ -108,7 +110,7 @@ FOUNDATION_EXPORT NSString *const CommunityCapitalStatistics;
 FOUNDATION_EXPORT NSString *const CommunityUserSubAccount;
 ///用户偷币 POST
 FOUNDATION_EXPORT NSString *const CommunityAreaStealCurrency;
-///获取用户步行奖励 POST
+///获取用户步行奖励 GET
 FOUNDATION_EXPORT NSString *const CommunitySendWalk;
 
 

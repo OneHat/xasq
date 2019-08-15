@@ -84,7 +84,7 @@
     UIViewController *selectVC = NVC.topViewController;
     
     if ([selectVC isKindOfClass:[HomeViewController class]]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
         
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
         if (![UserDataManager shareManager].userId) {
@@ -92,7 +92,7 @@
 //            return NO;
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapitalNotification object:nil];
         
     } else if ([selectVC isKindOfClass:[UserViewController class]]) {
         
@@ -102,7 +102,7 @@
             VC.closeLoginBlock = ^(BOOL isLogin) {
                 
                 if (!isLogin) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
                     tabBarController.selectedIndex = 0;
                 }
             };
@@ -111,7 +111,7 @@
             [NVC pushViewController:VC animated:NO];
             
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUser object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectUserNotification object:nil];
         }
     }
     

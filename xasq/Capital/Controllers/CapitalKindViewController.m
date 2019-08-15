@@ -92,7 +92,7 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapital object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapitalNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

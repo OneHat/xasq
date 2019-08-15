@@ -67,16 +67,20 @@ const CGFloat ViewWidth = 50;
 - (void)rewardClick:(UIButton *)sender {
     sender.enabled = NO;
     
-    NSDictionary *parameters = @{@"userId":@"11",
-                            @"bId":[NSString stringWithFormat:@"%ld",_rewardModel.ID]
-                            };
-    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        
-        [self removeFromSuperview];
-        
-    } failure:^(NSError * _Nonnull error) {
-        sender.enabled = YES;
-    }];
+//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
+//                                 @"bId":[NSString stringWithFormat:@"%ld",_rewardModel.ID]
+//                                 };
+//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+//        
+//        [self removeFromSuperview];
+//        
+//    } failure:^(NSError * _Nonnull error) {
+//        sender.enabled = YES;
+//    }];
+    
+    if (self.RewardTakeSuccess) {
+        self.RewardTakeSuccess();
+    }
 }
 
 @end

@@ -93,17 +93,18 @@ const NSTimeInterval HideDuration = 1.5;
 
 //字体
 - (UIFont *)hudTextFont {
-    CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-    UIFont *textFont;
-    if (screenW == 320.0) {
-        textFont = [UIFont boldSystemFontOfSize:15];
-    } else if (screenW == 375.0) {
-        textFont = [UIFont boldSystemFontOfSize:16];
-    } else {
-        textFont = [UIFont boldSystemFontOfSize:17];
-    }
-    
-    return textFont;
+    return ThemeFontText;
+//    CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+//    UIFont *textFont;
+//    if (screenW == 320.0) {
+//        textFont = [UIFont boldSystemFontOfSize:15];
+//    } else if (screenW == 375.0) {
+//        textFont = [UIFont boldSystemFontOfSize:16];
+//    } else {
+//        textFont = [UIFont boldSystemFontOfSize:17];
+//    }
+//
+//    return textFont;
 }
 
 //边距

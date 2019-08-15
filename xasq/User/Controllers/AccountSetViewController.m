@@ -65,6 +65,7 @@
         UITabBarController *tabbarVC = topVC.tabBarController;
         tabbarVC.selectedIndex = 0;
         [self.navigationController popViewControllerAnimated:NO];
+        
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         

@@ -20,7 +20,7 @@ static char ActionSheetBlockKey;
 
 ///********  Alert
 const CGFloat AlertTitleHeight = 40.0;
-const CGFloat AlertMessageHeight = 100.0;
+const CGFloat AlertMessageHeight = 120.0;
 const CGFloat AlertActionHeight = 32.0;
 const CGFloat AlertSpaceWidth = 10.0;
 
@@ -172,10 +172,10 @@ static char AlertBlockKey;
     }
     
     CGFloat alertHeight = titleHeight + AlertMessageHeight + AlertActionHeight + 20;
-    CGFloat alertWidth = ScreenWidth - 20 * 2;
+    CGFloat alertWidth = ScreenWidth - 30 * 2;
     CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5;
     
-    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(20, actionSheetY, alertWidth, alertHeight)];
+    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(30, actionSheetY, alertWidth, alertHeight)];
     alertView.layer.cornerRadius = 5;
     alertView.layer.masksToBounds = YES;
     alertView.backgroundColor = [UIColor whiteColor];

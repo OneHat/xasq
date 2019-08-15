@@ -69,6 +69,10 @@ const NSTimeInterval xasqTimeoutInterval = 30;
                      if (code == 200) {
                          success(responseObject);
                      } else {
+#ifdef DEBUG
+                         NSLog(@"get\n%@\ncode:%ld\nmsg:%@",absoluteString,code,responseObject[@"msg"]);
+#endif
+                         
                          NSError *result = [self handleResponseObject:responseObject];
                          failure(result);
                      }
@@ -95,6 +99,10 @@ const NSTimeInterval xasqTimeoutInterval = 30;
                       if (code == 200) {
                           success(responseObject);
                       } else {
+#ifdef DEBUG
+                          NSLog(@"post\n%@\ncode:%ld\nmsg:%@",absoluteString,code,responseObject[@"msg"]);
+#endif
+                          
                           NSError *result = [self handleResponseObject:responseObject];
                           failure(result);
                       }

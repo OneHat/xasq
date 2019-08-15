@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) RewardModel *rewardModel;
 
+@property (nonatomic, strong) void (^RewardTakeSuccess)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

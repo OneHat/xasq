@@ -10,8 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString * const DSSJTabBarSelectHome;
-
 @interface HomeViewController : UIViewController
 
 @end

@@ -27,5 +27,14 @@
 #define AppBuild            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
 
+#pragma mark - 通知
+#define DSSJTabBarSelectHomeNotification      @"DSSJTabBarSelectHomeNotification"
+#define DSSJTabBarSelectCapitalNotification   @"DSSJTabBarSelectCapitalNotification"
+#define DSSJTabBarSelectUserNotification       @"DSSJTabBarSelectUserNotification"
+
+#define DSSJUserLoginSuccessNotification      @"DSSJUserLoginSuccessNotification"
+#define DSSJUserLogoutNotification            @"DSSJUserLogoutNotification"
+
+
 
 #endif /* AppMarco_h */

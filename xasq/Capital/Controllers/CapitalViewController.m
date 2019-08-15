@@ -13,8 +13,6 @@
 #import "MentionMoneyViewController.h"
 #import "PaymentsRecordsViewController.h"
 
-NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewController";
-
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate,CapitalMainViewDelegate>
 
 @property (strong, nonatomic) CapitalSegmentedControl *segmentedControl;
@@ -96,7 +94,7 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
     topImageView.frame = CGRectMake(0, 0, ScreenWidth, _walletView.topCapitalViewH);
     
     //
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCapitalHideAnimation) name:DSSJTabBarSelectCapital object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeCapitalHideAnimation) name:DSSJTabBarSelectCapitalNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

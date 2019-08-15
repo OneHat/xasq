@@ -19,8 +19,6 @@
 #import "UserHeaderView.h"
 #import "messageInformViewController.h"
 
-NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
-
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -76,7 +74,7 @@ NSString * const DSSJTabBarSelectUser = @"DSSJTabBarSelectUserViwController";
     [self.view addSubview:_tableView];
     
     //
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserHideAnimation) name:DSSJTabBarSelectUser object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserHideAnimation) name:DSSJTabBarSelectUserNotification object:nil];
 }
     
 - (void)viewWillAppear:(BOOL)animated {

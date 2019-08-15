@@ -34,6 +34,7 @@ NSString *const UserSendEmail = @"user/send/email";
 NSString *const UserSendMobile = @"user/send/mobile";
 NSString *const UserSetIcon = @"user/set/icon";
 NSString *const UserSetNickname = @"user/set/nickname";
+NSString *const UserSyncWalk = @"user/syncWalk";
 
 NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
 NSString *const ApiAccountOpenAccount = @"api/account/openAccount";
