@@ -15,13 +15,13 @@ typedef NS_ENUM(NSInteger,CapitalTopViewStyle) {
     CapitalTopViewHold//持有
 };
 
+FOUNDATION_EXPORT NSString *const CapitalChangeHideMoneyStatus;
+
 @interface CapitalTopView : UIView
 
 @property (nonatomic, assign) CapitalTopViewStyle viewStyle;
 
-@property (nonatomic, strong) void (^RecordClickBlock)(void);
-
-@property (nonatomic, assign) BOOL hideMoney;
+@property (nonatomic, strong) void (^DrawClickBlock)(void);
 
 @property (nonatomic, strong) NSDictionary *capitalData;
 

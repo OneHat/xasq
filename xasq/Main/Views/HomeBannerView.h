@@ -1,4 +1,4 @@
-//
+
 //  HomeBannerView.h
 //  xasq
 //
@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeBannerView : UIView
 
 @property (nonatomic, strong) NSArray *imageArray;
-@property (nonatomic, copy) void (^ImageClickBlock)(NSInteger index);
+@property (nonatomic, copy) void (^ImageClickBlock)(NSString *linkPath);
+//@property (nonatomic, copy) void (^ImageClickBlock)(NSInteger index);
 
 - (void)openTimer;
 - (void)invalidateTimer;

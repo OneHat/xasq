@@ -8,7 +8,6 @@
 
 #import "CapitalViewController.h"
 #import "CapitalKindViewController.h"
-#import "CapitalSearchViewController.h"
 #import "CapitalSegmentedControl.h"
 #import "CapitalMainView.h"
 #import "MentionMoneyViewController.h"
@@ -25,8 +24,6 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 @property (strong, nonatomic) CapitalMainView *walletView;//钱包账户
 @property (strong, nonatomic) CapitalMainView *mineView;//挖矿账户
 
-@property (assign, nonatomic) BOOL isHideMoney;//是否隐藏金额
-
 //参考MainViewController（首页）
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
 
@@ -36,7 +33,7 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"资产";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
@@ -57,6 +54,14 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
+    //辅助view
+    UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight + 44)];
+    tempImageView.image = [UIImage imageNamed:@"capital_topBackground"];
+    tempImageView.contentMode = UIViewContentModeTop;
+    tempImageView.clipsToBounds = YES;
+    [self.view addSubview:tempImageView];
+    
+    
     //第三add的view
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -65,12 +70,12 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
     titleLabel.font = [UIFont systemFontOfSize:17];
     [self.view addSubview:titleLabel];
     
-    UIButton *eyeButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 50, StatusBarHeight, 44, 44)];
-    eyeButton.adjustsImageWhenHighlighted = NO;
-    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
-    [eyeButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
-    [eyeButton addTarget:self action:@selector(eyeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:eyeButton];
+    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 50, StatusBarHeight, 44, 44)];
+    recordButton.adjustsImageWhenHighlighted = NO;
+    [recordButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
+    [recordButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
+    [recordButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:recordButton];
     
     //第四add的view
     CGRect segmentFrame = CGRectMake(0, NavHeight - 10, ScreenWidth, 44);
@@ -110,12 +115,11 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 }
 
 #pragma mark-
-- (void)eyeButtonAction:(UIButton *)sender {
-    _isHideMoney = !_isHideMoney;
-    sender.selected = !sender.selected;
-    
-    _walletView.hideMoney = _isHideMoney;
-    _mineView.hideMoney = _isHideMoney;
+- (void)recordButtonAction:(UIButton *)sender {
+    //收支记录
+    PaymentsRecordsViewController *recordsVC = [[PaymentsRecordsViewController alloc] init];
+    recordsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordsVC animated:YES];
 }
 
 #pragma mark-
@@ -145,26 +149,17 @@ NSString * const DSSJTabBarSelectCapital = @"DSSJTabBarSelectCapitalViewControll
 }
 
 - (void)capitalMainViewSearchClick {
-    //搜索
-    CapitalSearchViewController *searchVC = [[CapitalSearchViewController alloc] init];
-    searchVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:searchVC animated:YES];
+//    //搜索
+//    CapitalSearchViewController *searchVC = [[CapitalSearchViewController alloc] init];
+//    searchVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
-- (void)capitalMainViewButtonModuleClick:(NSInteger)index {
-    if (index == 1) {
-        //提币
-        MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
-        mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
-    }
-}
-
-- (void)capitalMainViewRecordClick {
-    //收支记录
-    PaymentsRecordsViewController *recordsVC = [[PaymentsRecordsViewController alloc] init];
-    recordsVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:recordsVC animated:YES];
+- (void)capitalMainViewDrawClick {
+    //提币
+    MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
+    mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
 }
 
 @end

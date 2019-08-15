@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"邀请好友";
+    self.title = @"通讯录好友";
     self.view.backgroundColor = [UIColor whiteColor];
     
     //是否有权限

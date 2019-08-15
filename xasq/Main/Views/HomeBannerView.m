@@ -161,7 +161,8 @@
 
 - (void)imageClick {
     if (self.ImageClickBlock && _imageArray.count > 0) {
-        self.ImageClickBlock(self.currentPage);
+        BannerObject *obj = _imageArray[self.currentPage];
+        self.ImageClickBlock(obj.linkPath);
     }
 }
 

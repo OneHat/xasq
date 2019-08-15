@@ -102,6 +102,7 @@
             VC.closeLoginBlock = ^(BOOL isLogin) {
                 
                 if (!isLogin) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHome object:nil];
                     tabBarController.selectedIndex = 0;
                 }
             };

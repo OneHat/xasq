@@ -1,8 +1,8 @@
 //
-//  CapitalSearchViewController.h
+//  FriendsRankViewCell.h
 //  xasq
 //
-//  Created by dssj on 2019/8/5.
+//  Created by dssj on 2019/8/14.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CapitalSearchViewController : UIViewController
+@interface FriendsRankViewCell : UITableViewCell
 
 @end
 

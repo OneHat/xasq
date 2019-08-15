@@ -7,11 +7,12 @@
 //
 
 #import "HomeViewController.h"
-#import "InviteUserViewController.h"
+#import "FriendsViewController.h"
 #import "HomeMoreNewsViewController.h"
 #import "MinerViewController.h"
 #import "TaskViewController.h"
 #import "LoginViewController.h"
+#import "WebViewController.h"
 #import "CalculateRecordViewController.h"
 
 #import "HomeNewsView.h"
@@ -24,6 +25,8 @@
 #import "HomeBannerView.h"
 #import "UIViewController+ActionSheet.h"
 
+#import "UserStepManager.h"
+
 NSString * const DSSJTabBarSelectHome = @"DSSJTabBarSelectHomeViewController";
 
 static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
@@ -33,6 +36,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageTop;
 
 @property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
 
@@ -40,6 +44,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 @property (nonatomic, strong) HomeBannerView *bannerView;
 
 @property (weak, nonatomic) IBOutlet UIView *rankView;//排行View
+@property (weak, nonatomic) IBOutlet UIView *stepRewardView;
 
 //隐藏导航栏时，是否需要动画
 //从子页面需要，防止右滑返回时navbar不协调
@@ -57,6 +62,10 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    if (IphoneX) {
+        self.headerImageTop.constant = 40;
     }
     
     //动态
@@ -77,6 +86,14 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         _bannerViewHeight.constant = 0.0;
         _bannerView.imageArray = bannerList;
     }
+    
+    WeakObject
+    _bannerView.ImageClickBlock = ^(NSString * _Nonnull linkPath) {
+        WebViewController *webVC = [[WebViewController alloc] init];
+        webVC.urlString = linkPath;
+        webVC.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:webVC animated:YES];
+    };
     
     //排行
     HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
@@ -103,8 +120,15 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     //获取banner
     [self getHomeBannerData];
     
+    //用户步行奖励
+    [self getUserStepReward];
     
+    //用户算力奖励
+    [self getUserPowerReward];
     
+    [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -126,6 +150,8 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     _hideNavBarAnimation = NO;
 }
 
+#pragma mark - 网络请求
+///获取banner
 - (void)getHomeBannerData {
     [[NetworkManager sharedManager] getRequest:OperationBanner parameters:@{@"type":@"2"} success:^(NSDictionary * _Nonnull data) {
         
@@ -142,6 +168,41 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+///用户步行奖励
+- (void)getUserStepReward {
+    [[NetworkManager sharedManager] postRequest:CommunitySendWalk parameters:@{@"userId":@"11",@"userWalk":@"6666"} success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *dateList = data[@"data"];
+        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+            NSDictionary *stepReward = dateList.firstObject;
+            
+            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
+            
+            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
+            ballView.rewardModel = model;
+            [self.stepRewardView addSubview:ballView];
+            
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
+///用户算力奖励
+- (void)getUserPowerReward {
+    
+    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":@"11"} success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *dateList = data[@"data"];
+        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+            NSDictionary *stepReward = dateList.firstObject;
+            
+//            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
+            
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+}
 
 #pragma mark - 本页面按钮事件
 
@@ -153,18 +214,13 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
 - (IBAction)inviteAction:(UIButton *)sender {
     
-    InviteUserViewController *inviteUserVC = [[InviteUserViewController alloc] init];
-    inviteUserVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:inviteUserVC animated:YES];
-    
 }
 
 - (IBAction)friendsAction:(UIButton *)sender {
-    CalculateRecordViewController *VC = [[CalculateRecordViewController alloc] init];
-    VC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:VC animated:YES];
+    FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
+    friendsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:friendsVC animated:YES];
 }
-
 
 - (IBAction)taskAction:(UIButton *)sender {
     if ([UserDataManager shareManager].userId) {

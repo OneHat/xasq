@@ -9,7 +9,13 @@
 #import "RewardBallView.h"
 
 const CGFloat ViewWidth = 50;
-const CGFloat BallWidth = 40;
+//const CGFloat BallWidth = 40;
+
+@interface RewardBallView ()
+
+@property (nonatomic, strong) UILabel *rewardLabel;
+
+@end
 
 @implementation RewardBallView
 
@@ -17,10 +23,9 @@ const CGFloat BallWidth = 40;
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.frame = CGRectMake(frame.origin.x, frame.origin.y, ViewWidth, ViewWidth + 20);
+        self.frame = CGRectMake(frame.origin.x, frame.origin.y, ViewWidth, ViewWidth);
         
         [self loadSubViews];
-        [self addAnimation];
     }
     return self;
 }
@@ -31,23 +36,22 @@ const CGFloat BallWidth = 40;
     [circleButton addTarget:self action:@selector(rewardClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:circleButton];
     
-    
-    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake((ViewWidth - BallWidth) * 0.5, 0, BallWidth, BallWidth)];
+    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ViewWidth, ViewWidth)];
     rewardLabel.numberOfLines = 0;
+    rewardLabel.textAlignment = NSTextAlignmentCenter;
     rewardLabel.text = @"0.0008BTC";
     rewardLabel.textColor = [UIColor whiteColor];
     rewardLabel.font = [UIFont systemFontOfSize:10];
     [self addSubview:rewardLabel];
-    
-    
-    UILabel *sourceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, BallWidth, ViewWidth, 20)];
-    sourceLabel.text = @"步行奖励";
-    sourceLabel.textColor = [UIColor whiteColor];
-    sourceLabel.font = [UIFont systemFontOfSize:10];
-    sourceLabel.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:sourceLabel];
+    _rewardLabel = rewardLabel;
 }
 
+- (void)setRewardModel:(RewardModel *)rewardModel {
+    _rewardModel = rewardModel;
+    _rewardLabel.text = [NSString stringWithFormat:@"%@\n%@",rewardModel.currencyCode,rewardModel.currencyQuantity];
+}
+
+#pragma mark -
 - (void)addAnimation {
     
     CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
@@ -61,7 +65,18 @@ const CGFloat BallWidth = 40;
 }
 
 - (void)rewardClick:(UIButton *)sender {
-    [self removeFromSuperview];
+    sender.enabled = NO;
+    
+    NSDictionary *parameters = @{@"userId":@"11",
+                            @"bId":[NSString stringWithFormat:@"%ld",_rewardModel.ID]
+                            };
+    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        
+        [self removeFromSuperview];
+        
+    } failure:^(NSError * _Nonnull error) {
+        sender.enabled = YES;
+    }];
 }
 
 @end

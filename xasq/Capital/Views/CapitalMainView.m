@@ -9,12 +9,10 @@
 #import "CapitalMainView.h"
 #import "CapitalListViewCell.h"
 #import "CapitalTopView.h"
-#import "CapitalActionModuleView.h"
 
 @interface CapitalMainView () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 
 @end
@@ -28,6 +26,8 @@ static CGFloat CapitalSegmentControlH = 40;
     if (self) {
         
         [self loadSubViews];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeHideMony) name:CapitalChangeHideMoneyStatus object:nil];
     }
     return self;
 }
@@ -38,9 +38,9 @@ static CGFloat CapitalSegmentControlH = 40;
     //资产view
     CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, topSpaceH, ScreenWidth, 20)];
     topView.viewStyle = CapitalTopViewAll;
-    topView.RecordClickBlock = ^{
-        if ([self.delegate respondsToSelector:@selector(capitalMainViewRecordClick)]) {
-            [self.delegate capitalMainViewRecordClick];
+    topView.DrawClickBlock = ^{
+        if ([self.delegate respondsToSelector:@selector(capitalMainViewDrawClick)]) {
+            [self.delegate capitalMainViewDrawClick];
         }
     };
     [self addSubview:topView];
@@ -49,15 +49,6 @@ static CGFloat CapitalSegmentControlH = 40;
     ////topView的高度会根据内容自己计算，这里重新赋值高度给外层
     CGFloat topViewH = topView.frame.size.height;
     _topCapitalViewH = topSpaceH + topViewH;
-    
-    //充币、提币模块view
-    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, _topCapitalViewH, ScreenWidth, 10)];
-    modulView.ButtonClickBlock = ^(NSInteger index) {
-        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
-            [self.delegate capitalMainViewButtonModuleClick:index];
-        }
-    };
-    [self addSubview:modulView];
     
     //列表
     CGFloat tableViewY = _topCapitalViewH + 10;
@@ -69,12 +60,8 @@ static CGFloat CapitalSegmentControlH = 40;
     _tableView.rowHeight = 60;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.tableHeaderView = [self tableHeaderView];
+//    _tableView.tableHeaderView = [self tableHeaderView];
     [self addSubview:_tableView];
-}
-
-- (void)setHideMoney:(BOOL)hideMoney {
-    _topView.hideMoney = hideMoney;
 }
 
 #pragma mark-
@@ -84,7 +71,6 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CapitalListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
     return cell;
 }
 
@@ -97,18 +83,30 @@ static CGFloat CapitalSegmentControlH = 40;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, height)];
     headerView.backgroundColor = ThemeColorBackground;
     
-    //搜索
-    UILabel *searchLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 90, height)];
-    searchLabel.textColor = ThemeColorTextGray;
-    searchLabel.font = ThemeFontSmallText;
-    searchLabel.text = @"搜索币种";
-    [headerView addSubview:searchLabel];
+//    //搜索
+//    UILabel *searchLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 90, height)];
+//    searchLabel.textColor = ThemeColorTextGray;
+//    searchLabel.font = ThemeFontSmallText;
+//    searchLabel.text = @"搜索币种";
+//    [headerView addSubview:searchLabel];
+//
+//    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, 80, height)];
+//    searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
+//    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
+//    [headerView addSubview:searchButton];
     
-    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, 80, height)];
-    searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:searchButton];
+    UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 26, 12)];
+    leftView.image = [UIImage imageNamed:@"Search_Button"];
+    leftView.contentMode = UIViewContentModeScaleAspectFit;
+    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth * 0.5, 30)];
+    [searchField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    searchField.leftView = leftView;
+    searchField.leftViewMode = UITextFieldViewModeAlways;
+    searchField.font = ThemeFontSmallText;
+    searchField.placeholder = @"搜索币种";
+    [headerView addSubview:searchField];
+    
     
     //隐藏0余额
     CGSize size = [@"隐藏0余额" sizeWithAttributes:@{NSFontAttributeName:ThemeFontSmallText}];
@@ -137,15 +135,15 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 #pragma mark -
-- (UIView *)tableHeaderView {
-    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
-    modulView.ButtonClickBlock = ^(NSInteger index) {
-        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
-            [self.delegate capitalMainViewButtonModuleClick:index];
-        }
-    };
-    return modulView;
-}
+//- (UIView *)tableHeaderView {
+//    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
+//    modulView.ButtonClickBlock = ^(NSInteger index) {
+//        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
+//            [self.delegate capitalMainViewButtonModuleClick:index];
+//        }
+//    };
+//    return modulView;
+//}
 
 #pragma mark -
 - (void)searchButtonClick {
@@ -156,6 +154,24 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (void)checkButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textChange:(UITextField *)field {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(search) object:nil];
+    [self performSelector:@selector(search) withObject:nil afterDelay:0.4];
+}
+
+- (void)search {
+    
+}
+
+- (void)changeHideMony {
+    [self.tableView reloadData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

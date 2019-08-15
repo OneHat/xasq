@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RewardModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RewardBallView : UIView
+
+@property (nonatomic, strong) RewardModel *rewardModel;
 
 @end
 
