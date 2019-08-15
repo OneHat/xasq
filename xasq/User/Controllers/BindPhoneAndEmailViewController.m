@@ -119,9 +119,8 @@
     }
     [self loading];
     NSDictionary *dict = @{@"userId"      : [UserDataManager shareManager].userId,
-                           @"areaCode"    : _areaCodeLB.text,
                            nameStr        : _accountTF.text,
-                           @"validCode_1" : _codeTF.text,
+                           @"validCode"   : _codeTF.text,
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];

@@ -65,7 +65,7 @@
 
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
-    NSString *urlStr,*nameStr;
+    NSString *urlStr,*nameStr,*nameValue;
     if ([_channelLB.text isEqualToString:@"手机号"]) {
         if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
             [self showMessage:@"请先绑定手机号"];
@@ -73,6 +73,7 @@
         }
         urlStr = UserSendMobile;
         nameStr = @"mobile";
+        nameValue = [UserDataManager shareManager].usermodel.mobile;
     } else {
         if ([UserDataManager shareManager].usermodel.email.length == 0) {
             [self showMessage:@"请先绑定邮箱"];
@@ -80,10 +81,11 @@
         }
         urlStr = UserSendEmail;
         nameStr = @"email";
+        nameValue = [UserDataManager shareManager].usermodel.email;
     }
     sender.userInteractionEnabled = NO;
     WeakObject;
-    NSDictionary *dict = @{nameStr     : _codeTF.text,
+    NSDictionary *dict = @{nameStr     : nameValue,
                            @"codeLogo" : @"2"
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
@@ -137,10 +139,9 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"userName"   : [UserDataManager shareManager].usermodel.userName,
+        NSDictionary *dict = @{@"userId"      : [UserDataManager shareManager].userId,
                                @"oldPassword" : _oldPasswordTF.text,
                                @"newPassword" : _passwordTF.text,
-                               @"type"        : @"0"
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
@@ -167,19 +168,21 @@
             return;
         }
         [self loading];
-        NSString *nameStr;
+        NSString *nameStr,*userName;
         if ([_channelLB.text isEqualToString:@"手机号"]) {
             nameStr = @"mobile";
+            userName = [UserDataManager shareManager].usermodel.mobile;
         } else {
             nameStr = @"email";
+            userName = [UserDataManager shareManager].usermodel.email;
         }
-        NSDictionary *dict = @{@"userName"     : [UserDataManager shareManager].usermodel.userName,
-                               @"newPassword"   : _passwordTF.text,
+        NSDictionary *dict = @{@"userName"      : userName,
+                               @"password"      : _passwordTF.text,
                                @"validCode"     : _codeTF.text,
                                @"validCodeType" : nameStr,
                                @"type"          : @"1"
                                };
-        [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
             [self showMessage:@"修改成功" complete:^{
                 [self.navigationController popViewControllerAnimated:YES];

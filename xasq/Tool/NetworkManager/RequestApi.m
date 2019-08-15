@@ -28,12 +28,14 @@ NSString *const HomePageInfo = @"home/page/info";
 NSString *const UserInviteBind = @"user/invite/bind";
 NSString *const UserInviteQrcode = @"user/invite/qrcode";
 NSString *const UserSignIn = @"user/sign/in";
+NSString *const UserPwdReset = @"user/pwd/reset";
 NSString *const UserPwdLoginModify = @"user/pwd/login/modify";
 NSString *const UserSignInfo = @"user/sign/info";
 NSString *const UserSendEmail = @"user/send/email";
 NSString *const UserSendMobile = @"user/send/mobile";
 NSString *const UserSetIcon = @"user/set/icon";
 NSString *const UserSetNickname = @"user/set/nickname";
+NSString *const UserCheckValidcode = @"user/check/validcode";
 
 NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
 NSString *const ApiAccountOpenAccount = @"api/account/openAccount";

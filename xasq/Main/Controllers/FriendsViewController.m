@@ -8,10 +8,12 @@
 
 #import "FriendsViewController.h"
 #import "FriendsRankViewCell.h"
+#import "FriendsHeaderView.h"
 
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) FriendsHeaderView *headerView;
 
 @end
 
@@ -19,13 +21,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"好友排行";
+    self.view.backgroundColor = ThemeColorBackground;
     CGRect frame = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    [_tableView registerNib:[UINib nibWithNibName:@"FriendsRankViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.rowHeight = 50;
+    _tableView.backgroundColor = ThemeColorBackground;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 80)];
+    _headerView = [[[UINib nibWithNibName:@"FriendsHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+    _headerView.frame = CGRectMake(0, 0, ScreenWidth, 80);
+    [header addSubview:_headerView];
+    _tableView.tableHeaderView = header;
     [self.view addSubview:_tableView];
 }
 
@@ -35,8 +44,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
+    FriendsRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsRankViewCell"];
+    if (cell == nil) {
+        cell = [[[UINib nibWithNibName:@"FriendsRankViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
     return cell;
 }

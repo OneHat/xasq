@@ -50,7 +50,9 @@ FOUNDATION_EXPORT NSString *const UserInviteBind;
 FOUNDATION_EXPORT NSString *const UserInviteQrcode;
 /// 用户签到接口 POST
 FOUNDATION_EXPORT NSString *const UserSignIn;
-/// 修改密码接口 POST
+/// 修改(找回)支付密码接口 POST
+FOUNDATION_EXPORT NSString *const UserPwdReset;
+/// 修改登录密码接口 POST
 FOUNDATION_EXPORT NSString *const UserPwdLoginModify;
 /// 查询签到信息 GET
 FOUNDATION_EXPORT NSString *const UserSignInfo;
@@ -62,6 +64,8 @@ FOUNDATION_EXPORT NSString *const UserSendMobile;
 FOUNDATION_EXPORT NSString *const UserSetIcon;
 /// 设置用户昵称接口 POST
 FOUNDATION_EXPORT NSString *const UserSetNickname;
+/// 验证码校验接口 POST
+FOUNDATION_EXPORT NSString *const UserCheckValidcode;
 
 //********************************资产账单
 ///查看个人总帐单 POST

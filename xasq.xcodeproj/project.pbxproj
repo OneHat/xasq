@@ -45,6 +45,8 @@
 		C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C414003E22F2B02D0010A463 /* HomeNewsViewCell.xib */; };
 		C414004422F2CE8D0010A463 /* MinerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004222F2CE8D0010A463 /* MinerViewController.m */; };
 		C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalMainView.m */; };
+		C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4143D45230524EF0071236F /* FriendsHeaderView.m */; };
+		C4143D48230524FF0071236F /* FriendsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4143D47230524FF0071236F /* FriendsHeaderView.xib */; };
 		C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */; };
 		C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */; };
 		C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48F22F4199A005EFD81 /* CapitalTopView.m */; };
@@ -248,6 +250,9 @@
 		C414004222F2CE8D0010A463 /* MinerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinerViewController.m; sourceTree = "<group>"; };
 		C414004A22F2EBA30010A463 /* CapitalMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalMainView.h; sourceTree = "<group>"; };
 		C414004B22F2EBA30010A463 /* CapitalMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalMainView.m; sourceTree = "<group>"; };
+		C4143D44230524EF0071236F /* FriendsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsHeaderView.h; sourceTree = "<group>"; };
+		C4143D45230524EF0071236F /* FriendsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsHeaderView.m; sourceTree = "<group>"; };
+		C4143D47230524FF0071236F /* FriendsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsHeaderView.xib; sourceTree = "<group>"; };
 		C418F48922F3F9F3005EFD81 /* CapitalListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalListViewCell.h; sourceTree = "<group>"; };
 		C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalListViewCell.m; sourceTree = "<group>"; };
 		C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalListViewCell.xib; sourceTree = "<group>"; };
@@ -863,6 +868,9 @@
 				C4B9FCE22302852E007C1137 /* TaskViewCell.h */,
 				C4B9FCE32302852E007C1137 /* TaskViewCell.m */,
 				C4B9FCE42302852E007C1137 /* TaskViewCell.xib */,
+				C4143D44230524EF0071236F /* FriendsHeaderView.h */,
+				C4143D45230524EF0071236F /* FriendsHeaderView.m */,
+				C4143D47230524FF0071236F /* FriendsHeaderView.xib */,
 				C4B9FCED2303DBA4007C1137 /* FriendsRankViewCell.h */,
 				C4B9FCEE2303DBA4007C1137 /* FriendsRankViewCell.m */,
 				C4B9FCEF2303DBA4007C1137 /* FriendsRankViewCell.xib */,
@@ -1200,6 +1208,7 @@
 				C4D5EEC522F7B96A00C94D9F /* MentionMoneyViewController.xib in Resources */,
 				C4D5EEE722F80CEF00C94D9F /* PaymentHeaderView.xib in Resources */,
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
+				C4143D48230524FF0071236F /* FriendsHeaderView.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C4D5EED722F7F90400C94D9F /* ProceedAccountTableViewCell.xib in Resources */,
 				C43B6BF922FA7D6A00312286 /* InviteHistoryViewCell.xib in Resources */,
@@ -1349,6 +1358,7 @@
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
 				C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */,
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
+				C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */,

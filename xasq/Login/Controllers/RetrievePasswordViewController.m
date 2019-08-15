@@ -54,16 +54,42 @@
 
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
-    sender.userInteractionEnabled = NO;
-    if (_count == 0) {
-        //60秒后再次启动
-        _count = 60;
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                  target:self
-                                                selector:@selector(showTime)
-                                                userInfo:nil
-                                                 repeats:YES];
+    if (_accountTF.text.length == 0) {
+        if (_type == 0) {
+            [self showMessage:@"请输入手机号"];
+        } else {
+            [self showMessage:@"请输入邮箱账号"];
+        }
+        return;
     }
+    sender.userInteractionEnabled = NO;
+    WeakObject;
+    NSString *urlStr,*nameStr;
+    if (_type == 0) {
+        urlStr = UserSendMobile;
+        nameStr = @"mobile";
+    } else {
+        urlStr = UserSendEmail;
+        nameStr = @"email";
+    }
+    NSDictionary *dict = @{nameStr : _accountTF.text,
+                           @"codeLogo" : @"10"
+                           };
+    [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"验证码发送成功"];
+        if (weakSelf.count == 0) {
+            //60秒后再次启动
+            weakSelf.count = 60;
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                              target:self
+                                                            selector:@selector(showTime)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+        weakSelf.codeBtn.userInteractionEnabled = YES;
+    }];
 }
 
 - (void)showTime {
@@ -86,8 +112,37 @@
 
 #pragma mark - 下一步
 - (IBAction)nextBtnClick:(UIButton *)sender {
-    ResetPasswordViewController *VC = [[ResetPasswordViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+    if (_codeTF.text.length == 0) {
+        [self showMessage:@"请输入手机号或邮箱号"];
+        return;
+    } else if (_codeTF.text.length == 0) {
+        [self showMessage:@"请输入验证码"];
+        return;
+    }
+    [self loading];
+    NSString *nameStr;
+    if (_type == 0) {
+        nameStr = @"mobile";
+    } else {
+        nameStr = @"email";
+    }
+    NSDictionary *dict = @{@"loginName"         : _accountTF.text,
+                           @"validCode"         : _codeTF.text,
+                           @"validCodeType"     : _codeTF.text,
+                           @"codeLogo"          : @"2"
+                           };
+    [[NetworkManager sharedManager] postRequest:UserCheckValidcode parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self hideHUD];
+        ResetPasswordViewController *VC = [[ResetPasswordViewController alloc] init];
+        VC.account = self->_accountTF.text;
+        VC.code = self->_codeTF.text;
+        VC.type = self->_type;
+        [self.navigationController pushViewController:VC animated:YES];
+    } failure:^(NSError * _Nonnull error) {
+        [self hideHUD];
+        [self showErrow:error];
+    }];
+
 }
 
 /*
