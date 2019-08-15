@@ -23,6 +23,7 @@
     
     _saveBtn.layer.cornerRadius = 22.5;
     _saveBtn.layer.masksToBounds = YES;
+    _nameTF.text = _nickname;
 }
 
 - (IBAction)saveBtnClick:(UIButton *)sender {

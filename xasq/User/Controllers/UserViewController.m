@@ -38,8 +38,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 
-    _titleDict = @{@"0" : @[@"认证信息", @"账户设置", @"语言设置",], @"1" : @[@"版本信息", @"关于我们", @"联系我们"]};
-    _imageTitleDict = @{@"0" : @[@"authentication_information", @"account_settings", @"language_settings",], @"1" : @[@"version_information", @"about_us", @"contact_us"]};
+    _titleDict = @{@"0" : @[@"账户设置", @"语言设置",], @"1" : @[@"版本信息", @"关于我们", @"联系我们"]};
+    _imageTitleDict = @{@"0" : @[@"account_settings", @"language_settings",], @"1" : @[@"version_information", @"about_us", @"contact_us"]};
 
     _headerView = [[[UINib nibWithNibName:@"UserHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 290);
@@ -158,19 +158,7 @@
     NSString *key = [NSString stringWithFormat:@"%ld", indexPath.section];
     NSArray *titleArray = _titleDict[key];
     NSString *title = titleArray[indexPath.row];
-    if ([title isEqualToString:@"认证信息"]) {
-        if ([UserDataManager shareManager].usermodel.authStatus) {
-            // 已认证
-            CredentialsViewController *VC = [[CredentialsViewController alloc] init];
-            VC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:VC animated:YES];
-        } else {
-            // 未认证
-            UnauthorizedViewController *VC = [[UnauthorizedViewController alloc] init];
-            VC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:VC animated:YES];
-        }
-    } else if ([title isEqualToString:@"账户设置"]) {
+    if ([title isEqualToString:@"账户设置"]) {
         AccountSetViewController *VC = [[AccountSetViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];

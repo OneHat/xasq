@@ -47,6 +47,8 @@
 		C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C414004B22F2EBA30010A463 /* CapitalMainView.m */; };
 		C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4143D45230524EF0071236F /* FriendsHeaderView.m */; };
 		C4143D48230524FF0071236F /* FriendsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4143D47230524FF0071236F /* FriendsHeaderView.xib */; };
+		C4143D4C230572540071236F /* ReplacePhoneAndEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4143D4A230572540071236F /* ReplacePhoneAndEmailViewController.m */; };
+		C4143D4D230572540071236F /* ReplacePhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4143D4B230572540071236F /* ReplacePhoneAndEmailViewController.xib */; };
 		C418F48C22F3F9F3005EFD81 /* CapitalListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */; };
 		C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */; };
 		C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C418F48F22F4199A005EFD81 /* CapitalTopView.m */; };
@@ -253,6 +255,9 @@
 		C4143D44230524EF0071236F /* FriendsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsHeaderView.h; sourceTree = "<group>"; };
 		C4143D45230524EF0071236F /* FriendsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsHeaderView.m; sourceTree = "<group>"; };
 		C4143D47230524FF0071236F /* FriendsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsHeaderView.xib; sourceTree = "<group>"; };
+		C4143D49230572540071236F /* ReplacePhoneAndEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplacePhoneAndEmailViewController.h; sourceTree = "<group>"; };
+		C4143D4A230572540071236F /* ReplacePhoneAndEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplacePhoneAndEmailViewController.m; sourceTree = "<group>"; };
+		C4143D4B230572540071236F /* ReplacePhoneAndEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplacePhoneAndEmailViewController.xib; sourceTree = "<group>"; };
 		C418F48922F3F9F3005EFD81 /* CapitalListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalListViewCell.h; sourceTree = "<group>"; };
 		C418F48A22F3F9F3005EFD81 /* CapitalListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalListViewCell.m; sourceTree = "<group>"; };
 		C418F48B22F3F9F3005EFD81 /* CapitalListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapitalListViewCell.xib; sourceTree = "<group>"; };
@@ -1026,6 +1031,9 @@
 				C49621752303E8200086A959 /* ChangePhoneAndEmailViewController.h */,
 				C49621762303E8200086A959 /* ChangePhoneAndEmailViewController.m */,
 				C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */,
+				C4143D49230572540071236F /* ReplacePhoneAndEmailViewController.h */,
+				C4143D4A230572540071236F /* ReplacePhoneAndEmailViewController.m */,
+				C4143D4B230572540071236F /* ReplacePhoneAndEmailViewController.xib */,
 				C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */,
 				C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */,
 				C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */,
@@ -1214,6 +1222,7 @@
 				C43B6BF922FA7D6A00312286 /* InviteHistoryViewCell.xib in Resources */,
 				C4D5EEF222F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
+				C4143D4D230572540071236F /* ReplacePhoneAndEmailViewController.xib in Resources */,
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C41B127922F2AC1000375560 /* BindPhoneAndEmailViewController.xib in Resources */,
 				C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */,
@@ -1361,6 +1370,7 @@
 				C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
+				C4143D4C230572540071236F /* ReplacePhoneAndEmailViewController.m in Sources */,
 				C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4B9FCEC2303DAE9007C1137 /* FriendsViewController.m in Sources */,

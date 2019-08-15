@@ -53,7 +53,7 @@
                            };
     [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
-        [self showMessage:@"修改成功" complete:^{
+        [self showMessage:@"密码已找回，请使用新密码登录" complete:^{
             NSArray *vcArr = self.navigationController.viewControllers;
             UIViewController *VC = vcArr[vcArr.count - 3];
             [self.navigationController popToViewController:VC animated:YES];

@@ -10,6 +10,7 @@
 #import "AccountSetTableViewCell.h"
 #import "BindPhoneAndEmailViewController.h"
 #import "PayAndLoginPasswordViewController.h"
+#import "ChangePhoneAndEmailViewController.h"
 
 @interface AccountSetViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -144,13 +145,25 @@
         VC.type = 1; // 设置支付密码
         [self.navigationController pushViewController:VC animated:YES];
     } else if (indexPath.row == 2) {
-        BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-        VC.type = 1; // 绑定邮箱
-        [self.navigationController pushViewController:VC animated:YES];
+        if ([UserDataManager shareManager].usermodel.email.length > 0) {
+            ChangePhoneAndEmailViewController *VC = [[ChangePhoneAndEmailViewController alloc] init];
+            VC.type = 1;
+            [self.navigationController pushViewController:VC animated:YES];
+        } else {
+            BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+            VC.type = 1; // 绑定邮箱
+            [self.navigationController pushViewController:VC animated:YES];
+        }
     } else if (indexPath.row == 3) {
-        BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-        VC.type = 0; // 绑定手机
-        [self.navigationController pushViewController:VC animated:YES];
+        if ([UserDataManager shareManager].usermodel.mobile.length > 0) {
+            ChangePhoneAndEmailViewController *VC = [[ChangePhoneAndEmailViewController alloc] init];
+            VC.type = 0;
+            [self.navigationController pushViewController:VC animated:YES];
+        } else {
+            BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+            VC.type = 0; // 绑定手机
+            [self.navigationController pushViewController:VC animated:YES];
+        }
     }
 }
 
