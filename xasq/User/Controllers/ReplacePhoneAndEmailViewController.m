@@ -88,7 +88,6 @@
                            };
     [[NetworkManager sharedManager] postRequest:UserSendMobile parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        weakSelf.phoneCodeTF.text = @"";
         if (weakSelf.type == 0) {
             [self phoneCodeBtnClick];
         } else {
@@ -125,7 +124,6 @@
                            };
     [[NetworkManager sharedManager] postRequest:UserSendEmail parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        weakSelf.emailCodeTF.text = @"";
         if (weakSelf.type == 1) {
             [self phoneCodeBtnClick];
         } else {
