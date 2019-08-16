@@ -71,6 +71,15 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CapitalListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if ([CapitalDataManager shareManager].hideMoney) {
+        cell.numberLabel.text = @"****";
+        cell.moneyLabel.text = @"****";
+    } else {
+        cell.numberLabel.text = @"0.000BTC";
+        cell.moneyLabel.text = @"$0.00";
+    }
+    
     return cell;
 }
 
@@ -110,8 +119,7 @@ static CGFloat CapitalSegmentControlH = 40;
     
     
     //隐藏0余额
-    CGSize size = [@"隐藏0余额" sizeWithAttributes:@{NSFontAttributeName:ThemeFontSmallText}];
-    CGFloat labelWidth = ceil(size.width);
+    CGFloat labelWidth = [@"隐藏0余额" getWidthWithFont:ThemeFontSmallText];
     
     UILabel *hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 10, 0, labelWidth, height)];
     hideZeroLabel.textColor = ThemeColorTextGray;

@@ -19,8 +19,8 @@ const CGFloat SheetSpaceHeight = 10.0;
 static char ActionSheetBlockKey;
 
 ///********  Alert
-const CGFloat AlertTitleHeight = 40.0;
-const CGFloat AlertActionHeight = 36.0;
+const CGFloat AlertTitleHeight = 55.0;
+const CGFloat AlertActionHeight = 42.0;
 const CGFloat AlertSpaceWidth = 10.0;
 
 static char AlertBlockKey;
@@ -85,7 +85,7 @@ static char AlertBlockKey;
     
     //按钮
     for (int i = 0; i < items.count; i++) {
-        CGFloat buttonY = titleHeight + i * SheetItemsHeight + 0.5 * (i + 1);
+        CGFloat buttonY = titleHeight + i * SheetItemsHeight + 1.0 * (i + 1);
         UIButton *actionButon = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY , ScreenWidth, SheetItemsHeight)];
         actionButon.tag = i;
         actionButon.backgroundColor = [UIColor whiteColor];
@@ -172,9 +172,12 @@ static char AlertBlockKey;
         items = [items subarrayWithRange:NSMakeRange(0, 3)];
     }
     
-    CGFloat alertHeight = titleHeight + AlertMessageHeight + AlertActionHeight + 20;
+    CGFloat alertHeight = titleHeight + AlertMessageHeight + AlertActionHeight + 25;
     CGFloat alertWidth = ScreenWidth - 30 * 2;
-    CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5-50;
+    CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5;
+    if (input) {
+        actionSheetY = actionSheetY - 30;
+    }
     
     UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(30, actionSheetY, alertWidth, alertHeight)];
     alertView.layer.cornerRadius = 5;
@@ -218,13 +221,22 @@ static char AlertBlockKey;
         [alertView addSubview:messageLabel];
     }
     
-    CGFloat spaceWidth = 10;
-    CGFloat alertActionWidth = (alertWidth - (items.count + 1) * spaceWidth) / items.count;
-    alertActionWidth = ceil(alertActionWidth);
-    if (items.count == 1) {
-        ///只有一个按钮的时候
-        alertActionWidth = 120;
-        spaceWidth = (alertWidth - alertActionWidth) * 0.5;
+    //***********
+//    CGFloat spaceWidth = 10;
+//    CGFloat alertActionWidth = (alertWidth - (items.count + 1) * spaceWidth) / items.count;
+//    alertActionWidth = ceil(alertActionWidth);
+//    if (items.count == 1) {
+//        ///只有一个按钮的时候
+//        alertActionWidth = 120;
+//        spaceWidth = (alertWidth - alertActionWidth) * 0.5;
+//    }
+    
+    //************
+    CGFloat alertActionWidth = 130;
+    CGFloat spaceWidth = (alertWidth - alertActionWidth * (items.count)) / (items.count + 1);
+    if (spaceWidth < 10) {
+        spaceWidth = 10;
+        alertActionWidth = (alertWidth - spaceWidth * (items.count + 1)) / items.count;
     }
     
     CGFloat buttonY = titleHeight + AlertMessageHeight;

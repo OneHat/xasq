@@ -8,6 +8,23 @@
 
 #import "MinerInfomationView.h"
 
+@interface MinerInfomationView ()
+
+@property (weak, nonatomic) IBOutlet UIView *leftView;
+@property (weak, nonatomic) IBOutlet UIView *middleView;
+@property (weak, nonatomic) IBOutlet UIView *rightView;
+@property (weak, nonatomic) IBOutlet UIView *progressView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *progressViewWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rateViewLeft;
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *currentLVLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftLVLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightLVLabel;
+
+@end
+
 @implementation MinerInfomationView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -17,10 +34,29 @@
         
         UIView *contentView = [[NSBundle mainBundle] loadNibNamed:@"MinerInfomationView" owner:self options:nil].firstObject;
         contentView.backgroundColor = [UIColor clearColor];
-        contentView.frame = self.bounds;
-        [self addSubview:contentView];
+        contentView.frame = frame;
+        self = (MinerInfomationView *)contentView;
+        
+        [self setSubView];
     }
     return self;
+}
+
+- (void)setSubView {
+    self.leftView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.middleView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.rightView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.2];
+    self.progressView.backgroundColor = HexColor(@"ae8849");
+    
+    self.leftLVLabel.backgroundColor = HexColor(@"ae8849");
+    self.rightLVLabel.backgroundColor = ThemeColorTextGray;
+    
+    
+    CGFloat rate = 0.333;
+    CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
+    
+    self.progressViewWidth.constant = totalWidth * rate;
+    self.rateViewLeft.constant = totalWidth * rate - 40;
 }
 
 @end

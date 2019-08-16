@@ -1,24 +1,24 @@
 //
-//  HomeMoreNewsViewController.m
+//  MoreNewsViewController.m
 //  xasq
 //
 //  Created by dssj on 2019/8/1.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "HomeMoreNewsViewController.h"
+#import "MoreNewsViewController.h"
 #import "HomeNewsViewCell.h"
 
 static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 
-@interface HomeMoreNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MoreNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *newsArray;
 
 @end
 
-@implementation HomeMoreNewsViewController
+@implementation MoreNewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

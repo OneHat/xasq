@@ -13,7 +13,7 @@
 #ifdef DEBUG
 static NSString *xasqBaseUrlUser = @"http://192.168.100.200:8081/";
 static NSString *xasqBaseUrlOperation = @"http://192.168.100.200:8281/";
-static NSString *xasqBaseUrlCommunity = @"http://192.168.100.144:8481/";
+static NSString *xasqBaseUrlCommunity = @"http://192.168.100.200:8481/";
 #else
 static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #endif

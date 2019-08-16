@@ -84,11 +84,6 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <connections>
-                <outlet property="nameLabel" destination="bAx-cF-4Ka" id="23r-Sa-ct8"/>
-                <outlet property="rewardLabel" destination="SfY-ju-kWK" id="u19-Sh-JE6"/>
-                <outlet property="statusButton" destination="V1z-Cm-E4T" id="rmJ-ji-0IS"/>
-            </connections>
             <point key="canvasLocation" x="-624" y="-105"/>
         </tableViewCell>
     </objects>

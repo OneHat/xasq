@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myCodeTitleLabel;//
 @property (weak, nonatomic) IBOutlet UILabel *myCodeLabel;//邀请码
 @property (weak, nonatomic) IBOutlet UIButton *copMyCodeButton;//复制
-@property (weak, nonatomic) IBOutlet UIButton *makeMyCardButton;//生成邀请卡
+@property (weak, nonatomic) IBOutlet UIButton *beginInviteButton;//开始邀请
 @property (weak, nonatomic) IBOutlet UILabel *myFriendsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalInviteLabel;//共邀请
 
@@ -38,28 +38,28 @@
 
 - (void)setSubView {
     self.titleLabel.font = ThemeFontText;
-    self.myCodeTitleLabel.font = ThemeFontSmallText;
+    self.myCodeTitleLabel.font = ThemeFontMiddleText;
     
     self.myCodeLabel.font = [UIFont systemFontOfSize:20];
     self.myCodeLabel.textColor = ThemeColorBlue;
     
     [self.bindInviteButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
-    self.bindInviteButton.titleLabel.font = [UIFont systemFontOfSize:10];
-    self.bindInviteButton.backgroundColor = ThemeColorBackground;
+    self.bindInviteButton.titleLabel.font = ThemeFontTipText;
+    self.bindInviteButton.backgroundColor = HexColor(@"e7e7e7");
     self.bindInviteButton.layer.cornerRadius = CGRectGetHeight(self.bindInviteButton.frame) * 0.5;
     self.bindInviteButton.layer.masksToBounds = YES;
     
     [self.copMyCodeButton setTitleColor:ThemeColorTextGray forState:UIControlStateNormal];
-    self.copMyCodeButton.titleLabel.font = [UIFont systemFontOfSize:10];
-    self.copMyCodeButton.backgroundColor = ThemeColorBackground;
+    self.copMyCodeButton.titleLabel.font = ThemeFontTipText;
+    self.copMyCodeButton.backgroundColor = HexColor(@"e7e7e7");;
     self.copMyCodeButton.layer.cornerRadius = CGRectGetHeight(self.copMyCodeButton.frame) * 0.5;
     self.copMyCodeButton.layer.masksToBounds = YES;
     
-    [self.makeMyCardButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.makeMyCardButton.titleLabel.font = ThemeFontMiddleText;
-    self.makeMyCardButton.backgroundColor = ThemeColorBlue;
-    self.makeMyCardButton.layer.cornerRadius = CGRectGetHeight(self.makeMyCardButton.frame) * 0.5;
-    self.makeMyCardButton.layer.masksToBounds = YES;
+    [self.beginInviteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.beginInviteButton.titleLabel.font = ThemeFontMiddleText;
+    self.beginInviteButton.backgroundColor = ThemeColorBlue;
+    self.beginInviteButton.layer.cornerRadius = CGRectGetHeight(self.beginInviteButton.frame) * 0.5;
+    self.beginInviteButton.layer.masksToBounds = YES;
     
     self.myFriendsLabel.font = ThemeFontText;
     
@@ -78,14 +78,14 @@
     }
 }
 
-- (IBAction)makeMyCard:(UIButton *)sender {
+- (IBAction)beginInvite:(UIButton *)sender {
+    
 }
 
 - (IBAction)copyMyCode:(UIButton *)sender {
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = _inviteCode;
-    pasteboard.string = @"西游记";
     
     if (self.buttonClickBlock) {
         self.buttonClickBlock(InviteCodeViewButtonStyleCopy);

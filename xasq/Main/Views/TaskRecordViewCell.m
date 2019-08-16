@@ -6,9 +6,9 @@
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "CalculateRecordTableViewCell.h"
+#import "TaskRecordViewCell.h"
 
-@implementation CalculateRecordTableViewCell
+@implementation TaskRecordViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

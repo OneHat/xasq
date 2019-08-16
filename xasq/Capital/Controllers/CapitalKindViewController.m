@@ -11,6 +11,7 @@
 #import "CapitalTopView.h"
 #import "PaymentsRecordsTableViewCell.h"
 #import "CapitalViewController.h"
+#import "UIViewcontroller+ActionSheet.h"
 
 @interface CapitalKindViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -69,9 +70,13 @@
     [backView addSubview:label];
     
     UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    recordButton.frame = CGRectMake(ScreenWidth - 100, 0, 80, 30);
-    [recordButton setTitle:@"筛选" forState:UIControlStateNormal];
+    recordButton.frame = CGRectMake(ScreenWidth - 80, 5, 60, 20);
+    [recordButton setTitle:@"筛选 " forState:UIControlStateNormal];
+    recordButton.titleLabel.font = ThemeFontSmallText;
     [recordButton setTitleColor:ThemeColorText forState:UIControlStateNormal];
+    [recordButton addTarget:self action:@selector(shiftClick) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *image = [UIImage imageNamed:@"shift_button"];
+    [recordButton setBackgroundImage:[image resizeImageInCenter] forState:UIControlStateNormal];
     [backView addSubview:recordButton];
     
     CGRect rect = CGRectMake(0, CGRectGetMaxY(backView.frame), ScreenWidth, ScreenHeight - imageViewH - 10);
@@ -83,7 +88,6 @@
     _tableView.delegate = self;
     _tableView.rowHeight = 45;
     [self.view addSubview:_tableView];
-    
     
 }
 
@@ -131,5 +135,11 @@
     return headerView;
 }
 
+#pragma mark -
+- (void)shiftClick {
+    [self actionSheetWithItems:@[@"充币",@"提币",@"奖励"] complete:^(NSInteger index) {
+        
+    }];
+}
 
 @end

@@ -8,10 +8,11 @@
 
 #import "HomeViewController.h"
 #import "FriendsViewController.h"
-#import "HomeMoreNewsViewController.h"
+#import "MoreNewsViewController.h"
 #import "MinerViewController.h"
 #import "TaskViewController.h"
 #import "LoginViewController.h"
+#import "InviteFriendViewController.h"
 #import "WebViewController.h"
 
 #import "HomeNewsView.h"
@@ -94,9 +95,11 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     
     //动态
     HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
-//    newsView.newsArray = @[@{@"content":@"领取了256",@"time":@"30小时之前"},
-//                           @{@"content":@"偷取你的",@"time":@"2小时之前"},
-//                           @{@"content":@"2424234234234",@"time":@"3分钟之前"}];
+    newsView.newsArray = @[@{@"content":@"1 领取了256",@"time":@"30小时之前"},
+                           @{@"content":@"2 偷取你的",@"time":@"2小时之前"},
+                           @{@"content":@"3 赚钱啦",@"time":@"3分钟之前"},
+                           @{@"content":@"4 哟哟",@"time":@"3分钟之前"},
+                           @{@"content":@"5 被偷啦",@"time":@"3分钟之前"}];
     [_newsView addSubview:newsView];
     
     //广告banner
@@ -149,7 +152,6 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
                                                  name:DSSJUserLoginSuccessNotification
                                                object:nil];
     
-//    self.userHeaderImageView.layer.cornerRadius = 5;
 //    self.userHeaderImageView.layer.cornerRadius = 5;
 }
 
@@ -289,6 +291,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
 - (IBAction)inviteAction:(UIButton *)sender {
     
+    InviteFriendViewController *inviteFriendsVC = [[InviteFriendViewController alloc] init];
+    inviteFriendsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:inviteFriendsVC animated:YES];
 }
 
 - (IBAction)friendsAction:(UIButton *)sender {
@@ -323,30 +328,11 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     } else {
         [self showMessage:@"请先登录"];
     }
-    
 }
 
 - (IBAction)moreNewsAction:(UIButton *)sender {
     
-//    NSInteger type = 2;
-//    if (type == 1) {
-//        [self getUserStepReward];
-//    } else if (type == 2) {
-//        [self getUserPowerReward];
-//    } else if (type == 3) {
-//
-//        NSDictionary *parameters = @{@"bId":@"929144389521117184",@"userId":@"11",@"sourceUserId":[UserDataManager shareManager].userId};
-//
-//        [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-//
-//        } failure:^(NSError * _Nonnull error) {
-//            [self showErrow:error];
-//        }];
-//
-//    }
-//    return;
-    
-    HomeMoreNewsViewController *moreNewsVC = [[HomeMoreNewsViewController alloc] init];
+    MoreNewsViewController *moreNewsVC = [[MoreNewsViewController alloc] init];
     moreNewsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreNewsVC animated:YES];
 }

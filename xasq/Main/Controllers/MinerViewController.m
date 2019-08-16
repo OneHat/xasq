@@ -42,7 +42,7 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.rowHeight = 56;
+    _tableView.rowHeight = 55;
     _tableView.tableHeaderView = [self headerView];
     [self.view addSubview:_tableView];
     
@@ -58,7 +58,7 @@
 
 - (void)initTitle {
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
-    topView.backgroundColor = RGBColor(36, 69, 104);
+    topView.backgroundColor = HexColor(@"14466b");
     [self.view addSubview:topView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
@@ -117,17 +117,15 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 66)];
     headerView.backgroundColor = ThemeColorBackground;
     
-    UIView *indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 54, 44, 2)];
+    UIView *indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 54, 60, 2)];
     indicatorView.backgroundColor = ThemeColorBlue;
     [headerView addSubview:indicatorView];
     
-    CGSize size = [@"累计助力" sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16]}];
-    CGFloat width = ceil(size.width);
+    CGFloat width = [@"累计助力" getWidthWithFont:[UIFont boldSystemFontOfSize:16]];
     
     for (int i = 0; i < 3; i++) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 10, width, 20)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = ThemeFontText;
         label.text = @"累计助力";
         [headerView addSubview:label];
         
@@ -139,10 +137,12 @@
         
         if (_currentIndex == i) {
             indicatorView.center = CGPointMake(label.center.x, indicatorView.center.y);
-            label.textColor = [UIColor blackColor ];
+            label.textColor = [UIColor blackColor];
+            label.font = [UIFont boldSystemFontOfSize:14];
             numberLabel.textColor = ThemeColorBlue;
             
         } else {
+            label.font = [UIFont systemFontOfSize:14];;
             label.textColor = ThemeColorTextGray;
             numberLabel.textColor = ThemeColorTextGray;
         }

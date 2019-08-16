@@ -276,8 +276,6 @@
     
     [self setNeedsLayout];
     [self layoutIfNeeded];
-    
-    NSLog(@"===%@",text);
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

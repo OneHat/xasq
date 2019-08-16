@@ -7,7 +7,6 @@
 //
 
 #import "SegmentedControl.h"
-#import "NSString+Size.h"
 
 const CGFloat SegmentedSpaceWidth = 10;
 const CGFloat SegmentedIndicatorWidth = 50;

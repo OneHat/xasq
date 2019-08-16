@@ -1,29 +1,29 @@
 //
-//  CalculateRecordViewController.m
+//  TaskRecordViewController.m
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/8/14.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "CalculateRecordViewController.h"
-#import "CalculateRecordTableViewCell.h"
+#import "TaskRecordViewController.h"
+#import "TaskRecordViewCell.h"
 
-@interface CalculateRecordViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface TaskRecordViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *rewards;
 
 @end
 
-@implementation CalculateRecordViewController
+@implementation TaskRecordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"算力记录";
     self.view.backgroundColor = ThemeColorBackground;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20 + NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 30) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ThemeColorBackground;
@@ -48,32 +48,23 @@
     }];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
     return self.rewards.count;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
-    headerView.backgroundColor = ThemeColorBackground;
-    return headerView;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CalculateRecordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalculateRecordTableViewCell"];
+    TaskRecordViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskRecordViewCell"];
     if (cell == nil) {
-        cell = [[[UINib nibWithNibName:@"CalculateRecordTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"TaskRecordViewCell" owner:nil options:nil].firstObject;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    NSDictionary *reward = self.rewards[indexPath.row];
+//    NSDictionary *reward = self.rewards[indexPath.row];
     
-    cell.nameLabel.text = reward[@"taskName"];
-    cell.timeLabel.text = reward[@"createdOn"];
-    cell.numberLabel.text = [NSString stringWithFormat:@"+%@",reward[@"rewardPower"]];
+//    cell.nameLabel.text = reward[@"taskName"];
+//    cell.timeLabel.text = reward[@"createdOn"];
+//    cell.numberLabel.text = [NSString stringWithFormat:@"+%@",reward[@"rewardPower"]];
     
     return cell;
 }

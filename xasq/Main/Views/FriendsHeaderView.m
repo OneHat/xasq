@@ -10,12 +10,14 @@
 
 @implementation FriendsHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIView *headerView = [[NSBundle mainBundle] loadNibNamed:@"FriendsHeaderView" owner:nil options:nil].firstObject;
+        headerView.frame = frame;
+        self = (FriendsHeaderView *)headerView;
+    }
+    return self;
 }
-*/
 
 @end

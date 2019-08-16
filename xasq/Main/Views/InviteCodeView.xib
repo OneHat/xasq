@@ -56,20 +56,20 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请成功获取算力及BTC奖励" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hga-60-7yj">
-                    <rect key="frame" x="10" y="95" width="394" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="10" y="95" width="394" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-iA-vEl">
-                    <rect key="frame" x="82" y="126" width="250" height="40"/>
+                    <rect key="frame" x="82" y="121" width="250" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="M2h-Ys-IM4"/>
                         <constraint firstAttribute="height" constant="40" id="bQd-TB-ULs"/>
                     </constraints>
                     <state key="normal" title="开始邀请"/>
                     <connections>
-                        <action selector="makeMyCard:" destination="iN0-l3-epB" eventType="touchUpInside" id="ExQ-5P-dbW"/>
+                        <action selector="beginInvite:" destination="iN0-l3-epB" eventType="touchUpInside" id="ExQ-5P-dbW"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACV-Df-HKn">
@@ -84,8 +84,8 @@
                         <action selector="copyMyCode:" destination="iN0-l3-epB" eventType="touchUpInside" id="ISK-ju-0EI"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-Hk-KNX">
-                    <rect key="frame" x="10" y="186" width="65.5" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-Hk-KNX">
+                    <rect key="frame" x="10" y="181" width="65.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lEl-LP-1D7"/>
                     </constraints>
@@ -94,7 +94,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计邀请 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-h2-AMg">
-                    <rect key="frame" x="90.5" y="192" width="79.5" height="24"/>
+                    <rect key="frame" x="90.5" y="187" width="79.5" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="jhj-Of-RHL"/>
                     </constraints>
@@ -128,9 +128,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="beginInviteButton" destination="cHn-iA-vEl" id="nFg-oT-FZZ"/>
                 <outlet property="bindInviteButton" destination="tpP-TD-EZx" id="DBJ-Xp-sBC"/>
                 <outlet property="copMyCodeButton" destination="ACV-Df-HKn" id="f14-ky-xnC"/>
-                <outlet property="makeMyCardButton" destination="cHn-iA-vEl" id="nFg-oT-FZZ"/>
                 <outlet property="myCodeLabel" destination="g5l-mu-9eZ" id="2HD-sX-JW8"/>
                 <outlet property="myCodeTitleLabel" destination="E0d-Au-KFW" id="5HN-R6-U5r"/>
                 <outlet property="myFriendsLabel" destination="pdw-Hk-KNX" id="Oyu-vR-sQ9"/>

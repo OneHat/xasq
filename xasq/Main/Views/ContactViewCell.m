@@ -8,11 +8,29 @@
 
 #import "ContactViewCell.h"
 
+@interface ContactViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIView *colorView;
+
+@end
+
 @implementation ContactViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    NSInteger red = arc4random() % 255;
+    NSInteger green = arc4random() % 255;
+    NSInteger blue = arc4random() % 255;
+    
+    UIColor *color = RGBColor(red, green, blue);
+    
+    self.colorView.backgroundColor = color;
+    
+    [self.inviteButton setTitleColor:ThemeColorTextGray forState:UIControlStateDisabled];
+    [self.inviteButton setTitleColor:ThemeColorBlue forState:UIControlStateSelected];
+    
+    self.inviteButton.enabled = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

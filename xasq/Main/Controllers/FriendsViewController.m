@@ -9,6 +9,7 @@
 #import "FriendsViewController.h"
 #import "FriendsRankViewCell.h"
 #import "FriendsHeaderView.h"
+#import "ContactsViewController.h"
 
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,19 +24,23 @@
     [super viewDidLoad];
     self.title = @"好友排行";
     self.view.backgroundColor = ThemeColorBackground;
+    
     CGRect frame = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    [_tableView registerNib:[UINib nibWithNibName:@"FriendsRankViewCell" bundle:nil] forCellReuseIdentifier:@"FriendsRankViewCell"];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.rowHeight = 50;
+    _tableView.rowHeight = 55;
     _tableView.backgroundColor = ThemeColorBackground;
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 80)];
-    _headerView = [[[UINib nibWithNibName:@"FriendsHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-    _headerView.frame = CGRectMake(0, 0, ScreenWidth, 80);
-    [header addSubview:_headerView];
-    _tableView.tableHeaderView = header;
+    FriendsHeaderView *headerView = [[FriendsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 65)];
+    _tableView.tableHeaderView = headerView;
     [self.view addSubview:_tableView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
+    [headerView addGestureRecognizer:tap];
+    
 }
 
 #pragma mark -
@@ -45,12 +50,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FriendsRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsRankViewCell"];
-    if (cell == nil) {
-        cell = [[[UINib nibWithNibName:@"FriendsRankViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+#pragma mark -
+- (void)nextController {
+    ContactsViewController *inviteVC = [[ContactsViewController alloc] init];
+    [self.navigationController pushViewController:inviteVC animated:YES];
 }
 
 @end

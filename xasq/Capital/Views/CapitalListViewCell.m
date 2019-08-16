@@ -10,11 +10,7 @@
 
 @interface CapitalListViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;//名称
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;//个数
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;//美元
 @property (weak, nonatomic) IBOutlet UIView *bottomLine;
 
 @end

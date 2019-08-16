@@ -1,8 +1,8 @@
 //
-//  CalculateRecordViewController.h
+//  InviteFriendViewController.h
 //  xasq
 //
-//  Created by dssj888@163.com on 2019/8/14.
+//  Created by dssj on 2019/8/16.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CalculateRecordViewController : UIViewController
+@interface InviteFriendViewController : UIViewController
 
 @end
 

@@ -20,12 +20,13 @@
 #import <UIImageView+WebCache.h>
 
 #import "UIViewController+HUD.h"
+#import "UIViewController+NavBar.h"
 
 #import "UIColor+FX.h"
 #import "UIImage+Color.h"
-#import "UIViewController+NavBar.h"
-
 #import "UIView+Empty.h"
+
+#import "NSString+Size.h"
 
 #import "UserDataManager.h"
 

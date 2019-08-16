@@ -7,10 +7,11 @@
 //
 
 #import "TaskViewController.h"
+#import "TaskRecordViewController.h"
 #import "SegmentedControl.h"
 #import "TaskViewCell.h"
-#import "TaskModel.h"
-#import "MyTaskModel.h"
+#import "SignSuccessView.h"
+
 
 @interface TaskViewController ()<SegmentedControlDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -24,7 +25,9 @@
 @property (nonatomic, strong) NSArray *weekArray;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageViewTop;
+@property (weak, nonatomic) IBOutlet UIButton *signButton;
+@property (weak, nonatomic) IBOutlet UILabel *signLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signButtonWidth;
 
 @end
 
@@ -74,13 +77,26 @@
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
-    _headerImageViewTop.constant = NavHeight;
+    UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 44, StatusBarHeight, 44, 44)];
+    [recordButton setImage:[UIImage imageNamed:@"reward_record"] forState:UIControlStateNormal];
+    [recordButton addTarget:self action:@selector(recordAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:recordButton];
+    
+    self.signLabel.text = @"每日签到";
+    self.signLabel.font = [UIFont boldSystemFontOfSize:13];
+    
+    UIImage *image = [UIImage imageNamed:@"task_daysign"];
+    [self.signButton setBackgroundImage:[image resizeImageInCenter] forState:UIControlStateNormal];
+    
+    CGFloat buttonWidth = [self.signLabel.text getWidthWithFont:self.signLabel.font];
+    self.signButtonWidth.constant = buttonWidth + 35;
     
     ///
-    CGFloat viewWidth = ScreenWidth - 20;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(_headerImageView.frame), viewWidth, ScreenHeight - 20 - CGRectGetMaxY(_headerImageView.frame) - BottomHeight)];
+    CGFloat viewWidth = ScreenWidth - 30;
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(15, NavHeight + 77, viewWidth, ScreenHeight - 87 - NavHeight - BottomHeight)];
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.cornerRadius = 5;
+    backgroundView.layer.masksToBounds = YES;
     [self.view addSubview:backgroundView];
     
     
@@ -90,7 +106,7 @@
     _segmentedControl.delegate = self;
     [backgroundView addSubview:_segmentedControl];
     
-    CGRect rect = CGRectMake(0, 50, viewWidth, CGRectGetHeight(backgroundView.frame) - 60);
+    CGRect rect = CGRectMake(0, 50, viewWidth, CGRectGetHeight(backgroundView.frame) - 50);
     _scrollView = [[UIScrollView alloc] initWithFrame:rect];
     _scrollView.contentSize = CGSizeMake(viewWidth * items.count, 0);
     _scrollView.showsHorizontalScrollIndicator = NO;
@@ -141,6 +157,48 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+#pragma mark -
+- (IBAction)signAction:(UIButton *)sender {
+    UIView *backView = [[UIView alloc] initWithFrame:self.view.bounds];
+    backView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
+    [self.view addSubview:backView];
+    
+    __weak UIView *weakView = backView;
+    SignSuccessView *successView = [[SignSuccessView alloc] initWithFrame:CGRectMake(0, 0, 271, 311 + 40)];
+    successView.center = self.view.center;
+    [backView addSubview:successView];
+    
+    successView.transform = CGAffineTransformMakeScale(0, 0);
+    [UIView animateWithDuration:0.25 animations:^{
+        successView.transform = CGAffineTransformIdentity;
+    }];
+    
+    __weak SignSuccessView *weakSSView = successView;
+    successView.CloseViewBlock = ^{
+        [UIView animateWithDuration:0.25 animations:^{
+            weakSSView.transform = CGAffineTransformMakeScale(0.01, 0.01);
+        } completion:^(BOOL finished) {
+            [weakView removeFromSuperview];
+        }];
+    };
+    
+//    [self userSign];
+}
+
+- (void)recordAction {
+    TaskRecordViewController *recordVC = [[TaskRecordViewController alloc] init];
+    [self.navigationController pushViewController:recordVC animated:YES];
+}
+
+- (void)closeSuccessAction:(UIButton *)sender {
+    [sender.superview.superview removeFromSuperview];
+}
+
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
@@ -158,12 +216,7 @@
     TaskViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (tableView == self.dayTableView) {
-        TaskModel *model = self.dayArray[indexPath.row];
-        cell.task = model;
-        
     } else if (tableView == self.weekTableView) {
-//        TaskModel *model = self.highArray[indexPath.row];
-        
     }
     
     return cell;
@@ -172,12 +225,6 @@
 #pragma mark -
 - (void)segmentedControlItemSelect:(NSInteger)index {
     self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame) * index, 0);
-    
-    if (index) {
-        
-    } else {
-        
-    }
 }
 
 #pragma mark - 网络请求

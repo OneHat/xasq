@@ -7,7 +7,7 @@
 //
 
 #import "CapitalTopView.h"
-#import "CapitalDataManager.h"
+
 @interface CapitalTopView ()
 
 @property (nonatomic, strong) UILabel *styleLabel;
@@ -109,9 +109,9 @@ NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatu
         _styleLabel.text = @"持有";
     }
     
-    CGSize size = [_styleLabel.text sizeWithAttributes:@{NSFontAttributeName:_styleLabel.font}];
+    CGFloat width = [_styleLabel.text getWidthWithFont:_styleLabel.font];
     
-    _styleLabel.frame = CGRectMake(30, 10, ceil(size.width), 30);
+    _styleLabel.frame = CGRectMake(30, 10, width, 30);
     _eyeButton.frame = CGRectMake(CGRectGetMaxX(_styleLabel.frame), 10, 30, 30);
 }
 

@@ -8,11 +8,24 @@
 
 #import "FriendsRankViewCell.h"
 
+@interface FriendsRankViewCell ()
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *powNumberLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *lineView;
+
+@end
+
 @implementation FriendsRankViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.lineView.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SignSuccessView">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="351"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLG-cQ-fxD" userLabel="CloseButton">
+                    <rect key="frame" x="231" y="0.0" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ZLG-cQ-fxD" secondAttribute="height" multiplier="1:1" id="079-ry-kcN"/>
+                        <constraint firstAttribute="width" constant="40" id="mFh-2Z-6qx"/>
+                    </constraints>
+                    <state key="normal" image="sign_close"/>
+                    <connections>
+                        <action selector="closeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="isR-nY-LgX"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signSuccess_background" translatesAutoresizingMaskIntoConstraints="NO" id="9B6-w6-Y7t">
+                    <rect key="frame" x="0.0" y="40" width="271" height="311"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="h8I-u7-PyR">
+                    <rect key="frame" x="80.5" y="215" width="110" height="30"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_success" translatesAutoresizingMaskIntoConstraints="NO" id="eGK-W3-ebj">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="eGK-W3-ebj" secondAttribute="height" multiplier="1:1" id="EpT-gt-gj9"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到成功" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeB-FT-uSL">
+                            <rect key="frame" x="35" y="0.0" width="75" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="N4j-MP-QGT"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已连续签到2天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkb-xF-NGK">
+                    <rect key="frame" x="85" y="262" width="101" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ols-Si-P0b">
+                    <rect key="frame" x="75.5" y="303" width="120" height="30"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="task_signIcon" translatesAutoresizingMaskIntoConstraints="NO" id="X7r-b4-WoM">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="X7r-b4-WoM" secondAttribute="height" multiplier="1:1" id="NgZ-HH-BcO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8if-xC-UQ5">
+                            <rect key="frame" x="35" y="0.0" width="28.5" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="算力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhB-lJ-keF">
+                            <rect key="frame" x="68.5" y="0.0" width="51.5" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="wgE-Dm-znH"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZLG-cQ-fxD" secondAttribute="trailing" id="0md-ap-Jef"/>
+                <constraint firstItem="9B6-w6-Y7t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="IWp-Fd-Xb7"/>
+                <constraint firstItem="Ols-Si-P0b" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MeT-HE-v5T"/>
+                <constraint firstAttribute="bottom" secondItem="9B6-w6-Y7t" secondAttribute="bottom" id="cfh-hc-YiM"/>
+                <constraint firstItem="h8I-u7-PyR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ddv-et-8M6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9B6-w6-Y7t" secondAttribute="trailing" id="fLY-st-2sZ"/>
+                <constraint firstItem="dkb-xF-NGK" firstAttribute="top" secondItem="h8I-u7-PyR" secondAttribute="bottom" constant="17" id="gWk-a2-FVn"/>
+                <constraint firstItem="h8I-u7-PyR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="215" id="i2T-qy-oNz"/>
+                <constraint firstItem="Ols-Si-P0b" firstAttribute="top" secondItem="dkb-xF-NGK" secondAttribute="bottom" constant="23" id="nMt-I5-PPr"/>
+                <constraint firstItem="9B6-w6-Y7t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rqt-r7-mxV"/>
+                <constraint firstItem="dkb-xF-NGK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y0R-ot-NeW"/>
+                <constraint firstItem="ZLG-cQ-fxD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ybP-0M-IH9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-397" y="43"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="signSuccess_background" width="271" height="311"/>
+        <image name="sign_close" width="24" height="24"/>
+        <image name="sign_success" width="28" height="28"/>
+        <image name="task_signIcon" width="22" height="22"/>
+    </resources>
+</document>
