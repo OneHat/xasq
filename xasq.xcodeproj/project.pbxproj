@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C400439422FC229C00DC4B80 /* AlipayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439322FC229C00DC4B80 /* AlipayOrder.m */; };
 		C400439822FC28CE00DC4B80 /* WechatShare.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439722FC28CE00DC4B80 /* WechatShare.m */; };
+		C40B3ABC23067CE500139359 /* CertificateAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40B3ABA23067CE500139359 /* CertificateAuthenticationViewController.m */; };
+		C40B3ABD23067CE500139359 /* CertificateAuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40B3ABB23067CE500139359 /* CertificateAuthenticationViewController.xib */; };
 		C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */; };
 		C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */; };
 		C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7A22F164C800BDE6A3 /* RegisterViewController.m */; };
@@ -193,6 +195,9 @@
 		C400439322FC229C00DC4B80 /* AlipayOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlipayOrder.m; sourceTree = "<group>"; };
 		C400439622FC28CE00DC4B80 /* WechatShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatShare.h; sourceTree = "<group>"; };
 		C400439722FC28CE00DC4B80 /* WechatShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatShare.m; sourceTree = "<group>"; };
+		C40B3AB923067CE500139359 /* CertificateAuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificateAuthenticationViewController.h; sourceTree = "<group>"; };
+		C40B3ABA23067CE500139359 /* CertificateAuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateAuthenticationViewController.m; sourceTree = "<group>"; };
+		C40B3ABB23067CE500139359 /* CertificateAuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateAuthenticationViewController.xib; sourceTree = "<group>"; };
 		C40C3D7422F140BE00BDE6A3 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C40C3D7622F140BE00BDE6A3 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1014,6 +1019,9 @@
 				C41B126B22F28D5700375560 /* UnauthorizedViewController.h */,
 				C41B126C22F28D5700375560 /* UnauthorizedViewController.m */,
 				C41B126D22F28D5700375560 /* UnauthorizedViewController.xib */,
+				C40B3AB923067CE500139359 /* CertificateAuthenticationViewController.h */,
+				C40B3ABA23067CE500139359 /* CertificateAuthenticationViewController.m */,
+				C40B3ABB23067CE500139359 /* CertificateAuthenticationViewController.xib */,
 				C4DFE3E722EEED2C00C41B2B /* AccountSetViewController.h */,
 				C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */,
 				C412A42422EFE0A60090E4F1 /* LanguageSetViewController.h */,
@@ -1202,6 +1210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40B3ABD23067CE500139359 /* CertificateAuthenticationViewController.xib in Resources */,
 				C496218123042C810086A959 /* CalculateRecordTableViewCell.xib in Resources */,
 				C41B126F22F28D5700375560 /* UnauthorizedViewController.xib in Resources */,
 				C4A1EE8D22EFEE3400A1DE8C /* InviteUserViewController.xib in Resources */,
@@ -1432,6 +1441,7 @@
 				C43B6C0922FAD1DD00312286 /* SegmentedControl.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
+				C40B3ABC23067CE500139359 /* CertificateAuthenticationViewController.m in Sources */,
 				C4C2CAAD22EEC5B80086761A /* TacticsViewController.m in Sources */,
 				C41B126E22F28D5700375560 /* UnauthorizedViewController.m in Sources */,
 				C43B6BD422F948F400312286 /* LaunchViewController.m in Sources */,
