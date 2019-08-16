@@ -182,7 +182,7 @@
             CNContact *contact = arr[i];
             NSString *givenName = contact.givenName;
             NSString *familyName = contact.familyName;
-            NSString *name = [NSString stringWithFormat:@"%@%@",givenName,familyName];
+            NSString *name = [NSString stringWithFormat:@"%@%@",familyName,givenName];
             
             CNLabeledValue *value = contact.phoneNumbers.lastObject;
             CNPhoneNumber *number = value.value;

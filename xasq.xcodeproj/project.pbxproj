@@ -92,6 +92,8 @@
 		C45391222306A45C000EBBA2 /* SignSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45391212306A45C000EBBA2 /* SignSuccessView.xib */; };
 		C45391252306AE20000EBBA2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45391242306AE20000EBBA2 /* HealthKit.framework */; };
 		C45391282306B15C000EBBA2 /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45391272306B15C000EBBA2 /* InviteFriendViewController.m */; };
+		C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = C496217F23042C810086A959 /* TaskRecordViewCell.xib */; };
+		C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4739CA42306BE8100042DF2 /* FriendMainViewController.m */; };
 		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
 		C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */; };
 		C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */; };
@@ -336,6 +338,8 @@
 		C45391242306AE20000EBBA2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C45391262306B15C000EBBA2 /* InviteFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteFriendViewController.h; sourceTree = "<group>"; };
 		C45391272306B15C000EBBA2 /* InviteFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
+		C4739CA32306BE8100042DF2 /* FriendMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendMainViewController.h; sourceTree = "<group>"; };
+		C4739CA42306BE8100042DF2 /* FriendMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendMainViewController.m; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
 		C473B91222F3FD100013E77D /* messageInformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageInformViewController.m; sourceTree = "<group>"; };
 		C473B91422F400D50013E77D /* AssetDynamicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetDynamicTableViewCell.h; sourceTree = "<group>"; };
@@ -999,6 +1003,8 @@
 				C496217B23042C5C0086A959 /* TaskRecordViewController.m */,
 				C45391262306B15C000EBBA2 /* InviteFriendViewController.h */,
 				C45391272306B15C000EBBA2 /* InviteFriendViewController.m */,
+				C4739CA32306BE8100042DF2 /* FriendMainViewController.h */,
+				C4739CA42306BE8100042DF2 /* FriendMainViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1366,6 +1372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */,
 				C43B6C0C22FAD21100312286 /* CapitalSegmentedControl.m in Sources */,
 				C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */,
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
@@ -1414,6 +1421,7 @@
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
+				C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */,
 				C43B6BD922F9514100312286 /* UserGuideViewController.m in Sources */,
 				C45391282306B15C000EBBA2 /* InviteFriendViewController.m in Sources */,
 				C4D5EEDA22F7F91B00C94D9F /* ProceedAccountViewController.m in Sources */,

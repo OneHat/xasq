@@ -10,6 +10,7 @@
 #import "FriendsRankViewCell.h"
 #import "FriendsHeaderView.h"
 #import "ContactsViewController.h"
+#import "FriendMainViewController.h"
 
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -52,6 +53,12 @@
     FriendsRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsRankViewCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    FriendMainViewController *friendVC = [[FriendMainViewController alloc] init];
+    [self.navigationController pushViewController:friendVC animated:YES];
+    
 }
 
 #pragma mark -

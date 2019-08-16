@@ -23,7 +23,8 @@
     self.title = @"算力记录";
     self.view.backgroundColor = ThemeColorBackground;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20 + NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 30) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20 + NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 30) style:UITableViewStylePlain];
+    [_tableView registerNib:[UINib nibWithNibName:@"TaskRecordViewCell" bundle:nil] forCellReuseIdentifier:@"TaskRecordViewCell"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ThemeColorBackground;
@@ -32,9 +33,9 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
-    if (![UserDataManager shareManager].userId) {
-        return;
-    }
+//    if (![UserDataManager shareManager].userId) {
+//        return;
+//    }
     [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
         
         NSArray *rewards = data[@"data"];
@@ -55,10 +56,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskRecordViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskRecordViewCell"];
-    if (cell == nil) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"TaskRecordViewCell" owner:nil options:nil].firstObject;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+    
     
 //    NSDictionary *reward = self.rewards[indexPath.row];
     

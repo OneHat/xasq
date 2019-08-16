@@ -153,6 +153,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
                                                object:nil];
     
 //    self.userHeaderImageView.layer.cornerRadius = 5;
+//    self.userHeaderImageView.layer.masksToBounds = 5;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

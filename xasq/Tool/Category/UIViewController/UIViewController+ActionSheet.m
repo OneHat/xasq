@@ -158,7 +158,10 @@ static char AlertBlockKey;
     }
     
     CGFloat AlertMessageHeight = ScreenWidth / 375.0 * 150.0;
-
+    if (input) {
+        AlertMessageHeight = 100;
+    }
+    
     //弹出controller
     UIViewController *contentViewController = [self customerController];
     
