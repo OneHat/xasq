@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnauthorizedViewController">
             <connections>
+                <outlet property="accountTF" destination="QGM-IX-eSe" id="CbI-sN-nmu"/>
                 <outlet property="documentLB" destination="mt0-8C-M2R" id="x04-o8-Lcz"/>
+                <outlet property="nameTF" destination="a8X-l7-NSr" id="mFl-GP-fb8"/>
                 <outlet property="nextBtn" destination="NVO-c0-wMC" id="Qsa-lf-jP1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -86,7 +88,7 @@
                             </constraints>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FkM-Zc-fUa">
                             <rect key="frame" x="20" y="50" width="374" height="1"/>

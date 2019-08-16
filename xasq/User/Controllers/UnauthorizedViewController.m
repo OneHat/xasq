@@ -8,12 +8,15 @@
 
 #import "UnauthorizedViewController.h"
 #import "UIViewController+ActionSheet.h"
+#import "CertificateAuthenticationViewController.h"
 
 @interface UnauthorizedViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *documentLB;
+@property (weak, nonatomic) IBOutlet UITextField *nameTF;
 
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (weak, nonatomic) IBOutlet UITextField *accountTF;
 
 @end
 
@@ -32,17 +35,37 @@
     [self actionSheetWithItems:@[@"身份证", @"驾照", @"护照"] complete:^(NSInteger index) {
         if (index == 0) {
             weakSelf.documentLB.text = @"身份证";
+            weakSelf.accountTF.placeholder = @"请输入身份证号";
         } else if (index == 1) {
             weakSelf.documentLB.text = @"驾照";
+            weakSelf.accountTF.placeholder = @"请输入驾照号";
         } else {
             weakSelf.documentLB.text = @"护照";
+            weakSelf.accountTF.placeholder = @"请输入护照号";
         }
     }];
-
 }
 
 
 - (IBAction)nextBtnClick:(UIButton *)sender {
+    if (_nameTF.text.length == 0) {
+        [self showMessage:@"请输入姓名"];
+        return;
+    } else if (_accountTF.text.length == 0) {
+        [self showMessage:@"请输入证件号"];
+        return;
+    }
+    NSInteger type;
+    if ([_documentLB.text isEqualToString:@"身份证"]) {
+        type = 0;
+    } else if ([_documentLB.text isEqualToString:@"驾照"]) {
+        type = 1;
+    } else {
+        type = 2;
+    }
+    CertificateAuthenticationViewController *VC = [[CertificateAuthenticationViewController alloc] init];
+    VC.type = type;
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 

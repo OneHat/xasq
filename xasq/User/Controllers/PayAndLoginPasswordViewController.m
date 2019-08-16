@@ -8,6 +8,7 @@
 
 #import "PayAndLoginPasswordViewController.h"
 #import "UIViewController+ActionSheet.h"
+#import "BindPhoneAndEmailViewController.h"
 
 @interface PayAndLoginPasswordViewController ()
 
@@ -68,7 +69,16 @@
     NSString *urlStr,*nameStr,*nameValue;
     if ([_channelLB.text isEqualToString:@"手机号"]) {
         if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
-            [self showMessage:@"请先绑定手机号"];
+            [self alertWithTitle:@"温馨提示" message:@"请先绑定手机号" items:@[@"取消", @"去绑定"] action:^(NSInteger index) {
+                if (index == 0) {
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                } else {
+                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+                    VC.type = 0; // 绑定邮箱
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+            }];
             return;
         }
         urlStr = UserSendMobile;
@@ -76,7 +86,16 @@
         nameValue = [UserDataManager shareManager].usermodel.mobile;
     } else {
         if ([UserDataManager shareManager].usermodel.email.length == 0) {
-            [self showMessage:@"请先绑定邮箱"];
+            [self alertWithTitle:@"温馨提示" message:@"请先绑定邮箱" items:@[@"取消", @"去绑定"] action:^(NSInteger index) {
+                if (index == 0) {
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                } else {
+                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+                    VC.type = 1; // 绑定邮箱
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+            }];
             return;
         }
         urlStr = UserSendEmail;

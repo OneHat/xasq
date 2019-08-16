@@ -28,6 +28,8 @@ FOUNDATION_EXPORT NSString *const UserHomePageInfo;
 FOUNDATION_EXPORT NSString *const UserGoogleBind;
 /// 邮箱绑定 POST
 FOUNDATION_EXPORT NSString *const UserEmailBind;
+/// 邮箱绑定 POST
+FOUNDATION_EXPORT NSString *const UserEmailRebind;
 /// 查询用户通讯录 GET
 FOUNDATION_EXPORT NSString *const UserInviteAddresslist;
 /// 发送邀请短信 POST
@@ -38,6 +40,8 @@ FOUNDATION_EXPORT NSString *const UserInviteSecond;
 FOUNDATION_EXPORT NSString *const UserIdentityApply;
 /// 手机绑定接口 POST
 FOUNDATION_EXPORT NSString *const UserMobileBind;
+/// 更换绑定手机接口 POST
+FOUNDATION_EXPORT NSString *const UserMobileRebind;
 /// 查询所有邀请算力奖励记录 GET
 FOUNDATION_EXPORT NSString *const UserInviteAll;
 /// 查询一级邀请算力奖励记录 GET

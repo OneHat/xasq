@@ -18,6 +18,8 @@
 #import "confirmViewController.h"
 #import "UserHeaderView.h"
 #import "messageInformViewController.h"
+#import "FriendsViewController.h"
+#import "TaskViewController.h"
 
 @interface UserViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -58,9 +60,15 @@
     };
     _headerView.taskBtnBlock = ^{
         // 任务界面
+        TaskViewController *VC = [[TaskViewController alloc] init];
+        VC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:VC animated:YES];
     };
     _headerView.friendBtnBlock = ^{
         // 好友界面
+        FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
+        friendsVC.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:friendsVC animated:YES];
     };
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BarHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
@@ -105,7 +113,11 @@
         
         if (userData) {
             [[UserDataManager shareManager] saveUserData:userData];
-            weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
+            if ([UserDataManager shareManager].usermodel.nickName.length > 0) {
+                weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.nickName;
+            } else {
+                weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
+            }
             [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg]
                                                   placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         }
