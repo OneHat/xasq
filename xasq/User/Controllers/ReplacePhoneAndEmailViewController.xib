@@ -17,6 +17,7 @@
                 <outlet property="areaCodeLB" destination="rTV-fH-sfm" id="N0z-o9-DKU"/>
                 <outlet property="areaLineView" destination="qBv-ii-dyB" id="AFf-v4-weR"/>
                 <outlet property="countrieView" destination="dmq-65-VSz" id="xQY-0s-Qdq"/>
+                <outlet property="countriesLB" destination="CMd-aN-7PH" id="7kj-H6-kEJ"/>
                 <outlet property="emailCodeBtn" destination="VRN-JF-BLS" id="DPb-As-QhG"/>
                 <outlet property="emailCodeTF" destination="3Cr-u0-YAq" id="RWW-lk-Gxe"/>
                 <outlet property="lineViewTop" destination="TUv-an-pVJ" id="3r1-6r-DuS"/>
@@ -34,6 +35,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmq-65-VSz">
                     <rect key="frame" x="0.0" y="54" width="414" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLf-QC-Ro8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                            <connections>
+                                <action selector="countriesClick:" destination="-1" eventType="touchUpInside" id="8NP-Eb-Ady"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMd-aN-7PH">
                             <rect key="frame" x="346" y="0.0" width="31" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -67,12 +74,16 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="CMd-aN-7PH" secondAttribute="bottom" id="1q6-oc-PAG"/>
+                        <constraint firstItem="BEn-gN-JHs" firstAttribute="top" secondItem="BLf-QC-Ro8" secondAttribute="bottom" id="3tP-RZ-I0W"/>
+                        <constraint firstAttribute="trailing" secondItem="BLf-QC-Ro8" secondAttribute="trailing" id="64q-fd-7JW"/>
                         <constraint firstItem="Qp1-3i-xWp" firstAttribute="top" secondItem="dmq-65-VSz" secondAttribute="top" id="FqJ-GD-bFC"/>
                         <constraint firstItem="l9e-Wd-Tl7" firstAttribute="centerY" secondItem="dmq-65-VSz" secondAttribute="centerY" id="G4y-1F-DPv"/>
                         <constraint firstAttribute="height" constant="50" id="GaN-UF-olZ"/>
                         <constraint firstItem="CMd-aN-7PH" firstAttribute="top" secondItem="dmq-65-VSz" secondAttribute="top" id="Vz2-H9-gJd"/>
+                        <constraint firstItem="BLf-QC-Ro8" firstAttribute="top" secondItem="dmq-65-VSz" secondAttribute="top" id="Xvz-eW-vSG"/>
                         <constraint firstItem="l9e-Wd-Tl7" firstAttribute="leading" secondItem="CMd-aN-7PH" secondAttribute="trailing" constant="10" id="Yl5-YV-3Ly"/>
                         <constraint firstAttribute="trailing" secondItem="l9e-Wd-Tl7" secondAttribute="trailing" constant="20" id="e4o-Zn-ub5"/>
+                        <constraint firstItem="BLf-QC-Ro8" firstAttribute="leading" secondItem="dmq-65-VSz" secondAttribute="leading" id="eNm-mW-eD0"/>
                         <constraint firstAttribute="bottom" secondItem="Qp1-3i-xWp" secondAttribute="bottom" id="giD-Qp-xFz"/>
                         <constraint firstItem="Qp1-3i-xWp" firstAttribute="leading" secondItem="dmq-65-VSz" secondAttribute="leading" constant="20" id="n5u-5g-Cvr"/>
                         <constraint firstAttribute="trailing" secondItem="BEn-gN-JHs" secondAttribute="trailing" constant="20" id="qeb-xe-CE2"/>
@@ -262,6 +273,7 @@
                 <constraint firstItem="6Cf-CU-L6g" firstAttribute="leading" secondItem="89M-dd-Q8o" secondAttribute="leading" id="w5b-iU-Y5D"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
     <resources>

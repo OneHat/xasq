@@ -30,78 +30,76 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 180;
-    _tableView.backgroundColor = ThemeColorBackground;
+    _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3 || indexPath.row == 0) {
+        return 195;
+    } else {
+        return 150;
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40;
+    return 7.5;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    headerView.backgroundColor = ThemeColorBackground;
-    
-    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 15, 15)];
-    icon.image = [UIImage imageNamed:@"message_time"];
-    [headerView addSubview:icon];
-    UILabel *timeLB = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, ScreenWidth - 45, 20)];
-    timeLB.textColor = ThemeColorTextGray;
-    timeLB.font = ThemeFontTipText;
-    if (section == 0) {
-        timeLB.text = @"昨天";
-    } else {
-        timeLB.text = @"2019-05-26";
-    }
-    [headerView addSubview:timeLB];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 7.5)];
+    headerView.backgroundColor = HexColor(@"#F3F3F3");
+
+//    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 15, 15)];
+//    icon.image = [UIImage imageNamed:@"message_time"];
+//    [headerView addSubview:icon];
+//    UILabel *timeLB = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, ScreenWidth - 45, 20)];
+//    timeLB.textColor = ThemeColorTextGray;
+//    timeLB.font = ThemeFontTipText;
+//    if (section == 0) {
+//        timeLB.text = @"昨天";
+//    } else {
+//        timeLB.text = @"2019-05-26";
+//    }
+//    [headerView addSubview:timeLB];
 
     return headerView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            AssetDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetDynamicTableViewCell"];
-            if (cell == nil) {
-                cell = [[[UINib nibWithNibName:@"AssetDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            return cell;
-        } else {
-            AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
-            if (cell == nil) {
-                cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            return cell;
+
+    if (indexPath.row == 0) {
+        AssetDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetDynamicTableViewCell"];
+        if (cell == nil) {
+            cell = [[[UINib nibWithNibName:@"AssetDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        return cell;
+    } else if (indexPath.row == 3) {
+        CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicTableViewCell"];
+        if (cell == nil) {
+            cell = [[[UINib nibWithNibName:@"CommunityDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        return cell;
     } else {
-        if (indexPath.row == 0) {
-            CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicTableViewCell"];
-            if (cell == nil) {
-                cell = [[[UINib nibWithNibName:@"CommunityDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            return cell;
-        } else {
-            AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
-            if (cell == nil) {
-                cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            return cell;
+        AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
+        if (cell == nil) {
+            cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        return cell;
+        
     }
 }
 

@@ -62,7 +62,7 @@
         // 任务界面
         TaskViewController *VC = [[TaskViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:VC animated:YES];
+        [weakSelf.navigationController pushViewController:VC animated:YES];
     };
     _headerView.friendBtnBlock = ^{
         // 好友界面

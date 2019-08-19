@@ -18,6 +18,7 @@
 #import "NetworkManager.h"
 #import "RequestApi.h"
 #import <UIImageView+WebCache.h>
+#import <YYModel/YYModel.h>
 
 #import "UIViewController+HUD.h"
 #import "UIViewController+NavBar.h"

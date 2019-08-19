@@ -20,6 +20,7 @@
                 <outlet property="codeBtn" destination="42e-Y8-7mG" id="Np4-rc-htm"/>
                 <outlet property="codeTF" destination="1Sf-M5-eqM" id="zIT-cC-3CL"/>
                 <outlet property="countrieView" destination="pdc-mQ-Glb" id="5RV-7E-cfv"/>
+                <outlet property="countriesLB" destination="ite-25-WWG" id="Dd3-uf-g8T"/>
                 <outlet property="lineViewTop" destination="ZK0-dK-Doh" id="tlm-hY-gSx"/>
                 <outlet property="titleLB" destination="ET9-SO-qAO" id="EMo-Zz-Nus"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -42,6 +43,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdc-mQ-Glb">
                     <rect key="frame" x="0.0" y="104" width="414" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6d-ov-l87">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="countriesClick:" destination="-1" eventType="touchUpInside" id="gbm-vp-2lx"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ite-25-WWG">
                             <rect key="frame" x="346" y="0.0" width="31" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -79,13 +87,17 @@
                         <constraint firstAttribute="height" constant="50" id="5eL-TT-Xpv"/>
                         <constraint firstItem="pNS-Ta-9Gh" firstAttribute="leading" secondItem="pdc-mQ-Glb" secondAttribute="leading" constant="20" id="7f0-8V-KrH"/>
                         <constraint firstItem="dZx-J0-ux8" firstAttribute="centerY" secondItem="pdc-mQ-Glb" secondAttribute="centerY" id="7yC-ii-xe0"/>
+                        <constraint firstItem="I6d-ov-l87" firstAttribute="leading" secondItem="pdc-mQ-Glb" secondAttribute="leading" id="98x-G8-uFb"/>
                         <constraint firstAttribute="bottom" secondItem="b8q-vi-hhM" secondAttribute="bottom" id="MW8-of-8M4"/>
                         <constraint firstAttribute="trailing" secondItem="b8q-vi-hhM" secondAttribute="trailing" constant="20" id="SC3-q1-67K"/>
                         <constraint firstAttribute="bottom" secondItem="pNS-Ta-9Gh" secondAttribute="bottom" id="V8G-zS-sXS"/>
                         <constraint firstAttribute="trailing" secondItem="dZx-J0-ux8" secondAttribute="trailing" constant="20" id="Xw1-Pt-pVr"/>
+                        <constraint firstItem="I6d-ov-l87" firstAttribute="top" secondItem="pdc-mQ-Glb" secondAttribute="top" id="a4e-Vo-ir1"/>
+                        <constraint firstItem="b8q-vi-hhM" firstAttribute="top" secondItem="I6d-ov-l87" secondAttribute="bottom" id="iAf-M4-Wur"/>
                         <constraint firstAttribute="bottom" secondItem="ite-25-WWG" secondAttribute="bottom" id="oj8-j1-wyZ"/>
                         <constraint firstItem="dZx-J0-ux8" firstAttribute="leading" secondItem="ite-25-WWG" secondAttribute="trailing" constant="10" id="rTy-44-KIv"/>
                         <constraint firstItem="ite-25-WWG" firstAttribute="top" secondItem="pdc-mQ-Glb" secondAttribute="top" id="tGU-1J-7jV"/>
+                        <constraint firstAttribute="trailing" secondItem="I6d-ov-l87" secondAttribute="trailing" id="uaw-M2-ExE"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlR-ne-Kmy">

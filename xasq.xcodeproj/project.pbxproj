@@ -30,6 +30,7 @@
 		C40F055322FD05B600942908 /* MobilePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40F055222FD05B600942908 /* MobilePhoneViewController.m */; };
 		C40F055722FD06C400942908 /* MobilePhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40F055522FD06C400942908 /* MobilePhoneTableViewCell.m */; };
 		C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */; };
+		C410607E230A536F003EE4B2 /* CountryCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C410607D230A536F003EE4B2 /* CountryCodeModel.m */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
@@ -235,6 +236,8 @@
 		C40F055422FD06C400942908 /* MobilePhoneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobilePhoneTableViewCell.h; sourceTree = "<group>"; };
 		C40F055522FD06C400942908 /* MobilePhoneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobilePhoneTableViewCell.m; sourceTree = "<group>"; };
 		C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobilePhoneTableViewCell.xib; sourceTree = "<group>"; };
+		C410607C230A536F003EE4B2 /* CountryCodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryCodeModel.h; sourceTree = "<group>"; };
+		C410607D230A536F003EE4B2 /* CountryCodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryCodeModel.m; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 		C40C3D7122F1404500BDE6A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C410607C230A536F003EE4B2 /* CountryCodeModel.h */,
+				C410607D230A536F003EE4B2 /* CountryCodeModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1450,6 +1455,7 @@
 				C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */,
 				C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */,
 				C4B9FCF42303E120007C1137 /* RewardModel.m in Sources */,
+				C410607E230A536F003EE4B2 /* CountryCodeModel.m in Sources */,
 				C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */,
 				C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,

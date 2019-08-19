@@ -16,4 +16,12 @@
     return ceil(size.width);
 }
 
+#pragma mark - 汉字转拼音
++ (NSString *)transform:(NSString *)chinese {
+    NSMutableString *pinyin = [chinese mutableCopy];
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+    return [pinyin uppercaseString];
+}
+
 @end

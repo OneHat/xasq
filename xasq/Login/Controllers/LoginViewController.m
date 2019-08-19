@@ -98,6 +98,7 @@
     NSDictionary *dict = @{@"loginName"     :   _accountTF.text,
                            @"password"      :   _passwordTF.text,
                            @"loginAddress"  :   @"上海",
+                           @"sysVersion"    :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""]
                            };
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         weakSelf.loginBtn.userInteractionEnabled = YES;
@@ -108,6 +109,7 @@
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",dataInfo[@"userId"]];
             [UserDataManager shareManager].authorization = dataInfo[@"accessToken"];
             [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
+            [[UserDataManager shareManager] saveUserData:dataInfo];
             
             [self showMessage:@"登录成功" complete:^{
                 [self isLoginSuccessfull:YES];

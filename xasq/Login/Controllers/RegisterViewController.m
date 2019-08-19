@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "MobilePhoneViewController.h"
 
 @interface RegisterViewController ()
 
@@ -88,6 +89,17 @@
         _viewHeight.constant = 240;
         _accountTF.placeholder = @"请输入手机号码";
     }
+}
+#pragma mark - 手机区域选择
+- (IBAction)countriesClick:(UIButton *)sender {
+    MobilePhoneViewController *VC = [[MobilePhoneViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    WeakObject;
+    VC.countryCodeBlock = ^(NSString * _Nonnull phoneCode, NSString *  _Nonnull name) {
+        weakSelf.countriesLB.text = name;
+        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",phoneCode];
+    };
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (IBAction)removeBtnClick:(UIButton *)sender {

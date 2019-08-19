@@ -87,7 +87,8 @@ FOUNDATION_EXPORT NSString *const ApiAccountSelectCurrency;
 FOUNDATION_EXPORT NSString *const OperationSystemVersion;
 ///获取banner信息 Get
 FOUNDATION_EXPORT NSString *const OperationBanner;
-
+///获取国家及其区号列表 Get
+FOUNDATION_EXPORT NSString *const OperationCountry;
 
 //********************************社区模块
 ///获取推荐任务 GET

@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="835" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggM-l7-MaM">
-                        <rect key="frame" x="163.5" y="0.0" width="28" height="49.5"/>
+                        <rect key="frame" x="183.5" y="0.0" width="28" height="49.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -37,11 +37,15 @@
                     <constraint firstAttribute="bottom" secondItem="LJF-0C-2ef" secondAttribute="bottom" id="6b4-rE-Gw0"/>
                     <constraint firstItem="ggM-l7-MaM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8Eo-b7-FK0"/>
                     <constraint firstItem="LJF-0C-2ef" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="MSF-2d-c4H"/>
-                    <constraint firstItem="ggM-l7-MaM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-10" id="ZRN-mg-VVd"/>
+                    <constraint firstItem="ggM-l7-MaM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="10" id="ZRN-mg-VVd"/>
                     <constraint firstItem="LJF-0C-2ef" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="byK-vm-tJl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="codeLB" destination="ggM-l7-MaM" id="4Z6-Jq-gEJ"/>
+                <outlet property="nameLB" destination="LJF-0C-2ef" id="U1t-iN-ZfT"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

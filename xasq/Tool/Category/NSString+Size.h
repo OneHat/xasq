@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (Size)
 
 - (CGFloat)getWidthWithFont:(UIFont *)font;
+/**
+ *  汉字转拼音
+ */
++ (NSString *)transform:(NSString *)chinese;
 
 @end
 
