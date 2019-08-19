@@ -7,12 +7,14 @@
 //
 
 #import "ReplacePhoneAndEmailViewController.h"
+#import "MobilePhoneViewController.h"
 
 @interface ReplacePhoneAndEmailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *countrieView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineViewTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *accountTFLead; // 账号左约束
+@property (weak, nonatomic) IBOutlet UILabel *countriesLB; // 国家
 @property (weak, nonatomic) IBOutlet UILabel *areaCodeLB; // 区号
 @property (weak, nonatomic) IBOutlet UIView *areaLineView; // 区号竖线
 @property (weak, nonatomic) IBOutlet UITextField *accountTF; // 账号
@@ -49,6 +51,17 @@
     
     _replaceBtn.layer.cornerRadius = 22.5;
     _replaceBtn.layer.masksToBounds = YES;
+}
+
+#pragma mark - 手机区域选择
+- (IBAction)countriesClick:(UIButton *)sender {
+    MobilePhoneViewController *VC = [[MobilePhoneViewController alloc] init];
+    WeakObject;
+    VC.countryCodeBlock = ^(NSString * _Nonnull phoneCode, NSString *  _Nonnull name) {
+        weakSelf.countriesLB.text = name;
+        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",phoneCode];
+    };
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (IBAction)phoneCodeBtnClick:(UIButton *)sender {

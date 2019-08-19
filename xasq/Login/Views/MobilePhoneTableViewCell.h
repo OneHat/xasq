@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MobilePhoneTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLB; // 名称
+
+@property (weak, nonatomic) IBOutlet UILabel *codeLB; // 电话区号
+
 @end
 
 NS_ASSUME_NONNULL_END

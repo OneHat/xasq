@@ -92,6 +92,10 @@ FOUNDATION_EXPORT NSString *const ApiAccountSelectCurrency;
 FOUNDATION_EXPORT NSString *const OperationSystemVersion;
 ///获取banner信息 Get
 FOUNDATION_EXPORT NSString *const OperationBanner;
+///获取国家及其区号列表 Get
+FOUNDATION_EXPORT NSString *const OperationCountry;
+///用户上传头像接口 POST
+FOUNDATION_EXPORT NSString *const OperationUploadImage;
 
 //********************************消息模块
 ///站内信列表 POST
@@ -121,7 +125,7 @@ FOUNDATION_EXPORT NSString *const CommunityAreaTakeCurrency;
 FOUNDATION_EXPORT NSString *const CommunityArea;
 ///获取所有矿区信息 GET
 FOUNDATION_EXPORT NSString *const CommunityAreaList;
-///用户社区账户资产统计 POST
+///用户社区账户资产统计 GET
 FOUNDATION_EXPORT NSString *const CommunityCapitalStatistics;
 ///新建社区资产账户 POST
 FOUNDATION_EXPORT NSString *const CommunityUserSubAccount;

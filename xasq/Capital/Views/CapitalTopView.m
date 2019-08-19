@@ -129,14 +129,24 @@ NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatu
     [[NSNotificationCenter defaultCenter] postNotificationName:CapitalChangeHideMoneyStatus object:nil];
 }
 
+- (void)setBTCStr:(NSString *)BTCStr {
+    _BTCStr = BTCStr;
+    [self changeHideMony];
+}
+
+- (void)setMoneyStr:(NSString *)moneyStr {
+    _moneyStr = moneyStr;
+    [self changeHideMony];
+}
+
 - (void)changeHideMony {
     
     if ([CapitalDataManager shareManager].hideMoney) {
         _capitalLabel.text = @"***";
         _moneyLabel.text = @"***";
     } else {
-        _capitalLabel.text = @"0.00BTC";
-        _moneyLabel.text = @"$000";
+        _capitalLabel.text = [NSString stringWithFormat:@"%@ BTC",_BTCStr];
+        _moneyLabel.text = [NSString stringWithFormat:@"≈ ¥%@",_moneyStr];;
     }
     
     _eyeButton.selected = [CapitalDataManager shareManager].hideMoney;

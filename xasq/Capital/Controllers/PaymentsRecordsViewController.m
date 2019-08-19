@@ -50,9 +50,6 @@
 
 #pragma mark - 类型切换
 - (void)typeBtnClick:(UIButton *)button {
-    if (_type == 2 && _typeView) {
-        return;
-    }
     _type = 2;
     [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
     [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];
@@ -65,9 +62,6 @@
 }
 #pragma mark - 币种切换
 - (void)currencyBtnClick:(UIButton *)button {
-    if (_type == 1 && _typeView) {
-        return;
-    }
     _type = 1;
     [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
     [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];

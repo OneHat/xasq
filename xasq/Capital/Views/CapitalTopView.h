@@ -25,6 +25,10 @@ FOUNDATION_EXPORT NSString *const CapitalChangeHideMoneyStatus;
 @property (nonatomic, strong) void (^DrawClickBlock)(void);
 
 @property (nonatomic, strong) NSDictionary *capitalData;
+/// BTC
+@property (nonatomic, strong) NSString *BTCStr;
+/// 转化成人民币或美元金额
+@property (nonatomic, strong) NSString *moneyStr;
 
 @end
 

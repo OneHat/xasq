@@ -49,7 +49,8 @@ NSString *const ApiAccountSelectCurrency = @"api/account/selectCurrency";
 
 NSString *const OperationSystemVersion = @"operation/sys/version";
 NSString *const OperationBanner = @"operation/banner";
-
+NSString *const OperationCountry = @"operation/country";
+NSString *const OperationUploadImage = @"operation/upload/image";
 
 NSString *const MessageSysList = @"message/sys/list";
 

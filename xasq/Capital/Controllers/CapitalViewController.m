@@ -12,6 +12,7 @@
 #import "CapitalMainView.h"
 #import "MentionMoneyViewController.h"
 #import "PaymentsRecordsViewController.h"
+#import "CapitalModel.h"
 
 @interface CapitalViewController ()<CapitalSegmentedControlDelegate,UIScrollViewDelegate,CapitalMainViewDelegate>
 
@@ -25,6 +26,8 @@
 //参考HomeViewController（首页）
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
 
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
 @implementation CapitalViewController
@@ -37,7 +40,7 @@
     if (@available(iOS 11.0, *)) {
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-    
+    _dataArray = [NSMutableArray array];
     //最先add的view
     UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
     topImageView.image = [UIImage imageNamed:@"capital_topBackground"];
@@ -70,8 +73,7 @@
     
     UIButton *recordButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 50, StatusBarHeight, 44, 44)];
     recordButton.adjustsImageWhenHighlighted = NO;
-    [recordButton setImage:[UIImage imageNamed:@"capital_eyeOpen"] forState:UIControlStateNormal];
-    [recordButton setImage:[UIImage imageNamed:@"capital_eyeClose"] forState:UIControlStateSelected];
+    [recordButton setImage:[UIImage imageNamed:@"capital_record"] forState:UIControlStateNormal];
     [recordButton addTarget:self action:@selector(recordButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recordButton];
     
@@ -101,6 +103,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
     _hideNavBarAnimation = YES;
+    [self sendCommunityCapitalStatistics];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -112,7 +115,25 @@
     _hideNavBarAnimation = NO;
 }
 
-#pragma mark-
+- (void)sendCommunityCapitalStatistics {
+    WeakObject;
+    NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
+                           @"pageNo" : @"1"
+                           };
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
+        NSArray *array = data[@"data"][@"userCapitalResponseList"][@"rows"];
+        [weakSelf.dataArray removeAllObjects];
+        for (NSDictionary *dic in array) {
+            CapitalModel *model = [CapitalModel modelWithDictionary:dic];
+            [weakSelf.dataArray addObject:model];
+        }
+        [weakSelf.walletView setCapitalDataArray:data];
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
+}
+
+#pragma mark - 收支记录界面
 - (void)recordButtonAction:(UIButton *)sender {
     //收支记录
     PaymentsRecordsViewController *recordsVC = [[PaymentsRecordsViewController alloc] init];
