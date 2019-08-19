@@ -146,6 +146,7 @@
 
 //上传图片至服务器后台
 - (void)transportImgToServerWithImg:(UIImage *)img{
+    [self loading];
     NSData *imageData;
     NSString *mimetype;
     WeakObject;
@@ -157,14 +158,12 @@
         mimetype = @"image/jpeg";
         imageData = UIImageJPEGRepresentation(img, 1.0);
     }
-    NSString *urlStr = @"http://192.168.100.109:8081/user/set/icon";
-    NSDictionary *params = @{@"userId" : [UserDataManager shareManager].userId,
-                             @"icon"   : imageData
-                             };
+    NSString *urlStr = @"http://192.168.100.200:8281/operation/upload/image";
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    [manager POST:urlStr parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSString *str = @"icon";
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSString *str = @"file";
         NSString *fileName = [[NSString alloc] init];
         if (UIImagePNGRepresentation(img) != nil) {
             fileName = [NSString stringWithFormat:@"%@.png", str];
@@ -181,12 +180,26 @@
     } progress:NULL success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *data = responseObject;
         if ([data[@"code"] integerValue] == 200) {
-            weakSelf.pictureImageV.image = img;
-            [self showMessage:@"更换成功"];
+            
+            NSDictionary *params = @{@"userId" : [UserDataManager shareManager].userId,
+                                     @"icon"   : data[@"data"][@"path"]
+                                     };
+            // 上传成功后绑定对应账户ID
+            [[NetworkManager sharedManager] postRequest:UserSetIcon parameters:params success:^(NSDictionary * _Nonnull data) {
+                [self hideHUD];
+                [self showMessage:@"更换成功"];
+                weakSelf.pictureImageV.image = img;
+
+            } failure:^(NSError * _Nonnull error) {
+                [self hideHUD];
+                [self showErrow:error];
+            }];
         } else {
+            [self hideHUD];
             [self showMessage:data[@"msg"]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self hideHUD];
         [self showErrow:error];
     }];
 }

@@ -9,12 +9,13 @@
 #import "CapitalMainView.h"
 #import "CapitalListViewCell.h"
 #import "CapitalTopView.h"
+#import "CapitalModel.h"
 
 @interface CapitalMainView () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 static CGFloat CapitalSegmentControlH = 40;
@@ -33,6 +34,7 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 - (void)loadSubViews {
+    _dataArray = [NSMutableArray array];
     CGFloat topSpaceH = CapitalSegmentControlH + NavHeight;
     
     //资产view
@@ -51,7 +53,7 @@ static CGFloat CapitalSegmentControlH = 40;
     _topCapitalViewH = topSpaceH + topViewH;
     
     //列表
-    CGFloat tableViewY = _topCapitalViewH + 10;
+    CGFloat tableViewY = _topCapitalViewH;
     CGRect rect = CGRectMake(0, tableViewY, ScreenWidth, self.frame.size.height - tableViewY);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"CapitalListViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
@@ -64,27 +66,46 @@ static CGFloat CapitalSegmentControlH = 40;
     [self addSubview:_tableView];
 }
 
+- (void)setCapitalDataArray:(NSDictionary *)dict {
+    NSArray *array = dict[@"data"][@"userCapitalResponseList"][@"rows"];
+    [_dataArray removeAllObjects];
+    for (NSDictionary *dic in array) {
+        CapitalModel *model = [CapitalModel modelWithDictionary:dic];
+        [_dataArray addObject:model];
+    }
+    _topView.BTCStr = dict[@"data"][@"toBTCSum"];
+    _topView.moneyStr = dict[@"data"][@"toCNYSum"];
+    [_tableView reloadData];
+}
+
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CapitalListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
+    CapitalModel *model = _dataArray[indexPath.row];
+    cell.nameLabel.text = model.currency;
     if ([CapitalDataManager shareManager].hideMoney) {
         cell.numberLabel.text = @"****";
         cell.moneyLabel.text = @"****";
     } else {
-        cell.numberLabel.text = @"0.000BTC";
-        cell.moneyLabel.text = @"$0.00";
+        cell.numberLabel.text = model.amount;
+        cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY];
+    }
+    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpeg;base64," withString:@""];
+    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    UIImage *icon = [UIImage imageWithData:imageData];
+    if (icon) {
+        cell.iconView.image = icon;
     }
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
