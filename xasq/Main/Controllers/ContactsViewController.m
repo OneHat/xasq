@@ -64,11 +64,11 @@
     }
     
     
-//    [[NetworkManager sharedManager] getRequest:UserInviteAddresslist parameters:nil success:^(NSDictionary * _Nonnull data) {
-//        NSLog(@"%@",data);
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
+    [[NetworkManager sharedManager] getRequest:UserInviteAddresslist parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
+    } failure:^(NSError * _Nonnull error) {
+
+    }];
 }
 
 ///处理拿到的数据

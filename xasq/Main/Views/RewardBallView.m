@@ -8,12 +8,14 @@
 
 #import "RewardBallView.h"
 
-const CGFloat ViewWidth = 50;
-//const CGFloat BallWidth = 40;
+const CGFloat ViewWidth = 60;
 
 @interface RewardBallView ()
 
-@property (nonatomic, strong) UILabel *rewardLabel;
+@property (nonatomic, strong) UIImageView *background;//背景
+
+@property (nonatomic, strong) UILabel *nameLabel;//奖励数值
+@property (nonatomic, strong) UILabel *rewardLabel;//奖励数值
 
 @end
 
@@ -31,24 +33,58 @@ const CGFloat ViewWidth = 50;
 }
 
 - (void)loadSubViews {
+    self.background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ViewWidth, ViewWidth)];
+    self.background.image = [UIImage imageNamed:@"ball_white"];
+    [self addSubview:self.background];
+    
+    UIImageView *BTC = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 10.5, 15)];
+    BTC.image = [UIImage imageNamed:@"ball_reward"];
+    [self addSubview:BTC];
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 10, 40, 20)];
+    nameLabel.text = @"0.0008BTC";
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.font = [UIFont boldSystemFontOfSize:11];
+    [self addSubview:nameLabel];
+    _nameLabel = nameLabel;
+    
+    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, ViewWidth, ViewWidth-5)];
+    rewardLabel.numberOfLines = 0;
+    rewardLabel.textAlignment = NSTextAlignmentCenter;
+    rewardLabel.text = @"0.0008BTC";
+    rewardLabel.textColor = [UIColor whiteColor];
+    rewardLabel.font = [UIFont boldSystemFontOfSize:11];
+    [self addSubview:rewardLabel];
+    _rewardLabel = rewardLabel;
+    
     UIButton *circleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ViewWidth, ViewWidth)];
     [circleButton setImage:nil forState:UIControlStateNormal];
     [circleButton addTarget:self action:@selector(rewardClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:circleButton];
     
-    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ViewWidth, ViewWidth)];
-    rewardLabel.numberOfLines = 0;
-    rewardLabel.textAlignment = NSTextAlignmentCenter;
-    rewardLabel.text = @"0.0008BTC";
-    rewardLabel.textColor = [UIColor whiteColor];
-    rewardLabel.font = [UIFont systemFontOfSize:10];
-    [self addSubview:rewardLabel];
-    _rewardLabel = rewardLabel;
 }
 
 - (void)setRewardModel:(RewardModel *)rewardModel {
     _rewardModel = rewardModel;
-    _rewardLabel.text = [NSString stringWithFormat:@"%@\n%@",rewardModel.currencyCode,rewardModel.currencyQuantity];
+    _nameLabel.text = rewardModel.currencyCode;
+    _rewardLabel.text = [NSString stringWithFormat:@"%@",rewardModel.currencyQuantity];
+}
+
+- (void)setBallStyle:(RewardBallViewStyle)ballStyle {
+    _ballStyle = ballStyle;
+    
+    switch (ballStyle) {
+        case RewardBallViewStyleStep:{
+            self.background.image = [UIImage imageNamed:@"ball_white"];
+        }
+            break;
+        case RewardBallViewStylePower:{
+            self.background.image = [UIImage imageNamed:@"ball_orange"];
+        }
+        default:
+            self.background.image = [UIImage imageNamed:@"ball_orange"];
+            break;
+    }
 }
 
 #pragma mark -

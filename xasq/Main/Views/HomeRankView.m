@@ -20,8 +20,10 @@
 @property (nonatomic, strong) HomeRankTableView *levelRankView;//等级排行
 @property (nonatomic, strong) HomeRankTableView *inviteRankView;//邀请排行
 
+///算力排行数据、等级排行数据(是同一个数据)
 @property (nonatomic, strong) NSArray *powerRankDatas;//算力排行数据
 @property (nonatomic, strong) NSArray *levelRankDatas;//等级排行数据
+
 @property (nonatomic, strong) NSArray *inviteRankDatas;//邀请排行数据
 
 @end
@@ -69,7 +71,7 @@
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
         
-        [self getRankData];
+//        [self getRankData];
     }
     return self;
 }
@@ -97,20 +99,36 @@
 
 #pragma mark-
 - (void)getRankData {
+    NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [[NetworkManager sharedManager] postRequest:UserInviteAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
         
-        self.powerRankDatas = @[@"",@"",@"",@""];
-        self.powerRankView.dataArray = self.powerRankDatas;
+    } failure:^(NSError * _Nonnull error){
         
-        self.levelRankDatas = @[@"",@"",@"",@"",@"",@"",@"",@""];
-        self.levelRankView.dataArray = self.levelRankDatas;
-
-        self.inviteRankDatas = @[@"",@"",@"",@"",@"",@""];
-        self.inviteRankView.dataArray = self.inviteRankDatas;
+    }];
+    
+    [[NetworkManager sharedManager] postRequest:UserInviteCount parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
         
-        [self resizeFrame];
-    });
+    } failure:^(NSError * _Nonnull error){
+        
+    }];
+    
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        self.powerRankDatas = @[@"",@"",@"",@""];
+//        self.powerRankView.dataArray = self.powerRankDatas;
+//        
+//        self.levelRankDatas = @[@"",@"",@"",@"",@"",@"",@"",@""];
+//        self.levelRankView.dataArray = self.levelRankDatas;
+//
+//        self.inviteRankDatas = @[@"",@"",@"",@"",@"",@""];
+//        self.inviteRankView.dataArray = self.inviteRankDatas;
+//        
+//        [self resizeFrame];
+//    });
     
 }
 

@@ -13,9 +13,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InviteCodeView">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="236"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inviteCode_background" translatesAutoresizingMaskIntoConstraints="NO" id="20k-1a-fp1">
+                    <rect key="frame" x="0.0" y="40" width="414" height="131"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4su-R1-p9A">
                     <rect key="frame" x="10" y="10" width="65.5" height="30"/>
                     <constraints>
@@ -47,7 +50,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="******" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5l-mu-9eZ">
-                    <rect key="frame" x="182" y="60" width="50.5" height="30"/>
+                    <rect key="frame" x="182" y="65" width="50.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="WbF-qY-nvl"/>
                     </constraints>
@@ -56,13 +59,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请成功获取算力及BTC奖励" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hga-60-7yj">
-                    <rect key="frame" x="10" y="95" width="394" height="16"/>
+                    <rect key="frame" x="10" y="105" width="394" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-iA-vEl">
-                    <rect key="frame" x="82" y="121" width="250" height="40"/>
+                    <rect key="frame" x="82" y="131" width="250" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="M2h-Ys-IM4"/>
                         <constraint firstAttribute="height" constant="40" id="bQd-TB-ULs"/>
@@ -73,10 +76,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACV-Df-HKn">
-                    <rect key="frame" x="252.5" y="63" width="40" height="24"/>
+                    <rect key="frame" x="252.5" y="72" width="44" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="5aP-WD-eMk"/>
-                        <constraint firstAttribute="width" constant="40" id="HPS-Tm-ybb"/>
+                        <constraint firstAttribute="height" constant="22" id="5aP-WD-eMk"/>
+                        <constraint firstAttribute="width" constant="44" id="HPS-Tm-ybb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="复制"/>
@@ -85,7 +88,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdw-Hk-KNX">
-                    <rect key="frame" x="10" y="181" width="65.5" height="30"/>
+                    <rect key="frame" x="10" y="191" width="65.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lEl-LP-1D7"/>
                     </constraints>
@@ -94,7 +97,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计邀请 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-h2-AMg">
-                    <rect key="frame" x="90.5" y="187" width="79.5" height="24"/>
+                    <rect key="frame" x="90.5" y="197" width="79.5" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="jhj-Of-RHL"/>
                     </constraints>
@@ -106,6 +109,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="E0d-Au-KFW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="376-He-OuN"/>
+                <constraint firstItem="E0d-Au-KFW" firstAttribute="top" secondItem="20k-1a-fp1" secondAttribute="top" id="4Wc-3b-nZA"/>
                 <constraint firstItem="ehp-h2-AMg" firstAttribute="bottom" secondItem="pdw-Hk-KNX" secondAttribute="bottom" id="5EB-L4-DKL"/>
                 <constraint firstItem="E0d-Au-KFW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="5mw-Yg-VK8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hga-60-7yj" secondAttribute="trailing" constant="10" id="7Td-WJ-8qK"/>
@@ -113,17 +117,20 @@
                 <constraint firstItem="pdw-Hk-KNX" firstAttribute="top" secondItem="cHn-iA-vEl" secondAttribute="bottom" constant="20" id="O9z-jD-S89"/>
                 <constraint firstItem="cHn-iA-vEl" firstAttribute="top" secondItem="hga-60-7yj" secondAttribute="bottom" constant="10" id="QHr-3H-BqZ"/>
                 <constraint firstItem="4su-R1-p9A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="R3B-8O-HST"/>
+                <constraint firstItem="20k-1a-fp1" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SL4-f9-YbZ"/>
                 <constraint firstItem="ehp-h2-AMg" firstAttribute="leading" secondItem="pdw-Hk-KNX" secondAttribute="trailing" constant="15" id="VkV-Si-q2w"/>
                 <constraint firstItem="pdw-Hk-KNX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="W4O-XF-ZF9"/>
                 <constraint firstItem="tpP-TD-EZx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Wtr-Tf-ph5"/>
+                <constraint firstItem="cHn-iA-vEl" firstAttribute="bottom" secondItem="20k-1a-fp1" secondAttribute="bottom" id="alF-xX-gja"/>
                 <constraint firstItem="hga-60-7yj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="fbz-tx-sVm"/>
-                <constraint firstItem="g5l-mu-9eZ" firstAttribute="top" secondItem="E0d-Au-KFW" secondAttribute="bottom" id="gHD-fn-qQg"/>
+                <constraint firstItem="g5l-mu-9eZ" firstAttribute="top" secondItem="E0d-Au-KFW" secondAttribute="bottom" constant="5" id="gHD-fn-qQg"/>
+                <constraint firstItem="20k-1a-fp1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="k76-Ki-kO1"/>
                 <constraint firstItem="4su-R1-p9A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="k7E-al-pVx"/>
-                <constraint firstItem="ACV-Df-HKn" firstAttribute="centerY" secondItem="g5l-mu-9eZ" secondAttribute="centerY" id="lcf-tV-Zd0"/>
+                <constraint firstItem="ACV-Df-HKn" firstAttribute="centerY" secondItem="g5l-mu-9eZ" secondAttribute="centerY" constant="3" id="lcf-tV-Zd0"/>
                 <constraint firstAttribute="trailing" secondItem="tpP-TD-EZx" secondAttribute="trailing" constant="10" id="pWM-n7-TGO"/>
                 <constraint firstItem="ACV-Df-HKn" firstAttribute="leading" secondItem="g5l-mu-9eZ" secondAttribute="trailing" constant="20" id="tbB-Bf-d50"/>
                 <constraint firstItem="cHn-iA-vEl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wzu-ab-8Dm"/>
-                <constraint firstItem="hga-60-7yj" firstAttribute="top" secondItem="g5l-mu-9eZ" secondAttribute="bottom" constant="5" id="yDA-sT-gbd"/>
+                <constraint firstItem="hga-60-7yj" firstAttribute="top" secondItem="g5l-mu-9eZ" secondAttribute="bottom" constant="10" id="yDA-sT-gbd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -137,7 +144,10 @@
                 <outlet property="titleLabel" destination="4su-R1-p9A" id="Otb-eD-RwV"/>
                 <outlet property="totalInviteLabel" destination="ehp-h2-AMg" id="8gz-2J-j5x"/>
             </connections>
-            <point key="canvasLocation" x="-671.01449275362324" y="49.888392857142854"/>
+            <point key="canvasLocation" x="-671.01449275362324" y="54.910714285714285"/>
         </view>
     </objects>
+    <resources>
+        <image name="inviteCode_background" width="283.5" height="103"/>
+    </resources>
 </document>

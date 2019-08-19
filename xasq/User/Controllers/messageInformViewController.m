@@ -34,6 +34,12 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
+    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,@"pageNo":@"0",@"pageSize":@"10"};
+    [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

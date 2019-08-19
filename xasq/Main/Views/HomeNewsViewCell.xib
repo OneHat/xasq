@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-KD-HnZ" userLabel="Line">
-                        <rect key="frame" x="25" y="0.0" width="1" height="72.5"/>
+                        <rect key="frame" x="26.5" y="0.0" width="1" height="72.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="ZyN-5I-vbW"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Sw-TR-e9C">
-                        <rect key="frame" x="15" y="26.5" width="20" height="20"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_portrait" translatesAutoresizingMaskIntoConstraints="NO" id="4Sw-TR-e9C">
+                        <rect key="frame" x="15" y="24.5" width="24" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="srH-tu-7VF"/>
+                            <constraint firstAttribute="width" constant="24" id="srH-tu-7VF"/>
                             <constraint firstAttribute="width" secondItem="4Sw-TR-e9C" secondAttribute="height" multiplier="1:1" id="vub-Ev-M46"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收取40聪BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-wn-10l">
-                        <rect key="frame" x="45" y="28.5" width="82" height="16"/>
+                        <rect key="frame" x="49" y="28.5" width="82" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -47,6 +47,7 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4Sw-TR-e9C" firstAttribute="centerX" secondItem="mPe-KD-HnZ" secondAttribute="centerX" id="0vE-q8-HNA"/>
                     <constraint firstItem="4Sw-TR-e9C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="1po-jV-zeX"/>
                     <constraint firstItem="BZi-wn-10l" firstAttribute="leading" secondItem="4Sw-TR-e9C" secondAttribute="trailing" constant="10" id="H5y-ut-fuY"/>
                     <constraint firstItem="mPe-KD-HnZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IgH-WY-18u"/>
@@ -55,11 +56,13 @@
                     <constraint firstItem="BZi-wn-10l" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j0t-HX-Trd"/>
                     <constraint firstItem="PbG-dp-tox" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kIZ-Pw-wjy"/>
                     <constraint firstItem="4Sw-TR-e9C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m0y-gC-7Bs"/>
-                    <constraint firstItem="mPe-KD-HnZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="nBB-fF-wVw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="-17.39130434782609" y="142.96875"/>
+            <point key="canvasLocation" x="-200" y="163"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="head_portrait" width="55" height="55"/>
+    </resources>
 </document>

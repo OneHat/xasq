@@ -11,11 +11,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger,RewardBallViewStyle) {
+    RewardBallViewStyleStep,//步行奖励
+    RewardBallViewStylePower,//算力奖励
+};
+
 @interface RewardBallView : UIView
 
 @property (nonatomic, strong) RewardModel *rewardModel;
 
 @property (nonatomic, strong) void (^RewardTakeSuccess)(void);
+
+@property (nonatomic, assign) RewardBallViewStyle ballStyle;
 
 @end
 

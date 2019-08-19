@@ -39,6 +39,9 @@ NSString *const UserSetIcon = @"user/set/icon";
 NSString *const UserSetNickname = @"user/set/nickname";
 NSString *const UserSyncWalk = @"user/syncWalk";
 NSString *const UserCheckValidcode = @"user/check/validcode";
+NSString *const UserInviteAllpower = @"user/invite/allpower";
+NSString *const UserInviteCount = @"user/invite/count";
+
 
 NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
 NSString *const ApiAccountOpenAccount = @"api/account/openAccount";
@@ -48,13 +51,15 @@ NSString *const OperationSystemVersion = @"operation/sys/version";
 NSString *const OperationBanner = @"operation/banner";
 
 
-NSString *const CommunityTaskRecommend = @"community/task/recommend";
+NSString *const MessageSysList = @"message/sys/list";
+
+//NSString *const CommunityTaskRecommend = @"community/task/recommend";
 NSString *const CommunityCapitalWaterDynamics = @"community/capital/water/dynamics";
-NSString *const CommunityTaskPower = @"community/task/power";
+//NSString *const CommunityTaskPower = @"community/task/power";
 NSString *const CommunityCapitalWater = @"community/capital/water";
 NSString *const CommunitySendPower = @"community/send/power";
-NSString *const CommunityTask = @"community/task";
-NSString *const CommunityPowerRecord = @"community/power/Record";
+//NSString *const CommunityTask = @"community/task";
+NSString *const CommunityPowerRecord = @"community/power/record";
 NSString *const CommunityAreaTakeRecord = @"community/area/take/record";
 NSString *const CommunityAreaTakeCurrency = @"community/area/takeCurrency";
 NSString *const CommunityArea = @"community/area";
@@ -63,7 +68,9 @@ NSString *const CommunityCapitalStatistics = @"community/capital/statistics";
 NSString *const CommunityUserSubAccount = @"community/user/sub/account";
 NSString *const CommunityAreaStealCurrency = @"community/area/stealCurrency";
 NSString *const CommunitySendWalk = @"community/send/walk";
-
+NSString *const CommunityTaskDaily = @"community/task/daily";
+NSString *const CommunityTaskSingle = @"community/task/single";
+NSString *const CommunityTaskWeekly = @"community/task/weekly";
 
 @implementation RequestApi
 

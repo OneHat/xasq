@@ -33,36 +33,36 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
-//    if (![UserDataManager shareManager].userId) {
-//        return;
-//    }
     [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
         
         NSArray *rewards = data[@"data"];
-        if (rewards && [rewards isKindOfClass:[NSArray class]]) {
+        if (rewards && [rewards isKindOfClass:[NSArray class]] && rewards.count > 0) {
             self.rewards = data[@"data"];
             [self.tableView reloadData];
+        } else {
+            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
+        [self.tableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
+            
+        }];
     }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
     return self.rewards.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TaskRecordViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskRecordViewCell"];
     
+    NSDictionary *reward = self.rewards[indexPath.row];
     
-//    NSDictionary *reward = self.rewards[indexPath.row];
-    
-//    cell.nameLabel.text = reward[@"taskName"];
-//    cell.timeLabel.text = reward[@"createdOn"];
-//    cell.numberLabel.text = [NSString stringWithFormat:@"+%@",reward[@"rewardPower"]];
+    cell.nameLabel.text = reward[@"taskName"];
+    cell.timeLabel.text = reward[@"createdOn"];
+    cell.numberLabel.text = [NSString stringWithFormat:@"+%@",reward[@"rewardPower"]];
     
     return cell;
 }

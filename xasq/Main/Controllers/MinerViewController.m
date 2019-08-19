@@ -35,7 +35,7 @@
     //title
     [self initTitle];
 
-    CGRect rect = CGRectMake(0, NavHeight + 10, ScreenWidth, ScreenHeight - NavHeight - 10);
+    CGRect rect = CGRectMake(0, NavHeight + 10, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"InviteHistoryViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -75,7 +75,7 @@
 }
 
 - (UIView *)headerView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 380)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 390)];
     
     UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -ScreenHeight, ScreenWidth, ScreenHeight + 80)];
     colorView.backgroundColor = RGBColor(36, 69, 104);
@@ -85,7 +85,7 @@
     infomationView.backgroundColor = [UIColor clearColor];
     [headerView addSubview:infomationView];
     
-    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 220)];
+    InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 230)];
     inviteCodeView.buttonClickBlock = ^(InviteCodeViewButtonStyle style) {
         if (style == InviteCodeViewButtonStyleCopy) {
             [self showMessage:@"复制成功"];

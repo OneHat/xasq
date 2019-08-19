@@ -57,6 +57,7 @@
     
     self.progressViewWidth.constant = totalWidth * rate;
     self.rateViewLeft.constant = totalWidth * rate - 40;
+    
 }
 
 @end

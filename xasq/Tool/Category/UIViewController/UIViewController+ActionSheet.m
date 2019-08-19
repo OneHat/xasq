@@ -179,7 +179,7 @@ static char AlertBlockKey;
     CGFloat alertWidth = ScreenWidth - 30 * 2;
     CGFloat actionSheetY = (ScreenHeight - BottomHeight - alertHeight) * 0.5;
     if (input) {
-        actionSheetY = actionSheetY - 30;
+        actionSheetY = ScreenHeight - alertHeight - 258 - 44;
     }
     
     UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(30, actionSheetY, alertWidth, alertHeight)];

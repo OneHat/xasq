@@ -40,7 +40,7 @@
     self.titleLabel.font = ThemeFontText;
     self.myCodeTitleLabel.font = ThemeFontMiddleText;
     
-    self.myCodeLabel.font = [UIFont systemFontOfSize:20];
+    self.myCodeLabel.font = [UIFont systemFontOfSize:26];
     self.myCodeLabel.textColor = ThemeColorBlue;
     
     [self.bindInviteButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal];

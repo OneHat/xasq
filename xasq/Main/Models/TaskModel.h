@@ -69,10 +69,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///奖励币种数量
 @property (nonatomic, strong) NSDecimalNumber *quantity;
+//@property (nonatomic, strong) NSString *quantity;
 ///最小奖励数量
 @property (nonatomic, strong) NSDecimalNumber *minQuantity;
 ///最大奖励数量
 @property (nonatomic, strong) NSDecimalNumber *maxQuantity;
+
+///是否完成
+@property (nonatomic, assign) BOOL finished;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;
 + (NSArray *)modelWithArray:(NSArray *)array;

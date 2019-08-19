@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TaskViewCell : UITableViewCell
 
+@property (nonatomic, strong) TaskModel *taskModel;
 
 @end
 

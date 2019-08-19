@@ -12,7 +12,6 @@
 #import "TaskViewCell.h"
 #import "SignSuccessView.h"
 
-
 @interface TaskViewController ()<SegmentedControlDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) SegmentedControl *segmentedControl;
@@ -56,8 +55,9 @@
         _weekTableView.dataSource = self;
         _weekTableView.delegate = self;
         _weekTableView.rowHeight = 70;
+        [self.scrollView addSubview:_weekTableView];
     }
-    return _dayTableView;
+    return _weekTableView;
 }
 
 - (void)viewDidLoad {
@@ -115,41 +115,10 @@
     _scrollView.delegate = self;
     [backgroundView addSubview:_scrollView];
     
-    [_scrollView addSubview:self.dayTableView];
+    [self getDayTasks];
+    [self getWeekTasks];
     
-//    [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
-//        NSLog(@"%@",data);
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
-    
-    
-//    [[NetworkManager sharedManager] getRequest:CommunityTask parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
-//        NSLog(@"%@",data);
-//    } failure:^(NSError * _Nonnull error) {
-//        
-//    }];
-    
-//    [[NetworkManager sharedManager] getRequest:CommunityTaskRecommend parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
-//        NSArray *dataArray = data[@"data"];
-//        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
-//            self.dayArray = [TaskModel modelWithArray:dataArray];
-//            [self.dayTableView reloadData];
-//
-//        } else {
-//            [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
-//        }
-//
-//    } failure:^(NSError * _Nonnull error) {
-//        [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
-//    }];
-    
-//    [[NetworkManager sharedManager] getRequest:CommunityTaskPower parameters:nil success:^(NSDictionary * _Nonnull data) {
-//        NSLog(@"%@",data);
-//    } failure:^(NSError * _Nonnull error) {
-//        
-//    }];
-    
+    [self getSignInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -164,6 +133,19 @@
 
 #pragma mark -
 - (IBAction)signAction:(UIButton *)sender {
+    
+    [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"%@",data);
+        
+        [self showSignSuccessView];
+        
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
+    
+}
+
+- (void)showSignSuccessView {
     UIView *backView = [[UIView alloc] initWithFrame:self.view.bounds];
     backView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
     [self.view addSubview:backView];
@@ -186,8 +168,6 @@
             [weakView removeFromSuperview];
         }];
     };
-    
-//    [self userSign];
 }
 
 - (void)recordAction {
@@ -201,7 +181,7 @@
 
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    
     if (tableView == self.dayTableView) {
         return self.dayArray.count;
         
@@ -216,7 +196,12 @@
     TaskViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (tableView == self.dayTableView) {
+        TaskModel *model = self.dayArray[indexPath.row];
+        cell.taskModel = model;
+        
     } else if (tableView == self.weekTableView) {
+        TaskModel *model = self.weekArray[indexPath.row];
+        cell.taskModel = model;
     }
     
     return cell;
@@ -224,7 +209,8 @@
 
 #pragma mark -
 - (void)segmentedControlItemSelect:(NSInteger)index {
-    self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame) * index, 0);
+    
+    [self.scrollView setContentOffset:CGPointMake(CGRectGetWidth(self.scrollView.frame) * index, 0) animated:YES];
 }
 
 #pragma mark - 网络请求
@@ -234,19 +220,45 @@
         NSDictionary *signInfo = data[@"data"];
         if (signInfo && [signInfo isKindOfClass:[NSDictionary class]]) {
 //            NSString *signDate = signInfo[@"signDate"];
-            
+            //            signInfo[@"keepSign"];
         }
         
     } failure:^(NSError * _Nonnull error) {
     }];
 }
 
-- (void)userSign {
-    [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
+- (void)getDayTasks {
+    [[NetworkManager sharedManager] getRequest:CommunityTaskDaily parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+        NSArray *dataArray = data[@"data"];
         
-        [self showMessage:@"签到成功"];
+        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
+            self.dayArray = [TaskModel modelWithArray:dataArray];
+            [self.dayTableView reloadData];
+        } else {
+            [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        }
         
     } failure:^(NSError * _Nonnull error) {
+        [self.dayTableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
+            
+        }];
+    }];
+}
+
+- (void)getWeekTasks {
+    [[NetworkManager sharedManager] getRequest:CommunityTaskWeekly parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+        NSArray *dataArray = data[@"data"];
+        if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
+            self.weekArray = [TaskModel modelWithArray:dataArray];
+            [self.weekTableView reloadData];
+        } else {
+            [self.weekTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [self.weekTableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
+            
+        }];
     }];
 }
 

@@ -11,9 +11,10 @@
 #import "DeviceInformation.h"
 
 #ifdef DEBUG
-static NSString *xasqBaseUrlUser = @"http://192.168.100.109:8081/";
+static NSString *xasqBaseUrlUser = @"http://192.168.100.200:8081/";
 static NSString *xasqBaseUrlOperation = @"http://192.168.100.200:8281/";
-static NSString *xasqBaseUrlCommunity = @"http://192.168.100.200:8481/";
+static NSString *xasqBaseUrlCommunity = @"http://192.168.100.144:8481/";
+static NSString *xasqBaseUrlMessage = @"http://192.168.100.200:8181/";
 #else
 static NSString *xasqBaseUrl = @"http://192.168.100.200:18084/";
 #endif
@@ -47,8 +48,12 @@ const NSTimeInterval xasqTimeoutInterval = 30;
         NSSet *acceptableContentTypes = _sessionManager.responseSerializer.acceptableContentTypes;
         NSSet *addSet = [NSSet setWithObjects:@"text/html",nil];
         
+//        _sessionManager.requestSerializer.acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromSet:addSet];
         _sessionManager.responseSerializer.acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromSet:addSet];
+        
+//        _sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
         _sessionManager.requestSerializer.timeoutInterval = xasqTimeoutInterval;
+        
     }
     return self;
 }
@@ -161,6 +166,9 @@ const NSTimeInterval xasqTimeoutInterval = 30;
         
     } else if ([path hasPrefix:@"community"]) {
         urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlCommunity,path];
+        
+    } else if ([path hasPrefix:@"message"]) {
+        urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlMessage,path];
         
     }
     

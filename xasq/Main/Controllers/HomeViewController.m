@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "InviteFriendViewController.h"
 #import "WebViewController.h"
+#import "messageInformViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -43,9 +44,14 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 @property (weak, nonatomic) IBOutlet UIView *rankView;//排行View
 @property (weak, nonatomic) IBOutlet UIView *stepRewardView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *userHeaderImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *mineNameImageView;
+@property (weak, nonatomic) IBOutlet UILabel *mineNameLabel;
 
 ///这几个页面，没有登录时，需要隐藏
 @property (weak, nonatomic) IBOutlet UIImageView *userLevelImageView;
@@ -110,7 +116,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     NSArray *cacheBannerList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeBannerADCacheKey];
     NSArray *bannerList = [BannerObject modelWithArray:cacheBannerList];
     if (bannerList.count > 0) {
-        _bannerViewHeight.constant = 0.0;
+        _bannerViewHeight.constant = 100.0;
         _bannerView.imageArray = bannerList;
     }
     
@@ -132,14 +138,15 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     //获取banner
     [self getHomeBannerData];
     
-//    //用户步行奖励
-//    [self getUserStepReward];
-//
-//    //用户算力奖励
-//    [self getUserPowerReward];
+    //用户步行奖励
+    [self getUserStepReward];
+
+    //用户算力奖励
+    [self getUserPowerReward];
     
-    [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
-    }];
+    if ([UserDataManager shareManager].userId) {
+        [self postUserSteps];
+    }
     
     ////////
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -152,8 +159,10 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
                                                  name:DSSJUserLoginSuccessNotification
                                                object:nil];
     
-//    self.userHeaderImageView.layer.cornerRadius = 5;
-//    self.userHeaderImageView.layer.masksToBounds = 5;
+    
+    
+    self.mineNameLabel.text = @"西岸社区";
+    self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -201,7 +210,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     if (![UserDataManager shareManager].userId) {
         return;
     }
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":[UserDataManager shareManager].userId,@"userWalk":@"6666"} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
         
         [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
@@ -213,6 +222,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
             
             RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
             ballView.rewardModel = model;
+            ballView.ballStyle = RewardBallViewStyleStep;
             [self.stepRewardView addSubview:ballView];
         }
         
@@ -232,7 +242,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
             
             //清除可能存在的view
-            [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            
             for (UIView *view in self.scrollView.subviews) {
                 if ([view isKindOfClass:[RewardBallView class]]) {
                     [view removeFromSuperview];
@@ -242,13 +252,49 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
             NSArray *rewards = [RewardModel modelWithArray:dateList];
             
             //能量球
+            NSMutableArray *frames = [NSMutableArray arrayWithCapacity:rewards.count];
+            
+            CGFloat width = 60;
             NSInteger count = MIN(5, rewards.count);//个数
-            CGFloat viewX = (ScreenWidth - 40 * count) * 0.5;
+            
             for (int i = 0; i < count; i++) {
-        
-                CGRect rect = CGRectMake(viewX + 40 * i, 150 + (arc4random() % 30) * pow(-1, i), 0, 0);
+                
+                CGFloat viewX = 10 + (arc4random() % 240);
+                CGFloat viewY = 90 + (arc4random() % 100);
+                
+                BOOL flag = NO;
+                CGRect rect = CGRectMake(viewX, viewY, width, width);
+                
+                do {
+                    flag = NO;
+                    
+                    for (NSValue *temp in frames) {
+                        CGRect tempRect = temp.CGRectValue;
+                        
+                        CGPoint center1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+                        CGPoint center2 = CGPointMake(CGRectGetMidX(tempRect), CGRectGetMidY(tempRect));
+                        
+                        CGFloat distance = sqrt(pow(center1.x - center2.x, 2) + pow(center1.y - center2.y, 2));
+                        if (distance < 60) {
+                            flag = YES;
+                        }
+                        
+                    }
+                    
+                    if (flag) {
+                        viewX = 20 + (arc4random() % 240);
+                        viewY = 90 + (arc4random() % 100);
+                        
+                        rect = CGRectMake(viewX, viewY, width, width);
+                        
+                    } else {
+                        [frames addObject:[NSValue valueWithCGRect:rect]];
+                    }
+                } while (flag);
+                
                 RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rect];
                 ballView.rewardModel = rewards[i];
+                ballView.ballStyle = RewardBallViewStylePower;
                 [self.scrollView addSubview:ballView];
                 
                 __weak RewardBallView *weakBall = ballView;
@@ -285,12 +331,25 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 #pragma mark - 本页面按钮事件
 
 - (IBAction)messageAction:(UIButton *)sender {
+    if (![UserDataManager shareManager].userId) {
+        [self showMessage:@"请先登录"];
+        return;
+    }
+    
+    messageInformViewController *messageVC = [[messageInformViewController alloc] init];
+    messageVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 - (IBAction)helpAction:(UIButton *)sender {
+    
 }
 
 - (IBAction)inviteAction:(UIButton *)sender {
+    if (![UserDataManager shareManager].userId) {
+        [self showMessage:@"请先登录"];
+        return;
+    }
     
     InviteFriendViewController *inviteFriendsVC = [[InviteFriendViewController alloc] init];
     inviteFriendsVC.hidesBottomBarWhenPushed = YES;
@@ -298,37 +357,37 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 }
 
 - (IBAction)friendsAction:(UIButton *)sender {
-    if ([UserDataManager shareManager].userId) {
-        FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
-        friendsVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:friendsVC animated:YES];
-        
-    } else {
+    if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
+        return;
     }
+    
+    FriendsViewController *friendsVC = [[FriendsViewController alloc] init];
+    friendsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:friendsVC animated:YES];
     
 }
 
 - (IBAction)taskAction:(UIButton *)sender {
-    if ([UserDataManager shareManager].userId) {
-        TaskViewController *taskVC = [[TaskViewController alloc] init];
-        taskVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:taskVC animated:YES];
-        
-    } else {
+    if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
+        return;
     }
+    
+    TaskViewController *taskVC = [[TaskViewController alloc] init];
+    taskVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:taskVC animated:YES];
 }
 
 - (IBAction)minerAction:(id)sender {
-    if ([UserDataManager shareManager].userId) {
-        MinerViewController *minerVC = [[MinerViewController alloc] init];
-        minerVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:minerVC animated:YES];
-        
-    } else {
+    if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
+        return;
     }
+    
+    MinerViewController *minerVC = [[MinerViewController alloc] init];
+    minerVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:minerVC animated:YES];
 }
 
 - (IBAction)moreNewsAction:(UIButton *)sender {
@@ -363,9 +422,10 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 ///登录成功
 - (void)userLoginSuccess {
     
-    [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
-        [self postUserStepCount:steps];
-    }];
+    [self postUserSteps];
+    
+    [self getUserStepReward];
+    [self getUserPowerReward];
 }
 
 - (void)reloadHomeView {
@@ -374,6 +434,11 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         //已经登录
         [self.unLoginNewsMaskView removeFromSuperview];
         self.unLoginNewsMaskView = nil;
+        
+        self.userLevelImageView.hidden = NO;
+        self.userLevelLabel.hidden = NO;
+        self.powerImageView.hidden = NO;
+        self.powerLabel.hidden = NO;
         
         self.nicknameLabel.text = [UserDataManager shareManager].usermodel.nickName;
         
@@ -389,7 +454,26 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         self.powerImageView.hidden = YES;
         self.powerLabel.hidden = YES;
         
+        [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        for (UIView *view in self.scrollView.subviews) {
+            if ([view isKindOfClass:[RewardBallView class]]) {
+                [view removeFromSuperview];
+            }
+        }
     }
+}
+
+///获取用户步数，并上传到服务器
+- (void)postUserSteps {
+    self.footerImageView.hidden = NO;
+    self.stepsLabel.hidden = NO;
+    
+    [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
+        self.footerImageView.hidden = NO;
+        self.stepsLabel.hidden = NO;
+        self.stepsLabel.text = [NSString stringWithFormat:@"%ld",steps];
+        [self postUserStepCount:steps];
+    }];
 }
 
 @end

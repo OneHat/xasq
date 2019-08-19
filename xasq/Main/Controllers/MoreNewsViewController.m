@@ -23,19 +23,19 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我";
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = ThemeColorBackground;
     
-    CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
-    _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
-    [_tableView registerNib:[UINib nibWithNibName:@"HomeNewsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NewsCellIdentifier];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.tableFooterView = [[UIView alloc] init];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.rowHeight = 46;
-    _tableView.sectionHeaderHeight = 30;
-    _tableView.sectionFooterHeight = 0;
-    [self.view addSubview:_tableView];
+    CGRect rect = CGRectMake(0, NavHeight + 10, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    self.tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+    self.tableView.backgroundColor = ThemeColorBackground;
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NewsCellIdentifier];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.rowHeight = 46;
+    self.tableView.sectionHeaderHeight = 30;
+    self.tableView.sectionFooterHeight = 0;
+    [self.view addSubview:self.tableView];
     
     [self initRightBtnWithTitle:@"只看好友" color:ThemeColorBlue];
 }

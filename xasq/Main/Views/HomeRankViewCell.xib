@@ -43,21 +43,26 @@
                             <constraint firstAttribute="width" constant="25" id="zKO-ya-1YJ"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gHm-xK-ADt" userLabel="头像">
-                        <rect key="frame" x="55" y="16" width="30" height="30"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_portrait" translatesAutoresizingMaskIntoConstraints="NO" id="gHm-xK-ADt" userLabel="头像">
+                        <rect key="frame" x="60" y="16" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="2tH-J4-dnL"/>
                             <constraint firstAttribute="width" secondItem="gHm-xK-ADt" secondAttribute="height" multiplier="1:1" id="O0c-UT-Syf"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="幸运摇钱树" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgl-kE-emf" userLabel="名字">
-                        <rect key="frame" x="95" y="11" width="76.5" height="20"/>
+                        <rect key="frame" x="105" y="11" width="76.5" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国大陆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlJ-9L-RU8" userLabel="地区">
-                        <rect key="frame" x="95" y="31" width="53.5" height="20"/>
+                        <rect key="frame" x="105" y="31" width="53.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="0Kg-Yv-5zJ"/>
                         </constraints>
@@ -84,7 +89,7 @@
                     <constraint firstItem="DlJ-9L-RU8" firstAttribute="top" secondItem="tgl-kE-emf" secondAttribute="bottom" id="6Vp-HX-Ntr"/>
                     <constraint firstItem="tGL-dQ-S4o" firstAttribute="leading" secondItem="iCk-mV-YYH" secondAttribute="trailing" constant="5" id="7ub-Du-0rY"/>
                     <constraint firstItem="gHm-xK-ADt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AOv-MQ-vOf"/>
-                    <constraint firstItem="gHm-xK-ADt" firstAttribute="leading" secondItem="tGL-dQ-S4o" secondAttribute="trailing" constant="10" id="DA5-Rq-qiA"/>
+                    <constraint firstItem="gHm-xK-ADt" firstAttribute="leading" secondItem="tGL-dQ-S4o" secondAttribute="trailing" constant="15" id="DA5-Rq-qiA"/>
                     <constraint firstItem="iCk-mV-YYH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DY7-7p-hZ4"/>
                     <constraint firstItem="tGL-dQ-S4o" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NHV-hQ-SLM"/>
                     <constraint firstItem="fxB-Nv-gtM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TPj-m0-cdo"/>
@@ -92,7 +97,7 @@
                     <constraint firstItem="R6K-Gu-3Pg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="b8v-R8-1lq"/>
                     <constraint firstItem="DlJ-9L-RU8" firstAttribute="height" secondItem="tgl-kE-emf" secondAttribute="height" id="bwo-Wu-Gip"/>
                     <constraint firstItem="DlJ-9L-RU8" firstAttribute="leading" secondItem="tgl-kE-emf" secondAttribute="leading" id="cQo-1Y-8Ad"/>
-                    <constraint firstItem="DlJ-9L-RU8" firstAttribute="leading" secondItem="gHm-xK-ADt" secondAttribute="trailing" constant="10" id="jYf-Mp-KAJ"/>
+                    <constraint firstItem="DlJ-9L-RU8" firstAttribute="leading" secondItem="gHm-xK-ADt" secondAttribute="trailing" constant="15" id="jYf-Mp-KAJ"/>
                     <constraint firstItem="fxB-Nv-gtM" firstAttribute="leading" secondItem="iCk-mV-YYH" secondAttribute="trailing" constant="5" id="jcV-Mg-yzR"/>
                     <constraint firstItem="iCk-mV-YYH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="lyv-iq-ynZ"/>
                     <constraint firstItem="rlS-mI-UIq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="pGe-zx-MAR"/>
@@ -114,4 +119,7 @@
             <point key="canvasLocation" x="-175" y="74"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="head_portrait" width="55" height="55"/>
+    </resources>
 </document>

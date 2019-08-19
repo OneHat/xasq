@@ -72,6 +72,11 @@ FOUNDATION_EXPORT NSString *const UserSetNickname;
 FOUNDATION_EXPORT NSString *const UserSyncWalk;
 /// 验证码校验接口 POST
 FOUNDATION_EXPORT NSString *const UserCheckValidcode;
+/// 算力、等级排行 全用户 POST
+FOUNDATION_EXPORT NSString *const UserInviteAllpower;
+/// 邀请人数排行 POST
+FOUNDATION_EXPORT NSString *const UserInviteCount;
+
 
 //********************************资产账单
 ///查看个人总帐单 POST
@@ -88,20 +93,24 @@ FOUNDATION_EXPORT NSString *const OperationSystemVersion;
 ///获取banner信息 Get
 FOUNDATION_EXPORT NSString *const OperationBanner;
 
+//********************************消息模块
+///站内信列表 POST
+FOUNDATION_EXPORT NSString *const MessageSysList;
+
 
 //********************************社区模块
 ///获取推荐任务 GET
-FOUNDATION_EXPORT NSString *const CommunityTaskRecommend;
+//FOUNDATION_EXPORT NSString *const CommunityTaskRecommend;
 ///获取用户好友社区资产动态（领币，偷币，奖励…）Get
 FOUNDATION_EXPORT NSString *const CommunityCapitalWaterDynamics;
 ///获取高分任务 GET
-FOUNDATION_EXPORT NSString *const CommunityTaskPower;
+//FOUNDATION_EXPORT NSString *const CommunityTaskPower;
 ///获取用户社区资产账户流水 Get
 FOUNDATION_EXPORT NSString *const CommunityCapitalWater;
 ///获取用户算力奖励 Get
 FOUNDATION_EXPORT NSString *const CommunitySendPower;
 ///获取我的任务 Get
-FOUNDATION_EXPORT NSString *const CommunityTask;
+//FOUNDATION_EXPORT NSString *const CommunityTask;
 ///用户算力记录 Get
 FOUNDATION_EXPORT NSString *const CommunityPowerRecord;
 ///用户收取/领取的录 GET
@@ -120,7 +129,12 @@ FOUNDATION_EXPORT NSString *const CommunityUserSubAccount;
 FOUNDATION_EXPORT NSString *const CommunityAreaStealCurrency;
 ///获取用户步行奖励 GET
 FOUNDATION_EXPORT NSString *const CommunitySendWalk;
-
+///获取每日重复任务 GET
+FOUNDATION_EXPORT NSString *const CommunityTaskDaily;
+///获取单次任务 GET
+FOUNDATION_EXPORT NSString *const CommunityTaskSingle;
+///获取每周重复任务 GET
+FOUNDATION_EXPORT NSString *const CommunityTaskWeekly;
 
 @interface RequestApi : NSObject
 

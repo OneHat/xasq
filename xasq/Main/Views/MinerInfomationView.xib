@@ -74,7 +74,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppu-BZ-tW1" userLabel="RateView">
                     <rect key="frame" x="123" y="101" width="80" height="30"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wEX-Cm-L2b">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_level" translatesAutoresizingMaskIntoConstraints="NO" id="wEX-Cm-L2b">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000/15000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syS-z8-xJo">
@@ -211,6 +211,7 @@
     </objects>
     <resources>
         <image name="head_portrait" width="55" height="55"/>
+        <image name="mine_level" width="82.5" height="28.5"/>
         <image name="miner_background" width="340" height="170"/>
         <image name="user_level" width="13" height="15"/>
     </resources>

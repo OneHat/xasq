@@ -58,6 +58,10 @@ const CGFloat RowHeight = 55.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeRankCellIdentifier];
+    
+    cell.rowIndex = indexPath.row;
+    cell.rankInfo = self.dataArray[indexPath.row];
+    
     return cell;
 }
 

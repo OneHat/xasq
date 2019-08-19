@@ -45,4 +45,70 @@
     // Configure the view for the selected state
 }
 
+- (void)setRowIndex:(NSInteger)rowIndex {
+    _rowIndex = rowIndex;
+    
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",rowIndex + 1];
+    
+    _rankImageView.hidden = NO;
+    
+    switch (rowIndex) {
+        case 0:{
+            _rankImageView.image = [UIImage imageNamed:@"rank_first"];
+        }
+            break;
+            
+        case 1:{
+            _rankImageView.image = [UIImage imageNamed:@"rank_second"];
+        }
+            break;
+            
+        case 2:{
+            _rankImageView.image = [UIImage imageNamed:@"rank_third"];
+        }
+            break;
+            
+        default:{
+            _rankImageView.image = nil;
+            _rankImageView.hidden = YES;
+        }
+            break;
+    }
+}
+
+- (void)setRankInfo:(NSDictionary *)rankInfo {
+    _rankInfo = rankInfo;
+    
+    self.nameLabel.text = rankInfo[@"nickName"];
+//    self.areaLabel.text = @"";
+    self.cellStyle = self.cellStyle;
+    
+    self.nameLabel.text = rankInfo[@"nickName"];
+}
+
+- (void)setCellStyle:(HomeRankCellStyle)cellStyle {
+    _cellStyle = cellStyle;
+    switch (cellStyle) {
+        case HomeRankCellStylePower:{
+            self.valueLabel.text = _rankInfo[@"power"];
+        }
+            break;
+            
+        case HomeRankCellStyleLevel:{
+            self.valueLabel.text = [NSString stringWithFormat:@"LV%@",_rankInfo[@"userLevel"]];
+        }
+            break;
+            
+        case HomeRankCellStyleInvite:{
+            self.valueLabel.text = _rankInfo[@"inviteCount"];
+        }
+            break;
+            
+        default:
+            self.valueLabel.text = @"";
+            break;
+    }
+}
+
+
 @end
