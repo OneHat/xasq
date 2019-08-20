@@ -19,6 +19,7 @@
                 <outlet property="nameTapLB" destination="082-YV-klx" id="bPH-V8-uBd"/>
                 <outlet property="statementLB" destination="ZuA-3R-UtJ" id="MCR-hn-Pcm"/>
                 <outlet property="titleLB" destination="hK5-O5-vhm" id="BQc-Le-Xya"/>
+                <outlet property="topHeight" destination="foD-F5-KyX" id="CZY-Wg-e0E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -155,18 +156,18 @@
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="BBi-2O-yJW" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="B9a-QK-TaW"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="P2y-jZ-rHR" secondAttribute="trailing" id="BNJ-dF-7Lr"/>
                 <constraint firstItem="hK5-O5-vhm" firstAttribute="top" secondItem="BBi-2O-yJW" secondAttribute="bottom" constant="20" id="Bkm-EN-hSu"/>
                 <constraint firstItem="P2y-jZ-rHR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QuQ-Fh-jbe"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="ZuA-3R-UtJ" secondAttribute="bottom" constant="25" id="YBh-U8-lBd"/>
+                <constraint firstItem="BBi-2O-yJW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="94" id="foD-F5-KyX"/>
                 <constraint firstItem="ZuA-3R-UtJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pEs-Qw-E1n"/>
                 <constraint firstItem="BBi-2O-yJW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vmB-Hq-srW"/>
                 <constraint firstItem="hK5-O5-vhm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wwz-S4-3Jk"/>
                 <constraint firstItem="P2y-jZ-rHR" firstAttribute="top" secondItem="hK5-O5-vhm" secondAttribute="bottom" constant="40" id="yvY-c0-kw4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
+            <point key="canvasLocation" x="-275" y="42"/>
         </view>
     </objects>
     <resources>

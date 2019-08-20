@@ -207,6 +207,19 @@
 //查询所有邀请
 - (void)getInviteAll  {
     [[NetworkManager sharedManager] getRequest:UserInviteAll parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSArray *array = data[@"data"];
+        if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
+            self.totalArray = array;
+            
+            [self.tableView reloadData];
+        }
+        
+//        awardPower = 50;
+//        bindTime = "2019-08-20";
+//        headImg = "";
+//        mobile = 18805618681;
+//        nickName = "\U897f\U6e38\U8bb0SJ";
+        
         NSLog(@"%@",data);
     } failure:^(NSError * _Nonnull error) {
     }];

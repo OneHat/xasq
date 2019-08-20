@@ -213,30 +213,45 @@ const CGFloat RowHeight = 55.0;
         lastModel = self.inviteRankDatas.lastObject;
         
     }
+    if (!lastModel) {
+        return;
+    }
+    
     
     CGFloat viewHeight = 0.0;
+    BOOL flag = NO;//是否需要footerView
     if (lastModel.ranking > 10) {
-        //自己不在前10名，需要在底部显示
-        
+        //自己不在前10名，需要在底部显示(不登录时，只有10条数据)
         viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
+        flag = YES;
         
     } else {
-        viewHeight = (self.powerRankDatas.count - 1) * RowHeight;
+        //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
+        viewHeight = MIN(10, self.powerRankDatas.count) * RowHeight;
     }
     
     if (currentIndex == 0) {
         self.powerRankView.frame = CGRectMake(0, 0, ScreenWidth, viewHeight);
-        self.powerRankView.tableFooterView = [self footerView];
+        if (flag) {
+            self.powerRankView.tableFooterView = [self footerView];
+        }
+        
         [self.powerRankView reloadData];
         
     } else if (currentIndex == 1) {
         self.levelRankView.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, viewHeight);
-        self.levelRankView.tableFooterView = [self footerView];
+        if (flag) {
+            self.levelRankView.tableFooterView = [self footerView];
+        }
+        
         [self.levelRankView reloadData];
         
     } else if (currentIndex == 2) {
         self.inviteRankView.frame = CGRectMake(ScreenWidth * 2, 0, ScreenWidth, viewHeight);
-        self.inviteRankView.tableFooterView = [self footerView];
+        if (flag) {
+            self.inviteRankView.tableFooterView = [self footerView];
+        }
+        
         [self.inviteRankView reloadData];
     }
     
