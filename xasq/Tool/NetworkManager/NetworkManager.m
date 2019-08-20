@@ -11,7 +11,7 @@
 #import "DeviceInformation.h"
 
 #ifdef DEBUG
-static NSString *xasqBaseUrlUser = @"http://192.168.100.200:8081/";
+static NSString *xasqBaseUrlUser = @"http://192.168.100.200:7081/";
 static NSString *xasqBaseUrlOperation = @"http://192.168.100.200:8281/";
 static NSString *xasqBaseUrlCommunity = @"http://192.168.100.200:8481/";
 static NSString *xasqBaseUrlMessage = @"http://192.168.100.200:8181/";
