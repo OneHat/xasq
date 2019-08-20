@@ -74,6 +74,7 @@ NSString *const CommunitySendWalk = @"community/send/walk";
 NSString *const CommunityTaskDaily = @"community/task/daily";
 NSString *const CommunityTaskSingle = @"community/task/single";
 NSString *const CommunityTaskWeekly = @"community/task/weekly";
+NSString *const CommunityAreaCurrency = @"community/area/currency";
 
 
 @implementation RequestApi

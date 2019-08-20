@@ -49,12 +49,23 @@
     [headerBackgroundView addSubview:_headerView];
     [self.view addSubview:headerBackgroundView];
     [self.view addSubview:_tableView];
+    [self sendCommunityAreaCurrency];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];
     [self communityCapitalWater];
+}
+
+- (void)sendCommunityAreaCurrency {
+    [[NetworkManager sharedManager] getRequest:CommunityAreaCurrency parameters:nil success:^(NSDictionary * _Nonnull data) {
+        if (data) {
+            
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
 }
 
 - (void)communityCapitalWater {
