@@ -140,6 +140,8 @@ FOUNDATION_EXPORT NSString *const CommunityTaskDaily;
 FOUNDATION_EXPORT NSString *const CommunityTaskSingle;
 ///获取每周重复任务 GET
 FOUNDATION_EXPORT NSString *const CommunityTaskWeekly;
+///获取所有货币信息接口 GET
+FOUNDATION_EXPORT NSString *const CommunityAreaCurrency;
 
 @interface RequestApi : NSObject
 
