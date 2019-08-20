@@ -102,7 +102,7 @@
             break;
             
         case HomeRankCellStyleInvite:{
-            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.inviteCount];;
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.inviteNum];
         }
             break;
             

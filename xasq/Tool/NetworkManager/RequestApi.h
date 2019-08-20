@@ -141,6 +141,14 @@ FOUNDATION_EXPORT NSString *const CommunityTaskWeekly;
 ///获取所有货币信息接口 GET
 FOUNDATION_EXPORT NSString *const CommunityAreaCurrency;
 
+
+//********************************错误码
+FOUNDATION_EXPORT NSInteger const E010141;
+FOUNDATION_EXPORT NSInteger const E010145;
+FOUNDATION_EXPORT NSInteger const E010142;
+FOUNDATION_EXPORT NSInteger const E010130;
+
+
 @interface RequestApi : NSObject
 
 @end

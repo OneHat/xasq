@@ -46,4 +46,19 @@
     // Configure the view for the selected state
 }
 
+- (void)setInviteInfo:(NSDictionary *)inviteInfo {
+    _inviteInfo = inviteInfo;
+    
+    self.nameLabel.text = inviteInfo[@"nickName"];
+    self.timeLabel.text = inviteInfo[@"bindTime"];
+    
+//    self.timeLabel.text = inviteInfo[@"bindTime"];
+    
+    //        awardPower = 50;
+    //        bindTime = "2019-08-20";
+    //        headImg = "";
+    //        mobile = 18805618681;
+    //        nickName = "\U897f\U6e38\U8bb0SJ";
+}
+
 @end

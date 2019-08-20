@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSArray *dayArray;
 @property (nonatomic, strong) NSArray *weekArray;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTopHeight;
+
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *powerLabel;
@@ -87,6 +89,7 @@
     
     
     //////
+    self.headerTopHeight.constant = NavHeight + 20;
     self.nameLabel.text = [UserDataManager shareManager].usermodel.nickName;
     
     self.signLabel.text = @"每日签到";
@@ -100,7 +103,7 @@
     
     ///
     CGFloat viewWidth = ScreenWidth - 30;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(15, NavHeight + 77, viewWidth, ScreenHeight - 87 - NavHeight - BottomHeight)];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(15, NavHeight + 80, viewWidth, ScreenHeight - NavHeight - 90 - BottomHeight)];
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.cornerRadius = 5;
     backgroundView.layer.masksToBounds = YES;

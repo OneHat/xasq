@@ -119,6 +119,11 @@
         }
         
     } failure:^(NSError * _Nonnull error) {
+        if (error.code == E010130 || error.code == E010141 || error.code == E010145 || error.code == E010142) {
+            //验证码
+            
+        }
+        
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];
         [self showErrow:error];

@@ -53,6 +53,8 @@
     [self getqrcode];
     
     [self getInviteAll];
+    [self getInviteFirst];
+    [self getInviteSecond];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,11 +107,35 @@
 
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.currentIndex == 0) {
+        return self.totalArray.count;
+        
+    } else if (self.currentIndex == 1) {
+        return self.oneArray.count;
+        
+    } else if (self.currentIndex == 2) {
+        return self.twoArray.count;
+    }
+    
     return self.totalArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InviteHistoryViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    NSDictionary *info;
+    if (self.currentIndex == 0) {
+        info = self.totalArray[indexPath.row];
+        
+    } else if (self.currentIndex == 1) {
+        info = self.oneArray[indexPath.row];
+        
+    } else if (self.currentIndex == 2) {
+        info = self.twoArray[indexPath.row];
+    }
+    
+    cell.inviteInfo = info;
+    
     return cell;
 }
 
@@ -213,14 +239,7 @@
             
             [self.tableView reloadData];
         }
-        
-//        awardPower = 50;
-//        bindTime = "2019-08-20";
-//        headImg = "";
-//        mobile = 18805618681;
-//        nickName = "\U897f\U6e38\U8bb0SJ";
-        
-        NSLog(@"%@",data);
+
     } failure:^(NSError * _Nonnull error) {
     }];
 }
@@ -229,6 +248,11 @@
 - (void)getInviteFirst  {
     [[NetworkManager sharedManager] getRequest:UserInviteFirst parameters:nil success:^(NSDictionary * _Nonnull data) {
         
+        NSArray *array = data[@"data"];
+        if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
+            self.oneArray = array;
+        }
+        
     } failure:^(NSError * _Nonnull error) {
     }];
 }
@@ -236,7 +260,10 @@
 //查询二级邀请
 - (void)getInviteSecond  {
     [[NetworkManager sharedManager] getRequest:UserInviteSecond parameters:nil success:^(NSDictionary * _Nonnull data) {
-        
+        NSArray *array = data[@"data"];
+        if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
+            self.twoArray = array;
+        }
     } failure:^(NSError * _Nonnull error) {
     }];
 }

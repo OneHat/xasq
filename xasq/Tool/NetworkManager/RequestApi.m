@@ -77,6 +77,11 @@ NSString *const CommunityTaskWeekly = @"community/task/weekly";
 NSString *const CommunityAreaCurrency = @"community/area/currency";
 
 
+NSInteger const E010141 = 010141;
+NSInteger const E010145 = 010145;
+NSInteger const E010142 = 010142;
+NSInteger const E010130 = 010130;
+
 @implementation RequestApi
 
 @end

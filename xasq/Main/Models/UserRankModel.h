@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *levelName;
 
 ///邀请人数
-@property (nonatomic, assign) NSInteger inviteCount;
+@property (nonatomic, assign) NSInteger inviteNum;
 
 //+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
 + (NSArray *)modelWithArray:(NSArray *)array;

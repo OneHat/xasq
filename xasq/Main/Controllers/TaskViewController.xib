@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController">
             <connections>
                 <outlet property="headerImageView" destination="RWn-ls-E6E" id="knk-1t-jKC"/>
+                <outlet property="headerTopHeight" destination="ULC-cE-4YI" id="YpE-i2-puO"/>
                 <outlet property="nameLabel" destination="3RA-sd-9Te" id="xQC-Yo-3N8"/>
                 <outlet property="powerLabel" destination="yAv-rx-nej" id="RTk-0J-d9x"/>
                 <outlet property="signButton" destination="G6X-LG-dmd" id="rLS-MP-ctD"/>
@@ -92,7 +93,6 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RWn-ls-E6E" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="54" id="6ne-du-CJb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9ZD-jD-dPl" secondAttribute="trailing" id="7Tw-BM-piq"/>
                 <constraint firstItem="3RA-sd-9Te" firstAttribute="leading" secondItem="RWn-ls-E6E" secondAttribute="trailing" constant="10" id="7iB-sS-lLk"/>
                 <constraint firstItem="RWn-ls-E6E" firstAttribute="centerY" secondItem="z9s-z7-Aqd" secondAttribute="centerY" id="7qb-6h-Toa"/>
@@ -101,6 +101,7 @@
                 <constraint firstItem="3RA-sd-9Te" firstAttribute="top" secondItem="RWn-ls-E6E" secondAttribute="top" id="Ml4-6r-Mt6"/>
                 <constraint firstItem="yAv-rx-nej" firstAttribute="top" secondItem="3RA-sd-9Te" secondAttribute="bottom" id="Od2-f2-Yes"/>
                 <constraint firstItem="G6X-LG-dmd" firstAttribute="centerY" secondItem="RWn-ls-E6E" secondAttribute="centerY" id="ROB-q1-geD"/>
+                <constraint firstItem="RWn-ls-E6E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="98" id="ULC-cE-4YI"/>
                 <constraint firstItem="yAv-rx-nej" firstAttribute="leading" secondItem="RWn-ls-E6E" secondAttribute="trailing" constant="10" id="ZcF-W1-XD1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aoC-hJ-AVL" secondAttribute="trailing" constant="5" id="dgg-U3-4Am"/>
                 <constraint firstItem="9ZD-jD-dPl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iml-Ig-aJN"/>

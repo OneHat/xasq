@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InviteHistoryViewCell : UITableViewCell
 
+@property (nonatomic, strong) NSDictionary *inviteInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END
