@@ -11,6 +11,7 @@
 #import "PaymentHeaderView.h"
 #import "PaymentTypeView.h"
 #import "PaymentsRecordModel.h"
+#import "CurrencyModel.h"
 
 @interface PaymentsRecordsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -18,10 +19,11 @@
 @property (nonatomic, strong) PaymentHeaderView *headerView;
 @property (nonatomic, strong) PaymentTypeView *typeView;
 @property (nonatomic, assign) NSInteger type;
-@property (nonatomic, strong) NSString *causeTyep; // 流水类型
+@property (nonatomic, strong) NSString *causeType; // 流水类型
 @property (nonatomic, strong) NSString *currency; // 币种
 @property (nonatomic, strong) NSMutableDictionary *dataDict; // 数据源
 @property (nonatomic, strong) NSMutableArray *titleArray;  // 分区标题
+@property (nonatomic, strong) NSMutableArray *currencyArray; // 币种数据
 @end
 
 @implementation PaymentsRecordsViewController
@@ -30,10 +32,11 @@
     [super viewDidLoad];
     self.title = @"收支记录";
     self.view.backgroundColor = ThemeColorBackground;
-    _causeTyep = @"";
+    _causeType = @"";
     _currency = @"";
     _dataDict = [NSMutableDictionary dictionary];
     _titleArray = [NSMutableArray array];
+    _currencyArray = [NSMutableArray array];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -41,6 +44,10 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 45;
     _tableView.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     UIView *headerBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, 50)];
     _headerView = [[[UINib nibWithNibName:@"PaymentHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 50);
@@ -59,9 +66,13 @@
 }
 
 - (void)sendCommunityAreaCurrency {
+    WeakObject;
     [[NetworkManager sharedManager] getRequest:CommunityAreaCurrency parameters:nil success:^(NSDictionary * _Nonnull data) {
         if (data) {
-            
+            for (NSDictionary *dic in data[@"data"]) {
+                CurrencyModel *model = [CurrencyModel modelWithDictionary:dic];
+                [weakSelf.currencyArray addObject:model];
+            }
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
@@ -71,7 +82,7 @@
 - (void)communityCapitalWater {
     WeakObject;
     NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
-                           @"causeTyep"    : _causeTyep,
+                           @"causeType"    : _causeType,
                            @"currency"     : _currency,
                            @"pageNo"       : @"1",
                            };
@@ -128,11 +139,11 @@
     _typeView.type = _type;
     _typeView.paymentTypeBlock = ^(NSInteger index) {
         if (index == 0) {
-            weakSelf.causeTyep = @"";
+            weakSelf.causeType = @"";
         } else if (index == 1) {
-            weakSelf.causeTyep = @"14";
+            weakSelf.causeType = @"14";
         } else {
-            weakSelf.causeTyep = @"2";
+            weakSelf.causeType = @"2";
         }
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
@@ -151,8 +162,14 @@
     [_typeView removeFromSuperview];
     _typeView = [[PaymentTypeView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50)];
     _typeView.type = _type;
+    [_typeView setCommunityAreaCurrency:_currencyArray];
     _typeView.paymentTypeBlock = ^(NSInteger index) {
-        
+        if (index == 0) {
+            weakSelf.currency = @"";
+        } else {
+            CurrencyModel *model = weakSelf.currencyArray[index-1];
+            weakSelf.currency = model.currencyCode;
+        }
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
         [weakSelf communityCapitalWater];
