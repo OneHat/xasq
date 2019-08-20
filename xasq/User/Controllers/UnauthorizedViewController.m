@@ -58,13 +58,15 @@
     NSInteger type;
     if ([_documentLB.text isEqualToString:@"身份证"]) {
         type = 0;
-    } else if ([_documentLB.text isEqualToString:@"驾照"]) {
+    } else if ([_documentLB.text isEqualToString:@"护照"]) {
         type = 1;
     } else {
         type = 2;
     }
     CertificateAuthenticationViewController *VC = [[CertificateAuthenticationViewController alloc] init];
     VC.type = type;
+    VC.certNo = _accountTF.text;
+    VC.certName = _nameTF.text;
     [self.navigationController pushViewController:VC animated:YES];
 }
 

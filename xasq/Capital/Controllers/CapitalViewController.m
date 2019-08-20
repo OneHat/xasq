@@ -121,13 +121,16 @@
                            @"pageNo" : @"1"
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
-        NSArray *array = data[@"data"][@"userCapitalResponseList"][@"rows"];
-        [weakSelf.dataArray removeAllObjects];
-        for (NSDictionary *dic in array) {
-            CapitalModel *model = [CapitalModel modelWithDictionary:dic];
-            [weakSelf.dataArray addObject:model];
+        NSDictionary *dic = data[@"data"][@"userCapitalResponseList"];
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+            NSArray *array = data[@"data"][@"userCapitalResponseList"][@"rows"];
+            [weakSelf.dataArray removeAllObjects];
+            for (NSDictionary *dic in array) {
+                CapitalModel *model = [CapitalModel modelWithDictionary:dic];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.walletView setCapitalDataArray:data];
         }
-        [weakSelf.walletView setCapitalDataArray:data];
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
     }];

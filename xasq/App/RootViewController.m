@@ -87,12 +87,23 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
         
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
-        if (![UserDataManager shareManager].userId) {
+        NSString *userId = [UserDataManager shareManager].userId;
+        if (!userId) {
+            LoginViewController *VC = [[LoginViewController alloc] init];
+            VC.closeLoginBlock = ^(BOOL isLogin) {
+                
+                if (!isLogin) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
+                    tabBarController.selectedIndex = 0;
+                }
+            };
             
-//            return NO;
+            VC.hidesBottomBarWhenPushed = YES;
+            [NVC pushViewController:VC animated:NO];
+            
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapitalNotification object:nil];
         }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectCapitalNotification object:nil];
         
     } else if ([selectVC isKindOfClass:[UserViewController class]]) {
         

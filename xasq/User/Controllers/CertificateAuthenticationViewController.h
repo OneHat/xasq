@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CertificateAuthenticationViewController : UIViewController
 
-@property (nonatomic, assign) NSInteger type; // 0 身份证 1 驾照 2 护照
-
+@property (nonatomic, assign) NSInteger type; // 0 身份证 1 护照 2 驾照
+@property (nonatomic, strong) NSString *certNo; // 证件号码
+@property (nonatomic, strong) NSString *certName; // 姓名
 @end
 
 NS_ASSUME_NONNULL_END

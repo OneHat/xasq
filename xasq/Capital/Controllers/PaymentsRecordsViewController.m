@@ -10,6 +10,7 @@
 #import "PaymentsRecordsTableViewCell.h"
 #import "PaymentHeaderView.h"
 #import "PaymentTypeView.h"
+#import "PaymentsRecordModel.h"
 
 @interface PaymentsRecordsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -17,6 +18,10 @@
 @property (nonatomic, strong) PaymentHeaderView *headerView;
 @property (nonatomic, strong) PaymentTypeView *typeView;
 @property (nonatomic, assign) NSInteger type;
+@property (nonatomic, strong) NSString *causeTyep; // 流水类型
+@property (nonatomic, strong) NSString *currency; // 币种
+@property (nonatomic, strong) NSMutableDictionary *dataDict; // 数据源
+@property (nonatomic, strong) NSMutableArray *titleArray;  // 分区标题
 @end
 
 @implementation PaymentsRecordsViewController
@@ -25,7 +30,10 @@
     [super viewDidLoad];
     self.title = @"收支记录";
     self.view.backgroundColor = ThemeColorBackground;
-    
+    _causeTyep = @"";
+    _currency = @"";
+    _dataDict = [NSMutableDictionary dictionary];
+    _titleArray = [NSMutableArray array];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -45,12 +53,61 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];;
+    self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];
+    [self communityCapitalWater];
+}
+
+- (void)communityCapitalWater {
+    WeakObject;
+    NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
+                           @"causeTyep"    : _causeTyep,
+                           @"currency"     : _currency,
+                           @"pageNo"       : @"1",
+                           };
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalWater parameters:dict success:^(NSDictionary * _Nonnull data) {
+        NSArray *array = data[@"data"][@"rows"];
+        if ([array isKindOfClass:[NSArray class]]) {
+            NSString *key;
+            NSMutableArray *typeArr = [NSMutableArray array];
+            if (weakSelf.titleArray.count > 0) {
+                // 上拉添加数据
+                key = weakSelf.titleArray.lastObject;
+                typeArr = [NSMutableArray arrayWithArray:weakSelf.dataDict[key]];
+            } else {
+                // 下拉刷新数据
+                key = array.firstObject[@"time"];
+            }
+            for (NSDictionary *dic in array) {
+                PaymentsRecordModel *model = [PaymentsRecordModel modelWithDictionary:dic];
+                if ([key isEqualToString:dic[@"time"]]) {
+                    [typeArr addObject:model];
+                } else {
+                    [weakSelf.dataDict setValue:typeArr forKey:key];
+                    if (![key isEqualToString:weakSelf.titleArray.lastObject]) {
+                        // 防止出现上拉添加数据中第一天数据跟之前数据的最后一条数据是在同一天
+                        [weakSelf.titleArray addObject:key];
+                    }
+                    key = dic[@"time"];
+                    typeArr = [NSMutableArray array];
+                    [typeArr addObject:model];
+                }
+                if (weakSelf.titleArray.count == 0) {
+                    // 说明只有第一天的数据,直接添加进去
+                    [weakSelf.dataDict setValue:typeArr forKey:key];
+                    [weakSelf.titleArray addObject:key];
+                }
+            }
+        }
+        [weakSelf.tableView reloadData];
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
 }
 
 #pragma mark - 类型切换
 - (void)typeBtnClick:(UIButton *)button {
     _type = 2;
+    WeakObject;
     [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
     [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];
     [_headerView.currencyBtn setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
@@ -58,11 +115,24 @@
     [_typeView removeFromSuperview];
     _typeView = [[PaymentTypeView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50)];
     _typeView.type = _type;
+    _typeView.paymentTypeBlock = ^(NSInteger index) {
+        if (index == 0) {
+            weakSelf.causeTyep = @"";
+        } else if (index == 1) {
+            weakSelf.causeTyep = @"14";
+        } else {
+            weakSelf.causeTyep = @"2";
+        }
+        [weakSelf.dataDict removeAllObjects];
+        [weakSelf.titleArray removeAllObjects];
+        [weakSelf communityCapitalWater];
+    };
     [self.view addSubview:_typeView];
 }
 #pragma mark - 币种切换
 - (void)currencyBtnClick:(UIButton *)button {
     _type = 1;
+    WeakObject;
     [button setTitleColor:ThemeColorBlue forState:(UIControlStateNormal)];
     [button setImage:[UIImage imageNamed:@"capital_type1"] forState:(UIControlStateNormal)];
     [_headerView.typeBtn setTitleColor:ThemeColorText forState:(UIControlStateNormal)];
@@ -70,15 +140,23 @@
     [_typeView removeFromSuperview];
     _typeView = [[PaymentTypeView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50)];
     _typeView.type = _type;
+    _typeView.paymentTypeBlock = ^(NSInteger index) {
+        
+        [weakSelf.dataDict removeAllObjects];
+        [weakSelf.titleArray removeAllObjects];
+        [weakSelf communityCapitalWater];
+    };
     [self.view addSubview:_typeView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return _titleArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    NSString *key = _titleArray[section];
+    NSArray *value = _dataDict[key];
+    return value.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -91,7 +169,8 @@
     UILabel *titleLB = [[UILabel alloc] initWithFrame:CGRectMake(20, 23, ScreenWidth - 40, 20)];
     titleLB.textColor = ThemeColorTextGray;
     titleLB.font = ThemeFontTipText;
-    titleLB.text = @"26日-星期五";
+    NSString *key = _titleArray[section];
+    titleLB.text = key;
     [headerView addSubview:titleLB];
 
     return headerView;
@@ -103,6 +182,17 @@
         cell = [[[UINib nibWithNibName:@"PaymentsRecordsTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    NSString *key = _titleArray[indexPath.section];
+    NSArray *value = _dataDict[key];
+    PaymentsRecordModel *model = value[indexPath.row];
+    cell.titleLB.text = model.nameStr;
+    cell.valueLB.text = [NSString stringWithFormat:@"%@",model.amount];
+    if ([model.causeType integerValue] == 2) {
+        cell.icon.image = [UIImage imageNamed:@"Capital_DrawMoney"];
+    } else if ([model.causeType integerValue] == 14) {
+        cell.icon.image = [UIImage imageNamed:@"capital_reward"];
+    }
+    
     return cell;
 }
 

@@ -78,6 +78,9 @@ FOUNDATION_EXPORT NSString *const UserInviteAllpower;
 FOUNDATION_EXPORT NSString *const UserInviteCount;
 /// 算力、等级排行接口(我的好友) GET
 FOUNDATION_EXPORT NSString *const UserInvitePower;
+/// 认证信息接口 GET
+FOUNDATION_EXPORT NSString *const UserIdentityDetails;
+
 
 //********************************资产账单
 ///查看个人总帐单 POST
@@ -98,24 +101,19 @@ FOUNDATION_EXPORT NSString *const OperationCountry;
 ///用户上传头像接口 POST
 FOUNDATION_EXPORT NSString *const OperationUploadImage;
 
+
 //********************************消息模块
 ///站内信列表 POST
 FOUNDATION_EXPORT NSString *const MessageSysList;
 
 
 //********************************社区模块
-///获取推荐任务 GET
-//FOUNDATION_EXPORT NSString *const CommunityTaskRecommend;
 ///获取用户好友社区资产动态（领币，偷币，奖励…）Get
 FOUNDATION_EXPORT NSString *const CommunityCapitalWaterDynamics;
-///获取高分任务 GET
-//FOUNDATION_EXPORT NSString *const CommunityTaskPower;
 ///获取用户社区资产账户流水 Get
 FOUNDATION_EXPORT NSString *const CommunityCapitalWater;
 ///获取用户算力奖励 Get
 FOUNDATION_EXPORT NSString *const CommunitySendPower;
-///获取我的任务 Get
-//FOUNDATION_EXPORT NSString *const CommunityTask;
 ///用户算力记录 Get
 FOUNDATION_EXPORT NSString *const CommunityPowerRecord;
 ///用户收取/领取的录 GET
