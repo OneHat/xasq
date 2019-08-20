@@ -24,6 +24,9 @@
 @property (nonatomic, strong) NSArray *weekArray;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *powerLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *signButton;
 @property (weak, nonatomic) IBOutlet UILabel *signLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signButtonWidth;
@@ -82,6 +85,10 @@
     [recordButton addTarget:self action:@selector(recordAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recordButton];
     
+    
+    //////
+    self.nameLabel.text = [UserDataManager shareManager].usermodel.nickName;
+    
     self.signLabel.text = @"每日签到";
     self.signLabel.font = [UIFont boldSystemFontOfSize:13];
     
@@ -135,7 +142,6 @@
 - (IBAction)signAction:(UIButton *)sender {
     
     [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"%@",data);
         
         [self showSignSuccessView];
         

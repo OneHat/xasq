@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) FriendsHeaderView *headerView;
 
+@property (nonatomic, strong) NSArray *friends;
+
 @end
 
 @implementation FriendsViewController
@@ -42,23 +44,43 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
     [headerView addGestureRecognizer:tap];
     
+    NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
+    [[NetworkManager sharedManager] getRequest:UserInvitePower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        NSArray *dateList = data[@"data"][@"rows"];
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
+        
+        self.friends = [UserRankModel modelWithArray:dateList];
+        [self.tableView reloadData];
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
 }
 
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.friends.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FriendsRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsRankViewCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.friendInfo = self.friends[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FriendMainViewController *friendVC = [[FriendMainViewController alloc] init];
-    [self.navigationController pushViewController:friendVC animated:YES];
+    UserRankModel *model = self.friends[indexPath.row];
+    if (model.userId == [UserDataManager shareManager].userId.integerValue) {
+        return;
+    }
     
+    FriendMainViewController *friendVC = [[FriendMainViewController alloc] init];
+    friendVC.userId = model.userId;
+    [self.navigationController pushViewController:friendVC animated:YES];
 }
 
 #pragma mark -

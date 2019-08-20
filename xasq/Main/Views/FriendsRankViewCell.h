@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserRankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FriendsRankViewCell : UITableViewCell
+
+@property (nonatomic, strong) UserRankModel *friendInfo;
 
 @end
 

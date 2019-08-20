@@ -16,6 +16,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *currencyImageView;
+@property (weak, nonatomic) IBOutlet UILabel *currencyNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *powerNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *powerNameLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end
@@ -25,9 +32,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _timeLabel.textColor = ThemeColorTextGray;
+    self.timeLabel.textColor = ThemeColorTextGray;
     
-    _lineView.backgroundColor = ThemeColorLine;
+    self.currencyNameLabel.textColor = ThemeColorTextGray;
+    self.powerNameLabel.textColor = ThemeColorTextGray;
+    
+    self.lineView.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

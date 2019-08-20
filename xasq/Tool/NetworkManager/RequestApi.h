@@ -72,11 +72,12 @@ FOUNDATION_EXPORT NSString *const UserSetNickname;
 FOUNDATION_EXPORT NSString *const UserSyncWalk;
 /// 验证码校验接口 POST
 FOUNDATION_EXPORT NSString *const UserCheckValidcode;
-/// 算力、等级排行 全用户 POST
+/// 算力、等级排行 全用户 GET
 FOUNDATION_EXPORT NSString *const UserInviteAllpower;
-/// 邀请人数排行 POST
+/// 邀请人数排行 GET
 FOUNDATION_EXPORT NSString *const UserInviteCount;
-
+/// 算力、等级排行接口(我的好友) GET
+FOUNDATION_EXPORT NSString *const UserInvitePower;
 
 //********************************资产账单
 ///查看个人总帐单 POST

@@ -74,7 +74,6 @@
 		C43B6BC622F92AE400312286 /* HomeRankViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC422F92AE400312286 /* HomeRankViewCell.m */; };
 		C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BC722F92BEC00312286 /* HomeViewController.xib */; };
 		C43B6BCB22F92BED00312286 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BC822F92BEC00312286 /* HomeViewController.m */; };
-		C43B6BCE22F92EB300312286 /* HomeRankTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BCD22F92EB300312286 /* HomeRankTableView.m */; };
 		C43B6BD422F948F400312286 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BD222F948F400312286 /* LaunchViewController.m */; };
 		C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C43B6BD322F948F400312286 /* LaunchViewController.xib */; };
 		C43B6BD922F9514100312286 /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6BD722F9514100312286 /* UserGuideViewController.m */; };
@@ -94,6 +93,7 @@
 		C45391222306A45C000EBBA2 /* SignSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45391212306A45C000EBBA2 /* SignSuccessView.xib */; };
 		C45391252306AE20000EBBA2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45391242306AE20000EBBA2 /* HealthKit.framework */; };
 		C45391282306B15C000EBBA2 /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45391272306B15C000EBBA2 /* InviteFriendViewController.m */; };
+		C45F26C6230B9F88004E34F0 /* UserRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F26C5230B9F88004E34F0 /* UserRankModel.m */; };
 		C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = C496217F23042C810086A959 /* TaskRecordViewCell.xib */; };
 		C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4739CA42306BE8100042DF2 /* FriendMainViewController.m */; };
 		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
@@ -309,8 +309,6 @@
 		C43B6BC722F92BEC00312286 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C43B6BC822F92BEC00312286 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C43B6BC922F92BEC00312286 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		C43B6BCC22F92EB300312286 /* HomeRankTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRankTableView.h; sourceTree = "<group>"; };
-		C43B6BCD22F92EB300312286 /* HomeRankTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRankTableView.m; sourceTree = "<group>"; };
 		C43B6BD122F948F400312286 /* LaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		C43B6BD222F948F400312286 /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		C43B6BD322F948F400312286 /* LaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
@@ -344,6 +342,8 @@
 		C45391242306AE20000EBBA2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C45391262306B15C000EBBA2 /* InviteFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteFriendViewController.h; sourceTree = "<group>"; };
 		C45391272306B15C000EBBA2 /* InviteFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
+		C45F26C4230B9F88004E34F0 /* UserRankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRankModel.h; sourceTree = "<group>"; };
+		C45F26C5230B9F88004E34F0 /* UserRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRankModel.m; sourceTree = "<group>"; };
 		C4739CA32306BE8100042DF2 /* FriendMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendMainViewController.h; sourceTree = "<group>"; };
 		C4739CA42306BE8100042DF2 /* FriendMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendMainViewController.m; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
@@ -892,8 +892,6 @@
 				C43B6C0722FAD1DC00312286 /* SegmentedControl.m */,
 				C43B6BBF22F929FB00312286 /* HomeRankView.h */,
 				C43B6BC022F929FB00312286 /* HomeRankView.m */,
-				C43B6BCC22F92EB300312286 /* HomeRankTableView.h */,
-				C43B6BCD22F92EB300312286 /* HomeRankTableView.m */,
 				C43B6BC322F92AE400312286 /* HomeRankViewCell.h */,
 				C43B6BC422F92AE400312286 /* HomeRankViewCell.m */,
 				C43B6BC222F92AE300312286 /* HomeRankViewCell.xib */,
@@ -958,6 +956,8 @@
 				C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */,
 				C4B9FCF22303E120007C1137 /* RewardModel.h */,
 				C4B9FCF32303E120007C1137 /* RewardModel.m */,
+				C45F26C4230B9F88004E34F0 /* UserRankModel.h */,
+				C45F26C5230B9F88004E34F0 /* UserRankModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1423,6 +1423,7 @@
 				C414004C22F2EBA30010A463 /* CapitalMainView.m in Sources */,
 				C414003822F2AC0B0010A463 /* CapitalViewController.m in Sources */,
 				C4D5EEEA22F815CC00C94D9F /* PaymentTypeView.m in Sources */,
+				C45F26C6230B9F88004E34F0 /* UserRankModel.m in Sources */,
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C496218023042C810086A959 /* TaskRecordViewCell.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
@@ -1490,7 +1491,6 @@
 				C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */,
 				C4D5EEED22F8161B00C94D9F /* PaymentCurrencyView.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
-				C43B6BCE22F92EB300312286 /* HomeRankTableView.m in Sources */,
 				C43B6C0922FAD1DD00312286 /* SegmentedControl.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,

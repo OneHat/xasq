@@ -17,12 +17,16 @@
 @interface MinerViewController ()<UITableViewDataSource,UITableViewDelegate,XLPasswordInputViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, assign) NSInteger currentIndex;//
+@property (nonatomic, assign) NSInteger currentIndex;//选择的tableView
 
 @property (nonatomic, strong) NSString *bindCode;
 
 //@property (nonatomic, strong) MinerInfomationView *bindCode;
 @property (nonatomic, strong) InviteCodeView *inviteCodeView;
+
+@property (nonatomic, strong) NSArray *totalArray;//累计
+@property (nonatomic, strong) NSArray *oneArray;//一度
+@property (nonatomic, strong) NSArray *twoArray;//二度
 
 @end
 
@@ -48,7 +52,7 @@
     
     [self getqrcode];
     
-    [self getInviteFirst];
+    [self getInviteAll];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,7 +105,7 @@
 
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;
+    return self.totalArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,10 +127,12 @@
     
     CGFloat width = [@"累计助力" getWidthWithFont:[UIFont boldSystemFontOfSize:16]];
     
+    NSArray *titles = @[@"累计助力",@"一度好友",@"二度好友"];
+    
     for (int i = 0; i < 3; i++) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 10, width, 20)];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"累计助力";
+        label.text = titles[i];
         [headerView addSubview:label];
         
         UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(10 + (width+10) * i, 30, width, 20)];
@@ -176,7 +182,7 @@
             [self dismissViewControllerAnimated:NO completion:nil];
         } else {
             
-            if (self.bindCode.length == 6 && self.bindCode.integerValue > 1) {
+            if (self.bindCode.length == 6) {
                 [self dismissViewControllerAnimated:NO completion:nil];
                 [self bindInviteCode:self.bindCode];
             } else {
@@ -197,13 +203,15 @@
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+
 //查询所有邀请
 - (void)getInviteAll  {
     [[NetworkManager sharedManager] getRequest:UserInviteAll parameters:nil success:^(NSDictionary * _Nonnull data) {
-        
+        NSLog(@"%@",data);
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+
 //查询一级邀请
 - (void)getInviteFirst  {
     [[NetworkManager sharedManager] getRequest:UserInviteFirst parameters:nil success:^(NSDictionary * _Nonnull data) {
@@ -211,6 +219,7 @@
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+
 //查询二级邀请
 - (void)getInviteSecond  {
     [[NetworkManager sharedManager] getRequest:UserInviteSecond parameters:nil success:^(NSDictionary * _Nonnull data) {
@@ -218,6 +227,7 @@
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+
 //邀请人绑定
 - (void)bindInviteCode:(NSString *)code  {
     NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,

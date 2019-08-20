@@ -30,7 +30,7 @@
 #pragma mark - 通知
 #define DSSJTabBarSelectHomeNotification      @"DSSJTabBarSelectHomeNotification"
 #define DSSJTabBarSelectCapitalNotification   @"DSSJTabBarSelectCapitalNotification"
-#define DSSJTabBarSelectUserNotification       @"DSSJTabBarSelectUserNotification"
+#define DSSJTabBarSelectUserNotification      @"DSSJTabBarSelectUserNotification"
 
 #define DSSJUserLoginSuccessNotification      @"DSSJUserLoginSuccessNotification"
 #define DSSJUserLogoutNotification            @"DSSJUserLogoutNotification"

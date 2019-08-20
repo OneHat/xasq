@@ -65,7 +65,7 @@
     
     
     [[NetworkManager sharedManager] getRequest:UserInviteAddresslist parameters:nil success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"%@",data);
+        
     } failure:^(NSError * _Nonnull error) {
 
     }];

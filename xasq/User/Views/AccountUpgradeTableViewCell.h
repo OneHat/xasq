@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AccountUpgradeTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *backgView;
+
 
 
 @end

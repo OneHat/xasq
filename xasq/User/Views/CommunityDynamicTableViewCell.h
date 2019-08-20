@@ -12,8 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CommunityDynamicTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *backgView;
-
+@property (nonatomic, strong) NSDictionary *messageInfo;
 
 @end
 

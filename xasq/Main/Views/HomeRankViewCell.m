@@ -45,25 +45,37 @@
     // Configure the view for the selected state
 }
 
-- (void)setRowIndex:(NSInteger)rowIndex {
-    _rowIndex = rowIndex;
+- (void)setRankInfo:(UserRankModel *)rankInfo {
+    _rankInfo = rankInfo;
     
-    self.rankLabel.text = [NSString stringWithFormat:@"%ld",rowIndex + 1];
+    self.nameLabel.text = rankInfo.nickName;
+    [self setRank];
     
+    self.cellStyle = self.cellStyle;
+}
+
+- (void)setRank {
+    
+    self.selfImageView.hidden = YES;
+    if ([UserDataManager shareManager].userId.integerValue == _rankInfo.userId) {
+        self.selfImageView.hidden = NO;
+    }
+    
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.ranking];
     _rankImageView.hidden = NO;
     
-    switch (rowIndex) {
-        case 0:{
+    switch (_rankInfo.ranking) {
+        case 1:{
             _rankImageView.image = [UIImage imageNamed:@"rank_first"];
         }
             break;
             
-        case 1:{
+        case 2:{
             _rankImageView.image = [UIImage imageNamed:@"rank_second"];
         }
             break;
             
-        case 2:{
+        case 3:{
             _rankImageView.image = [UIImage imageNamed:@"rank_third"];
         }
             break;
@@ -76,31 +88,21 @@
     }
 }
 
-- (void)setRankInfo:(NSDictionary *)rankInfo {
-    _rankInfo = rankInfo;
-    
-    self.nameLabel.text = rankInfo[@"nickName"];
-//    self.areaLabel.text = @"";
-    self.cellStyle = self.cellStyle;
-    
-    self.nameLabel.text = rankInfo[@"nickName"];
-}
-
 - (void)setCellStyle:(HomeRankCellStyle)cellStyle {
     _cellStyle = cellStyle;
     switch (cellStyle) {
         case HomeRankCellStylePower:{
-            self.valueLabel.text = _rankInfo[@"power"];
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.power];
         }
             break;
             
         case HomeRankCellStyleLevel:{
-            self.valueLabel.text = [NSString stringWithFormat:@"LV%@",_rankInfo[@"userLevel"]];
+            self.valueLabel.text = _rankInfo.levelName;
         }
             break;
             
         case HomeRankCellStyleInvite:{
-            self.valueLabel.text = _rankInfo[@"inviteCount"];
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.inviteCount];;
         }
             break;
             
@@ -109,6 +111,8 @@
             break;
     }
 }
+
+
 
 
 @end

@@ -22,11 +22,12 @@
                 <outlet property="nicknameLabel" destination="BSU-hP-1F1" id="wk5-h2-DSV"/>
                 <outlet property="powerImageView" destination="elu-Vs-ecj" id="GWP-01-zaF"/>
                 <outlet property="powerLabel" destination="lxj-D7-4hi" id="4EZ-2P-HJG"/>
-                <outlet property="rankView" destination="wEM-Rz-Pzv" id="xMj-9M-APo"/>
+                <outlet property="rankBackView" destination="wEM-Rz-Pzv" id="ULf-lX-ZEy"/>
                 <outlet property="rankViewHeight" destination="SaH-62-dx7" id="XQc-9n-1d1"/>
                 <outlet property="scrollView" destination="qww-IH-RKb" id="9kL-Q4-AfE"/>
                 <outlet property="stepRewardView" destination="pul-Nt-c3k" id="iOo-Ci-5gS"/>
                 <outlet property="stepsLabel" destination="xfy-kz-d0t" id="KtQ-75-ggG"/>
+                <outlet property="topView" destination="UzN-hs-gz1" id="4me-bX-oYg"/>
                 <outlet property="userHeaderImageView" destination="Mud-Nk-Ehw" id="7FU-aW-QxU"/>
                 <outlet property="userLevelImageView" destination="RwD-SX-hUo" id="5sp-u8-9kY"/>
                 <outlet property="userLevelLabel" destination="ih0-Lu-Att" id="hql-9m-03X"/>
@@ -412,7 +413,7 @@
                         <constraint firstItem="h1E-Vd-Heh" firstAttribute="top" secondItem="yDo-Rn-ABT" secondAttribute="bottom" id="gRo-KQ-mp8"/>
                         <constraint firstItem="UzN-hs-gz1" firstAttribute="leading" secondItem="qww-IH-RKb" secondAttribute="leading" id="q9d-e9-in0"/>
                         <constraint firstItem="wEM-Rz-Pzv" firstAttribute="leading" secondItem="qww-IH-RKb" secondAttribute="leading" id="sMV-fX-hg2"/>
-                        <constraint firstAttribute="bottom" secondItem="wEM-Rz-Pzv" secondAttribute="bottom" constant="10" id="ulW-Tw-hL2"/>
+                        <constraint firstAttribute="bottom" secondItem="wEM-Rz-Pzv" secondAttribute="bottom" id="ulW-Tw-hL2"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -428,7 +429,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qww-IH-RKb" secondAttribute="trailing" id="nKc-ZJ-71W"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-7066" y="-162"/>
+            <point key="canvasLocation" x="-7423.1999999999998" y="-145.56650246305421"/>
         </view>
     </objects>
     <resources>

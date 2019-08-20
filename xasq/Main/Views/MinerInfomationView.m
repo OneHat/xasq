@@ -10,6 +10,11 @@
 
 @interface MinerInfomationView ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIView *leftView;
 @property (weak, nonatomic) IBOutlet UIView *middleView;
 @property (weak, nonatomic) IBOutlet UIView *rightView;
@@ -58,6 +63,8 @@
     self.progressViewWidth.constant = totalWidth * rate;
     self.rateViewLeft.constant = totalWidth * rate - 40;
     
+    self.nameLabel.text = [UserDataManager shareManager].usermodel.nickName;
+    self.levelLabel.text = [UserDataManager shareManager].usermodel.level;
 }
 
 @end

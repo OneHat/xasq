@@ -14,7 +14,7 @@
 @interface messageInformViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) NSArray *messages;
 
 @end
 
@@ -25,80 +25,54 @@
     self.title = @"消息通知";
     self.view.backgroundColor = ThemeColorBackground;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.rowHeight = 180;
+    _tableView.estimatedRowHeight = 180;
     _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
     NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,@"pageNo":@"0",@"pageSize":@"10"};
     [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"%@",data);
+        
+        NSArray *array = data[@"data"][@"rows"];
+        if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
+            self.messages = array;
+            [self.tableView reloadData];
+            return;
+        }
+        
+        [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        
     } failure:^(NSError * _Nonnull error) {
         
     }];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 3 || indexPath.row == 0) {
-        return 195;
-    } else {
-        return 150;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 7.5;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 7.5)];
-    headerView.backgroundColor = HexColor(@"#F3F3F3");
-
-//    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 15, 15)];
-//    icon.image = [UIImage imageNamed:@"message_time"];
-//    [headerView addSubview:icon];
-//    UILabel *timeLB = [[UILabel alloc] initWithFrame:CGRectMake(30, 10, ScreenWidth - 45, 20)];
-//    timeLB.textColor = ThemeColorTextGray;
-//    timeLB.font = ThemeFontTipText;
-//    if (section == 0) {
-//        timeLB.text = @"昨天";
-//    } else {
-//        timeLB.text = @"2019-05-26";
-//    }
-//    [headerView addSubview:timeLB];
-
-    return headerView;
-}
-
+#pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return self.messages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    if (indexPath.row == 0) {
-        AssetDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetDynamicTableViewCell"];
+    
+    NSDictionary *info = self.messages[indexPath.row];
+    
+    if ([info[@"type"] integerValue] == 1003) {
+        CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicCell"];
         if (cell == nil) {
-            cell = [[[UINib nibWithNibName:@"AssetDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell = [[NSBundle mainBundle] loadNibNamed:@"CommunityDynamicTableViewCell" owner:nil options:nil].firstObject;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        
+        cell.messageInfo = info;
+        
         return cell;
-    } else if (indexPath.row == 3) {
-        CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicTableViewCell"];
-        if (cell == nil) {
-            cell = [[[UINib nibWithNibName:@"CommunityDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        return cell;
-    } else {
+        
+        
+    } else if ([info[@"type"] integerValue] == 1002) {
         AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
         if (cell == nil) {
             cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
@@ -106,17 +80,15 @@
         }
         return cell;
         
+    } else {
+        AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
+        if (cell == nil) {
+            cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        return cell;
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -121,9 +121,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="currencyImageView" destination="1eK-VS-zC2" id="8So-h3-7Qd"/>
+                <outlet property="currencyNameLabel" destination="f4W-Wl-EM6" id="r3r-ba-pzl"/>
+                <outlet property="currencyNumberLabel" destination="DM4-cL-NBB" id="8o3-3w-oQr"/>
                 <outlet property="headerImageView" destination="WZf-8G-DHJ" id="18u-Cm-MIo"/>
                 <outlet property="lineView" destination="S5F-MF-i20" id="tvB-MN-AMi"/>
                 <outlet property="nameLabel" destination="v8s-Hw-Lud" id="wHB-WG-ovm"/>
+                <outlet property="powerNameLabel" destination="AZa-9w-RDS" id="f5e-CK-3Vn"/>
+                <outlet property="powerNumberLabel" destination="QQQ-xZ-0N2" id="aB0-7i-B2B"/>
                 <outlet property="timeLabel" destination="Lft-Fb-X7b" id="qv9-lU-11Q"/>
             </connections>
             <point key="canvasLocation" x="-552" y="119"/>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserRankModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,9 +19,7 @@ typedef NS_ENUM(NSInteger, HomeRankCellStyle) {
 
 @interface HomeRankViewCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger rowIndex;//行
-
-@property (nonatomic, strong) NSDictionary *rankInfo;//
+@property (nonatomic, strong) UserRankModel *rankInfo;//
 
 @property (nonatomic, assign) HomeRankCellStyle cellStyle;
 
