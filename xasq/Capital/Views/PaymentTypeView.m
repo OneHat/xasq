@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSArray *iconArray;
 
 @end
 
@@ -43,6 +44,7 @@
     } else {
         height = 90;
         _titleArray = @[@"全部",@"奖励", @"提币"];
+        _iconArray = @[@"capital_all",@"capital_reward_top", @"capital_mention_money"];
     }
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 设置网状结构的属性
@@ -90,12 +92,22 @@
     
     PaymentTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PaymentTypeCollectionViewCell" forIndexPath:indexPath];
     cell.titleLB.text = _titleArray[indexPath.row];
-    if (indexPath.row == 0) {
-        cell.icon.image = [UIImage imageNamed:@"capital_all"];
+    if (_type == 1) {
+        if (indexPath.row == 0) {
+            cell.icon.image = [UIImage imageNamed:@"capital_all"];
+        }
+    } else {
+        cell.icon.image = [UIImage imageNamed:_iconArray[indexPath.row]];
     }
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (_paymentTypeBlock) {
+        _paymentTypeBlock(indexPath.row);
+    }
+    [self removeFromSuperview];
+}
 
 - (void)clearClick:(UITapGestureRecognizer *)tap {
     [self removeGestureRecognizer:tap];

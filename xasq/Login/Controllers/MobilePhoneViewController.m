@@ -39,7 +39,7 @@
     [[NetworkManager sharedManager] getRequest:OperationCountry parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"];
         weakSelf.tableDict = [NSMutableDictionary dictionary];
-        weakSelf.sectionArr = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"W",@"X",@"Y",@"Z", nil];
+        weakSelf.sectionArr = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"J",@"K",@"L",@"M",@"N",@"P",@"Q",@"R",@"S",@"T",@"W",@"X",@"Y",@"Z", nil];
         for (NSDictionary *dictArr in array) {
             // 获取第一个首拼字母
             NSString *lowercaseStr = [[NSString transform:dictArr[@"name"]] substringToIndex:1];

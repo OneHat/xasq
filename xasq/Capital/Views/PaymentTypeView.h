@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger type;
 
+@property (nonatomic, copy) void (^paymentTypeBlock)(NSInteger index);
+
 @end
 
 NS_ASSUME_NONNULL_END

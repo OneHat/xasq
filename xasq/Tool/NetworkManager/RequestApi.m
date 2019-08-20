@@ -41,7 +41,7 @@ NSString *const UserSyncWalk = @"user/syncWalk";
 NSString *const UserCheckValidcode = @"user/check/validcode";
 NSString *const UserInviteAllpower = @"user/invite/allpower";
 NSString *const UserInviteCount = @"user/invite/count";
-
+NSString *const UserIdentityDetails = @"user/identity/details";
 
 NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
 NSString *const ApiAccountOpenAccount = @"api/account/openAccount";

@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PaymentsRecordsTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *titleLB;
+@property (weak, nonatomic) IBOutlet UILabel *valueLB;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

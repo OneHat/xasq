@@ -21,6 +21,7 @@
 		C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */; };
 		C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* confirmViewController.m */; };
 		C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */; };
+		C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */; };
 		C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */; };
 		C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */; };
 		C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0222FBFDEC00E43F8C /* XLRandomKeyboard.m */; };
@@ -220,6 +221,8 @@
 		C40C3D8822F199C800BDE6A3 /* confirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confirmViewController.h; sourceTree = "<group>"; };
 		C40C3D8922F199C800BDE6A3 /* confirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confirmViewController.m; sourceTree = "<group>"; };
 		C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmViewController.xib; sourceTree = "<group>"; };
+		C40D6E97230B936E00D9697A /* PaymentsRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentsRecordModel.h; sourceTree = "<group>"; };
+		C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentsRecordModel.m; sourceTree = "<group>"; };
 		C40DEEFC22FBFDEC00E43F8C /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
 		C40DEEFD22FBFDEC00E43F8C /* UIImage+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLPasswordView.h"; sourceTree = "<group>"; };
 		C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLPasswordView.m"; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 			children = (
 				C4106080230A96F1003EE4B2 /* CapitalModel.h */,
 				C4106081230A96F1003EE4B2 /* CapitalModel.m */,
+				C40D6E97230B936E00D9697A /* PaymentsRecordModel.h */,
+				C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1402,6 +1407,7 @@
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4D5EEC422F7B96A00C94D9F /* MentionMoneyViewController.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
+				C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */,
 				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,

@@ -76,7 +76,8 @@ FOUNDATION_EXPORT NSString *const UserCheckValidcode;
 FOUNDATION_EXPORT NSString *const UserInviteAllpower;
 /// 邀请人数排行 POST
 FOUNDATION_EXPORT NSString *const UserInviteCount;
-
+/// 认证信息接口 GET
+FOUNDATION_EXPORT NSString *const UserIdentityDetails;
 
 //********************************资产账单
 ///查看个人总帐单 POST

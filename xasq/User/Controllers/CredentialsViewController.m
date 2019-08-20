@@ -12,6 +12,10 @@
 @interface CredentialsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *modifyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *nameLB;    // 证件姓名
+@property (weak, nonatomic) IBOutlet UILabel *accountTitleLB; // 证件类型名称
+@property (weak, nonatomic) IBOutlet UILabel *accountLB;    // 证件号
+@property (weak, nonatomic) IBOutlet UILabel *certificationLB; // 认证状态
 
 
 @end
@@ -24,6 +28,34 @@
     
     _modifyBtn.layer.cornerRadius = 22.5;
     _modifyBtn.layer.masksToBounds = YES;
+    [self sendUserIdentityDetails];
+}
+
+- (void)sendUserIdentityDetails {
+    WeakObject;
+    [[NetworkManager sharedManager] getRequest:UserIdentityDetails parameters:nil success:^(NSDictionary * _Nonnull data) {
+        if (data) {
+            NSDictionary *dic = data[@"data"];
+            weakSelf.nameLB.text = dic[@"certName"];
+            weakSelf.accountLB.text = dic[@"certNo"];
+            if ([dic[@"status"] integerValue] == 1) {
+                weakSelf.certificationLB.text = @"已认证";
+            } else if ([dic[@"status"] integerValue] == 2){
+                weakSelf.certificationLB.text = @"审核中";
+            } else {
+                weakSelf.certificationLB.text = @"未认证";
+            }
+            if ([dic[@"certType"] integerValue] == 1) {
+                weakSelf.accountTitleLB.text = @"护照证号";
+            } else if ([dic[@"certType"] integerValue] == 2){
+                weakSelf.accountTitleLB.text = @"驾照证号";
+            } else {
+                weakSelf.accountTitleLB.text = @"身份证号";
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+    }];
 }
 
 - (IBAction)modifyBtnClick:(UIButton *)sender {
