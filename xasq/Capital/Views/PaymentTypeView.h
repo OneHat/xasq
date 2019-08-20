@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^paymentTypeBlock)(NSInteger index);
 
+- (void)setCommunityAreaCurrency:(NSArray *)array;
+
 @end
 
 NS_ASSUME_NONNULL_END

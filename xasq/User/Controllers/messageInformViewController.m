@@ -33,7 +33,10 @@
     _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,@"pageNo":@"0",@"pageSize":@"10"};
     [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
         

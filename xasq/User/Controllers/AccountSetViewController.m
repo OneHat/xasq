@@ -48,7 +48,10 @@
     [footButton addTarget:self action:@selector(quitLoginClick) forControlEvents:(UIControlEventTouchUpInside)];
     _tableView.tableFooterView = footButton;
     [self.view addSubview:_tableView];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

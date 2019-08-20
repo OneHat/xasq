@@ -8,6 +8,7 @@
 
 #import "PaymentTypeView.h"
 #import "PaymentTypeCollectionViewCell.h"
+#import "CurrencyModel.h"
 
 @interface PaymentTypeView () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -40,7 +41,6 @@
     NSInteger height = 235;
     if (_type == 0) {
         height = 235;
-        _titleArray = @[@"全部", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC"];
     } else {
         height = 90;
         _titleArray = @[@"全部",@"奖励", @"提币"];
@@ -72,16 +72,33 @@
 - (void)setType:(NSInteger)type {
     _type = type;
     NSInteger height = 235;
-    if (_type == 1) {
-        height = 235;
-        _titleArray = @[@"全部", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC", @"BTC"];
-    } else {
+    if (_type == 2) {
         height = 85;
         _titleArray = @[@"全部",@"奖励", @"提币"];
+        if (!_iconArray) {
+            _iconArray = @[@"capital_all",@"capital_reward_top", @"capital_mention_money"];
+        }
     }
     _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);
     [_collectionView reloadData];
+}
 
+- (void)setCommunityAreaCurrency:(NSArray *)array {
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:array.count];
+    NSMutableArray *iconTempArray = [NSMutableArray arrayWithCapacity:array.count];
+    if (array.count > 0) {
+        [tempArray addObject:@"全部"];
+        [iconTempArray addObject:@"capital_all"];
+        for (CurrencyModel *model in array) {
+            [tempArray addObject:model.name];
+            [iconTempArray addObject:model.icon];
+        }
+        _titleArray = [NSArray arrayWithArray:tempArray];
+        _iconArray = [NSArray arrayWithArray:iconTempArray];
+    }
+    NSInteger height = (_titleArray.count / 4 + _titleArray.count % 4) * 75 + 10;
+    _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);
+    [_collectionView reloadData];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -95,6 +112,13 @@
     if (_type == 1) {
         if (indexPath.row == 0) {
             cell.icon.image = [UIImage imageNamed:@"capital_all"];
+        } else {
+            NSString *imageStr = [_iconArray[indexPath.row] stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
+            NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *icon = [UIImage imageWithData:imageData];
+            if (icon) {
+                cell.icon.image = icon;
+            }
         }
     } else {
         cell.icon.image = [UIImage imageNamed:_iconArray[indexPath.row]];

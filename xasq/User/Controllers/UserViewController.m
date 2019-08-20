@@ -80,7 +80,10 @@
     _tableView.tableHeaderView = _headerView;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserHideAnimation) name:DSSJTabBarSelectUserNotification object:nil];
 }
