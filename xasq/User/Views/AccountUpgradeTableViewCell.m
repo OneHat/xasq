@@ -8,6 +8,12 @@
 
 #import "AccountUpgradeTableViewCell.h"
 
+@interface AccountUpgradeTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIView *backgView;
+
+@end
+
 @implementation AccountUpgradeTableViewCell
 
 - (void)awakeFromNib {

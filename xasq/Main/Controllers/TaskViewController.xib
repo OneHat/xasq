@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController">
             <connections>
                 <outlet property="headerImageView" destination="RWn-ls-E6E" id="knk-1t-jKC"/>
+                <outlet property="nameLabel" destination="3RA-sd-9Te" id="xQC-Yo-3N8"/>
+                <outlet property="powerLabel" destination="yAv-rx-nej" id="RTk-0J-d9x"/>
                 <outlet property="signButton" destination="G6X-LG-dmd" id="rLS-MP-ctD"/>
                 <outlet property="signButtonWidth" destination="ihk-1l-4lc" id="nyj-WK-BYw"/>
                 <outlet property="signLabel" destination="aoC-hJ-AVL" id="xKJ-gC-zy6"/>

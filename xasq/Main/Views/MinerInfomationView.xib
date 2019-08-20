@@ -196,9 +196,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="currentLVLabel" destination="Wby-3q-OpP" id="x66-a0-M3I"/>
+                <outlet property="headerImageView" destination="SNj-mn-D1n" id="vc9-YR-yls"/>
                 <outlet property="leftLVLabel" destination="p4b-Oi-zFJ" id="rzY-oS-DRU"/>
                 <outlet property="leftView" destination="7Gy-e7-DyN" id="lTu-DT-CiK"/>
+                <outlet property="levelLabel" destination="Wby-3q-OpP" id="uOg-x1-rQp"/>
                 <outlet property="middleView" destination="ICC-5c-QMv" id="Nla-Jb-RLE"/>
+                <outlet property="nameLabel" destination="czC-2z-gaO" id="SJ7-jt-fey"/>
                 <outlet property="progressView" destination="GPC-sy-5Ty" id="ucL-CG-9aC"/>
                 <outlet property="progressViewWidth" destination="IVB-K8-aQp" id="UbW-OC-mOY"/>
                 <outlet property="rateLabel" destination="syS-z8-xJo" id="8hq-3b-eyq"/>
@@ -206,7 +209,7 @@
                 <outlet property="rightLVLabel" destination="bvV-G5-8dl" id="lWi-nG-cIM"/>
                 <outlet property="rightView" destination="QDb-2B-l35" id="L2c-tA-qJx"/>
             </connections>
-            <point key="canvasLocation" x="-739.13043478260875" y="9.375"/>
+            <point key="canvasLocation" x="-252" y="8"/>
         </view>
     </objects>
     <resources>

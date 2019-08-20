@@ -26,6 +26,7 @@ const CGFloat ViewWidth = 60;
     if (self) {
         
         self.frame = CGRectMake(frame.origin.x, frame.origin.y, ViewWidth, ViewWidth);
+        self.clipsToBounds = YES;
         
         [self loadSubViews];
     }
@@ -103,19 +104,8 @@ const CGFloat ViewWidth = 60;
 - (void)rewardClick:(UIButton *)sender {
     sender.enabled = NO;
     
-//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-//                                 @"bId":[NSString stringWithFormat:@"%ld",_rewardModel.ID]
-//                                 };
-//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-//        
-//        [self removeFromSuperview];
-//        
-//    } failure:^(NSError * _Nonnull error) {
-//        sender.enabled = YES;
-//    }];
-    
-    if (self.RewardTakeSuccess) {
-        self.RewardTakeSuccess();
+    if (self.RewardBallClick) {
+        self.RewardBallClick(_rewardModel.ID);
     }
 }
 

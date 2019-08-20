@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FriendMainViewController : UIViewController
 
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, assign) NSInteger userId;
 
 @end
 

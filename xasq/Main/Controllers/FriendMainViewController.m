@@ -8,6 +8,7 @@
 
 #import "FriendMainViewController.h"
 #import "HomeNewsViewCell.h"
+#import "RewardBallView.h"
 
 @interface FriendMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -59,6 +60,9 @@
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
+    
+//    [self getUserStepReward];
+    [self getUserPowerReward];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -123,14 +127,14 @@
 #pragma mark -
 ///用户步行奖励
 - (void)getUserStepReward {
-    if (self.userId) {
+    if (self.userId == 0) {
         return;
     }
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":self.userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
         
 //        [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//
-//        NSArray *dateList = data[@"data"];
+
+        NSArray *dateList = data[@"data"];
 //        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
 //            NSDictionary *stepReward = dateList.firstObject;
 //
@@ -147,51 +151,89 @@
 
 ///用户算力奖励
 - (void)getUserPowerReward {
-    if (!self.userId) {
+    if (self.userId == 0) {
         return;
     }
     
-    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":self.userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"];
         if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
             
-//            //清除可能存在的view
-//            [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//            for (UIView *view in self.scrollView.subviews) {
-//                if ([view isKindOfClass:[RewardBallView class]]) {
-//                    [view removeFromSuperview];
-//                }
-//            }
-//
-//            NSArray *rewards = [RewardModel modelWithArray:dateList];
-//
-//            //能量球
-//            NSInteger count = MIN(5, rewards.count);//个数
-//            CGFloat viewX = (ScreenWidth - 40 * count) * 0.5;
-//            for (int i = 0; i < count; i++) {
-//
-//                CGRect rect = CGRectMake(viewX + 40 * i, 150 + (arc4random() % 30) * pow(-1, i), 0, 0);
-//                RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rect];
-//                ballView.rewardModel = rewards[i];
-//                [self.scrollView addSubview:ballView];
-//
+            //清除可能存在的view
+            for (UIView *view in self.view.subviews) {
+                if ([view isKindOfClass:[RewardBallView class]]) {
+                    [view removeFromSuperview];
+                }
+            }
+
+            NSArray *rewards = [RewardModel modelWithArray:dateList];
+            //能量球
+            NSInteger count = MIN(5, rewards.count);//个数
+            NSMutableArray *frames = [self frameForRewardBallView:count];
+            
+            for (int i = 0; i < count; i++) {
+                NSValue *rectValue = frames[i];
+                
+                RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rectValue.CGRectValue];
+                ballView.rewardModel = rewards[i];
+                ballView.ballStyle = RewardBallViewStylePower;
+                [self.view addSubview:ballView];
+                
 //                __weak RewardBallView *weakBall = ballView;
-//                ballView.RewardTakeSuccess = ^{
-//
-//                    [UIView animateWithDuration:0.3 animations:^{
-//                        weakBall.bounds = CGRectMake(0, 0, 1, 1);
-//                        weakBall.center = self.userHeaderImageView.center;
-//                    } completion:^(BOOL finished) {
-//                        [weakBall removeFromSuperview];
-//                    }];
+//                ballView.RewardBallClick = ^(NSInteger rewardId) {
+//                    [self userTakeReward:rewardId ballView:weakBall];
 //                };
-//            }
+            }
             
         }
         
     } failure:^(NSError * _Nonnull error) {
     }];
 }
+
+- (NSMutableArray *)frameForRewardBallView:(NSInteger)count {
+    NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
+    CGFloat width = 60;
+    
+    for (int i = 0; i < count; i++) {
+        
+        CGFloat viewX = 20 + (arc4random() % 240);
+        CGFloat viewY = 44 + (arc4random() % 150);
+        
+        BOOL flag = NO;
+        CGRect rect = CGRectMake(viewX, viewY, width, width);
+        
+        do {
+            flag = NO;
+            
+            for (NSValue *temp in frames) {
+                CGRect tempRect = temp.CGRectValue;
+                
+                CGPoint center1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+                CGPoint center2 = CGPointMake(CGRectGetMidX(tempRect), CGRectGetMidY(tempRect));
+                
+                CGFloat distance = sqrt(pow(center1.x - center2.x, 2) + pow(center1.y - center2.y, 2));
+                if (distance < width) {
+                    flag = YES;
+                }
+            }
+            
+            if (flag) {
+                viewX = 20 + (arc4random() % 240);
+                viewY = 44 + (arc4random() % 150);
+                
+                rect = CGRectMake(viewX, viewY, width, width);
+                
+            } else {
+                [frames addObject:[NSValue valueWithCGRect:rect]];
+            }
+        } while (flag);
+        
+    }
+    
+    return frames;
+}
+
 
 @end

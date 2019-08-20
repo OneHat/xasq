@@ -8,17 +8,17 @@
 
 #import "HomeRankView.h"
 #import "SegmentedControl.h"
+#import "UserRankModel.h"
+#import "HomeRankViewCell.h"
 
-#import "HomeRankTableView.h"
-
-@interface HomeRankView ()<SegmentedControlDelegate,UIScrollViewDelegate>
+@interface HomeRankView ()<SegmentedControlDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) SegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) HomeRankTableView *powerRankView;//算力排行
-@property (nonatomic, strong) HomeRankTableView *levelRankView;//等级排行
-@property (nonatomic, strong) HomeRankTableView *inviteRankView;//邀请排行
+@property (nonatomic, strong) UITableView *powerRankView;//算力排行
+@property (nonatomic, strong) UITableView *levelRankView;//算力排行
+@property (nonatomic, strong) UITableView *inviteRankView;//算力排行
 
 ///算力排行数据、等级排行数据(是同一个数据)
 @property (nonatomic, strong) NSArray *powerRankDatas;//算力排行数据
@@ -28,30 +28,46 @@
 
 @end
 
+static NSString *HomeRankCellIdentifier = @"HomeRankCell";
+const CGFloat RowHeight = 55.0;
+
 @implementation HomeRankView
 
-- (HomeRankTableView *)powerRankView {
+- (UITableView *)powerRankView {
     if (!_powerRankView) {
-        _powerRankView = [[HomeRankTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0)];
+        _powerRankView = [self customerTableView];
         [_scrollView addSubview:_powerRankView];
     }
     return _powerRankView;
 }
 
-- (HomeRankTableView *)levelRankView {
+- (UITableView *)levelRankView {
     if (!_levelRankView) {
-        _levelRankView = [[HomeRankTableView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, 0)];
+        _levelRankView = [self customerTableView];
         [_scrollView addSubview:_levelRankView];
     }
     return _levelRankView;
 }
 
-- (HomeRankTableView *)inviteRankView {
+- (UITableView *)inviteRankView {
     if (!_inviteRankView) {
-        _inviteRankView = [[HomeRankTableView alloc] initWithFrame:CGRectMake(ScreenWidth * 2, 0, ScreenWidth, 0)];
+        _inviteRankView = [self customerTableView];
         [_scrollView addSubview:_inviteRankView];
     }
     return _inviteRankView;
+}
+
+- (UITableView *)customerTableView {
+    UITableView *tableView = [[UITableView alloc] init];
+    tableView.scrollEnabled = NO;
+    [tableView registerNib:[UINib nibWithNibName:@"HomeRankViewCell" bundle:nil]
+         forCellReuseIdentifier:HomeRankCellIdentifier];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.tableFooterView = [[UIView alloc] init];
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.rowHeight = RowHeight;
+    return tableView;
 }
 
 #pragma mark -
@@ -71,28 +87,80 @@
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
         
-//        [self getRankData];
+        [self getRankData];
     }
     return self;
+}
+
+#pragma mark-
+- (UIView *)footerView {
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, RowHeight * 1.5)];
+    footerView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *dotLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, RowHeight * 0.5)];
+    dotLabel.textAlignment = NSTextAlignmentCenter;
+    dotLabel.text = @"......";
+    [footerView addSubview:dotLabel];
+    
+    HomeRankViewCell *cell = [[NSBundle mainBundle] loadNibNamed:@"HomeRankViewCell" owner:self options:nil].firstObject;
+    cell.frame = CGRectMake(0, RowHeight * 0.5, ScreenWidth, RowHeight);
+    [footerView addSubview:cell];
+    
+    NSInteger currentIndex = self.segmentedControl.selectIndex;
+    if (currentIndex == 0) {
+        cell.cellStyle = HomeRankCellStylePower;
+        cell.rankInfo = self.powerRankDatas.lastObject;
+        
+    } else if (currentIndex == 1) {
+        cell.cellStyle = HomeRankCellStyleLevel;
+        cell.rankInfo = self.levelRankDatas.lastObject;
+        
+    } else if (currentIndex == 2) {
+        cell.cellStyle = HomeRankCellStyleInvite;
+        cell.rankInfo = self.inviteRankDatas.lastObject;
+    }
+    
+    return footerView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger currentIndex = self.segmentedControl.selectIndex;
+    if (currentIndex == 0) {
+        return self.powerRankDatas.count - 1;
+        
+    } else if (currentIndex == 1) {
+        return self.levelRankDatas.count - 1;
+        
+    } else if (currentIndex == 2) {
+        return self.inviteRankDatas.count - 1;
+    }
+    
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HomeRankViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeRankCellIdentifier];
+    
+    NSInteger currentIndex = self.segmentedControl.selectIndex;
+    if (currentIndex == 0) {
+        cell.cellStyle = HomeRankCellStylePower;
+        cell.rankInfo = self.powerRankDatas[indexPath.row];
+        
+    } else if (currentIndex == 1) {
+        cell.cellStyle = HomeRankCellStyleLevel;
+        cell.rankInfo = self.levelRankDatas[indexPath.row];
+        
+    } else if (currentIndex == 2) {
+        cell.cellStyle = HomeRankCellStyleInvite;
+        cell.rankInfo = self.inviteRankDatas[indexPath.row];
+    }
+    
+    return cell;
 }
 
 #pragma mark - 代理方法
 - (void)segmentedControlItemSelect:(NSInteger)index {
     [_scrollView setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:YES];
-    
-//    if (index == 0) {
-//        return;
-//    }
-//
-//    if (index == 1) {
-//
-//        return;
-//    }
-//
-//    if (index == 2) {
-//
-//        return;
-//    }
     
     [self resizeFrame];
 }
@@ -101,50 +169,75 @@
 - (void)getRankData {
     NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
     
-    [[NetworkManager sharedManager] postRequest:UserInviteAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"%@",data);
+    [[NetworkManager sharedManager] getRequest:UserInviteAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *dateList = data[@"data"][@"rows"];
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
+        
+        self.powerRankDatas = [UserRankModel modelWithArray:dateList];
+        self.levelRankDatas = self.powerRankDatas;
+        
+        [self resizeFrame];
         
     } failure:^(NSError * _Nonnull error){
         
     }];
     
-    [[NetworkManager sharedManager] postRequest:UserInviteCount parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"%@",data);
+    [[NetworkManager sharedManager] getRequest:UserInviteCount parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        NSArray *dateList = data[@"data"][@"rows"];
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
         
+        self.inviteRankDatas = [UserRankModel modelWithArray:dateList];
+
     } failure:^(NSError * _Nonnull error){
-        
+
     }];
-    
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        
-//        self.powerRankDatas = @[@"",@"",@"",@""];
-//        self.powerRankView.dataArray = self.powerRankDatas;
-//        
-//        self.levelRankDatas = @[@"",@"",@"",@"",@"",@"",@"",@""];
-//        self.levelRankView.dataArray = self.levelRankDatas;
-//
-//        self.inviteRankDatas = @[@"",@"",@"",@"",@"",@""];
-//        self.inviteRankView.dataArray = self.inviteRankDatas;
-//        
-//        [self resizeFrame];
-//    });
     
 }
 
 - (void)resizeFrame {
+    UserRankModel *lastModel;
     NSInteger currentIndex = self.segmentedControl.selectIndex;
     
-    CGFloat viewHeight = 0.0;
     if (currentIndex == 0) {
-        viewHeight = CGRectGetHeight(self.powerRankView.frame);
+        lastModel = self.powerRankDatas.lastObject;
         
     } else if (currentIndex == 1) {
-        viewHeight = CGRectGetHeight(self.levelRankView.frame);
+        lastModel = self.levelRankDatas.lastObject;
         
     } else if (currentIndex == 2) {
-        viewHeight = CGRectGetHeight(self.inviteRankView.frame);
+        lastModel = self.inviteRankDatas.lastObject;
         
+    }
+    
+    CGFloat viewHeight = 0.0;
+    if (lastModel.ranking > 10) {
+        //自己不在前10名，需要在底部显示
+        
+        viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
+        
+    } else {
+        viewHeight = (self.powerRankDatas.count - 1) * RowHeight;
+    }
+    
+    if (currentIndex == 0) {
+        self.powerRankView.frame = CGRectMake(0, 0, ScreenWidth, viewHeight);
+        self.powerRankView.tableFooterView = [self footerView];
+        [self.powerRankView reloadData];
+        
+    } else if (currentIndex == 1) {
+        self.levelRankView.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, viewHeight);
+        self.levelRankView.tableFooterView = [self footerView];
+        [self.levelRankView reloadData];
+        
+    } else if (currentIndex == 2) {
+        self.inviteRankView.frame = CGRectMake(ScreenWidth * 2, 0, ScreenWidth, viewHeight);
+        self.inviteRankView.tableFooterView = [self footerView];
+        [self.inviteRankView reloadData];
     }
     
     CGRect rect = self.frame;
@@ -165,5 +258,9 @@
     [self.segmentedControl.delegate segmentedControlItemSelect:page];
 }
 
+#pragma mark -
+- (void)reloadViewData {
+    [self resizeFrame];
+}
 
 @end

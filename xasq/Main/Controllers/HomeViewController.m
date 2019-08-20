@@ -23,7 +23,6 @@
 
 #import "ApplicationData.h"
 #import "BannerObject.h"
-#import "HomeBannerView.h"
 #import "UIViewController+ActionSheet.h"
 
 #import "UserStepManager.h"
@@ -37,13 +36,16 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageTop;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
 @property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
 @property (weak, nonatomic) IBOutlet UIView *bannerBackView;//广告view
 @property (nonatomic, strong) HomeBannerView *bannerView;
 
-@property (weak, nonatomic) IBOutlet UIView *rankView;//排行View
-@property (weak, nonatomic) IBOutlet UIView *stepRewardView;
+@property (weak, nonatomic) IBOutlet UIView *rankBackView;//排行View
+@property (strong, nonatomic) HomeRankView *rankView;//排行View
 
+@property (weak, nonatomic) IBOutlet UIView *stepRewardView;
 @property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
 
@@ -92,7 +94,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
-        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
     if (IphoneX) {
@@ -106,22 +108,22 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
                            @{@"content":@"3 赚钱啦",@"time":@"3分钟之前"},
                            @{@"content":@"4 哟哟",@"time":@"3分钟之前"},
                            @{@"content":@"5 被偷啦",@"time":@"3分钟之前"}];
-    [_newsView addSubview:newsView];
+    [self.newsView addSubview:newsView];
     
     //广告banner
-    _bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
-    [_bannerBackView addSubview:_bannerView];
-    _bannerViewHeight.constant = 0.0;
+    self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    [self.bannerBackView addSubview:_bannerView];
+    self.bannerViewHeight.constant = 0.0;
     
     NSArray *cacheBannerList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeBannerADCacheKey];
     NSArray *bannerList = [BannerObject modelWithArray:cacheBannerList];
     if (bannerList.count > 0) {
-        _bannerViewHeight.constant = 100.0;
-        _bannerView.imageArray = bannerList;
+        self.bannerViewHeight.constant = 100.0;
+        self.bannerView.imageArray = bannerList;
     }
     
     WeakObject
-    _bannerView.ImageClickBlock = ^(NSString * _Nonnull linkPath) {
+    self.bannerView.ImageClickBlock = ^(NSString * _Nonnull linkPath) {
         WebViewController *webVC = [[WebViewController alloc] init];
         webVC.urlString = linkPath;
         webVC.hidesBottomBarWhenPushed = YES;
@@ -129,11 +131,11 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     };
     
     //排行
-    HomeRankView *rankView = [[HomeRankView alloc] initWithFrame:_rankView.bounds];
-    rankView.HomeRankDataComplete = ^(CGFloat viewHeight) {
-        self.rankViewHeight.constant = viewHeight;
+    self.rankView = [[HomeRankView alloc] initWithFrame:self.rankBackView.bounds];
+    self.rankView.HomeRankDataComplete = ^(CGFloat viewHeight) {
+        weakSelf.rankViewHeight.constant = viewHeight;
     };
-    [_rankView addSubview:rankView];
+    [self.rankBackView addSubview:self.rankView];
     
     //获取banner
     [self getHomeBannerData];
@@ -239,80 +241,81 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"];
-        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-            
-            //清除可能存在的view
-            
-            for (UIView *view in self.scrollView.subviews) {
-                if ([view isKindOfClass:[RewardBallView class]]) {
-                    [view removeFromSuperview];
-                }
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
+        
+        //清除可能存在的view
+        for (UIView *view in self.topView.subviews) {
+            if ([view isKindOfClass:[RewardBallView class]]) {
+                [view removeFromSuperview];
             }
+        }
+        
+        NSArray *rewards = [RewardModel modelWithArray:dateList];
+        //能量球
+        NSInteger count = MIN(5, rewards.count);//个数
+        NSMutableArray *frames = [self frameForRewardBallView:count];
+        
+        for (int i = 0; i < count; i++) {
+            NSValue *rectValue = frames[i];
             
-            NSArray *rewards = [RewardModel modelWithArray:dateList];
+            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rectValue.CGRectValue];
+            ballView.rewardModel = rewards[i];
+            ballView.ballStyle = RewardBallViewStylePower;
+            [self.topView insertSubview:ballView belowSubview:self.userHeaderImageView];
             
-            //能量球
-            NSMutableArray *frames = [NSMutableArray arrayWithCapacity:rewards.count];
-            
-            CGFloat width = 60;
-            NSInteger count = MIN(5, rewards.count);//个数
-            
-            for (int i = 0; i < count; i++) {
-                
-                CGFloat viewX = 10 + (arc4random() % 240);
-                CGFloat viewY = 90 + (arc4random() % 100);
-                
-                BOOL flag = NO;
-                CGRect rect = CGRectMake(viewX, viewY, width, width);
-                
-                do {
-                    flag = NO;
-                    
-                    for (NSValue *temp in frames) {
-                        CGRect tempRect = temp.CGRectValue;
-                        
-                        CGPoint center1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-                        CGPoint center2 = CGPointMake(CGRectGetMidX(tempRect), CGRectGetMidY(tempRect));
-                        
-                        CGFloat distance = sqrt(pow(center1.x - center2.x, 2) + pow(center1.y - center2.y, 2));
-                        if (distance < 60) {
-                            flag = YES;
-                        }
-                        
-                    }
-                    
-                    if (flag) {
-                        viewX = 20 + (arc4random() % 240);
-                        viewY = 90 + (arc4random() % 100);
-                        
-                        rect = CGRectMake(viewX, viewY, width, width);
-                        
-                    } else {
-                        [frames addObject:[NSValue valueWithCGRect:rect]];
-                    }
-                } while (flag);
-                
-                RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rect];
-                ballView.rewardModel = rewards[i];
-                ballView.ballStyle = RewardBallViewStylePower;
-                [self.scrollView addSubview:ballView];
-                
-                __weak RewardBallView *weakBall = ballView;
-                ballView.RewardTakeSuccess = ^{
-                    
-                    [UIView animateWithDuration:0.3 animations:^{
-                        weakBall.bounds = CGRectMake(0, 0, 1, 1);
-                        weakBall.center = self.userHeaderImageView.center;
-                    } completion:^(BOOL finished) {
-                        [weakBall removeFromSuperview];
-                    }];
-                };
-            }
-            
+            __weak RewardBallView *weakBall = ballView;
+            ballView.RewardBallClick = ^(NSInteger rewardId) {
+                [self userTakeReward:rewardId ballView:weakBall];
+            };
         }
         
     } failure:^(NSError * _Nonnull error) {
     }];
+}
+
+- (NSMutableArray *)frameForRewardBallView:(NSInteger)count {
+    NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
+    CGFloat width = 60;
+    
+    for (int i = 0; i < count; i++) {
+        
+        CGFloat viewX = 10 + (arc4random() % 240);
+        CGFloat viewY = 90 + (arc4random() % 100);
+        
+        BOOL flag = NO;
+        CGRect rect = CGRectMake(viewX, viewY, width, width);
+        
+        do {
+            flag = NO;
+            
+            for (NSValue *temp in frames) {
+                CGRect tempRect = temp.CGRectValue;
+                
+                CGPoint center1 = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+                CGPoint center2 = CGPointMake(CGRectGetMidX(tempRect), CGRectGetMidY(tempRect));
+                
+                CGFloat distance = sqrt(pow(center1.x - center2.x, 2) + pow(center1.y - center2.y, 2));
+                if (distance < width) {
+                    flag = YES;
+                }
+            }
+            
+            if (flag) {
+                viewX = 20 + (arc4random() % 240);
+                viewY = 90 + (arc4random() % 100);
+                
+                rect = CGRectMake(viewX, viewY, width, width);
+                
+            } else {
+                [frames addObject:[NSValue valueWithCGRect:rect]];
+            }
+        } while (flag);
+        
+    }
+    
+    return frames;
 }
 
 ///上传用户步数
@@ -326,6 +329,29 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     [[NetworkManager sharedManager] postRequest:UserSyncWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
     } failure:^(NSError * _Nonnull error) {
     }];
+}
+
+///用户收取奖励
+- (void)userTakeReward:(NSInteger)rewardId ballView:(RewardBallView *)ballView {
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        CGPoint p = self.userHeaderImageView.center;
+        CGAffineTransform t = CGAffineTransformMakeTranslation(p.x - ballView.center.x, p.y - ballView.center.y);
+        ballView.transform = CGAffineTransformScale(t, 0.1, 0.1);
+        
+    } completion:^(BOOL finished) {
+        [ballView removeFromSuperview];
+    }];
+    
+    
+//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
+//                                 @"bId":[NSString stringWithFormat:@"%ld",rewardId]
+//                                 };
+//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+//
+//    } failure:^(NSError * _Nonnull error) {
+//    }];
 }
 
 #pragma mark - 本页面按钮事件
@@ -429,6 +455,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 }
 
 - (void)reloadHomeView {
+    [self.rankView reloadViewData];
     
     if ([UserDataManager shareManager].userId) {
         //已经登录
@@ -441,24 +468,24 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         self.powerLabel.hidden = NO;
         
         self.nicknameLabel.text = [UserDataManager shareManager].usermodel.nickName;
-        
-        
-    } else {
-        //尚未登录
-        [self.newsView addSubview:self.unLoginNewsMaskView];
-        
-        self.nicknameLabel.text = @"请登录";
-        
-        self.userLevelImageView.hidden = YES;
-        self.userLevelLabel.hidden = YES;
-        self.powerImageView.hidden = YES;
-        self.powerLabel.hidden = YES;
-        
-        [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        for (UIView *view in self.scrollView.subviews) {
-            if ([view isKindOfClass:[RewardBallView class]]) {
-                [view removeFromSuperview];
-            }
+        self.userLevelLabel.text = [UserDataManager shareManager].usermodel.level;
+        return;
+    }
+    
+    //尚未登录
+    [self.newsView addSubview:self.unLoginNewsMaskView];
+    
+    self.nicknameLabel.text = @"请登录";
+    
+    self.userLevelImageView.hidden = YES;
+    self.userLevelLabel.hidden = YES;
+    self.powerImageView.hidden = YES;
+    self.powerLabel.hidden = YES;
+    
+    [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (UIView *view in self.topView.subviews) {
+        if ([view isKindOfClass:[RewardBallView class]]) {
+            [view removeFromSuperview];
         }
     }
 }

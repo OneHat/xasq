@@ -37,7 +37,6 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     self.tableView.sectionFooterHeight = 0;
     [self.view addSubview:self.tableView];
     
-    [self initRightBtnWithTitle:@"只看好友" color:ThemeColorBlue];
 }
 
 #pragma mark-

@@ -21,7 +21,7 @@ typedef void(^RefreshBlock)(void);
 
 @interface UIView (Empty)
 
-///
+///block 回调可以为空
 - (void)showEmptyView:(EmptyViewReason)reason refreshBlock:(nullable RefreshBlock)block;
 
 - (void)hideEmptyView;

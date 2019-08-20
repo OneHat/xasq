@@ -61,6 +61,8 @@
     UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
         [[UserDataManager shareManager] deleteLoginStatus];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
         NSArray *VCArr = self.navigationController.viewControllers;
         UIViewController *topVC = VCArr.firstObject;
         UITabBarController *tabbarVC = topVC.tabBarController;

@@ -10,6 +10,7 @@
 
 @interface FriendsRankViewCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *rankLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -25,13 +26,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.lineView.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
+}
 
-    // Configure the view for the selected state
+- (void)setFriendInfo:(UserRankModel *)friendInfo {
+    _friendInfo = friendInfo;
+    
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.ranking];
+    
+    self.nameLabel.text = _friendInfo.nickName;
+    self.typeLabel.text = _friendInfo.countryName;
+    self.powNumberLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.power];
 }
 
 @end

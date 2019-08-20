@@ -105,6 +105,7 @@
                 <outlet property="lineView" destination="Mgf-Nv-axT" id="TWP-t2-qKo"/>
                 <outlet property="nameLabel" destination="g4k-Wp-ze0" id="8dQ-Du-bkS"/>
                 <outlet property="powNumberLabel" destination="adR-WN-zUp" id="LnW-aG-o8h"/>
+                <outlet property="rankLabel" destination="M90-XS-fqb" id="LBF-zu-Psl"/>
                 <outlet property="typeLabel" destination="Dfh-it-r5v" id="SXI-e0-oDx"/>
             </connections>
             <point key="canvasLocation" x="-114.49275362318842" y="155.69196428571428"/>
