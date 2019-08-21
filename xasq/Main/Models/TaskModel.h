@@ -12,28 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TaskModel : NSObject
 
-
-//beginTime = "";
-//code = chongfu1;
-//comments = "";
-//createdOn = "";
-//currencyCode = "";
-//endTime = "";
-//id = 1;
-//maxPower = "";
-//maxQuantity = "";
-//minPower = "";
-//minQuantity = "";
-//name = "\U91cd\U590d\U4efb\U52a1";
-//power = 20;
-//quantity = "";
-//randomPower = "";
-//randomQuantity = "";
-//status = 0;
-//type = 0;
-//unit = 1;
-
-
 @property (nonatomic, assign) NSInteger ID;
 ///活动名称
 @property (nonatomic, strong) NSString *name;
@@ -68,12 +46,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger randomQuantity;
 
 ///奖励币种数量
-@property (nonatomic, strong) NSDecimalNumber *quantity;
-//@property (nonatomic, strong) NSString *quantity;
+@property (nonatomic, strong) NSNumber *quantity;
+
 ///最小奖励数量
-@property (nonatomic, strong) NSDecimalNumber *minQuantity;
+@property (nonatomic, strong) NSNumber *minQuantity;
 ///最大奖励数量
-@property (nonatomic, strong) NSDecimalNumber *maxQuantity;
+@property (nonatomic, strong) NSNumber *maxQuantity;
 
 ///是否完成
 @property (nonatomic, assign) BOOL finished;

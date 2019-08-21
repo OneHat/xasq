@@ -49,6 +49,8 @@
 - (void)setInviteInfo:(NSDictionary *)inviteInfo {
     _inviteInfo = inviteInfo;
     
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_inviteInfo[@"headImg"]]];
+    
     self.nameLabel.text = inviteInfo[@"nickName"];
     self.timeLabel.text = inviteInfo[@"bindTime"];
     

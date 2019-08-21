@@ -161,13 +161,13 @@ const NSTimeInterval xasqTimeoutInterval = 30;
     if ([path hasPrefix:@"user"]) {
         urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlUser,path];
         
-    } else if ([path hasPrefix:@"operation"]) {
+    } else if ([path hasPrefix:@"oper"]) {
         urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlOperation,path];
         
-    } else if ([path hasPrefix:@"community"]) {
+    } else if ([path hasPrefix:@"comm"]) {
         urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlCommunity,path];
         
-    } else if ([path hasPrefix:@"message"]) {
+    } else if ([path hasPrefix:@"msg"]) {
         urlString = [NSString stringWithFormat:@"%@%@",xasqBaseUrlMessage,path];
         
     }
