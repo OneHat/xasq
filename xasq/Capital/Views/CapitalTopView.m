@@ -145,7 +145,7 @@ NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatu
         _capitalLabel.text = @"***";
         _moneyLabel.text = @"***";
     } else {
-        _capitalLabel.text = [NSString stringWithFormat:@"%@ BTC",_BTCStr];
+        _capitalLabel.text = [NSString stringWithFormat:@"%@",_BTCStr];
         _moneyLabel.text = [NSString stringWithFormat:@"≈ ¥%@",_moneyStr];;
     }
     

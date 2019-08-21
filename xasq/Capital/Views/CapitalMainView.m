@@ -68,7 +68,7 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 - (void)setTotalAssets:(NSDictionary *)dict {
-    _topView.BTCStr = [NSString stringWithFormat:@"%@",dict[@"toBTCSum"]];
+    _topView.BTCStr = [NSString stringWithFormat:@"%@ BTC",dict[@"toBTCSum"]];
     _topView.moneyStr = [NSString stringWithFormat:@"%@",dict[@"toCNYSum"]];
 }
 

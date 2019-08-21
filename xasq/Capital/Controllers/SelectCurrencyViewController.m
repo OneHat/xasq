@@ -8,7 +8,6 @@
 
 #import "SelectCurrencyViewController.h"
 #import "SelectCurrencyTableViewCell.h"
-#import "CapitalModel.h"
 
 @interface SelectCurrencyViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -91,7 +90,13 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CapitalModel *model = _dataArray[indexPath.row];
+    if (_CapitalModelBlock) {
+        _CapitalModelBlock(model);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
 /*
 #pragma mark - Navigation
 

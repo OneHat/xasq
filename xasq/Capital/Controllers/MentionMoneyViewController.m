@@ -16,6 +16,11 @@
 @interface MentionMoneyViewController () <XLPasswordViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
+@property (weak, nonatomic) IBOutlet UILabel *currencyLB; // 币种名称
+@property (weak, nonatomic) IBOutlet UIImageView *currencyImageV; // 币种图标
+@property (weak, nonatomic) IBOutlet UITextField *amountTF; // 金额
+@property (weak, nonatomic) IBOutlet UILabel *amountLB; // 当前币种余额
+
 
 @end
 
@@ -39,15 +44,26 @@
     [super viewWillDisappear:animated];
 //    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
+#pragma mark - 全部转入
+- (IBAction)allAmountBtnClick:(UIButton *)sender {
+    if (![_amountLB.text isEqualToString:@"--"]) {
+        _amountTF.text = _amountLB.text;
+    }
+}
 
 #pragma mark - 选择币种
 - (IBAction)selectCurrency:(UIButton *)sender {
+    WeakObject;
     SelectCurrencyViewController *VC = [[SelectCurrencyViewController alloc] init];
+    VC.CapitalModelBlock = ^(CapitalModel * _Nonnull model) {
+        weakSelf.currencyLB.text = model.currency;
+        weakSelf.amountLB.text = model.amount;
+    };
     [self.navigationController pushViewController:VC animated:YES];
 }
 #pragma mark - 收款账户
 - (IBAction)proceedAccount:(UIButton *)sender {
-    [self actionSheetWithItems:@[@"币币账户", @"币币账户", @"币币账户"] complete:^(NSInteger index) {
+    [self actionSheetWithItems:@[@"币币账户"] complete:^(NSInteger index) {
         if (index == 0) {
             
         } else {

@@ -185,7 +185,7 @@
     CapitalModel *model = _dataArray[index];
     //某一币种
     CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
-    kindVC.titleStr = model.currency;
+    kindVC.model = model;
     kindVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:kindVC animated:YES];
 }

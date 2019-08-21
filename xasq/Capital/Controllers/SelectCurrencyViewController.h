@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CapitalModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectCurrencyViewController : UIViewController
+
+@property (nonatomic, copy) void (^CapitalModelBlock)(CapitalModel *model);
+
 
 @end
 

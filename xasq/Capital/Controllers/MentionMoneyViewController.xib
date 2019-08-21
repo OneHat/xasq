@@ -12,7 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MentionMoneyViewController">
             <connections>
+                <outlet property="amountLB" destination="sFp-U6-pxS" id="IOF-LP-NVh"/>
+                <outlet property="amountTF" destination="4hD-xV-FvB" id="n76-Eg-DWU"/>
                 <outlet property="confirmBtn" destination="Ro9-PJ-eHZ" id="zhv-Tn-DL3"/>
+                <outlet property="currencyImageV" destination="3JS-WP-rmG" id="5WV-KQ-3Co"/>
+                <outlet property="currencyLB" destination="w1V-gY-llv" id="MFv-3X-X0N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,14 +54,14 @@
                                 <constraint firstAttribute="width" constant="9" id="vwP-tZ-Mev"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1V-gY-llv">
-                            <rect key="frame" x="340" y="0.0" width="29" height="50"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="币种" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1V-gY-llv">
+                            <rect key="frame" x="338" y="0.0" width="31" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="currency_btc" translatesAutoresizingMaskIntoConstraints="NO" id="3JS-WP-rmG">
-                            <rect key="frame" x="305" y="12.5" width="25" height="25"/>
+                            <rect key="frame" x="303" y="12.5" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="iiX-K7-h6E"/>
                                 <constraint firstAttribute="height" constant="25" id="tAh-nD-CAd"/>
@@ -177,8 +181,8 @@
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0045" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFp-U6-pxS">
-                    <rect key="frame" x="87" y="295" width="43.5" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFp-U6-pxS">
+                    <rect key="frame" x="87" y="295" width="12.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="aAh-Ff-KO6"/>
                     </constraints>
@@ -196,6 +200,9 @@
                     <state key="normal" title="全部">
                         <color key="titleColor" red="0.14901960784313725" green="0.53333333333333333" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="allAmountBtnClick:" destination="-1" eventType="touchUpInside" id="OO2-ce-IdJ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro9-PJ-eHZ">
                     <rect key="frame" x="15" y="355" width="384" height="45"/>
