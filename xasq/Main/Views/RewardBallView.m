@@ -107,7 +107,7 @@ const CGFloat ViewWidth = 60;
     sender.enabled = NO;
     
     if (self.RewardBallClick) {
-        self.RewardBallClick(_rewardModel.ID);
+        self.RewardBallClick(_rewardModel.ID,self);
     }
 }
 

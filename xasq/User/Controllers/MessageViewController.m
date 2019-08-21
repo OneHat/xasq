@@ -1,24 +1,24 @@
 //
-//  messageInformViewController.m
+//  MessageViewController.m
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/8/2.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "messageInformViewController.h"
+#import "MessageViewController.h"
 #import "AssetDynamicTableViewCell.h"
 #import "AccountUpgradeTableViewCell.h"
 #import "CommunityDynamicTableViewCell.h"
 
-@interface messageInformViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MessageViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *messages;
 
 @end
 
-@implementation messageInformViewController
+@implementation MessageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,10 +33,12 @@
     _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    
     NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,@"pageNo":@"0",@"pageSize":@"10"};
     [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
         

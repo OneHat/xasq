@@ -1,5 +1,5 @@
 //
-//  messageInformViewController.h
+//  MessageViewController.h
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/8/2.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface messageInformViewController : UIViewController
+@interface MessageViewController : UIViewController
 
 @end
 

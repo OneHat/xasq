@@ -14,7 +14,7 @@
 #import "LoginViewController.h"
 #import "InviteFriendViewController.h"
 #import "WebViewController.h"
-#import "messageInformViewController.h"
+#import "MessageViewController.h"
 
 #import "HomeNewsView.h"
 #import "HomeBannerView.h"
@@ -233,6 +233,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
             ballView.rewardModel = model;
             ballView.ballStyle = RewardBallViewStyleStep;
+            
+            __weak RewardBallView *weakBall = ballView;
+            ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
+                [self userTakeReward:rewardId ballView:weakBall];
+            };
             [self.stepRewardView addSubview:ballView];
         }
         
@@ -274,7 +279,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             [self.topView insertSubview:ballView belowSubview:self.userHeaderImageView];
             
             __weak RewardBallView *weakBall = ballView;
-            ballView.RewardBallClick = ^(NSInteger rewardId) {
+            ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
                 [self userTakeReward:rewardId ballView:weakBall];
             };
         }
@@ -332,8 +337,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
+//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
+//                                 @"userWalk":[NSString stringWithFormat:@"%ld",steps]};
     NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-                                 @"userWalk":[NSString stringWithFormat:@"%ld",steps]};
+                                 @"userWalk":[NSString stringWithFormat:@"%d",6666]};
     [[NetworkManager sharedManager] postRequest:UserSyncWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -388,7 +395,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
-    messageInformViewController *messageVC = [[messageInformViewController alloc] init];
+    MessageViewController *messageVC = [[MessageViewController alloc] init];
     messageVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:messageVC animated:YES];
 }

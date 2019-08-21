@@ -17,7 +17,7 @@
 #import "LoginViewController.h"
 #import "confirmViewController.h"
 #import "UserHeaderView.h"
-#import "messageInformViewController.h"
+#import "MessageViewController.h"
 #import "FriendsViewController.h"
 #import "TaskViewController.h"
 
@@ -54,7 +54,7 @@
     };
     _headerView.messageBtnBlock = ^{
         // 消息通知界面
-        messageInformViewController *VC = [[messageInformViewController alloc] init];
+        MessageViewController *VC = [[MessageViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:VC animated:YES];
     };

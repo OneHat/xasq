@@ -97,7 +97,7 @@
 		C45F26C6230B9F88004E34F0 /* UserRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F26C5230B9F88004E34F0 /* UserRankModel.m */; };
 		C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = C496217F23042C810086A959 /* TaskRecordViewCell.xib */; };
 		C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4739CA42306BE8100042DF2 /* FriendMainViewController.m */; };
-		C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* messageInformViewController.m */; };
+		C473B91322F3FD100013E77D /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* MessageViewController.m */; };
 		C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */; };
 		C473B91822F400D50013E77D /* AssetDynamicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */; };
 		C473B91C22F40A1F0013E77D /* AccountUpgradeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91A22F40A1F0013E77D /* AccountUpgradeTableViewCell.m */; };
@@ -346,8 +346,8 @@
 		C45F26C5230B9F88004E34F0 /* UserRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRankModel.m; sourceTree = "<group>"; };
 		C4739CA32306BE8100042DF2 /* FriendMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendMainViewController.h; sourceTree = "<group>"; };
 		C4739CA42306BE8100042DF2 /* FriendMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendMainViewController.m; sourceTree = "<group>"; };
-		C473B91122F3FD100013E77D /* messageInformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messageInformViewController.h; sourceTree = "<group>"; };
-		C473B91222F3FD100013E77D /* messageInformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageInformViewController.m; sourceTree = "<group>"; };
+		C473B91122F3FD100013E77D /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		C473B91222F3FD100013E77D /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		C473B91422F400D50013E77D /* AssetDynamicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetDynamicTableViewCell.h; sourceTree = "<group>"; };
 		C473B91522F400D50013E77D /* AssetDynamicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetDynamicTableViewCell.m; sourceTree = "<group>"; };
 		C473B91622F400D50013E77D /* AssetDynamicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetDynamicTableViewCell.xib; sourceTree = "<group>"; };
@@ -1081,8 +1081,8 @@
 				C41B127A22F2B55400375560 /* PayAndLoginPasswordViewController.h */,
 				C41B127B22F2B55400375560 /* PayAndLoginPasswordViewController.m */,
 				C41B127C22F2B55400375560 /* PayAndLoginPasswordViewController.xib */,
-				C473B91122F3FD100013E77D /* messageInformViewController.h */,
-				C473B91222F3FD100013E77D /* messageInformViewController.m */,
+				C473B91122F3FD100013E77D /* MessageViewController.h */,
+				C473B91222F3FD100013E77D /* MessageViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1383,7 +1383,7 @@
 			files = (
 				C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */,
 				C43B6C0C22FAD21100312286 /* CapitalSegmentedControl.m in Sources */,
-				C473B91322F3FD100013E77D /* messageInformViewController.m in Sources */,
+				C473B91322F3FD100013E77D /* MessageViewController.m in Sources */,
 				C4A1EE9B22F03C2E00A1DE8C /* UIView+Empty.m in Sources */,
 				C43B6BC622F92AE400312286 /* HomeRankViewCell.m in Sources */,
 				C43B6BF822FA7D6A00312286 /* InviteHistoryViewCell.m in Sources */,

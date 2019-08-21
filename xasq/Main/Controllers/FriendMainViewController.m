@@ -15,6 +15,12 @@
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) UITableView *tableView;
 
+@property (nonatomic, strong) NSMutableArray *titles;
+@property (nonatomic, strong) NSMutableDictionary *newsDictionary;
+
+@property (nonatomic, strong) RewardModel *stepReward;
+@property (nonatomic, strong) NSArray *powRewardArray;
+
 @end
 
 @implementation FriendMainViewController
@@ -60,16 +66,17 @@
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
+    self.titles = [NSMutableArray array];
+    self.newsDictionary = [NSMutableDictionary dictionary];
     
-//    [self getUserStepReward];
-    [self getUserPowerReward];
+    [self getUserMessageInfo];
+    [self getUserRewrad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -100,15 +107,25 @@
 
 #pragma mark -
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return self.titles.count;
 }
     
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    NSArray *array = self.newsDictionary[self.titles[section]];
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeNewsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsViewCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSString *key = self.titles[indexPath.section];
+    NSArray *array = self.newsDictionary[key];
+    
+    UserNewsModel *model = array[indexPath.row];
+    
+    cell.newsModel = model;
+    
     return cell;
 }
 
@@ -117,7 +134,7 @@
     headerView.backgroundColor = [UIColor whiteColor];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth, 30)];
-    titleLabel.text = @"昨天";
+    titleLabel.text = self.titles[section];
     [headerView addSubview:titleLabel];
     
     return headerView;
@@ -125,71 +142,149 @@
 
 
 #pragma mark -
-///用户步行奖励
-- (void)getUserStepReward {
+- (void)getUserRewrad {
     if (self.userId == 0) {
         return;
     }
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+    
+    ////////
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_group_enter(group);
+    dispatch_group_async(group, queue, ^{
         
-//        [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+            dispatch_group_leave(group);
+            
+            NSArray *dateList = data[@"data"];
+            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+                
+                self.powRewardArray = [RewardModel modelWithArray:dateList];
+            }
+            
+        } failure:^(NSError * _Nonnull error) {
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    dispatch_group_enter(group);
+    dispatch_group_async(group, queue, ^{
+        [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+            dispatch_group_leave(group);
+            NSArray *dateList = data[@"data"];
+            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+                NSDictionary *stepReward = dateList.firstObject;
+                
+                self.stepReward = [RewardModel modelWithDictionary:stepReward];
+            }
+            
+        } failure:^(NSError * _Nonnull error) {
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    ////////////
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self loadRewardView];
+    });
+    
+}
 
+- (void)getUserMessageInfo {
+    NSDictionary *parameters = @{@"outUserId":@(100),@"pageNo":@"0",@"pageSize":@"10"};
+    
+    [[NetworkManager sharedManager] getRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        
         NSArray *dateList = data[@"data"];
-//        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-//            NSDictionary *stepReward = dateList.firstObject;
-//
-//            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
-//
-//            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
-//            ballView.rewardModel = model;
-//            [self.stepRewardView addSubview:ballView];
-//        }
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
+        
+        [self handleData:dateList];
+        [self.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
     }];
 }
 
-///用户算力奖励
-- (void)getUserPowerReward {
-    if (self.userId == 0) {
-        return;
-    }
+//处理数据，分组
+- (void)handleData:(NSArray *)array {
+    NSArray *originalArray = [UserNewsModel modelWithArray:array];
     
-    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
-        
-        NSArray *dateList = data[@"data"];
-        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-            
-            //清除可能存在的view
-            for (UIView *view in self.view.subviews) {
-                if ([view isKindOfClass:[RewardBallView class]]) {
-                    [view removeFromSuperview];
-                }
-            }
-
-            NSArray *rewards = [RewardModel modelWithArray:dateList];
-            //能量球
-            NSInteger count = MIN(5, rewards.count);//个数
-            NSMutableArray *frames = [self frameForRewardBallView:count];
-            
-            for (int i = 0; i < count; i++) {
-                NSValue *rectValue = frames[i];
-                
-                RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rectValue.CGRectValue];
-                ballView.rewardModel = rewards[i];
-                ballView.ballStyle = RewardBallViewStylePower;
-                [self.view addSubview:ballView];
-                
-//                __weak RewardBallView *weakBall = ballView;
-//                ballView.RewardBallClick = ^(NSInteger rewardId) {
-//                    [self userTakeReward:rewardId ballView:weakBall];
-//                };
-            }
-            
+    for (UserNewsModel *model in originalArray) {
+        NSString *key = self.titles.lastObject;
+        if (![key isEqualToString:model.showDate]) {
+            key = model.showDate;
+            [self.titles addObject:key];
         }
+        
+        NSMutableArray *temp = self.newsDictionary[key];
+        if (!temp) {
+            temp = [NSMutableArray array];
+            [self.newsDictionary setObject:temp forKey:key];
+        }
+        
+        [temp addObject:model];
+    }
+}
+
+//
+- (void)stealCurrency:(NSInteger)ID ballView:(RewardBallView *)ballView {
+    
+    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId)};
+    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        
+        NSLog(@"%@",data);
+        
+//        NSArray *dateList = data[@"data"];
+        //        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+        //            NSDictionary *stepReward = dateList.firstObject;
+        //
+        //            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
+        //
+        //            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
+        //            ballView.rewardModel = model;
+        //            [self.stepRewardView addSubview:ballView];
+        //        }
+        
+        
         
     } failure:^(NSError * _Nonnull error) {
     }];
+}
+
+#pragma mark -
+- (void)loadRewardView {
+    //            //清除可能存在的view
+    //            for (UIView *view in self.headerView.subviews) {
+    //                if ([view isKindOfClass:[RewardBallView class]]) {
+    //                    [view removeFromSuperview];
+    //                }
+    //            }
+    //
+    
+    NSMutableArray *rewards = [NSMutableArray arrayWithArray:self.powRewardArray];
+    if (self.stepReward) {
+        [rewards addObject:self.stepReward];
+    }
+    
+    //能量球
+    NSInteger count = MIN(5, rewards.count);//个数
+    NSMutableArray *frames = [self frameForRewardBallView:count];
+    
+    for (int i = 0; i < count; i++) {
+        NSValue *rectValue = frames[i];
+        
+        RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rectValue.CGRectValue];
+        ballView.rewardModel = rewards[i];
+        ballView.ballStyle = RewardBallViewStylePower;
+        [self.headerView addSubview:ballView];
+        
+        ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
+            [self stealCurrency:rewardId ballView:ballView];
+        };
+    }
 }
 
 - (NSMutableArray *)frameForRewardBallView:(NSInteger)count {
