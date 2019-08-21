@@ -54,6 +54,8 @@
     self.nameLabel.text = inviteInfo[@"nickName"];
     self.timeLabel.text = inviteInfo[@"bindTime"];
     
+    self.powerNumberLabel.text = [inviteInfo[@"awardPower"] stringValue];
+    
 //    self.timeLabel.text = inviteInfo[@"bindTime"];
     
     //        awardPower = 50;

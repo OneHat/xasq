@@ -119,6 +119,7 @@
 		C49621792303E8200086A959 /* ChangePhoneAndEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49621772303E8200086A959 /* ChangePhoneAndEmailViewController.xib */; };
 		C496217C23042C5C0086A959 /* TaskRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C496217B23042C5C0086A959 /* TaskRecordViewController.m */; };
 		C496218023042C810086A959 /* TaskRecordViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C496217E23042C810086A959 /* TaskRecordViewCell.m */; };
+		C4998E01230CEBA00042FB0C /* UserNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4998E00230CEBA00042FB0C /* UserNewsModel.m */; };
 		C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */; };
 		C4A1EE8B22EFE7F000A1DE8C /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EE8A22EFE7F000A1DE8C /* ContactsViewController.m */; };
 		C4A1EE8D22EFEE3400A1DE8C /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A1EE8C22EFEE3400A1DE8C /* ContactsViewController.xib */; };
@@ -127,7 +128,7 @@
 		C4A1EEAC22F166A200A1DE8C /* HomeNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEAB22F166A200A1DE8C /* HomeNewsView.m */; };
 		C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A1EEB722F194D600A1DE8C /* NSString+Size.m */; };
 		C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD223014D86007C1137 /* BannerObject.m */; };
-		C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaObject.m */; };
+		C4B9FCD623017C85007C1137 /* MiningAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaModel.m */; };
 		C4B9FCD9230253D6007C1137 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD8230253D6007C1137 /* UserModel.m */; };
 		C4B9FCDC2302693B007C1137 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDB2302693B007C1137 /* TaskModel.m */; };
 		C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCE32302852E007C1137 /* TaskViewCell.m */; };
@@ -394,6 +395,8 @@
 		C496217D23042C810086A959 /* TaskRecordViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskRecordViewCell.h; sourceTree = "<group>"; };
 		C496217E23042C810086A959 /* TaskRecordViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskRecordViewCell.m; sourceTree = "<group>"; };
 		C496217F23042C810086A959 /* TaskRecordViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskRecordViewCell.xib; sourceTree = "<group>"; };
+		C4998DFF230CEBA00042FB0C /* UserNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserNewsModel.h; sourceTree = "<group>"; };
+		C4998E00230CEBA00042FB0C /* UserNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserNewsModel.m; sourceTree = "<group>"; };
 		C4A1EE8022EFD83100A1DE8C /* DeviceInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
 		C4A1EE8122EFD83100A1DE8C /* DeviceInformation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInformation.m; sourceTree = "<group>"; };
 		C4A1EE8922EFE7F000A1DE8C /* ContactsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
@@ -409,8 +412,8 @@
 		C4A1EEB722F194D600A1DE8C /* NSString+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		C4B9FCD123014D86007C1137 /* BannerObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerObject.h; sourceTree = "<group>"; };
 		C4B9FCD223014D86007C1137 /* BannerObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerObject.m; sourceTree = "<group>"; };
-		C4B9FCD423017C84007C1137 /* MiningAreaObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiningAreaObject.h; sourceTree = "<group>"; };
-		C4B9FCD523017C84007C1137 /* MiningAreaObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiningAreaObject.m; sourceTree = "<group>"; };
+		C4B9FCD423017C84007C1137 /* MiningAreaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiningAreaModel.h; sourceTree = "<group>"; };
+		C4B9FCD523017C84007C1137 /* MiningAreaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiningAreaModel.m; sourceTree = "<group>"; };
 		C4B9FCD7230253D6007C1137 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		C4B9FCD8230253D6007C1137 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		C4B9FCDA2302693B007C1137 /* TaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
@@ -955,14 +958,16 @@
 			children = (
 				C4B9FCD123014D86007C1137 /* BannerObject.h */,
 				C4B9FCD223014D86007C1137 /* BannerObject.m */,
-				C4B9FCD423017C84007C1137 /* MiningAreaObject.h */,
-				C4B9FCD523017C84007C1137 /* MiningAreaObject.m */,
+				C4B9FCD423017C84007C1137 /* MiningAreaModel.h */,
+				C4B9FCD523017C84007C1137 /* MiningAreaModel.m */,
 				C4B9FCDA2302693B007C1137 /* TaskModel.h */,
 				C4B9FCDB2302693B007C1137 /* TaskModel.m */,
 				C4B9FCF22303E120007C1137 /* RewardModel.h */,
 				C4B9FCF32303E120007C1137 /* RewardModel.m */,
 				C45F26C4230B9F88004E34F0 /* UserRankModel.h */,
 				C45F26C5230B9F88004E34F0 /* UserRankModel.m */,
+				C4998DFF230CEBA00042FB0C /* UserNewsModel.h */,
+				C4998E00230CEBA00042FB0C /* UserNewsModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1410,6 +1415,7 @@
 				C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */,
 				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
+				C4998E01230CEBA00042FB0C /* UserNewsModel.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
 				C43B6BE522F9580900312286 /* UserDataManager.m in Sources */,
@@ -1487,7 +1493,7 @@
 				C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */,
 				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
-				C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */,
+				C4B9FCD623017C85007C1137 /* MiningAreaModel.m in Sources */,
 				C43B6BFC22FA951D00312286 /* RewardBallView.m in Sources */,
 				C4B9FCDC2302693B007C1137 /* TaskModel.m in Sources */,
 				C4D968C322EED0E8002150CF /* UIColor+FX.m in Sources */,

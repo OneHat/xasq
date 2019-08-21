@@ -20,12 +20,12 @@ NSString *const UserEmailBind = @"user/email/bind";
 NSString *const UserEmailRebind = @"user/email/rebind";
 NSString *const UserInviteAddresslist = @"user/invite/addresslist";
 NSString *const UserInviteSendmessage = @"user/invite/sendmessage";
-NSString *const UserInviteSecond = @"user/invite/Second";
+NSString *const UserInviteRecordSecond = @"user/invite/record/second";
 NSString *const UserIdentityApply = @"user/identity/apply";
 NSString *const UserMobileBind = @"user/mobile/bind";
 NSString *const UserMobileRebind = @"user/mobile/rebind";
-NSString *const UserInviteAll = @"user/invite/all";
-NSString *const UserInviteFirst = @"user/invite/first";
+NSString *const UserInviteRecordAll = @"user/invite/record/all";
+NSString *const UserInviteRecordFirst = @"user/invite/record/first";
 NSString *const HomePageInfo = @"home/page/info";
 NSString *const UserInviteBind = @"user/invite/bind";
 NSString *const UserInviteQrcode = @"user/invite/qrcode";
@@ -39,9 +39,9 @@ NSString *const UserSetIcon = @"user/set/icon";
 NSString *const UserSetNickname = @"user/set/nickname";
 NSString *const UserSyncWalk = @"user/syncWalk";
 NSString *const UserCheckValidcode = @"user/check/validcode";
-NSString *const UserInviteAllpower = @"user/invite/allpower";
-NSString *const UserInviteCount = @"user/invite/count";
-NSString *const UserInvitePower = @"user/invite/power";
+NSString *const UserInviteRankAllpower = @"user/invite/rank/allpower";
+NSString *const UserInviteRankCount = @"user/invite/rank/count";
+NSString *const UserInviteRankPower = @"user/invite/rank/power";
 NSString *const UserIdentityDetails = @"user/identity/details";
 
 
@@ -75,6 +75,7 @@ NSString *const CommunityTaskDaily = @"comm/task/daily";
 NSString *const CommunityTaskSingle = @"comm/task/single";
 NSString *const CommunityTaskWeekly = @"comm/task/weekly";
 NSString *const CommunityAreaCurrency = @"comm/area/currency";
+NSString *const CommunityStealFlow = @"comm/steal/flow";
 
 
 NSInteger const E010141 = 010141;

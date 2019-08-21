@@ -38,6 +38,8 @@
 - (void)setFriendInfo:(UserRankModel *)friendInfo {
     _friendInfo = friendInfo;
     
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_friendInfo.headImg]];
+    
     self.rankLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.ranking];
     
     self.nameLabel.text = _friendInfo.nickName;

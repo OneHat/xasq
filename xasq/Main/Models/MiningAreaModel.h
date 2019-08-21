@@ -1,5 +1,5 @@
 //
-//  MiningAreaObject.h
+//  MiningAreaModel.h
 //  xasq
 //
 //  Created by dssj on 2019/8/12.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MiningAreaObject : NSObject
+@interface MiningAreaModel : NSObject
 
 @property (nonatomic, assign) NSInteger ID;
 @property (nonatomic, assign) NSInteger areaCode;

@@ -92,14 +92,14 @@
     self.headerTopHeight.constant = NavHeight + 20;
     self.nameLabel.text = [UserDataManager shareManager].usermodel.nickName;
     
-    self.signLabel.text = @"每日签到";
     self.signLabel.font = [UIFont boldSystemFontOfSize:13];
     
     UIImage *image = [UIImage imageNamed:@"task_daysign"];
     [self.signButton setBackgroundImage:[image resizeImageInCenter] forState:UIControlStateNormal];
+    [self updateSignLabel:@"已签到" buttonSelect:YES];
     
-    CGFloat buttonWidth = [self.signLabel.text getWidthWithFont:self.signLabel.font];
-    self.signButtonWidth.constant = buttonWidth + 35;
+    NSString *imageUrl = [UserDataManager shareManager].usermodel.headImg;
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     
     ///
     CGFloat viewWidth = ScreenWidth - 30;
@@ -108,7 +108,6 @@
     backgroundView.layer.cornerRadius = 5;
     backgroundView.layer.masksToBounds = YES;
     [self.view addSubview:backgroundView];
-    
     
     NSArray *items = @[@"每日任务",@"每周任务"];
     _segmentedControl = [[SegmentedControl alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 40)
@@ -143,15 +142,29 @@
 
 #pragma mark -
 - (IBAction)signAction:(UIButton *)sender {
+    if (self.signButton.selected) {
+        return;
+    }
     
+    self.signButton.selected = YES;
     [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         [self showSignSuccessView];
+        [self updateSignLabel:@"已签到" buttonSelect:YES];
         
     } failure:^(NSError * _Nonnull error) {
+        self.signButton.selected = NO;
         [self showErrow:error];
     }];
     
+}
+
+- (void)updateSignLabel:(NSString *)text buttonSelect:(BOOL)select {
+    self.signLabel.text = text;
+    
+    CGFloat buttonWidth = [self.signLabel.text getWidthWithFont:self.signLabel.font];
+    self.signButtonWidth.constant = buttonWidth + 35;
+    self.signButton.selected = select;
 }
 
 - (void)showSignSuccessView {
@@ -225,11 +238,20 @@
 #pragma mark - 网络请求
 - (void)getSignInfo {
     [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:nil success:^(NSDictionary * _Nonnull data) {
-        //"signDate"："2019-01-01"，"keepSign":3
+        
         NSDictionary *signInfo = data[@"data"];
         if (signInfo && [signInfo isKindOfClass:[NSDictionary class]]) {
-//            NSString *signDate = signInfo[@"signDate"];
-            //            signInfo[@"keepSign"];
+            long signDate = [signInfo[@"signDate"] longValue];//上次签到时间戳
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *today = [formatter stringFromDate:[NSDate date]];
+            
+            if (signDate / 1000 < [[formatter dateFromString:today] timeIntervalSince1970]) {
+                //今天没有签到
+                [self updateSignLabel:@"每日签到" buttonSelect:NO];
+            }
         }
         
     } failure:^(NSError * _Nonnull error) {

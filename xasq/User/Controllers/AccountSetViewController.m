@@ -11,6 +11,7 @@
 #import "BindPhoneAndEmailViewController.h"
 #import "PayAndLoginPasswordViewController.h"
 #import "ChangePhoneAndEmailViewController.h"
+#import "UIViewController+ActionSheet.h"
 
 @interface AccountSetViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -60,25 +61,28 @@
 }
 
 - (void)quitLoginClick {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"是否退出登录?" preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *determine = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+    
+    [self alertWithTitle:@"提示" message:@"是否退出登录?" items:@[@"取消",@"确定"] action:^(NSInteger index) {
         
-        [[UserDataManager shareManager] deleteLoginStatus];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
-        NSArray *VCArr = self.navigationController.viewControllers;
-        UIViewController *topVC = VCArr.firstObject;
-        UITabBarController *tabbarVC = topVC.tabBarController;
-        tabbarVC.selectedIndex = 0;
-        [self.navigationController popViewControllerAnimated:NO];
+        if (index == 0) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            
+        } else {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            
+            [[UserDataManager shareManager] deleteLoginStatus];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
+            
+            NSArray *VCArr = self.navigationController.viewControllers;
+            UIViewController *topVC = VCArr.firstObject;
+            UITabBarController *tabbarVC = topVC.tabBarController;
+            tabbarVC.selectedIndex = 0;
+            [self.navigationController popViewControllerAnimated:NO];
+        }
         
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [alertVC addAction:determine];
-    [alertVC addAction:cancel];
-    [self presentViewController:alertVC animated:YES completion:nil];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

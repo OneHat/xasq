@@ -6,13 +6,13 @@
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "MiningAreaObject.h"
+#import "MiningAreaModel.h"
 #import <YYModel/YYModel.h>
 
-@implementation MiningAreaObject
+@implementation MiningAreaModel
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict {
-    MiningAreaObject *obj = [MiningAreaObject yy_modelWithDictionary:dict];
+    MiningAreaModel *obj = [MiningAreaModel yy_modelWithDictionary:dict];
     obj.ID = [dict[@"id"] integerValue];
     
     return obj;
@@ -22,7 +22,7 @@
     
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:array.count];
     for (NSDictionary *dict in array) {
-        MiningAreaObject *miningAreaObj = [MiningAreaObject modelWithDictionary:dict];
+        MiningAreaModel *miningAreaObj = [MiningAreaModel modelWithDictionary:dict];
         [result addObject:miningAreaObj];
     }
     

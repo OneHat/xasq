@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,6 +29,12 @@ typedef void (^FailureBlock)(NSError *error);
         parameters:(nullable NSDictionary *)parameters
            success:(SuccessBlock)success
            failure:(FailureBlock)failure;
+
+///上传图片
+- (void)uploadRequest:(NSString *)URLString
+                image:(UIImage *)image
+              success:(SuccessBlock)success
+              failure:(FailureBlock)failure;
 
 @end
 

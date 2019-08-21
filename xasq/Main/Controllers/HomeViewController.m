@@ -28,6 +28,7 @@
 #import "UserStepManager.h"
 
 static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
+static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -38,12 +39,15 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
-@property (weak, nonatomic) IBOutlet UIView *newsView;//动态View
+@property (weak, nonatomic) IBOutlet UIView *newsBackView;//动态View
+@property (strong, nonatomic) HomeNewsView *newsView;
+
 @property (weak, nonatomic) IBOutlet UIView *bannerBackView;//广告view
 @property (nonatomic, strong) HomeBannerView *bannerView;
 
 @property (weak, nonatomic) IBOutlet UIView *rankBackView;//排行View
 @property (strong, nonatomic) HomeRankView *rankView;//排行View
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankBackViewBottom;
 
 @property (weak, nonatomic) IBOutlet UIView *stepRewardView;
 @property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
@@ -95,6 +99,7 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.rankBackViewBottom.constant = 0;
     }
     
     if (IphoneX) {
@@ -102,17 +107,17 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     }
     
     //动态
-    HomeNewsView *newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
-    newsView.newsArray = @[@{@"content":@"1 领取了256",@"time":@"30小时之前"},
-                           @{@"content":@"2 偷取你的",@"time":@"2小时之前"},
-                           @{@"content":@"3 赚钱啦",@"time":@"3分钟之前"},
-                           @{@"content":@"4 哟哟",@"time":@"3分钟之前"},
-                           @{@"content":@"5 被偷啦",@"time":@"3分钟之前"}];
-    [self.newsView addSubview:newsView];
+    self.newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
+    [self.newsBackView addSubview:self.newsView];
+    NSArray *cacheNewsList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeNewsCacheKey];
+    NSArray *newsList = [UserNewsModel modelWithArray:cacheNewsList];
+    if (newsList.count > 0) {
+        self.newsView.newsArray = newsList;
+    }
     
     //广告banner
     self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
-    [self.bannerBackView addSubview:_bannerView];
+    [self.bannerBackView addSubview:self.bannerView];
     self.bannerViewHeight.constant = 0.0;
     
     NSArray *cacheBannerList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeBannerADCacheKey];
@@ -145,6 +150,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 
     //用户算力奖励
     [self getUserPowerReward];
+    
+    //最新动态
+    [self getUserNews];
     
     if ([UserDataManager shareManager].userId) {
         [self postUserSteps];
@@ -354,6 +362,24 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 //    }];
 }
 
+- (void)getUserNews {
+    [[NetworkManager sharedManager] getRequest:CommunityStealFlow parameters:@{@"outUserId":@"100"} success:^(NSDictionary * _Nonnull data) {
+        
+        NSArray *dateList = data[@"data"];
+        if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            return;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:dateList forKey:HomeNewsCacheKey];
+        
+        NSArray *newsList = [UserNewsModel modelWithArray:dateList];
+        self.newsView.newsArray = newsList;
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
+}
+
 #pragma mark - 本页面按钮事件
 
 - (IBAction)messageAction:(UIButton *)sender {
@@ -462,6 +488,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
         [self.unLoginNewsMaskView removeFromSuperview];
         self.unLoginNewsMaskView = nil;
         
+        NSString *headerImage = [UserDataManager shareManager].usermodel.headImg;
+        [self.userHeaderImageView sd_setImageWithURL:[NSURL URLWithString:headerImage]];
+        
         self.userLevelImageView.hidden = NO;
         self.userLevelLabel.hidden = NO;
         self.powerImageView.hidden = NO;
@@ -473,8 +502,9 @@ static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
     }
     
     //尚未登录
-    [self.newsView addSubview:self.unLoginNewsMaskView];
+    [self.newsBackView addSubview:self.unLoginNewsMaskView];
     
+         self.userHeaderImageView.image = [UIImage imageNamed:@"head_portrait"];
     self.nicknameLabel.text = @"请登录";
     
     self.userLevelImageView.hidden = YES;

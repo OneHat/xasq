@@ -145,60 +145,26 @@
 }
 
 //上传图片至服务器后台
-- (void)transportImgToServerWithImg:(UIImage *)img{
-    [self loading];
-    NSData *imageData;
-    NSString *mimetype;
-    WeakObject;
-    //判断下图片是什么格式
-    if (UIImagePNGRepresentation(img) != nil) {
-        mimetype = @"image/png";
-        imageData = UIImagePNGRepresentation(img);
-    }else{
-        mimetype = @"image/jpeg";
-        imageData = UIImageJPEGRepresentation(img, 1.0);
-    }
-    NSString *urlStr = @"http://192.168.100.200:8281/operation/upload/image";
+- (void)transportImgToServerWithImg:(UIImage *)img {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSString *str = @"file";
-        NSString *fileName = [[NSString alloc] init];
-        if (UIImagePNGRepresentation(img) != nil) {
-            fileName = [NSString stringWithFormat:@"%@.png", str];
-        }else{
-            fileName = [NSString stringWithFormat:@"%@.jpg", str];
-        }
-        // 上传图片，以文件流的格式
-        /**
-         *filedata : 图片的data
-         *name     : 后台的提供的字段
-         *mimeType : 类型
-         */
-        [formData appendPartWithFileData:imageData name:str fileName:fileName mimeType:mimetype];
-    } progress:NULL success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *data = responseObject;
-        if ([data[@"code"] integerValue] == 200) {
-            
-            NSDictionary *params = @{@"userId" : [UserDataManager shareManager].userId,
-                                     @"icon"   : data[@"data"][@"path"]
-                                     };
-            // 上传成功后绑定对应账户ID
-            [[NetworkManager sharedManager] postRequest:UserSetIcon parameters:params success:^(NSDictionary * _Nonnull data) {
-                [self hideHUD];
-                [self showMessage:@"更换成功"];
-                weakSelf.pictureImageV.image = img;
+    [[NetworkManager sharedManager] uploadRequest:OperationUploadImage image:img success:^(NSDictionary * _Nonnull data) {
 
-            } failure:^(NSError * _Nonnull error) {
-                [self hideHUD];
-                [self showErrow:error];
-            }];
-        } else {
+        NSDictionary *params = @{@"userId" : [UserDataManager shareManager].userId,
+                                 @"icon"   : data[@"data"][@"path"]
+                                 };
+        // 上传成功后绑定对应账户ID
+        [[NetworkManager sharedManager] postRequest:UserSetIcon parameters:params success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [self showMessage:data[@"msg"]];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [self showMessage:@"更换成功"];
+            self.pictureImageV.image = img;
+
+        } failure:^(NSError * _Nonnull error) {
+            [self hideHUD];
+            [self showErrow:error];
+        }];
+
+
+    } failure:^(NSError * _Nonnull error) {
         [self hideHUD];
         [self showErrow:error];
     }];

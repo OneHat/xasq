@@ -157,7 +157,7 @@ static char AlertBlockKey;
         return;
     }
     
-    CGFloat AlertMessageHeight = ScreenWidth / 375.0 * 150.0;
+    CGFloat AlertMessageHeight = ScreenWidth / 375.0 * 100.0;
     if (input) {
         AlertMessageHeight = 100;
     }

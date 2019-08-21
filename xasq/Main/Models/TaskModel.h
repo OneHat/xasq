@@ -24,10 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger unit;
 
 ///任务开始时间
-@property (nonatomic, assign) NSInteger beginTime;
+@property (nonatomic, assign) long beginTime;
 
 ///任务结束时间
-@property (nonatomic, assign) NSInteger endTime;
+@property (nonatomic, assign) long endTime;
 
 ///任务奖励币种
 @property (nonatomic, strong) NSString *currencyCode;

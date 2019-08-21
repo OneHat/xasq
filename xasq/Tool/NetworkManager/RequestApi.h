@@ -35,7 +35,7 @@ FOUNDATION_EXPORT NSString *const UserInviteAddresslist;
 /// 发送邀请短信 POST
 FOUNDATION_EXPORT NSString *const UserInviteSendmessage;
 /// 查询二级邀请算力奖励记录
-FOUNDATION_EXPORT NSString *const UserInviteSecond;
+FOUNDATION_EXPORT NSString *const UserInviteRecordSecond;
 /// 申请实名认证 POST
 FOUNDATION_EXPORT NSString *const UserIdentityApply;
 /// 手机绑定接口 POST
@@ -43,9 +43,9 @@ FOUNDATION_EXPORT NSString *const UserMobileBind;
 /// 更换绑定手机接口 POST
 FOUNDATION_EXPORT NSString *const UserMobileRebind;
 /// 查询所有邀请算力奖励记录 GET
-FOUNDATION_EXPORT NSString *const UserInviteAll;
+FOUNDATION_EXPORT NSString *const UserInviteRecordAll;
 /// 查询一级邀请算力奖励记录 GET
-FOUNDATION_EXPORT NSString *const UserInviteFirst;
+FOUNDATION_EXPORT NSString *const UserInviteRecordFirst;
 /// 获取我的界面信息 POST
 FOUNDATION_EXPORT NSString *const HomePageInfo;
 /// 邀请人绑定接口 POST
@@ -73,11 +73,11 @@ FOUNDATION_EXPORT NSString *const UserSyncWalk;
 /// 验证码校验接口 POST
 FOUNDATION_EXPORT NSString *const UserCheckValidcode;
 /// 算力、等级排行 全用户 GET
-FOUNDATION_EXPORT NSString *const UserInviteAllpower;
+FOUNDATION_EXPORT NSString *const UserInviteRankAllpower;
 /// 邀请人数排行 GET
-FOUNDATION_EXPORT NSString *const UserInviteCount;
+FOUNDATION_EXPORT NSString *const UserInviteRankCount;
 /// 算力、等级排行接口(我的好友) GET
-FOUNDATION_EXPORT NSString *const UserInvitePower;
+FOUNDATION_EXPORT NSString *const UserInviteRankPower;
 /// 认证信息接口 GET
 FOUNDATION_EXPORT NSString *const UserIdentityDetails;
 
@@ -140,6 +140,9 @@ FOUNDATION_EXPORT NSString *const CommunityTaskSingle;
 FOUNDATION_EXPORT NSString *const CommunityTaskWeekly;
 ///获取所有货币信息接口 GET
 FOUNDATION_EXPORT NSString *const CommunityAreaCurrency;
+///用户被偷取记录（最新动态） GET
+FOUNDATION_EXPORT NSString *const CommunityStealFlow;
+
 
 
 //********************************错误码

@@ -169,7 +169,7 @@ const CGFloat RowHeight = 55.0;
 - (void)getRankData {
     NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
     
-    [[NetworkManager sharedManager] getRequest:UserInviteAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:UserInviteRankAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
@@ -185,7 +185,7 @@ const CGFloat RowHeight = 55.0;
         
     }];
     
-    [[NetworkManager sharedManager] getRequest:UserInviteCount parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:UserInviteRankCount parameters:parameters success:^(NSDictionary * _Nonnull data) {
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
@@ -227,7 +227,7 @@ const CGFloat RowHeight = 55.0;
         
     } else {
         //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
-        viewHeight = MIN(10, self.powerRankDatas.count) * RowHeight;
+        viewHeight = MIN(10, self.powerRankDatas.count - 1) * RowHeight;
     }
     
     if (currentIndex == 0) {
@@ -259,10 +259,10 @@ const CGFloat RowHeight = 55.0;
     rect.size.height = viewHeight + CGRectGetHeight(self.segmentedControl.frame);
     self.frame = rect;
     
-    self.scrollView.frame = CGRectMake(0, CGRectGetHeight(self.segmentedControl.frame), ScreenWidth, viewHeight + CGRectGetHeight(self.segmentedControl.frame));
+    self.scrollView.frame = CGRectMake(0, CGRectGetHeight(self.segmentedControl.frame), ScreenWidth, viewHeight);
     
     if (self.HomeRankDataComplete) {
-        self.HomeRankDataComplete(viewHeight + CGRectGetHeight(self.segmentedControl.frame));
+        self.HomeRankDataComplete(CGRectGetHeight(self.frame));
     }
 }
 
