@@ -153,9 +153,6 @@
 		C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EECC22F7F0F100C94D9F /* SelectCurrencyViewController.m */; };
 		C4D5EED122F7F15F00C94D9F /* SelectCurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EECF22F7F15F00C94D9F /* SelectCurrencyTableViewCell.m */; };
 		C4D5EED222F7F15F00C94D9F /* SelectCurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D5EED022F7F15F00C94D9F /* SelectCurrencyTableViewCell.xib */; };
-		C4D5EED622F7F90400C94D9F /* ProceedAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EED422F7F90400C94D9F /* ProceedAccountTableViewCell.m */; };
-		C4D5EED722F7F90400C94D9F /* ProceedAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D5EED522F7F90400C94D9F /* ProceedAccountTableViewCell.xib */; };
-		C4D5EEDA22F7F91B00C94D9F /* ProceedAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EED922F7F91B00C94D9F /* ProceedAccountViewController.m */; };
 		C4D5EEDD22F7FE7700C94D9F /* PaymentsRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EEDC22F7FE7700C94D9F /* PaymentsRecordsViewController.m */; };
 		C4D5EEE122F7FF2500C94D9F /* PaymentsRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D5EEDF22F7FF2500C94D9F /* PaymentsRecordsTableViewCell.m */; };
 		C4D5EEE222F7FF2500C94D9F /* PaymentsRecordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D5EEE022F7FF2500C94D9F /* PaymentsRecordsTableViewCell.xib */; };
@@ -455,11 +452,6 @@
 		C4D5EECE22F7F15F00C94D9F /* SelectCurrencyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCurrencyTableViewCell.h; sourceTree = "<group>"; };
 		C4D5EECF22F7F15F00C94D9F /* SelectCurrencyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCurrencyTableViewCell.m; sourceTree = "<group>"; };
 		C4D5EED022F7F15F00C94D9F /* SelectCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCurrencyTableViewCell.xib; sourceTree = "<group>"; };
-		C4D5EED322F7F90400C94D9F /* ProceedAccountTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProceedAccountTableViewCell.h; sourceTree = "<group>"; };
-		C4D5EED422F7F90400C94D9F /* ProceedAccountTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProceedAccountTableViewCell.m; sourceTree = "<group>"; };
-		C4D5EED522F7F90400C94D9F /* ProceedAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProceedAccountTableViewCell.xib; sourceTree = "<group>"; };
-		C4D5EED822F7F91B00C94D9F /* ProceedAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProceedAccountViewController.h; sourceTree = "<group>"; };
-		C4D5EED922F7F91B00C94D9F /* ProceedAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProceedAccountViewController.m; sourceTree = "<group>"; };
 		C4D5EEDB22F7FE7700C94D9F /* PaymentsRecordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentsRecordsViewController.h; sourceTree = "<group>"; };
 		C4D5EEDC22F7FE7700C94D9F /* PaymentsRecordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentsRecordsViewController.m; sourceTree = "<group>"; };
 		C4D5EEDE22F7FF2500C94D9F /* PaymentsRecordsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentsRecordsTableViewCell.h; sourceTree = "<group>"; };
@@ -666,8 +658,6 @@
 				C4D5EEC822F7D99900C94D9F /* MentionMoneyResultViewController.xib */,
 				C4D5EEDB22F7FE7700C94D9F /* PaymentsRecordsViewController.h */,
 				C4D5EEDC22F7FE7700C94D9F /* PaymentsRecordsViewController.m */,
-				C4D5EED822F7F91B00C94D9F /* ProceedAccountViewController.h */,
-				C4D5EED922F7F91B00C94D9F /* ProceedAccountViewController.m */,
 				C4D5EECB22F7F0F100C94D9F /* SelectCurrencyViewController.h */,
 				C4D5EECC22F7F0F100C94D9F /* SelectCurrencyViewController.m */,
 			);
@@ -701,9 +691,6 @@
 				C4D5EEF022F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib */,
 				C4D5EEE822F815CC00C94D9F /* PaymentTypeView.h */,
 				C4D5EEE922F815CC00C94D9F /* PaymentTypeView.m */,
-				C4D5EED322F7F90400C94D9F /* ProceedAccountTableViewCell.h */,
-				C4D5EED422F7F90400C94D9F /* ProceedAccountTableViewCell.m */,
-				C4D5EED522F7F90400C94D9F /* ProceedAccountTableViewCell.xib */,
 				C4D5EECE22F7F15F00C94D9F /* SelectCurrencyTableViewCell.h */,
 				C4D5EECF22F7F15F00C94D9F /* SelectCurrencyTableViewCell.m */,
 				C4D5EED022F7F15F00C94D9F /* SelectCurrencyTableViewCell.xib */,
@@ -1288,7 +1275,6 @@
 				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
 				C4143D48230524FF0071236F /* FriendsHeaderView.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
-				C4D5EED722F7F90400C94D9F /* ProceedAccountTableViewCell.xib in Resources */,
 				C43B6BF922FA7D6A00312286 /* InviteHistoryViewCell.xib in Resources */,
 				C4D5EEF222F81F1000C94D9F /* PaymentTypeCollectionViewCell.xib in Resources */,
 				C40C3D7822F140BE00BDE6A3 /* LoginViewController.xib in Resources */,
@@ -1454,10 +1440,8 @@
 				C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */,
 				C43B6BD922F9514100312286 /* UserGuideViewController.m in Sources */,
 				C45391282306B15C000EBBA2 /* InviteFriendViewController.m in Sources */,
-				C4D5EEDA22F7F91B00C94D9F /* ProceedAccountViewController.m in Sources */,
 				C40C3D8122F18A5E00BDE6A3 /* RetrievePasswordViewController.m in Sources */,
 				C4D5EEDD22F7FE7700C94D9F /* PaymentsRecordsViewController.m in Sources */,
-				C4D5EED622F7F90400C94D9F /* ProceedAccountTableViewCell.m in Sources */,
 				C45391202306A44F000EBBA2 /* SignSuccessView.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
 				C414003422F2ABB20010A463 /* DiscoveryViewController.m in Sources */,

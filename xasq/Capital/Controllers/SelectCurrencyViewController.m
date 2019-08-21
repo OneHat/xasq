@@ -8,10 +8,12 @@
 
 #import "SelectCurrencyViewController.h"
 #import "SelectCurrencyTableViewCell.h"
+#import "CapitalModel.h"
 
 @interface SelectCurrencyViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -21,7 +23,7 @@
     [super viewDidLoad];
     self.title = @"选择币种";
     self.view.backgroundColor = ThemeColorBackground;
-    
+    _dataArray = [NSMutableArray array];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
