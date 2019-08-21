@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectCurrencyTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLB;
+@property (weak, nonatomic) IBOutlet UILabel *amountLB;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

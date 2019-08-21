@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<CapitalMainViewDelegate> delegate;
 
-- (void)setCapitalDataArray:(NSDictionary *)dict;
+- (void)setTotalAssets:(NSDictionary *)dict;  // 总资产
+- (void)setCapitalDataArray:(NSDictionary *)dict; // 币种列表数据
 
 @end
 

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *outAccountId;   // 对方账户ID
 @property (nonatomic, strong) NSString *businessCode;  // 流水号
-@property (nonatomic, strong) NSString *causeType;    // 类型
+@property (nonatomic, strong) NSString *cause;        // 类型
 @property (nonatomic, strong) NSString *currency;    // 币种
 @property (nonatomic, strong) NSString *nameStr;    // 奖励名称
 @property (nonatomic, strong) NSString *amount;    // 数量

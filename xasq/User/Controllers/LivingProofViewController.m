@@ -48,7 +48,7 @@
 }
 
 - (IBAction)certificationClick:(UIButton *)sender {
-    if (![UserDataManager shareManager].usermodel.authStatus) {
+    if ([UserDataManager shareManager].usermodel.authStatus) {
         // 已认证
         CredentialsViewController *VC = [[CredentialsViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;

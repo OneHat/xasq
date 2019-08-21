@@ -35,7 +35,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = @"BTC";
+    titleLabel.text = _titleStr;
     titleLabel.font = [UIFont systemFontOfSize:17];
     [self.view addSubview:titleLabel];
     

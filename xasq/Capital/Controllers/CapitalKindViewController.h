@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalKindViewController : UIViewController
 
+@property (nonatomic, strong) NSString *titleStr;
+
 @end
 
 NS_ASSUME_NONNULL_END

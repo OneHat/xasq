@@ -8,7 +8,7 @@
 
 #import "PaymentTypeView.h"
 #import "PaymentTypeCollectionViewCell.h"
-#import "CurrencyModel.h"
+#import "CapitalModel.h"
 
 @interface PaymentTypeView () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -89,14 +89,14 @@
     if (array.count > 0) {
         [tempArray addObject:@"全部"];
         [iconTempArray addObject:@"capital_all"];
-        for (CurrencyModel *model in array) {
+        for (CapitalModel *model in array) {
             [tempArray addObject:model.name];
             [iconTempArray addObject:model.icon];
         }
         _titleArray = [NSArray arrayWithArray:tempArray];
         _iconArray = [NSArray arrayWithArray:iconTempArray];
     }
-    NSInteger height = (_titleArray.count / 4 + _titleArray.count % 4) * 75 + 10;
+    NSInteger height = (_titleArray.count / 4 + (_titleArray.count % 4)==0?0:1) * 75 + 10;
     _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);
     [_collectionView reloadData];
 }

@@ -27,7 +27,7 @@
                         <action selector="messageBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="3BT-w3-9YF"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI1-Ea-XUe">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI1-Ea-XUe">
                     <rect key="frame" x="376" y="13" width="15" height="15"/>
                     <color key="backgroundColor" red="1" green="0.25832619429999998" blue="0.25114899169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>

@@ -11,9 +11,10 @@
 #import "CapitalTopView.h"
 #import "CapitalModel.h"
 
-@interface CapitalMainView () <UITableViewDataSource,UITableViewDelegate>
+@interface CapitalMainView () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @end
@@ -66,15 +67,18 @@ static CGFloat CapitalSegmentControlH = 40;
     [self addSubview:_tableView];
 }
 
+- (void)setTotalAssets:(NSDictionary *)dict {
+    _topView.BTCStr = [NSString stringWithFormat:@"%@",dict[@"toBTCSum"]];
+    _topView.moneyStr = [NSString stringWithFormat:@"%@",dict[@"toCNYSum"]];
+}
+
 - (void)setCapitalDataArray:(NSDictionary *)dict {
-    NSArray *array = dict[@"data"][@"userCapitalResponseList"][@"rows"];
+    NSArray *array = dict[@"data"][@"rows"];
     [_dataArray removeAllObjects];
     for (NSDictionary *dic in array) {
         CapitalModel *model = [CapitalModel modelWithDictionary:dic];
         [_dataArray addObject:model];
     }
-    _topView.BTCStr = dict[@"data"][@"toBTCSum"];
-    _topView.moneyStr = dict[@"data"][@"toCNYSum"];
     [_tableView reloadData];
 }
 
@@ -85,6 +89,7 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CapitalListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     CapitalModel *model = _dataArray[indexPath.row];
     cell.nameLabel.text = model.currency;
     if ([CapitalDataManager shareManager].hideMoney) {
@@ -94,7 +99,7 @@ static CGFloat CapitalSegmentControlH = 40;
         cell.numberLabel.text = model.amount;
         cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY];
     }
-    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpeg;base64," withString:@""];
+    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
     NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage *icon = [UIImage imageWithData:imageData];
     if (icon) {
@@ -125,19 +130,28 @@ static CGFloat CapitalSegmentControlH = 40;
 //    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
 //    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
 //    [headerView addSubview:searchButton];
-    
-    UIImageView *leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 26, 12)];
-    leftView.image = [UIImage imageNamed:@"Search_Button"];
-    leftView.contentMode = UIViewContentModeScaleAspectFit;
-    UITextField *searchField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth * 0.5, 30)];
-    [searchField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
-    searchField.leftView = leftView;
-    searchField.leftViewMode = UITextFieldViewModeAlways;
-    searchField.font = ThemeFontSmallText;
-    searchField.placeholder = @"搜索币种";
-    searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+    _searchBar.searchBarStyle = UISearchBarStyleProminent;
+    _searchBar.backgroundColor = ThemeColorBackground;
+    _searchBar.barTintColor = ThemeColorBackground;
+    // 清除上下横线
+    for (UIView *subView in _searchBar.subviews) {
+        if ([subView isKindOfClass:[UIView  class]]) {
+            [[subView.subviews objectAtIndex:0] removeFromSuperview];
+        }
+    }
+    UITextField *searchField = [_searchBar valueForKey:@"searchField"];
+    if(searchField){
+        //设置字体颜色
+        searchField.textColor = ThemeColorText;
+        searchField.backgroundColor = ThemeColorBackground;
+        searchField.font = ThemeFontSmallText;
+    }
+    _searchBar.showsCancelButton = NO;
+    _searchBar.placeholder = @"搜索币种";
+    _searchBar.delegate = self;
+    [headerView addSubview:_searchBar];
     [headerView addSubview:searchField];
-    
     
     //隐藏0余额
     CGFloat labelWidth = [@"隐藏0余额" getWidthWithFont:ThemeFontSmallText];
@@ -149,7 +163,8 @@ static CGFloat CapitalSegmentControlH = 40;
     hideZeroLabel.text = @"隐藏0余额";
     [headerView addSubview:hideZeroLabel];
     
-    UIButton *checkButton = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height)];
+    UIButton *checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
     [checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
     [checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
     [checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];

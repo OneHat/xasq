@@ -27,7 +27,7 @@
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, assign) NSInteger pageNo; // 分页
 @end
 
 @implementation CapitalViewController
@@ -79,7 +79,7 @@
     
     //第四add的view
     CGRect segmentFrame = CGRectMake(0, NavHeight - 10, ScreenWidth, 44);
-    _segmentedControl = [[CapitalSegmentedControl alloc] initWithFrame:segmentFrame items:@[@"我的钱包",@"挖财账户"]];
+    _segmentedControl = [[CapitalSegmentedControl alloc] initWithFrame:segmentFrame items:@[@"我的钱包",@"挖矿账户"]];
     _segmentedControl.delegate = self;
     [self.view addSubview:_segmentedControl];
     
@@ -103,6 +103,8 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
     _hideNavBarAnimation = YES;
+    [self getCapitalStatisticsCount:@"0"];
+    [self getCapitalStatisticsCount:@"6"];
     [self sendCommunityCapitalStatistics];
 }
 
@@ -115,21 +117,37 @@
     _hideNavBarAnimation = NO;
 }
 
+- (void)getCapitalStatisticsCount:(NSString *)type {
+    NSDictionary *dict = @{@"accountType" : type,};
+    WeakObject;
+    [[NetworkManager sharedManager] getRequest:CommunityStatisticsCount parameters:dict success:^(NSDictionary * _Nonnull data) {
+        if ([data[@"data"] isKindOfClass:[NSDictionary class]]) {
+            if ([data[@"data"][@"accountType"] integerValue] == 0) {
+                [weakSelf.walletView setTotalAssets:data[@"data"]];
+            } else {
+                [weakSelf.mineView setTotalAssets:data[@"data"]];
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 - (void)sendCommunityCapitalStatistics {
     WeakObject;
     NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
                            @"pageNo" : @"1"
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
-        NSDictionary *dic = data[@"data"][@"userCapitalResponseList"];
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            NSArray *array = data[@"data"][@"userCapitalResponseList"][@"rows"];
+        NSArray *rows = data[@"data"][@"rows"];
+        if ([rows isKindOfClass:[NSArray class]]) {
             [weakSelf.dataArray removeAllObjects];
-            for (NSDictionary *dic in array) {
+            for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.walletView setCapitalDataArray:data];
+            [weakSelf.mineView setCapitalDataArray:data];
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
@@ -164,8 +182,10 @@
 
 #pragma mark - CapitalMainViewDelegate
 - (void)capitalMainViewCellSelect:(NSInteger)index {
+    CapitalModel *model = _dataArray[index];
     //某一币种
     CapitalKindViewController *kindVC = [[CapitalKindViewController alloc] init];
+    kindVC.titleStr = model.currency;
     kindVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:kindVC animated:YES];
 }

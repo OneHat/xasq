@@ -8,7 +8,6 @@
 
 #import "MobilePhoneViewController.h"
 #import "MobilePhoneTableViewCell.h"
-#import "CountryCodeModel.h"
 
 @interface MobilePhoneViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -115,7 +114,7 @@
     NSString *key = _sectionArr[indexPath.section];
     NSArray *keyArr = _tableDict[key];
     CountryCodeModel *model = keyArr[indexPath.row];
-    self.countryCodeBlock(model.areaCode,model.name);
+    self.countryCodeBlock(model);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

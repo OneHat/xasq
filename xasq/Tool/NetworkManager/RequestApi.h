@@ -140,7 +140,10 @@ FOUNDATION_EXPORT NSString *const CommunityTaskSingle;
 FOUNDATION_EXPORT NSString *const CommunityTaskWeekly;
 ///获取所有货币信息接口 GET
 FOUNDATION_EXPORT NSString *const CommunityAreaCurrency;
-
+///获取币种和金额（金额大于0的） GET
+FOUNDATION_EXPORT NSString *const CommunityCapitalCurrencyBalance;
+///用户资产统计） GET
+FOUNDATION_EXPORT NSString *const CommunityStatisticsCount;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

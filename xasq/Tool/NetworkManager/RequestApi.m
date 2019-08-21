@@ -75,12 +75,13 @@ NSString *const CommunityTaskDaily = @"comm/task/daily";
 NSString *const CommunityTaskSingle = @"comm/task/single";
 NSString *const CommunityTaskWeekly = @"comm/task/weekly";
 NSString *const CommunityAreaCurrency = @"comm/area/currency";
+NSString *const CommunityCapitalCurrencyBalance = @"comm/capital/currency/balance";
+NSString *const CommunityStatisticsCount = @"comm/capital/statistics/count";
 
-
-NSInteger const E010141 = 010141;
-NSInteger const E010145 = 010145;
-NSInteger const E010142 = 010142;
-NSInteger const E010130 = 010130;
+NSInteger const E010141 = 10141;
+NSInteger const E010145 = 10145;
+NSInteger const E010142 = 10142;
+NSInteger const E010130 = 10130;
 
 @implementation RequestApi
 

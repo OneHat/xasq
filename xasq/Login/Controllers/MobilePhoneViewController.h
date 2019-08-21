@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CountryCodeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MobilePhoneViewController : UIViewController
 
-@property (nonatomic, copy) void (^countryCodeBlock)(NSString *phoneCode, NSString *name);
+@property (nonatomic, copy) void (^countryCodeBlock)(CountryCodeModel *model);
 
 @end
 

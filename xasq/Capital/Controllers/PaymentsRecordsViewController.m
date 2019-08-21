@@ -11,7 +11,7 @@
 #import "PaymentHeaderView.h"
 #import "PaymentTypeView.h"
 #import "PaymentsRecordModel.h"
-#import "CurrencyModel.h"
+#import "CapitalModel.h"
 
 @interface PaymentsRecordsViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -70,7 +70,7 @@
     [[NetworkManager sharedManager] getRequest:CommunityAreaCurrency parameters:nil success:^(NSDictionary * _Nonnull data) {
         if (data) {
             for (NSDictionary *dic in data[@"data"]) {
-                CurrencyModel *model = [CurrencyModel modelWithDictionary:dic];
+                CapitalModel *model = [CapitalModel modelWithDictionary:dic];
                 [weakSelf.currencyArray addObject:model];
             }
         }
@@ -99,7 +99,8 @@
                 // 下拉刷新数据
                 key = array.firstObject[@"time"];
             }
-            for (NSDictionary *dic in array) {
+            for (int i=0; i < array.count; i++) {
+                NSDictionary *dic = array[i];
                 PaymentsRecordModel *model = [PaymentsRecordModel modelWithDictionary:dic];
                 if ([key isEqualToString:dic[@"time"]]) {
                     [typeArr addObject:model];
@@ -113,8 +114,8 @@
                     typeArr = [NSMutableArray array];
                     [typeArr addObject:model];
                 }
-                if (weakSelf.titleArray.count == 0) {
-                    // 说明只有第一天的数据,直接添加进去
+                if (i == array.count - 1) {
+                    // 直接加最后一条数据
                     [weakSelf.dataDict setValue:typeArr forKey:key];
                     [weakSelf.titleArray addObject:key];
                 }
@@ -167,8 +168,8 @@
         if (index == 0) {
             weakSelf.currency = @"";
         } else {
-            CurrencyModel *model = weakSelf.currencyArray[index-1];
-            weakSelf.currency = model.currencyCode;
+            CapitalModel *model = weakSelf.currencyArray[index-1];
+            weakSelf.currency = model.currency;
         }
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
@@ -215,9 +216,9 @@
     PaymentsRecordModel *model = value[indexPath.row];
     cell.titleLB.text = model.nameStr;
     cell.valueLB.text = [NSString stringWithFormat:@"%@",model.amount];
-    if ([model.causeType integerValue] == 2) {
+    if ([model.cause integerValue] == 2) {
         cell.icon.image = [UIImage imageNamed:@"Capital_DrawMoney"];
-    } else if ([model.causeType integerValue] == 14) {
+    } else if ([model.cause integerValue] == 14) {
         cell.icon.image = [UIImage imageNamed:@"capital_reward"];
     }
     

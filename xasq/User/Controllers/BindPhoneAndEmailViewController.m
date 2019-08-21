@@ -8,6 +8,7 @@
 
 #import "BindPhoneAndEmailViewController.h"
 #import "MobilePhoneViewController.h"
+#import "CountryCodeModel.h"
 
 @interface BindPhoneAndEmailViewController ()
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn; // 验证码Btn
 @property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
 @property (weak, nonatomic) IBOutlet UIButton *bindBtn;
+@property (nonatomic, strong) NSString *codeStr;  // 手机code
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, weak) NSTimer *timer;
@@ -51,9 +53,10 @@
 - (IBAction)countriesClick:(UIButton *)sender {
     MobilePhoneViewController *VC = [[MobilePhoneViewController alloc] init];
     WeakObject;
-    VC.countryCodeBlock = ^(NSString * _Nonnull phoneCode, NSString *  _Nonnull name) {
-        weakSelf.countriesLB.text = name;
-        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",phoneCode];
+    VC.countryCodeBlock = ^(CountryCodeModel *model) {
+        weakSelf.countriesLB.text = model.name;
+        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",model.areaCode];
+        weakSelf.codeStr = model.code;
     };
     [self.navigationController pushViewController:VC animated:YES];
 }

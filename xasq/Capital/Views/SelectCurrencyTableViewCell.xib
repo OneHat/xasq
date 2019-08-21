@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="25" id="sxg-cp-vx0"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="capital_select" translatesAutoresizingMaskIntoConstraints="NO" id="byf-Qs-b6Q">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="capital_select" translatesAutoresizingMaskIntoConstraints="NO" id="byf-Qs-b6Q">
                         <rect key="frame" x="335" y="18" width="20" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="CrM-WR-gT1"/>
@@ -61,6 +61,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="amountLB" destination="0QV-dn-A3c" id="aiN-bq-9ED"/>
+                <outlet property="iconImageV" destination="gMc-7I-qT8" id="6Pa-KT-0x3"/>
+                <outlet property="nameLB" destination="Pqo-9W-kcg" id="xhx-hg-u4Z"/>
+                <outlet property="selectImageV" destination="byf-Qs-b6Q" id="N9T-C3-gnc"/>
+            </connections>
             <point key="canvasLocation" x="136.95652173913044" y="152.67857142857142"/>
         </tableViewCell>
     </objects>

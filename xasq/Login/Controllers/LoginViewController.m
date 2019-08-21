@@ -19,7 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *removeBtn; // 清除Btn
 @property (weak, nonatomic) IBOutlet UIButton *cipherBtn; // 密文切换Btn
 
-
+@property (weak, nonatomic) IBOutlet UIView *codeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnTopCT;
+@property (weak, nonatomic) IBOutlet UITextField *codeTF;
+@property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, weak) NSTimer *timer;
 @end
 
 @implementation LoginViewController
@@ -75,6 +80,61 @@
         _passwordTF.secureTextEntry = YES;
     }
 }
+#pragma mark - 发送验证码
+- (IBAction)codeBtnClick:(UIButton *)sender {
+    if (_accountTF.text.length == 0) {
+        [self showMessage:@"请输入账号"];
+        return;
+    }
+    sender.userInteractionEnabled = NO;
+    WeakObject;
+    NSString *urlStr,*nameStr;
+    if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
+        // 邮箱登录
+        urlStr = UserSendEmail;
+        nameStr = @"email";
+    } else {
+        // 手机号登录
+        urlStr = UserSendMobile;
+        nameStr = @"mobile";
+    }
+    NSDictionary *dict = @{nameStr : _accountTF.text,
+                           @"codeLogo" : @"14"
+                           };
+    [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"验证码发送成功"];
+        if (weakSelf.count == 0) {
+            //60秒后再次启动
+            weakSelf.count = 60;
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                              target:self
+                                                            selector:@selector(showTime)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [self showErrow:error];
+        weakSelf.codeBtn.userInteractionEnabled = YES;
+    }];
+}
+
+- (void)showTime {
+    if (_count != 0) {
+        _codeBtn.titleLabel.text = [NSString stringWithFormat:@"%ld秒",self.count];
+        [_codeBtn setTitle:[NSString stringWithFormat:@"%ld秒",self.count]
+                  forState:UIControlStateNormal];
+        _count --;
+    }else {
+        [_codeBtn setTitle:@"获取验证码"
+                  forState:UIControlStateNormal];
+        _codeBtn.userInteractionEnabled = YES;
+        if (_timer) {
+            [_timer invalidate];
+            _timer = nil;
+        }
+    }
+}
+
 #pragma mark - 登录
 - (IBAction)loginClick:(UIButton *)sender {
     if (_accountTF.text.length == 0) {
@@ -83,21 +143,27 @@
     } else if (_passwordTF.text.length == 0) {
         [self showMessage:@"请输入密码"];
         return;
+    } else if (!_codeView.isHidden && _codeTF.text.length == 0) {
+        [self showMessage:@"请输入验证码"];
+        return;
     }
     _loginBtn.userInteractionEnabled = NO;
     [self loading];
     WeakObject;
-    NSString *URLStr;
+    NSString *URLStr,*nameStr;
     if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         // 邮箱登录
         URLStr = UserLoginEmail;
+        nameStr = @"email";
     } else {
         // 手机号登录
         URLStr = UserLoginMobile;
+        nameStr = @"mobile";
     }
     NSDictionary *dict = @{@"loginName"     :   _accountTF.text,
                            @"password"      :   _passwordTF.text,
-                           @"loginAddress"  :   @"上海",
+                           @"validCode"     :   _codeTF.text?_codeTF.text:@"",
+                           @"validCodeType" :   nameStr,
                            @"sysVersion"    :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""]
                            };
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
@@ -120,8 +186,12 @@
         
     } failure:^(NSError * _Nonnull error) {
         if (error.code == E010130 || error.code == E010141 || error.code == E010145 || error.code == E010142) {
+            weakSelf.passwordTF.text = @"";
             //验证码
-            
+            [UIView animateWithDuration:1.5 animations:^{
+                weakSelf.codeView.hidden = NO;
+                weakSelf.loginBtnTopCT.constant = 95;
+            }];
         }
         
         weakSelf.loginBtn.userInteractionEnabled = YES;

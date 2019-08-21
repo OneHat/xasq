@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "MobilePhoneViewController.h"
+#import "CountryCodeModel.h"
 
 @interface RegisterViewController ()
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
 @property (weak, nonatomic) IBOutlet UIButton *cipherBtn; // 密文切换Btn
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF; // 密码TF
+@property (nonatomic, strong) NSString *codeStr;  // 手机code
 
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -95,9 +97,10 @@
     MobilePhoneViewController *VC = [[MobilePhoneViewController alloc] init];
     VC.hidesBottomBarWhenPushed = YES;
     WeakObject;
-    VC.countryCodeBlock = ^(NSString * _Nonnull phoneCode, NSString *  _Nonnull name) {
-        weakSelf.countriesLB.text = name;
-        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",phoneCode];
+    VC.countryCodeBlock = ^(CountryCodeModel *model) {
+        weakSelf.countriesLB.text = model.name;
+        weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",model.areaCode];
+        weakSelf.codeStr = model.code;
     };
     [self.navigationController pushViewController:VC animated:YES];
 }
@@ -198,7 +201,7 @@
     }
     NSDictionary *dict = @{@"userName"      :   _accountTF.text,
                            @"language"      :   @"zh-cn",
-                           @"countryCode"   :   _areaCodeLB.text,
+                           @"countryCode"   :   _codeStr,
                            typeStr          :   _accountTF.text,
                            @"password"      :   _passwordTF.text,
                            @"validCode"     :   _codeTF.text,

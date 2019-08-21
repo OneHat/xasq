@@ -22,7 +22,6 @@
 		C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* confirmViewController.m */; };
 		C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */; };
 		C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */; };
-		C40D6E9C230BF3CF00D9697A /* CurrencyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D6E9B230BF3CF00D9697A /* CurrencyModel.m */; };
 		C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */; };
 		C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */; };
 		C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0222FBFDEC00E43F8C /* XLRandomKeyboard.m */; };
@@ -220,8 +219,6 @@
 		C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmViewController.xib; sourceTree = "<group>"; };
 		C40D6E97230B936E00D9697A /* PaymentsRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentsRecordModel.h; sourceTree = "<group>"; };
 		C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentsRecordModel.m; sourceTree = "<group>"; };
-		C40D6E9A230BF3CF00D9697A /* CurrencyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyModel.h; sourceTree = "<group>"; };
-		C40D6E9B230BF3CF00D9697A /* CurrencyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyModel.m; sourceTree = "<group>"; };
 		C40DEEFC22FBFDEC00E43F8C /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
 		C40DEEFD22FBFDEC00E43F8C /* UIImage+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XLPasswordView.h"; sourceTree = "<group>"; };
 		C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XLPasswordView.m"; sourceTree = "<group>"; };
@@ -615,8 +612,6 @@
 				C4106081230A96F1003EE4B2 /* CapitalModel.m */,
 				C40D6E97230B936E00D9697A /* PaymentsRecordModel.h */,
 				C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */,
-				C40D6E9A230BF3CF00D9697A /* CurrencyModel.h */,
-				C40D6E9B230BF3CF00D9697A /* CurrencyModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1452,7 +1447,6 @@
 				C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */,
-				C40D6E9C230BF3CF00D9697A /* CurrencyModel.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */,
 				C4DFE3DB22EED34000C41B2B /* UIViewController+NavBar.m in Sources */,

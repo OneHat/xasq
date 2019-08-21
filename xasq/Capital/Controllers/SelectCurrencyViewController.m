@@ -24,7 +24,7 @@
     self.title = @"选择币种";
     self.view.backgroundColor = ThemeColorBackground;
     _dataArray = [NSMutableArray array];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ThemeColorBackground;
@@ -37,10 +37,30 @@
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    [self CommunityCapitalCurrencyBalance];
+}
+
+- (void)CommunityCapitalCurrencyBalance {
+    WeakObject;
+    NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
+                           @"pageNo" : @"1",
+                           };
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalCurrencyBalance parameters:dict success:^(NSDictionary * _Nonnull data) {
+        NSArray *rows = data[@"data"][@"rows"];
+        if ([rows isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dic in rows) {
+                CapitalModel *model = [CapitalModel modelWithDictionary:dic];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return _dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -58,6 +78,15 @@
     if (cell == nil) {
         cell = [[[UINib nibWithNibName:@"SelectCurrencyTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    CapitalModel *model = _dataArray[indexPath.row];
+    cell.nameLB.text = model.currency;
+    cell.amountLB.text = model.amount;
+    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
+    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    UIImage *icon = [UIImage imageWithData:imageData];
+    if (icon) {
+        cell.iconImageV.image = icon;
     }
     return cell;
 }

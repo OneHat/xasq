@@ -11,10 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CapitalModel : NSObject
-/// 币种名称
+/// 币种编码
 @property (nonatomic, strong) NSString *currency;
 /// 币种图片
 @property (nonatomic, strong) NSString *icon;
+/// 币种名称
+@property (nonatomic, strong) NSString *name;
 /// 余额
 @property (nonatomic, strong) NSString *amount;
 /// 该币种资产折合人名币
