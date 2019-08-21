@@ -9,9 +9,9 @@
 #import "MentionMoneyViewController.h"
 #import "MentionMoneyResultViewController.h"
 #import "SelectCurrencyViewController.h"
-#import "ProceedAccountViewController.h"
 #import "XLPasswordView.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "UIViewController+ActionSheet.h"
 
 @interface MentionMoneyViewController () <XLPasswordViewDelegate>
 
@@ -47,8 +47,15 @@
 }
 #pragma mark - 收款账户
 - (IBAction)proceedAccount:(UIButton *)sender {
-    ProceedAccountViewController *VC = [[ProceedAccountViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+    [self actionSheetWithItems:@[@"币币账户", @"币币账户", @"币币账户"] complete:^(NSInteger index) {
+        if (index == 0) {
+            
+        } else {
+            
+        }
+    }];
+//    ProceedAccountViewController *VC = [[ProceedAccountViewController alloc] init];
+//    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (IBAction)confirmBtnClick:(UIButton *)sender {
