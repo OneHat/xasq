@@ -12,6 +12,8 @@
 #import "ContactsViewController.h"
 #import "FriendMainViewController.h"
 
+#import <MJRefresh/MJRefresh.h>
+
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -49,8 +51,21 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
     [headerView addGestureRecognizer:tap];
     
+    MJRefreshNormalHeader *normalHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getFriendList];
+    }];
+    normalHeader.stateLabel.hidden = YES;
+    normalHeader.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.mj_header = normalHeader;
+    
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)getFriendList {
     NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
-    [[NetworkManager sharedManager] getRequest:UserInvitePower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:UserInviteRankPower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self.tableView.mj_header endRefreshing];
+        
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
@@ -60,9 +75,9 @@
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
+        [self.tableView.mj_header endRefreshing];
         
     }];
-    
 }
 
 #pragma mark -

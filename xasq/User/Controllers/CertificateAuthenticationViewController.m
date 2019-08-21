@@ -168,55 +168,22 @@
 }
 
 - (void)transportImgToServerWithImg:(UIImage *)img pictureType:(NSInteger)pictureType {
-    NSData *imageData;
-    NSString *mimetype;
-    WeakObject;
-    //判断下图片是什么格式
-    if (UIImagePNGRepresentation(img) != nil) {
-        mimetype = @"image/png";
-        imageData = UIImagePNGRepresentation(img);
-    }else{
-        mimetype = @"image/jpeg";
-        imageData = UIImageJPEGRepresentation(img, 1.0);
-    }
-    NSString *urlStr = @"http://192.168.100.200:8281/operation/upload/image";
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSString *str = @"file";
-        NSString *fileName = [[NSString alloc] init];
-        if (UIImagePNGRepresentation(img) != nil) {
-            fileName = [NSString stringWithFormat:@"%@.png", str];
-        }else{
-            fileName = [NSString stringWithFormat:@"%@.jpg", str];
-        }
-        // 上传图片，以文件流的格式
-        /**
-         *filedata : 图片的data
-         *name     : 后台的提供的字段
-         *mimeType : 类型
-         */
-        [formData appendPartWithFileData:imageData name:str fileName:fileName mimeType:mimetype];
-    } progress:NULL success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *data = responseObject;
-        if ([data[@"code"] integerValue] == 200) {
-            if (pictureType == 0) {
-                weakSelf.isPositive = YES;
-                weakSelf.positivePath = data[@"data"][@"path"];
-            } else {
-                weakSelf.isHandheld = YES;
-                weakSelf.handheldPath = data[@"data"][@"path"];
-            }
-            if (weakSelf.isPositive && weakSelf.isHandheld) {
-                // 发送实名认证接口请求
-                [self sendUserIdentityApply];
-            }
+    [[NetworkManager sharedManager] uploadRequest:OperationUploadImage image:img success:^(NSDictionary * _Nonnull data) {
+        
+        if (pictureType == 0) {
+            self.isPositive = YES;
+            self.positivePath = data[@"data"][@"path"];
         } else {
-            [self hideHUD];
-            [self showMessage:data[@"msg"]];
+            self.isHandheld = YES;
+            self.handheldPath = data[@"data"][@"path"];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (self.isPositive && self.isHandheld) {
+            // 发送实名认证接口请求
+            [self sendUserIdentityApply];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
         [self hideHUD];
         [self showErrow:error];
     }];
@@ -234,7 +201,7 @@
     [[NetworkManager sharedManager] postRequest:UserIdentityApply parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
         [self showMessage:@"上传成功" complete:^{
-            [self popoverPresentationController];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }];
 
     } failure:^(NSError * _Nonnull error) {

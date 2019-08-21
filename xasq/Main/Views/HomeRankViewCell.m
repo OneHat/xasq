@@ -28,15 +28,16 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    _nameLabel.font = ThemeFontText;
+    self.nameLabel.font = ThemeFontText;
     
-    _areaLabel.font = ThemeFontSmallText;
-    _areaLabel.textColor = ThemeColorTextGray;
+    self.areaLabel.font = ThemeFontSmallText;
+    self.areaLabel.textColor = ThemeColorTextGray;
     
-    _valueLabel.textColor = ThemeColorTextGray;
+    self.valueLabel.textColor = ThemeColorTextGray;
     
-    _bottomLine.backgroundColor = ThemeColorLine;
+    self.bottomLine.backgroundColor = ThemeColorLine;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,7 +49,7 @@
 - (void)setRankInfo:(UserRankModel *)rankInfo {
     _rankInfo = rankInfo;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_rankInfo.headImg]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:self.rankInfo.headImg]];
     self.nameLabel.text = rankInfo.nickName;
     [self setRank];
     
@@ -58,32 +59,32 @@
 - (void)setRank {
     
     self.selfImageView.hidden = YES;
-    if ([UserDataManager shareManager].userId.integerValue == _rankInfo.userId) {
+    if ([UserDataManager shareManager].userId.integerValue == self.rankInfo.userId) {
         self.selfImageView.hidden = NO;
     }
     
-    self.rankLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.ranking];
-    _rankImageView.hidden = NO;
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",self.rankInfo.ranking];
+    self.rankImageView.hidden = NO;
     
-    switch (_rankInfo.ranking) {
+    switch (self.rankInfo.ranking) {
         case 1:{
-            _rankImageView.image = [UIImage imageNamed:@"rank_first"];
+            self.rankImageView.image = [UIImage imageNamed:@"rankself.first"];
         }
             break;
             
         case 2:{
-            _rankImageView.image = [UIImage imageNamed:@"rank_second"];
+            self.rankImageView.image = [UIImage imageNamed:@"rankself.second"];
         }
             break;
             
         case 3:{
-            _rankImageView.image = [UIImage imageNamed:@"rank_third"];
+            self.rankImageView.image = [UIImage imageNamed:@"rankself.third"];
         }
             break;
             
         default:{
-            _rankImageView.image = nil;
-            _rankImageView.hidden = YES;
+            self.rankImageView.image = nil;
+            self.rankImageView.hidden = YES;
         }
             break;
     }
@@ -93,17 +94,17 @@
     _cellStyle = cellStyle;
     switch (cellStyle) {
         case HomeRankCellStylePower:{
-            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.power];
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",self.rankInfo.power];
         }
             break;
             
         case HomeRankCellStyleLevel:{
-            self.valueLabel.text = _rankInfo.levelName;
+            self.valueLabel.text = self.rankInfo.levelName;
         }
             break;
             
         case HomeRankCellStyleInvite:{
-            self.valueLabel.text = [NSString stringWithFormat:@"%ld",_rankInfo.inviteNum];
+            self.valueLabel.text = [NSString stringWithFormat:@"%ld",self.rankInfo.inviteNum];
         }
             break;
             

@@ -47,10 +47,15 @@
     
 }
 
-- (void)setNewsData:(NSDictionary *)news {
+- (void)setNewsData:(UserNewsModel *)news {
 //    [_iconImageView sd_setImageWithURL:<#(nullable NSURL *)#>]
-    _contentLabel.text = news[@"content"];
-    _timeLabel.text = news[@"time"];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了%@%@",news.userName,news.quantity,news.currencyCode];
+    self.timeLabel.text = news.showTime;
+    
+    if (![news.showDate isEqualToString: @"今天"]) {
+        self.timeLabel.text = news.showDate;
+    }
+    
 }
 
 @end
@@ -95,9 +100,9 @@
         [self.viewArray addObject:newsView];
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:3.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self loadNextNews];
-    }];
+//    [NSTimer scheduledTimerWithTimeInterval:3.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        [self loadNextNews];
+//    }];
     
 }
 

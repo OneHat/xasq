@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger walkNum;
 
 ///成熟时间
-@property (nonatomic, assign) NSInteger generateTime;
+@property (nonatomic, assign) long generateTime;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;
 + (NSArray *)modelWithArray:(NSArray *)array;

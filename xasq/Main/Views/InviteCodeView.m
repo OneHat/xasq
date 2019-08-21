@@ -84,8 +84,11 @@
 
 - (IBAction)copyMyCode:(UIButton *)sender {
     
+    if (!self.inviteCode) {
+        return;
+    }
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = _inviteCode;
+    pasteboard.string = self.inviteCode;
     
     if (self.buttonClickBlock) {
         self.buttonClickBlock(InviteCodeViewButtonStyleCopy);

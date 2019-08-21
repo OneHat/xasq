@@ -56,6 +56,8 @@
     self.leftLVLabel.backgroundColor = HexColor(@"ae8849");
     self.rightLVLabel.backgroundColor = ThemeColorTextGray;
     
+    NSString *imageUrl = [UserDataManager shareManager].usermodel.headImg;
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     
     CGFloat rate = 0.333;
     CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
