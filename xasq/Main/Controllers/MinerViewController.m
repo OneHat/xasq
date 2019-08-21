@@ -236,7 +236,6 @@
         NSArray *array = data[@"data"];
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
             self.totalArray = array;
-            
             [self.tableView reloadData];
         }
 

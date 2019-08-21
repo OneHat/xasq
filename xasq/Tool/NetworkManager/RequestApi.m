@@ -50,31 +50,31 @@ NSString *const ApiAccountOpenAccount = @"api/account/openAccount";
 NSString *const ApiAccountSelectCurrency = @"api/account/selectCurrency";
 
 
-NSString *const OperationSystemVersion = @"operation/sys/version";
-NSString *const OperationBanner = @"operation/banner";
-NSString *const OperationCountry = @"operation/country";
-NSString *const OperationUploadImage = @"operation/upload/image";
+NSString *const OperationSystemVersion = @"oper/sys/version";
+NSString *const OperationBanner = @"oper/banner";
+NSString *const OperationCountry = @"oper/country";
+NSString *const OperationUploadImage = @"oper/upload/image";
 
 
-NSString *const MessageSysList = @"message/sys/list";
+NSString *const MessageSysList = @"msg/sys/list";
 
 
-NSString *const CommunityCapitalWaterDynamics = @"community/capital/water/dynamics";
-NSString *const CommunityCapitalWater = @"community/capital/water";
-NSString *const CommunitySendPower = @"community/send/power";
-NSString *const CommunityPowerRecord = @"community/power/record";
-NSString *const CommunityAreaTakeRecord = @"community/area/take/record";
-NSString *const CommunityAreaTakeCurrency = @"community/area/takeCurrency";
-NSString *const CommunityArea = @"community/area";
-NSString *const CommunityAreaList = @"community/area/list";
-NSString *const CommunityCapitalStatistics = @"community/capital/statistics";
-NSString *const CommunityUserSubAccount = @"community/user/sub/account";
-NSString *const CommunityAreaStealCurrency = @"community/area/stealCurrency";
-NSString *const CommunitySendWalk = @"community/send/walk";
-NSString *const CommunityTaskDaily = @"community/task/daily";
-NSString *const CommunityTaskSingle = @"community/task/single";
-NSString *const CommunityTaskWeekly = @"community/task/weekly";
-NSString *const CommunityAreaCurrency = @"community/area/currency";
+NSString *const CommunityCapitalWaterDynamics = @"comm/capital/water/dynamics";
+NSString *const CommunityCapitalWater = @"comm/capital/water";
+NSString *const CommunitySendPower = @"comm/send/power";
+NSString *const CommunityPowerRecord = @"comm/power/record";
+NSString *const CommunityAreaTakeRecord = @"comm/area/take/record";
+NSString *const CommunityAreaTakeCurrency = @"comm/area/takeCurrency";
+NSString *const CommunityArea = @"comm/area";
+NSString *const CommunityAreaList = @"comm/area/list";
+NSString *const CommunityCapitalStatistics = @"comm/capital/statistics";
+NSString *const CommunityUserSubAccount = @"comm/user/sub/account";
+NSString *const CommunityAreaStealCurrency = @"comm/area/stealCurrency";
+NSString *const CommunitySendWalk = @"comm/send/walk";
+NSString *const CommunityTaskDaily = @"comm/task/daily";
+NSString *const CommunityTaskSingle = @"comm/task/single";
+NSString *const CommunityTaskWeekly = @"comm/task/weekly";
+NSString *const CommunityAreaCurrency = @"comm/area/currency";
 
 
 NSInteger const E010141 = 010141;

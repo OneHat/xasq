@@ -43,13 +43,13 @@ const CGFloat ViewWidth = 60;
     [self addSubview:BTC];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 10, 40, 20)];
-    nameLabel.text = @"0.0008BTC";
+    nameLabel.text = @"BTC";
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.font = [UIFont boldSystemFontOfSize:11];
     [self addSubview:nameLabel];
     _nameLabel = nameLabel;
     
-    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, ViewWidth, ViewWidth-5)];
+    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, ViewWidth, 40)];
     rewardLabel.numberOfLines = 0;
     rewardLabel.textAlignment = NSTextAlignmentCenter;
     rewardLabel.text = @"0.0008BTC";
@@ -68,7 +68,9 @@ const CGFloat ViewWidth = 60;
 - (void)setRewardModel:(RewardModel *)rewardModel {
     _rewardModel = rewardModel;
     _nameLabel.text = rewardModel.currencyCode;
-    _rewardLabel.text = [NSString stringWithFormat:@"%@",rewardModel.currencyQuantity];
+//    _rewardLabel.text = [NSString stringWithFormat:@"%@",rewardModel.currencyQuantity];
+    
+    _rewardLabel.text = [NSString stringWithFormat:@"%.8f",rewardModel.currencyQuantity.doubleValue];
 }
 
 - (void)setBallStyle:(RewardBallViewStyle)ballStyle {

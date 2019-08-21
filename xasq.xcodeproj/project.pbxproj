@@ -130,7 +130,6 @@
 		C4B9FCD623017C85007C1137 /* MiningAreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD523017C84007C1137 /* MiningAreaObject.m */; };
 		C4B9FCD9230253D6007C1137 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCD8230253D6007C1137 /* UserModel.m */; };
 		C4B9FCDC2302693B007C1137 /* TaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDB2302693B007C1137 /* TaskModel.m */; };
-		C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */; };
 		C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCE32302852E007C1137 /* TaskViewCell.m */; };
 		C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B9FCE42302852E007C1137 /* TaskViewCell.xib */; };
 		C4B9FCEC2303DAE9007C1137 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B9FCEB2303DAE9007C1137 /* FriendsViewController.m */; };
@@ -416,8 +415,6 @@
 		C4B9FCD8230253D6007C1137 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		C4B9FCDA2302693B007C1137 /* TaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
 		C4B9FCDB2302693B007C1137 /* TaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskModel.m; sourceTree = "<group>"; };
-		C4B9FCDD23026CC4007C1137 /* MyTaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskModel.h; sourceTree = "<group>"; };
-		C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskModel.m; sourceTree = "<group>"; };
 		C4B9FCE22302852E007C1137 /* TaskViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewCell.h; sourceTree = "<group>"; };
 		C4B9FCE32302852E007C1137 /* TaskViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewCell.m; sourceTree = "<group>"; };
 		C4B9FCE42302852E007C1137 /* TaskViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewCell.xib; sourceTree = "<group>"; };
@@ -962,8 +959,6 @@
 				C4B9FCD523017C84007C1137 /* MiningAreaObject.m */,
 				C4B9FCDA2302693B007C1137 /* TaskModel.h */,
 				C4B9FCDB2302693B007C1137 /* TaskModel.m */,
-				C4B9FCDD23026CC4007C1137 /* MyTaskModel.h */,
-				C4B9FCDE23026CC4007C1137 /* MyTaskModel.m */,
 				C4B9FCF22303E120007C1137 /* RewardModel.h */,
 				C4B9FCF32303E120007C1137 /* RewardModel.m */,
 				C45F26C4230B9F88004E34F0 /* UserRankModel.h */,
@@ -1438,7 +1433,6 @@
 				C41B127D22F2B55400375560 /* PayAndLoginPasswordViewController.m in Sources */,
 				C496218023042C810086A959 /* TaskRecordViewCell.m in Sources */,
 				C4DFE3E922EEED2C00C41B2B /* AccountSetViewController.m in Sources */,
-				C4B9FCDF23026CC4007C1137 /* MyTaskModel.m in Sources */,
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
