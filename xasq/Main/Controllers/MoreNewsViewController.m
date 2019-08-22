@@ -8,16 +8,19 @@
 
 #import "MoreNewsViewController.h"
 #import "HomeNewsViewCell.h"
+#import "UITableView+Refresh.h"
 
 static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 
 @interface MoreNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-//@property (nonatomic, strong) NSArray *newsArray;
 
 @property (nonatomic, strong) NSMutableArray *titles;
 @property (nonatomic, strong) NSMutableDictionary *newsDictionary;
+
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, assign) NSInteger totalPage;
 
 @end
 
@@ -47,13 +50,31 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     self.titles = [NSMutableArray array];
     self.newsDictionary = [NSMutableDictionary dictionary];
     
+    [self.tableView pullHeaderRefresh:^{
+        self.page = 1;
+        [self getUserNews];
+    }];
+    
+    [self.tableView pullFooterRefresh:^{
+        self.page++;
+        if (self.page > self.totalPage) {
+            self.page--;
+            [self.tableView endRefresh];
+            return ;
+        }
+        
+        [self getUserNews];
+    }];
+    
+    self.page = 1;
     [self getUserNews];
 }
 
 - (void)getUserNews {
-    [[NetworkManager sharedManager] getRequest:CommunityStealFlow parameters:@{@"outUserId":@"100"} success:^(NSDictionary * _Nonnull data) {
+    
+    [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:@{@"pageNo":@(self.page)} success:^(NSDictionary * _Nonnull data) {
         
-        NSArray *dateList = data[@"data"];
+        NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
@@ -105,7 +126,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     headerView.backgroundColor = [UIColor whiteColor];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenWidth, 30)];
-    titleLabel.text = self.titles[section];;
+    titleLabel.text = self.titles[section];
     [headerView addSubview:titleLabel];
     
     return headerView;

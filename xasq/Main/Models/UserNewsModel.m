@@ -39,7 +39,7 @@ static NSDateFormatter *HomeNewsTimeFormatter;
     [components setSecond: 0];
     
     NSDate *today = [calendar dateFromComponents:components];//今天00:00
-    NSDate *yesterday = [calendar dateByAddingUnit:NSCalendarUnitDay value:-1 toDate:today options:0];;//昨天00:00
+    NSDate *yesterday = [calendar dateByAddingUnit:NSCalendarUnitDay value:-1 toDate:today options:0];//昨天00:00
     
     if (model.time >= [today timeIntervalSince1970] * 1000) {
         //今天

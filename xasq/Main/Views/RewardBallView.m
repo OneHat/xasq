@@ -17,6 +17,8 @@ const CGFloat ViewWidth = 60;
 @property (nonatomic, strong) UILabel *nameLabel;//奖励数值
 @property (nonatomic, strong) UILabel *rewardLabel;//奖励数值
 
+@property (nonatomic, strong) UIButton *button;//收取/偷取按钮
+
 @end
 
 @implementation RewardBallView
@@ -62,7 +64,7 @@ const CGFloat ViewWidth = 60;
     [circleButton setImage:nil forState:UIControlStateNormal];
     [circleButton addTarget:self action:@selector(rewardClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:circleButton];
-    
+    self.button = circleButton;
 }
 
 - (void)setRewardModel:(RewardModel *)rewardModel {
@@ -71,6 +73,11 @@ const CGFloat ViewWidth = 60;
 //    _rewardLabel.text = [NSString stringWithFormat:@"%@",rewardModel.currencyQuantity];
     
     _rewardLabel.text = [NSString stringWithFormat:@"%.8f",rewardModel.currencyQuantity.doubleValue];
+    
+    if (rewardModel.status == 10) {
+        self.alpha = 0.8;
+        self.button.enabled = NO;
+    }
 }
 
 - (void)setBallStyle:(RewardBallViewStyle)ballStyle {
@@ -109,6 +116,10 @@ const CGFloat ViewWidth = 60;
     if (self.RewardBallClick) {
         self.RewardBallClick(_rewardModel.ID,self);
     }
+}
+
+- (void)resetButtonEnable {
+    self.button.enabled = YES;
 }
 
 @end

@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *messages;
 
+@property (nonatomic, assign) NSInteger totalPage;//总页数
 @property (nonatomic, assign) NSInteger page;//页数
 
 @end
@@ -49,10 +50,17 @@
     
     [self.tableView pullFooterRefresh:^{
         self.page++;
+        if (self.page > self.totalPage) {
+            self.page--;
+            [self.tableView endRefresh];
+            return;
+        }
+        
         [self getMessages];
     }];
     
-    [self.tableView beginRefresh];
+    self.page = 1;
+    [self getMessages];
 }
 
 #pragma mark -
@@ -62,8 +70,9 @@
         [self.tableView endRefresh];
         
         NSArray *array = data[@"data"][@"rows"];
+        self.totalPage = [data[@"data"][@"totalPage"] integerValue];
+        
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
-            
             
             self.messages = array;
             [self.tableView reloadData];

@@ -106,14 +106,14 @@
                                     </connections>
                                 </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_power" translatesAutoresizingMaskIntoConstraints="NO" id="elu-Vs-ecj" userLabel="PowerImage View">
-                                    <rect key="frame" x="252.5" y="42.5" width="20" height="20"/>
+                                    <rect key="frame" x="293.5" y="42.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="elu-Vs-ecj" secondAttribute="height" multiplier="1:1" id="h2g-VN-ta9"/>
                                         <constraint firstAttribute="width" constant="20" id="hfZ-mi-vc1"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="算力1936.4B" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxj-D7-4hi">
-                                    <rect key="frame" x="277.5" y="44" width="82.5" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="算力--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxj-D7-4hi">
+                                    <rect key="frame" x="318.5" y="44" width="41.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>

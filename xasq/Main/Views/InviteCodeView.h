@@ -21,7 +21,9 @@ typedef void(^ButtonClickBlock)(InviteCodeViewButtonStyle style);
 @interface InviteCodeView : UIView
 
 @property (nonatomic, strong) ButtonClickBlock buttonClickBlock;
+
 @property (nonatomic, strong) NSString *inviteCode;
+@property (nonatomic, assign) NSInteger totalInvite;
 
 @end
 

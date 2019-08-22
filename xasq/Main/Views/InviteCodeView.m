@@ -51,7 +51,7 @@
     
     [self.copMyCodeButton setTitleColor:ThemeColorTextGray forState:UIControlStateNormal];
     self.copMyCodeButton.titleLabel.font = ThemeFontTipText;
-    self.copMyCodeButton.backgroundColor = HexColor(@"e7e7e7");;
+    self.copMyCodeButton.backgroundColor = HexColor(@"e7e7e7");
     self.copMyCodeButton.layer.cornerRadius = CGRectGetHeight(self.copMyCodeButton.frame) * 0.5;
     self.copMyCodeButton.layer.masksToBounds = YES;
     
@@ -69,7 +69,12 @@
 
 - (void)setInviteCode:(NSString *)inviteCode {
     _inviteCode = inviteCode;
-    self.myCodeLabel.text = _inviteCode;;
+    self.myCodeLabel.text = _inviteCode;
+}
+
+- (void)setTotalInvite:(NSInteger)totalInvite {
+    _totalInvite = totalInvite;
+    self.totalInviteLabel.text = [NSString stringWithFormat:@"累计邀请 %ld",_totalInvite];
 }
 
 - (IBAction)bindInvite:(UIButton *)sender {

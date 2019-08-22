@@ -154,7 +154,7 @@
     dispatch_group_enter(group);
     dispatch_group_async(group, queue, ^{
         
-        [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+        [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
             dispatch_group_leave(group);
             
             NSArray *dateList = data[@"data"];
@@ -170,7 +170,7 @@
     
     dispatch_group_enter(group);
     dispatch_group_async(group, queue, ^{
-        [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+        [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
             dispatch_group_leave(group);
             NSArray *dateList = data[@"data"];
             if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
@@ -192,11 +192,11 @@
 }
 
 - (void)getUserMessageInfo {
-    NSDictionary *parameters = @{@"outUserId":@(100),@"pageNo":@"0",@"pageSize":@"10"};
+    NSDictionary *parameters = @{@"targetId":@(self.userId),@"pageNo":@(1)};
     
-    [[NetworkManager sharedManager] getRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
-        NSArray *dateList = data[@"data"];
+        NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
@@ -232,25 +232,33 @@
 //
 - (void)stealCurrency:(NSInteger)ID ballView:(RewardBallView *)ballView {
     
-    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId)};
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        
-        NSLog(@"%@",data);
-        
-//        NSArray *dateList = data[@"data"];
-        //        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-        //            NSDictionary *stepReward = dateList.firstObject;
-        //
-        //            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
-        //
-        //            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
-        //            ballView.rewardModel = model;
-        //            [self.stepRewardView addSubview:ballView];
-        //        }
-        
-        
-        
+    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId),@"userName":@"随便传个"};
+    [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+
+        NSDictionary *info = data[@"data"];
+        if (info && [info isKindOfClass:[NSDictionary class]]) {
+
+            UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+            tipLabel.numberOfLines = 0;
+            tipLabel.textAlignment = NSTextAlignmentCenter;
+            tipLabel.textColor = [UIColor whiteColor];
+            tipLabel.center = ballView.center;
+            tipLabel.font = [UIFont boldSystemFontOfSize:10];
+            tipLabel.text = [NSString stringWithFormat:@"%@",info[@"quantity"]];
+            [self.headerView addSubview:tipLabel];
+
+            [UIView animateWithDuration:0.5 animations:^{
+
+                tipLabel.transform = CGAffineTransformMakeTranslation(0, -50);
+
+            } completion:^(BOOL finished) {
+                [tipLabel removeFromSuperview];
+            }];
+
+        }
+
     } failure:^(NSError * _Nonnull error) {
+        [ballView resetButtonEnable];
     }];
 }
 
@@ -294,7 +302,7 @@
     for (int i = 0; i < count; i++) {
         
         CGFloat viewX = 20 + (arc4random() % 240);
-        CGFloat viewY = 44 + (arc4random() % 150);
+        CGFloat viewY = NavHeight + (arc4random() % 150);
         
         BOOL flag = NO;
         CGRect rect = CGRectMake(viewX, viewY, width, width);
@@ -316,7 +324,7 @@
             
             if (flag) {
                 viewX = 20 + (arc4random() % 240);
-                viewY = 44 + (arc4random() % 150);
+                viewY = NavHeight + (arc4random() % 150);
                 
                 rect = CGRectMake(viewX, viewY, width, width);
                 

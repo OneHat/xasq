@@ -69,4 +69,22 @@
     self.levelLabel.text = [UserDataManager shareManager].usermodel.level;
 }
 
+- (void)setUserInfo:(NSDictionary *)userInfo {
+    _userInfo = userInfo;
+    
+    self.leftLVLabel.text = _userInfo[@"userLevelName"];
+    self.rightLVLabel.text = _userInfo[@"upLevelName"];
+    
+    NSInteger currentPow = [_userInfo[@"userPower"] integerValue];
+    NSInteger nextPow = [_userInfo[@"upPower"] integerValue];
+    
+    CGFloat rate = currentPow * 1.0 / nextPow;
+    CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
+    
+    self.progressViewWidth.constant = totalWidth * rate;
+    self.rateViewLeft.constant = totalWidth * rate - 40;
+    
+    self.rateLabel.text = [NSString stringWithFormat:@"%ld/%ld",currentPow,nextPow];
+}
+
 @end

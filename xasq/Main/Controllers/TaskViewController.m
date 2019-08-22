@@ -128,6 +128,7 @@
     [self getWeekTasks];
     
     [self getSignInfo];
+    [self getUserLevelAndPower];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -236,6 +237,7 @@
 }
 
 #pragma mark - 网络请求
+///获取签到信息
 - (void)getSignInfo {
     [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:nil success:^(NSDictionary * _Nonnull data) {
         
@@ -258,6 +260,7 @@
     }];
 }
 
+///获取每日任务
 - (void)getDayTasks {
     [[NetworkManager sharedManager] getRequest:CommunityTaskDaily parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *dataArray = data[@"data"];
@@ -272,6 +275,7 @@
     }];
 }
 
+///获取每周任务
 - (void)getWeekTasks {
     [[NetworkManager sharedManager] getRequest:CommunityTaskWeekly parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *dataArray = data[@"data"];
@@ -283,6 +287,18 @@
     } failure:^(NSError * _Nonnull error) {
         
     }];
+}
+
+- (void)getUserLevelAndPower {
+    [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *powInfo = data[@"data"];
+        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+            self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%@",powInfo[@"userPower"]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
 }
 
 @end

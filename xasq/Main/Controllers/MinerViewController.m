@@ -21,7 +21,7 @@
 
 @property (nonatomic, strong) NSString *bindCode;
 
-//@property (nonatomic, strong) MinerInfomationView *bindCode;
+@property (nonatomic, strong) MinerInfomationView *infoView;
 @property (nonatomic, strong) InviteCodeView *inviteCodeView;
 
 @property (nonatomic, strong) NSArray *totalArray;//累计
@@ -35,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     //title
     [self initTitle];
@@ -55,6 +56,8 @@
     [self getInviteAll];
     [self getInviteFirst];
     [self getInviteSecond];
+    
+    [self getUserLevelAndPower];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -90,6 +93,7 @@
     MinerInfomationView *infomationView = [[MinerInfomationView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 160)];
     infomationView.backgroundColor = [UIColor clearColor];
     [headerView addSubview:infomationView];
+    self.infoView = infomationView;
     
     InviteCodeView *inviteCodeView = [[InviteCodeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infomationView.frame), ScreenWidth, 230)];
     inviteCodeView.buttonClickBlock = ^(InviteCodeViewButtonStyle style) {
@@ -100,7 +104,7 @@
         }
     };
     [headerView addSubview:inviteCodeView];
-    _inviteCodeView = inviteCodeView;
+    self.inviteCodeView = inviteCodeView;
     
     return headerView;
 }
@@ -174,7 +178,7 @@
             numberLabel.textColor = ThemeColorBlue;
             
         } else {
-            label.font = [UIFont systemFontOfSize:14];;
+            label.font = [UIFont systemFontOfSize:14];
             label.textColor = ThemeColorTextGray;
             numberLabel.textColor = ThemeColorTextGray;
         }
@@ -224,7 +228,11 @@
 - (void)getqrcode  {
     [[NetworkManager sharedManager] getRequest:UserInviteQrcode parameters:nil success:^(NSDictionary * _Nonnull data) {
         
-        self.inviteCodeView.inviteCode = data[@"data"][@"inviteCode"];
+        NSDictionary *inviteInfo = data[@"data"];
+        if (inviteInfo && [inviteInfo isKindOfClass:[NSDictionary class]]) {
+            self.inviteCodeView.inviteCode = inviteInfo[@"inviteCode"];
+            self.inviteCodeView.totalInvite = [inviteInfo[@"inviteNum"] integerValue];
+        }
         
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -279,6 +287,18 @@
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
     }];
+}
+
+- (void)getUserLevelAndPower {
+    [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *powInfo = data[@"data"];
+        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+            self.infoView.userInfo = powInfo;
+        }
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
 }
 
 #pragma mark -

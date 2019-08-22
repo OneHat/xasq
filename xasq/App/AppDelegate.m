@@ -49,6 +49,10 @@
     
     [self checkNewVersion];
     
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
     return YES;
 }
 

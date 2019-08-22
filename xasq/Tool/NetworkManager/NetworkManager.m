@@ -222,7 +222,7 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
         return @"en-us";
     }
     
-    return @"zh-cn";;
+    return @"zh-cn";
 }
 
 #pragma mark -

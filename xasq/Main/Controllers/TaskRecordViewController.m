@@ -39,7 +39,9 @@
         if (rewards && [rewards isKindOfClass:[NSArray class]] && rewards.count > 0) {
             self.rewards = data[@"data"];
             [self.tableView reloadData];
+            return;
         }
+        
         
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];

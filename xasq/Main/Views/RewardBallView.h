@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger,RewardBallViewStyle) {
 
 @property (nonatomic, assign) RewardBallViewStyle ballStyle;
 
+- (void)resetButtonEnable;
+
 @end
 
 NS_ASSUME_NONNULL_END

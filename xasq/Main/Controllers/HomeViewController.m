@@ -30,7 +30,8 @@
 static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
-@interface HomeViewController ()
+@interface HomeViewController ()<UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
@@ -73,6 +74,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @property (nonatomic, strong) UIView *unLoginNewsMaskView;//没有登录时，动态页面的遮挡
 
+
+@property (strong, nonatomic) UIView *customerBarView;
+
 @end
 
 @implementation HomeViewController
@@ -105,6 +109,12 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     if (IphoneX) {
         self.headerImageTop.constant = 40;
     }
+    
+    self.scrollView.delegate = self;
+    
+    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
+    self.customerBarView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.customerBarView];
     
     //动态
     self.newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
@@ -176,6 +186,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     self.mineNameLabel.text = @"西岸社区";
     self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter ];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -212,6 +223,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
 }
 
 - (void)changeMainHideAnimation {
@@ -381,17 +393,18 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     }];
     
     
-    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
-    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-
-    } failure:^(NSError * _Nonnull error) {
-    }];
+//    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
+//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        [ballView resetButtonEnable];
+//    }];
 }
 
 - (void)getUserNews {
-    [[NetworkManager sharedManager] getRequest:CommunityStealFlow parameters:@{@"outUserId":@"100"} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:nil success:^(NSDictionary * _Nonnull data) {
         
-        NSArray *dateList = data[@"data"];
+        NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
@@ -403,14 +416,15 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         
     } failure:^(NSError * _Nonnull error) {
     }];
-    
 }
 
 - (void)getUserLevelAndPower {
     [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
         
-        NSDictionary *dateList = data[@"data"];
-        
+        NSDictionary *powInfo = data[@"data"];
+        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+            self.powerLabel.text = [NSString stringWithFormat:@"算力%@",powInfo[@"userPower"]];
+        }
     } failure:^(NSError * _Nonnull error) {
     }];
     
@@ -479,8 +493,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 }
 
 - (IBAction)moreNewsAction:(UIButton *)sender {
-    [self getUserLevelAndPower];
-    return;
+    
     MoreNewsViewController *moreNewsVC = [[MoreNewsViewController alloc] init];
     moreNewsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreNewsVC animated:YES];
@@ -568,6 +581,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         self.stepsLabel.text = [NSString stringWithFormat:@"%ld",steps];
         [self postUserStepCount:steps];
     }];
+}
+
+
+#pragma mark -
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGFloat rate = self.scrollView.contentOffset.y / NavHeight;
+    self.customerBarView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:rate];
 }
 
 @end

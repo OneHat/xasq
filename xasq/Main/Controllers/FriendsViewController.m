@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *friends;
 
 @property (nonatomic, assign) NSInteger page;//页数
+@property (nonatomic, assign) NSInteger totalPage;//页数
 
 @end
 
@@ -63,10 +64,16 @@
     
     [self.tableView pullFooterRefresh:^{
         self.page++;
+        if (self.page > self.totalPage) {
+            self.page--;
+            [self.tableView endRefresh];
+            return;
+        }
         [self getFriendList];
     }];
     
-    [self.tableView beginRefresh];
+    self.page = 1;
+    [self getFriendList];
 }
 
 ///获取好友列表
@@ -74,6 +81,8 @@
     
     NSDictionary *parameters = @{@"pageNo":@(self.page),@"pageSize":@(20),@"order":@"desc"};
     [[NetworkManager sharedManager] getRequest:UserInviteRankPower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        
+        self.totalPage = [data[@"data"][@"totalPage"] integerValue];
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
