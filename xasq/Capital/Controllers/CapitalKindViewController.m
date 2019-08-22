@@ -92,7 +92,6 @@
     
     CGRect rect = CGRectMake(0, CGRectGetMaxY(backView.frame), ScreenWidth, ScreenHeight - imageViewH - 10);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
-    [_tableView registerNib:[UINib nibWithNibName:@"PaymentsRecordsTableViewCell" bundle:nil] forCellReuseIdentifier:@"PaymentsRecordsTableViewCell"];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.dataSource = self;
@@ -246,6 +245,7 @@
         } else {
             weakSelf.causeType = @"14";
         }
+        weakSelf.pageNo = 1;
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
         [weakSelf communityCapitalWater];
