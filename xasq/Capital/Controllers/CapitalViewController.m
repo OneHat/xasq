@@ -136,7 +136,6 @@
 }
 
 - (void)sendCommunityCapitalStatistics {
-    [self loading];
     WeakObject;
     NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
                            @"pageNo"   : @"1",
@@ -218,6 +217,7 @@
     } else {
         _nonzero = @"";
     }
+    [self loading];
     [_walletView updateBtnStatus:isHidden];
     [_mineView updateBtnStatus:isHidden];
     [self sendCommunityCapitalStatistics];
