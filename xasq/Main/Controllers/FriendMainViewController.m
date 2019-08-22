@@ -9,6 +9,7 @@
 #import "FriendMainViewController.h"
 #import "HomeNewsViewCell.h"
 #import "RewardBallView.h"
+#import "UITableView+Refresh.h"
 
 @interface FriendMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -16,10 +17,13 @@
 @property (strong, nonatomic) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *titles;
-@property (nonatomic, strong) NSMutableDictionary *newsDictionary;
+@property (nonatomic, strong) NSMutableDictionary *newsInfo;
 
 @property (nonatomic, strong) RewardModel *stepReward;
 @property (nonatomic, strong) NSArray *powRewardArray;
+
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, assign) NSInteger totalPage;
 
 @end
 
@@ -67,9 +71,26 @@
     [self.view addSubview:backButton];
     
     self.titles = [NSMutableArray array];
-    self.newsDictionary = [NSMutableDictionary dictionary];
+    self.newsInfo = [NSMutableDictionary dictionary];
     
     [self getUserMessageInfo];
+    
+    [self.tableView pullHeaderRefresh:^{
+        self.page = 1;
+        [self getUserMessageInfo];
+    }];
+    
+    [self.tableView pullFooterRefresh:^{
+        
+        if (self.page < self.totalPage) {
+            self.page++;
+            [self getUserMessageInfo];
+            return;
+        }
+        [self.tableView endRefresh];
+        
+    }];
+    
     [self getUserRewrad];
 }
 
@@ -111,7 +132,7 @@
 }
     
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = self.newsDictionary[self.titles[section]];
+    NSArray *array = self.newsInfo[self.titles[section]];
     return array.count;
 }
 
@@ -120,7 +141,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSString *key = self.titles[indexPath.section];
-    NSArray *array = self.newsDictionary[key];
+    NSArray *array = self.newsInfo[key];
     
     UserNewsModel *model = array[indexPath.row];
     
@@ -195,16 +216,24 @@
     NSDictionary *parameters = @{@"targetId":@(self.userId),@"pageNo":@(1)};
     
     [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self.tableView endRefresh];
         
+        self.totalPage = [data[@"data"][@"totalPage"] integerValue];
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
+        }
+        
+        if (self.page == 1) {
+            [self.titles removeAllObjects];
+            [self.newsInfo removeAllObjects];
         }
         
         [self handleData:dateList];
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
+        [self.tableView endRefresh];
     }];
 }
 
@@ -219,10 +248,10 @@
             [self.titles addObject:key];
         }
         
-        NSMutableArray *temp = self.newsDictionary[key];
+        NSMutableArray *temp = self.newsInfo[key];
         if (!temp) {
             temp = [NSMutableArray array];
-            [self.newsDictionary setObject:temp forKey:key];
+            [self.newsInfo setObject:temp forKey:key];
         }
         
         [temp addObject:model];

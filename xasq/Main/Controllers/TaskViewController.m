@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *signLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signButtonWidth;
 
+@property (nonatomic, strong) NSDictionary *signInfo;
+
 @end
 
 @implementation TaskViewController
@@ -147,10 +149,18 @@
         return;
     }
     
+    if (!self.signInfo) {
+        return;
+    }
+    
     self.signButton.selected = YES;
-    [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
+    
+    NSDictionary *parameters = @{@"days":self.signInfo[@"keepSign"],@"lastSignDate":self.signInfo[@"signDate"]};
+    
+    [[NetworkManager sharedManager] postRequest:CommunitySign parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
-        [self showSignSuccessView];
+        NSInteger power = [data[@"data"] integerValue];
+        [self showSignSuccessView:power];
         [self updateSignLabel:@"已签到" buttonSelect:YES];
         
     } failure:^(NSError * _Nonnull error) {
@@ -168,7 +178,7 @@
     self.signButton.selected = select;
 }
 
-- (void)showSignSuccessView {
+- (void)showSignSuccessView:(NSInteger)power {
     UIView *backView = [[UIView alloc] initWithFrame:self.view.bounds];
     backView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
     [self.view addSubview:backView];
@@ -176,6 +186,8 @@
     __weak UIView *weakView = backView;
     SignSuccessView *successView = [[SignSuccessView alloc] initWithFrame:CGRectMake(0, 0, 271, 311 + 40)];
     successView.center = self.view.center;
+    successView.power = power;
+    successView.day = [self.signInfo[@"keepSign"] integerValue] + 1;
     [backView addSubview:successView];
     
     successView.transform = CGAffineTransformMakeScale(0, 0);
@@ -243,6 +255,8 @@
         
         NSDictionary *signInfo = data[@"data"];
         if (signInfo && [signInfo isKindOfClass:[NSDictionary class]]) {
+            self.signInfo = signInfo;
+            
             long signDate = [signInfo[@"signDate"] longValue];//上次签到时间戳
             
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

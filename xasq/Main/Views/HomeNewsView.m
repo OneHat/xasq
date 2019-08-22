@@ -71,9 +71,20 @@
 
 @property (nonatomic, strong) NSMutableArray *viewArray;//共有4行view，其中一行用来过渡动画
 
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
+
 @end
 
 @implementation HomeNewsView
+
+- (UIActivityIndicatorView *)indicatorView {
+    if (!_indicatorView) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _indicatorView.frame = CGRectMake(ScreenWidth * 0.5-10, CGRectGetHeight(self.frame) * 0.5-10, 20, 20);
+        [_indicatorView startAnimating];
+    }
+    return _indicatorView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -83,6 +94,8 @@
         _height = CGRectGetHeight(self.frame);
         _heightPer = _height / 3.0;
         _viewArray = [NSMutableArray array];
+        
+        [self addSubview:self.indicatorView];
     }
     return self;
 }
@@ -109,7 +122,18 @@
 - (void)setNewsArray:(NSArray *)newsArray {
     _newsArray = newsArray;
     
-    [self loadSubViews];
+    if (_newsArray.count > 0) {
+        [self.indicatorView removeFromSuperview];
+        self.indicatorView = nil;
+        
+        [self loadSubViews];
+    } else {
+        [self.indicatorView removeFromSuperview];
+        self.indicatorView = nil;
+        
+        [self addSubview:self.indicatorView];
+        [self.indicatorView startAnimating];
+    }
 }
 
 - (void)loadNextNews {

@@ -382,25 +382,25 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 ///用户收取奖励
 - (void)userTakeReward:(NSInteger)rewardId ballView:(RewardBallView *)ballView {
     
-    [UIView animateWithDuration:0.5 animations:^{
+    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
+    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
-        CGPoint p = self.userHeaderImageView.center;
-        CGAffineTransform t = CGAffineTransformMakeTranslation(p.x - ballView.center.x, p.y - ballView.center.y);
-        ballView.transform = CGAffineTransformScale(t, 0.1, 0.1);
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            CGPoint p = self.userHeaderImageView.center;
+            CGAffineTransform t = CGAffineTransformMakeTranslation(p.x - ballView.center.x, p.y - ballView.center.y);
+            ballView.transform = CGAffineTransformScale(t, 0.1, 0.1);
+            
+        } completion:^(BOOL finished) {
+            [ballView removeFromSuperview];
+        }];
         
-    } completion:^(BOOL finished) {
-        [ballView removeFromSuperview];
+    } failure:^(NSError * _Nonnull error) {
+        [ballView resetButtonEnable];
     }];
-    
-    
-//    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
-//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-//
-//    } failure:^(NSError * _Nonnull error) {
-//        [ballView resetButtonEnable];
-//    }];
 }
 
+///最新动态
 - (void)getUserNews {
     [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:nil success:^(NSDictionary * _Nonnull data) {
         
@@ -418,6 +418,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     }];
 }
 
+///用户等级算力
 - (void)getUserLevelAndPower {
     [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
         
@@ -528,6 +529,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     [self getUserStepReward];
     [self getUserPowerReward];
+    
+    self.newsView.newsArray = @[];
+    [self getUserNews];
 }
 
 - (void)reloadHomeView {

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 用户名
 @property (nonatomic, strong) NSString *userName;
 /// 区号
-@property (nonatomic, strong) NSString *areaCode;
+@property (nonatomic, strong) NSString *countryCode;
 /// 手机号
 @property (nonatomic, strong) NSString *mobile;
 /// 邮箱
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *nickName;
 /// 等级
 @property (nonatomic, strong) NSString *level;
-/// 是否认证 0:未认证 1:已认证 2:审核中
+/// 是否认证 0:未认证 1:已认证 2:审核中3-打回
 @property (nonatomic, strong) NSString *authStatus;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;

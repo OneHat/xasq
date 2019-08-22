@@ -8,6 +8,14 @@
 
 #import "SignSuccessView.h"
 
+@interface SignSuccessView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *signDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *powerLabel;
+
+
+@end
+
 @implementation SignSuccessView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -26,6 +34,16 @@
     if (self.closeView) {
         self.closeView();
     }
+}
+
+- (void)setDay:(NSInteger)day {
+    _day = day;
+    self.signDayLabel.text = [NSString stringWithFormat:@"连续签到%ld天",_day];
+}
+
+-(void)setPower:(NSInteger)power {
+    _power = power;
+    self.powerLabel.text = [NSString stringWithFormat:@"%ld",_power];
 }
 
 @end

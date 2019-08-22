@@ -52,8 +52,8 @@ FOUNDATION_EXPORT NSString *const HomePageInfo;
 FOUNDATION_EXPORT NSString *const UserInviteBind;
 /// 获取邀请码参数接口 GET
 FOUNDATION_EXPORT NSString *const UserInviteQrcode;
-/// 用户签到接口 POST
-FOUNDATION_EXPORT NSString *const UserSignIn;
+///// 用户签到接口 POST
+//FOUNDATION_EXPORT NSString *const UserSignIn;
 /// 修改(找回)支付密码接口 POST
 FOUNDATION_EXPORT NSString *const UserPwdReset;
 /// 修改登录密码接口 POST
@@ -148,6 +148,8 @@ FOUNDATION_EXPORT NSString *const CommunityStatisticsCount;
 FOUNDATION_EXPORT NSString *const CommunityStealFlow;
 ///用户等级信息和升级信息 GET
 FOUNDATION_EXPORT NSString *const CommunityPowerUpinfo;
+///用户签到 POST
+FOUNDATION_EXPORT NSString *const CommunitySign;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

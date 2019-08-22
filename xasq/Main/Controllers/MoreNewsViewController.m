@@ -17,7 +17,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *titles;
-@property (nonatomic, strong) NSMutableDictionary *newsDictionary;
+@property (nonatomic, strong) NSMutableDictionary *newsInfo;
 
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger totalPage;
@@ -48,7 +48,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     }
     
     self.titles = [NSMutableArray array];
-    self.newsDictionary = [NSMutableDictionary dictionary];
+    self.newsInfo = [NSMutableDictionary dictionary];
     
     [self.tableView pullHeaderRefresh:^{
         self.page = 1;
@@ -56,14 +56,13 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     }];
     
     [self.tableView pullFooterRefresh:^{
-        self.page++;
-        if (self.page > self.totalPage) {
-            self.page--;
-            [self.tableView endRefresh];
-            return ;
-        }
         
-        [self getUserNews];
+        if (self.page < self.totalPage) {
+            self.page++;
+            [self getUserNews];
+            return;
+        }
+        [self.tableView endRefresh];
     }];
     
     self.page = 1;
@@ -73,16 +72,25 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 - (void)getUserNews {
     
     [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:@{@"pageNo":@(self.page)} success:^(NSDictionary * _Nonnull data) {
+        [self.tableView endRefresh];
+        
+        self.totalPage = [data[@"data"][@"totalPage"] integerValue];
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
         
+        if (self.page == 1) {
+            [self.titles removeAllObjects];
+            [self.newsInfo removeAllObjects];
+        }
+        
         [self handleData:dateList];
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
+        [self.tableView endRefresh];
     }];
 }
 
@@ -97,10 +105,10 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
             [self.titles addObject:key];
         }
         
-        NSMutableArray *temp = self.newsDictionary[key];
+        NSMutableArray *temp = self.newsInfo[key];
         if (!temp) {
             temp = [NSMutableArray array];
-            [self.newsDictionary setObject:temp forKey:key];
+            [self.newsInfo setObject:temp forKey:key];
         }
         
         [temp addObject:model];
@@ -113,7 +121,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *array = self.newsDictionary[self.titles[section]];
+    NSArray *array = self.newsInfo[self.titles[section]];
     return array.count;
 }
 
@@ -137,7 +145,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSString *key = self.titles[indexPath.section];
-    NSArray *array = self.newsDictionary[key];
+    NSArray *array = self.newsInfo[key];
     
     UserNewsModel *model = array[indexPath.row];
     

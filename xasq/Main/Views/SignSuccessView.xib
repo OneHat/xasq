@@ -100,6 +100,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="powerLabel" destination="8if-xC-UQ5" id="Dez-C1-Grx"/>
+                <outlet property="signDayLabel" destination="dkb-xF-NGK" id="HlG-fM-LSF"/>
+            </connections>
             <point key="canvasLocation" x="-397" y="43"/>
         </view>
     </objects>

@@ -63,13 +63,14 @@
     }];
     
     [self.tableView pullFooterRefresh:^{
-        self.page++;
-        if (self.page > self.totalPage) {
-            self.page--;
+        
+        if (self.page < self.totalPage) {
+            self.page++;
+            [self getFriendList];
+        } else {
             [self.tableView endRefresh];
-            return;
         }
-        [self getFriendList];
+        
     }];
     
     self.page = 1;
@@ -81,6 +82,7 @@
     
     NSDictionary *parameters = @{@"pageNo":@(self.page),@"pageSize":@(20),@"order":@"desc"};
     [[NetworkManager sharedManager] getRequest:UserInviteRankPower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self.tableView endRefresh];
         
         self.totalPage = [data[@"data"][@"totalPage"] integerValue];
         
@@ -91,7 +93,7 @@
             return;
         }
         
-        [self.tableView endRefresh];
+        
         
         if (self.page == 1) {
             [self.friends removeAllObjects];

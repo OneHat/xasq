@@ -15,7 +15,7 @@
 @interface MessageViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *messages;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 @property (nonatomic, assign) NSInteger totalPage;//总页数
 @property (nonatomic, assign) NSInteger page;//页数
@@ -49,14 +49,14 @@
     }];
     
     [self.tableView pullFooterRefresh:^{
-        self.page++;
-        if (self.page > self.totalPage) {
-            self.page--;
-            [self.tableView endRefresh];
+        
+        if (self.page < self.totalPage) {
+            self.page++;
+            [self getMessages];
             return;
         }
+        [self.tableView endRefresh];
         
-        [self getMessages];
     }];
     
     self.page = 1;
@@ -74,7 +74,10 @@
         
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
             
-            self.messages = array;
+            if (self.page == 1) {
+                [self.messages removeAllObjects];
+            }
+            [self.messages addObjectsFromArray:array];
             [self.tableView reloadData];
             return;
         }

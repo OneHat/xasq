@@ -29,7 +29,7 @@ NSString *const UserInviteRecordFirst = @"user/invite/record/first";
 NSString *const HomePageInfo = @"home/page/info";
 NSString *const UserInviteBind = @"user/invite/bind";
 NSString *const UserInviteQrcode = @"user/invite/qrcode";
-NSString *const UserSignIn = @"user/sign/in";
+//NSString *const UserSignIn = @"user/sign/in";
 NSString *const UserPwdReset = @"user/pwd/reset";
 NSString *const UserPwdLoginModify = @"user/pwd/login/modify";
 NSString *const UserSignInfo = @"user/sign/info";
@@ -79,7 +79,7 @@ NSString *const CommunityCapitalCurrencyBalance = @"comm/capital/currency/balanc
 NSString *const CommunityStatisticsCount = @"comm/capital/statistics/count";
 NSString *const CommunityStealFlow = @"comm/steal/flow";
 NSString *const CommunityPowerUpinfo = @"comm/power/upinfo";
-
+NSString *const CommunitySign = @"comm/sign";
 
 NSInteger const E010141 = 10141;
 NSInteger const E010145 = 10145;

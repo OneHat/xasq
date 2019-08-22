@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) DSSJBlock closeView;
 
+@property (nonatomic, assign) NSInteger day;
+@property (nonatomic, assign) NSInteger power;
+
 @end
 
 NS_ASSUME_NONNULL_END
