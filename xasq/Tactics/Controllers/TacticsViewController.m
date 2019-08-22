@@ -32,10 +32,6 @@ static NSString *TacticsIdentifier = @"TacticsViewCell";
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     
-    [self.tableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
-        [self.tableView hideEmptyView];
-    }];
-    
 }
 #pragma mark-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

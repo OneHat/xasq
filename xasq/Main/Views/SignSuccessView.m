@@ -23,8 +23,8 @@
 }
 
 - (IBAction)closeAction:(UIButton *)sender {
-    if (self.CloseViewBlock) {
-        self.CloseViewBlock();
+    if (self.closeView) {
+        self.closeView();
     }
 }
 

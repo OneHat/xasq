@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserGuideViewController : UIViewController
 
-@property (nonatomic, strong) void (^DissmissGuideBlock)(void);
+@property (nonatomic, strong) DSSJBlock dissmissGuide;
 
 @end
 

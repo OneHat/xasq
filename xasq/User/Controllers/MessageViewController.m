@@ -10,11 +10,14 @@
 #import "AssetDynamicTableViewCell.h"
 #import "AccountUpgradeTableViewCell.h"
 #import "CommunityDynamicTableViewCell.h"
+#import "UITableView+Refresh.h"
 
 @interface MessageViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *messages;
+
+@property (nonatomic, assign) NSInteger page;//页数
 
 @end
 
@@ -39,20 +42,44 @@
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,@"pageNo":@"0",@"pageSize":@"10"};
+    [self.tableView pullHeaderRefresh:^{
+        self.page = 1;
+        [self getMessages];
+    }];
+    
+    [self.tableView pullFooterRefresh:^{
+        self.page++;
+        [self getMessages];
+    }];
+    
+    [self.tableView beginRefresh];
+}
+
+#pragma mark -
+- (void)getMessages {
+    NSDictionary *parameters = @{@"pageNo":@(1)};
     [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self.tableView endRefresh];
         
         NSArray *array = data[@"data"][@"rows"];
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
+            
+            
             self.messages = array;
             [self.tableView reloadData];
             return;
         }
         
-        [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        [self.tableView endRefresh];
+        if (self.messages.count == 0) {
+            [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        }
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [self.tableView endRefresh];
+        if (self.messages.count == 0) {
+            [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        }
     }];
 }
 

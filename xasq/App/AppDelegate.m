@@ -56,7 +56,7 @@
     if ([[ApplicationData shareData] isFirstLanuch]) {
         //新版本
         UserGuideViewController *guideVC = [[UserGuideViewController alloc] init];
-        guideVC.DissmissGuideBlock = ^{
+        guideVC.dissmissGuide = ^{
             // 存储新版本
             [[ApplicationData shareData] saveNewVersion];
             [self launchRootController];
@@ -65,7 +65,7 @@
         self.window.rootViewController = guideVC;
     } else {
         LaunchViewController *launchVC = [[LaunchViewController alloc] init];
-        launchVC.DissmissLaunchBlock = ^{
+        launchVC.dissmissLaunch = ^{
             RootViewController *rootVC = [[RootViewController alloc] init];
             self.window.rootViewController = rootVC;
         };

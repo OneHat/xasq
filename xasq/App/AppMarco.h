@@ -37,6 +37,7 @@
 #define DSSJUserLoginSuccessNotification      @"DSSJUserLoginSuccessNotification"
 #define DSSJUserLogoutNotification            @"DSSJUserLogoutNotification"
 
-
+#pragma mark -
+typedef void(^DSSJBlock)(void);
 
 #endif /* AppMarco_h */

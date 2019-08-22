@@ -33,21 +33,16 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
-    [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         NSArray *rewards = data[@"data"];
         if (rewards && [rewards isKindOfClass:[NSArray class]] && rewards.count > 0) {
             self.rewards = data[@"data"];
             [self.tableView reloadData];
-        } else {
-            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        [self.tableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
-            
-        }];
     }];
 }
 

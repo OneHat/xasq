@@ -12,14 +12,16 @@
 #import "ContactsViewController.h"
 #import "FriendMainViewController.h"
 
-#import <MJRefresh/MJRefresh.h>
+#import "UITableView+Refresh.h"
 
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) FriendsHeaderView *headerView;
 
-@property (nonatomic, strong) NSArray *friends;
+@property (nonatomic, strong) NSMutableArray *friends;
+
+@property (nonatomic, assign) NSInteger page;//页数
 
 @end
 
@@ -29,6 +31,8 @@
     [super viewDidLoad];
     self.title = @"好友排行";
     self.view.backgroundColor = ThemeColorBackground;
+    
+    self.friends = [NSMutableArray array];
     
     CGRect frame = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
@@ -51,31 +55,44 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
     [headerView addGestureRecognizer:tap];
     
-    MJRefreshNormalHeader *normalHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    
+    [self.tableView pullHeaderRefresh:^{
+        self.page = 1;
         [self getFriendList];
     }];
-    normalHeader.stateLabel.hidden = YES;
-    normalHeader.lastUpdatedTimeLabel.hidden = YES;
-    self.tableView.mj_header = normalHeader;
     
-    [self.tableView.mj_header beginRefreshing];
+    [self.tableView pullFooterRefresh:^{
+        self.page++;
+        [self getFriendList];
+    }];
+    
+    [self.tableView beginRefresh];
 }
 
+///获取好友列表
 - (void)getFriendList {
-    NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10),@"order":@"desc"};
+    
+    NSDictionary *parameters = @{@"pageNo":@(self.page),@"pageSize":@(20),@"order":@"desc"};
     [[NetworkManager sharedManager] getRequest:UserInviteRankPower parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        [self.tableView.mj_header endRefreshing];
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            [self.tableView endRefresh];
+            self.page--;
             return;
         }
         
-        self.friends = [UserRankModel modelWithArray:dateList];
+        [self.tableView endRefresh];
+        
+        if (self.page == 1) {
+            [self.friends removeAllObjects];
+        }
+        
+        [self.friends addObjectsFromArray:[UserRankModel modelWithArray:dateList]];
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nonnull error) {
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView endRefresh];
         
     }];
 }

@@ -220,6 +220,7 @@ static char AlertBlockKey;
         UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(AlertSpaceWidth,  titleHeight, alertWidth - AlertSpaceWidth * 2, AlertMessageHeight)];
         messageLabel.numberOfLines = 0;
         messageLabel.text = message;
+        messageLabel.font = ThemeFontText;
         messageLabel.textAlignment = NSTextAlignmentCenter;
         [alertView addSubview:messageLabel];
     }

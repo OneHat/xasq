@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SignSuccessView : UIView
 
-@property (nonatomic, strong) void (^CloseViewBlock)(void);
+@property (nonatomic, strong) DSSJBlock closeView;
 
 @end
 
