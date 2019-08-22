@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSMutableDictionary *dataDict; // 数据源
 @property (nonatomic, strong) NSMutableArray *titleArray;  // 分区标题
 @property (nonatomic, strong) NSMutableArray *currencyArray; // 币种数据
+@property (nonatomic, assign) NSInteger pageNo;  // 分页
+@property (nonatomic, assign) NSInteger totalPage; // 最大页数
 @end
 
 @implementation PaymentsRecordsViewController
@@ -34,6 +36,8 @@
     self.view.backgroundColor = ThemeColorBackground;
     _causeType = @"";
     _currency = @"";
+    _pageNo = 1;
+    _totalPage = 1;
     _dataDict = [NSMutableDictionary dictionary];
     _titleArray = [NSMutableArray array];
     _currencyArray = [NSMutableArray array];
@@ -48,6 +52,22 @@
     if (@available(iOS 11.0, *)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    WeakObject;
+    [_tableView pullHeaderRefresh:^{
+        weakSelf.pageNo = 1;
+        [weakSelf.dataDict removeAllObjects];
+        [weakSelf.titleArray removeAllObjects];
+        [weakSelf communityCapitalWater];
+    }];
+    [_tableView pullFooterRefresh:^{
+        weakSelf.pageNo++;
+        if (weakSelf.pageNo <= weakSelf.totalPage) {
+            [self communityCapitalWater];
+        } else {
+            [weakSelf.tableView endRefresh];
+        }
+    }];
+    
     UIView *headerBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, 50)];
     _headerView = [[[UINib nibWithNibName:@"PaymentHeaderView" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
     _headerView.frame = CGRectMake(0, 0, ScreenWidth, 50);
@@ -84,13 +104,14 @@
     NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
                            @"causeType"    : _causeType,
                            @"currency"     : _currency,
-                           @"pageNo"       : @"1",
+                           @"pageNo"       : [NSString stringWithFormat:@"%ld",_pageNo],
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalWater parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"][@"rows"];
         if ([array isKindOfClass:[NSArray class]]) {
             NSString *key;
             NSMutableArray *typeArr = [NSMutableArray array];
+            weakSelf.totalPage = [data[@"data"][@"totalPage"] integerValue];
             if (weakSelf.titleArray.count > 0) {
                 // 上拉添加数据
                 key = weakSelf.titleArray.lastObject;
@@ -121,8 +142,10 @@
                 }
             }
         }
+        [weakSelf.tableView endRefresh];
         [weakSelf.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
+        [weakSelf.tableView endRefresh];
         [self showErrow:error];
     }];
 }

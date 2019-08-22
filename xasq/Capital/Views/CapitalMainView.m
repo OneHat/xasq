@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) UIButton *checkButton;
 @end
 
 static CGFloat CapitalSegmentControlH = 40;
@@ -67,6 +68,10 @@ static CGFloat CapitalSegmentControlH = 40;
     [self addSubview:_tableView];
 }
 
+- (void)updateBtnStatus:(BOOL)isSelected {
+    _checkButton.selected = isSelected;
+}
+
 - (void)setTotalAssets:(NSDictionary *)dict {
     _topView.BTCStr = [NSString stringWithFormat:@"%@ BTC",dict[@"toBTCSum"]];
     _topView.moneyStr = [NSString stringWithFormat:@"%@",dict[@"toCNYSum"]];
@@ -99,9 +104,7 @@ static CGFloat CapitalSegmentControlH = 40;
         cell.numberLabel.text = model.amount;
         cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY];
     }
-    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
-    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    UIImage *icon = [UIImage imageWithData:imageData];
+    UIImage *icon = Base64ImageStr(model.icon);
     if (icon) {
         cell.iconView.image = icon;
     }
@@ -163,12 +166,14 @@ static CGFloat CapitalSegmentControlH = 40;
     hideZeroLabel.text = @"隐藏0余额";
     [headerView addSubview:hideZeroLabel];
     
-    UIButton *checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
-    [checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
-    [checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
-    [checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:checkButton];
+    if (!_checkButton) {
+        _checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
+        [_checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
+        [_checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
+        [_checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [headerView addSubview:_checkButton];
     
     return headerView;
 }
@@ -200,8 +205,9 @@ static CGFloat CapitalSegmentControlH = 40;
 ///隐藏0余额按钮
 - (void)checkButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
-    
+    if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+        [_delegate hiddenAmountClick:sender.isSelected];
+    }
 }
 
 #pragma mark - UITextFieldDelegate

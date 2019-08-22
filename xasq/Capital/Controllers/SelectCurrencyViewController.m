@@ -41,8 +41,9 @@
 
 - (void)CommunityCapitalCurrencyBalance {
     WeakObject;
-    NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
-                           @"pageNo" : @"1",
+    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
+                           @"pageNo"   : @"1",
+                           @"pageSize" : @"100",
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalCurrencyBalance parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSArray *rows = data[@"data"][@"rows"];
@@ -81,9 +82,12 @@
     CapitalModel *model = _dataArray[indexPath.row];
     cell.nameLB.text = model.currency;
     cell.amountLB.text = model.amount;
-    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
-    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    UIImage *icon = [UIImage imageWithData:imageData];
+    if ([_currency isEqualToString:model.currency]) {
+        cell.selectImageV.hidden = NO;
+    } else {
+        cell.selectImageV.hidden = YES;
+    }
+    UIImage *icon = Base64ImageStr(model.icon);
     if (icon) {
         cell.iconImageV.image = icon;
     }

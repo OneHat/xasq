@@ -26,6 +26,8 @@
 #define AppVersion          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define AppBuild            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
+// base64转图片
+#define Base64ImageStr(imageStr)     [UIImage base64ChangeiImageWithStr:imageStr]
 
 #pragma mark - 通知
 #define DSSJTabBarSelectHomeNotification      @"DSSJTabBarSelectHomeNotification"

@@ -175,7 +175,6 @@
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",dataInfo[@"userId"]];
             [UserDataManager shareManager].authorization = dataInfo[@"accessToken"];
             [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
-            [[UserDataManager shareManager] saveUserData:dataInfo];
             
             [self showMessage:@"登录成功" complete:^{
                 [self isLoginSuccessfull:YES];
