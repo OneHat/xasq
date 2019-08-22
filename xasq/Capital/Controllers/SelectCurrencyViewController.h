@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectCurrencyViewController : UIViewController
 
+@property (nonatomic, strong) NSString *currency;  // 选择的币种
 @property (nonatomic, copy) void (^CapitalModelBlock)(CapitalModel *model);
 
 

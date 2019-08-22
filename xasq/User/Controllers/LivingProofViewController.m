@@ -31,8 +31,10 @@
     _pictureImageV.layer.cornerRadius = 30;
     _pictureImageV.layer.masksToBounds = YES;
     [_pictureImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
-    if ([UserDataManager shareManager].usermodel.authStatus) {
+    if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 1) {
         _certificationLB.text = @"已认证";
+    } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 2) {
+        _certificationLB.text = @"审核中";
     } else {
         _certificationLB.text = @"未认证";
     }
@@ -48,12 +50,12 @@
 }
 
 - (IBAction)certificationClick:(UIButton *)sender {
-    if ([UserDataManager shareManager].usermodel.authStatus) {
+    if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 1) {
         // 已认证
         CredentialsViewController *VC = [[CredentialsViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
-    } else {
+    } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 0){
         // 未认证
         UnauthorizedViewController *VC = [[UnauthorizedViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;

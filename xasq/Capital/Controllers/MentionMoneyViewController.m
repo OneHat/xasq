@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *currencyImageV; // 币种图标
 @property (weak, nonatomic) IBOutlet UITextField *amountTF; // 金额
 @property (weak, nonatomic) IBOutlet UILabel *amountLB; // 当前币种余额
+@property (weak, nonatomic) IBOutlet UILabel *exchangeLB;
 
 
 @end
@@ -55,6 +56,7 @@
 - (IBAction)selectCurrency:(UIButton *)sender {
     WeakObject;
     SelectCurrencyViewController *VC = [[SelectCurrencyViewController alloc] init];
+    VC.currency = _currencyLB.text;
     VC.CapitalModelBlock = ^(CapitalModel * _Nonnull model) {
         weakSelf.currencyLB.text = model.currency;
         weakSelf.amountLB.text = model.amount;
@@ -66,13 +68,19 @@
     [self actionSheetWithItems:@[@"币币账户"] complete:^(NSInteger index) {
         if (index == 0) {
             
-        } else {
-            
         }
     }];
-//    ProceedAccountViewController *VC = [[ProceedAccountViewController alloc] init];
-//    [self.navigationController pushViewController:VC animated:YES];
 }
+
+- (IBAction)exchangeBtnClick:(UIButton *)sender {
+    WeakObject;
+    [self actionSheetWithItems:@[@"交易所"] complete:^(NSInteger index) {
+        if (index == 0) {
+            weakSelf.exchangeLB.text = @"交易所";
+        }
+    }];
+}
+
 
 - (IBAction)confirmBtnClick:(UIButton *)sender {
     

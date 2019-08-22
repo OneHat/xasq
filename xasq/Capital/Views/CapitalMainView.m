@@ -99,9 +99,7 @@ static CGFloat CapitalSegmentControlH = 40;
         cell.numberLabel.text = model.amount;
         cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY];
     }
-    NSString *imageStr = [model.icon stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
-    NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    UIImage *icon = [UIImage imageWithData:imageData];
+    UIImage *icon = Base64ImageStr(model.icon);
     if (icon) {
         cell.iconView.image = icon;
     }

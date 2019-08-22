@@ -113,9 +113,7 @@
         if (indexPath.row == 0) {
             cell.icon.image = [UIImage imageNamed:@"capital_all"];
         } else {
-            NSString *imageStr = [_iconArray[indexPath.row] stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
-            NSData *imageData = [[NSData alloc]initWithBase64EncodedString:imageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-            UIImage *icon = [UIImage imageWithData:imageData];
+            UIImage *icon = Base64ImageStr(_iconArray[indexPath.row]);
             if (icon) {
                 cell.icon.image = icon;
             }

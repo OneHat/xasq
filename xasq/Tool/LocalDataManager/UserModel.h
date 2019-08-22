@@ -30,8 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *nickName;
 /// 等级
 @property (nonatomic, strong) NSString *level;
-/// 是否认证 空:未认证 0:已认证 1:审核中
-@property (nonatomic, assign) BOOL authStatus;
+/// 是否认证 0:未认证 1:已认证 2:审核中
+@property (nonatomic, strong) NSString *authStatus;
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dict;
 

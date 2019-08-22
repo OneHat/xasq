@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  拉伸图片
  */
 - (UIImage *)resizeImageInCenter;
+/**
+ *  base64转图片
+ */
++ (UIImage *)base64ChangeiImageWithStr:(NSString *)imageStr;
 
 @end
 

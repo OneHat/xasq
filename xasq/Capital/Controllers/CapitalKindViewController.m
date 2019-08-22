@@ -158,6 +158,8 @@
                     [weakSelf.titleArray addObject:key];
                 }
             }
+        } else {
+            [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         [weakSelf.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {

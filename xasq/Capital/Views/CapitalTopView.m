@@ -44,6 +44,8 @@ NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatu
     UIColor *buttonTitleColor = RGBColorA(36, 69, 102, 1);
     
     CGFloat width = CGRectGetWidth(self.frame);
+    _BTCStr = @"-- BTC";
+    _moneyStr = @"≈ ¥--";
     
     //背景
     UIImage *bgImage = [UIImage imageNamed:@"capital_RecordBG"];
