@@ -137,8 +137,7 @@
 
 - (void)sendCommunityCapitalStatistics {
     WeakObject;
-    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
-                           @"pageNo"   : @"1",
+    NSDictionary *dict = @{@"pageNo"   : @"1",
                            @"pageSize" : @"100",
                            @"nonzero"  : _nonzero,
                            };

@@ -103,7 +103,8 @@
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             picker.delegate = self;
-            //    picker.allowsEditing = YES;
+            picker.allowsEditing = YES;
+            picker.navigationBar.translucent = NO;
             [self presentViewController:picker animated:YES completion:^{
             }];
         }else {
@@ -191,8 +192,7 @@
 
 - (void)sendUserIdentityApply {
 
-    NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
-                           @"certName"     : _certName,
+    NSDictionary *dict = @{@"certName"     : _certName,
                            @"certType"     : [NSString stringWithFormat:@"%ld",_type],
                            @"certNo"       : _certNo,
                            @"holdDate"     : _positivePath,

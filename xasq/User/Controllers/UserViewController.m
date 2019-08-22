@@ -108,8 +108,7 @@
 
 - (void)getUserinfoData {
     WeakObject;
-    NSDictionary *dict = @{@"userId"          :   [UserDataManager shareManager].userId,
-                           @"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
+    NSDictionary *dict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
                            };
     [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSDictionary *userData = data[@"data"];

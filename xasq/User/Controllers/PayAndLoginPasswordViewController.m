@@ -158,8 +158,7 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"userId"      : [UserDataManager shareManager].userId,
-                               @"oldPassword" : _oldPasswordTF.text,
+        NSDictionary *dict = @{@"oldPassword" : _oldPasswordTF.text,
                                @"newPassword" : _passwordTF.text,
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {

@@ -101,8 +101,7 @@
 
 - (void)communityCapitalWater {
     WeakObject;
-    NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
-                           @"causeType"    : _causeType,
+    NSDictionary *dict = @{@"causeType"    : _causeType,
                            @"currency"     : _currency,
                            @"pageNo"       : [NSString stringWithFormat:@"%ld",_pageNo],
                            };

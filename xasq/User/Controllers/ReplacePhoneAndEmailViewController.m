@@ -235,8 +235,7 @@
     [self loading];
     WeakObject;
     if (_type == 0) {
-        NSDictionary *dict = @{@"userId"          : [UserDataManager shareManager].userId,
-                               @"email"           : [UserDataManager shareManager].usermodel.email,
+        NSDictionary *dict = @{@"email"           : [UserDataManager shareManager].usermodel.email,
                                @"newMobile"       : _accountTF.text,
                                @"mobileValidCode" : _phoneCodeTF.text,
                                @"emailValidCode"  : _emailCodeTF.text
@@ -257,8 +256,7 @@
             }
         }];
     } else {
-        NSDictionary *dict = @{@"userId"          : [UserDataManager shareManager].userId,
-                               @"mobile"          : [UserDataManager shareManager].usermodel.mobile,
+        NSDictionary *dict = @{@"mobile"          : [UserDataManager shareManager].usermodel.mobile,
                                @"newEmail"        : _accountTF.text,
                                @"mobileValidCode" : _emailCodeTF.text,
                                @"emailValidCode"  : _phoneCodeTF.text

@@ -32,8 +32,7 @@
         return;
     }
     [self loading];
-    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
-                           @"nickName" : _nameTF.text
+    NSDictionary *dict = @{@"nickName" : _nameTF.text
                            };
     [[NetworkManager sharedManager] postRequest:UserSetNickname parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];

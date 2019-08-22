@@ -45,7 +45,7 @@ NSString *const CapitalChangeHideMoneyStatus = @"DSSJCapitalChangeHideMoneyStatu
     
     CGFloat width = CGRectGetWidth(self.frame);
     _BTCStr = @"-- BTC";
-    _moneyStr = @"≈ ¥--";
+    _moneyStr = @"--";
     
     //背景
     UIImage *bgImage = [UIImage imageNamed:@"capital_RecordBG"];

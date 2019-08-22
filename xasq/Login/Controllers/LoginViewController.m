@@ -167,22 +167,30 @@
                            @"sysVersion"    :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""]
                            };
     [[NetworkManager sharedManager] postRequest:URLStr parameters:dict success:^(NSDictionary * _Nonnull data) {
-        weakSelf.loginBtn.userInteractionEnabled = YES;
-        [weakSelf hideHUD];
-        
         NSDictionary *dataInfo = data[@"data"];
         if (dataInfo && [dataInfo isKindOfClass:[NSDictionary class]]) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",dataInfo[@"userId"]];
             [UserDataManager shareManager].authorization = dataInfo[@"accessToken"];
             [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
-            
-            [self showMessage:@"登录成功" complete:^{
-                [self isLoginSuccessfull:YES];
+            // 获取用户信息
+            NSDictionary *loginDict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
+                                   };
+            [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:loginDict success:^(NSDictionary * _Nonnull data) {
+                weakSelf.loginBtn.userInteractionEnabled = YES;
+                [weakSelf hideHUD];
+                NSDictionary *userData = data[@"data"];
+                if (userData) {
+                    [[UserDataManager shareManager] saveUserData:userData];
+                }
+                [self showMessage:@"登录成功" complete:^{
+                    [self isLoginSuccessfull:YES];
+                }];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DSSJUserLoginSuccessNotification object:nil];
+            } failure:^(NSError * _Nonnull error) {
+                weakSelf.loginBtn.userInteractionEnabled = YES;
+                [weakSelf hideHUD];
             }];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJUserLoginSuccessNotification object:nil];
         }
-        
     } failure:^(NSError * _Nonnull error) {
         if (error.code == E010130 || error.code == E010141 || error.code == E010145 || error.code == E010142) {
             weakSelf.passwordTF.text = @"";

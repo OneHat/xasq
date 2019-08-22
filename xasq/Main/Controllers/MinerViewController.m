@@ -277,8 +277,7 @@
 
 //邀请人绑定
 - (void)bindInviteCode:(NSString *)code  {
-    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-                                 @"inviteCode":code,
+    NSDictionary *parameters = @{@"inviteCode":code,
                                  @"bindType":@"0"//绑定类型 0-app绑定 1-H5绑定
                                  };
     

@@ -35,6 +35,8 @@
         _certificationLB.text = @"已认证";
     } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 2) {
         _certificationLB.text = @"审核中";
+    } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 3) {
+        _certificationLB.text = @"认证失败";
     } else {
         _certificationLB.text = @"未认证";
     }
@@ -55,7 +57,7 @@
         CredentialsViewController *VC = [[CredentialsViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
-    } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 0){
+    } else if ([[UserDataManager shareManager].usermodel.authStatus integerValue] == 0 || [[UserDataManager shareManager].usermodel.authStatus integerValue] == 3){
         // 未认证
         UnauthorizedViewController *VC = [[UnauthorizedViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
@@ -103,6 +105,7 @@
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             picker.delegate = self;
             picker.allowsEditing = YES;
+            picker.navigationBar.translucent = NO;
             [self presentViewController:picker animated:YES completion:^{
             }];
         }else {
@@ -151,8 +154,7 @@
     
     [[NetworkManager sharedManager] uploadRequest:OperationUploadImage image:img success:^(NSDictionary * _Nonnull data) {
 
-        NSDictionary *params = @{@"userId" : [UserDataManager shareManager].userId,
-                                 @"icon"   : data[@"data"][@"path"]
+        NSDictionary *params = @{@"icon"   : data[@"data"][@"path"]
                                  };
         // 上传成功后绑定对应账户ID
         [[NetworkManager sharedManager] postRequest:UserSetIcon parameters:params success:^(NSDictionary * _Nonnull data) {

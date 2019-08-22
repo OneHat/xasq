@@ -134,8 +134,7 @@
         nameStr = @"email";
     }
     [self loading];
-    NSDictionary *dict = @{@"userId"      : [UserDataManager shareManager].userId,
-                           nameStr        : _accountTF.text,
+    NSDictionary *dict = @{nameStr        : _accountTF.text,
                            @"validCode"   : _codeTF.text,
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
