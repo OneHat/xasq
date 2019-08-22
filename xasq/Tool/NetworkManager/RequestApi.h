@@ -146,6 +146,8 @@ FOUNDATION_EXPORT NSString *const CommunityCapitalCurrencyBalance;
 FOUNDATION_EXPORT NSString *const CommunityStatisticsCount;
 ///用户被偷取记录（最新动态） GET
 FOUNDATION_EXPORT NSString *const CommunityStealFlow;
+///用户等级信息和升级信息 GET
+FOUNDATION_EXPORT NSString *const CommunityPowerUpinfo;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

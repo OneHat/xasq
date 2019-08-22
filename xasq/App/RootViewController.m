@@ -29,13 +29,13 @@
     HomeViewController *homeVC = [[HomeViewController alloc] init];
     UINavigationController *homeNVC = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
-    //策略
-    TacticsViewController *tacticsVC = [[TacticsViewController alloc] init];
-    UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
-    
-    //发现
-    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
-    UINavigationController *discoveryNVC = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
+//    //策略
+//    TacticsViewController *tacticsVC = [[TacticsViewController alloc] init];
+//    UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
+//
+//    //发现
+//    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
+//    UINavigationController *discoveryNVC = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
     
     //资产
     CapitalViewController *capitalVC = [[CapitalViewController alloc] init];
@@ -46,18 +46,26 @@
     UINavigationController *userNVC = [[UINavigationController alloc] initWithRootViewController:userVC];
     userNVC.navigationBar.barTintColor = [UIColor whiteColor];
 
-    self.viewControllers = @[homeNVC,tacticsNVC,discoveryNVC,capitalNVC,userNVC];
+    self.viewControllers = @[homeNVC,
+//                             tacticsNVC,
+//                             discoveryNVC,
+                             capitalNVC,
+                             userNVC];
     
-    NSArray *titles = @[@"首页",@"策略",@"发现",@"资产",@"我的"];
+    NSArray *titles = @[@"首页",
+//                        @"策略",
+//                        @"发现",
+                        @"资产",
+                        @"我的"];
     NSArray *imagesNormal = @[@"Tab_Home_Normal",
-                              @"Tab_Tactics_Normal",
-                              @"Tab_Discovery_Normal",
+//                              @"Tab_Tactics_Normal",
+//                              @"Tab_Discovery_Normal",
                               @"Tab_Capital_Normal",
                               @"Tab_User_Normal"];
     
     NSArray *imagesSelect = @[@"Tab_Home_Select",
-                              @"Tab_Tactics_Select",
-                              @"Tab_Discovery_Select",
+//                              @"Tab_Tactics_Select",
+//                              @"Tab_Discovery_Select",
                               @"Tab_Capital_Select",
                               @"Tab_User_Select"];
     

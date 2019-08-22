@@ -12,6 +12,7 @@
 
 @interface ContactsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *tipLabels;
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableDictionary *contactInfo;
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     self.title = @"通讯录好友";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.tipLabels.hidden = YES;
     
     //是否有权限
     CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
@@ -127,7 +129,7 @@
 
 ///拒绝访问提示信息
 - (void)showTipLabel {
-    
+    self.tipLabels.hidden = NO;
 }
 
 #pragma mark-

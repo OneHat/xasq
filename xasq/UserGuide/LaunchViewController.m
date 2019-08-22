@@ -72,8 +72,8 @@ static NSString *LaunchADCacheKey = @"LaunchADCacheKey";
 }
 
 - (IBAction)buttonAction:(UIButton *)sender {
-    if (_DissmissLaunchBlock) {
-        _DissmissLaunchBlock();
+    if (self.dissmissLaunch) {
+        self.dissmissLaunch();
     }
     
     [self dismissViewControllerAnimated:YES completion:^{

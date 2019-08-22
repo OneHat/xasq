@@ -154,6 +154,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     //最新动态
     [self getUserNews];
     
+    //当前算力、等级
+    [self getUserLevelAndPower];
+    
     if ([UserDataManager shareManager].userId) {
         [self postUserSteps];
     }
@@ -182,9 +185,28 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     [self reloadHomeView];
     
-//    if ([ApplicationData shareData].showNewVersion) {
-//        [self showMessage:[ApplicationData shareData].updateInfo.upgradeDesc];
-//    }
+    /**
+    if ([ApplicationData shareData].showNewVersion) {
+        UpdateInfoObject *updateInfo = [ApplicationData shareData].updateInfo;
+        NSArray *items = (updateInfo.upgradeDesc ? @[@"确定"] : @[@"取消",@"确定"]);
+        
+        [self alertWithTitle:@"提示"
+                     message:updateInfo.upgradeDesc
+                       items:items
+                      action:^(NSInteger index) {
+                          if (index == 0 && !updateInfo.forceUpgrade) {
+                              [self dismissViewControllerAnimated:NO completion:nil];
+                              return;
+                          }
+                          
+//                          NSURL *url = [NSURL URLWithString:updateInfo.download];
+                          NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
+                          [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                          }];
+                          
+                      }];
+    }
+    */
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -220,7 +242,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     if (![UserDataManager shareManager].userId) {
         return;
     }
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         
@@ -251,7 +273,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
-    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
@@ -339,8 +361,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
 //    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
 //                                 @"userWalk":[NSString stringWithFormat:@"%ld",steps]};
-    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-                                 @"userWalk":[NSString stringWithFormat:@"%d",6666]};
+    NSDictionary *parameters = @{@"userWalk":[NSString stringWithFormat:@"%d",6666]};
     [[NetworkManager sharedManager] postRequest:UserSyncWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -360,13 +381,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     }];
     
     
-//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-//                                 @"bId":[NSString stringWithFormat:@"%ld",rewardId]
-//                                 };
-//    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-//
-//    } failure:^(NSError * _Nonnull error) {
-//    }];
+    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
+    [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
+
+    } failure:^(NSError * _Nonnull error) {
+    }];
 }
 
 - (void)getUserNews {
@@ -381,6 +400,16 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         
         NSArray *newsList = [UserNewsModel modelWithArray:dateList];
         self.newsView.newsArray = newsList;
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
+}
+
+- (void)getUserLevelAndPower {
+    [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *dateList = data[@"data"];
         
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -450,7 +479,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 }
 
 - (IBAction)moreNewsAction:(UIButton *)sender {
-    
+    [self getUserLevelAndPower];
+    return;
     MoreNewsViewController *moreNewsVC = [[MoreNewsViewController alloc] init];
     moreNewsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreNewsVC animated:YES];

@@ -183,7 +183,7 @@
     }];
     
     __weak SignSuccessView *weakSSView = successView;
-    successView.CloseViewBlock = ^{
+    successView.closeView = ^{
         [UIView animateWithDuration:0.25 animations:^{
             weakSSView.transform = CGAffineTransformMakeScale(0.01, 0.01);
         } completion:^(BOOL finished) {
@@ -259,37 +259,29 @@
 }
 
 - (void)getDayTasks {
-    [[NetworkManager sharedManager] getRequest:CommunityTaskDaily parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunityTaskDaily parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *dataArray = data[@"data"];
         
         if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
             self.dayArray = [TaskModel modelWithArray:dataArray];
             [self.dayTableView reloadData];
-        } else {
-            [self.dayTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
-        [self.dayTableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
-            
-        }];
+        
     }];
 }
 
 - (void)getWeekTasks {
-    [[NetworkManager sharedManager] getRequest:CommunityTaskWeekly parameters:@{@"userId":[UserDataManager shareManager].userId} success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunityTaskWeekly parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *dataArray = data[@"data"];
         if (dataArray && [dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
             self.weekArray = [TaskModel modelWithArray:dataArray];
             [self.weekTableView reloadData];
-        } else {
-            [self.weekTableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
-        [self.weekTableView showEmptyView:EmptyViewReasonNoNetwork refreshBlock:^{
-            
-        }];
+        
     }];
 }
 

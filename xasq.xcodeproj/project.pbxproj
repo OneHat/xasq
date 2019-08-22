@@ -95,6 +95,7 @@
 		C45391252306AE20000EBBA2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45391242306AE20000EBBA2 /* HealthKit.framework */; };
 		C45391282306B15C000EBBA2 /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45391272306B15C000EBBA2 /* InviteFriendViewController.m */; };
 		C45F26C6230B9F88004E34F0 /* UserRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C45F26C5230B9F88004E34F0 /* UserRankModel.m */; };
+		C45FA47B230E2A860095F8AF /* UITableView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C45FA47A230E2A860095F8AF /* UITableView+Refresh.m */; };
 		C4739CA22306BE4600042DF2 /* TaskRecordViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = C496217F23042C810086A959 /* TaskRecordViewCell.xib */; };
 		C4739CA62306BE8100042DF2 /* FriendMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4739CA42306BE8100042DF2 /* FriendMainViewController.m */; };
 		C473B91322F3FD100013E77D /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C473B91222F3FD100013E77D /* MessageViewController.m */; };
@@ -344,6 +345,8 @@
 		C45391272306B15C000EBBA2 /* InviteFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
 		C45F26C4230B9F88004E34F0 /* UserRankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRankModel.h; sourceTree = "<group>"; };
 		C45F26C5230B9F88004E34F0 /* UserRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRankModel.m; sourceTree = "<group>"; };
+		C45FA479230E2A860095F8AF /* UITableView+Refresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+Refresh.h"; sourceTree = "<group>"; };
+		C45FA47A230E2A860095F8AF /* UITableView+Refresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Refresh.m"; sourceTree = "<group>"; };
 		C4739CA32306BE8100042DF2 /* FriendMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendMainViewController.h; sourceTree = "<group>"; };
 		C4739CA42306BE8100042DF2 /* FriendMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendMainViewController.m; sourceTree = "<group>"; };
 		C473B91122F3FD100013E77D /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
@@ -966,6 +969,8 @@
 				C4A1EE9922F03C2E00A1DE8C /* UIView+Empty.h */,
 				C4A1EE9A22F03C2E00A1DE8C /* UIView+Empty.m */,
 				C4A1EEA322F1340600A1DE8C /* UIViewController */,
+				C45FA479230E2A860095F8AF /* UITableView+Refresh.h */,
+				C45FA47A230E2A860095F8AF /* UITableView+Refresh.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1482,6 +1487,7 @@
 				C4D5EEED22F8161B00C94D9F /* PaymentCurrencyView.m in Sources */,
 				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
 				C43B6C0922FAD1DD00312286 /* SegmentedControl.m in Sources */,
+				C45FA47B230E2A860095F8AF /* UITableView+Refresh.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,
 				C4C2CAA222EE8A480086761A /* RequestApi.m in Sources */,
 				C40B3ABC23067CE500139359 /* CertificateAuthenticationViewController.m in Sources */,

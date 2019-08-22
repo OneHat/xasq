@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LaunchViewController : UIViewController
 
-@property (nonatomic, strong) void (^DissmissLaunchBlock)(void);
+@property (nonatomic, strong) DSSJBlock dissmissLaunch;
 
 @end
 

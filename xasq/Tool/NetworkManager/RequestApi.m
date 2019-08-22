@@ -78,6 +78,8 @@ NSString *const CommunityAreaCurrency = @"comm/area/currency";
 NSString *const CommunityCapitalCurrencyBalance = @"comm/capital/currency/balance";
 NSString *const CommunityStatisticsCount = @"comm/capital/statistics/count";
 NSString *const CommunityStealFlow = @"comm/steal/flow";
+NSString *const CommunityPowerUpinfo = @"comm/power/upinfo";
+
 
 NSInteger const E010141 = 10141;
 NSInteger const E010145 = 10145;

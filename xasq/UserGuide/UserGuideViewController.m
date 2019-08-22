@@ -37,8 +37,8 @@
 }
 
 - (void)startUse {
-    if (_DissmissGuideBlock) {
-        _DissmissGuideBlock();
+    if (self.dissmissGuide) {
+        self.dissmissGuide();
     }
 }
 
