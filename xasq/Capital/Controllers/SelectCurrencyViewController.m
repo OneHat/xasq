@@ -41,8 +41,9 @@
 
 - (void)CommunityCapitalCurrencyBalance {
     WeakObject;
-    NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
-                           @"pageNo" : @"1",
+    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
+                           @"pageNo"   : @"1",
+                           @"pageSize" : @"100",
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalCurrencyBalance parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSArray *rows = data[@"data"][@"rows"];

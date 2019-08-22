@@ -20,7 +20,8 @@
 @property (nonatomic, strong) NSString *causeType; // 流水类型
 @property (nonatomic, strong) NSMutableDictionary *dataDict; // 数据源
 @property (nonatomic, strong) NSMutableArray *titleArray;  // 分区标题
-
+@property (nonatomic, assign) NSInteger pageNo;  // 分页
+@property (nonatomic, assign) NSInteger totalPage; // 最大页数
 @end
 
 @implementation CapitalKindViewController
@@ -29,6 +30,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = ThemeColorBackground;
     _causeType = @"";
+    _pageNo = 1;
+    _totalPage = 1;
     _dataDict = [NSMutableDictionary dictionary];
     _titleArray = [NSMutableArray array];
     //背景
@@ -96,6 +99,21 @@
     _tableView.delegate = self;
     _tableView.rowHeight = 45;
     [self.view addSubview:_tableView];
+    WeakObject;
+    [_tableView pullHeaderRefresh:^{
+        weakSelf.pageNo = 1;
+        [weakSelf.dataDict removeAllObjects];
+        [weakSelf.titleArray removeAllObjects];
+        [weakSelf communityCapitalWater];
+    }];
+    [_tableView pullFooterRefresh:^{
+        weakSelf.pageNo++;
+        if (weakSelf.pageNo <= weakSelf.totalPage) {
+            [self communityCapitalWater];
+        } else {
+            [weakSelf.tableView endRefresh];
+        }
+    }];
     [self communityCapitalWater];
 }
 
@@ -122,13 +140,14 @@
     NSDictionary *dict = @{@"userId"       : [UserDataManager shareManager].userId,
                            @"causeType"    : _causeType,
                            @"currency"     : _model.currency,
-                           @"pageNo"       : @"1",
+                           @"pageNo"       : [NSString stringWithFormat:@"%ld",_pageNo],
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalWater parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"][@"rows"];
         if ([array isKindOfClass:[NSArray class]]) {
             NSString *key;
             NSMutableArray *typeArr = [NSMutableArray array];
+            weakSelf.totalPage = [data[@"data"][@"totalPage"] integerValue];
             if (weakSelf.titleArray.count > 0) {
                 // 上拉添加数据
                 key = weakSelf.titleArray.lastObject;
@@ -161,8 +180,10 @@
         } else {
             [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
+        [weakSelf.tableView endRefresh];
         [weakSelf.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
+        [weakSelf.tableView endRefresh];
         [self showErrow:error];
     }];
 }

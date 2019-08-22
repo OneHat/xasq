@@ -14,6 +14,8 @@
     [super awakeFromNib];
     _countLB.layer.cornerRadius = 7.5;
     _countLB.layer.masksToBounds = YES;
+    _portraitImageV.layer.cornerRadius = 27.5;
+    _portraitImageV.layer.masksToBounds = YES;
 
 }
 

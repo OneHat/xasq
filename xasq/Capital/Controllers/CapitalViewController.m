@@ -28,6 +28,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) NSInteger pageNo; // 分页
+@property (nonatomic, strong) NSString *nonzero; // 隐藏0金额
 @end
 
 @implementation CapitalViewController
@@ -37,6 +38,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _nonzero = @"";
     if (@available(iOS 11.0, *)) {
         _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -134,11 +136,15 @@
 }
 
 - (void)sendCommunityCapitalStatistics {
+    [self loading];
     WeakObject;
-    NSDictionary *dict = @{@"userId" : [UserDataManager shareManager].userId,
-                           @"pageNo" : @"1"
+    NSDictionary *dict = @{@"userId"   : [UserDataManager shareManager].userId,
+                           @"pageNo"   : @"1",
+                           @"pageSize" : @"100",
+                           @"nonzero"  : _nonzero,
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self hideHUD];
         NSArray *rows = data[@"data"][@"rows"];
         if ([rows isKindOfClass:[NSArray class]]) {
             [weakSelf.dataArray removeAllObjects];
@@ -150,6 +156,7 @@
             [weakSelf.mineView setCapitalDataArray:data];
         }
     } failure:^(NSError * _Nonnull error) {
+        [self hideHUD];
         [self showErrow:error];
     }];
 }
@@ -202,6 +209,18 @@
     MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
     mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
+}
+
+- (void)hiddenAmountClick:(BOOL)isHidden {
+    // 隐藏0金额
+    if (isHidden) {
+        _nonzero = @"1";
+    } else {
+        _nonzero = @"";
+    }
+    [_walletView updateBtnStatus:isHidden];
+    [_mineView updateBtnStatus:isHidden];
+    [self sendCommunityCapitalStatistics];
 }
 
 @end

@@ -102,7 +102,7 @@
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             picker.delegate = self;
-            //    picker.allowsEditing = YES;
+            picker.allowsEditing = YES;
             [self presentViewController:picker animated:YES completion:^{
             }];
         }else {

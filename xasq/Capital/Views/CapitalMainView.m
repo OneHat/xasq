@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) UIButton *checkButton;
 @end
 
 static CGFloat CapitalSegmentControlH = 40;
@@ -65,6 +66,10 @@ static CGFloat CapitalSegmentControlH = 40;
     _tableView.delegate = self;
 //    _tableView.tableHeaderView = [self tableHeaderView];
     [self addSubview:_tableView];
+}
+
+- (void)updateBtnStatus:(BOOL)isSelected {
+    _checkButton.selected = isSelected;
 }
 
 - (void)setTotalAssets:(NSDictionary *)dict {
@@ -161,12 +166,14 @@ static CGFloat CapitalSegmentControlH = 40;
     hideZeroLabel.text = @"隐藏0余额";
     [headerView addSubview:hideZeroLabel];
     
-    UIButton *checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
-    [checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
-    [checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
-    [checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:checkButton];
+    if (!_checkButton) {
+        _checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
+        [_checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
+        [_checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
+        [_checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [headerView addSubview:_checkButton];
     
     return headerView;
 }
@@ -198,8 +205,9 @@ static CGFloat CapitalSegmentControlH = 40;
 ///隐藏0余额按钮
 - (void)checkButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
-    
+    if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+        [_delegate hiddenAmountClick:sender.isSelected];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
