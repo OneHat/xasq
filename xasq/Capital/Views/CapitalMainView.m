@@ -17,7 +17,8 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) UIButton *checkButton;
+@property (nonatomic, strong) UIButton *checkButton; // 隐藏按钮
+@property (nonatomic, strong) UILabel *hideZeroLabel;  // 隐藏0金额label
 @end
 
 static CGFloat CapitalSegmentControlH = 40;
@@ -64,12 +65,16 @@ static CGFloat CapitalSegmentControlH = 40;
     _tableView.rowHeight = 60;
     _tableView.dataSource = self;
     _tableView.delegate = self;
-//    _tableView.tableHeaderView = [self tableHeaderView];
     [self addSubview:_tableView];
 }
 
 - (void)updateBtnStatus:(BOOL)isSelected {
     _checkButton.selected = isSelected;
+}
+
+- (void)hiddenBtnOrLabel:(BOOL)isHidden {
+    _checkButton.hidden = isHidden;
+    _hideZeroLabel.hidden = isHidden;
 }
 
 - (void)setTotalAssets:(NSDictionary *)dict {
@@ -121,18 +126,6 @@ static CGFloat CapitalSegmentControlH = 40;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, height)];
     headerView.backgroundColor = ThemeColorBackground;
     
-//    //搜索
-//    UILabel *searchLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 90, height)];
-//    searchLabel.textColor = ThemeColorTextGray;
-//    searchLabel.font = ThemeFontSmallText;
-//    searchLabel.text = @"搜索币种";
-//    [headerView addSubview:searchLabel];
-//
-//    UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, 80, height)];
-//    searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    [searchButton setImage:[UIImage imageNamed:@"Search_Button"] forState:UIControlStateNormal];
-//    [searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
-//    [headerView addSubview:searchButton];
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
     _searchBar.searchBarStyle = UISearchBarStyleProminent;
     _searchBar.backgroundColor = ThemeColorBackground;
@@ -156,15 +149,16 @@ static CGFloat CapitalSegmentControlH = 40;
     [headerView addSubview:_searchBar];
     [headerView addSubview:searchField];
     
-    //隐藏0余额
     CGFloat labelWidth = [@"隐藏0余额" getWidthWithFont:ThemeFontSmallText];
-    
-    UILabel *hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 10, 0, labelWidth, height)];
-    hideZeroLabel.textColor = ThemeColorTextGray;
-    hideZeroLabel.font = ThemeFontSmallText;
-    hideZeroLabel.textAlignment = NSTextAlignmentRight;
-    hideZeroLabel.text = @"隐藏0余额";
-    [headerView addSubview:hideZeroLabel];
+    if (!_hideZeroLabel) {
+        //隐藏0余额
+        _hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 10, 0, labelWidth, height)];
+        _hideZeroLabel.textColor = ThemeColorTextGray;
+        _hideZeroLabel.font = ThemeFontSmallText;
+        _hideZeroLabel.textAlignment = NSTextAlignmentRight;
+        _hideZeroLabel.text = @"隐藏0余额";
+    }
+    [headerView addSubview:_hideZeroLabel];
     
     if (!_checkButton) {
         _checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -185,35 +179,37 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 #pragma mark -
-//- (UIView *)tableHeaderView {
-//    CapitalActionModuleView *modulView = [[CapitalActionModuleView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 10)];
-//    modulView.ButtonClickBlock = ^(NSInteger index) {
-//        if ([self.delegate respondsToSelector:@selector(capitalMainViewButtonModuleClick:)]) {
-//            [self.delegate capitalMainViewButtonModuleClick:index];
-//        }
-//    };
-//    return modulView;
-//}
-
-#pragma mark -
 - (void)searchButtonClick {
     if ([self.delegate respondsToSelector:@selector(capitalMainViewSearchClick)]) {
         [self.delegate capitalMainViewSearchClick];
     }
 }
 
-///隐藏0余额按钮
+/// 更新隐藏0余额按钮状态
 - (void)checkButtonClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
-        [_delegate hiddenAmountClick:sender.isSelected];
+    if ([_delegate respondsToSelector:@selector(updateAmountClick:)]) {
+        [_delegate updateAmountClick:sender.isSelected];
     }
 }
 
-#pragma mark - UITextFieldDelegate
-- (void)textChange:(UITextField *)field {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(search) object:nil];
-    [self performSelector:@selector(search) withObject:nil afterDelay:0.4];
+#pragma mark - UISearchBarDelegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+        [_delegate hiddenAmountClick:YES];
+    }
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    BOOL isHidden;
+    if (_searchBar.text.length > 0) {
+        isHidden = YES;
+    } else {
+        isHidden = NO;
+    }
+    if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+        [_delegate hiddenAmountClick:isHidden];
+    }
 }
 
 - (void)search {

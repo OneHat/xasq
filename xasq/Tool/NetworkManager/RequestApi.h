@@ -82,13 +82,9 @@ FOUNDATION_EXPORT NSString *const UserInviteRankPower;
 FOUNDATION_EXPORT NSString *const UserIdentityDetails;
 
 
-//********************************资产账单
-///查看个人总帐单 POST
-FOUNDATION_EXPORT NSString *const ApiAccountSelectAccounntBill;
-///帐号开户 POST
-FOUNDATION_EXPORT NSString *const ApiAccountOpenAccount;
-///查看金融工具币种 POST
-FOUNDATION_EXPORT NSString *const ApiAccountSelectCurrency;
+//********************************资产账户
+///社区账户划转（提币） POST
+FOUNDATION_EXPORT NSString *const AcctTransferAccount;
 
 
 //********************************运营

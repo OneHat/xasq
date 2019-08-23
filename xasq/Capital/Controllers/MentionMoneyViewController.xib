@@ -17,6 +17,7 @@
                 <outlet property="confirmBtn" destination="Ro9-PJ-eHZ" id="zhv-Tn-DL3"/>
                 <outlet property="currencyImageV" destination="3JS-WP-rmG" id="5WV-KQ-3Co"/>
                 <outlet property="currencyLB" destination="w1V-gY-llv" id="MFv-3X-X0N"/>
+                <outlet property="examineBtn" destination="7K1-tN-FNa" id="a9t-6r-UMr"/>
                 <outlet property="exchangeLB" destination="9TK-uD-gzh" id="iga-WI-7pf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -270,6 +271,15 @@
                         <constraint firstAttribute="height" constant="10" id="RH5-dB-GOZ"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K1-tN-FNa">
+                    <rect key="frame" x="15" y="475" width="384" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="tnw-I4-inm"/>
+                    </constraints>
+                    <state key="normal" title="前往交易所APP查看">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -280,8 +290,10 @@
                 <constraint firstItem="0nn-G1-TlF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IVH-dv-TVn"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4hD-xV-FvB" secondAttribute="trailing" constant="21" id="LTx-Gq-VnW"/>
                 <constraint firstItem="5PX-rX-3QO" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Mct-VB-pCk"/>
+                <constraint firstItem="7K1-tN-FNa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="O8N-AB-BGh"/>
                 <constraint firstItem="jJg-8e-Ouc" firstAttribute="top" secondItem="Gff-ZX-gQa" secondAttribute="bottom" id="O9p-ny-OAq"/>
                 <constraint firstItem="yib-OJ-xAP" firstAttribute="centerY" secondItem="sFp-U6-pxS" secondAttribute="centerY" id="S79-6b-rZK"/>
+                <constraint firstItem="7K1-tN-FNa" firstAttribute="top" secondItem="Ro9-PJ-eHZ" secondAttribute="bottom" constant="15" id="SiC-Yq-H2e"/>
                 <constraint firstItem="Gff-ZX-gQa" firstAttribute="top" secondItem="SiH-gd-8cm" secondAttribute="bottom" id="U0q-DQ-5K5"/>
                 <constraint firstItem="SiH-gd-8cm" firstAttribute="top" secondItem="Ggs-ep-Tid" secondAttribute="bottom" id="Ubz-EC-MfI"/>
                 <constraint firstItem="Gff-ZX-gQa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="a8D-Pm-9z2"/>
@@ -310,6 +322,7 @@
                 <constraint firstAttribute="trailing" secondItem="jJg-8e-Ouc" secondAttribute="trailing" id="v2F-nA-roS"/>
                 <constraint firstItem="SiH-gd-8cm" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="vdN-2L-f8b"/>
                 <constraint firstItem="5PX-rX-3QO" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="wBX-ny-tEm"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="7K1-tN-FNa" secondAttribute="trailing" constant="15" id="wfO-RD-k6v"/>
                 <constraint firstItem="tJ3-QU-RDK" firstAttribute="top" secondItem="4hD-xV-FvB" secondAttribute="bottom" constant="10" id="xmy-85-9k2"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Ro9-PJ-eHZ" secondAttribute="trailing" constant="15" id="y9c-WK-PHy"/>
             </constraints>

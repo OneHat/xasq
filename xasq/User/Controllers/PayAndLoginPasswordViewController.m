@@ -202,6 +202,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
+            [UserDataManager shareManager].usermodel.existFundPassWord = YES;
             [self showMessage:@"修改成功" complete:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];

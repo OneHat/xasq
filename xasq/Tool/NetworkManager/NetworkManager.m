@@ -16,18 +16,21 @@ static NSString *xasqBaseUrlUserDev = @"http://192.168.100.200:7081/";
 static NSString *xasqBaseUrlOperationDev = @"http://192.168.100.200:7281/";
 static NSString *xasqBaseUrlCommunityDev = @"http://192.168.100.200:7481/";
 static NSString *xasqBaseUrlMessageDev = @"http://192.168.100.200:7181/";
+static NSString *xasqBaseUrlAcctDev = @"http://192.168.100.200:7581/";
 
 ///Test
 static NSString *xasqBaseUrlUserTest = @"http://192.168.100.200:7081/";
 static NSString *xasqBaseUrlOperationTest = @"http://192.168.100.200:7281/";
 static NSString *xasqBaseUrlCommunityTest = @"http://192.168.100.200:7481/";
 static NSString *xasqBaseUrlMessageTest = @"http://192.168.100.200:7181/";
+static NSString *xasqBaseUrlAcctTest = @"http://192.168.100.200:7581/";
 
 ///Pro
 static NSString *xasqBaseUrlUserPro = @"http://192.168.100.200:7081/";
 static NSString *xasqBaseUrlOperationPro = @"http://192.168.100.200:7281/";
 static NSString *xasqBaseUrlCommunityPro = @"http://192.168.100.200:7481/";
 static NSString *xasqBaseUrlMessagePro = @"http://192.168.100.200:7181/";
+static NSString *xasqBaseUrlAcctPro = @"http://192.168.100.200:7581/";
 
 
 const NSTimeInterval xasqTimeoutInterval = 30;
@@ -283,6 +286,19 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
         }
         
         return xasqBaseUrlMessagePro;
+        
+    } else if ([path hasPrefix:@"acct"]) {
+        if (self.networkConnect == NetworkConnectPro) {
+            return xasqBaseUrlAcctPro;
+            
+        } else if (self.networkConnect == NetworkConnectTest) {
+            return xasqBaseUrlAcctTest;
+            
+        } else if (self.networkConnect == NetworkConnectDev) {
+            return xasqBaseUrlAcctDev;
+        }
+        
+        return xasqBaseUrlAcctPro;
         
     }
     
