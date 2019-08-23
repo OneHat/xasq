@@ -41,7 +41,7 @@
     _dataDict = [NSMutableDictionary dictionary];
     _titleArray = [NSMutableArray array];
     _currencyArray = [NSMutableArray array];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight+50, ScreenWidth, ScreenHeight - NavHeight - 50 - BottomHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = ThemeColorBackground;
@@ -166,7 +166,7 @@
         } else if (index == 1) {
             weakSelf.causeType = @"14";
         } else {
-            weakSelf.causeType = @"2";
+            weakSelf.causeType = @"12";
         }
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];

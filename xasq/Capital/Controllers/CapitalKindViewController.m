@@ -90,7 +90,7 @@
     [recordButton setBackgroundImage:[image resizeImageInCenter] forState:UIControlStateNormal];
     [backView addSubview:recordButton];
     
-    CGRect rect = CGRectMake(0, CGRectGetMaxY(backView.frame), ScreenWidth, ScreenHeight - imageViewH - 10);
+    CGRect rect = CGRectMake(0, CGRectGetMaxY(backView.frame), ScreenWidth, ScreenHeight - CGRectGetMaxY(backView.frame) - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableFooterView = [[UIView alloc] init];
@@ -172,7 +172,10 @@
                 if (i == array.count - 1) {
                     // 直接加最后一条数据
                     [weakSelf.dataDict setValue:typeArr forKey:key];
-                    [weakSelf.titleArray addObject:key];
+                    if (![key isEqualToString:weakSelf.titleArray.lastObject]) {
+                        // 防止出现上拉添加数据中第一天数据跟之前数据的最后一条数据是在同一天
+                        [weakSelf.titleArray addObject:key];
+                    }
                 }
             }
         } else {

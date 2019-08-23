@@ -12,6 +12,7 @@
 #import "XLPasswordView.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "UIViewController+ActionSheet.h"
+#import "PayAndLoginPasswordViewController.h"
 
 @interface MentionMoneyViewController () <XLPasswordViewDelegate>
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *amountTF; // 金额
 @property (weak, nonatomic) IBOutlet UILabel *amountLB; // 当前币种余额
 @property (weak, nonatomic) IBOutlet UILabel *exchangeLB;
+@property (weak, nonatomic) IBOutlet UIButton *examineBtn;
 
 
 @end
@@ -33,7 +35,10 @@
     
     _confirmBtn.layer.cornerRadius = 22.5;
     _confirmBtn.layer.masksToBounds = YES;
-
+    _examineBtn.layer.cornerRadius = 22.5;
+    _examineBtn.layer.borderWidth = 1;
+    _examineBtn.layer.borderColor = ThemeColorTextGray.CGColor;
+    _examineBtn.layer.masksToBounds = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,11 +86,32 @@
     }];
 }
 
+- (void)showSetPasswordView {
+    [self alertWithTitle:@"提示" message:@"您还未设置支付密码" items:@[@"取消",@"去设置"] action:^(NSInteger index) {
+        
+        if (index == 0) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        } else {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            PayAndLoginPasswordViewController *VC = [[PayAndLoginPasswordViewController alloc] init];
+            VC.type = 1; // 设置支付密码
+            [self.navigationController pushViewController:VC animated:YES];
+        }
+    }];
+}
 
 - (IBAction)confirmBtnClick:(UIButton *)sender {
-    
-//    MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController alloc] init];
-//    [self.navigationController pushViewController:VC animated:YES];
+    [self.view endEditing:YES];
+    if ([_currencyLB.text isEqualToString:@"币种"]) {
+        [self showMessage:@"请选择币种"];
+        return;
+    } else if (_amountTF.text.length == 0) {
+        [self showMessage:@"请选择转账金额"];
+        return;
+    } else if ([UserDataManager shareManager].usermodel.existFundPassWord == NO) {
+        [self showSetPasswordView];
+        return;
+    }
     [self showSystemKeyboard];
 }
 #pragma mark - 弹出密码键盘
@@ -103,7 +129,28 @@
  */
 - (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password
 {
-    NSLog(@"输入密码位数已满,在这里做一些事情,例如自动校验密码");
+    [self loading];
+    WeakObject;
+    NSDictionary *dict = @{@"amount"         : _amountTF.text,
+                           @"currency"       : _currencyLB.text,
+                           @"outAccountType" : @"13",
+                           @"inAccountType"  : @"6",
+                           @"password"       : password,
+                           };
+    [[NetworkManager sharedManager] postRequest:AcctTransferAccount parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [self hideHUD];
+        if (data[@"data"][@"success"]) {
+            [self showMessage:@"转出成功"];
+            weakSelf.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
+        }
+        [passwordView hidePasswordView];
+    } failure:^(NSError * _Nonnull error) {
+        [self hideHUD];
+        [self showErrow:error];
+        if (error.code == 60206) {
+            [passwordView clearPassword];
+        }
+    }];
 }
 
 /**
@@ -122,7 +169,9 @@
  */
 - (void)passwordViewClickForgetPassword:(XLPasswordView *)passwordView
 {
-    NSLog(@"点击了忘记密码,在这里做一些事情");
+    PayAndLoginPasswordViewController *VC = [[PayAndLoginPasswordViewController alloc] init];
+    VC.type = 1; // 设置支付密码
+    [self.navigationController pushViewController:VC animated:YES];
 }
 /*
 #pragma mark - Navigation

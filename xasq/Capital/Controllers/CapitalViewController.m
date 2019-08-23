@@ -209,7 +209,7 @@
     [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
 }
 
-- (void)hiddenAmountClick:(BOOL)isHidden {
+- (void)updateAmountClick:(BOOL)isHidden {
     // 隐藏0金额
     if (isHidden) {
         _nonzero = @"1";
@@ -220,6 +220,11 @@
     [_walletView updateBtnStatus:isHidden];
     [_mineView updateBtnStatus:isHidden];
     [self sendCommunityCapitalStatistics];
+}
+
+- (void)hiddenAmountClick:(BOOL)isHidden {
+    [_walletView hiddenBtnOrLabel:isHidden];
+    [_mineView hiddenBtnOrLabel:isHidden];
 }
 
 @end

@@ -44,11 +44,7 @@ NSString *const UserInviteRankCount = @"user/invite/rank/count";
 NSString *const UserInviteRankPower = @"user/invite/rank/power";
 NSString *const UserIdentityDetails = @"user/identity/details";
 
-
-NSString *const ApiAccountSelectAccounntBill = @"api/account/selectAccounntBill";
-NSString *const ApiAccountOpenAccount = @"api/account/openAccount";
-NSString *const ApiAccountSelectCurrency = @"api/account/selectCurrency";
-
+NSString *const AcctTransferAccount = @"acct/transfer/account";
 
 NSString *const OperationSystemVersion = @"oper/sys/version";
 NSString *const OperationBanner = @"oper/banner";

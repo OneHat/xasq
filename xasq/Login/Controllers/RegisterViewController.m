@@ -44,6 +44,7 @@
     [super viewDidLoad];
     self.title = @"注册";
     _type = 0;
+    _codeStr = @"A_CH";
     [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
     
     _registerBtn.layer.cornerRadius = 22.5;
@@ -98,7 +99,7 @@
     VC.hidesBottomBarWhenPushed = YES;
     WeakObject;
     VC.countryCodeBlock = ^(CountryCodeModel *model) {
-        weakSelf.countriesLB.text = model.name;
+        weakSelf.countriesNameLB.text = model.name;
         weakSelf.areaCodeLB.text = [NSString stringWithFormat:@"+%@",model.areaCode];
         weakSelf.codeStr = model.code;
     };
