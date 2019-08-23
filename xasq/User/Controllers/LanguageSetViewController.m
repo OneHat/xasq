@@ -8,12 +8,14 @@
 
 #import "LanguageSetViewController.h"
 
-@interface LanguageSetViewController ()
+@interface LanguageSetViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *topSelection;
-@property (weak, nonatomic) IBOutlet UIImageView *bottomSelection;
-@property (weak, nonatomic) IBOutlet UIButton *chineseBtn;
-@property (weak, nonatomic) IBOutlet UIButton *englishBtn;
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSArray *languages;
+@property (nonatomic, strong) NSArray *images;
+
+@property (nonatomic, assign) NSInteger selectIndex;
 
 @end
 
@@ -22,28 +24,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"语言设置";
+    self.view.backgroundColor = ThemeColorBackground;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    self.tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.1)];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+    
+    self.languages = @[Language(@"Language_ZH"),Language(@"Language_EN")];
+    self.images = @[@"user_ chinese",@"user_ english"];
+    
+    self.selectIndex = [LanguageTool currentLanguageType];
+    
+    [self initRightBtnWithTitle:@"保存" color:ThemeColorBlue];
 }
 
-- (IBAction)selectionChinese:(UIButton *)sender {
-    _topSelection.image = [UIImage imageNamed:@"user_choose"];
-    _bottomSelection.image = nil;
+#pragma mark -
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20;
 }
 
-- (IBAction)SelectionEnglish:(UIButton *)sender {
-    _topSelection.image = nil;
-    _bottomSelection.image = [UIImage imageNamed:@"user_choose"];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.languages.count;
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    
+    cell.textLabel.text = self.languages[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:self.images[indexPath.row]];
+    if (self.selectIndex != indexPath.row) {
+        cell.accessoryView = nil;
+    } else {
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_choose"]];
+    }
+    
+    return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectIndex = indexPath.row;
+    [tableView reloadData];
+}
+
+- (void)rightBtnAction {
+    [LanguageTool setLanguageType:self.selectIndex];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

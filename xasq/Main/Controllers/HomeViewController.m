@@ -74,8 +74,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @property (nonatomic, strong) UIView *unLoginNewsMaskView;//没有登录时，动态页面的遮挡
 
-
-@property (strong, nonatomic) UIView *customerBarView;
+@property (strong, nonatomic) UIView *customerBarView;//自定义的bar
 
 @end
 
@@ -183,9 +182,18 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
                                                object:nil];
     
     
+    self.footerImageView.hidden = YES;
+    self.stepsLabel.hidden = YES;
     
     self.mineNameLabel.text = @"西岸社区";
     self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter ];
+    
+#ifdef DEBUG
+    self.footerImageView.hidden = NO;
+    self.stepsLabel.hidden = NO;
+    self.stepsLabel.text = @"6666";
+    [self postUserStepCount:6666];
+#endif
     
 }
 
@@ -371,8 +379,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
-//    NSDictionary *parameters = @{@"userId":[UserDataManager shareManager].userId,
-//                                 @"userWalk":[NSString stringWithFormat:@"%ld",steps]};
+//    NSDictionary *parameters = @{@"userWalk":[NSString stringWithFormat:@"%ld",steps]};
     NSDictionary *parameters = @{@"userWalk":[NSString stringWithFormat:@"%d",6666]};
     [[NetworkManager sharedManager] postRequest:UserSyncWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
     } failure:^(NSError * _Nonnull error) {
@@ -576,8 +583,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 ///获取用户步数，并上传到服务器
 - (void)postUserSteps {
-    self.footerImageView.hidden = NO;
-    self.stepsLabel.hidden = NO;
     
     [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
         self.footerImageView.hidden = NO;
@@ -590,8 +595,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 #pragma mark -
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    CGFloat rate = self.scrollView.contentOffset.y / NavHeight;
+    CGFloat height = CGRectGetHeight(self.topView.frame);
+    height = 0;
+    CGFloat rate = (self.scrollView.contentOffset.y - height) / NavHeight;
     self.customerBarView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:rate];
 }
 

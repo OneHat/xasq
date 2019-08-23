@@ -75,7 +75,7 @@ const CGFloat ViewWidth = 60;
     _rewardLabel.text = [NSString stringWithFormat:@"%.8f",rewardModel.currencyQuantity.doubleValue];
     
     if (rewardModel.status == 10) {
-        self.alpha = 0.8;
+        self.alpha = 0.7;
         self.button.enabled = NO;
     }
 }

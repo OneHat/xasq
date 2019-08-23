@@ -49,7 +49,7 @@
 
 - (void)setNewsData:(UserNewsModel *)news {
 //    [_iconImageView sd_setImageWithURL:<#(nullable NSURL *)#>]
-    self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了%@%@",news.userName,news.quantity,news.currencyCode];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了 %.8f %@",news.userName,news.quantity.doubleValue,news.currencyCode];
     self.timeLabel.text = news.showTime;
     
     if (![news.showDate isEqualToString: @"今天"]) {

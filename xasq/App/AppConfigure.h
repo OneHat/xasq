@@ -20,7 +20,6 @@
 #define NavBarHeight        44.0
 #define BottomHeight        (IphoneX ? 34.0 : 0.0)
 #define NavHeight           (NavBarHeight + StatusBarHeight)
-#define BarHeight           (BottomHeight + 49)
 
 #pragma mark -
 /// 主题颜色

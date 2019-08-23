@@ -150,6 +150,10 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
     headerView.backgroundColor = [UIColor whiteColor];
@@ -261,29 +265,39 @@
 //
 - (void)stealCurrency:(NSInteger)ID ballView:(RewardBallView *)ballView {
     
-    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId),@"userName":@"随便传个"};
+    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId)};
     [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
 
         NSDictionary *info = data[@"data"];
         if (info && [info isKindOfClass:[NSDictionary class]]) {
-
-            UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+            NSString *stealNum = info[@"quantity"];
+            
+            UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 32)];
             tipLabel.numberOfLines = 0;
             tipLabel.textAlignment = NSTextAlignmentCenter;
             tipLabel.textColor = [UIColor whiteColor];
             tipLabel.center = ballView.center;
-            tipLabel.font = [UIFont boldSystemFontOfSize:10];
-            tipLabel.text = [NSString stringWithFormat:@"%@",info[@"quantity"]];
+            tipLabel.font = [UIFont boldSystemFontOfSize:11];
+            tipLabel.text = [NSString stringWithFormat:@"%.8f",stealNum.doubleValue];
             [self.headerView addSubview:tipLabel];
 
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:1.0 animations:^{
 
                 tipLabel.transform = CGAffineTransformMakeTranslation(0, -50);
 
             } completion:^(BOOL finished) {
                 [tipLabel removeFromSuperview];
+                
+                RewardModel *model = ballView.rewardModel;
+                NSDecimalNumber *originalNum = [NSDecimalNumber decimalNumberWithString:model.currencyQuantity];
+                NSDecimalNumber *stealDecimalNumber = [NSDecimalNumber decimalNumberWithString:stealNum];
+                originalNum = [originalNum decimalNumberBySubtracting:stealDecimalNumber];
+                model.currencyQuantity = originalNum.stringValue;//修改数量
+                model.status = 10;//状态改为已偷
+                ballView.rewardModel = model;
+                
             }];
-
+            
         }
 
     } failure:^(NSError * _Nonnull error) {

@@ -29,6 +29,8 @@
     self.title = @"消息通知";
     self.view.backgroundColor = ThemeColorBackground;
     
+    self.messages = [NSMutableArray array];
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;

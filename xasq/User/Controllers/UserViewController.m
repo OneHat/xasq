@@ -15,7 +15,7 @@
 #import "OurVersionViewController.h"
 #import "LivingProofViewController.h"
 #import "LoginViewController.h"
-#import "confirmViewController.h"
+#import "ConfirmViewController.h"
 #import "UserHeaderView.h"
 #import "MessageViewController.h"
 #import "FriendsViewController.h"
@@ -70,7 +70,7 @@
         friendsVC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:friendsVC animated:YES];
     };
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BarHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BottomHeight - 49) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -191,7 +191,7 @@
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     } else if ([title isEqualToString:@"联系我们"]) {
-        confirmViewController *VC = [[confirmViewController alloc] init];
+        ConfirmViewController *VC = [[ConfirmViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:VC animated:YES];
     }

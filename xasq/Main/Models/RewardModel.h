@@ -24,8 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 ///货币编码
 @property (nonatomic, strong) NSString *currencyCode;
 
+/////货币数量
+//@property (nonatomic, strong) NSNumber *currencyQuantity;
+
 ///货币数量
-@property (nonatomic, strong) NSNumber *currencyQuantity;
+@property (nonatomic, strong) NSString *currencyQuantity;
 
 ///送币类型 ： 1、步行送币 2、算力送币 3、活动奖励 5、偷币
 @property (nonatomic, assign) NSInteger type;

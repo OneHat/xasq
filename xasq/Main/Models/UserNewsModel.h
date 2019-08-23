@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *currencyCode;
 
 ///货币数量
-@property (nonatomic, strong) NSNumber *quantity;
+@property (nonatomic, strong) NSString *quantity;
 
 ///偷取时间
 @property (nonatomic, assign) NSString *createdOn;

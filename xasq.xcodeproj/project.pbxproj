@@ -19,8 +19,8 @@
 		C40C3D8222F18A5E00BDE6A3 /* RetrievePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8022F18A5E00BDE6A3 /* RetrievePasswordViewController.xib */; };
 		C40C3D8622F190C100BDE6A3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */; };
 		C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */; };
-		C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* confirmViewController.m */; };
-		C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */; };
+		C40C3D8B22F199C800BDE6A3 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D8922F199C800BDE6A3 /* ConfirmViewController.m */; };
+		C40C3D8C22F199C800BDE6A3 /* ConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C3D8A22F199C800BDE6A3 /* ConfirmViewController.xib */; };
 		C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */; };
 		C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEEFF22FBFDEC00E43F8C /* UIView+XLPasswordView.m */; };
 		C40DEF0B22FBFDEC00E43F8C /* UIImage+XLPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C40DEF0022FBFDEC00E43F8C /* UIImage+XLPasswordView.m */; };
@@ -35,8 +35,6 @@
 		C4106082230A96F1003EE4B2 /* CapitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4106081230A96F1003EE4B2 /* CapitalModel.m */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
-		C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */; };
-		C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42622EFE0A60090E4F1 /* LanguageSetViewController.xib */; };
 		C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */; };
 		C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42B22EFE7FD0090E4F1 /* OurVersionViewController.xib */; };
 		C412A43122F00BA40090E4F1 /* LivingProofViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42F22F00BA40090E4F1 /* LivingProofViewController.m */; };
@@ -90,6 +88,7 @@
 		C43B6C0322FAA7CD00312286 /* UserStepManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6C0222FAA7CD00312286 /* UserStepManager.m */; };
 		C43B6C0922FAD1DD00312286 /* SegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6C0722FAD1DC00312286 /* SegmentedControl.m */; };
 		C43B6C0C22FAD21100312286 /* CapitalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C43B6C0B22FAD21100312286 /* CapitalSegmentedControl.m */; };
+		C45216C7230F929E00F6982A /* LanguageSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45216C6230F929D00F6982A /* LanguageSetViewController.m */; };
 		C45391202306A44F000EBBA2 /* SignSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = C453911F2306A44F000EBBA2 /* SignSuccessView.m */; };
 		C45391222306A45C000EBBA2 /* SignSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45391212306A45C000EBBA2 /* SignSuccessView.xib */; };
 		C45391252306AE20000EBBA2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45391242306AE20000EBBA2 /* HealthKit.framework */; };
@@ -216,9 +215,9 @@
 		C40C3D8322F190C100BDE6A3 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		C40C3D8422F190C100BDE6A3 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		C40C3D8522F190C100BDE6A3 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
-		C40C3D8822F199C800BDE6A3 /* confirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = confirmViewController.h; sourceTree = "<group>"; };
-		C40C3D8922F199C800BDE6A3 /* confirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = confirmViewController.m; sourceTree = "<group>"; };
-		C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmViewController.xib; sourceTree = "<group>"; };
+		C40C3D8822F199C800BDE6A3 /* ConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
+		C40C3D8922F199C800BDE6A3 /* ConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		C40C3D8A22F199C800BDE6A3 /* ConfirmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmViewController.xib; sourceTree = "<group>"; };
 		C40D6E97230B936E00D9697A /* PaymentsRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentsRecordModel.h; sourceTree = "<group>"; };
 		C40D6E98230B936E00D9697A /* PaymentsRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentsRecordModel.m; sourceTree = "<group>"; };
 		C40DEEFC22FBFDEC00E43F8C /* UIView+XLPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XLPasswordView.h"; sourceTree = "<group>"; };
@@ -246,8 +245,6 @@
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
 		C412A42422EFE0A60090E4F1 /* LanguageSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageSetViewController.h; sourceTree = "<group>"; };
-		C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageSetViewController.m; sourceTree = "<group>"; };
-		C412A42622EFE0A60090E4F1 /* LanguageSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageSetViewController.xib; sourceTree = "<group>"; };
 		C412A42922EFE7FD0090E4F1 /* OurVersionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurVersionViewController.h; sourceTree = "<group>"; };
 		C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurVersionViewController.m; sourceTree = "<group>"; };
 		C412A42B22EFE7FD0090E4F1 /* OurVersionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurVersionViewController.xib; sourceTree = "<group>"; };
@@ -336,6 +333,7 @@
 		C43B6C0822FAD1DC00312286 /* SegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedControl.h; sourceTree = "<group>"; };
 		C43B6C0A22FAD21100312286 /* CapitalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapitalSegmentedControl.h; sourceTree = "<group>"; };
 		C43B6C0B22FAD21100312286 /* CapitalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapitalSegmentedControl.m; sourceTree = "<group>"; };
+		C45216C6230F929D00F6982A /* LanguageSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageSetViewController.m; sourceTree = "<group>"; };
 		C453911E2306A44F000EBBA2 /* SignSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignSuccessView.h; sourceTree = "<group>"; };
 		C453911F2306A44F000EBBA2 /* SignSuccessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignSuccessView.m; sourceTree = "<group>"; };
 		C45391212306A45C000EBBA2 /* SignSuccessView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignSuccessView.xib; sourceTree = "<group>"; };
@@ -1063,14 +1061,13 @@
 				C4DFE3E722EEED2C00C41B2B /* AccountSetViewController.h */,
 				C4DFE3E822EEED2C00C41B2B /* AccountSetViewController.m */,
 				C412A42422EFE0A60090E4F1 /* LanguageSetViewController.h */,
-				C412A42522EFE0A60090E4F1 /* LanguageSetViewController.m */,
-				C412A42622EFE0A60090E4F1 /* LanguageSetViewController.xib */,
+				C45216C6230F929D00F6982A /* LanguageSetViewController.m */,
 				C412A42922EFE7FD0090E4F1 /* OurVersionViewController.h */,
 				C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */,
 				C412A42B22EFE7FD0090E4F1 /* OurVersionViewController.xib */,
-				C40C3D8822F199C800BDE6A3 /* confirmViewController.h */,
-				C40C3D8922F199C800BDE6A3 /* confirmViewController.m */,
-				C40C3D8A22F199C800BDE6A3 /* confirmViewController.xib */,
+				C40C3D8822F199C800BDE6A3 /* ConfirmViewController.h */,
+				C40C3D8922F199C800BDE6A3 /* ConfirmViewController.m */,
+				C40C3D8A22F199C800BDE6A3 /* ConfirmViewController.xib */,
 				C412A43322F00E9A0090E4F1 /* AlterNicknameViewController.h */,
 				C412A43422F00E9A0090E4F1 /* AlterNicknameViewController.m */,
 				C412A43522F00E9A0090E4F1 /* AlterNicknameViewController.xib */,
@@ -1272,7 +1269,7 @@
 				C40C3D8722F190C100BDE6A3 /* ResetPasswordViewController.xib in Resources */,
 				C4D5EEC522F7B96A00C94D9F /* MentionMoneyViewController.xib in Resources */,
 				C4D5EEE722F80CEF00C94D9F /* PaymentHeaderView.xib in Resources */,
-				C40C3D8C22F199C800BDE6A3 /* confirmViewController.xib in Resources */,
+				C40C3D8C22F199C800BDE6A3 /* ConfirmViewController.xib in Resources */,
 				C4143D48230524FF0071236F /* FriendsHeaderView.xib in Resources */,
 				C412A43722F00E9A0090E4F1 /* AlterNicknameViewController.xib in Resources */,
 				C43B6BF922FA7D6A00312286 /* InviteHistoryViewCell.xib in Resources */,
@@ -1292,7 +1289,6 @@
 				C45391222306A45C000EBBA2 /* SignSuccessView.xib in Resources */,
 				C418F48D22F3F9F3005EFD81 /* CapitalListViewCell.xib in Resources */,
 				C40DEF0E22FBFDEC00E43F8C /* XLPasswordView.bundle in Resources */,
-				C412A42822EFE0A60090E4F1 /* LanguageSetViewController.xib in Resources */,
 				C473B92222F40F820013E77D /* CommunityDynamicTableViewCell.xib in Resources */,
 				C43B6BEF22F9732000312286 /* InviteCodeView.xib in Resources */,
 				C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */,
@@ -1401,6 +1397,7 @@
 				C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */,
 				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
 				C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */,
+				C45216C7230F929E00F6982A /* LanguageSetViewController.m in Sources */,
 				C4998E01230CEBA00042FB0C /* UserNewsModel.m in Sources */,
 				C4D5EECD22F7F0F100C94D9F /* SelectCurrencyViewController.m in Sources */,
 				C4A1EEB822F194D600A1DE8C /* NSString+Size.m in Sources */,
@@ -1474,7 +1471,7 @@
 				C4D5EEF122F81F1000C94D9F /* PaymentTypeCollectionViewCell.m in Sources */,
 				C40DEF0A22FBFDEC00E43F8C /* UIView+XLPasswordView.m in Sources */,
 				C4B9FCD323014D86007C1137 /* BannerObject.m in Sources */,
-				C40C3D8B22F199C800BDE6A3 /* confirmViewController.m in Sources */,
+				C40C3D8B22F199C800BDE6A3 /* ConfirmViewController.m in Sources */,
 				C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */,
 				C4B9FCD623017C85007C1137 /* MiningAreaModel.m in Sources */,
 				C43B6BFC22FA951D00312286 /* RewardBallView.m in Sources */,
@@ -1485,7 +1482,6 @@
 				C40F055322FD05B600942908 /* MobilePhoneViewController.m in Sources */,
 				C43B6BBB22F82E1400312286 /* UIViewController+LeftItem.m in Sources */,
 				C4D5EEED22F8161B00C94D9F /* PaymentCurrencyView.m in Sources */,
-				C412A42722EFE0A60090E4F1 /* LanguageSetViewController.m in Sources */,
 				C43B6C0922FAD1DD00312286 /* SegmentedControl.m in Sources */,
 				C45FA47B230E2A860095F8AF /* UITableView+Refresh.m in Sources */,
 				C41B127822F2AC1000375560 /* BindPhoneAndEmailViewController.m in Sources */,

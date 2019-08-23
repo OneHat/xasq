@@ -32,7 +32,7 @@
 - (void)setNewsModel:(UserNewsModel *)newsModel {
     _newsModel = newsModel;
     
-    self.contentLabel.text = [NSString stringWithFormat:@"%@   %@ %@",newsModel.userName,newsModel.quantity,newsModel.currencyCode];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@   %.8f %@",newsModel.userName,newsModel.quantity.doubleValue,newsModel.currencyCode];
     self.timeLabel.text = newsModel.showTime;
 }
 

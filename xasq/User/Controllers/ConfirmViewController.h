@@ -1,5 +1,5 @@
 //
-//  confirmViewController.h
+//  ConfirmViewController.h
 //  xasq
 //
 //  Created by dssj888@163.com on 2019/7/31.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface confirmViewController : UIViewController
+@interface ConfirmViewController : UIViewController
 
 @end
 

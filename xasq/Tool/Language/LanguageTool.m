@@ -65,5 +65,19 @@ static NSString *LanguageVn = @"vi-VN";
     
     return type;
 }
+
+///设置语言类型
++ (void)setLanguageType:(LanguageType)type {
+    NSString *currentLanguage = LanguageZhHans;
+    
+    if (type == LanguageTypeZhHans) {
+        currentLanguage = LanguageZhHans;
+        
+    } else if (type == LanguageTypeEn) {
+        currentLanguage = LanguageEn;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:currentLanguage forKey:LanguageCacheKey];
+}
     
 @end
