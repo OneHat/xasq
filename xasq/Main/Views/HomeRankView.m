@@ -17,8 +17,8 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) UITableView *powerRankView;//算力排行
-@property (nonatomic, strong) UITableView *levelRankView;//算力排行
-@property (nonatomic, strong) UITableView *inviteRankView;//算力排行
+@property (nonatomic, strong) UITableView *levelRankView;//等级排行
+@property (nonatomic, strong) UITableView *inviteRankView;//邀请排行
 
 ///算力排行数据、等级排行数据(是同一个数据)
 @property (nonatomic, strong) NSArray *powerRankDatas;//算力排行数据
@@ -124,18 +124,8 @@ const CGFloat RowHeight = 55.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger currentIndex = self.segmentedControl.selectIndex;
-    if (currentIndex == 0) {
-        return self.powerRankDatas.count - 1;
-        
-    } else if (currentIndex == 1) {
-        return self.levelRankDatas.count - 1;
-        
-    } else if (currentIndex == 2) {
-        return self.inviteRankDatas.count - 1;
-    }
     
-    return 0;
+    return MIN(10, self.powerRankDatas.count);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,17 +207,22 @@ const CGFloat RowHeight = 55.0;
         return;
     }
     
-    
     CGFloat viewHeight = 0.0;
     BOOL flag = NO;//是否需要footerView
-    if (lastModel.ranking > 10) {
-        //自己不在前10名，需要在底部显示(不登录时，只有10条数据)
-        viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
-        flag = YES;
+    if ([UserDataManager shareManager].userId) {
+        //已经登录
+        if (lastModel.ranking > 10) {
+            //自己不在前10名，需要在底部显示(不登录时，只有10条数据)
+            viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
+            flag = YES;
+        } else {
+            //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
+            viewHeight = MIN(10, self.powerRankDatas.count - 1) * RowHeight;
+        }
         
     } else {
-        //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
-        viewHeight = MIN(10, self.powerRankDatas.count - 1) * RowHeight;
+        //没登录只显示10条
+        viewHeight = MIN(10, self.powerRankDatas.count) * RowHeight;
     }
     
     if (currentIndex == 0) {
@@ -275,7 +270,16 @@ const CGFloat RowHeight = 55.0;
 
 #pragma mark -
 - (void)reloadViewData {
-    [self resizeFrame];
+    
+    self.powerRankDatas = nil;
+    self.powerRankDatas = nil;
+    self.powerRankDatas = nil;
+    
+    [self.powerRankView reloadData];
+    [self.levelRankView reloadData];
+    [self.inviteRankView reloadData];
+    
+    [self getRankData];
 }
 
 @end

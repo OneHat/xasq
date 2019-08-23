@@ -32,6 +32,11 @@
                             <constraint firstAttribute="width" constant="24" id="srH-tu-7VF"/>
                             <constraint firstAttribute="width" secondItem="4Sw-TR-e9C" secondAttribute="height" multiplier="1:1" id="vub-Ev-M46"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收取40聪BTC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZi-wn-10l">
                         <rect key="frame" x="49" y="28.5" width="82" height="16"/>
@@ -61,6 +66,7 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="contentLabel" destination="BZi-wn-10l" id="nIX-8n-OfX"/>
+                <outlet property="headerImageView" destination="4Sw-TR-e9C" id="Uc8-bU-OxY"/>
                 <outlet property="timeLabel" destination="PbG-dp-tox" id="gTN-sz-iZG"/>
             </connections>
             <point key="canvasLocation" x="-200" y="163"/>

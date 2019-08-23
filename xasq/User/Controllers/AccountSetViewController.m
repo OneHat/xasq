@@ -72,6 +72,7 @@
             
             [[UserDataManager shareManager] deleteLoginStatus];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:DSSJUserLogoutNotification object:nil];
             [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
             
             NSArray *VCArr = self.navigationController.viewControllers;

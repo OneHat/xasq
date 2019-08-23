@@ -33,7 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *signLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signButtonWidth;
 
-@property (nonatomic, strong) NSDictionary *signInfo;
+@property (nonatomic, strong) NSDictionary *signInfo;//签到信息
+@property (nonatomic, strong) NSDictionary *powInfo;//算力信息
 
 @end
 
@@ -162,6 +163,12 @@
         NSInteger power = [data[@"data"] integerValue];
         [self showSignSuccessView:power];
         [self updateSignLabel:@"已签到" buttonSelect:YES];
+        
+        self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%ld",[self.powInfo[@"userPower"] integerValue] + power];
+        
+        if (self.requestPow) {
+            self.requestPow();
+        }
         
     } failure:^(NSError * _Nonnull error) {
         self.signButton.selected = NO;
@@ -308,6 +315,7 @@
         
         NSDictionary *powInfo = data[@"data"];
         if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+            self.powInfo = powInfo;
             self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%@",powInfo[@"userPower"]];
         }
     } failure:^(NSError * _Nonnull error) {

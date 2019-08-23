@@ -62,8 +62,8 @@
         
         if (taskModel.quantity) {
             //赠送币
-            self.currencyLabel.text = [NSString stringWithFormat:@"+%@%@",taskModel.quantity,taskModel.currencyCode];
-//            self.currencyImageView
+            self.currencyLabel.text = [NSString stringWithFormat:@"+%.8f%@",taskModel.quantity.doubleValue,taskModel.currencyCode];
+            self.currencyImageView.image = Base64ImageStr(_taskModel.currencyIcon);
             
         } else {
             self.currencyImageView.hidden = YES;
@@ -75,8 +75,8 @@
         self.currencyLabel.hidden = YES;
         if (taskModel.quantity) {
             //赠送币
-            self.powerLabel.text = [NSString stringWithFormat:@"+%@%@",taskModel.quantity,taskModel.currencyCode];
-//            self.powerImageView
+            self.powerLabel.text = [NSString stringWithFormat:@"+%.8f%@",taskModel.quantity.doubleValue,taskModel.currencyCode];
+            self.currencyImageView.image = Base64ImageStr(_taskModel.currencyIcon);
             
         } else {
             self.powerLabel.hidden = YES;

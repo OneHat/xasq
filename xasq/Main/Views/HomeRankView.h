@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) void (^HomeRankDataComplete)(CGFloat viewHeight);
 
 - (void)reloadViewData;
+//- (void)getRankData;
 
 @end
 

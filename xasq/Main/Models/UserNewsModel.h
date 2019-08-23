@@ -12,11 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserNewsModel : NSObject
 
+///偷取币种id
+@property (nonatomic, assign) long bid;
+
 ///用户ID
 @property (nonatomic, assign) NSInteger userId;
 
 ///偷取用户名称
 @property (nonatomic, strong) NSString *userName;
+
+///偷取用户头像
+@property (nonatomic, strong) NSString *userHead;
 
 ///币种编码
 @property (nonatomic, strong) NSString *currencyCode;

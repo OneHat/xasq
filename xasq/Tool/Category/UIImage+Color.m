@@ -38,7 +38,7 @@
  *  base64转图片
  */
 + (UIImage *)base64ChangeiImageWithStr:(NSString *)imageStr {
-    if ([imageStr rangeOfString:@"base64,"].location != NSNotFound) {
+    if (imageStr && [imageStr rangeOfString:@"base64,"].location != NSNotFound) {
         NSRange range = [imageStr rangeOfString:@"base64,"];
         NSString *image = [imageStr substringFromIndex:range.location +range.length];
         NSData *imageData = [[NSData alloc]initWithBase64EncodedString:image options:NSDataBase64DecodingIgnoreUnknownCharacters];

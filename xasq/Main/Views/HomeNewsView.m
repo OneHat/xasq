@@ -32,10 +32,12 @@
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat timeWidth = 80;
     
-    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, height, height)];
+    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (height - 20)* 0.5, 20, 20)];
+    _iconImageView.layer.cornerRadius = 10;
+    _iconImageView.layer.masksToBounds = YES;
     [self addSubview:_iconImageView];
     
-    _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(height + 20, 0, width - timeWidth - height - 30, height)];
+    _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(height + 10, 0, width - timeWidth - height - 30, height)];
     _contentLabel.font = ThemeFontTipText;
     [self addSubview:_contentLabel];
     
@@ -48,7 +50,7 @@
 }
 
 - (void)setNewsData:(UserNewsModel *)news {
-//    [_iconImageView sd_setImageWithURL:<#(nullable NSURL *)#>]
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:news.userHead]];
     self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了 %.8f %@",news.userName,news.quantity.doubleValue,news.currencyCode];
     self.timeLabel.text = news.showTime;
     

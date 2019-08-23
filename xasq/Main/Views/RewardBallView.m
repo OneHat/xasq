@@ -65,12 +65,13 @@ const CGFloat ViewWidth = 60;
     [circleButton addTarget:self action:@selector(rewardClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:circleButton];
     self.button = circleButton;
+    
+    
 }
 
 - (void)setRewardModel:(RewardModel *)rewardModel {
     _rewardModel = rewardModel;
     _nameLabel.text = rewardModel.currencyCode;
-//    _rewardLabel.text = [NSString stringWithFormat:@"%@",rewardModel.currencyQuantity];
     
     _rewardLabel.text = [NSString stringWithFormat:@"%.8f",rewardModel.currencyQuantity.doubleValue];
     
@@ -99,6 +100,7 @@ const CGFloat ViewWidth = 60;
 
 #pragma mark -
 - (void)addAnimation {
+    [self.layer removeAllAnimations];
     
     CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     moveAnimation.fromValue = [NSValue valueWithCGPoint:self.center];

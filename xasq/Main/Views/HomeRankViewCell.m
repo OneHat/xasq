@@ -59,7 +59,7 @@
 - (void)setRank {
     
     self.selfImageView.hidden = YES;
-    if ([UserDataManager shareManager].userId.integerValue == self.rankInfo.userId) {
+    if ([UserDataManager shareManager].userId && [UserDataManager shareManager].userId.integerValue == self.rankInfo.userId) {
         self.selfImageView.hidden = NO;
     }
     
@@ -68,17 +68,17 @@
     
     switch (self.rankInfo.ranking) {
         case 1:{
-            self.rankImageView.image = [UIImage imageNamed:@"rankself.first"];
+            self.rankImageView.image = [UIImage imageNamed:@"rank_first"];
         }
             break;
             
         case 2:{
-            self.rankImageView.image = [UIImage imageNamed:@"rankself.second"];
+            self.rankImageView.image = [UIImage imageNamed:@"rank_second"];
         }
             break;
             
         case 3:{
-            self.rankImageView.image = [UIImage imageNamed:@"rankself.third"];
+            self.rankImageView.image = [UIImage imageNamed:@"rank_third"];
         }
             break;
             

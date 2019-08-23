@@ -26,6 +26,9 @@
         successView.backgroundColor = [UIColor clearColor];
         successView.frame = frame;
         self = (SignSuccessView *)successView;
+        
+        self.signDayLabel.textColor = ThemeColorBlue;
+        self.powerLabel.textColor = ThemeColorBlue;
     }
     return self;
 }
@@ -38,12 +41,12 @@
 
 - (void)setDay:(NSInteger)day {
     _day = day;
-    self.signDayLabel.text = [NSString stringWithFormat:@"连续签到%ld天",_day];
+    self.signDayLabel.text = [NSString stringWithFormat:@"%ld",_day];
 }
 
 -(void)setPower:(NSInteger)power {
     _power = power;
-    self.powerLabel.text = [NSString stringWithFormat:@"%ld",_power];
+    self.powerLabel.text = [NSString stringWithFormat:@"+%ld",_power];
 }
 
 @end

@@ -199,6 +199,8 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
     //Content-Language:zh-hk,en-us,vn,zh-cn
     if ([UserDataManager shareManager].authorization) {
         [_sessionManager.requestSerializer setValue:[UserDataManager shareManager].authorization forHTTPHeaderField:@"Authorization"];
+    } else {
+        [_sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"Authorization"];
     }
     [_sessionManager.requestSerializer setValue:[self currentLanguage] forHTTPHeaderField:@"Content-Language"];
     [_sessionManager.requestSerializer setValue:@"ios.xasq" forHTTPHeaderField:@"Content-origin"];

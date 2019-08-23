@@ -76,6 +76,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @property (strong, nonatomic) UIView *customerBarView;//自定义的bar
 
+@property (strong, nonatomic) NSMutableArray *rewardArray;//当奖励大于5个时，缓存起来，领取后再显示
+
 @end
 
 @implementation HomeViewController
@@ -112,6 +114,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     self.scrollView.delegate = self;
     
     self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
+    self.customerBarView.userInteractionEnabled = NO;
     self.customerBarView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.customerBarView];
     
@@ -161,7 +164,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     [self getUserPowerReward];
     
     //最新动态
-    [self getUserNews];
+    [self getUserCurrentNews];
     
     //当前算力、等级
     [self getUserLevelAndPower];
@@ -179,6 +182,12 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(userLoginSuccess)
                                                  name:DSSJUserLoginSuccessNotification
+                                               object:nil];
+    
+    //退出功
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(userLogout)
+                                                 name:DSSJUserLogoutNotification
                                                object:nil];
     
     
@@ -310,6 +319,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         NSArray *rewards = [RewardModel modelWithArray:dateList];
         //能量球
         NSInteger count = MIN(5, rewards.count);//个数
+        if (rewards.count > count) {
+            NSArray *leftArray = [rewards subarrayWithRange:NSMakeRange(count, rewards.count - count)];
+            self.rewardArray = [NSMutableArray arrayWithArray:leftArray];
+        }
+        
         NSMutableArray *frames = [self frameForRewardBallView:count];
         
         for (int i = 0; i < count; i++) {
@@ -392,6 +406,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
     [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
+        CGRect frame = ballView.frame;
+        
         [UIView animateWithDuration:0.5 animations:^{
             
             CGPoint p = self.userHeaderImageView.center;
@@ -399,7 +415,24 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             ballView.transform = CGAffineTransformScale(t, 0.1, 0.1);
             
         } completion:^(BOOL finished) {
+            
             [ballView removeFromSuperview];
+            
+            if (self.rewardArray.count > 0) {
+                RewardModel *model = self.rewardArray.firstObject;
+
+                RewardBallView *otherView = [[RewardBallView alloc] initWithFrame:frame];
+                otherView.rewardModel = model;
+                otherView.ballStyle = RewardBallViewStylePower;
+                [self.topView insertSubview:otherView belowSubview:self.userHeaderImageView];
+                
+                __weak RewardBallView *weakBall = otherView;
+                otherView.RewardBallClick = ^(NSInteger otherId, RewardBallView * _Nonnull ballView) {
+                    [self userTakeReward:otherId ballView:weakBall];
+                };
+                
+                [self.rewardArray removeObjectAtIndex:0];
+            }
         }];
         
     } failure:^(NSError * _Nonnull error) {
@@ -408,7 +441,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 }
 
 ///最新动态
-- (void)getUserNews {
+- (void)getUserCurrentNews {
     [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"][@"rows"];
@@ -485,6 +518,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     }
     
     TaskViewController *taskVC = [[TaskViewController alloc] init];
+    taskVC.requestPow = ^{
+        [self getUserLevelAndPower];
+    };
     taskVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:taskVC animated:YES];
 }
@@ -538,11 +574,16 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     [self getUserPowerReward];
     
     self.newsView.newsArray = @[];
-    [self getUserNews];
+    [self getUserCurrentNews];
+    
+    [self.rankView reloadViewData];
+}
+
+- (void)userLogout {
+    [self.rankView reloadViewData];
 }
 
 - (void)reloadHomeView {
-    [self.rankView reloadViewData];
     
     if ([UserDataManager shareManager].userId) {
         //已经登录
@@ -565,7 +606,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     //尚未登录
     [self.newsBackView addSubview:self.unLoginNewsMaskView];
     
-         self.userHeaderImageView.image = [UIImage imageNamed:@"head_portrait"];
+    self.userHeaderImageView.image = [UIImage imageNamed:@"head_portrait"];
     self.nicknameLabel.text = @"请登录";
     
     self.userLevelImageView.hidden = YES;

@@ -31,6 +31,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.timeLabel.textColor = ThemeColorTextGray;
     
@@ -54,15 +55,13 @@
     self.nameLabel.text = inviteInfo[@"nickName"];
     self.timeLabel.text = inviteInfo[@"bindTime"];
     
-    self.powerNumberLabel.text = [inviteInfo[@"awardPower"] stringValue];
+    self.powerNumberLabel.text = [NSString stringWithFormat:@"+%@",inviteInfo[@"awardPower"]];
     
-//    self.timeLabel.text = inviteInfo[@"bindTime"];
+    self.currencyImageView.image = Base64ImageStr(_inviteInfo[@"currencyLogo"]);
+    self.currencyNameLabel.text = _inviteInfo[@"currencyCode"];
     
-    //        awardPower = 50;
-    //        bindTime = "2019-08-20";
-    //        headImg = "";
-    //        mobile = 18805618681;
-    //        nickName = "\U897f\U6e38\U8bb0SJ";
+    NSString *num = _inviteInfo[@"currencyCount"];
+    self.currencyNumberLabel.text = [NSString stringWithFormat:@"+%.8f",num.doubleValue];
 }
 
 @end

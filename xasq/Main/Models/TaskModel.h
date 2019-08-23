@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///任务奖励币种
 @property (nonatomic, strong) NSString *currencyCode;
+///任务奖励币种图片
+@property (nonatomic, strong) NSString *currencyIcon;
+
 ///任务编码
 @property (nonatomic, strong) NSString *code;
 
@@ -46,12 +49,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger randomQuantity;
 
 ///奖励币种数量
-@property (nonatomic, strong) NSNumber *quantity;
+@property (nonatomic, strong) NSString *quantity;
 
 ///最小奖励数量
-@property (nonatomic, strong) NSNumber *minQuantity;
+@property (nonatomic, strong) NSString *minQuantity;
 ///最大奖励数量
-@property (nonatomic, strong) NSNumber *maxQuantity;
+@property (nonatomic, strong) NSString *maxQuantity;
 
 ///是否完成
 @property (nonatomic, assign) BOOL finished;
