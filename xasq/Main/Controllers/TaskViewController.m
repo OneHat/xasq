@@ -129,7 +129,7 @@
     
     [self getDayTasks];
     [self getWeekTasks];
-    
+
     [self getSignInfo];
     [self getUserLevelAndPower];
 }

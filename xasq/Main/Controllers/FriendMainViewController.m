@@ -25,6 +25,9 @@
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger totalPage;
 
+@property (strong, nonatomic) UIButton *backButton;//自定义的bar
+@property (strong, nonatomic) UIView *customerBarView;//自定义的bar
+
 @end
 
 @implementation FriendMainViewController
@@ -65,10 +68,20 @@
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
+    
+    self.tableView.delegate = self;
+    
+    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
+    self.customerBarView.userInteractionEnabled = NO;
+    self.customerBarView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.customerBarView];
+    
+    
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, StatusBarHeight, 44, 44)];
     [backButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
+    _backButton = backButton;
     
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
@@ -381,5 +394,16 @@
     return frames;
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat rate = (scrollView.contentOffset.y) / NavHeight;
+    self.customerBarView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:rate];
+    
+    if (scrollView.contentOffset.y > NavHeight * 0.5) {
+        [self.backButton setImage:[UIImage imageNamed:@"leftBar_back"] forState:UIControlStateNormal];
+    } else {
+        [self.backButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
+    }
+}
 
 @end

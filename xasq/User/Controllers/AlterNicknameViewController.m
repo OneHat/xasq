@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 @end
 
 @implementation AlterNicknameViewController
@@ -24,6 +25,12 @@
     _saveBtn.layer.cornerRadius = 22.5;
     _saveBtn.layer.masksToBounds = YES;
     _nameTF.text = _nickname;
+    
+    if (@available(iOS 11.0, *)) {
+        self.topHeight.constant = 10;
+    } else {
+        self.topHeight.constant = NavHeight + 10;
+    }
 }
 
 - (IBAction)saveBtnClick:(UIButton *)sender {

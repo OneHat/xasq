@@ -43,12 +43,12 @@ static NSString *LaunchADCacheKey = @"LaunchADCacheKey";
         if (dataList && [dataList isKindOfClass:[NSArray class]] && dataList.count > 0) {
             NSDictionary *firstAD = dataList.firstObject;
             [[NSUserDefaults standardUserDefaults] setObject:firstAD forKey:LaunchADCacheKey];
-            
+
             BannerObject *newObj = [BannerObject modelWithDictionary:firstAD];
             UIImageView *temp = [[UIImageView alloc] init];
             [temp sd_setImageWithURL:[NSURL URLWithString:newObj.imgPath]];
         }
-        
+
     } failure:^(NSError * _Nonnull error) {
     }];
     

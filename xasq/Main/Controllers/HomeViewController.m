@@ -638,7 +638,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat height = CGRectGetHeight(self.topView.frame);
     height = 0;
-    CGFloat rate = (self.scrollView.contentOffset.y - height) / NavHeight;
+    CGFloat rate = (scrollView.contentOffset.y - height) / NavHeight;
     self.customerBarView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:rate];
 }
 

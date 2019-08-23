@@ -111,7 +111,7 @@
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripDiacritics, NO);
     
-    return [pinyin stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return [[pinyin stringByReplacingOccurrencesOfString:@" " withString:@""] uppercaseString];
 }
 
 - (void)showTableview {
@@ -192,7 +192,10 @@
             
             NSString *pinyin = [self pinyin:name];
             
-            [contacts addObject:@{@"name":name, @"phoneNumber":phoneNumber,@"pinyin":pinyin}];
+            if (name.length > 0 && phoneNumber.length > 0) {
+                [contacts addObject:@{@"name":name, @"phoneNumber":phoneNumber,@"pinyin":pinyin}];
+            }
+            
         }
         
         return [NSArray arrayWithArray:contacts];

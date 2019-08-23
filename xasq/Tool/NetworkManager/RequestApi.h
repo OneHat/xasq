@@ -46,14 +46,10 @@ FOUNDATION_EXPORT NSString *const UserMobileRebind;
 FOUNDATION_EXPORT NSString *const UserInviteRecordAll;
 /// 查询一级邀请算力奖励记录 GET
 FOUNDATION_EXPORT NSString *const UserInviteRecordFirst;
-/// 获取我的界面信息 POST
-FOUNDATION_EXPORT NSString *const HomePageInfo;
 /// 邀请人绑定接口 POST
 FOUNDATION_EXPORT NSString *const UserInviteBind;
 /// 获取邀请码参数接口 GET
 FOUNDATION_EXPORT NSString *const UserInviteQrcode;
-///// 用户签到接口 POST
-//FOUNDATION_EXPORT NSString *const UserSignIn;
 /// 修改(找回)支付密码接口 POST
 FOUNDATION_EXPORT NSString *const UserPwdReset;
 /// 修改登录密码接口 POST

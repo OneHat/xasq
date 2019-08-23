@@ -32,25 +32,25 @@
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat timeWidth = 80;
     
-    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (height - 20)* 0.5, 20, 20)];
-    _iconImageView.layer.cornerRadius = 10;
+    _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (height - 18)* 0.5, 18, 18)];
+    _iconImageView.layer.cornerRadius = 9;
     _iconImageView.layer.masksToBounds = YES;
     [self addSubview:_iconImageView];
     
     _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(height + 10, 0, width - timeWidth - height - 30, height)];
-    _contentLabel.font = ThemeFontTipText;
+    _contentLabel.font = ThemeFontSmallText;
     [self addSubview:_contentLabel];
     
     _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - timeWidth - 10, 0, timeWidth, height)];
     _timeLabel.textAlignment = NSTextAlignmentRight;
     _timeLabel.textColor = ThemeColorTextGray;
-    _timeLabel.font = ThemeFontTipText;
+    _timeLabel.font = ThemeFontSmallText;
     [self addSubview:_timeLabel];
     
 }
 
 - (void)setNewsData:(UserNewsModel *)news {
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:news.userHead]];
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:news.userHead] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了 %.8f %@",news.userName,news.quantity.doubleValue,news.currencyCode];
     self.timeLabel.text = news.showTime;
     

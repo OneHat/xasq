@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLB;
 @property (weak, nonatomic) IBOutlet UILabel *certificationLB;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 
 @end
 
@@ -40,6 +41,13 @@
     } else {
         _certificationLB.text = @"未认证";
     }
+    
+    if (@available(iOS 11.0, *)) {
+        self.topHeight.constant = 10;
+    } else {
+        self.topHeight.constant = NavHeight + 10;
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,7 +145,7 @@
     if (!image) {
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    UIImage *compressImg = [self imageWithImageSimple:image scaledToSize:CGSizeMake(60, 60)];//对选取的图片进行大小上的压缩
+    UIImage *compressImg = [self imageWithImageSimple:image scaledToSize:CGSizeMake(120, 120)];//对选取的图片进行大小上的压缩
     [self transportImgToServerWithImg:compressImg]; //将裁剪后的图片上传至服务器
 
     [picker dismissViewControllerAnimated:YES completion:^{

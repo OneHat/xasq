@@ -12,28 +12,16 @@
 #import <UIImage+Metadata.h>
 
 ///dev
-static NSString *xasqBaseUrlUserDev = @"http://192.168.100.200:7081/";
-static NSString *xasqBaseUrlOperationDev = @"http://192.168.100.200:7281/";
-static NSString *xasqBaseUrlCommunityDev = @"http://192.168.100.200:7481/";
-static NSString *xasqBaseUrlMessageDev = @"http://192.168.100.200:7181/";
-static NSString *xasqBaseUrlAcctDev = @"http://192.168.100.200:7581/";
+static NSString *xasqBaseUrlDev =      @"http://180.168.209.206:5003/api/";
 
 ///Test
-static NSString *xasqBaseUrlUserTest = @"http://192.168.100.200:7081/";
-static NSString *xasqBaseUrlOperationTest = @"http://192.168.100.200:7281/";
-static NSString *xasqBaseUrlCommunityTest = @"http://192.168.100.200:7481/";
-static NSString *xasqBaseUrlMessageTest = @"http://192.168.100.200:7181/";
-static NSString *xasqBaseUrlAcctTest = @"http://192.168.100.200:7581/";
+static NSString *xasqBaseUrlTest =     @"http://180.168.209.206:5003/api/";
 
 ///Pro
-static NSString *xasqBaseUrlUserPro = @"http://192.168.100.200:7081/";
-static NSString *xasqBaseUrlOperationPro = @"http://192.168.100.200:7281/";
-static NSString *xasqBaseUrlCommunityPro = @"http://192.168.100.200:7481/";
-static NSString *xasqBaseUrlMessagePro = @"http://192.168.100.200:7181/";
-static NSString *xasqBaseUrlAcctPro = @"http://192.168.100.200:7581/";
+static NSString *xasqBaseUrlPro =      @"http://180.168.209.206:5003/api/";
 
 
-const NSTimeInterval xasqTimeoutInterval = 30;
+const NSTimeInterval xasqTimeoutInterval = 10;
 
 typedef NS_ENUM(NSInteger, NetworkConnect) {
     NetworkConnectDev,//开发
@@ -64,14 +52,15 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
         
+//        self.sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
 //        [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",nil];
-        NSSet *acceptableContentTypes = self.sessionManager.responseSerializer.acceptableContentTypes;
-        NSSet *addSet = [NSSet setWithObjects:@"text/html",nil];
         
-        self.sessionManager.responseSerializer.acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromSet:addSet];
-//        self.sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
+//        NSSet *acceptableContentTypes = self.sessionManager.responseSerializer.acceptableContentTypes;
+//        NSSet *addSet = [NSSet setWithObjects:@"text/plain",nil];
+//        self.sessionManager.responseSerializer.acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromSet:addSet];
+        
         self.sessionManager.requestSerializer.timeoutInterval = xasqTimeoutInterval;
-        
         self.networkConnect = NetworkConnectDev;
     }
     return self;
@@ -102,7 +91,9 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
                          }
                          
                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                         
+#ifdef DEBUG
+                         NSLog(@"get\n%@\nerror:%@",absoluteString,error);
+#endif
                          NSError *result = [self handleError:error];
                          failure(result);
                      }];
@@ -132,6 +123,9 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
                           }
                           
                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+#ifdef DEBUG
+                          NSLog(@"post\n%@\nerror:%@",absoluteString,error);
+#endif
                           NSError *result = [self handleError:error];
                           failure(result);
                       }];
@@ -200,11 +194,8 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
 ///请求头信息
 - (void)updateHTTPHeaderField {
     //Content-Language:zh-hk,en-us,vn,zh-cn
-    if ([UserDataManager shareManager].authorization) {
-        [_sessionManager.requestSerializer setValue:[UserDataManager shareManager].authorization forHTTPHeaderField:@"Authorization"];
-    } else {
-        [_sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"Authorization"];
-    }
+    
+    [_sessionManager.requestSerializer setValue:[UserDataManager shareManager].authorization forHTTPHeaderField:@"Authorization"];
     [_sessionManager.requestSerializer setValue:[self currentLanguage] forHTTPHeaderField:@"Content-Language"];
     [_sessionManager.requestSerializer setValue:@"ios.xasq" forHTTPHeaderField:@"Content-origin"];
 }
@@ -233,76 +224,17 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
 #pragma mark -
 - (NSString *)baseUrlWithPath:(NSString *)path {
     
-    if ([path hasPrefix:@"user"]) {
+    if (self.networkConnect == NetworkConnectPro) {
+        return xasqBaseUrlPro;
         
-        if (self.networkConnect == NetworkConnectPro) {
-            return xasqBaseUrlUserPro;
-            
-        } else if (self.networkConnect == NetworkConnectTest) {
-            return xasqBaseUrlUserTest;
-            
-        } else if (self.networkConnect == NetworkConnectDev) {
-            return xasqBaseUrlUserDev;
-        }
+    } else if (self.networkConnect == NetworkConnectTest) {
+        return xasqBaseUrlTest;
         
-        return xasqBaseUrlUserPro;
-        
-    } else if ([path hasPrefix:@"oper"]) {
-        
-        if (self.networkConnect == NetworkConnectPro) {
-            return xasqBaseUrlOperationPro;
-            
-        } else if (self.networkConnect == NetworkConnectTest) {
-            return xasqBaseUrlOperationTest;
-            
-        } else if (self.networkConnect == NetworkConnectDev) {
-            return xasqBaseUrlOperationDev;
-        }
-        
-        return xasqBaseUrlOperationPro;
-        
-    } else if ([path hasPrefix:@"comm"]) {
-        if (self.networkConnect == NetworkConnectPro) {
-            return xasqBaseUrlCommunityPro;
-            
-        } else if (self.networkConnect == NetworkConnectTest) {
-            return xasqBaseUrlCommunityTest;
-            
-        } else if (self.networkConnect == NetworkConnectDev) {
-            return xasqBaseUrlCommunityDev;
-        }
-        
-        return xasqBaseUrlCommunityPro;
-        
-    } else if ([path hasPrefix:@"msg"]) {
-        if (self.networkConnect == NetworkConnectPro) {
-            return xasqBaseUrlMessagePro;
-            
-        } else if (self.networkConnect == NetworkConnectTest) {
-            return xasqBaseUrlMessageTest;
-            
-        } else if (self.networkConnect == NetworkConnectDev) {
-            return xasqBaseUrlMessageDev;
-        }
-        
-        return xasqBaseUrlMessagePro;
-        
-    } else if ([path hasPrefix:@"acct"]) {
-        if (self.networkConnect == NetworkConnectPro) {
-            return xasqBaseUrlAcctPro;
-            
-        } else if (self.networkConnect == NetworkConnectTest) {
-            return xasqBaseUrlAcctTest;
-            
-        } else if (self.networkConnect == NetworkConnectDev) {
-            return xasqBaseUrlAcctDev;
-        }
-        
-        return xasqBaseUrlAcctPro;
-        
+    } else if (self.networkConnect == NetworkConnectDev) {
+        return xasqBaseUrlDev;
     }
     
-    return @"";
+    return xasqBaseUrlPro;
 }
 
     

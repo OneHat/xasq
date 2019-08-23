@@ -30,9 +30,9 @@
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.nameLabel.font = ThemeFontText;
+    self.nameLabel.font = ThemeFontSmallText;
     
-    self.areaLabel.font = ThemeFontSmallText;
+    self.areaLabel.font = ThemeFontTipText;
     self.areaLabel.textColor = ThemeColorTextGray;
     
     self.valueLabel.textColor = ThemeColorTextGray;
@@ -49,7 +49,7 @@
 - (void)setRankInfo:(UserRankModel *)rankInfo {
     _rankInfo = rankInfo;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:self.rankInfo.headImg]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:self.rankInfo.headImg] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     self.nameLabel.text = rankInfo.nickName;
     [self setRank];
     

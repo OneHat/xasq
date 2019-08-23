@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 @property (weak, nonatomic) IBOutlet UITextField *accountTF;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 @end
 
 @implementation UnauthorizedViewController
@@ -28,6 +29,12 @@
     
     _nextBtn.layer.cornerRadius = 22.5;
     _nextBtn.layer.masksToBounds = YES;
+    
+    if (@available(iOS 11.0, *)) {
+        self.topHeight.constant = 10;
+    } else {
+        self.topHeight.constant = NavHeight + 10;
+    }
 }
 
 - (IBAction)documentTypeClick:(UIButton *)sender {

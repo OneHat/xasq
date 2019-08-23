@@ -33,7 +33,7 @@
 - (void)setNewsModel:(UserNewsModel *)newsModel {
     _newsModel = newsModel;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.userHead]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.userHead] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     self.contentLabel.text = [NSString stringWithFormat:@"%@   %.8f %@",newsModel.userName,newsModel.quantity.doubleValue,newsModel.currencyCode];
     self.timeLabel.text = newsModel.showTime;
 }
