@@ -238,7 +238,7 @@
     PaymentsRecordModel *model = value[indexPath.row];
     cell.titleLB.text = model.nameStr;
     cell.valueLB.text = [NSString stringWithFormat:@"%@",model.amount];
-    if ([model.cause integerValue] == 2) {
+    if ([model.cause integerValue] == 12) {
         cell.icon.image = [UIImage imageNamed:@"Capital_DrawMoney"];
     } else if ([model.cause integerValue] == 14) {
         cell.icon.image = [UIImage imageNamed:@"capital_reward"];

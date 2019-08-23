@@ -120,6 +120,7 @@
             } else {
                 weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
             }
+            weakSelf.headerView.regionLB.text = [UserDataManager shareManager].usermodel.areaName;
             [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg]
                                                   placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         }

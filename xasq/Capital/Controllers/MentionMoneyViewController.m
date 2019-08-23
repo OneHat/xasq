@@ -133,8 +133,8 @@
     WeakObject;
     NSDictionary *dict = @{@"amount"         : _amountTF.text,
                            @"currency"       : _currencyLB.text,
-                           @"outAccountType" : @"13",
-                           @"inAccountType"  : @"6",
+                           @"outAccountType" : @"6",
+                           @"inAccountType"  : @"13",
                            @"password"       : password,
                            };
     [[NetworkManager sharedManager] postRequest:AcctTransferAccount parameters:dict success:^(NSDictionary * _Nonnull data) {
