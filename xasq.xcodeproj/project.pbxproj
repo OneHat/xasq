@@ -1673,7 +1673,7 @@
 				CODE_SIGN_ENTITLEMENTS = xasq/xasq.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 667L3Y3D6H;
+				DEVELOPMENT_TEAM = 8Q6EQA2292;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/AppPrefixHeader.pch";
@@ -1683,7 +1683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dssj.xasqq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dssj.xasq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1698,7 +1698,7 @@
 				CODE_SIGN_ENTITLEMENTS = xasq/xasq.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 667L3Y3D6H;
+				DEVELOPMENT_TEAM = 8Q6EQA2292;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xasq/App/AppPrefixHeader.pch";
@@ -1708,7 +1708,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dssj.xasqq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dssj.xasq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

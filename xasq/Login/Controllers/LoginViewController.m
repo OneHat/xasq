@@ -143,7 +143,7 @@
     } else if (_passwordTF.text.length == 0) {
         [self showMessage:@"请输入密码"];
         return;
-    } else if (!_codeView.isHidden && _codeTF.text.length == 0) {
+    } else if (_codeView.alpha != 0 && _codeTF.text.length == 0) {
         [self showMessage:@"请输入验证码"];
         return;
     }
@@ -195,12 +195,12 @@
         if (error.code == E010130 || error.code == E010141 || error.code == E010145 || error.code == E010142) {
             weakSelf.passwordTF.text = @"";
             //验证码
-            [UIView animateWithDuration:1.5 animations:^{
-                weakSelf.codeView.hidden = NO;
-                weakSelf.loginBtnTopCT.constant = 95;
+            [UIView animateWithDuration:0.25 animations:^{
+                self.codeView.alpha = 1;
+                self.loginBtnTopCT.constant = 95;
+                [self.view layoutIfNeeded];
             }];
         }
-        
         weakSelf.loginBtn.userInteractionEnabled = YES;
         [weakSelf hideHUD];
         [self showErrow:error];

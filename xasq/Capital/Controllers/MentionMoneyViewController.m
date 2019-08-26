@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UILabel *currencyLB; // 币种名称
 @property (weak, nonatomic) IBOutlet UIImageView *currencyImageV; // 币种图标
+@property (weak, nonatomic) IBOutlet UILabel *accountLB; // 收款账户
 @property (weak, nonatomic) IBOutlet UITextField *amountTF; // 金额
 @property (weak, nonatomic) IBOutlet UILabel *amountLB; // 当前币种余额
 @property (weak, nonatomic) IBOutlet UILabel *exchangeLB;
@@ -39,6 +40,10 @@
     _examineBtn.layer.borderWidth = 1;
     _examineBtn.layer.borderColor = ThemeColorTextGray.CGColor;
     _examineBtn.layer.masksToBounds = YES;
+    if (_model) {
+        _currencyLB.text = _model.currency;
+        _amountLB.text = _model.amount;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -142,6 +147,11 @@
         if (data[@"data"][@"success"]) {
             [self showMessage:@"转出成功"];
             weakSelf.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
+            MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController    alloc] init];
+            VC.count = weakSelf.amountTF.text;
+            VC.currency = weakSelf.amountTF.text;
+            VC.account = weakSelf.accountLB.text;
+            [self.navigationController pushViewController:VC animated:YES];
         }
         [passwordView hidePasswordView];
     } failure:^(NSError * _Nonnull error) {

@@ -39,7 +39,7 @@
     imageView.image = [UIImage imageNamed:@"capital_topBackground"];
     imageView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:imageView];
-    
+    WeakObject;
     //title
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -61,6 +61,7 @@
     topView.DrawClickBlock = ^{
         //提币
         MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
+        mentionMoneyViewVC.model = weakSelf.model;
         mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
     };
@@ -98,7 +99,7 @@
     _tableView.delegate = self;
     _tableView.rowHeight = 45;
     [self.view addSubview:_tableView];
-    WeakObject;
+    
     [_tableView pullHeaderRefresh:^{
         weakSelf.pageNo = 1;
         [weakSelf.dataDict removeAllObjects];
@@ -179,7 +180,9 @@
                 }
             }
         } else {
-            [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            if (weakSelf.pageNo == 1) {
+                [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            }
         }
         [weakSelf.tableView endRefresh];
         [weakSelf.tableView reloadData];

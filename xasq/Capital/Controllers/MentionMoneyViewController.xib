@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MentionMoneyViewController">
             <connections>
+                <outlet property="accountLB" destination="Dic-JB-EKQ" id="sFs-aq-zDV"/>
                 <outlet property="amountLB" destination="sFp-U6-pxS" id="IOF-LP-NVh"/>
                 <outlet property="amountTF" destination="4hD-xV-FvB" id="n76-Eg-DWU"/>
                 <outlet property="confirmBtn" destination="Ro9-PJ-eHZ" id="zhv-Tn-DL3"/>
