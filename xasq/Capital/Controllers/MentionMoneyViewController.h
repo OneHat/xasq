@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CapitalModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MentionMoneyViewController : UIViewController
+
+@property (nonatomic, strong) CapitalModel *model; 
 
 @end
 

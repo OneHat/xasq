@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CapitalTopView *topView;//资产数值
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *cacheArray;
 @property (nonatomic, strong) UIButton *checkButton; // 隐藏按钮
 @property (nonatomic, strong) UILabel *hideZeroLabel;  // 隐藏0金额label
 @end
@@ -38,6 +39,7 @@ static CGFloat CapitalSegmentControlH = 40;
 
 - (void)loadSubViews {
     _dataArray = [NSMutableArray array];
+    _cacheArray = [NSMutableArray array];
     CGFloat topSpaceH = CapitalSegmentControlH + NavHeight;
     
     //资产view
@@ -88,6 +90,7 @@ static CGFloat CapitalSegmentControlH = 40;
     for (NSDictionary *dic in array) {
         CapitalModel *model = [CapitalModel modelWithDictionary:dic];
         [_dataArray addObject:model];
+        [_cacheArray addObject:model];
     }
     [_tableView reloadData];
 }
@@ -212,8 +215,25 @@ static CGFloat CapitalSegmentControlH = 40;
     }
 }
 
-- (void)search {
-    
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length > 0) {
+        NSString *predicateStr = [NSString stringWithFormat:@"SELF CONTAINS[cd] '%@'",searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateStr];
+        NSMutableArray *valueArr = [NSMutableArray array];
+        for (CapitalModel *model in _cacheArray) {
+            BOOL isSearch = [predicate evaluateWithObject:model.currency];
+            if (isSearch) {
+                [valueArr addObject:model];
+            }
+        }
+        _dataArray = [NSMutableArray arrayWithArray:valueArr];
+    } else {
+        _dataArray = [NSMutableArray arrayWithArray:_cacheArray];
+        if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+            [_delegate hiddenAmountClick:NO];
+        }
+    }
+    [_tableView reloadData];
 }
 
 - (void)changeHideMony {

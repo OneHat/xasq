@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MentionMoneyResultViewController">
             <connections>
+                <outlet property="contentLB" destination="QFv-n5-LuL" id="K6c-Cd-99U"/>
                 <outlet property="examineBtn" destination="9sB-UB-nvE" id="reL-eF-A3o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

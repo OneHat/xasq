@@ -143,7 +143,7 @@
                         <action selector="CipherSwitch:" destination="-1" eventType="touchUpInside" id="Q3D-Mq-6GU"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5p-Cv-jLr">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5p-Cv-jLr">
                     <rect key="frame" x="35" y="385" width="344" height="60"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rwx-fP-tZ4">
