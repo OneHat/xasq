@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,InviteCodeViewButtonStyle) {
     InviteCodeViewButtonStyleBind,//绑定邀请
     InviteCodeViewButtonStyleCopy,//复制
-    InviteCodeViewButtonStyleMakeCard,//生成邀请卡
+    InviteCodeViewButtonStyleStartInvite,//开始邀请
 };
 
 typedef void(^ButtonClickBlock)(InviteCodeViewButtonStyle style);

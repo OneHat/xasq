@@ -66,18 +66,37 @@ const CGFloat ViewWidth = 60;
     [self addSubview:circleButton];
     self.button = circleButton;
     
-    
 }
 
 - (void)setRewardModel:(RewardModel *)rewardModel {
     _rewardModel = rewardModel;
-    _nameLabel.text = rewardModel.currencyCode;
     
-    _rewardLabel.text = [NSString stringWithFormat:@"%.8f",rewardModel.currencyQuantity.doubleValue];
+    _nameLabel.text = _rewardModel.currencyCode;
+    _rewardLabel.text = [NSString stringWithFormat:@"%.8f",_rewardModel.currencyQuantity.doubleValue];
     
-    if (rewardModel.status == 10) {
+    if (_rewardModel.status == 10) {
+        //不可偷取
         self.alpha = 0.7;
         self.button.enabled = NO;
+        
+    } else if (_rewardModel.status == 0) {
+        //未成熟
+        self.alpha = 0.7;
+        self.button.enabled = NO;
+
+        int duration = _rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
+        int hour = duration / 3600;
+        int minute = duration % 3600 / 60;
+
+        _rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self refreshStates:timer];
+        }];
+    }
+    
+    if (_rewardModel.type != 1) {
+        [self addAnimation];
     }
 }
 
@@ -99,15 +118,45 @@ const CGFloat ViewWidth = 60;
 }
 
 #pragma mark -
+- (void)refreshStates:(NSTimer *)timer {
+    if (_rewardModel.status == 0) {
+        //未成熟
+        self.alpha = 0.7;
+        self.button.enabled = NO;
+        
+        int duration = _rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
+        int hour = duration / 3600;
+        int minute = duration % 3600 / 60;
+        
+        if (duration <= 0) {
+            self.alpha = 1.0;
+            self.button.enabled = YES;
+            
+            _rewardLabel.text = [NSString stringWithFormat:@"%.8f",_rewardModel.currencyQuantity.doubleValue];
+            _rewardModel.status = 1;
+            
+            [timer invalidate];
+            timer = nil;
+            
+        } else {
+            _rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
+        }
+        
+    }
+}
+
+#pragma mark -
 - (void)addAnimation {
     [self.layer removeAllAnimations];
     
     CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     moveAnimation.fromValue = [NSValue valueWithCGPoint:self.center];
-    moveAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.center.x, self.center.y + 10)];
+    moveAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.center.x, self.center.y + 5)];
     moveAnimation.duration = 1.0;
     moveAnimation.repeatCount = MAXFLOAT;
     moveAnimation.autoreverses = YES;
+    moveAnimation.removedOnCompletion = NO;
+    moveAnimation.fillMode = kCAFillModeForwards;
     
     [self.layer addAnimation:moveAnimation forKey:@"move"];
 }
@@ -116,12 +165,13 @@ const CGFloat ViewWidth = 60;
     sender.enabled = NO;
     
     if (self.RewardBallClick) {
-        self.RewardBallClick(_rewardModel.ID,self);
+        self.RewardBallClick(self);
     }
 }
 
 - (void)resetButtonEnable {
     self.button.enabled = YES;
 }
+
 
 @end

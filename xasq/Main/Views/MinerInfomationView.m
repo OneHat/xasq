@@ -59,7 +59,7 @@
     NSString *imageUrl = [UserDataManager shareManager].usermodel.headImg;
     [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     
-    CGFloat rate = 0.333;
+    CGFloat rate = 0.0;
     CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
     
     self.progressViewWidth.constant = totalWidth * rate;
@@ -81,8 +81,12 @@
     CGFloat rate = MIN(1.0, currentPow * 1.0 / nextPow);
     CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
     
-    self.progressViewWidth.constant = totalWidth * rate;
-    self.rateViewLeft.constant = totalWidth * rate - 40;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.progressViewWidth.constant = totalWidth * rate;
+        self.rateViewLeft.constant = totalWidth * rate - 40;
+        [self layoutIfNeeded];
+    }];
+    
     
     self.rateLabel.text = [NSString stringWithFormat:@"%ld/%ld",currentPow,nextPow];
 }

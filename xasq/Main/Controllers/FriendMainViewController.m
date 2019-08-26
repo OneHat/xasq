@@ -86,7 +86,6 @@
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
     
-    [self getUserMessageInfo];
     
     [self.tableView pullHeaderRefresh:^{
         self.page = 1;
@@ -103,6 +102,9 @@
         [self.tableView endRefresh];
         
     }];
+    
+    self.page = 1;
+    [self getUserMessageInfo];
     
     [self getUserRewrad];
 }
@@ -230,7 +232,7 @@
 }
 
 - (void)getUserMessageInfo {
-    NSDictionary *parameters = @{@"targetId":@(self.userId),@"pageNo":@(1)};
+    NSDictionary *parameters = @{@"targetId":@(self.userId),@"pageNo":@(self.page)};
     
     [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
         [self.tableView endRefresh];
@@ -276,9 +278,12 @@
 }
 
 //
-- (void)stealCurrency:(NSInteger)ID ballView:(RewardBallView *)ballView {
+- (void)stealCurrencyWithBallView:(RewardBallView *)ballView {
+    if (ballView.rewardModel.ID == 0) {
+        return;
+    }
     
-    NSDictionary *parameters = @{@"bId":@(ID),@"sourceUserId":@(self.userId)};
+    NSDictionary *parameters = @{@"bId":@(ballView.rewardModel.ID),@"sourceUserId":@(self.userId)};
     [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
 
         NSDictionary *info = data[@"data"];
@@ -345,8 +350,8 @@
         ballView.ballStyle = RewardBallViewStylePower;
         [self.headerView addSubview:ballView];
         
-        ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
-            [self stealCurrency:rewardId ballView:ballView];
+        ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
+            [self stealCurrencyWithBallView:ballView];
         };
     }
 }

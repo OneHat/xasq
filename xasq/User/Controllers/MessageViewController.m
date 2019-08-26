@@ -86,13 +86,13 @@
         
         [self.tableView endRefresh];
         if (self.messages.count == 0) {
-            [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
         [self.tableView endRefresh];
         if (self.messages.count == 0) {
-            [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
         }
     }];
 }

@@ -12,7 +12,10 @@
 @interface TaskRecordViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *rewards;
+@property (nonatomic, strong) NSMutableArray *rewards;
+
+@property (nonatomic, assign) NSInteger page;//页数
+@property (nonatomic, assign) NSInteger totalPage;//总页数
 
 @end
 
@@ -22,6 +25,8 @@
     [super viewDidLoad];
     self.title = @"算力记录";
     self.view.backgroundColor = ThemeColorBackground;
+    
+    self.rewards = [NSMutableArray array];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20 + NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 30) style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"TaskRecordViewCell" bundle:nil] forCellReuseIdentifier:@"TaskRecordViewCell"];
@@ -33,21 +38,54 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
-    [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:nil success:^(NSDictionary * _Nonnull data) {
+    [self.tableView pullHeaderRefresh:^{
+        self.page = 1;
+        [self getRecords];
+    }];
+    
+    [self.tableView pullFooterRefresh:^{
         
-        NSArray *rewards = data[@"data"];
-        if (rewards && [rewards isKindOfClass:[NSArray class]] && rewards.count > 0) {
-            self.rewards = data[@"data"];
-            [self.tableView reloadData];
+        if (self.page < self.totalPage) {
+            self.page++;
+            [self getRecords];
+        } else {
+            [self.tableView endRefresh];
+        }
+        
+    }];
+    
+    self.page = 1;
+    [self getRecords];
+}
+
+#pragma mark -
+- (void)getRecords {
+    NSDictionary *parameters = @{@"pageNo":@(self.page)};
+    [[NetworkManager sharedManager] getRequest:CommunityPowerRecord parameters:parameters success:^(NSDictionary * _Nonnull data) {
+        [self.tableView endRefresh];
+        
+        self.totalPage = [data[@"data"][@"totalPage"] integerValue];
+        
+        NSArray *rewards = data[@"data"][@"rows"];;
+        if (!rewards || ![rewards isKindOfClass:[NSArray class]] || rewards.count == 0) {
+            self.page--;
             return;
         }
         
+        if (self.page == 1) {
+            [self.rewards removeAllObjects];
+        }
+        
+        [self.rewards addObjectsFromArray:rewards];
+        [self.tableView reloadData];
+        
         
     } failure:^(NSError * _Nonnull error) {
-        [self showErrow:error];
+        [self.tableView endRefresh];
     }];
 }
 
+#pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.rewards.count;
 }

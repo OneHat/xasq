@@ -72,7 +72,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppu-BZ-tW1" userLabel="RateView">
-                    <rect key="frame" x="123" y="101" width="80" height="30"/>
+                    <rect key="frame" x="57" y="101" width="80" height="30"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_level" translatesAutoresizingMaskIntoConstraints="NO" id="wEX-Cm-L2b">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
@@ -179,7 +179,7 @@
                 <constraint firstItem="Tex-9v-ItI" firstAttribute="top" secondItem="czC-2z-gaO" secondAttribute="bottom" constant="5" id="aVm-8y-hIO"/>
                 <constraint firstItem="lRF-o0-spc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dRJ-Cq-XtA"/>
                 <constraint firstItem="SNj-mn-D1n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="e7N-jL-DIP"/>
-                <constraint firstItem="ppu-BZ-tW1" firstAttribute="leading" secondItem="7Gy-e7-DyN" secondAttribute="trailing" constant="66" id="eXT-iA-iy5"/>
+                <constraint firstItem="ppu-BZ-tW1" firstAttribute="leading" secondItem="7Gy-e7-DyN" secondAttribute="trailing" id="eXT-iA-iy5"/>
                 <constraint firstAttribute="bottom" secondItem="lRF-o0-spc" secondAttribute="bottom" id="fcg-Xo-Vnw"/>
                 <constraint firstItem="QDb-2B-l35" firstAttribute="height" secondItem="7Gy-e7-DyN" secondAttribute="height" id="p2f-hC-z0U"/>
                 <constraint firstItem="bgD-Dn-OuY" firstAttribute="centerX" secondItem="SNj-mn-D1n" secondAttribute="centerX" id="p5g-4i-chz"/>
@@ -209,7 +209,7 @@
                 <outlet property="rightLVLabel" destination="bvV-G5-8dl" id="lWi-nG-cIM"/>
                 <outlet property="rightView" destination="QDb-2B-l35" id="L2c-tA-qJx"/>
             </connections>
-            <point key="canvasLocation" x="-252" y="8"/>
+            <point key="canvasLocation" x="-455" y="-7"/>
         </view>
     </objects>
     <resources>

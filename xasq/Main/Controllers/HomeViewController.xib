@@ -74,7 +74,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请先登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSU-hP-1F1">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请先登录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSU-hP-1F1">
                                     <rect key="frame" x="70" y="30.5" width="57.5" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="2D9-7Z-2QV"/>
@@ -90,8 +90,12 @@
                                         <constraint firstAttribute="width" constant="15" id="v8y-cT-0Jl"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-Lu-Att">
-                                    <rect key="frame" x="90" y="56.5" width="18.5" height="11"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-Lu-Att">
+                                    <rect key="frame" x="90" y="55" width="24" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="HFl-6r-pbh"/>
+                                        <constraint firstAttribute="width" constant="24" id="WNs-Og-78d"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -425,7 +429,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-8737" y="-114"/>
+            <point key="canvasLocation" x="-9178" y="-122"/>
         </view>
     </objects>
     <resources>

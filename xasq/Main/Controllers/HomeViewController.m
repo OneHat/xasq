@@ -200,9 +200,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 #ifdef DEBUG
     self.footerImageView.hidden = NO;
     self.stepsLabel.hidden = NO;
-    self.stepsLabel.text = @"6666";
-    [self postUserStepCount:6666];
+    self.stepsLabel.text = @"66666";
+    [self postUserStepCount:66666];
 #endif
+    
+//    self.userLevelLabel.layer.cornerRadius = 5;
+//    self.userLevelLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+//    self.userLevelLabel.layer.borderWidth = 0.5;
+//    self.userLevelLabel.layer.masksToBounds = YES;
     
 }
 
@@ -286,8 +291,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             ballView.ballStyle = RewardBallViewStyleStep;
             
             __weak RewardBallView *weakBall = ballView;
-            ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
-                [self userTakeReward:rewardId ballView:weakBall];
+            ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
+                [self userTakeRewardWithBallView:weakBall];
             };
             [self.stepRewardView addSubview:ballView];
         }
@@ -335,8 +340,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             [self.topView insertSubview:ballView belowSubview:self.userHeaderImageView];
             
             __weak RewardBallView *weakBall = ballView;
-            ballView.RewardBallClick = ^(NSInteger rewardId, RewardBallView * _Nonnull ballView) {
-                [self userTakeReward:rewardId ballView:weakBall];
+            ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
+                [self userTakeRewardWithBallView:weakBall];
             };
         }
         
@@ -393,17 +398,19 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
-//    NSDictionary *parameters = @{@"userWalk":[NSString stringWithFormat:@"%ld",steps]};
-    NSDictionary *parameters = @{@"userWalk":[NSString stringWithFormat:@"%d",6666]};
+    NSDictionary *parameters = @{@"userWalk":@(steps)};
     [[NetworkManager sharedManager] postRequest:UserSyncWalk parameters:parameters success:^(NSDictionary * _Nonnull data) {
     } failure:^(NSError * _Nonnull error) {
     }];
 }
 
 ///用户收取奖励
-- (void)userTakeReward:(NSInteger)rewardId ballView:(RewardBallView *)ballView {
+- (void)userTakeRewardWithBallView:(RewardBallView *)ballView {
+    if (ballView.rewardModel.ID == 0) {
+        return;
+    }
     
-    NSDictionary *parameters = @{@"bId":[NSString stringWithFormat:@"%ld",rewardId]};
+    NSDictionary *parameters = @{@"bId":@(ballView.rewardModel.ID)};
     [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         CGRect frame = ballView.frame;
@@ -418,6 +425,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             
             [ballView removeFromSuperview];
             
+            if (ballView.rewardModel.type == 1) {
+                return;
+            }
+            
             if (self.rewardArray.count > 0) {
                 RewardModel *model = self.rewardArray.firstObject;
 
@@ -427,8 +438,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
                 [self.topView insertSubview:otherView belowSubview:self.userHeaderImageView];
                 
                 __weak RewardBallView *weakBall = otherView;
-                otherView.RewardBallClick = ^(NSInteger otherId, RewardBallView * _Nonnull ballView) {
-                    [self userTakeReward:otherId ballView:weakBall];
+                otherView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
+                    [self userTakeRewardWithBallView:weakBall];
                 };
                 
                 [self.rewardArray removeObjectAtIndex:0];
@@ -442,7 +453,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 ///最新动态
 - (void)getUserCurrentNews {
-    [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:nil success:^(NSDictionary * _Nonnull data) {
+    NSDictionary *parameters = @{@"pageSize":@(3),@"pageNo":@(1)};
+    
+    [[NetworkManager sharedManager] postRequest:CommunityStealFlow parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
@@ -452,7 +465,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         [[NSUserDefaults standardUserDefaults] setObject:dateList forKey:HomeNewsCacheKey];
         
         NSArray *newsList = [UserNewsModel modelWithArray:dateList];
-        self.newsView.newsArray = newsList;
+        if (newsList.count > 3) {
+            self.newsView.newsArray = [newsList subarrayWithRange:NSMakeRange(0, 3)];
+        } else {
+            self.newsView.newsArray = newsList;
+        }
         
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -570,8 +587,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     [self postUserSteps];
     
-    [self getUserStepReward];
-    [self getUserPowerReward];
+    [self getUserStepReward];//
+    [self getUserPowerReward];//
+    [self getUserLevelAndPower];//
     
     self.newsView.newsArray = @[];
     [self getUserCurrentNews];
@@ -626,6 +644,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (void)postUserSteps {
     
     [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
+        if (steps == 0) {
+            return;
+        }
         self.footerImageView.hidden = NO;
         self.stepsLabel.hidden = NO;
         self.stepsLabel.text = [NSString stringWithFormat:@"%ld",steps];

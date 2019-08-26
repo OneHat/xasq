@@ -45,12 +45,13 @@ typedef NS_ENUM(NSInteger, StepCountDateType) {
 #pragma mark -
 - (void)requestAuthorizationCompletion:(void (^)(void))completion {
     
-    if ([HKHealthStore isHealthDataAvailable]) {
+    if (![HKHealthStore isHealthDataAvailable]) {
         //不可用
         return;
     }
     
-    HKAuthorizationStatus status = [self.healthStore authorizationStatusForType:[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount]];
+    HKObjectType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    HKAuthorizationStatus status = [self.healthStore authorizationStatusForType:stepCountType];
     
     if (status == HKAuthorizationStatusSharingAuthorized) {
         //已经授权
@@ -60,19 +61,20 @@ typedef NS_ENUM(NSInteger, StepCountDateType) {
         
     } else if (status == HKAuthorizationStatusNotDetermined) {
         //不确定
-        HKObjectType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+        
         [self.healthStore requestAuthorizationToShareTypes:nil
                                                  readTypes:[NSSet setWithObject:stepCountType]
                                                 completion:^(BOOL success, NSError * _Nullable error) {
                                                     if (success && completion) {
-                                                        
-                                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                                            completion();
-                                                        });
+                                                        completion();
                                                     }
                                                 }];
     } else if (status == HKAuthorizationStatusSharingDenied) {
         //已经拒绝
+        //
+        if (completion) {
+            completion();
+        }
     }
 }
 
@@ -90,26 +92,33 @@ typedef NS_ENUM(NSInteger, StepCountDateType) {
     
     [self requestAuthorizationCompletion:^{
         
-        HKQuantityType *stepType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+        HKQuantityType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         NSSortDescriptor *timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierStartDate ascending:NO];
         NSPredicate *predicate = [self predicateForSamplesWithType:type];
         
-        HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:stepType predicate:predicate limit:HKObjectQueryNoLimit sortDescriptors:@[timeSortDescriptor] resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
-            if (!error) {
-                
-                double total = 0;
-                
-                for(HKQuantitySample *quantitySample in results) {
-                    HKQuantity *quantity = quantitySample.quantity;
-                    HKUnit *heightUnit = [HKUnit countUnit];
-                    double usersHeight = [quantity doubleValueForUnit:heightUnit];
-                    
-                    total += usersHeight;
-                }
-                
-                completion(total);
-            }
-        }];
+        HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:stepCountType
+                                                               predicate:predicate
+                                                                   limit:HKObjectQueryNoLimit
+                                                         sortDescriptors:@[timeSortDescriptor]
+                                                          resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
+                                                              if (!error) {
+                                                                  
+                                                                  double total = 0;
+                                                                  
+                                                                  for(HKQuantitySample *quantitySample in results) {
+                                                                      HKQuantity *quantity = quantitySample.quantity;
+                                                                      HKUnit *heightUnit = [HKUnit countUnit];
+                                                                      double usersHeight = [quantity doubleValueForUnit:heightUnit];
+                                                                      
+                                                                      total += usersHeight;
+                                                                  }
+                                                                  
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      completion(total);
+                                                                  });
+                                                                  
+                                                              }
+                                                          }];
         
         [self.healthStore executeQuery:query];
         

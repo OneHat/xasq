@@ -24,9 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///货币编码
 @property (nonatomic, strong) NSString *currencyCode;
 
-/////货币数量
-//@property (nonatomic, strong) NSNumber *currencyQuantity;
-
 ///货币数量
 @property (nonatomic, strong) NSString *currencyQuantity;
 
