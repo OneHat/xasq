@@ -60,7 +60,7 @@
         //赠送算力
         self.powerLabel.text = [NSString stringWithFormat:@"+%ld算力",taskModel.power];
         
-        if (taskModel.quantity) {
+        if (taskModel.currencyCode.length) {
             //赠送币
             self.currencyLabel.text = [NSString stringWithFormat:@"+%.8f%@",taskModel.quantity.doubleValue,taskModel.currencyCode];
             self.currencyImageView.image = Base64ImageStr(_taskModel.currencyIcon);
@@ -73,7 +73,7 @@
     } else {
         self.currencyImageView.hidden = YES;
         self.currencyLabel.hidden = YES;
-        if (taskModel.quantity) {
+        if (taskModel.currencyCode.length) {
             //赠送币
             self.powerLabel.text = [NSString stringWithFormat:@"+%.8f%@",taskModel.quantity.doubleValue,taskModel.currencyCode];
             self.currencyImageView.image = Base64ImageStr(_taskModel.currencyIcon);

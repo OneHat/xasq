@@ -64,13 +64,6 @@
     self.tableView.sectionFooterHeight = 0.0;
     [self.view addSubview:self.tableView];
     
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
-    
-    self.tableView.delegate = self;
-    
     self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
     self.customerBarView.userInteractionEnabled = NO;
     self.customerBarView.backgroundColor = [UIColor clearColor];

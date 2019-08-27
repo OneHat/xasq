@@ -103,7 +103,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
-        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.rankBackViewBottom.constant = 0;
     }
     

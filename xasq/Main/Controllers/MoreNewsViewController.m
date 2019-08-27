@@ -43,10 +43,6 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     self.tableView.sectionFooterHeight = 0.01;
     [self.view addSubview:self.tableView];
     
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
     

@@ -157,7 +157,7 @@ const CGFloat RowHeight = 55.0;
 
 #pragma mark-
 - (void)getRankData {
-    NSDictionary *parameters = @{@"pageNo":@(0),@"pageSize":@(10)};
+    NSDictionary *parameters = @{@"pageNo":@(1),@"pageSize":@(10)};
     
     [[NetworkManager sharedManager] getRequest:UserInviteRankAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
         

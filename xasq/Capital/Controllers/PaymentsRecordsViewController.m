@@ -34,6 +34,8 @@
     [super viewDidLoad];
     self.title = @"收支记录";
     self.view.backgroundColor = ThemeColorBackground;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _causeType = @"";
     _currency = @"";
     _pageNo = 1;
@@ -48,10 +50,8 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.rowHeight = 45;
     _tableView.tableFooterView = [[UIView alloc] init];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    
+    
     WeakObject;
     [_tableView pullHeaderRefresh:^{
         weakSelf.pageNo = 1;

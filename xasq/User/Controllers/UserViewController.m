@@ -39,7 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _titleDict = @{@"0" : @[@"账户设置", @"语言设置",], @"1" : @[@"版本信息", @"关于我们", @"联系我们"]};
     _imageTitleDict = @{@"0" : @[@"account_settings", @"language_settings",], @"1" : @[@"version_information", @"about_us", @"contact_us"]};
 
@@ -80,10 +81,8 @@
     _tableView.tableHeaderView = _headerView;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    
+    
     //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserHideAnimation) name:DSSJTabBarSelectUserNotification object:nil];
 }
