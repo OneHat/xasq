@@ -95,7 +95,7 @@
         nameStr = @"email";
     } else {
         // 手机号登录
-        urlStr = UserSendMobile;
+        urlStr = UserSendLoginMobile;
         nameStr = @"mobile";
     }
     NSDictionary *dict = @{nameStr : _accountTF.text,

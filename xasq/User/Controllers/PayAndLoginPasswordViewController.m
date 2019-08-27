@@ -105,7 +105,8 @@
     sender.userInteractionEnabled = NO;
     WeakObject;
     NSDictionary *dict = @{nameStr     : nameValue,
-                           @"codeLogo" : @"2"
+                           @"codeLogo" : @"2",
+                           @"areaCode" : [UserDataManager shareManager].usermodel.areaCode
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];

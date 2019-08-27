@@ -88,18 +88,21 @@
         return;
     }
     WeakObject;
-    NSString *nameStr,*codeLogo;
+    NSString *nameStr,*codeLogo,*areaCode;
     if (_type == 0) {
         nameStr = _accountTF.text;
         codeLogo = @"6";
+        areaCode = _areaCodeLB.text;
         [self setBtnStatusType:0 isEnabled:NO];
     } else {
         nameStr = [UserDataManager shareManager].usermodel.mobile;
         codeLogo = @"7";
+        areaCode = [UserDataManager shareManager].usermodel.areaCode;
         [self setBtnStatusType:1 isEnabled:NO];
     }
     NSDictionary *dict = @{@"mobile"     : nameStr,
-                           @"codeLogo"   : codeLogo
+                           @"codeLogo"   : codeLogo,
+                           @"areaCode"   : areaCode
                            };
     [[NetworkManager sharedManager] postRequest:UserSendMobile parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
