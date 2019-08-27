@@ -31,6 +31,9 @@
 @end
 
 @implementation MinerViewController
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

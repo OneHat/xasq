@@ -82,6 +82,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @implementation HomeViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (UIView *)unLoginNewsMaskView {
     if (!_unLoginNewsMaskView) {
         _unLoginNewsMaskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 195)];
@@ -106,16 +110,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         self.rankBackViewBottom.constant = 0;
     }
     
-    if (IphoneX) {
-        self.headerImageTop.constant = 40;
-    }
+    self.headerImageTop.constant = StatusBarHeight + 10;
     
     self.scrollView.delegate = self;
     
-    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
-    self.customerBarView.userInteractionEnabled = NO;
-    self.customerBarView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.customerBarView];
+//    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
+//    self.customerBarView.userInteractionEnabled = NO;
+//    self.customerBarView.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:self.customerBarView];
     
     //动态
     self.newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
@@ -127,7 +129,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     }
     
     //广告banner
-    self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
+    self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 26 / 75)];
     [self.bannerBackView addSubview:self.bannerView];
     self.bannerViewHeight.constant = 0.0;
     
@@ -351,11 +353,13 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (NSMutableArray *)frameForRewardBallView:(NSInteger)count {
     NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
     CGFloat width = 60;
+    NSInteger xWidth = ScreenWidth - 150;
+    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 180;
     
     for (int i = 0; i < count; i++) {
         
-        CGFloat viewX = 10 + (arc4random() % 240);
-        CGFloat viewY = 90 + (arc4random() % 100);
+        CGFloat viewX = 20 + (arc4random() % xWidth);
+        CGFloat viewY = 10 + NavHeight + (arc4random() % yHeight);
         
         BOOL flag = NO;
         CGRect rect = CGRectMake(viewX, viewY, width, width);
@@ -376,8 +380,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             }
             
             if (flag) {
-                viewX = 20 + (arc4random() % 240);
-                viewY = 90 + (arc4random() % 100);
+                viewX = 20 + (arc4random() % xWidth);
+                viewY = 10 + NavHeight + (arc4random() % yHeight);
                 
                 rect = CGRectMake(viewX, viewY, width, width);
                 

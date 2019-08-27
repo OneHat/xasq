@@ -39,6 +39,9 @@
 @end
 
 @implementation TaskViewController
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (UITableView *)dayTableView {
     if (!_dayTableView) {

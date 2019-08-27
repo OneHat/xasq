@@ -31,17 +31,20 @@
 @end
 
 @implementation FriendMainViewController
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //背景
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
-    imageView.image = [UIImage imageNamed:@"home_topBackground"];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:imageView];
+//    //背景
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 1.25)];
+//    imageView.image = [UIImage imageNamed:@"home_topBackground"];
+//    imageView.contentMode = UIViewContentModeScaleAspectFill;
+//    [self.view addSubview:imageView];
     
     //title
 //    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, 44)];
@@ -64,10 +67,10 @@
     self.tableView.sectionFooterHeight = 0.0;
     [self.view addSubview:self.tableView];
     
-    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
-    self.customerBarView.userInteractionEnabled = NO;
-    self.customerBarView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.customerBarView];
+//    self.customerBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavHeight)];
+//    self.customerBarView.userInteractionEnabled = NO;
+//    self.customerBarView.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:self.customerBarView];
     
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, StatusBarHeight, 44, 44)];
@@ -116,11 +119,11 @@
 
 - (UIView *)headerView {
     if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth + 44)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 1.25)];
         _headerView.clipsToBounds = YES;
         
         //背景
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 1.25)];
         imageView.clipsToBounds = YES;
         imageView.image = [UIImage imageNamed:@"home_topBackground"];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -352,11 +355,13 @@
 - (NSMutableArray *)frameForRewardBallView:(NSInteger)count {
     NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
     CGFloat width = 60;
+    NSInteger xWidth = ScreenWidth - 100;
+    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 80;
     
     for (int i = 0; i < count; i++) {
         
-        CGFloat viewX = 20 + (arc4random() % 240);
-        CGFloat viewY = NavHeight + (arc4random() % 150);
+        CGFloat viewX = 20 + (arc4random() % xWidth);
+        CGFloat viewY = NavHeight + (arc4random() % yHeight);
         
         BOOL flag = NO;
         CGRect rect = CGRectMake(viewX, viewY, width, width);
@@ -377,8 +382,8 @@
             }
             
             if (flag) {
-                viewX = 20 + (arc4random() % 240);
-                viewY = NavHeight + (arc4random() % 150);
+                viewX = 20 + (arc4random() % xWidth);
+                viewY = NavHeight + (arc4random() % yHeight);
                 
                 rect = CGRectMake(viewX, viewY, width, width);
                 
