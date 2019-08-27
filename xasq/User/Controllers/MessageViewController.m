@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.title = @"消息通知";
     self.view.backgroundColor = ThemeColorBackground;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.messages = [NSMutableArray array];
     
@@ -39,11 +40,6 @@
     _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
     
     [self.tableView pullHeaderRefresh:^{
         self.page = 1;

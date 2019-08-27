@@ -22,6 +22,8 @@
     [super viewDidLoad];
     self.title = @"选择币种";
     self.view.backgroundColor = ThemeColorBackground;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _dataArray = [NSMutableArray array];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
@@ -32,10 +34,8 @@
     _tableView.rowHeight = 50;
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    
+    
     [self CommunityCapitalCurrencyBalance];
 }
 

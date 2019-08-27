@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
                              success(responseObject);
                          } else {
 #ifdef DEBUG
-                             NSLog(@"get\n%@\ncode:%ld\nmsg:%@",absoluteString,code,responseObject[@"msg"]);
+                             NSLog(@"get:%@\n%@\ncode:%ld\nmsg:%@",absoluteString,parameter,code,responseObject[@"msg"]);
 #endif
                              
                              NSError *result = [self handleResponseObject:responseObject];
@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
                               success(responseObject);
                           } else {
 #ifdef DEBUG
-                              NSLog(@"post\n%@\ncode:%ld\nmsg:%@",absoluteString,code,responseObject[@"msg"]);
+                              NSLog(@"post:%@\n%@\ncode:%ld\nmsg:%@",absoluteString,parameter,code,responseObject[@"msg"]);
 #endif
                               
                               NSError *result = [self handleResponseObject:responseObject];
@@ -223,6 +223,9 @@ typedef NS_ENUM(NSInteger, NetworkConnect) {
 
 #pragma mark -
 - (NSString *)baseUrlWithPath:(NSString *)path {
+//    if ([path hasPrefix:@"user"]) {
+//        return @"http://192.168.100.200:7081/";
+//    }
     
     if (self.networkConnect == NetworkConnectPro) {
         return xasqBaseUrlPro;

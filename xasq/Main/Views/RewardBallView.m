@@ -89,7 +89,7 @@ const CGFloat ViewWidth = 60;
         int minute = duration % 3600 / 60;
 
         _rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
-        
+
         [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
             [self refreshStates:timer];
         }];

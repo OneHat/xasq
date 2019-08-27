@@ -264,14 +264,8 @@
         if (signInfo && [signInfo isKindOfClass:[NSDictionary class]]) {
             self.signInfo = signInfo;
             
-            long signDate = [signInfo[@"signDate"] longValue];//上次签到时间戳
-            
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
-            NSString *today = [formatter stringFromDate:[NSDate date]];
-            
-            if (signDate / 1000 < [[formatter dateFromString:today] timeIntervalSince1970]) {
+            BOOL isSign = [signInfo[@"signStatus"] boolValue];
+            if (!isSign) {
                 //今天没有签到
                 [self updateSignLabel:@"每日签到" buttonSelect:NO];
             }

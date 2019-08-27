@@ -32,9 +32,7 @@
     [self.view addSubview:_tableView];
     [self getOpertionCountry];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    
 }
 
 - (void)getOpertionCountry {

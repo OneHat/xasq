@@ -32,6 +32,7 @@
     [super viewDidLoad];
     self.title = @"好友排行";
     self.view.backgroundColor = ThemeColorBackground;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.friends = [NSMutableArray array];
     
@@ -47,11 +48,6 @@
     FriendsHeaderView *headerView = [[FriendsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 65)];
     self.tableView.tableHeaderView = headerView;
     [self.view addSubview:self.tableView];
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
     [headerView addGestureRecognizer:tap];
