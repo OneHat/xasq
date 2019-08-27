@@ -87,6 +87,7 @@ static CGFloat CapitalSegmentControlH = 40;
 - (void)setCapitalDataArray:(NSDictionary *)dict {
     NSArray *array = dict[@"data"][@"rows"];
     [_dataArray removeAllObjects];
+    [_cacheArray removeAllObjects];
     for (NSDictionary *dic in array) {
         CapitalModel *model = [CapitalModel modelWithDictionary:dic];
         [_dataArray addObject:model];

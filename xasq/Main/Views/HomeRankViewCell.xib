@@ -77,10 +77,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlS-mI-UIq" userLabel="BottomView">
-                        <rect key="frame" x="60" y="59.5" width="309" height="1"/>
+                        <rect key="frame" x="60" y="60" width="309" height="0.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="pBZ-3B-JdG"/>
+                            <constraint firstAttribute="height" constant="0.5" id="pBZ-3B-JdG"/>
                         </constraints>
                     </view>
                 </subviews>

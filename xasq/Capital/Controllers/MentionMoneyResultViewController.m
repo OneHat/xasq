@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"提币结果";
-    _contentLB.text = [NSString stringWithFormat:@"成功提取%@%@至%@",_count,_currency,_account];
+    _contentLB.text = [NSString stringWithFormat:@"成功提取%@ %@至%@",_count,_currency,_account];
     _examineBtn.layer.cornerRadius = 22.5;
     _examineBtn.layer.borderWidth = 1;
     _examineBtn.layer.borderColor = ThemeColorTextGray.CGColor;

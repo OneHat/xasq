@@ -202,7 +202,6 @@
         typeStr = @"email";
     }
     NSDictionary *dict = @{@"userName"      :   _accountTF.text,
-                           @"language"      :   @"zh-cn",
                            @"countryCode"   :   _codeStr,
                            typeStr          :   _accountTF.text,
                            @"password"      :   _passwordTF.text,

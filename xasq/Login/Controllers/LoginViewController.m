@@ -189,6 +189,7 @@
             } failure:^(NSError * _Nonnull error) {
                 weakSelf.loginBtn.userInteractionEnabled = YES;
                 [weakSelf hideHUD];
+                [self showErrow:error];
             }];
         }
     } failure:^(NSError * _Nonnull error) {

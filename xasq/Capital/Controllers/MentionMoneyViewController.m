@@ -149,7 +149,7 @@
             weakSelf.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
             MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController    alloc] init];
             VC.count = weakSelf.amountTF.text;
-            VC.currency = weakSelf.amountTF.text;
+            VC.currency = weakSelf.currencyLB.text;
             VC.account = weakSelf.accountLB.text;
             [self.navigationController pushViewController:VC animated:YES];
         }
