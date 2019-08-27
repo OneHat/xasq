@@ -7,6 +7,7 @@
 //
 
 #import "NSString+Size.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (Size)
 
@@ -22,6 +23,18 @@
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
     CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
     return [pinyin uppercaseString];
+}
+
+// MD5加密
++ (NSString *)md5:(NSString *)str {
+    const char *cStr = [str UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (unsigned int)strlen(cStr), result);
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02X", result[i]];
+    }
+    return [hash lowercaseString];
 }
 
 @end

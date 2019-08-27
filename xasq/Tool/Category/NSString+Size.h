@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  汉字转拼音
  */
 + (NSString *)transform:(NSString *)chinese;
+/**
+ *  MD5加密
+ */
++ (NSString *)md5:(NSString *)str;
 
 @end
 

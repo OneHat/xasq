@@ -87,9 +87,14 @@
 
 - (void)sendCommunityAreaCurrency {
     WeakObject;
-    [[NetworkManager sharedManager] getRequest:CommunityAreaCurrency parameters:nil success:^(NSDictionary * _Nonnull data) {
-        if (data) {
-            for (NSDictionary *dic in data[@"data"]) {
+    NSDictionary *dict = @{@"pageNo"   : @"1",
+                           @"pageSize" : @"100",
+                           @"nonzero"  : @"",
+                           };
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
+        NSArray *rows = data[@"data"][@"rows"];
+        if ([rows isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];
                 [weakSelf.currencyArray addObject:model];
             }

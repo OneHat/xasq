@@ -90,13 +90,13 @@
         [tempArray addObject:@"全部"];
         [iconTempArray addObject:@"capital_all"];
         for (CapitalModel *model in array) {
-            [tempArray addObject:model.name];
+            [tempArray addObject:model.currency];
             [iconTempArray addObject:model.icon];
         }
         _titleArray = [NSArray arrayWithArray:tempArray];
         _iconArray = [NSArray arrayWithArray:iconTempArray];
     }
-    NSInteger height = (_titleArray.count / 4 + (_titleArray.count % 4)==0?0:1) * 75 + 10;
+    NSInteger height = ((_titleArray.count / 4) + ((_titleArray.count % 4)==0?0:1)) * 75 + 10;
     _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);
     [_collectionView reloadData];
 }
