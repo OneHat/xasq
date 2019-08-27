@@ -44,7 +44,7 @@
     [super viewDidLoad];
     self.title = @"注册";
     _type = 0;
-    _codeStr = @"A_CH";
+    _codeStr = @"CN";
     [self initRightBtnWithTitle:@"邮箱" color:ThemeColorText];
     
     _registerBtn.layer.cornerRadius = 22.5;
