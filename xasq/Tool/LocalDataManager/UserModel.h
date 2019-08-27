@@ -28,8 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *headImg;
 /// 昵称
 @property (nonatomic, strong) NSString *nickName;
-/// 地区
+/// 地区名称
 @property (nonatomic, strong) NSString *areaName;
+/// 地区号
+@property (nonatomic, strong) NSString *areaCode;
 /// 等级
 @property (nonatomic, strong) NSString *level;
 /// 是否认证 0:未认证 1:已认证 2:审核中3-打回

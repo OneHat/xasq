@@ -80,7 +80,8 @@
     }
     sender.userInteractionEnabled = NO;
     NSDictionary *dict = @{nameStr     : _accountTF.text,
-                           @"codeLogo" : codeLogo
+                           @"codeLogo" : codeLogo,
+                           @"areaCode" : _areaCodeLB.text?_areaCodeLB.text:@""
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];

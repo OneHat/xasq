@@ -66,14 +66,14 @@
     WeakObject;
     NSString *urlStr,*nameStr;
     if (_type == 0) {
-        urlStr = UserSendMobile;
+        urlStr = UserSendLoginMobile;
         nameStr = @"mobile";
     } else {
         urlStr = UserSendEmail;
         nameStr = @"email";
     }
     NSDictionary *dict = @{nameStr : _accountTF.text,
-                           @"codeLogo" : @"10"
+                           @"codeLogo" : @"10",
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
