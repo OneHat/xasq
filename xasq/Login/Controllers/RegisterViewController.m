@@ -144,6 +144,7 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
+        [weakSelf.codeTF becomeFirstResponder];
         if (weakSelf.count == 0) {
             //60秒后再次启动
             weakSelf.count = 60;
