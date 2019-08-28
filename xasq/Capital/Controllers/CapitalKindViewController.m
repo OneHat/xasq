@@ -182,6 +182,7 @@
                     }
                 }
             }
+            [weakSelf.tableView hideEmptyView];
         } else {
             if (weakSelf.pageNo == 1) {
                 [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
@@ -250,7 +251,7 @@
         if (index == 0) {
             weakSelf.causeType = @"";
         } else if (index == 1) {
-            weakSelf.causeType = @"2";
+            weakSelf.causeType = @"12";
         } else {
             weakSelf.causeType = @"14";
         }

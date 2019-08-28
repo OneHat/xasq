@@ -45,6 +45,10 @@
         _affirmBtnTop.constant = 180;
         _passwordTF.placeholder = @"请输入支付密码";
         _affirmPasswordTF.placeholder = @"请确认支付密码";
+        _passwordTF.keyboardType = UIKeyboardTypeNumberPad;
+        _affirmPasswordTF.keyboardType = UIKeyboardTypeNumberPad;
+        _passwordTF.secureTextEntry = YES;
+        _affirmPasswordTF.secureTextEntry = YES;
         [_affirmBtn setTitle:@"确认" forState:(UIControlStateNormal)];
     }
     
@@ -110,6 +114,8 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
+        weakSelf.codeTF.text = @"";
+        [weakSelf.codeTF becomeFirstResponder];
         if (weakSelf.count == 0) {
             //60秒后再次启动
             weakSelf.count = 60;
@@ -159,8 +165,8 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"oldPassword" : _oldPasswordTF.text,
-                               @"newPassword" : _passwordTF.text,
+        NSDictionary *dict = @{@"oldPassword" : [NSString md5:_oldPasswordTF.text],
+                               @"newPassword" : [NSString md5:_passwordTF.text],
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
@@ -187,6 +193,7 @@
             return;
         }
         [self loading];
+        WeakObject;
         NSString *nameStr,*userName;
         if ([_channelLB.text isEqualToString:@"手机号"]) {
             nameStr = @"mobile";
@@ -196,7 +203,7 @@
             userName = [UserDataManager shareManager].usermodel.email;
         }
         NSDictionary *dict = @{@"userName"      : userName,
-                               @"password"      : _passwordTF.text,
+                               @"password"      : [NSString md5:_passwordTF.text],
                                @"validCode"     : _codeTF.text,
                                @"validCodeType" : nameStr,
                                @"type"          : @"1"
@@ -204,7 +211,13 @@
         [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
             [UserDataManager shareManager].usermodel.existFundPassWord = YES;
-            [self showMessage:@"修改成功" complete:^{
+            NSString *msg;
+            if (weakSelf.type == 0) {
+                msg = @"修改成功";
+            } else {
+                msg = @"设置成功";
+            }
+            [self showMessage:msg complete:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         } failure:^(NSError * _Nonnull error) {
