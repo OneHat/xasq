@@ -30,7 +30,7 @@
     CGFloat height = self.size.height * 0.5 - 1;
     
     UIEdgeInsets insets = UIEdgeInsetsMake(height, width, height, width);
-    UIImage *result = [self resizableImageWithCapInsets:insets];
+    UIImage *result = [self resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
     
     return result;
 }
