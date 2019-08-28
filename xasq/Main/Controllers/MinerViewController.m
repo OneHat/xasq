@@ -233,8 +233,7 @@
         
         NSDictionary *inviteInfo = data[@"data"];
         if (inviteInfo && [inviteInfo isKindOfClass:[NSDictionary class]]) {
-            self.inviteCodeView.inviteCode = inviteInfo[@"inviteCode"];
-            self.inviteCodeView.totalInvite = [inviteInfo[@"inviteNum"] integerValue];
+            self.inviteCodeView.inviteInfo = inviteInfo;
         }
         
     } failure:^(NSError * _Nonnull error) {

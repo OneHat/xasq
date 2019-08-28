@@ -122,11 +122,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     //动态
     self.newsView = [[HomeNewsView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, 90)];
     [self.newsBackView addSubview:self.newsView];
-    NSArray *cacheNewsList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeNewsCacheKey];
-    NSArray *newsList = [UserNewsModel modelWithArray:cacheNewsList];
-    if (newsList.count > 0) {
-        self.newsView.newsArray = newsList;
-    }
+//    NSArray *cacheNewsList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeNewsCacheKey];
+//    NSArray *newsList = [UserNewsModel modelWithArray:cacheNewsList];
+//    if (newsList.count > 0) {
+//        self.newsView.newsArray = newsList;
+//    }
     
     //广告banner
     self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 26 / 75)];
@@ -197,6 +197,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     self.mineNameLabel.text = @"西岸社区";
     self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter];
+    self.mineNameLabel.textColor = HexColor(@"ededed");
     
 #ifdef DEBUG
     self.footerImageView.hidden = NO;
@@ -597,14 +598,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     self.newsView.newsArray = @[];
     [self getUserCurrentNews];
     
-    [self.rankView reloadViewData];
 }
 
 - (void)userLogout {
-    [self.rankView reloadViewData];
+    
 }
 
 - (void)reloadHomeView {
+    [self.rankView reloadViewData];
     
     if ([UserDataManager shareManager].userId) {
         //已经登录

@@ -83,7 +83,6 @@
     if (!_indicatorView) {
         _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         _indicatorView.frame = CGRectMake(ScreenWidth * 0.5-10, CGRectGetHeight(self.frame) * 0.5-10, 20, 20);
-        [_indicatorView startAnimating];
     }
     return _indicatorView;
 }
@@ -98,6 +97,7 @@
         _viewArray = [NSMutableArray array];
         
         [self addSubview:self.indicatorView];
+        [self.indicatorView startAnimating];
     }
     return self;
 }
@@ -124,15 +124,13 @@
 - (void)setNewsArray:(NSArray *)newsArray {
     _newsArray = newsArray;
     
+    [self.indicatorView removeFromSuperview];
+    self.indicatorView = nil;
+    
     if (_newsArray.count > 0) {
-        [self.indicatorView removeFromSuperview];
-        self.indicatorView = nil;
-        
         [self loadSubViews];
-    } else {
-        [self.indicatorView removeFromSuperview];
-        self.indicatorView = nil;
         
+    } else {
         [self addSubview:self.indicatorView];
         [self.indicatorView startAnimating];
     }

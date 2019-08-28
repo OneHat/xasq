@@ -28,13 +28,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpP-TD-EZx">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpP-TD-EZx">
                     <rect key="frame" x="324" y="10" width="80" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="26" id="fP5-xO-LR3"/>
                         <constraint firstAttribute="width" constant="80" id="fSY-gl-M1c"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="绑定邀请"/>
                     <connections>
                         <action selector="bindInvite:" destination="iN0-l3-epB" eventType="touchUpInside" id="txi-Oa-v1Z"/>

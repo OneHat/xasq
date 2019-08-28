@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *myFriendsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalInviteLabel;//共邀请
 
+@property (nonatomic, strong) NSString *inviteCode;
+
 @end
 
 @implementation InviteCodeView
@@ -43,11 +45,16 @@
     self.myCodeLabel.font = [UIFont systemFontOfSize:26];
     self.myCodeLabel.textColor = ThemeColorBlue;
     
-    [self.bindInviteButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
     self.bindInviteButton.titleLabel.font = ThemeFontTipText;
     self.bindInviteButton.backgroundColor = HexColor(@"e7e7e7");
     self.bindInviteButton.layer.cornerRadius = CGRectGetHeight(self.bindInviteButton.frame) * 0.5;
     self.bindInviteButton.layer.masksToBounds = YES;
+    
+    [self.bindInviteButton setTitle:@"绑定邀请" forState:UIControlStateNormal];
+    [self.bindInviteButton setTitle:@"已绑定" forState:UIControlStateSelected];
+    [self.bindInviteButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal];
+    [self.bindInviteButton setTitleColor:ThemeColorTextGray forState:UIControlStateSelected];
+    self.bindInviteButton.selected = YES;
     
     [self.copMyCodeButton setTitleColor:ThemeColorTextGray forState:UIControlStateNormal];
     self.copMyCodeButton.titleLabel.font = ThemeFontTipText;
@@ -67,17 +74,25 @@
     self.totalInviteLabel.textColor = ThemeColorBlue;
 }
 
-- (void)setInviteCode:(NSString *)inviteCode {
-    _inviteCode = inviteCode;
-    self.myCodeLabel.text = _inviteCode;
-}
-
-- (void)setTotalInvite:(NSInteger)totalInvite {
-    _totalInvite = totalInvite;
-    self.totalInviteLabel.text = [NSString stringWithFormat:@"累计邀请 %ld",_totalInvite];
+- (void)setInviteInfo:(NSDictionary *)inviteInfo {
+    _inviteInfo = inviteInfo;
+    
+    self.inviteCode = inviteInfo[@"inviteCode"];//我的邀请码
+    self.myCodeLabel.text = self.inviteCode;
+    self.totalInviteLabel.text = [NSString stringWithFormat:@"累计邀请 %@",inviteInfo[@"inviteNum"]];//累计邀请人数
+    
+    NSString *referrerId =  [NSString stringWithFormat:@"%@",_inviteInfo[@"referrerId"]];////绑定的邀请码，如果为空表示没有绑定过
+    if (referrerId.length == 0) {
+        self.bindInviteButton.selected = NO;
+    }
 }
 
 - (IBAction)bindInvite:(UIButton *)sender {
+    if (sender.selected) {
+        //已经绑定
+        return;
+    }
+    
     if (self.buttonClickBlock) {
         self.buttonClickBlock(InviteCodeViewButtonStyleBind);
     }
