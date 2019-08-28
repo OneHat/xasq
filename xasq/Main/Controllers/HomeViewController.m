@@ -196,7 +196,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     self.stepsLabel.hidden = YES;
     
     self.mineNameLabel.text = @"西岸社区";
-    self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter ];
+    self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter];
     
 #ifdef DEBUG
     self.footerImageView.hidden = NO;

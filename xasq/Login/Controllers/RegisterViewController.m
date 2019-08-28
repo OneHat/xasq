@@ -205,7 +205,7 @@
     NSDictionary *dict = @{@"userName"      :   _accountTF.text,
                            @"countryCode"   :   _codeStr,
                            typeStr          :   _accountTF.text,
-                           @"password"      :   _passwordTF.text,
+                           @"password"      :   [NSString md5:_passwordTF.text],
                            @"validCode"     :   _codeTF.text,
                            @"validCodeType" :   typeStr,
                            @"userType"      :   @"0"};

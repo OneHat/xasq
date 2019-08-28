@@ -140,7 +140,7 @@
                            @"currency"       : _currencyLB.text,
                            @"outAccountType" : @"6",
                            @"inAccountType"  : @"13",
-                           @"password"       : password,
+                           @"password"       : [NSString md5:password],
                            };
     [[NetworkManager sharedManager] postRequest:AcctTransferAccount parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];

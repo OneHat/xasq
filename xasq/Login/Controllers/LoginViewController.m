@@ -161,7 +161,7 @@
         nameStr = @"mobile";
     }
     NSDictionary *dict = @{@"loginName"     :   _accountTF.text,
-                           @"password"      :   _passwordTF.text,
+                           @"password"      :   [NSString md5:_passwordTF.text],
                            @"validCode"     :   _codeTF.text?_codeTF.text:@"",
                            @"validCodeType" :   nameStr,
                            @"sysVersion"    :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""]

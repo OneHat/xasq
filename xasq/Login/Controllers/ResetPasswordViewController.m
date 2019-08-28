@@ -7,6 +7,7 @@
 //
 
 #import "ResetPasswordViewController.h"
+#import "NSString+Size.h"
 
 @interface ResetPasswordViewController ()
 
@@ -46,7 +47,7 @@
         nameStr = @"email";
     }
     NSDictionary *dict = @{@"userName"      : _account,
-                           @"password"      : _passwordTF.text,
+                           @"password"      : [NSString md5:_passwordTF.text],
                            @"validCode"     : _code,
                            @"validCodeType" : nameStr,
                            @"type"          : @"0"

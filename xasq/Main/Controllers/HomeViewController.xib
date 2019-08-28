@@ -241,7 +241,7 @@
                                         <constraint firstAttribute="width" constant="60" id="lAE-8b-Ykp"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mineName_background" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-J0-cSb">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mineName_background" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-J0-cSb">
                                     <rect key="frame" x="10" y="375" width="60" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Zai-Zc-OCo"/>
@@ -428,7 +428,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-9890.3999999999996" y="-154.27286356821591"/>
+            <point key="canvasLocation" x="-10356" y="-150"/>
         </view>
     </objects>
     <resources>
