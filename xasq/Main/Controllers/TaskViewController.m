@@ -51,7 +51,7 @@
         _dayTableView.tableFooterView = [[UIView alloc] init];
         _dayTableView.dataSource = self;
         _dayTableView.delegate = self;
-        _dayTableView.rowHeight = 70;
+        _dayTableView.rowHeight = 75;
         [self.scrollView addSubview:_dayTableView];
     }
     return _dayTableView;
@@ -65,7 +65,7 @@
         _weekTableView.tableFooterView = [[UIView alloc] init];
         _weekTableView.dataSource = self;
         _weekTableView.delegate = self;
-        _weekTableView.rowHeight = 70;
+        _weekTableView.rowHeight = 75;
         [self.scrollView addSubview:_weekTableView];
     }
     return _weekTableView;
@@ -139,12 +139,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 #pragma mark -

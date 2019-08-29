@@ -63,11 +63,6 @@
     [self getUserLevelAndPower];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-}
-
 - (void)initTitle {
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
     topView.backgroundColor = HexColor(@"14466b");

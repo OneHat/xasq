@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)capitalMainViewDrawClick;
 //点击币种
 - (void)capitalMainViewCellSelect:(NSInteger)index;
-//搜索
-- (void)capitalMainViewSearchClick;
 // 更新隐藏0金额选择状态
 - (void)updateAmountClick:(BOOL)isHidden;
 // 隐藏Btn和LB

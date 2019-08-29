@@ -81,6 +81,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.shadowImage = [UIImage imageFromColor:ThemeColorNavLine];
     [self communityCapitalWater];
 }

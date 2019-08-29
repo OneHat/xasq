@@ -73,6 +73,11 @@
     [self getFriendList];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 ///获取好友列表
 - (void)getFriendList {
     

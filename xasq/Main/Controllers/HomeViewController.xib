@@ -89,11 +89,11 @@
                                         <constraint firstAttribute="width" constant="15" id="v8y-cT-0Jl"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-Lu-Att">
-                                    <rect key="frame" x="90" y="55" width="24" height="14"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LV.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih0-Lu-Att">
+                                    <rect key="frame" x="90" y="55" width="28" height="14"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="HFl-6r-pbh"/>
-                                        <constraint firstAttribute="width" constant="24" id="WNs-Og-78d"/>
+                                        <constraint firstAttribute="width" constant="28" id="WNs-Og-78d"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -394,7 +394,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEM-Rz-Pzv" userLabel="Rank View">
-                            <rect key="frame" x="0.0" y="794" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="804" width="375" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="SaH-62-dx7"/>
@@ -402,7 +402,7 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="wEM-Rz-Pzv" firstAttribute="top" secondItem="h1E-Vd-Heh" secondAttribute="bottom" id="0Jv-qw-ZAv"/>
+                        <constraint firstItem="wEM-Rz-Pzv" firstAttribute="top" secondItem="h1E-Vd-Heh" secondAttribute="bottom" constant="10" id="0Jv-qw-ZAv"/>
                         <constraint firstItem="yDo-Rn-ABT" firstAttribute="leading" secondItem="qww-IH-RKb" secondAttribute="leading" id="BrY-9N-6es"/>
                         <constraint firstAttribute="trailing" secondItem="wEM-Rz-Pzv" secondAttribute="trailing" id="IJY-WC-Ett"/>
                         <constraint firstItem="UzN-hs-gz1" firstAttribute="top" secondItem="qww-IH-RKb" secondAttribute="top" id="PHa-vw-ed4"/>

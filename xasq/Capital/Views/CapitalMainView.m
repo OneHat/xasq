@@ -185,11 +185,6 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 #pragma mark -
-- (void)searchButtonClick {
-    if ([self.delegate respondsToSelector:@selector(capitalMainViewSearchClick)]) {
-        [self.delegate capitalMainViewSearchClick];
-    }
-}
 
 /// 更新隐藏0余额按钮状态
 - (void)checkButtonClick:(UIButton *)sender {

@@ -71,12 +71,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 //从子页面需要，防止右滑返回时navbar不协调
 //tabbar选择过来，不需要动画，否则会有阴影上移的效果
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
+@property (assign, nonatomic) BOOL hideNavBarWhenDisappear;//页面消失，是否需要隐藏导航栏，默认NO
 
 @property (nonatomic, strong) UIView *unLoginNewsMaskView;//没有登录时，动态页面的遮挡
 
 @property (strong, nonatomic) UIView *customerBarView;//自定义的bar
 
 @property (strong, nonatomic) NSMutableArray *rewardArray;//当奖励大于5个时，缓存起来，领取后再显示
+
 
 @end
 
@@ -206,10 +208,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     [self postUserStepCount:66666];
 #endif
     
-//    self.userLevelLabel.layer.cornerRadius = 5;
-//    self.userLevelLabel.layer.borderColor = [UIColor whiteColor].CGColor;
-//    self.userLevelLabel.layer.borderWidth = 0.5;
-//    self.userLevelLabel.layer.masksToBounds = YES;
+    self.userLevelLabel.layer.cornerRadius = 2;
+    self.userLevelLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.userLevelLabel.layer.borderWidth = 0.5;
+    self.userLevelLabel.layer.masksToBounds = YES;
     
 }
 
@@ -246,8 +248,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
+    [self.navigationController setNavigationBarHidden:self.hideNavBarWhenDisappear animated:YES];
+    self.hideNavBarWhenDisappear = NO;
 }
 
 - (void)changeMainHideAnimation {
@@ -355,12 +358,12 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
     CGFloat width = 60;
     NSInteger xWidth = ScreenWidth - 150;
-    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 180;
+    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 200;
     
     for (int i = 0; i < count; i++) {
         
         CGFloat viewX = 20 + (arc4random() % xWidth);
-        CGFloat viewY = 10 + NavHeight + (arc4random() % yHeight);
+        CGFloat viewY = 20 + NavHeight + (arc4random() % yHeight);
         
         BOOL flag = NO;
         CGRect rect = CGRectMake(viewX, viewY, width, width);
@@ -382,7 +385,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             
             if (flag) {
                 viewX = 20 + (arc4random() % xWidth);
-                viewY = 10 + NavHeight + (arc4random() % yHeight);
+                viewY = 20 + NavHeight + (arc4random() % yHeight);
                 
                 rect = CGRectMake(viewX, viewY, width, width);
                 
@@ -538,6 +541,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
+    self.hideNavBarWhenDisappear = YES;
+    
     TaskViewController *taskVC = [[TaskViewController alloc] init];
     taskVC.requestPow = ^{
         [self getUserLevelAndPower];
@@ -552,6 +557,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         return;
     }
     
+    self.hideNavBarWhenDisappear = YES;
     MinerViewController *minerVC = [[MinerViewController alloc] init];
     minerVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:minerVC animated:YES];
@@ -613,7 +619,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         self.unLoginNewsMaskView = nil;
         
         NSString *headerImage = [UserDataManager shareManager].usermodel.headImg;
-        [self.userHeaderImageView sd_setImageWithURL:[NSURL URLWithString:headerImage]];
+        [self.userHeaderImageView sd_setImageWithURL:[NSURL URLWithString:headerImage] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         
         self.userLevelImageView.hidden = NO;
         self.userLevelLabel.hidden = NO;

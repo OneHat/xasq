@@ -30,6 +30,7 @@
 
 //参考HomeViewController（首页）
 @property (assign, nonatomic) BOOL hideNavBarAnimation;
+@property (assign, nonatomic) BOOL hideNavBarWhenDisappear;//页面消失，是否需要隐藏导航栏，默认NO
 
 @end
 
@@ -61,6 +62,7 @@
     };
     _headerView.taskBtnBlock = ^{
         // 任务界面
+        weakSelf.hideNavBarWhenDisappear = YES;
         TaskViewController *VC = [[TaskViewController alloc] init];
         VC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:VC animated:YES];
@@ -98,7 +100,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:self.hideNavBarWhenDisappear animated:YES];
+    self.hideNavBarWhenDisappear = NO;
 }
 
 - (void)changeUserHideAnimation {

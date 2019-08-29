@@ -107,14 +107,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (UIView *)headerView {
@@ -356,12 +349,12 @@
     NSMutableArray *frames = [NSMutableArray arrayWithCapacity:count];
     CGFloat width = 60;
     NSInteger xWidth = ScreenWidth - 100;
-    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 80;
+    NSInteger yHeight = ScreenWidth * 1.25 - NavHeight - 100;
     
     for (int i = 0; i < count; i++) {
         
         CGFloat viewX = 20 + (arc4random() % xWidth);
-        CGFloat viewY = NavHeight + (arc4random() % yHeight);
+        CGFloat viewY = 10 + NavHeight + (arc4random() % yHeight);
         
         BOOL flag = NO;
         CGRect rect = CGRectMake(viewX, viewY, width, width);
@@ -383,7 +376,7 @@
             
             if (flag) {
                 viewX = 20 + (arc4random() % xWidth);
-                viewY = NavHeight + (arc4random() % yHeight);
+                viewY = 10 + NavHeight + (arc4random() % yHeight);
                 
                 rect = CGRectMake(viewX, viewY, width, width);
                 

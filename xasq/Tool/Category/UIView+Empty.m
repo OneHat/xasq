@@ -27,11 +27,11 @@ static char EmptyBlockKey;
     contentView.center = backView.center;
     [backView addSubview:contentView];
     
-    UIFont *font = [UIFont systemFontOfSize:13];
+    UIFont *font = ThemeFontText;
     
     if (reason == EmptyViewReasonNoData) {
         //没有数据
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 100)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, contentView.frame.size.width, 200)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.image = [UIImage imageNamed:@"data_error"];
         [contentView addSubview:imageView];
@@ -40,7 +40,7 @@ static char EmptyBlockKey;
         tipLabel.numberOfLines = 0;
         tipLabel.font = font;
         tipLabel.textAlignment = NSTextAlignmentCenter;
-        tipLabel.text = @"抱歉，您访问的页面不存在\n\n去看看别的吧~";
+        tipLabel.text = @"没有新的消息";
         [contentView addSubview:tipLabel];
         
     } else if (reason == EmptyViewReasonNoNetwork) {

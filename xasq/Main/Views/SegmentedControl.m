@@ -8,11 +8,11 @@
 
 #import "SegmentedControl.h"
 
-const CGFloat SegmentedSpaceWidth = 10;
+const CGFloat SegmentedSpaceWidth = 20;
 const CGFloat SegmentedIndicatorWidth = 50;
 
-#define ButtonTitleNormal        [UIFont systemFontOfSize:13]
-#define ButtonTitleSelect        [UIFont boldSystemFontOfSize:14]
+#define ButtonTitleNormal        [UIFont systemFontOfSize:14]
+#define ButtonTitleSelect        [UIFont boldSystemFontOfSize:16]
 #define ButtonTitleColorNormal   ThemeColorTextGray
 #define ButtonTitleColorSelect   [UIColor blackColor]
 
