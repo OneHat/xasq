@@ -45,7 +45,7 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = 55;
     self.tableView.backgroundColor = ThemeColorBackground;
-    FriendsHeaderView *headerView = [[FriendsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 65)];
+    FriendsHeaderView *headerView = [[FriendsHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 85)];
     self.tableView.tableHeaderView = headerView;
     [self.view addSubview:self.tableView];
     

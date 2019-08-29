@@ -74,7 +74,7 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, StatusBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - BottomHeight - 49) style:(UITableViewStylePlain)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.backgroundColor = ThemeColorBackground;
     _tableView.separatorInset = UIEdgeInsetsMake(0, 55, 0, 15);
     _tableView.separatorColor = ThemeColorLine;
     _tableView.rowHeight = 50;
