@@ -19,7 +19,7 @@
     self.title = @"邀请好友";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 70)];
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 70)];
     background.image = [UIImage imageNamed:@"invite_background"];
     [self.view addSubview:background];
     

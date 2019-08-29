@@ -19,7 +19,6 @@
                 <outlet property="nameTapLB" destination="082-YV-klx" id="bPH-V8-uBd"/>
                 <outlet property="statementLB" destination="ZuA-3R-UtJ" id="MCR-hn-Pcm"/>
                 <outlet property="titleLB" destination="hK5-O5-vhm" id="BQc-Le-Xya"/>
-                <outlet property="topHeight" destination="foD-F5-KyX" id="CZY-Wg-e0E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

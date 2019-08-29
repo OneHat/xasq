@@ -15,7 +15,6 @@
                 <outlet property="certificationLB" destination="waU-R4-Zyf" id="Mdm-6j-gwC"/>
                 <outlet property="nicknameLB" destination="lSh-HP-I2j" id="dob-7x-Jk5"/>
                 <outlet property="pictureImageV" destination="wcv-C2-lJN" id="MSK-XX-uRf"/>
-                <outlet property="topHeight" destination="hct-7q-agz" id="aDs-HG-DbH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -116,7 +116,7 @@
 
 - (void)showTableview {
     
-    CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    CGRect rect = CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     [_tableView registerNib:[UINib nibWithNibName:@"ContactViewCell" bundle:nil] forCellReuseIdentifier:@"ContactViewCell"];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

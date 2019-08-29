@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *conBottomLB;
 @property (weak, nonatomic) IBOutlet UILabel *statementLB;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
-
 @end
 
 @implementation OurVersionViewController
@@ -27,8 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.topHeight.constant = NavHeight + 30;
     
     if (_type == 0) {
         self.title = @"版本升级";

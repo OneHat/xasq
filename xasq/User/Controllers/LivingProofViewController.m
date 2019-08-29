@@ -20,8 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLB;
 @property (weak, nonatomic) IBOutlet UILabel *certificationLB;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
-
 @end
 
 @implementation LivingProofViewController
@@ -40,12 +38,6 @@
         _certificationLB.text = @"认证失败";
     } else {
         _certificationLB.text = @"未认证";
-    }
-    
-    if (@available(iOS 11.0, *)) {
-        self.topHeight.constant = 10;
-    } else {
-        self.topHeight.constant = NavHeight + 10;
     }
     
 }

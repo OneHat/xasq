@@ -36,7 +36,7 @@
     
     self.friends = [NSMutableArray array];
     
-    CGRect frame = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    CGRect frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     [self.tableView registerNib:[UINib nibWithNibName:@"FriendsRankViewCell" bundle:nil] forCellReuseIdentifier:@"FriendsRankViewCell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -52,19 +52,19 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextController)];
     [headerView addGestureRecognizer:tap];
     
-    
+    WeakObject
     [self.tableView pullHeaderRefresh:^{
-        self.page = 1;
-        [self getFriendList];
+        weakSelf.page = 1;
+        [weakSelf getFriendList];
     }];
     
     [self.tableView pullFooterRefresh:^{
         
-        if (self.page < self.totalPage) {
-            self.page++;
-            [self getFriendList];
+        if (weakSelf.page < weakSelf.totalPage) {
+            weakSelf.page++;
+            [weakSelf getFriendList];
         } else {
-            [self.tableView endRefresh];
+            [weakSelf.tableView endRefresh];
         }
         
     }];

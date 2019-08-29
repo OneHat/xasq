@@ -82,20 +82,20 @@
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
     
-    
+    WeakObject
     [self.tableView pullHeaderRefresh:^{
-        self.page = 1;
-        [self getUserMessageInfo];
+        weakSelf.page = 1;
+        [weakSelf getUserMessageInfo];
     }];
     
     [self.tableView pullFooterRefresh:^{
         
-        if (self.page < self.totalPage) {
-            self.page++;
-            [self getUserMessageInfo];
+        if (weakSelf.page < weakSelf.totalPage) {
+            weakSelf.page++;
+            [weakSelf getUserMessageInfo];
             return;
         }
-        [self.tableView endRefresh];
+        [weakSelf.tableView endRefresh];
         
     }];
     

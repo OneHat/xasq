@@ -32,7 +32,7 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     self.view.backgroundColor = ThemeColorBackground;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    CGRect rect = CGRectMake(0, NavHeight + 10, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    CGRect rect = CGRectMake(0, 10, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10);
     self.tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = ThemeColorBackground;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeNewsViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:NewsCellIdentifier];
@@ -46,19 +46,20 @@ static NSString *NewsCellIdentifier = @"NewsCellIdentifier";
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
     
+    WeakObject
     [self.tableView pullHeaderRefresh:^{
-        self.page = 1;
-        [self getUserNews];
+        weakSelf.page = 1;
+        [weakSelf getUserNews];
     }];
     
     [self.tableView pullFooterRefresh:^{
         
-        if (self.page < self.totalPage) {
-            self.page++;
-            [self getUserNews];
+        if (weakSelf.page < weakSelf.totalPage) {
+            weakSelf.page++;
+            [weakSelf getUserNews];
             return;
         }
-        [self.tableView endRefresh];
+        [weakSelf.tableView endRefresh];
     }];
     
     self.page = 1;

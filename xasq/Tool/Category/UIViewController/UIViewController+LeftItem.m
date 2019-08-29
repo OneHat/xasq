@@ -33,9 +33,13 @@
                                                                        action:@selector(leftBtnAction)];
         self.navigationItem.leftBarButtonItem = leftBarItem;
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;//防止右滑返回失效
+        
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageFromColor:[UIColor whiteColor]]
+                                                      forBarMetrics:UIBarMetricsDefault];
     }
     
     [self dssj_viewWillAppear:animated];
+    
 }
 
 @end

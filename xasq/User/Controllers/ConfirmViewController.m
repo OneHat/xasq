@@ -9,7 +9,6 @@
 #import "ConfirmViewController.h"
 
 @interface ConfirmViewController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
 
 @end
 
@@ -18,11 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"联系我们";
-    
-    self.topHeight.constant = NavHeight + 44;
-    if (@available(iOS 11.0, *)) {
-        self.topHeight.constant = NavHeight;
-    }
     
 }
 

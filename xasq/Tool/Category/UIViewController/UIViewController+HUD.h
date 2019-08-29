@@ -25,9 +25,6 @@ typedef void(^HideCompleteBlock)(void);
 - (void)showMessage:(NSString *)text;
 - (void)showErrow:(NSError *)error;
 
-///自动消失的HUD
-- (void)showMessageToWindow:(NSString *)text;
-
 ///隐藏HUD
 - (void)hideHUD;
 

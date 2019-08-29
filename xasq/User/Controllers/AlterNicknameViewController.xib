@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="nameTF" destination="3QI-MP-7k1" id="tfA-be-Vh7"/>
                 <outlet property="saveBtn" destination="pbh-Nn-Ta3" id="boh-vf-7GF"/>
-                <outlet property="topHeight" destination="fse-Bj-c9c" id="iRK-oc-PJu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -219,7 +219,7 @@
                 [self dismissViewControllerAnimated:NO completion:nil];
                 [self bindInviteCode:self.bindCode];
             } else {
-                [self showMessageToWindow:@"请输入正确的邀请码"];
+                [self showMessage:@"请输入正确的邀请码"];
             }
         }
         
@@ -294,7 +294,7 @@
     [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         NSDictionary *powInfo = data[@"data"];
-        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]] && powInfo.allKeys.count) {
             self.infoView.userInfo = powInfo;
         }
     } failure:^(NSError * _Nonnull error) {
@@ -305,6 +305,11 @@
 #pragma mark -
 - (void)passwordInputView:(XLPasswordInputView *)passwordInputView inputPassword:(NSString *)password {
     _bindCode = password;
+}
+
+- (void)dealloc {
+    
+    NSLog(@"+++ MinerViewControll dealloc");
 }
 
 @end

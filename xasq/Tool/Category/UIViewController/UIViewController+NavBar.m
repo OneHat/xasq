@@ -81,6 +81,12 @@
     [self.navigationController.navigationBar setTitleTextAttributes:textAttributes];
 }
 
+- (void)setNavBarBackgroundColor:(UIColor *)color {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageFromColor:color]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    
+}
+
 #pragma mark -
 - (void)leftBtnAction {
     [self.navigationController popViewControllerAnimated:YES];

@@ -32,6 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  设置导航title颜色
  */
 - (void)setNavBarTitleColor:(UIColor *)color;
+
+/**
+ *  设置导航背景颜色
+ */
+- (void)setNavBarBackgroundColor:(UIColor *)color;
+
 /**
  *  导航左方法
  */

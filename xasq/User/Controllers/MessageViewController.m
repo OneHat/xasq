@@ -32,7 +32,7 @@
     
     self.messages = [NSMutableArray array];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -41,20 +41,21 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
+    WeakObject
     [self.tableView pullHeaderRefresh:^{
-        self.page = 1;
-        [self getMessages];
+        weakSelf.page = 1;
+        [weakSelf getMessages];
     }];
     
     [self.tableView pullFooterRefresh:^{
-        
-        if (self.page < self.totalPage) {
-            self.page++;
-            [self getMessages];
+
+        if (weakSelf.page < weakSelf.totalPage) {
+            weakSelf.page++;
+            [weakSelf getMessages];
             return;
         }
-        [self.tableView endRefresh];
-        
+        [weakSelf.tableView endRefresh];
+
     }];
     
     self.page = 1;

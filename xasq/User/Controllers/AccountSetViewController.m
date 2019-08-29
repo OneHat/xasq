@@ -33,7 +33,7 @@
     _titleArray = @[@"修改登录密码", @"设置支付密码", @"绑定邮箱", @"绑定手机"];
     _imageTitleArray = @[@"change_login_password", @"set_pay_password", @"binding_email", @"binding_phone"];
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];
     _tableView.backgroundColor = ThemeColorBackground;
     _tableView.delegate = self;
     _tableView.dataSource = self;

@@ -12,20 +12,20 @@
 
 static char HUDBlockKey;
 
-const NSTimeInterval HideDuration = 1.5;
+const NSTimeInterval HideDuration = 1.0;
 
 @implementation UIViewController (HUD)
 
 - (void)loading {
-    [self showMessage:nil toView:self.view hide:NO];
+    [self showMessage:nil toView:nil hide:NO];
 }
 
 - (void)loadingWithText:(NSString *)text {
-    [self showMessage:text toView:self.view hide:NO];
+    [self showMessage:text toView:nil hide:NO];
 }
 
 - (void)showMessage:(NSString *)text complete:(nullable HideCompleteBlock)complete {
-    [self showMessage:text toView:self.view hide:YES];
+    [self showMessage:text toView:nil hide:YES];
     if (complete) {
         objc_setAssociatedObject(self, &HUDBlockKey, complete, OBJC_ASSOCIATION_RETAIN);
     }
@@ -37,19 +37,15 @@ const NSTimeInterval HideDuration = 1.5;
 
 - (void)showErrow:(NSError *)error complete:(nullable HideCompleteBlock)complete {
     NSString *text = error.userInfo[ErrorMessageKeyXasq];
-    [self showMessage:text toView:self.view hide:YES];
+    [self showMessage:text toView:nil hide:YES];
 }
 
 - (void)showErrow:(NSError *)error {
     [self showErrow:error complete:nil];
 }
 
-- (void)showMessageToWindow:(NSString *)text {
-    [self showMessage:text toView:nil hide:YES];
-}
-
 - (void)hideHUD {
-    [self hideHUDForView:self.view animated:YES];
+    [self hideHUDForView:nil animated:YES];
 }
 
 #pragma mark-
@@ -57,7 +53,7 @@ const NSTimeInterval HideDuration = 1.5;
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow;
     }
-    
+    view = [UIApplication sharedApplication].keyWindow;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.bezelView.color = [UIColor blackColor];
     hud.contentColor = [UIColor whiteColor];

@@ -104,7 +104,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+                                 
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         self.rankBackViewBottom.constant = 0;

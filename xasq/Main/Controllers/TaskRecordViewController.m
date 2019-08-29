@@ -38,18 +38,19 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
     
+    WeakObject
     [self.tableView pullHeaderRefresh:^{
-        self.page = 1;
-        [self getRecords];
+        weakSelf.page = 1;
+        [weakSelf getRecords];
     }];
     
     [self.tableView pullFooterRefresh:^{
         
-        if (self.page < self.totalPage) {
-            self.page++;
-            [self getRecords];
+        if (weakSelf.page < weakSelf.totalPage) {
+            weakSelf.page++;
+            [weakSelf getRecords];
         } else {
-            [self.tableView endRefresh];
+            [weakSelf.tableView endRefresh];
         }
         
     }];

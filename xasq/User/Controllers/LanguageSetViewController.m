@@ -27,7 +27,7 @@
     self.view.backgroundColor = ThemeColorBackground;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    CGRect rect = CGRectMake(0, NavHeight, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
+    CGRect rect = CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight);
     self.tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.1)];

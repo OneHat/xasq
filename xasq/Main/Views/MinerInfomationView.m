@@ -78,6 +78,8 @@
     NSInteger currentPow = [_userInfo[@"userPower"] integerValue];
     NSInteger nextPow = [_userInfo[@"upPower"] integerValue];
     
+    self.rateLabel.text = [NSString stringWithFormat:@"%ld/%ld",currentPow,nextPow];
+    
     CGFloat rate = MIN(1.0, currentPow * 1.0 / nextPow);
     CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);
     
@@ -88,7 +90,7 @@
     }];
     
     
-    self.rateLabel.text = [NSString stringWithFormat:@"%ld/%ld",currentPow,nextPow];
+    
 }
 
 @end
