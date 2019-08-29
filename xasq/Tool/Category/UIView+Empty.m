@@ -19,7 +19,7 @@ static char EmptyBlockKey;
     
     ///背景view
     UIView *backView = [[UIView alloc] initWithFrame:self.bounds];
-    backView.backgroundColor = [UIColor whiteColor];
+    backView.backgroundColor = ThemeColorBackground;
     [self addSubview:backView];
     
     ///中间内容

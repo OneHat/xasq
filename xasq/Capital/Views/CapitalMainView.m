@@ -130,33 +130,35 @@ static CGFloat CapitalSegmentControlH = 40;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, height)];
     headerView.backgroundColor = ThemeColorBackground;
     
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
-    _searchBar.searchBarStyle = UISearchBarStyleProminent;
-    _searchBar.backgroundColor = ThemeColorBackground;
-    _searchBar.barTintColor = ThemeColorBackground;
-    // 清除上下横线
-    for (UIView *subView in _searchBar.subviews) {
-        if ([subView isKindOfClass:[UIView  class]]) {
-            [[subView.subviews objectAtIndex:0] removeFromSuperview];
+    if (!_searchBar) {
+        
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(5, 0, ScreenWidth-10, 50)];
+        _searchBar.searchBarStyle = UISearchBarStyleProminent;
+        _searchBar.backgroundColor = ThemeColorBackground;
+        _searchBar.barTintColor = ThemeColorBackground;
+        // 清除上下横线
+        for (UIView *subView in _searchBar.subviews) {
+            if ([subView isKindOfClass:[UIView  class]]) {
+                [[subView.subviews objectAtIndex:0] removeFromSuperview];
+            }
         }
+        UITextField *searchField = [_searchBar valueForKey:@"searchField"];
+        if(searchField){
+            //设置字体颜色
+            searchField.textColor = ThemeColorText;
+            searchField.backgroundColor = ThemeColorBackground;
+            searchField.font = ThemeFontSmallText;
+        }
+        _searchBar.showsCancelButton = NO;
+        _searchBar.placeholder = @"搜索币种";
+        _searchBar.delegate = self;
     }
-    UITextField *searchField = [_searchBar valueForKey:@"searchField"];
-    if(searchField){
-        //设置字体颜色
-        searchField.textColor = ThemeColorText;
-        searchField.backgroundColor = ThemeColorBackground;
-        searchField.font = ThemeFontSmallText;
-    }
-    _searchBar.showsCancelButton = NO;
-    _searchBar.placeholder = @"搜索币种";
-    _searchBar.delegate = self;
     [headerView addSubview:_searchBar];
-    [headerView addSubview:searchField];
     
     CGFloat labelWidth = [@"隐藏0余额" getWidthWithFont:ThemeFontSmallText];
     if (!_hideZeroLabel) {
         //隐藏0余额
-        _hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 10, 0, labelWidth, height)];
+        _hideZeroLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth - labelWidth - 20, 0, labelWidth, height)];
         _hideZeroLabel.textColor = ThemeColorTextGray;
         _hideZeroLabel.font = ThemeFontSmallText;
         _hideZeroLabel.textAlignment = NSTextAlignmentRight;
@@ -166,7 +168,7 @@ static CGFloat CapitalSegmentControlH = 40;
     
     if (!_checkButton) {
         _checkButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 40, 0, 44, height);
+        _checkButton.frame = CGRectMake(ScreenWidth - labelWidth - 50, 0, 44, height);
         [_checkButton setImage:[UIImage imageNamed:@"checkBox_unselect"] forState:UIControlStateNormal];
         [_checkButton setImage:[UIImage imageNamed:@"checkBox_select"] forState:UIControlStateSelected];
         [_checkButton addTarget:self action:@selector(checkButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -230,9 +232,9 @@ static CGFloat CapitalSegmentControlH = 40;
         _dataArray = [NSMutableArray arrayWithArray:valueArr];
     } else {
         _dataArray = [NSMutableArray arrayWithArray:_cacheArray];
-        if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
-            [_delegate hiddenAmountClick:NO];
-        }
+//        if ([_delegate respondsToSelector:@selector(hiddenAmountClick:)]) {
+//            [_delegate hiddenAmountClick:NO];
+//        }
     }
     [_tableView reloadData];
 }
