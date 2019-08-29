@@ -63,7 +63,6 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    WeakObject;
     NSString *urlStr,*nameStr;
     if (_type == 0) {
         urlStr = UserSendLoginMobile;
@@ -77,10 +76,10 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        if (weakSelf.count == 0) {
+        if (self.count == 0) {
             //60秒后再次启动
-            weakSelf.count = 60;
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+            self.count = 60;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(showTime)
                                                             userInfo:nil
@@ -88,7 +87,7 @@
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        weakSelf.codeBtn.userInteractionEnabled = YES;
+        self.codeBtn.userInteractionEnabled = YES;
     }];
 }
 
@@ -134,9 +133,9 @@
     [[NetworkManager sharedManager] postRequest:UserCheckValidcode parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
         ResetPasswordViewController *VC = [[ResetPasswordViewController alloc] init];
-        VC.account = self->_accountTF.text;
-        VC.code = self->_codeTF.text;
-        VC.type = self->_type;
+        VC.account = self.accountTF.text;
+        VC.code = self.codeTF.text;
+        VC.type = self.type;
         [self.navigationController pushViewController:VC animated:YES];
     } failure:^(NSError * _Nonnull error) {
         [self hideHUD];

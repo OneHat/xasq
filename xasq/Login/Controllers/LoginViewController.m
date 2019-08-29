@@ -87,7 +87,6 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    WeakObject;
     NSString *urlStr,*nameStr;
     if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         // 邮箱登录
@@ -103,12 +102,12 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        weakSelf.codeTF.text = @"";
-        [weakSelf.codeTF becomeFirstResponder];
-        if (weakSelf.count == 0) {
+        self.codeTF.text = @"";
+        [self.codeTF becomeFirstResponder];
+        if (self.count == 0) {
             //60秒后再次启动
-            weakSelf.count = 60;
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+            self.count = 60;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(showTime)
                                                             userInfo:nil
@@ -116,7 +115,7 @@
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        weakSelf.codeBtn.userInteractionEnabled = YES;
+        self.codeBtn.userInteractionEnabled = YES;
     }];
 }
 
@@ -151,7 +150,6 @@
     }
     _loginBtn.userInteractionEnabled = NO;
     [self loading];
-    WeakObject;
     NSString *URLStr,*nameStr;
     if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         // 邮箱登录
@@ -173,13 +171,13 @@
         if (dataInfo && [dataInfo isKindOfClass:[NSDictionary class]]) {
             [UserDataManager shareManager].userId = [NSString stringWithFormat:@"%@",dataInfo[@"userId"]];
             [UserDataManager shareManager].authorization = dataInfo[@"accessToken"];
-            [UserDataManager shareManager].loginAccount = weakSelf.accountTF.text;
+            [UserDataManager shareManager].loginAccount = self.accountTF.text;
             // 获取用户信息
             NSDictionary *loginDict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
                                    };
             [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:loginDict success:^(NSDictionary * _Nonnull data) {
-                weakSelf.loginBtn.userInteractionEnabled = YES;
-                [weakSelf hideHUD];
+                self.loginBtn.userInteractionEnabled = YES;
+                [self hideHUD];
                 NSDictionary *userData = data[@"data"];
                 if (userData) {
                     [[UserDataManager shareManager] saveUserData:userData];
@@ -189,14 +187,14 @@
                 }];
                 [[NSNotificationCenter defaultCenter] postNotificationName:DSSJUserLoginSuccessNotification object:nil];
             } failure:^(NSError * _Nonnull error) {
-                weakSelf.loginBtn.userInteractionEnabled = YES;
-                [weakSelf hideHUD];
+                self.loginBtn.userInteractionEnabled = YES;
+                [self hideHUD];
                 [self showErrow:error];
             }];
         }
     } failure:^(NSError * _Nonnull error) {
         if (error.code == E010130 || error.code == E010141 || error.code == E010145 || error.code == E010142) {
-            weakSelf.passwordTF.text = @"";
+            self.passwordTF.text = @"";
             //验证码
             [UIView animateWithDuration:0.25 animations:^{
                 self.codeView.alpha = 1;
@@ -204,8 +202,8 @@
                 [self.view layoutIfNeeded];
             }];
         }
-        weakSelf.loginBtn.userInteractionEnabled = YES;
-        [weakSelf hideHUD];
+        self.loginBtn.userInteractionEnabled = YES;
+        [self hideHUD];
         [self showErrow:error];
     }];
 }

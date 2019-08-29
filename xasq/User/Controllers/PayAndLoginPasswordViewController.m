@@ -58,12 +58,11 @@
 
 #pragma mark - 选择渠道
 - (IBAction)channelTypeClick:(UIButton *)sender {
-    WeakObject;
     [self actionSheetWithItems:@[@"手机号", @"邮箱"] complete:^(NSInteger index) {
         if (index == 0) {
-            weakSelf.channelLB.text = @"手机号";
+            self.channelLB.text = @"手机号";
         } else {
-            weakSelf.channelLB.text = @"邮箱";
+            self.channelLB.text = @"邮箱";
         }
     }];
 }
@@ -107,19 +106,18 @@
         nameValue = [UserDataManager shareManager].usermodel.email;
     }
     sender.userInteractionEnabled = NO;
-    WeakObject;
     NSDictionary *dict = @{nameStr     : nameValue,
                            @"codeLogo" : @"2",
                            @"areaCode" : [UserDataManager shareManager].usermodel.areaCode
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        weakSelf.codeTF.text = @"";
-        [weakSelf.codeTF becomeFirstResponder];
-        if (weakSelf.count == 0) {
+        self.codeTF.text = @"";
+        [self.codeTF becomeFirstResponder];
+        if (self.count == 0) {
             //60秒后再次启动
-            weakSelf.count = 60;
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+            self.count = 60;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(showTime)
                                                             userInfo:nil
@@ -127,7 +125,7 @@
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        weakSelf.codeBtn.userInteractionEnabled = YES;
+        self.codeBtn.userInteractionEnabled = YES;
     }];
 }
 
@@ -193,7 +191,6 @@
             return;
         }
         [self loading];
-        WeakObject;
         NSString *nameStr,*userName;
         if ([_channelLB.text isEqualToString:@"手机号"]) {
             nameStr = @"mobile";
@@ -212,7 +209,7 @@
             [self hideHUD];
             [UserDataManager shareManager].usermodel.existFundPassWord = YES;
             NSString *msg;
-            if (weakSelf.type == 0) {
+            if (self.type == 0) {
                 msg = @"修改成功";
             } else {
                 msg = @"设置成功";

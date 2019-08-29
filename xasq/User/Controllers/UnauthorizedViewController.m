@@ -38,17 +38,16 @@
 }
 
 - (IBAction)documentTypeClick:(UIButton *)sender {
-    WeakObject;
     [self actionSheetWithItems:@[@"身份证", @"驾照", @"护照"] complete:^(NSInteger index) {
         if (index == 0) {
-            weakSelf.documentLB.text = @"身份证";
-            weakSelf.accountTF.placeholder = @"请输入身份证号";
+            self.documentLB.text = @"身份证";
+            self.accountTF.placeholder = @"请输入身份证号";
         } else if (index == 1) {
-            weakSelf.documentLB.text = @"驾照";
-            weakSelf.accountTF.placeholder = @"请输入驾照号";
+            self.documentLB.text = @"驾照";
+            self.accountTF.placeholder = @"请输入驾照号";
         } else {
-            weakSelf.documentLB.text = @"护照";
-            weakSelf.accountTF.placeholder = @"请输入护照号";
+            self.documentLB.text = @"护照";
+            self.accountTF.placeholder = @"请输入护照号";
         }
     }];
 }

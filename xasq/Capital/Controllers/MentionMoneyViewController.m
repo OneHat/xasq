@@ -83,10 +83,9 @@
 }
 
 - (IBAction)exchangeBtnClick:(UIButton *)sender {
-    WeakObject;
     [self actionSheetWithItems:@[@"交易所"] complete:^(NSInteger index) {
         if (index == 0) {
-            weakSelf.exchangeLB.text = @"交易所";
+            self.exchangeLB.text = @"交易所";
         }
     }];
 }
@@ -135,7 +134,6 @@
 - (void)passwordView:(XLPasswordView *)passwordView didFinishInput:(NSString *)password
 {
     [self loading];
-    WeakObject;
     NSDictionary *dict = @{@"amount"         : _amountTF.text,
                            @"currency"       : _currencyLB.text,
                            @"outAccountType" : @"6",
@@ -146,11 +144,11 @@
         [self hideHUD];
         if (data[@"data"][@"success"]) {
             [self showMessage:@"转出成功"];
-            weakSelf.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
+            self.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
             MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController    alloc] init];
-            VC.count = weakSelf.amountTF.text;
-            VC.currency = weakSelf.currencyLB.text;
-            VC.account = weakSelf.accountLB.text;
+            VC.count = self.amountTF.text;
+            VC.currency = self.currencyLB.text;
+            VC.account = self.accountLB.text;
             [self.navigationController pushViewController:VC animated:YES];
         }
         [passwordView hidePasswordView];

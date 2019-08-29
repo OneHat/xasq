@@ -87,7 +87,6 @@
         [self showMessage:@"请输入新手机"];
         return;
     }
-    WeakObject;
     NSString *nameStr,*codeLogo,*areaCode;
     if (_type == 0) {
         nameStr = _accountTF.text;
@@ -106,14 +105,14 @@
                            };
     [[NetworkManager sharedManager] postRequest:UserSendMobile parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        if (weakSelf.type == 0) {
+        if (self.type == 0) {
             [self phoneCodeBtnClick];
         } else {
             [self emailCodeBtnClick];
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        if (weakSelf.type == 0) {
+        if (self.type == 0) {
             [self setBtnStatusType:0 isEnabled:NO];
         } else {
             [self setBtnStatusType:1 isEnabled:NO];
@@ -126,7 +125,6 @@
         [self showMessage:@"请输入新邮箱"];
         return;
     }
-    WeakObject;
     NSString *nameStr,*codeLogo;
     if (_type == 0) {
         nameStr = [UserDataManager shareManager].usermodel.email;
@@ -142,14 +140,14 @@
                            };
     [[NetworkManager sharedManager] postRequest:UserSendEmail parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        if (weakSelf.type == 1) {
+        if (self.type == 1) {
             [self phoneCodeBtnClick];
         } else {
             [self emailCodeBtnClick];
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        if (weakSelf.type == 0) {
+        if (self.type == 0) {
             [self setBtnStatusType:1 isEnabled:YES];
         } else {
             [self setBtnStatusType:0 isEnabled:YES];
@@ -158,20 +156,18 @@
 }
 
 - (void)setBtnStatusType:(NSInteger)type isEnabled:(BOOL)isEnabled {
-    WeakObject;
     if (type == 0) {
-        weakSelf.phoneCodeBtn.userInteractionEnabled = isEnabled;
+        self.phoneCodeBtn.userInteractionEnabled = isEnabled;
     } else {
-        weakSelf.emailCodeBtn.userInteractionEnabled = isEnabled;
+        self.emailCodeBtn.userInteractionEnabled = isEnabled;
     }
 }
 
 - (void)phoneCodeBtnClick {
-    WeakObject;
-    if (weakSelf.phoneCount == 0) {
+    if (self.phoneCount == 0) {
         //60秒后再次启动
-        weakSelf.phoneCount = 60;
-        weakSelf.phoneTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+        self.phoneCount = 60;
+        self.phoneTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                                target:self
                                                              selector:@selector(showPhoneTime)
                                                              userInfo:nil
@@ -197,11 +193,10 @@
 }
 
 - (void)emailCodeBtnClick {
-    WeakObject;
-    if (weakSelf.emailCount == 0) {
+    if (self.emailCount == 0) {
         //60秒后再次启动
-        weakSelf.emailCount = 60;
-        weakSelf.emailTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+        self.emailCount = 60;
+        self.emailTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                                target:self
                                                              selector:@selector(showEmailTime)
                                                              userInfo:nil
@@ -236,7 +231,6 @@
         return;
     }
     [self loading];
-    WeakObject;
     if (_type == 0) {
         NSDictionary *dict = @{@"email"           : [UserDataManager shareManager].usermodel.email,
                                @"newMobile"       : _accountTF.text,
@@ -245,7 +239,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserMobileRebind parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [UserDataManager shareManager].usermodel.mobile = weakSelf.accountTF.text;
+            [UserDataManager shareManager].usermodel.mobile = self.accountTF.text;
             [self showMessage:@"更换新手机成功" complete:^{
                 NSArray *vcArr = self.navigationController.viewControllers;
                 UIViewController *VC = vcArr[vcArr.count - 3];
@@ -255,7 +249,7 @@
             [self hideHUD];
             [self showErrow:error];
             if (error.code == 10152) {
-                weakSelf.phoneCodeTF.text = @"";
+                self.phoneCodeTF.text = @"";
             }
         }];
     } else {
@@ -266,7 +260,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserEmailRebind parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [UserDataManager shareManager].usermodel.email = weakSelf.accountTF.text;
+            [UserDataManager shareManager].usermodel.email = self.accountTF.text;
             [self showMessage:@"更换新邮箱成功" complete:^{
                 NSArray *vcArr = self.navigationController.viewControllers;
                 UIViewController *VC = vcArr[vcArr.count - 3];

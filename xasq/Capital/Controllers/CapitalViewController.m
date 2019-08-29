@@ -123,13 +123,12 @@
 
 - (void)getCapitalStatisticsCount:(NSString *)type {
     NSDictionary *dict = @{@"accountType" : type,};
-    WeakObject;
     [[NetworkManager sharedManager] getRequest:CommunityStatisticsCount parameters:dict success:^(NSDictionary * _Nonnull data) {
         if ([data[@"data"] isKindOfClass:[NSDictionary class]]) {
             if ([data[@"data"][@"accountType"] integerValue] == 0) {
-                [weakSelf.walletView setTotalAssets:data[@"data"]];
+                [self.walletView setTotalAssets:data[@"data"]];
             } else {
-                [weakSelf.mineView setTotalAssets:data[@"data"]];
+                [self.mineView setTotalAssets:data[@"data"]];
             }
         }
     } failure:^(NSError * _Nonnull error) {
@@ -138,7 +137,6 @@
 }
 
 - (void)sendCommunityCapitalStatistics {
-    WeakObject;
     NSDictionary *dict = @{@"pageNo"   : @"1",
                            @"pageSize" : @"100",
                            @"nonzero"  : _nonzero,
@@ -147,13 +145,13 @@
         [self hideHUD];
         NSArray *rows = data[@"data"][@"rows"];
         if ([rows isKindOfClass:[NSArray class]]) {
-            [weakSelf.dataArray removeAllObjects];
+            [self.dataArray removeAllObjects];
             for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];
-                [weakSelf.dataArray addObject:model];
+                [self.dataArray addObject:model];
             }
-            [weakSelf.walletView setCapitalDataArray:data];
-            [weakSelf.mineView setCapitalDataArray:data];
+            [self.walletView setCapitalDataArray:data];
+            [self.mineView setCapitalDataArray:data];
         }
     } failure:^(NSError * _Nonnull error) {
         [self hideHUD];

@@ -40,7 +40,6 @@
 }
 
 - (void)CommunityCapitalCurrencyBalance {
-    WeakObject;
     NSDictionary *dict = @{@"pageNo"   : @"1",
                            @"pageSize" : @"100",
                            };
@@ -49,9 +48,9 @@
         if ([rows isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];
-                [weakSelf.dataArray addObject:model];
+                [self.dataArray addObject:model];
             }
-            [weakSelf.tableView reloadData];
+            [self.tableView reloadData];
         }
     } failure:^(NSError * _Nonnull error) {
         

@@ -129,7 +129,6 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    WeakObject;
     NSString *urlStr,*nameStr;
     if (_type == 0) {
         urlStr = UserSendMobile;
@@ -144,11 +143,11 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        [weakSelf.codeTF becomeFirstResponder];
-        if (weakSelf.count == 0) {
+        [self.codeTF becomeFirstResponder];
+        if (self.count == 0) {
             //60秒后再次启动
-            weakSelf.count = 60;
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+            self.count = 60;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                       target:self
                                                     selector:@selector(showTime)
                                                     userInfo:nil
@@ -156,7 +155,7 @@
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        weakSelf.codeBtn.userInteractionEnabled = YES;
+        self.codeBtn.userInteractionEnabled = YES;
     }];
 }
 
@@ -193,7 +192,6 @@
         [self showMessage:@"请输入密码"];
         return;
     }
-    WeakObject;
     [self loading];
     _registerBtn.userInteractionEnabled = NO;
     NSString *typeStr;
@@ -210,14 +208,14 @@
                            @"validCodeType" :   typeStr,
                            @"userType"      :   @"0"};
     [[NetworkManager sharedManager] postRequest:UserRegister parameters:dict success:^(NSDictionary * _Nonnull data) {
-        [weakSelf hideHUD];
-        weakSelf.registerBtn.userInteractionEnabled = YES;
+        [self hideHUD];
+        self.registerBtn.userInteractionEnabled = YES;
         [self showMessage:@"注册成功" complete:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSError * _Nonnull error) {
-        [weakSelf hideHUD];
-        weakSelf.registerBtn.userInteractionEnabled = YES;
+        [self hideHUD];
+        self.registerBtn.userInteractionEnabled = YES;
         [self showErrow:error];
     }];
 }

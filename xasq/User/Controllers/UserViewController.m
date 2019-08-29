@@ -106,7 +106,6 @@
 }
 
 - (void)getUserinfoData {
-    WeakObject;
     NSDictionary *dict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
                            };
     [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
@@ -115,12 +114,12 @@
         if (userData) {
             [[UserDataManager shareManager] saveUserData:userData];
             if ([UserDataManager shareManager].usermodel.nickName.length > 0) {
-                weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.nickName;
+                self.headerView.nameLB.text = [UserDataManager shareManager].usermodel.nickName;
             } else {
-                weakSelf.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
+                self.headerView.nameLB.text = [UserDataManager shareManager].usermodel.userName;
             }
-            weakSelf.headerView.regionLB.text = [UserDataManager shareManager].usermodel.areaName;
-            [weakSelf.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg]
+            self.headerView.regionLB.text = [UserDataManager shareManager].usermodel.areaName;
+            [self.headerView.portraitImageV sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].usermodel.headImg]
                                                   placeholderImage:[UIImage imageNamed:@"head_portrait"]];
         }
     } failure:^(NSError * _Nonnull error) {

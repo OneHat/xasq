@@ -32,25 +32,24 @@
 }
 
 - (void)sendUserIdentityDetails {
-    WeakObject;
     [[NetworkManager sharedManager] getRequest:UserIdentityDetails parameters:nil success:^(NSDictionary * _Nonnull data) {
         if (data) {
             NSDictionary *dic = data[@"data"];
-            weakSelf.nameLB.text = dic[@"certName"];
-            weakSelf.accountLB.text = dic[@"certNo"];
+            self.nameLB.text = dic[@"certName"];
+            self.accountLB.text = dic[@"certNo"];
             if ([dic[@"status"] integerValue] == 1) {
-                weakSelf.certificationLB.text = @"已认证";
+                self.certificationLB.text = @"已认证";
             } else if ([dic[@"status"] integerValue] == 2){
-                weakSelf.certificationLB.text = @"审核中";
+                self.certificationLB.text = @"审核中";
             } else {
-                weakSelf.certificationLB.text = @"未认证";
+                self.certificationLB.text = @"未认证";
             }
             if ([dic[@"certType"] integerValue] == 1) {
-                weakSelf.accountTitleLB.text = @"护照证号";
+                self.accountTitleLB.text = @"护照证号";
             } else if ([dic[@"certType"] integerValue] == 2){
-                weakSelf.accountTitleLB.text = @"驾照证号";
+                self.accountTitleLB.text = @"驾照证号";
             } else {
-                weakSelf.accountTitleLB.text = @"身份证号";
+                self.accountTitleLB.text = @"身份证号";
             }
         }
     } failure:^(NSError * _Nonnull error) {

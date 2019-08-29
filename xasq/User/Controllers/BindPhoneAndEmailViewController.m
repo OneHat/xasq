@@ -67,7 +67,6 @@
         [self showMessage:@"请输入绑定账号"];
         return;
     }
-    WeakObject;
     NSString *urlStr,*nameStr,*codeLogo;
     if (_type == 0) {
         urlStr = UserSendMobile;
@@ -85,10 +84,10 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
-        if (weakSelf.count == 0) {
+        if (self.count == 0) {
             //60秒后再次启动
-            weakSelf.count = 60;
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+            self.count = 60;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(showTime)
                                                             userInfo:nil
@@ -96,7 +95,7 @@
         }
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
-        weakSelf.codeBtn.userInteractionEnabled = YES;
+        self.codeBtn.userInteractionEnabled = YES;
     }];
 }
 
@@ -125,7 +124,6 @@
         [self showMessage:@"请输入验证码"];
         return;
     }
-    WeakObject;
     NSString *urlStr,*nameStr;
     if (_type == 0) {
         urlStr = UserMobileBind;
@@ -140,10 +138,10 @@
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
-        if (weakSelf.type == 0) {
-            [UserDataManager shareManager].usermodel.mobile = weakSelf.accountTF.text;
+        if (self.type == 0) {
+            [UserDataManager shareManager].usermodel.mobile = self.accountTF.text;
         } else {
-            [UserDataManager shareManager].usermodel.email = weakSelf.accountTF.text;
+            [UserDataManager shareManager].usermodel.email = self.accountTF.text;
         }
         [self showMessage:@"绑定成功" complete:^{
             [self.navigationController popViewControllerAnimated:YES];

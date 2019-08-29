@@ -139,7 +139,6 @@
 }
 
 - (void)communityCapitalWater {
-    WeakObject;
     NSDictionary *dict = @{@"causeType"    : _causeType,
                            @"currency"     : _model.currency,
                            @"pageNo"       : [NSString stringWithFormat:@"%ld",_pageNo],
@@ -149,11 +148,11 @@
         if ([array isKindOfClass:[NSArray class]]) {
             NSString *key;
             NSMutableArray *typeArr = [NSMutableArray array];
-            weakSelf.totalPage = [data[@"data"][@"totalPage"] integerValue];
-            if (weakSelf.titleArray.count > 0) {
+            self.totalPage = [data[@"data"][@"totalPage"] integerValue];
+            if (self.titleArray.count > 0) {
                 // 上拉添加数据
-                key = weakSelf.titleArray.lastObject;
-                typeArr = [NSMutableArray arrayWithArray:weakSelf.dataDict[key]];
+                key = self.titleArray.lastObject;
+                typeArr = [NSMutableArray arrayWithArray:self.dataDict[key]];
             } else {
                 // 下拉刷新数据
                 key = array.firstObject[@"time"];
@@ -164,10 +163,10 @@
                 if ([key isEqualToString:dic[@"time"]]) {
                     [typeArr addObject:model];
                 } else {
-                    [weakSelf.dataDict setValue:typeArr forKey:key];
-                    if (![key isEqualToString:weakSelf.titleArray.lastObject]) {
+                    [self.dataDict setValue:typeArr forKey:key];
+                    if (![key isEqualToString:self.titleArray.lastObject]) {
                         // 防止出现上拉添加数据中第一天数据跟之前数据的最后一条数据是在同一天
-                        [weakSelf.titleArray addObject:key];
+                        [self.titleArray addObject:key];
                     }
                     key = dic[@"time"];
                     typeArr = [NSMutableArray array];
@@ -175,23 +174,23 @@
                 }
                 if (i == array.count - 1) {
                     // 直接加最后一条数据
-                    [weakSelf.dataDict setValue:typeArr forKey:key];
-                    if (![key isEqualToString:weakSelf.titleArray.lastObject]) {
+                    [self.dataDict setValue:typeArr forKey:key];
+                    if (![key isEqualToString:self.titleArray.lastObject]) {
                         // 防止出现上拉添加数据中第一天数据跟之前数据的最后一条数据是在同一天
-                        [weakSelf.titleArray addObject:key];
+                        [self.titleArray addObject:key];
                     }
                 }
             }
-            [weakSelf.tableView hideEmptyView];
+            [self.tableView hideEmptyView];
         } else {
-            if (weakSelf.pageNo == 1) {
-                [weakSelf.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            if (self.pageNo == 1) {
+                [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
             }
         }
-        [weakSelf.tableView endRefresh];
-        [weakSelf.tableView reloadData];
+        [self.tableView endRefresh];
+        [self.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
-        [weakSelf.tableView endRefresh];
+        [self.tableView endRefresh];
         [self showErrow:error];
     }];
 }
@@ -246,19 +245,18 @@
 
 #pragma mark -
 - (void)shiftClick {
-    WeakObject;
     [self actionSheetWithItems:@[@"全部",@"提币",@"奖励"] complete:^(NSInteger index) {
         if (index == 0) {
-            weakSelf.causeType = @"";
+            self.causeType = @"";
         } else if (index == 1) {
-            weakSelf.causeType = @"12";
+            self.causeType = @"12";
         } else {
-            weakSelf.causeType = @"14";
+            self.causeType = @"14";
         }
-        weakSelf.pageNo = 1;
-        [weakSelf.dataDict removeAllObjects];
-        [weakSelf.titleArray removeAllObjects];
-        [weakSelf communityCapitalWater];
+        self.pageNo = 1;
+        [self.dataDict removeAllObjects];
+        [self.titleArray removeAllObjects];
+        [self communityCapitalWater];
     }];
 }
 

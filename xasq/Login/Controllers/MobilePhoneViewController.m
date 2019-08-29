@@ -36,17 +36,16 @@
 }
 
 - (void)getOpertionCountry {
-    WeakObject;
     [[NetworkManager sharedManager] getRequest:OperationCountry parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"];
-        weakSelf.tableDict = [NSMutableDictionary dictionary];
-        weakSelf.sectionArr = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"J",@"K",@"L",@"M",@"N",@"P",@"Q",@"R",@"S",@"T",@"W",@"X",@"Y",@"Z", nil];
+        self.tableDict = [NSMutableDictionary dictionary];
+        self.sectionArr = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"J",@"K",@"L",@"M",@"N",@"P",@"Q",@"R",@"S",@"T",@"W",@"X",@"Y",@"Z", nil];
         for (NSDictionary *dictArr in array) {
             // 获取第一个首拼字母
             NSString *lowercaseStr = [[NSString transform:dictArr[@"name"]] substringToIndex:1];
 
             // 取出每个字母key对应的数组
-            NSMutableArray *tableDictArr = weakSelf.tableDict[lowercaseStr];
+            NSMutableArray *tableDictArr = self.tableDict[lowercaseStr];
             if (!tableDictArr) {
                 // 没有就创建
                 tableDictArr = [NSMutableArray array];
@@ -55,9 +54,9 @@
             CountryCodeModel *model = [CountryCodeModel modelWithDictionary:dictArr];
             [tableDictArr addObject:model];
             // 把字母key对应数组放回字典
-            [weakSelf.tableDict setObject:tableDictArr forKey:lowercaseStr];
+            [self.tableDict setObject:tableDictArr forKey:lowercaseStr];
         }
-        [weakSelf.tableView reloadData];
+        [self.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
     }];
