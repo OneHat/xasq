@@ -19,6 +19,8 @@ const CGFloat ViewWidth = 60;
 
 @property (nonatomic, strong) UIButton *button;//收取/偷取按钮
 
+@property (nonatomic, strong) NSTimer *rewardTimer;//收取/偷取按钮
+
 @end
 
 @implementation RewardBallView
@@ -71,33 +73,37 @@ const CGFloat ViewWidth = 60;
 - (void)setRewardModel:(RewardModel *)rewardModel {
     _rewardModel = rewardModel;
     
-    _nameLabel.text = _rewardModel.currencyCode;
-    _rewardLabel.text = [NSString stringWithFormat:@"%.8f",_rewardModel.currencyQuantity.doubleValue];
+    self.nameLabel.text = _rewardModel.currencyCode;
+    
+    if ([self.nameLabel.text isEqualToString:@"BTC"]) {
+        int quantity = _rewardModel.currencyQuantity.doubleValue * BTCRate;
+        self.rewardLabel.text = [NSString stringWithFormat:@"%d聪",quantity];
+    } else {
+        self.rewardLabel.text = [NSString stringWithFormat:@"%.2f",_rewardModel.currencyQuantity.doubleValue];
+    }
     
     if (_rewardModel.status == 10) {
         //不可偷取
-        self.alpha = 0.7;
+        self.alpha = 0.8;
         self.button.enabled = NO;
-        
+
     } else if (_rewardModel.status == 0) {
         //未成熟
-        self.alpha = 0.7;
+        self.alpha = 0.8;
         self.button.enabled = NO;
+        self.rewardLabel.text = @"挖矿中";
 
-        int duration = _rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
-        int hour = duration / 3600;
-        int minute = duration % 3600 / 60;
+        [self.rewardTimer invalidate];
+        self.rewardTimer = nil;
 
-        _rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
-
-        [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self refreshStates:timer];
+        WeakObject
+        self.rewardTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [weakSelf refreshStates:timer];
         }];
+        [[NSRunLoop currentRunLoop] addTimer:self.rewardTimer forMode:NSRunLoopCommonModes];
     }
     
-    if (_rewardModel.type != 1) {
-        [self addAnimation];
-    }
+    [self addAnimation];
 }
 
 - (void)setBallStyle:(RewardBallViewStyle)ballStyle {
@@ -119,30 +125,48 @@ const CGFloat ViewWidth = 60;
 
 #pragma mark -
 - (void)refreshStates:(NSTimer *)timer {
-    if (_rewardModel.status == 0) {
-        //未成熟
-        self.alpha = 0.7;
-        self.button.enabled = NO;
+    if (self.rewardModel.status != 0) {
+        [timer invalidate];
+        timer = nil;
+        return;
+    }
+    
+    //未成熟
+    self.alpha = 0.8;
+    self.button.enabled = NO;
+    
+    int duration = self.rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
+    
+    if (duration <= 0) {
+        //变成已成熟
+        self.alpha = 1.0;
+        self.button.enabled = YES;
         
-        int duration = _rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
-        int hour = duration / 3600;
-        int minute = duration % 3600 / 60;
-        
-        if (duration <= 0) {
-            self.alpha = 1.0;
-            self.button.enabled = YES;
-            
-            _rewardLabel.text = [NSString stringWithFormat:@"%.8f",_rewardModel.currencyQuantity.doubleValue];
-            _rewardModel.status = 1;
-            
-            [timer invalidate];
-            timer = nil;
-            
+        if ([self.nameLabel.text isEqualToString:@"BTC"]) {
+            int quantity = _rewardModel.currencyQuantity.doubleValue * BTCRate;
+            self.rewardLabel.text = [NSString stringWithFormat:@"%d聪",quantity];
         } else {
-            _rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",hour,minute];
+            self.rewardLabel.text = [NSString stringWithFormat:@"%.2f",_rewardModel.currencyQuantity.doubleValue];
         }
         
+        self.rewardModel.status = 1;
+        
+        [timer invalidate];
+        timer = nil;
+        
+    } else if (duration > 1800) {
+        //距离成熟大于30分钟
+        self.rewardLabel.text = @"挖矿中";
+        
+    } else {
+        //距离成熟30分钟以内
+        
+        int minute = duration % 3600 / 60;
+        int second = duration % 60;
+        
+        self.rewardLabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,second];
     }
+    
 }
 
 #pragma mark -
@@ -172,6 +196,5 @@ const CGFloat ViewWidth = 60;
 - (void)resetButtonEnable {
     self.button.enabled = YES;
 }
-
 
 @end

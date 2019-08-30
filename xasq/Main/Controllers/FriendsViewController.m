@@ -11,8 +11,10 @@
 #import "FriendsHeaderView.h"
 #import "ContactsViewController.h"
 #import "FriendMainViewController.h"
-
+#import "UIViewController+ActionSheet.h"
 #import "UITableView+Refresh.h"
+
+#import <Contacts/Contacts.h>
 
 @interface FriendsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -131,8 +133,31 @@
 
 #pragma mark -
 - (void)nextController {
-    ContactsViewController *inviteVC = [[ContactsViewController alloc] init];
-    [self.navigationController pushViewController:inviteVC animated:YES];
+    
+    //是否有权限
+    CNAuthorizationStatus authorizationStatus = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    if (authorizationStatus == CNAuthorizationStatusDenied || authorizationStatus == CNAuthorizationStatusRestricted) {
+        //拒绝访问
+        [self showDeniedAlert];
+    } else {
+        ContactsViewController *inviteVC = [[ContactsViewController alloc] init];
+        [self.navigationController pushViewController:inviteVC animated:YES];
+    }
+    
+}
+
+///拒绝访问提示信息
+- (void)showDeniedAlert {
+    
+    [self alertWithTitle:@"提示" message:@"无法获取通讯录，请到\"设置->隐私\"中打开通讯录权限" items:@[@"取消",@"确认"] action:^(NSInteger index) {
+        
+        if (index == 0) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+        }
+    }];
 }
 
 @end

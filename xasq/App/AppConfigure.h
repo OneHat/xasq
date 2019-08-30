@@ -37,6 +37,7 @@
 #define ThemeFontTipText      [UIFont systemFontOfSize:12]
 
 #pragma mark -
-
+//BTC最小单位
+#define BTCRate               100000000
 
 #endif /* AppConfigure_h */

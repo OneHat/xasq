@@ -51,8 +51,16 @@
 
 - (void)setNewsData:(UserNewsModel *)news {
     [_iconImageView sd_setImageWithURL:[NSURL URLWithString:news.userHead] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
-    self.contentLabel.text = [NSString stringWithFormat:@"%@偷取了 %.8f %@",news.userName,news.quantity.doubleValue,news.currencyCode];
+    
     self.timeLabel.text = news.showTime;
+    
+    if ([news.currencyCode isEqualToString:@"BTC"]) {
+        int quantity = news.quantity.doubleValue * BTCRate;
+        self.contentLabel.text = [NSString stringWithFormat:@"%@ %d聪%@",news.userName,quantity,news.currencyCode];
+        
+    } else {
+        self.contentLabel.text = [NSString stringWithFormat:@"%@  %.2f%@",news.userName,news.quantity.doubleValue,news.currencyCode];
+    }
     
     if (![news.showDate isEqualToString: @"今天"]) {
         self.timeLabel.text = news.showDate;

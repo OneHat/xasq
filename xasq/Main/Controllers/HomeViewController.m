@@ -25,8 +25,6 @@
 #import "BannerObject.h"
 #import "UIViewController+ActionSheet.h"
 
-#import "UserStepManager.h"
-
 static NSString *HomeBannerADCacheKey = @"HomeBannerADCacheKey";
 static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
@@ -34,7 +32,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageTop;
 
@@ -50,9 +47,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 @property (strong, nonatomic) HomeRankView *rankView;//排行View
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rankBackViewBottom;
 
-@property (weak, nonatomic) IBOutlet UIView *stepRewardView;
-@property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
-@property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
+//@property (weak, nonatomic) IBOutlet UIView *stepRewardView;
+//@property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
+//@property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *userHeaderImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLabel;
@@ -133,12 +130,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     //广告banner
     self.bannerView = [[HomeBannerView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 26 / 75)];
     [self.bannerBackView addSubview:self.bannerView];
-    self.bannerViewHeight.constant = 0.0;
     
     NSArray *cacheBannerList = [[NSUserDefaults standardUserDefaults] objectForKey:HomeBannerADCacheKey];
     NSArray *bannerList = [BannerObject modelWithArray:cacheBannerList];
     if (bannerList.count > 0) {
-        self.bannerViewHeight.constant = 100.0;
         self.bannerView.imageArray = bannerList;
     }
     
@@ -159,9 +154,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     //获取banner
     [self getHomeBannerData];
-    
-    //用户步行奖励
-    [self getUserStepReward];
 
     //用户算力奖励
     [self getUserPowerReward];
@@ -171,10 +163,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     
     //当前算力、等级
     [self getUserLevelAndPower];
-    
-    if ([UserDataManager shareManager].userId) {
-        [self postUserSteps];
-    }
     
     ////////
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -193,26 +181,14 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
                                                  name:DSSJUserLogoutNotification
                                                object:nil];
     
-    
-    self.footerImageView.hidden = YES;
-    self.stepsLabel.hidden = YES;
-    
     self.mineNameLabel.text = @"西岸社区";
     self.mineNameImageView.image = [[UIImage imageNamed:@"mineName_background"] resizeImageInCenter];
     self.mineNameLabel.textColor = HexColor(@"ededed");
-    
-#ifdef DEBUG
-    self.footerImageView.hidden = NO;
-    self.stepsLabel.hidden = NO;
-    self.stepsLabel.text = @"66666";
-    [self postUserStepCount:66666];
-#endif
     
     self.userLevelLabel.layer.cornerRadius = 2;
     self.userLevelLabel.layer.borderColor = [UIColor whiteColor].CGColor;
     self.userLevelLabel.layer.borderWidth = 0.5;
     self.userLevelLabel.layer.masksToBounds = YES;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -267,39 +243,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             [[NSUserDefaults standardUserDefaults] setObject:dataList forKey:HomeBannerADCacheKey];
             
             NSArray *bannerList = [BannerObject modelWithArray:dataList];
-            
-            self.bannerViewHeight.constant = 100;
             self.bannerView.imageArray = bannerList;
-        }
-        
-    } failure:^(NSError * _Nonnull error) {
-    }];
-}
-
-///用户步行奖励
-- (void)getUserStepReward {
-    if (![UserDataManager shareManager].userId) {
-        return;
-    }
-    [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:nil success:^(NSDictionary * _Nonnull data) {
-        
-        [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-        
-        NSArray *dateList = data[@"data"];
-        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-            NSDictionary *stepReward = dateList.firstObject;
-            
-            RewardModel *model = [RewardModel modelWithDictionary:stepReward];
-            
-            RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:self.stepRewardView.bounds];
-            ballView.rewardModel = model;
-            ballView.ballStyle = RewardBallViewStyleStep;
-            
-            __weak RewardBallView *weakBall = ballView;
-            ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
-                [self userTakeRewardWithBallView:weakBall];
-            };
-            [self.stepRewardView addSubview:ballView];
         }
         
     } failure:^(NSError * _Nonnull error) {
@@ -420,6 +364,15 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     NSDictionary *parameters = @{@"bId":@(ballView.rewardModel.ID)};
     [[NetworkManager sharedManager] postRequest:CommunityAreaTakeCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
+        NSDictionary *info = data[@"data"];
+        if (!info || ![info isKindOfClass:[NSDictionary class]] || info.allKeys.count == 0) {
+            return;
+        }
+        if ([info[@"code"] integerValue] != 200) {
+            [self showMessage:info[@"msg"]];
+            return;
+        }
+        
         CGRect frame = ballView.frame;
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -455,6 +408,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         
     } failure:^(NSError * _Nonnull error) {
         [ballView resetButtonEnable];
+        [self showErrow:error];
     }];
 }
 
@@ -571,7 +525,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 }
 
 - (IBAction)headerClick:(UIButton *)sender {
-    if (![UserDataManager shareManager].userId) {
+    if ([UserDataManager shareManager].userId) {
+        [self minerAction:nil];
+        
+    } else {
         [self toLoginController];
     }
 }
@@ -595,9 +552,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 ///登录成功
 - (void)userLoginSuccess {
     
-    [self postUserSteps];
-    
-    [self getUserStepReward];//
     [self getUserPowerReward];//
     [self getUserLevelAndPower];//
     
@@ -642,26 +596,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     self.powerImageView.hidden = YES;
     self.powerLabel.hidden = YES;
     
-    [self.stepRewardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (UIView *view in self.topView.subviews) {
         if ([view isKindOfClass:[RewardBallView class]]) {
             [view removeFromSuperview];
         }
     }
-}
-
-///获取用户步数，并上传到服务器
-- (void)postUserSteps {
-    
-    [[UserStepManager manager] getTodayStepsCompletion:^(NSInteger steps) {
-        if (steps == 0) {
-            return;
-        }
-        self.footerImageView.hidden = NO;
-        self.stepsLabel.hidden = NO;
-        self.stepsLabel.text = [NSString stringWithFormat:@"%ld",steps];
-        [self postUserStepCount:steps];
-    }];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "ContactsViewController.h"
 #import "ContactViewCell.h"
+#import "UIViewController+ActionSheet.h"
 #import <Contacts/Contacts.h>
 
 @interface ContactsViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -43,14 +44,13 @@
                 });
                 
             } else {
-                [self showTipLabel];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showDeniedAlert];
+                });
             }
             
         }];
-        
-    } else if (authorizationStatus == CNAuthorizationStatusDenied || authorizationStatus == CNAuthorizationStatusRestricted) {
-        //拒绝访问
-        [self showTipLabel];
         
     } else if (authorizationStatus == CNAuthorizationStatusAuthorized){
         //用户同意访问
@@ -63,14 +63,16 @@
             });
             
         });
+    } else if (authorizationStatus == CNAuthorizationStatusDenied || authorizationStatus == CNAuthorizationStatusRestricted) {
+        //拒绝访问，这种情况已经在外面处理，这里不考虑
     }
     
     
-    [[NetworkManager sharedManager] getRequest:UserInviteAddresslist parameters:nil success:^(NSDictionary * _Nonnull data) {
-        
-    } failure:^(NSError * _Nonnull error) {
-
-    }];
+//    [[NetworkManager sharedManager] getRequest:UserInviteAddresslist parameters:nil success:^(NSDictionary * _Nonnull data) {
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
 }
 
 ///处理拿到的数据
@@ -128,8 +130,19 @@
 }
 
 ///拒绝访问提示信息
-- (void)showTipLabel {
-    self.tipLabels.hidden = NO;
+- (void)showDeniedAlert {
+    
+    [self alertWithTitle:@"提示" message:@"无法获取通讯录，请到\"设置->隐私\"中打开通讯录权限" items:@[@"取消",@"确认"] action:^(NSInteger index) {
+        
+        if (index == 0) {
+            [self dismissViewControllerAnimated:NO completion:^{
+               [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+        }
+    }];
 }
 
 #pragma mark-

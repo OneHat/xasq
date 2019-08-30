@@ -145,6 +145,7 @@
 #pragma mark -
 - (IBAction)signAction:(UIButton *)sender {
     if (self.signButton.selected) {
+        [self showMessage:@"您已签到"];
         return;
     }
     
@@ -154,8 +155,8 @@
     
     self.signButton.selected = YES;
     
-    NSDictionary *parameters = @{@"days":self.signInfo[@"keepSign"],@"lastSignDate":self.signInfo[@"signDate"]};
-    
+    int keepSign = [self.signInfo[@"keepSign"] intValue] + 1;
+    NSDictionary *parameters = @{@"days":@(keepSign),@"lastSignDate":self.signInfo[@"signDate"]};
     [[NetworkManager sharedManager] postRequest:CommunitySign parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         NSInteger power = [data[@"data"] integerValue];

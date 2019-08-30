@@ -19,14 +19,10 @@
 @property (nonatomic, strong) NSMutableArray *titles;
 @property (nonatomic, strong) NSMutableDictionary *newsInfo;
 
-@property (nonatomic, strong) RewardModel *stepReward;
 @property (nonatomic, strong) NSArray *powRewardArray;
 
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger totalPage;
-
-@property (strong, nonatomic) UIButton *backButton;//自定义的bar
-@property (strong, nonatomic) UIView *customerBarView;//自定义的bar
 
 @end
 
@@ -77,7 +73,6 @@
     [backButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
-    _backButton = backButton;
     
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
@@ -177,47 +172,59 @@
     }
     
     ////////
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//
+//    dispatch_group_enter(group);
+//    dispatch_group_async(group, queue, ^{
+//
+//        [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+//            dispatch_group_leave(group);
+//
+//            NSArray *dateList = data[@"data"];
+//            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+//
+//                self.powRewardArray = [RewardModel modelWithArray:dateList];
+//            }
+//
+//        } failure:^(NSError * _Nonnull error) {
+//            dispatch_group_leave(group);
+//        }];
+//    });
+//
+//    dispatch_group_enter(group);
+//    dispatch_group_async(group, queue, ^{
+//        [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
+//            dispatch_group_leave(group);
+//            NSArray *dateList = data[@"data"];
+//            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
+//                NSDictionary *stepReward = dateList.firstObject;
+//
+//                self.stepReward = [RewardModel modelWithDictionary:stepReward];
+//            }
+//
+//        } failure:^(NSError * _Nonnull error) {
+//            dispatch_group_leave(group);
+//        }];
+//    });
+//
+//    ////////////
+//    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//        [self loadRewardView];
+//    });
     
-    dispatch_group_enter(group);
-    dispatch_group_async(group, queue, ^{
+    
+    [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
         
-        [[NetworkManager sharedManager] getRequest:CommunitySendPower parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
-            dispatch_group_leave(group);
+        NSArray *dateList = data[@"data"];
+        if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
             
-            NSArray *dateList = data[@"data"];
-            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-                
-                self.powRewardArray = [RewardModel modelWithArray:dateList];
-            }
-            
-        } failure:^(NSError * _Nonnull error) {
-            dispatch_group_leave(group);
-        }];
-    });
-    
-    dispatch_group_enter(group);
-    dispatch_group_async(group, queue, ^{
-        [[NetworkManager sharedManager] getRequest:CommunitySendWalk parameters:@{@"targetId":@(self.userId)} success:^(NSDictionary * _Nonnull data) {
-            dispatch_group_leave(group);
-            NSArray *dateList = data[@"data"];
-            if (dateList && [dateList isKindOfClass:[NSArray class]] && dateList.count) {
-                NSDictionary *stepReward = dateList.firstObject;
-                
-                self.stepReward = [RewardModel modelWithDictionary:stepReward];
-            }
-            
-        } failure:^(NSError * _Nonnull error) {
-            dispatch_group_leave(group);
-        }];
-    });
-    
-    ////////////
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [self loadRewardView];
-    });
-    
+            self.powRewardArray = [RewardModel modelWithArray:dateList];
+            [self loadRewardView];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+    }];
 }
 
 - (void)getUserMessageInfo {
@@ -274,38 +281,52 @@
     
     NSDictionary *parameters = @{@"bId":@(ballView.rewardModel.ID),@"sourceUserId":@(self.userId)};
     [[NetworkManager sharedManager] postRequest:CommunityAreaStealCurrency parameters:parameters success:^(NSDictionary * _Nonnull data) {
-
+        
         NSDictionary *info = data[@"data"];
-        if (info && [info isKindOfClass:[NSDictionary class]]) {
-            NSString *stealNum = info[@"quantity"];
-            
-            UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 32)];
-            tipLabel.numberOfLines = 0;
-            tipLabel.textAlignment = NSTextAlignmentCenter;
-            tipLabel.textColor = [UIColor whiteColor];
-            tipLabel.center = ballView.center;
-            tipLabel.font = [UIFont boldSystemFontOfSize:11];
-            tipLabel.text = [NSString stringWithFormat:@"%.8f",stealNum.doubleValue];
-            [self.headerView addSubview:tipLabel];
-
-            [UIView animateWithDuration:1.0 animations:^{
-
-                tipLabel.transform = CGAffineTransformMakeTranslation(0, -50);
-
-            } completion:^(BOOL finished) {
-                [tipLabel removeFromSuperview];
-                
-                RewardModel *model = ballView.rewardModel;
-                NSDecimalNumber *originalNum = [NSDecimalNumber decimalNumberWithString:model.currencyQuantity];
-                NSDecimalNumber *stealDecimalNumber = [NSDecimalNumber decimalNumberWithString:stealNum];
-                originalNum = [originalNum decimalNumberBySubtracting:stealDecimalNumber];
-                model.currencyQuantity = originalNum.stringValue;//修改数量
-                model.status = 10;//状态改为已偷
-                ballView.rewardModel = model;
-                
-            }];
-            
+        if (!info || ![info isKindOfClass:[NSDictionary class]] || info.allKeys.count == 0) {
+            return;
         }
+        if ([info[@"code"] integerValue] != 200) {
+            //只有200是收取成功
+            [self showMessage:info[@"msg"]];
+            return;
+        }
+        
+        NSString *currencyCode = ballView.rewardModel.currencyCode;
+        NSString *stealNum = info[@"quantity"];
+        
+        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 32)];
+        tipLabel.numberOfLines = 0;
+        tipLabel.textAlignment = NSTextAlignmentCenter;
+        tipLabel.textColor = [UIColor whiteColor];
+        tipLabel.center = ballView.center;
+        tipLabel.font = [UIFont boldSystemFontOfSize:11];
+        [self.headerView addSubview:tipLabel];
+        
+        if ([currencyCode isEqualToString:@"BTC"]) {
+            int quantity = stealNum.doubleValue * BTCRate;
+            tipLabel.text = [NSString stringWithFormat:@"%d",quantity];
+            
+        } else {
+            tipLabel.text = [NSString stringWithFormat:@"%.2f",stealNum.doubleValue];
+        }
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            
+            tipLabel.transform = CGAffineTransformMakeTranslation(0, -50);
+            
+        } completion:^(BOOL finished) {
+            [tipLabel removeFromSuperview];
+            
+            RewardModel *model = ballView.rewardModel;
+            NSDecimalNumber *originalNum = [NSDecimalNumber decimalNumberWithString:model.currencyQuantity];
+            NSDecimalNumber *stealDecimalNumber = [NSDecimalNumber decimalNumberWithString:stealNum];
+            originalNum = [originalNum decimalNumberBySubtracting:stealDecimalNumber];
+            model.currencyQuantity = originalNum.stringValue;//修改数量
+            model.status = 10;//状态改为已偷
+            ballView.rewardModel = model;
+            
+        }];
 
     } failure:^(NSError * _Nonnull error) {
         [ballView resetButtonEnable];
@@ -314,33 +335,22 @@
 
 #pragma mark -
 - (void)loadRewardView {
-    //            //清除可能存在的view
-    //            for (UIView *view in self.headerView.subviews) {
-    //                if ([view isKindOfClass:[RewardBallView class]]) {
-    //                    [view removeFromSuperview];
-    //                }
-    //            }
-    //
-    
-    NSMutableArray *rewards = [NSMutableArray arrayWithArray:self.powRewardArray];
-    if (self.stepReward) {
-        [rewards addObject:self.stepReward];
-    }
     
     //能量球
-    NSInteger count = MIN(5, rewards.count);//个数
+    NSInteger count = MIN(5, self.powRewardArray.count);//个数
     NSMutableArray *frames = [self frameForRewardBallView:count];
     
+    WeakObject
     for (int i = 0; i < count; i++) {
         NSValue *rectValue = frames[i];
         
         RewardBallView *ballView = [[RewardBallView alloc] initWithFrame:rectValue.CGRectValue];
-        ballView.rewardModel = rewards[i];
+        ballView.rewardModel = self.powRewardArray[i];
         ballView.ballStyle = RewardBallViewStylePower;
         [self.headerView addSubview:ballView];
         
         ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
-            [self stealCurrencyWithBallView:ballView];
+            [weakSelf stealCurrencyWithBallView:ballView];
         };
     }
 }
@@ -388,18 +398,6 @@
     }
     
     return frames;
-}
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat rate = (scrollView.contentOffset.y) / NavHeight;
-    self.customerBarView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:rate];
-    
-    if (scrollView.contentOffset.y > NavHeight * 0.5) {
-        [self.backButton setImage:[UIImage imageNamed:@"leftBar_back"] forState:UIControlStateNormal];
-    } else {
-        [self.backButton setImage:[UIImage imageNamed:@"leftBar_back_white"] forState:UIControlStateNormal];
-    }
 }
 
 @end
