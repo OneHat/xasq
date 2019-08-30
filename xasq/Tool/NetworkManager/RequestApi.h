@@ -142,8 +142,8 @@ FOUNDATION_EXPORT NSString *const CommunityStatisticsCount;
 FOUNDATION_EXPORT NSString *const CommunityStealFlow;
 ///用户等级信息和升级信息 GET
 FOUNDATION_EXPORT NSString *const CommunityPowerUpinfo;
-///用户签到 POST
-FOUNDATION_EXPORT NSString *const CommunitySign;
+///获取连续签到奖励 GET
+FOUNDATION_EXPORT NSString *const CommunitySignReward;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

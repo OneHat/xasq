@@ -30,7 +30,7 @@ static char AlertBlockKey;
 - (UIViewController *)customerController {
     //弹出controller
     UIViewController *contentViewController = [[UIViewController alloc] init];
-    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+//    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
     contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     return contentViewController;
@@ -112,7 +112,8 @@ static char AlertBlockKey;
     objc_setAssociatedObject(self, &ActionSheetBlockKey, complete, OBJC_ASSOCIATION_COPY);
     
     [self presentViewController:contentViewController animated:NO completion:^{
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:0.25 animations:^{
+            contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
             actionSheet.frame = CGRectMake(0, actionSheetY, ScreenWidth, actionSheetHeight);
         }];
     }];

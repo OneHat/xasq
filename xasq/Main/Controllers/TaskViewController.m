@@ -135,6 +135,8 @@
 
     [self getSignInfo];
     [self getUserLevelAndPower];
+    
+    [self getSignReward];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -153,11 +155,13 @@
         return;
     }
     
+    
+#warning ***** 接口改动
     self.signButton.selected = YES;
     
     int keepSign = [self.signInfo[@"keepSign"] intValue] + 1;
     NSDictionary *parameters = @{@"days":@(keepSign),@"lastSignDate":self.signInfo[@"signDate"]};
-    [[NetworkManager sharedManager] postRequest:CommunitySign parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunitySignReward parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         NSInteger power = [data[@"data"] integerValue];
         [self showSignSuccessView:power];
@@ -303,6 +307,7 @@
     }];
 }
 
+///获取升级信息
 - (void)getUserLevelAndPower {
     [[NetworkManager sharedManager] getRequest:CommunityPowerUpinfo parameters:nil success:^(NSDictionary * _Nonnull data) {
         
@@ -310,6 +315,19 @@
         if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
             self.powInfo = powInfo;
             self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%@",powInfo[@"userPower"]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+    }];
+    
+}
+
+///获取连续签到奖励
+- (void)getSignReward {
+    [[NetworkManager sharedManager] getRequest:CommunitySignReward parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *powInfo = data[@"data"];
+        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"");
         }
     } failure:^(NSError * _Nonnull error) {
     }];
