@@ -29,8 +29,13 @@
     self.title = @"账户设置";
     self.view.backgroundColor = ThemeColorBackground;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    _titleArray = @[@"修改登录密码", @"设置支付密码", @"绑定邮箱", @"绑定手机"];
+    NSString *title;
+    if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+        title = @"修改支付密码";
+    } else {
+        title = @"设置支付密码";
+    }
+    _titleArray = @[@"修改登录密码", title, @"绑定邮箱", @"绑定手机"];
     _imageTitleArray = @[@"change_login_password", @"set_pay_password", @"binding_email", @"binding_phone"];
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight) style:(UITableViewStylePlain)];

@@ -37,7 +37,11 @@
         self.title = @"修改登录密码";
             _affirmBtnTop.constant = 50;
     } else {
-        self.title = @"设置支付密码";
+        if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+            self.title = @"修改支付密码";
+        } else {
+            self.title = @"设置支付密码";
+        }
         _titleLB.text = @"支付密码为6位数字密码";
         _oldView.hidden = YES;
         _passwordView.hidden = NO;
@@ -208,13 +212,13 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [UserDataManager shareManager].usermodel.existFundPassWord = YES;
             NSString *msg;
-            if (self.type == 0) {
+            if ([UserDataManager shareManager].usermodel.existFundPassWord) {
                 msg = @"修改成功";
             } else {
                 msg = @"设置成功";
             }
+            [UserDataManager shareManager].usermodel.existFundPassWord = YES;
             [self showMessage:msg complete:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
