@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 等级
 @property (nonatomic, strong) NSString *level;
 /// 是否认证 0:未认证 1:已认证 2:审核中3-打回
-@property (nonatomic, strong) NSString *authStatus;
+@property (nonatomic, strong) NSNumber *authStatus;
 /// 是否设置了资金密码
 @property (nonatomic, assign) BOOL existFundPassWord;
 

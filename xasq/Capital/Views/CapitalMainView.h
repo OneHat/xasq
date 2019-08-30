@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)capitalMainViewDrawClick;
 //点击币种
 - (void)capitalMainViewCellSelect:(NSInteger)index;
-// 更新隐藏0金额选择状态
-- (void)updateAmountClick:(BOOL)isHidden;
 // 隐藏Btn和LB
 - (void)hiddenAmountClick:(BOOL)isHidden;
 
@@ -29,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<CapitalMainViewDelegate> delegate;
 
-- (void)updateBtnStatus:(BOOL)isSelected;     // 更新隐藏Btn选择状态
 - (void)hiddenBtnOrLabel:(BOOL)isHidden;     // 隐藏Btn和LB
 - (void)setTotalAssets:(NSDictionary *)dict;  // 总资产
 - (void)setCapitalDataArray:(NSDictionary *)dict; // 币种列表数据

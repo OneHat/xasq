@@ -92,7 +92,7 @@
                            @"nonzero"  : @"",
                            };
     [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
-        NSArray *rows = data[@"data"][@"rows"];
+        NSArray *rows = data[@"data"];
         if ([rows isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];

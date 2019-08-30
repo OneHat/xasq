@@ -36,6 +36,7 @@
     [super viewDidLoad];
     if (_type == 0) {
         self.title = @"绑定手机号";
+        _accountTF.keyboardType = UIKeyboardTypeNumberPad;
     } else {
         self.title = @"绑定邮箱";
         _lineViewTop.constant = 15;
@@ -44,9 +45,18 @@
         _areaLineView.hidden = YES;
         _titleLB.text = @"绑定邮箱后可使用邮箱登录";
         _accountTF.placeholder = @"请输入邮箱账号";
+        _accountTF.keyboardType = UIKeyboardTypeAlphabet;
     }
     _bindBtn.layer.cornerRadius = 22.5;
     _bindBtn.layer.masksToBounds = YES;
+    [_codeTF addTarget:self action:@selector(codeTextFeldImport:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)codeTextFeldImport:(UITextField *)textField
+{
+    if (textField.text.length > 6) {
+        textField.text = [textField.text substringToIndex:6];
+    }
 }
 
 #pragma mark - 手机区域选择
@@ -65,6 +75,9 @@
 - (IBAction)codeBtnClick:(UIButton *)sender {
     if (_accountTF.text.length == 0) {
         [self showMessage:@"请输入绑定账号"];
+        return;
+    } else if (_type == 1 && [_accountTF.text rangeOfString:@"@"].location == NSNotFound) {
+        [self showMessage:@"请输入正确的邮箱号"];
         return;
     }
     NSString *urlStr,*nameStr,*codeLogo;

@@ -39,6 +39,7 @@
     [super viewDidLoad];
     if (_type == 0) {
         self.title = @"更换绑定手机";
+        _accountTF.keyboardType = UIKeyboardTypeNumberPad;
     } else {
         self.title = @"更换绑定邮箱";
         _lineViewTop.constant = 15;
@@ -46,13 +47,24 @@
         _areaCodeLB.hidden = YES;
         _areaLineView.hidden = YES;
         _accountTF.placeholder = @"请输入新邮箱";
+        _accountTF.keyboardType = UIKeyboardTypeAlphabet;
         _phoneCodeTF.placeholder = @"请输入邮箱验证码";
         _emailCodeTF.placeholder = @"请输入短信验证码";
     }
     
     _replaceBtn.layer.cornerRadius = 22.5;
     _replaceBtn.layer.masksToBounds = YES;
+    [_emailCodeTF addTarget:self action:@selector(codeTextFeldImport:) forControlEvents:UIControlEventEditingChanged];
+    [_phoneCodeTF addTarget:self action:@selector(codeTextFeldImport:) forControlEvents:UIControlEventEditingChanged];
 }
+
+- (void)codeTextFeldImport:(UITextField *)textField
+{
+    if (textField.text.length > 6) {
+        textField.text = [textField.text substringToIndex:6];
+    }
+}
+
 
 #pragma mark - 手机区域选择
 - (IBAction)countriesClick:(UIButton *)sender {
@@ -123,6 +135,9 @@
 - (void)sendEmailVerificationCode {
     if (_accountTF.text.length == 0 && _type == 1) {
         [self showMessage:@"请输入新邮箱"];
+        return;
+    } else if (_type == 1 && [_accountTF.text rangeOfString:@"@"].location == NSNotFound) {
+        [self showMessage:@"请输入正确的邮箱号"];
         return;
     }
     NSString *nameStr,*codeLogo;

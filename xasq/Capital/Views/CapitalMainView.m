@@ -70,10 +70,6 @@ static CGFloat CapitalSegmentControlH = 40;
     [self addSubview:_tableView];
 }
 
-- (void)updateBtnStatus:(BOOL)isSelected {
-    _checkButton.selected = isSelected;
-}
-
 - (void)hiddenBtnOrLabel:(BOOL)isHidden {
     _checkButton.hidden = isHidden;
     _hideZeroLabel.hidden = isHidden;
@@ -85,7 +81,7 @@ static CGFloat CapitalSegmentControlH = 40;
 }
 
 - (void)setCapitalDataArray:(NSDictionary *)dict {
-    NSArray *array = dict[@"data"][@"rows"];
+    NSArray *array = dict[@"data"];
     [_dataArray removeAllObjects];
     [_cacheArray removeAllObjects];
     for (NSDictionary *dic in array) {
@@ -111,11 +107,13 @@ static CGFloat CapitalSegmentControlH = 40;
         cell.moneyLabel.text = @"****";
     } else {
         cell.numberLabel.text = model.amount;
-        cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY];
+        cell.moneyLabel.text = [NSString stringWithFormat:@"≈¥%@",model.toCNY?model.toCNY:@"--"];
     }
     UIImage *icon = Base64ImageStr(model.icon);
     if (icon) {
         cell.iconView.image = icon;
+    } else {
+        cell.iconView.image = [UIImage imageNamed:@"currency_btc"];
     }
     
     return cell;
@@ -188,10 +186,21 @@ static CGFloat CapitalSegmentControlH = 40;
 
 /// 更新隐藏0余额按钮状态
 - (void)checkButtonClick:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if ([_delegate respondsToSelector:@selector(updateAmountClick:)]) {
-        [_delegate updateAmountClick:sender.isSelected];
+    _checkButton.selected = !_checkButton.selected;
+    if (_checkButton.selected) {
+        // 隐藏0金额
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (CapitalModel *model in _cacheArray) {
+            if ([model.amount integerValue] > 0) {
+                [tempArray addObject:model];
+            }
+        }
+        _dataArray = [NSMutableArray arrayWithArray:tempArray];
+    } else {
+        // 全部显示
+        _dataArray = [NSMutableArray arrayWithArray:_cacheArray];
     }
+    [_tableView reloadData];
 }
 
 #pragma mark - UISearchBarDelegate

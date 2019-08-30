@@ -139,13 +139,9 @@
 }
 
 - (void)sendCommunityCapitalStatistics {
-    NSDictionary *dict = @{@"pageNo"   : @"1",
-                           @"pageSize" : @"100",
-                           @"nonzero"  : _nonzero,
-                           };
-    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:nil success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
-        NSArray *rows = data[@"data"][@"rows"];
+        NSArray *rows = data[@"data"];
         if ([rows isKindOfClass:[NSArray class]]) {
             [self.dataArray removeAllObjects];
             for (NSDictionary *dic in rows) {
@@ -204,19 +200,6 @@
     MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];
     mentionMoneyViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:mentionMoneyViewVC animated:YES];
-}
-
-- (void)updateAmountClick:(BOOL)isHidden {
-    // 隐藏0金额
-    if (isHidden) {
-        _nonzero = @"1";
-    } else {
-        _nonzero = @"";
-    }
-    [self loading];
-    [_walletView updateBtnStatus:isHidden];
-    [_mineView updateBtnStatus:isHidden];
-    [self sendCommunityCapitalStatistics];
 }
 
 - (void)hiddenAmountClick:(BOOL)isHidden {

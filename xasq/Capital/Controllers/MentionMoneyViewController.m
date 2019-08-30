@@ -113,6 +113,9 @@
     } else if (_amountTF.text.length == 0) {
         [self showMessage:@"请选择转账金额"];
         return;
+    } else if ([_amountTF.text floatValue] > [_amountLB.text floatValue]) {
+        [self showMessage:@"余额不足,请重新输入"];
+        return;
     } else if ([UserDataManager shareManager].usermodel.existFundPassWord == NO) {
         [self showSetPasswordView];
         return;
@@ -144,7 +147,6 @@
     [[NetworkManager sharedManager] postRequest:AcctTransferAccount parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];
         if (data[@"data"][@"success"]) {
-            [self showMessage:@"转出成功"];
             self.amountLB.text = [NSString stringWithFormat:@"%@",data[@"data"][@"balance"]];
             MentionMoneyResultViewController *VC = [[MentionMoneyResultViewController    alloc] init];
             VC.count = self.amountTF.text;

@@ -47,8 +47,6 @@
         _affirmPasswordTF.placeholder = @"请确认支付密码";
         _passwordTF.keyboardType = UIKeyboardTypeNumberPad;
         _affirmPasswordTF.keyboardType = UIKeyboardTypeNumberPad;
-        _passwordTF.secureTextEntry = YES;
-        _affirmPasswordTF.secureTextEntry = YES;
         [_affirmBtn setTitle:@"确认" forState:(UIControlStateNormal)];
     }
     
@@ -158,6 +156,9 @@
         } else if (_affirmPasswordTF.text.length == 0) {
             [self showMessage:@"请输入确认密码"];
             return;
+        } else if (_passwordTF.text.length < 6) {
+            [self showMessage:@"支付密码少于6位数字"];
+            return;
         } else if (![_passwordTF.text isEqualToString:_affirmPasswordTF.text]) {
             [self showMessage:@"密码不一致"];
             return;
@@ -168,7 +169,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [self showMessage:@"修改成功" complete:^{
+            [self showMessage:@"设置成功" complete:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         } failure:^(NSError * _Nonnull error) {

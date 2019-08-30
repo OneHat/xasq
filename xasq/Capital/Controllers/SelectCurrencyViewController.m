@@ -40,11 +40,8 @@
 }
 
 - (void)CommunityCapitalCurrencyBalance {
-    NSDictionary *dict = @{@"pageNo"   : @"1",
-                           @"pageSize" : @"100",
-                           };
-    [[NetworkManager sharedManager] getRequest:CommunityCapitalCurrencyBalance parameters:dict success:^(NSDictionary * _Nonnull data) {
-        NSArray *rows = data[@"data"][@"rows"];
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalCurrencyBalance parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSArray *rows = data[@"data"];
         if ([rows isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in rows) {
                 CapitalModel *model = [CapitalModel modelWithDictionary:dic];
