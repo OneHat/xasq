@@ -60,7 +60,7 @@
     CapitalTopView *topView = [[CapitalTopView alloc] initWithFrame:CGRectMake(0, NavHeight, ScreenWidth, 20)];
     topView.viewStyle = CapitalTopViewHold;
     topView.BTCStr = [NSString stringWithFormat:@"%@ %@",_model.amount,_model.currency];
-    topView.moneyStr = _model.toCNY;
+    topView.moneyStr = _model.toCNY?_model.toCNY:@"--";
     topView.DrawClickBlock = ^{
         //提币
         MentionMoneyViewController *mentionMoneyViewVC = [[MentionMoneyViewController alloc] init];

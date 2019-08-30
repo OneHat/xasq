@@ -87,11 +87,7 @@
 }
 
 - (void)sendCommunityAreaCurrency {
-    NSDictionary *dict = @{@"pageNo"   : @"1",
-                           @"pageSize" : @"100",
-                           @"nonzero"  : @"",
-                           };
-    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:dict success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:CommunityCapitalStatistics parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *rows = data[@"data"];
         if ([rows isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in rows) {
@@ -141,7 +137,10 @@
                 if (i == array.count - 1) {
                     // 直接加最后一条数据
                     [self.dataDict setValue:typeArr forKey:key];
-                    [self.titleArray addObject:key];
+                    if (![key isEqualToString:self.titleArray.lastObject]) {
+                        // 防止出现上拉添加数据中第一天数据跟之前数据的最后一条数据是在同一天
+                        [self.titleArray addObject:key];
+                    }
                 }
             }
         }
@@ -172,6 +171,7 @@
         } else {
             weakSelf.causeType = @"12";
         }
+        weakSelf.pageNo = 1;
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
         [weakSelf communityCapitalWater];
@@ -197,6 +197,7 @@
             CapitalModel *model = weakSelf.currencyArray[index-1];
             weakSelf.currency = model.currency;
         }
+        weakSelf.pageNo = 1;
         [weakSelf.dataDict removeAllObjects];
         [weakSelf.titleArray removeAllObjects];
         [weakSelf communityCapitalWater];
