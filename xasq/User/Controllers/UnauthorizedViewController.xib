@@ -16,7 +16,7 @@
                 <outlet property="documentLB" destination="mt0-8C-M2R" id="x04-o8-Lcz"/>
                 <outlet property="nameTF" destination="a8X-l7-NSr" id="mFl-GP-fb8"/>
                 <outlet property="nextBtn" destination="NVO-c0-wMC" id="Qsa-lf-jP1"/>
-                <outlet property="topHeight" destination="2ix-mE-ZY1" id="CKL-EU-Ut5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="6Nt-NZ-fia"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
