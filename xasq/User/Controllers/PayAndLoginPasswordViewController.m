@@ -137,7 +137,7 @@
         [_codeBtn setTitle:[NSString stringWithFormat:@"%ld秒",self.count]
                   forState:UIControlStateNormal];
         _count --;
-    }else {
+    } else {
         [_codeBtn setTitle:@"获取验证码"
                   forState:UIControlStateNormal];
         _codeBtn.userInteractionEnabled = YES;
@@ -208,9 +208,8 @@
                                @"password"      : [NSString md5:_passwordTF.text],
                                @"validCode"     : _codeTF.text,
                                @"validCodeType" : nameStr,
-                               @"type"          : @"1"
                                };
-        [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
+        [[NetworkManager sharedManager] postRequest:UserFundpwdSet parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
             NSString *msg;
             if ([UserDataManager shareManager].usermodel.existFundPassWord) {

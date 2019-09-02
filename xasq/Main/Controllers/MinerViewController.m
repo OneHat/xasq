@@ -237,7 +237,7 @@
 
 //查询所有邀请
 - (void)getInviteAll  {
-    [[NetworkManager sharedManager] getRequest:UserInviteRecordAll parameters:nil success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityInviteFlow parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"][@"rows"];
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
             self.totalArray = array;
@@ -250,7 +250,7 @@
 
 //查询一级邀请
 - (void)getInviteFirst  {
-    [[NetworkManager sharedManager] getRequest:UserInviteRecordFirst parameters:nil success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityInviteFlowFirst parameters:nil success:^(NSDictionary * _Nonnull data) {
         
         NSArray *array = data[@"data"][@"rows"];
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
@@ -263,7 +263,7 @@
 
 //查询二级邀请
 - (void)getInviteSecond  {
-    [[NetworkManager sharedManager] getRequest:UserInviteRecordSecond parameters:nil success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityInviteFlowSecond parameters:nil success:^(NSDictionary * _Nonnull data) {
         NSArray *array = data[@"data"][@"rows"];
         if (array && [array isKindOfClass:[NSArray class]] && array.count > 0) {
             self.twoArray = array;

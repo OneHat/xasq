@@ -34,26 +34,24 @@ FOUNDATION_EXPORT NSString *const UserEmailRebind;
 FOUNDATION_EXPORT NSString *const UserInviteAddresslist;
 /// 发送邀请短信 POST
 FOUNDATION_EXPORT NSString *const UserInviteSendmessage;
-/// 查询二级邀请算力奖励记录
-FOUNDATION_EXPORT NSString *const UserInviteRecordSecond;
 /// 申请实名认证 POST
 FOUNDATION_EXPORT NSString *const UserIdentityApply;
 /// 手机绑定接口 POST
 FOUNDATION_EXPORT NSString *const UserMobileBind;
 /// 更换绑定手机接口 POST
 FOUNDATION_EXPORT NSString *const UserMobileRebind;
-/// 查询所有邀请算力奖励记录 GET
-FOUNDATION_EXPORT NSString *const UserInviteRecordAll;
-/// 查询一级邀请算力奖励记录 GET
-FOUNDATION_EXPORT NSString *const UserInviteRecordFirst;
 /// 邀请人绑定接口 POST
 FOUNDATION_EXPORT NSString *const UserInviteBind;
 /// 获取邀请码参数接口 GET
 FOUNDATION_EXPORT NSString *const UserInviteQrcode;
-/// 修改(找回)支付密码接口 POST
+/// 重置登录密码 POST
 FOUNDATION_EXPORT NSString *const UserPwdReset;
 /// 修改登录密码接口 POST
 FOUNDATION_EXPORT NSString *const UserPwdLoginModify;
+/// 设置(修改)支付密码 POST
+FOUNDATION_EXPORT NSString *const UserFundpwdSet;
+/// 用户签到 POST
+FOUNDATION_EXPORT NSString *const UserSignIn;
 /// 查询签到信息 GET
 FOUNDATION_EXPORT NSString *const UserSignInfo;
 /// 发送邮箱验证码接口 POST
@@ -70,12 +68,8 @@ FOUNDATION_EXPORT NSString *const UserSetNickname;
 FOUNDATION_EXPORT NSString *const UserSyncWalk;
 /// 验证码校验接口 POST
 FOUNDATION_EXPORT NSString *const UserCheckValidcode;
-/// 算力、等级排行 全用户 GET
-FOUNDATION_EXPORT NSString *const UserInviteRankAllpower;
 /// 邀请人数排行 GET
 FOUNDATION_EXPORT NSString *const UserInviteRankCount;
-/// 算力、等级排行接口(我的好友) GET
-FOUNDATION_EXPORT NSString *const UserInviteRankPower;
 /// 认证信息接口 GET
 FOUNDATION_EXPORT NSString *const UserIdentityDetails;
 
@@ -144,6 +138,16 @@ FOUNDATION_EXPORT NSString *const CommunityStealFlow;
 FOUNDATION_EXPORT NSString *const CommunityPowerUpinfo;
 ///获取连续签到奖励 GET
 FOUNDATION_EXPORT NSString *const CommunitySignReward;
+/// 算力、等级排行接口(我的好友) POST
+FOUNDATION_EXPORT NSString *const CommunityRankFriends;
+/// 算力、等级排行 全用户 POST
+FOUNDATION_EXPORT NSString *const CommunityPowerRank;
+/// 查询所有邀请算力奖励记录 POST
+FOUNDATION_EXPORT NSString *const CommunityInviteFlow;
+/// 查询一级邀请算力奖励记录 POST
+FOUNDATION_EXPORT NSString *const CommunityInviteFlowFirst;
+/// 查询二级邀请算力奖励记录 POST
+FOUNDATION_EXPORT NSString *const CommunityInviteFlowSecond;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

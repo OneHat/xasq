@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) NSArray *dayArray;
 @property (nonatomic, strong) NSArray *weekArray;
+@property (nonatomic, strong) NSDictionary *signDict; // 用户签到天数奖励
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTopHeight;
 
@@ -130,13 +131,13 @@
     _scrollView.delegate = self;
     [backgroundView addSubview:_scrollView];
     
+    [self communitySignReward];
     [self getDayTasks];
     [self getWeekTasks];
 
     [self getSignInfo];
     [self getUserLevelAndPower];
     
-    [self getSignReward];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -155,28 +156,22 @@
         return;
     }
     
-    
-#warning ***** 接口改动
-    self.signButton.selected = YES;
-    
-    int keepSign = [self.signInfo[@"keepSign"] intValue] + 1;
-    NSDictionary *parameters = @{@"days":@(keepSign),@"lastSignDate":self.signInfo[@"signDate"]};
-    [[NetworkManager sharedManager] postRequest:CommunitySignReward parameters:parameters success:^(NSDictionary * _Nonnull data) {
-        
-        NSInteger power = [data[@"data"] integerValue];
-        [self showSignSuccessView:power];
+    [[NetworkManager sharedManager] postRequest:UserSignIn parameters:nil success:^(NSDictionary * _Nonnull data) {
+        self.signButton.selected = YES;
+        NSString *key = [NSString stringWithFormat:@"700%ld",([self.signInfo[@"keepSign"] integerValue]+1)];
+        NSString *power = self.signDict[key];
+        [self showSignSuccessView:[power integerValue]];
         [self updateSignLabel:@"已签到" buttonSelect:YES];
         
-        self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%ld",[self.powInfo[@"userPower"] integerValue] + power];
+        self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%ld",[self.powInfo[@"userPower"] integerValue] + [power integerValue]];
         
         if (self.requestPow) {
             self.requestPow();
         }
-        
     } failure:^(NSError * _Nonnull error) {
-        self.signButton.selected = NO;
         [self showErrow:error];
     }];
+    
     
 }
 
@@ -259,6 +254,21 @@
 }
 
 #pragma mark - 网络请求
+///获取连续签到奖励
+- (void)communitySignReward {
+    [[NetworkManager sharedManager] getRequest:CommunitySignReward parameters:nil success:^(NSDictionary * _Nonnull data) {
+        
+        NSDictionary *dict = data[@"data"];
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            self.signDict = [NSDictionary dictionaryWithDictionary:dict];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        self.signButton.selected = NO;
+        [self showErrow:error];
+    }];
+}
+
 ///获取签到信息
 - (void)getSignInfo {
     [[NetworkManager sharedManager] getRequest:UserSignInfo parameters:nil success:^(NSDictionary * _Nonnull data) {
@@ -315,19 +325,6 @@
         if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
             self.powInfo = powInfo;
             self.powerLabel.text = [NSString stringWithFormat:@"当前算力:%@",powInfo[@"userPower"]];
-        }
-    } failure:^(NSError * _Nonnull error) {
-    }];
-    
-}
-
-///获取连续签到奖励
-- (void)getSignReward {
-    [[NetworkManager sharedManager] getRequest:CommunitySignReward parameters:nil success:^(NSDictionary * _Nonnull data) {
-        
-        NSDictionary *powInfo = data[@"data"];
-        if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
-            NSLog(@"");
         }
     } failure:^(NSError * _Nonnull error) {
     }];

@@ -48,9 +48,6 @@
     }
     NSDictionary *dict = @{@"userName"      : _account,
                            @"password"      : [NSString md5:_passwordTF.text],
-                           @"validCode"     : _code,
-                           @"validCodeType" : nameStr,
-                           @"type"          : @"0"
                            };
     [[NetworkManager sharedManager] postRequest:UserPwdReset parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];

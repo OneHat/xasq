@@ -443,6 +443,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         NSDictionary *powInfo = data[@"data"];
         if (powInfo && [powInfo isKindOfClass:[NSDictionary class]]) {
             self.powerLabel.text = [NSString stringWithFormat:@"算力%@",powInfo[@"userPower"]];
+            self.userLevelLabel.text = powInfo[@"upLevelName"];
+            [UserDataManager shareManager].usermodel.level = powInfo[@"upLevelName"];
         }
     } failure:^(NSError * _Nonnull error) {
     }];
@@ -581,7 +583,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         self.powerLabel.hidden = NO;
         
         self.nicknameLabel.text = [UserDataManager shareManager].usermodel.nickName;
-        self.userLevelLabel.text = [UserDataManager shareManager].usermodel.level;
         return;
     }
     

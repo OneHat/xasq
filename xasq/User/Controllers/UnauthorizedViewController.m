@@ -28,7 +28,7 @@
     
     _nextBtn.layer.cornerRadius = 22.5;
     _nextBtn.layer.masksToBounds = YES;
-    
+    _accountTF.keyboardType = UIKeyboardTypeAlphabet;
 }
 
 - (IBAction)documentTypeClick:(UIButton *)sender {

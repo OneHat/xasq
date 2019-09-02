@@ -155,11 +155,11 @@ const CGFloat RowHeight = 55.0;
     [self resizeFrame];
 }
 
-#pragma mark-
+#pragma mark - 算力等级排行
 - (void)getRankData {
-    NSDictionary *parameters = @{@"pageNo":@(1),@"pageSize":@(10)};
+    NSDictionary *parameters = @{@"pageNo":@(1),@"pageSize":@(10),@"order":@"asc"};
     
-    [[NetworkManager sharedManager] getRequest:UserInviteRankAllpower parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityPowerRank parameters:parameters success:^(NSDictionary * _Nonnull data) {
         
         NSArray *dateList = data[@"data"][@"rows"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
