@@ -191,7 +191,7 @@ static CGFloat CapitalSegmentControlH = 40;
         // 隐藏0金额
         NSMutableArray *tempArray = [NSMutableArray array];
         for (CapitalModel *model in _cacheArray) {
-            if ([model.amount integerValue] > 0) {
+            if ([model.amount floatValue] > 0) {
                 [tempArray addObject:model];
             }
         }
