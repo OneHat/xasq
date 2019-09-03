@@ -55,16 +55,10 @@
                                     <constraint firstItem="4ou-0J-NnI" firstAttribute="centerY" secondItem="ELg-rf-mFE" secondAttribute="centerY" id="eac-Ya-fnq"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="又有好友收了您的资产！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-wx-D07">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="又有好友收了您的资产！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-wx-D07">
                                 <rect key="frame" x="20" y="65" width="337" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="幸运摇钱树 偷了您400聪BTC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga1-Ka-IsV">
-                                <rect key="frame" x="20" y="103" width="173" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x74-lu-W2b" userLabel="LineView">
@@ -102,12 +96,9 @@
                             <constraint firstAttribute="bottom" secondItem="y5a-XG-30M" secondAttribute="bottom" constant="15" id="MPb-Am-YNF"/>
                             <constraint firstItem="y5a-XG-30M" firstAttribute="top" secondItem="x74-lu-W2b" secondAttribute="bottom" constant="15" id="NYj-SG-cWR"/>
                             <constraint firstAttribute="trailing" secondItem="x74-lu-W2b" secondAttribute="trailing" constant="20" id="OUq-h3-Hx8"/>
-                            <constraint firstItem="ga1-Ka-IsV" firstAttribute="top" secondItem="wZ9-wx-D07" secondAttribute="bottom" constant="15" id="Vv5-Nj-87q"/>
-                            <constraint firstItem="x74-lu-W2b" firstAttribute="top" secondItem="ga1-Ka-IsV" secondAttribute="bottom" constant="20" id="WNs-gU-aGX"/>
                             <constraint firstAttribute="trailing" secondItem="ELg-rf-mFE" secondAttribute="trailing" id="WR0-hp-rb6"/>
                             <constraint firstItem="qHc-Yl-UQR" firstAttribute="centerY" secondItem="y5a-XG-30M" secondAttribute="centerY" id="aIU-r6-qXT"/>
                             <constraint firstItem="y5a-XG-30M" firstAttribute="leading" secondItem="NrA-LY-eKX" secondAttribute="leading" constant="20" id="bwc-nE-fp8"/>
-                            <constraint firstItem="ga1-Ka-IsV" firstAttribute="leading" secondItem="wZ9-wx-D07" secondAttribute="leading" id="fd2-Rq-3sH"/>
                             <constraint firstAttribute="trailing" secondItem="wZ9-wx-D07" secondAttribute="trailing" constant="20" id="pn8-2C-NC2"/>
                         </constraints>
                     </view>
@@ -123,7 +114,6 @@
             <connections>
                 <outlet property="backgView" destination="NrA-LY-eKX" id="7gS-dh-6qO"/>
                 <outlet property="iconImageView" destination="rdT-F0-Uue" id="9YW-0G-kta"/>
-                <outlet property="subTitleLabel" destination="ga1-Ka-IsV" id="CDh-BX-SVv"/>
                 <outlet property="timeLabel" destination="PDZ-A6-qfe" id="KzG-la-v4j"/>
                 <outlet property="titleLabel" destination="wZ9-wx-D07" id="4fr-aU-rL8"/>
                 <outlet property="typeLabel" destination="4ou-0J-NnI" id="dDo-gb-DDu"/>

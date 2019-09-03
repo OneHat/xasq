@@ -7,9 +7,9 @@
 //
 
 #import "ChangePhoneAndEmailViewController.h"
-#import "ReplacePhoneAndEmailViewController.h"
-#import "BindPhoneAndEmailViewController.h"
 #import "UIViewController+ActionSheet.h"
+#import "SetReplacePhoneViewController.h"
+#import "SetReplaceEmailViewController.h"
 
 @interface ChangePhoneAndEmailViewController ()
 
@@ -47,21 +47,7 @@
                 if (index == 0) {
                     [self dismissViewControllerAnimated:NO completion:nil];
                 } else {
-                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-                    VC.type = 1;
-                    [self dismissViewControllerAnimated:NO completion:nil];
-                    [self.navigationController pushViewController:VC animated:YES];
-                }
-            }];
-            return;
-        }
-    } else {
-        if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
-            [self alertWithTitle:@"温馨提示" message:@"请先绑定手机号" items:@[@"取消", @"去绑定"] action:^(NSInteger index) {
-                if (index == 0) {
-                    [self dismissViewControllerAnimated:NO completion:nil];
-                } else {
-                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+                    SetReplaceEmailViewController *VC = [[SetReplaceEmailViewController alloc] init];
                     VC.type = 0;
                     [self dismissViewControllerAnimated:NO completion:nil];
                     [self.navigationController pushViewController:VC animated:YES];
@@ -69,10 +55,29 @@
             }];
             return;
         }
+        // 更换绑定手机
+        SetReplacePhoneViewController *VC = [[SetReplacePhoneViewController alloc] init];
+        VC.type = 1;
+        [self.navigationController pushViewController:VC animated:YES];
+    } else {
+        if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
+            [self alertWithTitle:@"温馨提示" message:@"请先绑定手机号" items:@[@"取消", @"去绑定"] action:^(NSInteger index) {
+                if (index == 0) {
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                } else {
+                    SetReplacePhoneViewController *VC = [[SetReplacePhoneViewController alloc] init];
+                    VC.type = 0;
+                    [self dismissViewControllerAnimated:NO completion:nil];
+                    [self.navigationController pushViewController:VC animated:YES];
+                }
+            }];
+            return;
+        }
+        // 更换绑定邮箱
+        SetReplaceEmailViewController *VC = [[SetReplaceEmailViewController alloc] init];
+        VC.type = 1;
+        [self.navigationController pushViewController:VC animated:YES];
     }
-    ReplacePhoneAndEmailViewController *VC = [[ReplacePhoneAndEmailViewController alloc] init];
-    VC.type = _type;
-    [self.navigationController pushViewController:VC animated:YES];
 }
 
 

@@ -87,18 +87,20 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    NSString *urlStr,*nameStr;
+    NSString *urlStr,*nameStr,*templateCode;
     if ([_accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         // 邮箱登录
         urlStr = UserSendEmail;
         nameStr = @"email";
+        templateCode = @"user_7";
     } else {
         // 手机号登录
         urlStr = UserSendLoginMobile;
         nameStr = @"mobile";
+        templateCode = @"user_6";
     }
-    NSDictionary *dict = @{nameStr : _accountTF.text,
-                           @"codeLogo" : @"14"
+    NSDictionary *dict = @{nameStr         : _accountTF.text,
+                           @"templateCode" : templateCode
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];

@@ -63,16 +63,19 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    NSString *urlStr,*nameStr;
+    NSString *urlStr,*nameStr,*templateCode;
+;
     if (_type == 0) {
         urlStr = UserSendLoginMobile;
         nameStr = @"mobile";
+        templateCode = @"user_8";
     } else {
         urlStr = UserSendEmail;
         nameStr = @"email";
+        templateCode = @"user_9";
     }
-    NSDictionary *dict = @{nameStr : _accountTF.text,
-                           @"codeLogo" : @"10",
+    NSDictionary *dict = @{nameStr         : _accountTF.text,
+                           @"templateCode" : templateCode,
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];
@@ -119,16 +122,18 @@
         return;
     }
     [self loading];
-    NSString *nameStr;
+    NSString *nameStr,*templateCode;
     if (_type == 0) {
         nameStr = @"mobile";
+        templateCode = @"user_8";
     } else {
         nameStr = @"email";
+        templateCode = @"user_9";
     }
     NSDictionary *dict = @{@"loginName"         : _accountTF.text,
                            @"validCode"         : _codeTF.text,
                            @"validCodeType"     : _codeTF.text,
-                           @"codeLogo"          : @"2"
+                           @"templateCode"      : templateCode
                            };
     [[NetworkManager sharedManager] postRequest:UserCheckValidcode parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self hideHUD];

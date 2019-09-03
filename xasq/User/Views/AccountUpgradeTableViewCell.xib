@@ -85,6 +85,10 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="backgView" destination="Tee-sw-J5Y" id="jtv-CG-OpY"/>
+                <outlet property="iconImageView" destination="DaU-zr-yng" id="2iy-eg-pw2"/>
+                <outlet property="timeLabel" destination="tQm-6L-EI3" id="Gzx-tm-iic"/>
+                <outlet property="titleLabel" destination="sCf-6W-0C2" id="955-v3-sfw"/>
+                <outlet property="typeLabel" destination="bKM-m1-0fS" id="HoB-2g-6YK"/>
             </connections>
             <point key="canvasLocation" x="48.550724637681164" y="31.473214285714285"/>
         </tableViewCell>

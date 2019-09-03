@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AccountUpgradeTableViewCell : UITableViewCell
 
 
-
+@property (nonatomic, strong) NSDictionary *messageInfo;
 
 @end
 

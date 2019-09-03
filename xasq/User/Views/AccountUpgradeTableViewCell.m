@@ -11,7 +11,11 @@
 @interface AccountUpgradeTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
 @implementation AccountUpgradeTableViewCell
@@ -27,6 +31,22 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setMessageInfo:(NSDictionary *)messageInfo {
+    _messageInfo = messageInfo;
+    
+    self.typeLabel.text = @"账户升级";
+    NSDate *time = [NSDate stringTransferToDate:messageInfo[@"createdOn"]];
+    BOOL isDay = [NSDate compareDate:time];
+    if (isDay) {
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(12, 5)];
+        self.timeLabel.text = timeStr;
+    } else {
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(6, 11)];
+        self.timeLabel.text = timeStr;
+    }
+    self.titleLabel = messageInfo[@"title"];
 }
 
 @end

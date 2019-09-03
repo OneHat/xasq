@@ -8,10 +8,11 @@
 
 #import "AccountSetViewController.h"
 #import "AccountSetTableViewCell.h"
-#import "BindPhoneAndEmailViewController.h"
 #import "PayAndLoginPasswordViewController.h"
 #import "ChangePhoneAndEmailViewController.h"
 #import "UIViewController+ActionSheet.h"
+#import "SetReplacePhoneViewController.h"
+#import "SetReplaceEmailViewController.h"
 
 @interface AccountSetViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -164,8 +165,8 @@
             VC.type = 1;
             [self.navigationController pushViewController:VC animated:YES];
         } else {
-            BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-            VC.type = 1; // 绑定邮箱
+            SetReplaceEmailViewController *VC = [[SetReplaceEmailViewController alloc] init];
+            VC.type = 0; // 绑定邮箱
             [self.navigationController pushViewController:VC animated:YES];
         }
     } else if (indexPath.row == 3) {
@@ -174,7 +175,7 @@
             VC.type = 0;
             [self.navigationController pushViewController:VC animated:YES];
         } else {
-            BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
+            SetReplacePhoneViewController *VC = [[SetReplacePhoneViewController alloc] init];
             VC.type = 0; // 绑定手机
             [self.navigationController pushViewController:VC animated:YES];
         }

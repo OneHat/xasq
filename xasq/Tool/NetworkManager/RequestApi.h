@@ -28,7 +28,7 @@ FOUNDATION_EXPORT NSString *const UserHomePageInfo;
 FOUNDATION_EXPORT NSString *const UserGoogleBind;
 /// 邮箱绑定 POST
 FOUNDATION_EXPORT NSString *const UserEmailBind;
-/// 邮箱绑定 POST
+/// 更换邮箱绑定 POST
 FOUNDATION_EXPORT NSString *const UserEmailRebind;
 /// 查询用户通讯录 GET
 FOUNDATION_EXPORT NSString *const UserInviteAddresslist;

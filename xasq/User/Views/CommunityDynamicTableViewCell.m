@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
 
 @end
@@ -41,11 +40,16 @@
     _messageInfo = messageInfo;
     
     self.typeLabel.text = @"社区动态";
-    self.timeLabel = messageInfo[@"createdOn"];
-    
-    self.titleLabel = messageInfo[@"content"][@"title"];
-    self.subTitleLabel = messageInfo[@"content"][@"desc"];
-    
+    NSDate *time = [NSDate stringTransferToDate:messageInfo[@"createdOn"]];
+    BOOL isDay = [NSDate compareDate:time];
+    if (isDay) {
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(11, 5)];
+        self.timeLabel.text = timeStr;
+    } else {
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(5, 11)];
+        self.timeLabel.text = timeStr;
+    }
+    self.titleLabel = messageInfo[@"title"];
 }
 
 @end

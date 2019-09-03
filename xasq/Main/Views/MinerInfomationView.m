@@ -66,7 +66,6 @@
     self.rateViewLeft.constant = totalWidth * rate - 40;
     
     self.nameLabel.text = [UserDataManager shareManager].usermodel.nickName;
-    self.levelLabel.text = [UserDataManager shareManager].usermodel.level;
 }
 
 - (void)setUserInfo:(NSDictionary *)userInfo {
@@ -74,7 +73,7 @@
     
     self.leftLVLabel.text = _userInfo[@"userLevelName"];
     self.rightLVLabel.text = _userInfo[@"upLevelName"];
-    
+    self.levelLabel.text = _userInfo[@"userLevelName"];
     NSInteger currentPow = [_userInfo[@"userPower"] integerValue];
     NSInteger nextPow = [_userInfo[@"upPower"] integerValue];
     

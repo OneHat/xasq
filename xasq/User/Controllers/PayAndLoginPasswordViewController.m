@@ -8,7 +8,8 @@
 
 #import "PayAndLoginPasswordViewController.h"
 #import "UIViewController+ActionSheet.h"
-#import "BindPhoneAndEmailViewController.h"
+#import "SetReplaceEmailViewController.h"
+#import "SetReplacePhoneViewController.h"
 
 @interface PayAndLoginPasswordViewController ()
 
@@ -71,20 +72,25 @@
 
 #pragma mark - 发送验证码
 - (IBAction)codeBtnClick:(UIButton *)sender {
-    NSString *urlStr,*nameStr,*nameValue;
+    NSString *urlStr,*nameStr,*nameValue,*templateCode;
     if ([_channelLB.text isEqualToString:@"手机号"]) {
         if ([UserDataManager shareManager].usermodel.mobile.length == 0) {
             [self alertWithTitle:@"温馨提示" message:@"请先绑定手机号" items:@[@"取消", @"去绑定"] action:^(NSInteger index) {
                 if (index == 0) {
                     [self dismissViewControllerAnimated:NO completion:nil];
                 } else {
-                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-                    VC.type = 0; // 绑定邮箱
+                    SetReplacePhoneViewController *VC = [[SetReplacePhoneViewController alloc] init];
+                    VC.type = 0; // 绑定手机
                     [self dismissViewControllerAnimated:NO completion:nil];
                     [self.navigationController pushViewController:VC animated:YES];
                 }
             }];
             return;
+        }
+        if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+            templateCode = @"user_17";
+        } else {
+            templateCode = @"user_14";
         }
         urlStr = UserSendMobile;
         nameStr = @"mobile";
@@ -95,22 +101,27 @@
                 if (index == 0) {
                     [self dismissViewControllerAnimated:NO completion:nil];
                 } else {
-                    BindPhoneAndEmailViewController *VC = [[BindPhoneAndEmailViewController alloc] init];
-                    VC.type = 1; // 绑定邮箱
+                    SetReplaceEmailViewController *VC = [[SetReplaceEmailViewController alloc] init];
+                    VC.type = 0; // 绑定邮箱
                     [self dismissViewControllerAnimated:NO completion:nil];
                     [self.navigationController pushViewController:VC animated:YES];
                 }
             }];
             return;
         }
+        if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+            templateCode = @"user_18";
+        } else {
+            templateCode = @"user_15";
+        }
         urlStr = UserSendEmail;
         nameStr = @"email";
         nameValue = [UserDataManager shareManager].usermodel.email;
     }
     sender.userInteractionEnabled = NO;
-    NSDictionary *dict = @{nameStr     : nameValue,
-                           @"codeLogo" : @"2",
-                           @"areaCode" : [UserDataManager shareManager].usermodel.areaCode
+    NSDictionary *dict = @{nameStr         : nameValue,
+                           @"templateCode" : templateCode,
+                           @"areaCode"     : [UserDataManager shareManager].usermodel.areaCode
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"验证码发送成功"];

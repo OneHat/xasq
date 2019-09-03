@@ -36,6 +36,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.rowHeight = 210;
     _tableView.estimatedRowHeight = 180;
     _tableView.backgroundColor = HexColor(@"#F3F3F3");
     _tableView.tableFooterView = [[UIView alloc] init];
@@ -64,7 +65,7 @@
 
 #pragma mark -
 - (void)getMessages {
-    NSDictionary *parameters = @{@"pageNo":@(1)};
+    NSDictionary *parameters = @{@"pageNo":[NSString stringWithFormat:@"%ld",_page]};
     [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
         [self.tableView endRefresh];
         
@@ -104,23 +105,14 @@
     NSDictionary *info = self.messages[indexPath.row];
     
     if ([info[@"type"] integerValue] == 1003) {
-        CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicCell"];
+        CommunityDynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityDynamicTableViewCell"];
         if (cell == nil) {
-            cell = [[NSBundle mainBundle] loadNibNamed:@"CommunityDynamicTableViewCell" owner:nil options:nil].firstObject;
+            cell = [[[UINib nibWithNibName:@"CommunityDynamicTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
         cell.messageInfo = info;
         
-        return cell;
-        
-        
-    } else if ([info[@"type"] integerValue] == 1002) {
-        AccountUpgradeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUpgradeTableViewCell"];
-        if (cell == nil) {
-            cell = [[[UINib nibWithNibName:@"AccountUpgradeTableViewCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
         return cell;
         
     } else {
@@ -130,6 +122,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
+        cell.messageInfo = info;
         return cell;
     }
 }

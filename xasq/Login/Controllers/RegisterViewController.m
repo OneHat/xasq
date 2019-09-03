@@ -129,16 +129,18 @@
         return;
     }
     sender.userInteractionEnabled = NO;
-    NSString *urlStr,*nameStr;
+    NSString *urlStr,*nameStr,*templateCode;
     if (_type == 0) {
         urlStr = UserSendMobile;
         nameStr = @"mobile";
+        templateCode = @"user_2";
     } else {
         urlStr = UserSendEmail;
         nameStr = @"email";
+        templateCode = @"user_3";
     }
     NSDictionary *dict = @{nameStr : _accountTF.text,
-                           @"codeLogo" : @"0",
+                           @"templateCode" : templateCode,
                            @"areaCode" : _areaCodeLB.text
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {
