@@ -93,7 +93,8 @@ FOUNDATION_EXPORT NSString *const OperationUploadImage;
 //********************************消息模块
 ///站内信列表 POST
 FOUNDATION_EXPORT NSString *const MessageSysList;
-
+///用户未读消息数量 GET
+FOUNDATION_EXPORT NSString *const MessageSysUnreadNum;
 
 //********************************社区模块
 ///获取用户好友社区资产动态（领币，偷币，奖励…）Get

@@ -93,6 +93,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:_hideNavBarAnimation];
     _hideNavBarAnimation = YES;
+    [self getMessageSysUnreadNum];
     if ([UserDataManager shareManager].userId) {
         [self getUserinfoData];
     }
@@ -127,6 +128,24 @@
         }
     } failure:^(NSError * _Nonnull error) {
 //        [self showErrow:error];
+    }];
+}
+
+// 获取消息未读数量
+- (void)getMessageSysUnreadNum {
+    [[NetworkManager sharedManager] getRequest:MessageSysUnreadNum parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSDictionary *dict = data[@"data"];
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            NSInteger num = [dict[@"num"] integerValue];
+            if (num > 0) {
+                self.headerView.countLB.hidden = NO;
+                self.headerView.countLB.text = [NSString stringWithFormat:@"%@",dict[@"num"]];
+            } else {
+                self.headerView.countLB.hidden = YES;
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
 }
 

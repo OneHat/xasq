@@ -40,10 +40,10 @@
     NSDate *time = [NSDate stringTransferToDate:messageInfo[@"createdOn"]];
     BOOL isDay = [NSDate compareDate:time];
     if (isDay) {
-        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(12, 5)];
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(11, 5)];
         self.timeLabel.text = timeStr;
     } else {
-        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(6, 11)];
+        NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(5, 11)];
         self.timeLabel.text = timeStr;
     }
     self.titleLabel = messageInfo[@"title"];

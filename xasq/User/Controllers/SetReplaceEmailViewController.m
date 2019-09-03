@@ -183,7 +183,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserEmailBind parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [UserDataManager shareManager].usermodel.mobile = self.accountTF.text;
+            [UserDataManager shareManager].usermodel.email = self.accountTF.text;
             [self showMessage:@"绑定成功" complete:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
@@ -203,7 +203,7 @@
                                };
         [[NetworkManager sharedManager] postRequest:UserEmailRebind parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
-            [UserDataManager shareManager].usermodel.mobile = self.accountTF.text;
+            [UserDataManager shareManager].usermodel.email = self.accountTF.text;
             [self showMessage:@"更换新邮箱成功" complete:^{
                 NSArray *vcArr = self.navigationController.viewControllers;
                 UIViewController *VC = vcArr[vcArr.count - 3];

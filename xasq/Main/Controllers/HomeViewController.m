@@ -63,6 +63,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 @property (weak, nonatomic) IBOutlet UIImageView *powerImageView;
 @property (weak, nonatomic) IBOutlet UILabel *powerLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *msgCountLB; // 消息未读显示
 
 //隐藏导航栏时，是否需要动画
 //从子页面需要，防止右滑返回时navbar不协调
@@ -103,6 +104,8 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    _msgCountLB.layer.cornerRadius = 9;
+    _msgCountLB.layer.masksToBounds = YES;
                                  
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
@@ -197,29 +200,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     _hideNavBarAnimation = YES;
     
     [self reloadHomeView];
-    
-    /**
-    if ([ApplicationData shareData].showNewVersion) {
-        UpdateInfoObject *updateInfo = [ApplicationData shareData].updateInfo;
-        NSArray *items = (updateInfo.upgradeDesc ? @[@"确定"] : @[@"取消",@"确定"]);
-        
-        [self alertWithTitle:@"提示"
-                     message:updateInfo.upgradeDesc
-                       items:items
-                      action:^(NSInteger index) {
-                          if (index == 0 && !updateInfo.forceUpgrade) {
-                              [self dismissViewControllerAnimated:NO completion:nil];
-                              return;
-                          }
-                          
-//                          NSURL *url = [NSURL URLWithString:updateInfo.download];
-                          NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
-                          [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-                          }];
-                          
-                      }];
-    }
-    */
+    [self getMessageSysUnreadNum];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -448,6 +429,24 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     } failure:^(NSError * _Nonnull error) {
     }];
     
+}
+
+// 获取消息未读数量
+- (void)getMessageSysUnreadNum {
+    [[NetworkManager sharedManager] getRequest:MessageSysUnreadNum parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSDictionary *dict = data[@"data"];
+        if ([dict isKindOfClass:[NSDictionary class]]) {
+            NSInteger num = [dict[@"num"] integerValue];
+            if (num > 0) {
+                self.msgCountLB.hidden = NO;
+                self.msgCountLB.text = [NSString stringWithFormat:@"%@",dict[@"num"]];
+            } else {
+                self.msgCountLB.hidden = YES;
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 #pragma mark - 本页面按钮事件

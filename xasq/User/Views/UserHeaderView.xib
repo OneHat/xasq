@@ -34,7 +34,7 @@
                         <constraint firstAttribute="width" constant="15" id="nuv-g1-vRf"/>
                         <constraint firstAttribute="height" constant="15" id="qMt-CD-6iN"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>

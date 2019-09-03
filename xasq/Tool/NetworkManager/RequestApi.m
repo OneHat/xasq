@@ -49,6 +49,7 @@ NSString *const OperationUploadImage = @"oper/upload/image";
 
 
 NSString *const MessageSysList = @"msg/sys/list";
+NSString *const MessageSysUnreadNum = @"msg/sys/unread/num";
 
 
 NSString *const CommunityCapitalWaterDynamics = @"comm/capital/water/dynamics";
