@@ -14,11 +14,8 @@
 @interface PayAndLoginPasswordViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
-@property (weak, nonatomic) IBOutlet UIView *oldView;  // 旧密码背景View
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineViewTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *affirmBtnTop;
 
-@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTF; // 旧密码
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;  // 新密码
 @property (weak, nonatomic) IBOutlet UITextField *affirmPasswordTF; // 确认密码
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
@@ -36,7 +33,6 @@
     [super viewDidLoad];
         if (_type == 0) {
         self.title = @"修改登录密码";
-            _affirmBtnTop.constant = 50;
     } else {
         if ([UserDataManager shareManager].usermodel.existFundPassWord) {
             self.title = @"修改支付密码";
@@ -44,10 +40,6 @@
             self.title = @"设置支付密码";
         }
         _titleLB.text = @"支付密码为6位数字密码";
-        _oldView.hidden = YES;
-        _passwordView.hidden = NO;
-        _lineViewTop.constant = 15;
-        _affirmBtnTop.constant = 180;
         _passwordTF.placeholder = @"请输入支付密码";
         _affirmPasswordTF.placeholder = @"请确认支付密码";
         _passwordTF.keyboardType = UIKeyboardTypeNumberPad;
@@ -162,10 +154,7 @@
 - (IBAction)affirmBtnClick:(UIButton *)sender {
     if (_type == 0) {
         // 修改登录密码
-        if (_oldPasswordTF.text.length == 0) {
-            [self showMessage:@"请输入旧密码"];
-            return;
-        } else if (_passwordTF.text.length == 0) {
+        if (_passwordTF.text.length == 0) {
             [self showMessage:@"请输入新密码"];
             return;
         } else if (_affirmPasswordTF.text.length == 0) {
@@ -179,7 +168,7 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"oldPassword" : [NSString md5:_oldPasswordTF.text],
+        NSDictionary *dict = @{@"oldPassword" : [NSString md5:_passwordTF.text],
                                @"newPassword" : [NSString md5:_passwordTF.text],
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
