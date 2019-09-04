@@ -164,7 +164,9 @@ static char AlertBlockKey;
     }
     
     //弹出controller
-    UIViewController *contentViewController = [self customerController];
+    UIViewController *contentViewController = [[UIViewController alloc] init];
+    contentViewController.view.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+    contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     //标题高度
     title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
