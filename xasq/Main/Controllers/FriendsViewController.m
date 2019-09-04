@@ -84,7 +84,7 @@
 - (void)getFriendList {
     
     NSDictionary *parameters = @{@"pageNo":@(self.page)};
-    [[NetworkManager sharedManager] postRequest:UserRankFriends parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] postRequest:CommunityRankFriends parameters:parameters success:^(NSDictionary * _Nonnull data) {
         [self.tableView endRefresh];
         
         self.totalPage = [data[@"data"][@"totalPage"] integerValue];
@@ -128,6 +128,7 @@
     
     FriendMainViewController *friendVC = [[FriendMainViewController alloc] init];
     friendVC.userId = model.userId;
+    friendVC.userName = model.userName;
     [self.navigationController pushViewController:friendVC animated:YES];
 }
 

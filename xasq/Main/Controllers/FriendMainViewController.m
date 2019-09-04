@@ -36,6 +36,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    
 //    //背景
 //    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 1.25)];
 //    imageView.image = [UIImage imageNamed:@"home_topBackground"];
@@ -74,6 +75,14 @@
     [backButton addTarget:self action:@selector(leftBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
     
+    UILabel *titleLB = [[UILabel alloc] initWithFrame:CGRectMake(55, StatusBarHeight, ScreenWidth - 70, 44)];
+    if (_userName) {
+        titleLB.text = [NSString stringWithFormat:@"%@的矿区",_userName];
+    }
+    titleLB.textColor = [UIColor whiteColor];
+    titleLB.font = ThemeFontText;
+    [self.view addSubview:titleLB];
+
     self.titles = [NSMutableArray array];
     self.newsInfo = [NSMutableDictionary dictionary];
     

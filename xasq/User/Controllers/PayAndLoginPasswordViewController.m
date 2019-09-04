@@ -116,8 +116,7 @@
         nameValue = [UserDataManager shareManager].usermodel.email;
     }
     sender.userInteractionEnabled = NO;
-    NSDictionary *dict = @{nameStr         : nameValue,
-                           @"templateCode" : templateCode,
+    NSDictionary *dict = @{@"templateCode" : templateCode,
                            @"areaCode"     : [UserDataManager shareManager].usermodel.areaCode
                            };
     [[NetworkManager sharedManager] postRequest:urlStr parameters:dict success:^(NSDictionary * _Nonnull data) {

@@ -39,7 +39,6 @@ NSString *const UserSyncWalk = @"user/syncWalk";
 NSString *const UserCheckValidcode = @"user/check/validcode";
 NSString *const UserInviteRankCount = @"user/invite/rank/count";
 NSString *const UserIdentityDetails = @"user/identity/details";
-NSString *const UserRankFriends = @"user/power/rank/friends";
 
 NSString *const AcctTransferAccount = @"acct/transfer/account";
 
@@ -80,6 +79,7 @@ NSString *const CommunityInviteFlowFirst = @"comm/invite/flow/first";
 NSString *const CommunityInviteFlowSecond = @"comm/invite/flow/second";
 NSString *const CommunityPowerRank = @"comm/all/power/rank";
 NSString *const CommunityPowerRankMyself = @"comm/power/rank/myself";
+NSString *const CommunityRankFriends = @"comm/power/rank/friends";
 
 NSInteger const E010141 = 10141;
 NSInteger const E010145 = 10145;
