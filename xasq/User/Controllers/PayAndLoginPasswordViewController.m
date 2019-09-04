@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *affirmPasswordTF; // 确认密码
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
 @property (weak, nonatomic) IBOutlet UILabel *channelLB;
+@property (weak, nonatomic) IBOutlet UILabel *typeNameLB; // 手机号或邮箱
+
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn; // 验证码Btn
 @property (weak, nonatomic) IBOutlet UITextField *codeTF; // 验证码
 @property (weak, nonatomic) IBOutlet UIButton *affirmBtn; // 确认按钮
@@ -49,6 +51,7 @@
     
     _affirmBtn.layer.cornerRadius = 22.5;
     _affirmBtn.layer.masksToBounds = YES;
+    self.typeNameLB.text = [UserDataManager shareManager].usermodel.mobile;
 }
 
 #pragma mark - 选择渠道
@@ -56,8 +59,10 @@
     [self actionSheetWithItems:@[@"手机号", @"邮箱"] complete:^(NSInteger index) {
         if (index == 0) {
             self.channelLB.text = @"手机号";
+            self.typeNameLB.text = [UserDataManager shareManager].usermodel.mobile;
         } else {
             self.channelLB.text = @"邮箱";
+            self.typeNameLB.text = [UserDataManager shareManager].usermodel.email;
         }
     }];
 }
