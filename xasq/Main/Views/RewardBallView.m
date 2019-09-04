@@ -8,7 +8,7 @@
 
 #import "RewardBallView.h"
 
-const CGFloat ViewWidth = 60;
+const CGFloat ViewWidth = 70;
 
 @interface RewardBallView ()
 
@@ -42,18 +42,18 @@ const CGFloat ViewWidth = 60;
     self.background.image = [UIImage imageNamed:@"ball_white"];
     [self addSubview:self.background];
     
-    UIImageView *BTC = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 10.5, 15)];
+    UIImageView *BTC = [[UIImageView alloc] initWithFrame:CGRectMake(18, 15, 10.5, 15)];
     BTC.image = [UIImage imageNamed:@"ball_reward"];
     [self addSubview:BTC];
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 10, 40, 20)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 15, 40, 20)];
     nameLabel.text = @"BTC";
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.font = [UIFont boldSystemFontOfSize:11];
     [self addSubview:nameLabel];
     _nameLabel = nameLabel;
     
-    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, ViewWidth, 40)];
+    UILabel *rewardLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 22, ViewWidth, 40)];
     rewardLabel.numberOfLines = 0;
     rewardLabel.textAlignment = NSTextAlignmentCenter;
     rewardLabel.text = @"0.0008BTC";
@@ -84,12 +84,12 @@ const CGFloat ViewWidth = 60;
     
     if (_rewardModel.status == 10) {
         //不可偷取
-        self.alpha = 0.8;
+        self.alpha = 0.5;
         self.button.enabled = NO;
 
     } else if (_rewardModel.status == 0) {
         //未成熟
-        self.alpha = 0.8;
+        self.alpha = 0.5;
         self.button.enabled = NO;
         self.rewardLabel.text = @"挖矿中";
 
@@ -132,7 +132,7 @@ const CGFloat ViewWidth = 60;
     }
     
     //未成熟
-    self.alpha = 0.8;
+    self.alpha = 0.5;
     self.button.enabled = NO;
     
     int duration = self.rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];

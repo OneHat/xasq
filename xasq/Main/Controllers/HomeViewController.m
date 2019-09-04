@@ -200,7 +200,11 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     _hideNavBarAnimation = YES;
     
     [self reloadHomeView];
-    [self getMessageSysUnreadNum];
+    if (![UserDataManager shareManager].userId) {
+        _msgCountLB.hidden = YES;
+    }  else {
+        [self getMessageSysUnreadNum];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

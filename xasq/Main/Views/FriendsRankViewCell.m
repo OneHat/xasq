@@ -40,7 +40,7 @@
     
     [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_friendInfo.headImg] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     
-    self.rankLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.ranking];
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.rank];
     
     self.nameLabel.text = _friendInfo.nickName;
     self.typeLabel.text = _friendInfo.countryName;

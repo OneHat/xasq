@@ -95,7 +95,8 @@ FOUNDATION_EXPORT NSString *const OperationUploadImage;
 FOUNDATION_EXPORT NSString *const MessageSysList;
 ///用户未读消息数量 GET
 FOUNDATION_EXPORT NSString *const MessageSysUnreadNum;
-
+///用户已读取消息接口 GET
+FOUNDATION_EXPORT NSString *const MessageSysRead;
 //********************************社区模块
 ///获取用户好友社区资产动态（领币，偷币，奖励…）Get
 FOUNDATION_EXPORT NSString *const CommunityCapitalWaterDynamics;

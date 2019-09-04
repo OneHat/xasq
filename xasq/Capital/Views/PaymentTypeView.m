@@ -73,10 +73,10 @@
     _type = type;
     NSInteger height = 235;
     if (_type == 2) {
-        height = 85;
-        _titleArray = @[@"全部",@"奖励", @"提币"];
+        height = 235;
+        _titleArray = @[@"全部",@"任务奖励", @"提币", @"挖矿收益", @"团收益"];
         if (!_iconArray) {
-            _iconArray = @[@"capital_all",@"capital_reward_top", @"capital_mention_money"];
+            _iconArray = @[@"capital_all",@"capital_reward_top", @"capital_extract_top", @"capital_dig_top", @"capital_group_top"];
         }
     }
     _collectionView.frame = CGRectMake(0, 0, self.frame.size.width, height);

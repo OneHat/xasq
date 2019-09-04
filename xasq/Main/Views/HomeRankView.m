@@ -175,7 +175,10 @@ const CGFloat RowHeight = 55.0;
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
-        
+        self.powerRankDatas = nil;
+        self.levelRankDatas = nil;
+        [self.powerRankView reloadData];
+        [self.levelRankView reloadData];
         self.powerRankDatas = [UserRankModel modelWithArray:dateList];
         self.levelRankDatas = self.powerRankDatas;
         
@@ -190,7 +193,8 @@ const CGFloat RowHeight = 55.0;
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
             return;
         }
-        
+        self.inviteRankDatas = nil;
+        [self.inviteRankView reloadData];
         self.inviteRankDatas = [UserRankModel modelWithArray:dateList];
 
     } failure:^(NSError * _Nonnull error){
@@ -204,13 +208,13 @@ const CGFloat RowHeight = 55.0;
     NSInteger currentIndex = self.segmentedControl.selectIndex;
     
     if (currentIndex == 0) {
-        lastModel = self.powerRankDatas.lastObject;
+        lastModel = _powerRankDatas.lastObject;
         
     } else if (currentIndex == 1) {
-        lastModel = self.levelRankDatas.lastObject;
+        lastModel = _levelRankDatas.lastObject;
         
     } else if (currentIndex == 2) {
-        lastModel = self.inviteRankDatas.lastObject;
+        lastModel = _inviteRankDatas.lastObject;
         
     }
     if (!lastModel) {
@@ -221,7 +225,7 @@ const CGFloat RowHeight = 55.0;
     BOOL flag = NO;//是否需要footerView
     if ([UserDataManager shareManager].userId) {
         //已经登录
-        if (lastModel.ranking > 10) {
+        if (lastModel.rank > 10) {
             //自己不在前10名，需要在底部显示(不登录时，只有10条数据)
             viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
             flag = YES;
@@ -280,14 +284,6 @@ const CGFloat RowHeight = 55.0;
 
 #pragma mark -
 - (void)reloadViewData {
-    
-    self.powerRankDatas = nil;
-    self.powerRankDatas = nil;
-    self.powerRankDatas = nil;
-    
-    [self.powerRankView reloadData];
-    [self.levelRankView reloadData];
-    [self.inviteRankView reloadData];
     
     [self getRankData];
 }

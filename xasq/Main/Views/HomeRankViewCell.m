@@ -63,10 +63,10 @@
         self.selfImageView.hidden = NO;
     }
     
-    self.rankLabel.text = [NSString stringWithFormat:@"%ld",self.rankInfo.ranking];
+    self.rankLabel.text = [NSString stringWithFormat:@"%ld",self.rankInfo.rank];
     self.rankImageView.hidden = NO;
     
-    switch (self.rankInfo.ranking) {
+    switch (self.rankInfo.rank) {
         case 1:{
             self.rankImageView.image = [UIImage imageNamed:@"rank_first"];
         }

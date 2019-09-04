@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 ///排序号
-@property (nonatomic, assign) NSInteger ranking;
+@property (nonatomic, assign) NSInteger rank;
 
 ///用户算力
 @property (nonatomic, assign) NSInteger power;

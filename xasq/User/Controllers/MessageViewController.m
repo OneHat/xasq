@@ -127,4 +127,15 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *info = self.messages[indexPath.row];
+    NSDictionary *dict = @{@"id" : info[@"id"],};
+    
+    [[NetworkManager sharedManager] postRequest:MessageSysRead parameters:dict success:^(NSDictionary * _Nonnull data) {
+        NSLog(@"发送成功");
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 @end
