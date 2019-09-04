@@ -168,8 +168,12 @@
             weakSelf.causeType = @"";
         } else if (index == 1) {
             weakSelf.causeType = @"14";
-        } else {
+        } else if (index == 2) {
             weakSelf.causeType = @"12";
+        } else if (index == 3) {
+            weakSelf.causeType = @"1516";
+        } else if (index == 4) {
+            weakSelf.causeType = @"17";
         }
         weakSelf.pageNo = 1;
         [weakSelf.dataDict removeAllObjects];

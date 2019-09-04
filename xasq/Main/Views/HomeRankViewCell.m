@@ -49,8 +49,8 @@
 - (void)setRankInfo:(UserRankModel *)rankInfo {
     _rankInfo = rankInfo;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:self.rankInfo.headImg] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
-    self.nameLabel.text = rankInfo.nickName;
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:self.rankInfo.userHead] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
+    self.nameLabel.text = rankInfo.userName;
     [self setRank];
     
     self.cellStyle = self.cellStyle;

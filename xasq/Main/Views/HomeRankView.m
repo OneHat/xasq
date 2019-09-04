@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSArray *levelRankDatas;//等级排行数据
 
 @property (nonatomic, strong) NSArray *inviteRankDatas;//邀请排行数据
+@property (nonatomic, strong) UserRankModel *model; // 自己的信息
 
 @end
 
@@ -109,11 +110,11 @@ const CGFloat RowHeight = 55.0;
     NSInteger currentIndex = self.segmentedControl.selectIndex;
     if (currentIndex == 0) {
         cell.cellStyle = HomeRankCellStylePower;
-        cell.rankInfo = self.powerRankDatas.lastObject;
+        cell.rankInfo = _model;
         
     } else if (currentIndex == 1) {
         cell.cellStyle = HomeRankCellStyleLevel;
-        cell.rankInfo = self.levelRankDatas.lastObject;
+        cell.rankInfo = _model;
         
     } else if (currentIndex == 2) {
         cell.cellStyle = HomeRankCellStyleInvite;
@@ -202,32 +203,30 @@ const CGFloat RowHeight = 55.0;
     }];
     
 }
+#pragma mark - 用户在总排行中的信息
+- (void)getCommunityPowerRankMyself {
+    [[NetworkManager sharedManager] getRequest:CommunityPowerRankMyself parameters:nil success:^(NSDictionary * _Nonnull data) {
+        NSDictionary *dateDict = data[@"data"];
+        if (!dateDict || ![dateDict isKindOfClass:[NSDictionary class]] || dateDict.count == 0) {
+            return;
+        }
+        self.model = [UserRankModel modelWithDictionary:dateDict];
+        [self resizeFrame];
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
 
 - (void)resizeFrame {
-    UserRankModel *lastModel;
     NSInteger currentIndex = self.segmentedControl.selectIndex;
-    
-    if (currentIndex == 0) {
-        lastModel = _powerRankDatas.lastObject;
-        
-    } else if (currentIndex == 1) {
-        lastModel = _levelRankDatas.lastObject;
-        
-    } else if (currentIndex == 2) {
-        lastModel = _inviteRankDatas.lastObject;
-        
-    }
-    if (!lastModel) {
-        return;
-    }
-    
     CGFloat viewHeight = 0.0;
     BOOL flag = NO;//是否需要footerView
     if ([UserDataManager shareManager].userId) {
         //已经登录
-        if (lastModel.rank > 10) {
+        if (_model.rank > 10) {
             //自己不在前10名，需要在底部显示(不登录时，只有10条数据)
-            viewHeight = (self.powerRankDatas.count - 1) * RowHeight + RowHeight * 1.5;
+            viewHeight = (self.powerRankDatas.count ) * RowHeight + RowHeight * 1.5;
             flag = YES;
         } else {
             //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
@@ -286,6 +285,7 @@ const CGFloat RowHeight = 55.0;
 - (void)reloadViewData {
     
     [self getRankData];
+    [self getCommunityPowerRankMyself];
 }
 
 @end

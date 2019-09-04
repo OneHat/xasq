@@ -79,7 +79,7 @@
     
     self.inviteCode = inviteInfo[@"inviteCode"];//我的邀请码
     self.myCodeLabel.text = self.inviteCode;
-    self.totalInviteLabel.text = [NSString stringWithFormat:@"累计邀请 %@",inviteInfo[@"inviteNum"]];//累计邀请人数
+    self.totalInviteLabel.text = [NSString stringWithFormat:@"累计邀请 %@",inviteInfo[@"inviteNum"]?inviteInfo[@"inviteNum"]:@"0"];//累计邀请人数
     
     NSString *referrerId =  [NSString stringWithFormat:@"%@",_inviteInfo[@"referrerId"]];////绑定的邀请码，如果为空表示没有绑定过
     if (referrerId.length == 0) {

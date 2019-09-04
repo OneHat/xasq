@@ -78,7 +78,8 @@ NSString *const CommunitySignReward = @"comm/sign/reward";
 NSString *const CommunityInviteFlow = @"comm/invite/flow";
 NSString *const CommunityInviteFlowFirst = @"comm/invite/flow/first";
 NSString *const CommunityInviteFlowSecond = @"comm/invite/flow/second";
-NSString *const CommunityPowerRank = @"comm/power/rank";
+NSString *const CommunityPowerRank = @"comm/all/power/rank";
+NSString *const CommunityPowerRankMyself = @"comm/power/rank/myself";
 
 NSInteger const E010141 = 10141;
 NSInteger const E010145 = 10145;

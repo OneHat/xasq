@@ -15,7 +15,7 @@
 static NSString *xasqBaseUrlDev =      @"http://180.168.209.206:5003/api/";
 
 ///Test
-static NSString *xasqBaseUrlTest =     @"http://180.168.209.206:5003/api/";
+static NSString *xasqBaseUrlTest =     @"http://180.168.209.206:7007/api/";
 
 ///Pro
 static NSString *xasqBaseUrlPro =      @"http://180.168.209.206:5003/api/";

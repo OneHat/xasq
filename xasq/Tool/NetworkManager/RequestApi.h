@@ -150,7 +150,8 @@ FOUNDATION_EXPORT NSString *const CommunityInviteFlow;
 FOUNDATION_EXPORT NSString *const CommunityInviteFlowFirst;
 /// 查询二级邀请算力奖励记录 POST
 FOUNDATION_EXPORT NSString *const CommunityInviteFlowSecond;
-
+/// 用户在总排行中的信息 GET
+FOUNDATION_EXPORT NSString *const CommunityPowerRankMyself;
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;
 FOUNDATION_EXPORT NSInteger const E010145;

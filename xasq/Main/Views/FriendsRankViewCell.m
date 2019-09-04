@@ -38,12 +38,12 @@
 - (void)setFriendInfo:(UserRankModel *)friendInfo {
     _friendInfo = friendInfo;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_friendInfo.headImg] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_friendInfo.userHead] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     
     self.rankLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.rank];
     
-    self.nameLabel.text = _friendInfo.nickName;
-    self.typeLabel.text = _friendInfo.countryName;
+    self.nameLabel.text = _friendInfo.userName;
+    self.typeLabel.text = _friendInfo.areaName;
     self.powNumberLabel.text = [NSString stringWithFormat:@"%ld",_friendInfo.power];
 }
 

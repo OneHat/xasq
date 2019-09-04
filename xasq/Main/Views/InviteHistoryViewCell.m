@@ -50,18 +50,18 @@
 - (void)setInviteInfo:(NSDictionary *)inviteInfo {
     _inviteInfo = inviteInfo;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_inviteInfo[@"headImg"]]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:_inviteInfo[@"userHead"]]];
     
-    self.nameLabel.text = inviteInfo[@"nickName"];
-    self.timeLabel.text = inviteInfo[@"bindTime"];
-    
-    self.powerNumberLabel.text = [NSString stringWithFormat:@"+%@",inviteInfo[@"awardPower"]];
-    
-    self.currencyImageView.image = Base64ImageStr(_inviteInfo[@"currencyLogo"]);
-    self.currencyNameLabel.text = _inviteInfo[@"currencyCode"];
-    
-    NSString *num = _inviteInfo[@"currencyCount"];
-    self.currencyNumberLabel.text = [NSString stringWithFormat:@"+%.8f",num.doubleValue];
+    self.nameLabel.text = inviteInfo[@"userName"];
+    self.timeLabel.text = inviteInfo[@"createdOn"];
+    if (inviteInfo[@"power"]) {
+        self.powerNumberLabel.text = [NSString stringWithFormat:@"+%@",inviteInfo[@"power"]];
+    }
+    self.currencyImageView.image = Base64ImageStr(_inviteInfo[@"currencyIcon"]);
+    self.currencyNameLabel.text = _inviteInfo[@"currency"];
+    if (_inviteInfo[@"quantity"]) {
+        self.currencyNumberLabel.text = [NSString stringWithFormat:@"+%@",_inviteInfo[@"quantity"]];
+    }
 }
 
 @end

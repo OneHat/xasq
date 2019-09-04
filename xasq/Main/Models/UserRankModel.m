@@ -11,7 +11,13 @@
 
 @implementation UserRankModel
 
-//+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
++ (instancetype)modelWithDictionary:(NSDictionary *)dict {
+    if (dict && [dict isKindOfClass:[NSDictionary class]]) {
+        return [UserRankModel yy_modelWithDictionary:dict];
+    }
+    return nil;
+}
+
 + (NSArray *)modelWithArray:(NSArray *)array {
     
     return [NSArray yy_modelArrayWithClass:[UserRankModel class] json:array];

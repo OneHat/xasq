@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property (nonatomic, assign) NSInteger userId;
 
-///
-@property (nonatomic, strong) NSString *headImg;
+/// 图片
+@property (nonatomic, strong) NSString *userHead;
 
 ///昵称
-@property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *userName;
 
 ///地区名称
-@property (nonatomic, strong) NSString *countryName;
+@property (nonatomic, strong) NSString *areaName;
 
 
 ///排序号
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///邀请人数
 @property (nonatomic, assign) NSInteger inviteNum;
 
-//+ (instancetype)modelWithDictionary:(NSDictionary *)dict;
++ (instancetype)modelWithDictionary:(NSDictionary *)dict;
 + (NSArray *)modelWithArray:(NSArray *)array;
 
 @end

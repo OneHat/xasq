@@ -168,8 +168,15 @@
             return;
         }
         [self loading];
-        NSDictionary *dict = @{@"oldPassword" : [NSString md5:_passwordTF.text],
-                               @"newPassword" : [NSString md5:_passwordTF.text],
+        NSString *nameStr;
+        if ([_channelLB.text isEqualToString:@"手机号"]) {
+            nameStr = @"mobile";
+        } else {
+            nameStr = @"email";
+        }
+        NSDictionary *dict = @{@"newPassword"   : [NSString md5:_passwordTF.text],
+                               @"validCode"     : _codeTF.text,
+                               @"validCodeType" : nameStr,
                                };
         [[NetworkManager sharedManager] postRequest:UserPwdLoginModify parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];
