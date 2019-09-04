@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaymentsRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
 @property (weak, nonatomic) IBOutlet UILabel *valueLB;
 
-
+@property (nonatomic, strong) PaymentsRecordModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

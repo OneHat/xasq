@@ -465,7 +465,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 - (IBAction)helpAction:(UIButton *)sender {
     
 }
-
+#pragma mark - 邀请好友界面
 - (IBAction)inviteAction:(UIButton *)sender {
     if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
@@ -476,7 +476,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     inviteFriendsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:inviteFriendsVC animated:YES];
 }
-
+#pragma mark - 好友排行界面
 - (IBAction)friendsAction:(UIButton *)sender {
     if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
@@ -488,7 +488,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     [self.navigationController pushViewController:friendsVC animated:YES];
     
 }
-
+#pragma mark - 任务界面
 - (IBAction)taskAction:(UIButton *)sender {
     if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
@@ -504,7 +504,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     taskVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:taskVC animated:YES];
 }
-
+#pragma mark - 矿工界面
 - (IBAction)minerAction:(id)sender {
     if (![UserDataManager shareManager].userId) {
         [self showMessage:@"请先登录"];
@@ -516,7 +516,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     minerVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:minerVC animated:YES];
 }
-
+#pragma mark - 最新动态界面
 - (IBAction)moreNewsAction:(UIButton *)sender {
     
     MoreNewsViewController *moreNewsVC = [[MoreNewsViewController alloc] init];

@@ -57,7 +57,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您升到LV8级了" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCf-6W-0C2">
-                                <rect key="frame" x="20" y="75" width="125" height="17"/>
+                                <rect key="frame" x="20" y="50" width="299" height="67"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -68,9 +68,10 @@
                             <constraint firstItem="sCf-6W-0C2" firstAttribute="leading" secondItem="Tee-sw-J5Y" secondAttribute="leading" constant="20" id="1bj-H4-An8"/>
                             <constraint firstItem="kbZ-SX-OQY" firstAttribute="top" secondItem="Tee-sw-J5Y" secondAttribute="top" id="7X1-wN-LWg"/>
                             <constraint firstAttribute="trailing" secondItem="kbZ-SX-OQY" secondAttribute="trailing" id="Kmp-UU-1rn"/>
-                            <constraint firstAttribute="bottom" secondItem="sCf-6W-0C2" secondAttribute="bottom" constant="30" id="QUr-Hk-fxJ"/>
                             <constraint firstItem="kbZ-SX-OQY" firstAttribute="leading" secondItem="Tee-sw-J5Y" secondAttribute="leading" id="VbZ-A2-xlQ"/>
-                            <constraint firstItem="sCf-6W-0C2" firstAttribute="top" secondItem="kbZ-SX-OQY" secondAttribute="bottom" constant="30" id="b9z-IJ-Omz"/>
+                            <constraint firstItem="sCf-6W-0C2" firstAttribute="top" secondItem="kbZ-SX-OQY" secondAttribute="bottom" constant="5" id="b9z-IJ-Omz"/>
+                            <constraint firstAttribute="bottom" secondItem="sCf-6W-0C2" secondAttribute="bottom" constant="5" id="ear-3Y-BW7"/>
+                            <constraint firstAttribute="trailing" secondItem="sCf-6W-0C2" secondAttribute="trailing" constant="20" id="fNQ-e9-aM4"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -140,7 +140,7 @@ FOUNDATION_EXPORT NSString *const CommunityPowerUpinfo;
 ///获取连续签到奖励 GET
 FOUNDATION_EXPORT NSString *const CommunitySignReward;
 /// 算力、等级排行接口(我的好友) POST
-FOUNDATION_EXPORT NSString *const CommunityRankFriends;
+FOUNDATION_EXPORT NSString *const UserRankFriends;
 /// 算力、等级排行 全用户 POST
 FOUNDATION_EXPORT NSString *const CommunityPowerRank;
 /// 查询所有邀请算力奖励记录 POST

@@ -222,13 +222,7 @@
     NSString *key = _titleArray[indexPath.section];
     NSArray *value = _dataDict[key];
     PaymentsRecordModel *model = value[indexPath.row];
-    cell.titleLB.text = model.nameStr;
-    cell.valueLB.text = [NSString stringWithFormat:@"%@",model.amount];
-    if ([model.cause integerValue] == 2) {
-        cell.icon.image = [UIImage imageNamed:@"Capital_DrawMoney"];
-    } else if ([model.cause integerValue] == 14) {
-        cell.icon.image = [UIImage imageNamed:@"capital_reward"];
-    }
+    cell.model = model;
     
     return cell;
 }

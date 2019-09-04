@@ -124,8 +124,18 @@ const CGFloat RowHeight = 55.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger currentIndex = self.segmentedControl.selectIndex;
+    if (currentIndex == 0) {
+        return MIN(10, self.powerRankDatas.count);
+        
+    } else if (currentIndex == 1) {
+        return MIN(10, self.levelRankDatas.count);
+        
+    } else if (currentIndex == 2) {
+        return MIN(10, self.inviteRankDatas.count);
+    }
     
-    return MIN(10, self.powerRankDatas.count);
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

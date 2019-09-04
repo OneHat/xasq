@@ -36,7 +36,7 @@
 - (void)setMessageInfo:(NSDictionary *)messageInfo {
     _messageInfo = messageInfo;
     
-    self.typeLabel.text = @"账户升级";
+    self.typeLabel.text = messageInfo[@"title"];
     NSDate *time = [NSDate stringTransferToDate:messageInfo[@"createdOn"]];
     BOOL isDay = [NSDate compareDate:time];
     if (isDay) {
@@ -46,7 +46,7 @@
         NSString *timeStr = [messageInfo[@"createdOn"] substringWithRange:NSMakeRange(5, 11)];
         self.timeLabel.text = timeStr;
     }
-    self.titleLabel = messageInfo[@"title"];
+    self.titleLabel.text = messageInfo[@"content"];
 }
 
 @end
