@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger userId;
 
 /// 图片
-@property (nonatomic, strong) NSString *userHead;
+@property (nonatomic, strong) NSString *headImg;
 
 ///昵称
-@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *nickName;
 
 ///地区名称
 @property (nonatomic, strong) NSString *areaName;

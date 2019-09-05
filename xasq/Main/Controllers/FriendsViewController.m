@@ -128,7 +128,7 @@
     
     FriendMainViewController *friendVC = [[FriendMainViewController alloc] init];
     friendVC.userId = model.userId;
-    friendVC.userName = model.userName;
+    friendVC.userName = model.nickName;
     [self.navigationController pushViewController:friendVC animated:YES];
 }
 

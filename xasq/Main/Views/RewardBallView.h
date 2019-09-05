@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger,RewardBallViewStyle) {
 @property (nonatomic, strong) RewardModel *rewardModel;
 
 @property (nonatomic, strong) void (^RewardBallClick)(RewardBallView *ballView);
+@property (nonatomic, strong) void (^TheCluesBallClick)(void); // 未成熟提示语
 
 @property (nonatomic, assign) RewardBallViewStyle ballStyle;
 

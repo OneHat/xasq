@@ -277,6 +277,9 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
             ballView.RewardBallClick = ^(RewardBallView * _Nonnull ballView) {
                 [self userTakeRewardWithBallView:weakBall];
             };
+            ballView.TheCluesBallClick = ^{
+                [self showMessage:@"未成熟"];
+            };
         }
         
     } failure:^(NSError * _Nonnull error) {

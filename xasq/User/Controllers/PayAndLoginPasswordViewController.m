@@ -84,10 +84,14 @@
             }];
             return;
         }
-        if ([UserDataManager shareManager].usermodel.existFundPassWord) {
-            templateCode = @"user_17";
+        if (_type == 0) {
+            templateCode = @"user_11";
         } else {
-            templateCode = @"user_14";
+            if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+                templateCode = @"user_17";
+            } else {
+                templateCode = @"user_14";
+            }
         }
         urlStr = UserSendMobile;
         nameStr = @"mobile";
@@ -106,11 +110,16 @@
             }];
             return;
         }
-        if ([UserDataManager shareManager].usermodel.existFundPassWord) {
-            templateCode = @"user_18";
+        if (_type == 0) {
+            templateCode = @"user_12";
         } else {
-            templateCode = @"user_15";
+            if ([UserDataManager shareManager].usermodel.existFundPassWord) {
+                templateCode = @"user_18";
+            } else {
+                templateCode = @"user_15";
+            }
         }
+        
         urlStr = UserSendEmail;
         nameStr = @"email";
         nameValue = [UserDataManager shareManager].usermodel.email;

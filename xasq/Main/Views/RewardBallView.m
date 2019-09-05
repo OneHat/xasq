@@ -85,12 +85,12 @@ const CGFloat ViewWidth = 70;
     if (_rewardModel.status == 10) {
         //不可偷取
         self.alpha = 0.5;
-        self.button.enabled = NO;
+//        self.button.enabled = NO;
 
     } else if (_rewardModel.status == 0) {
         //未成熟
         self.alpha = 0.5;
-        self.button.enabled = NO;
+//        self.button.enabled = NO;
         self.rewardLabel.text = @"挖矿中";
 
         [self.rewardTimer invalidate];
@@ -133,14 +133,14 @@ const CGFloat ViewWidth = 70;
     
     //未成熟
     self.alpha = 0.5;
-    self.button.enabled = NO;
+//    self.button.enabled = NO;
     
     int duration = self.rewardModel.generateTime / 1000 - [[NSDate date] timeIntervalSince1970];
     
     if (duration <= 0) {
         //变成已成熟
         self.alpha = 1.0;
-        self.button.enabled = YES;
+//        self.button.enabled = YES;
         
         if ([self.nameLabel.text isEqualToString:@"BTC"]) {
             int quantity = _rewardModel.currencyQuantity.doubleValue * BTCRate;
@@ -186,7 +186,20 @@ const CGFloat ViewWidth = 70;
 }
 
 - (void)rewardClick:(UIButton *)sender {
-    sender.enabled = NO;
+//    sender.enabled = NO;
+    if (_rewardModel.status == 10) {
+        //不可偷取
+        if (self.TheCluesBallClick) {
+            self.TheCluesBallClick();
+        }
+        return;
+    } else if (_rewardModel.status == 0) {
+        //未成熟
+        if (self.TheCluesBallClick) {
+            self.TheCluesBallClick();
+        }
+        return;
+    }
     
     if (self.RewardBallClick) {
         self.RewardBallClick(self);
@@ -194,7 +207,7 @@ const CGFloat ViewWidth = 70;
 }
 
 - (void)resetButtonEnable {
-    self.button.enabled = YES;
+//    self.button.enabled = YES;
 }
 
 @end
