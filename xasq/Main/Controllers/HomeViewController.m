@@ -162,11 +162,6 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     //用户算力奖励
     [self getUserPowerReward];
     
-    //最新动态
-    [self getUserCurrentNews];
-    
-    //当前算力、等级
-    [self getUserLevelAndPower];
     
     ////////
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -204,7 +199,12 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
     if (![UserDataManager shareManager].userId) {
         _msgCountLB.hidden = YES;
     }  else {
+        // 获取消息未读数量
         [self getMessageSysUnreadNum];
+        //当前算力、等级
+        [self getUserLevelAndPower];
+        //最新动态
+        [self getUserCurrentNews];
     }
 }
 

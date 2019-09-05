@@ -335,6 +335,9 @@
             model.status = 10;//状态改为已偷
             ballView.rewardModel = model;
             
+            self.page = 1;
+            [self getUserMessageInfo];
+            
         }];
 
     } failure:^(NSError * _Nonnull error) {
