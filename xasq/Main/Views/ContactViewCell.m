@@ -27,10 +27,11 @@
     
     self.colorView.backgroundColor = color;
     
-    [self.inviteButton setTitleColor:ThemeColorTextGray forState:UIControlStateDisabled];
-    [self.inviteButton setTitleColor:ThemeColorBlue forState:UIControlStateSelected];
+    self.inviteButton.layer.cornerRadius = 15;
+    [self.inviteButton setTitleColor:ThemeColorBlue forState:UIControlStateNormal]; // HexColor(@"#E7E7E7")
+    [self.inviteButton setTitleColor:ThemeColorTextGray forState:UIControlStateSelected];
     
-    self.inviteButton.enabled = NO;
+    [self.inviteButton setBackgroundColor:HexColor(@"#E7E7E7")];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -36,6 +36,7 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerImageTop;
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UILabel *digPromptLB; // 正在挖矿提示
 
 @property (weak, nonatomic) IBOutlet UIView *newsBackView;//动态View
 @property (strong, nonatomic) HomeNewsView *newsView;
@@ -245,9 +246,10 @@ static NSString *HomeNewsCacheKey = @"HomeNewsCacheKey";
         
         NSArray *dateList = data[@"data"];
         if (!dateList || ![dateList isKindOfClass:[NSArray class]] || dateList.count == 0) {
+            self.digPromptLB.hidden = NO;
             return;
         }
-        
+        self.digPromptLB.hidden = YES;
         //清除可能存在的view
         for (UIView *view in self.topView.subviews) {
             if ([view isKindOfClass:[RewardBallView class]]) {

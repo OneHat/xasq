@@ -106,7 +106,7 @@
     [self updateSignLabel:@"已签到" buttonSelect:YES];
     
     NSString *imageUrl = [UserDataManager shareManager].usermodel.headImg;
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     
     ///
     CGFloat viewWidth = ScreenWidth - 30;

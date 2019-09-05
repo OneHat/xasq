@@ -57,7 +57,7 @@
     self.rightLVLabel.backgroundColor = ThemeColorTextGray;
     
     NSString *imageUrl = [UserDataManager shareManager].usermodel.headImg;
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"head_portrait"]];
     
     CGFloat rate = 0.0;
     CGFloat totalWidth = CGRectGetWidth(self.middleView.frame);

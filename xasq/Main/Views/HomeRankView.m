@@ -230,7 +230,7 @@ const CGFloat RowHeight = 55.0;
             flag = YES;
         } else {
             //自己在前10名，不需要额外显示(不登录时，只有10条数据，也只显示10条数据)
-            viewHeight = MIN(10, self.powerRankDatas.count - 1) * RowHeight;
+            viewHeight = MIN(10, self.powerRankDatas.count) * RowHeight;
         }
         
     } else {

@@ -113,7 +113,7 @@ static CGFloat CapitalSegmentControlH = 40;
     if (icon) {
         cell.iconView.image = icon;
     } else {
-        cell.iconView.image = [UIImage imageNamed:@"currency_btc"];
+        cell.iconView.image = [UIImage imageNamed:@"currency_default"];
     }
     
     return cell;

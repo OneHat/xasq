@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
                 <outlet property="bannerBackView" destination="h1E-Vd-Heh" id="9Py-EC-HPM"/>
+                <outlet property="digPromptLB" destination="Dti-Ex-NEJ" id="KQk-FZ-Us2"/>
                 <outlet property="headerImageTop" destination="cGb-P3-nCE" id="kpH-m8-tGq"/>
                 <outlet property="mineNameImageView" destination="gcC-J0-cSb" id="FbK-yl-yjJ"/>
                 <outlet property="mineNameLabel" destination="ypZ-V0-I9q" id="iPl-xU-XMd"/>
@@ -247,7 +248,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ar-jt-zx4">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ar-jt-zx4">
                                     <rect key="frame" x="348" y="76.5" width="18" height="18"/>
                                     <color key="backgroundColor" red="1" green="0.25832619429999998" blue="0.25114899169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
@@ -255,6 +256,12 @@
                                         <constraint firstAttribute="width" constant="18" id="jGx-cK-8mw"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在挖矿..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dti-Ex-NEJ">
+                                    <rect key="frame" x="155" y="299" width="65.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -287,9 +294,11 @@
                                 <constraint firstItem="Hak-xR-2KU" firstAttribute="top" secondItem="ypZ-V0-I9q" secondAttribute="bottom" constant="3" id="LLI-ej-JeL"/>
                                 <constraint firstItem="An9-ei-5WH" firstAttribute="top" secondItem="8Db-Nu-RfH" secondAttribute="bottom" id="MEb-i5-4h0"/>
                                 <constraint firstAttribute="trailing" secondItem="8ar-jt-zx4" secondAttribute="trailing" constant="9" id="N3p-eo-WDo"/>
+                                <constraint firstItem="8Db-Nu-RfH" firstAttribute="top" secondItem="Dti-Ex-NEJ" secondAttribute="bottom" constant="85" id="NJI-Jp-8vt"/>
                                 <constraint firstItem="8ar-jt-zx4" firstAttribute="top" secondItem="lxj-D7-4hi" secondAttribute="bottom" constant="16" id="PUA-x9-kV0"/>
                                 <constraint firstItem="ih0-Lu-Att" firstAttribute="centerY" secondItem="RwD-SX-hUo" secondAttribute="centerY" id="PcM-sP-9Mb"/>
                                 <constraint firstItem="MuJ-ud-U7N" firstAttribute="leading" secondItem="goc-2A-oyb" secondAttribute="trailing" constant="5" id="RcR-BO-fSf"/>
+                                <constraint firstItem="Dti-Ex-NEJ" firstAttribute="centerX" secondItem="UzN-hs-gz1" secondAttribute="centerX" id="Rcf-uK-gaQ"/>
                                 <constraint firstItem="goc-2A-oyb" firstAttribute="top" secondItem="hgj-6k-cXW" secondAttribute="bottom" id="SCA-mf-bDb"/>
                                 <constraint firstAttribute="bottom" secondItem="8Qb-Wz-PmG" secondAttribute="bottom" constant="10" id="Sch-0n-njQ"/>
                                 <constraint firstItem="An9-ei-5WH" firstAttribute="bottom" secondItem="8Qb-Wz-PmG" secondAttribute="bottom" id="T0q-WZ-xVs"/>

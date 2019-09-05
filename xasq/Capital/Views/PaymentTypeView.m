@@ -116,6 +116,8 @@
             UIImage *icon = Base64ImageStr(_iconArray[indexPath.row]);
             if (icon) {
                 cell.icon.image = icon;
+            } else {
+                cell.icon.image = [UIImage imageNamed:@"currency_default"];
             }
         }
     } else {
