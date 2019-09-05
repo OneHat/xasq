@@ -66,7 +66,8 @@
     } else {
         templateCode = @"user_42";
     }
-    NSDictionary *dict = @{@"mobile"         : [UserDataManager shareManager].usermodel.mobile,
+    NSDictionary *dict = @{
+//                           @"mobile"         : [UserDataManager shareManager].usermodel.mobile,
                            @"templateCode"   : templateCode,
                            @"areaCode"       : [UserDataManager shareManager].usermodel.areaCode
                            };

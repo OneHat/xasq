@@ -87,7 +87,7 @@
     } else {
         templateCode = @"user_37";
     }
-    NSDictionary *dict = @{@"mobile"         : _areaCodeLB.text,
+    NSDictionary *dict = @{@"mobile"         : _accountTF.text,
                            @"templateCode"   : templateCode,
                            @"areaCode"       : _areaCodeLB.text
                            };
@@ -109,7 +109,8 @@
     } else {
         templateCode = @"user_36";
     }
-    NSDictionary *dict = @{@"email"          : [UserDataManager shareManager].usermodel.email,
+    NSDictionary *dict = @{
+//                           @"email"          : [UserDataManager shareManager].usermodel.email,
                            @"templateCode"   : templateCode
                            };
     self.emailCodeBtn.userInteractionEnabled = NO;
