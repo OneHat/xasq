@@ -285,7 +285,7 @@
     
     [[NetworkManager sharedManager] postRequest:UserInviteBind parameters:parameters success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"绑定成功"];
-        [self getqrcode];
+        [self.inviteCodeView bindInviteButtonSelection];
     } failure:^(NSError * _Nonnull error) {
         [self showErrow:error];
     }];

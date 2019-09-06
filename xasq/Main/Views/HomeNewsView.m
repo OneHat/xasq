@@ -116,7 +116,8 @@
     _currentIndex = 3;//显示的最新数据的index，后面累加取余
     
     for (int i = 0; i < 4; i++) {
-        OneNewsView *newsView = [[OneNewsView alloc] initWithFrame:CGRectMake(0, _height - _heightPer * (i + 1), _width, _heightPer)];
+//        OneNewsView *newsView = [[OneNewsView alloc] initWithFrame:CGRectMake(0, _height - _heightPer * (i + 1), _width, _heightPer)];
+        OneNewsView *newsView = [[OneNewsView alloc] initWithFrame:CGRectMake(0, _heightPer * i, _width, _heightPer)];
         [newsView setNewsData:_newsArray[i % _newsArray.count]];
         [self addSubview:newsView];
         

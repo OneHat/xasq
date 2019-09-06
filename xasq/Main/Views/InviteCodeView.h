@@ -24,6 +24,8 @@ typedef void(^ButtonClickBlock)(InviteCodeViewButtonStyle style);
 
 @property (nonatomic, strong) NSDictionary *inviteInfo;
 
+- (void)bindInviteButtonSelection;
+
 @end
 
 NS_ASSUME_NONNULL_END

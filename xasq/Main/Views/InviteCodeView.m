@@ -74,6 +74,10 @@
     self.totalInviteLabel.textColor = ThemeColorBlue;
 }
 
+- (void)bindInviteButtonSelection {
+    self.bindInviteButton.selected = YES;
+}
+
 - (void)setInviteInfo:(NSDictionary *)inviteInfo {
     _inviteInfo = inviteInfo;
     
