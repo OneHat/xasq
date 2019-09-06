@@ -31,6 +31,7 @@
 
 #pragma mark - 通知
 #define DSSJTabBarSelectHomeNotification      @"DSSJTabBarSelectHomeNotification"
+#define DSSJTabBarSelectDiscoveryNotification @"DSSJTabBarSelectDiscoveryNotification"
 #define DSSJTabBarSelectCapitalNotification   @"DSSJTabBarSelectCapitalNotification"
 #define DSSJTabBarSelectUserNotification      @"DSSJTabBarSelectUserNotification"
 

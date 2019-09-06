@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="219" id="KGk-i7-Jjw" customClass="AdvertisTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="219"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="444" height="218.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery_infor" translatesAutoresizingMaskIntoConstraints="NO" id="okm-0V-Z6E">
+                        <rect key="frame" x="20" y="17" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="1YP-Tf-vjh"/>
+                            <constraint firstAttribute="height" constant="18" id="zp6-dt-sLG"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-kZ-hJr">
+                        <rect key="frame" x="38" y="25.5" width="17" height="1"/>
+                        <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="uHR-F7-eHn"/>
+                            <constraint firstAttribute="width" constant="17" id="veh-BS-7LY"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery_advertis" translatesAutoresizingMaskIntoConstraints="NO" id="GpU-aA-H6R">
+                        <rect key="frame" x="55" y="15" width="373" height="171"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="GpU-aA-H6R" secondAttribute="height" multiplier="305:140" id="HkU-0e-OMM"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgj-cL-xma">
+                        <rect key="frame" x="55" y="217.5" width="374" height="1"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="yrj-RV-NOL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EGf-kZ-hJr" firstAttribute="centerY" secondItem="okm-0V-Z6E" secondAttribute="centerY" id="B5P-k4-iDj"/>
+                    <constraint firstItem="GpU-aA-H6R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="DO2-Dp-Clo"/>
+                    <constraint firstAttribute="bottom" secondItem="xgj-cL-xma" secondAttribute="bottom" id="DcE-6v-nHz"/>
+                    <constraint firstItem="EGf-kZ-hJr" firstAttribute="leading" secondItem="okm-0V-Z6E" secondAttribute="trailing" id="Edk-Yk-dSV"/>
+                    <constraint firstAttribute="trailing" secondItem="GpU-aA-H6R" secondAttribute="trailing" constant="16" id="VNc-WP-qg5"/>
+                    <constraint firstItem="okm-0V-Z6E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="e5y-xv-ukh"/>
+                    <constraint firstItem="xgj-cL-xma" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="eB2-19-5Vt"/>
+                    <constraint firstAttribute="trailing" secondItem="xgj-cL-xma" secondAttribute="trailing" constant="15" id="jKd-g2-pPU"/>
+                    <constraint firstItem="GpU-aA-H6R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="wHI-XP-hcr"/>
+                    <constraint firstItem="okm-0V-Z6E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="y9H-8W-CTq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="230.43478260869566" y="195.20089285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="discovery_advertis" width="305" height="140"/>
+        <image name="discovery_infor" width="18" height="18"/>
+    </resources>
+</document>

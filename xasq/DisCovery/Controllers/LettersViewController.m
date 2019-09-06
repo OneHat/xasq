@@ -1,22 +1,22 @@
 //
-//  DiscoveryViewController.m
+//  LettersViewController.m
 //  xasq
 //
-//  Created by dssj on 2019/8/1.
+//  Created by dssj888@163.com on 2019/9/6.
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "DiscoveryViewController.h"
+#import "LettersViewController.h"
 
-@interface DiscoveryViewController ()
+@interface LettersViewController ()
 
 @end
 
-@implementation DiscoveryViewController
+@implementation LettersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 /*

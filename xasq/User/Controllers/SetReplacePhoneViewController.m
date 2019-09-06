@@ -43,6 +43,7 @@
         _detailLB.hidden = YES;
 
     }
+    _codeStr = @"CN";
     _replaceBtn.layer.cornerRadius = 22.5;
     _replaceBtn.layer.masksToBounds = YES;
     [_emailCodeTF addTarget:self action:@selector(codeTextFeldImport:) forControlEvents:UIControlEventEditingChanged];
@@ -196,6 +197,7 @@
         // 绑定
         NSDictionary *dict = @{@"mobile"            : _accountTF.text,
                                @"email"             : [UserDataManager shareManager].usermodel.email,
+                               @"countryCode"       : _codeStr,
                                @"emailValidCode"    : _emailCodeTF.text,
                                @"mobileValidCode"   : _phoneCodeTF.text,
                                };
@@ -211,8 +213,9 @@
         }];
     } else {
         // 更换绑定
-        NSDictionary *dict = @{@"newMobile"         : _accountTF.text,
+        NSDictionary *dict = @{@"mobile"         : _accountTF.text,
                                @"email"             : [UserDataManager shareManager].usermodel.email,
+                               @"countryCode"       : _codeStr,
                                @"emailValidCode"    : _emailCodeTF.text,
                                @"mobileValidCode"   : _phoneCodeTF.text,
                                };

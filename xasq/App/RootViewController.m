@@ -34,8 +34,8 @@
 //    UINavigationController *tacticsNVC = [[UINavigationController alloc] initWithRootViewController:tacticsVC];
 //
 //    //发现
-//    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
-//    UINavigationController *discoveryNVC = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
+    DiscoveryViewController *discoveryVC = [[DiscoveryViewController alloc] init];
+    UINavigationController *discoveryNVC = [[UINavigationController alloc] initWithRootViewController:discoveryVC];
     
     //资产
     CapitalViewController *capitalVC = [[CapitalViewController alloc] init];
@@ -48,24 +48,24 @@
 
     self.viewControllers = @[homeNVC,
 //                             tacticsNVC,
-//                             discoveryNVC,
+                             discoveryNVC,
                              capitalNVC,
                              userNVC];
     
     NSArray *titles = @[@"首页",
 //                        @"策略",
-//                        @"发现",
+                        @"发现",
                         @"资产",
                         @"我的"];
     NSArray *imagesNormal = @[@"Tab_Home_Normal",
 //                              @"Tab_Tactics_Normal",
-//                              @"Tab_Discovery_Normal",
+                              @"Tab_Discovery_Normal",
                               @"Tab_Capital_Normal",
                               @"Tab_User_Normal"];
     
     NSArray *imagesSelect = @[@"Tab_Home_Select",
 //                              @"Tab_Tactics_Select",
-//                              @"Tab_Discovery_Select",
+                              @"Tab_Discovery_Select",
                               @"Tab_Capital_Select",
                               @"Tab_User_Select"];
     
@@ -94,6 +94,9 @@
     if ([selectVC isKindOfClass:[HomeViewController class]]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectHomeNotification object:nil];
         
+    } else if ([selectVC isKindOfClass:[DiscoveryViewController class]]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DSSJTabBarSelectDiscoveryNotification object:nil];
+
     } else if ([selectVC isKindOfClass:[CapitalViewController class]]) {
         NSString *userId = [UserDataManager shareManager].userId;
         if (!userId) {

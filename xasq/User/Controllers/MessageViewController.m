@@ -30,6 +30,8 @@
     self.view.backgroundColor = ThemeColorBackground;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    [self initRightBtnWithTitle:@"清除" color:ThemeColorText];
+    
     self.messages = [NSMutableArray array];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - NavHeight - BottomHeight - 10) style:UITableViewStylePlain];
@@ -63,10 +65,34 @@
     [self getMessages];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self sendMessageSysRead];
+}
+
+- (void)sendMessageSysRead {
+    [[NetworkManager sharedManager] postRequest:MessageSysRead parameters:nil success:^(NSDictionary * _Nonnull data) {
+
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)rightBtnAction {
+    [[NetworkManager sharedManager] postRequest:MessageSysClear parameters:nil success:^(NSDictionary * _Nonnull data) {
+        [self showMessage:@"清除成功"];
+        [self.messages removeAllObjects];
+        [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        [self.tableView reloadData];
+    } failure:^(NSError * _Nonnull error) {
+        [self showMessage:@"清除失败"];
+    }];
+}
+
 #pragma mark -
 - (void)getMessages {
     NSDictionary *parameters = @{@"pageNo":[NSString stringWithFormat:@"%ld",_page]};
-    [[NetworkManager sharedManager] postRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
+    [[NetworkManager sharedManager] getRequest:MessageSysList parameters:parameters success:^(NSDictionary * _Nonnull data) {
         [self.tableView endRefresh];
         
         NSArray *array = data[@"data"][@"rows"];
@@ -128,14 +154,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *info = self.messages[indexPath.row];
-    NSDictionary *dict = @{@"id" : info[@"id"],};
+//    NSDictionary *info = self.messages[indexPath.row];
+//    NSDictionary *dict = @{@"id" : info[@"id"],};
     
-    [[NetworkManager sharedManager] postRequest:MessageSysRead parameters:dict success:^(NSDictionary * _Nonnull data) {
-        NSLog(@"发送成功");
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
+    
 }
 
 @end

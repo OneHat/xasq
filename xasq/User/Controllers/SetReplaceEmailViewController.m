@@ -198,7 +198,7 @@
     } else {
         // 更换邮箱
         NSDictionary *dict = @{@"mobile"            : [UserDataManager shareManager].usermodel.mobile,
-                               @"newEmail"          : _accountTF.text,
+                               @"email"          : _accountTF.text,
                                @"emailValidCode"    : _emailCodeTF.text,
                                @"mobileValidCode"   : _phoneCodeTF.text,
                                };
