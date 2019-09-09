@@ -159,6 +159,14 @@ FOUNDATION_EXPORT NSString *const CommunityPowerRankMyself;
 //********************************发现模块
 /// 用户在总排行中的信息 GET
 FOUNDATION_EXPORT NSString *const OperCategoryList;
+/// 财经数据列表 GET
+FOUNDATION_EXPORT NSString *const OperEconomicDataList;
+/// 财经事件列表 GET
+FOUNDATION_EXPORT NSString *const OperEconomicEventList;
+/// 财经节假日列表 GET
+FOUNDATION_EXPORT NSString *const OperEconomicHolidayList;
+/// 财经日期 GET
+FOUNDATION_EXPORT NSString *const OperEconomicCalendarList;
 
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;

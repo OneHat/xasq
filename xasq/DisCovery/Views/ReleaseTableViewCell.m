@@ -6,9 +6,9 @@
 //  Copyright © 2019 dssj. All rights reserved.
 //
 
-#import "CalendarTableViewCell.h"
+#import "ReleaseTableViewCell.h"
 
-@implementation CalendarTableViewCell
+@implementation ReleaseTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

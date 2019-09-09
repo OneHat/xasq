@@ -24,8 +24,8 @@
 		C40C0F0F23222B7C000B44C0 /* LettersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C0F0C23222B7C000B44C0 /* LettersViewController.m */; };
 		C40C0F1323223173000B44C0 /* LettersMarketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C0F1123223173000B44C0 /* LettersMarketTableViewCell.m */; };
 		C40C0F1423223173000B44C0 /* LettersMarketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C0F1223223173000B44C0 /* LettersMarketTableViewCell.xib */; };
-		C40C0F1D232243B1000B44C0 /* CalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C0F1B232243B1000B44C0 /* CalendarTableViewCell.m */; };
-		C40C0F1E232243B1000B44C0 /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C0F1C232243B1000B44C0 /* CalendarTableViewCell.xib */; };
+		C40C0F1D232243B1000B44C0 /* ReleaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C0F1B232243B1000B44C0 /* ReleaseTableViewCell.m */; };
+		C40C0F1E232243B1000B44C0 /* ReleaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C0F1C232243B1000B44C0 /* ReleaseTableViewCell.xib */; };
 		C40C0F2223224D67000B44C0 /* AdvertisTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C0F2023224D67000B44C0 /* AdvertisTableViewCell.m */; };
 		C40C0F2323224D67000B44C0 /* AdvertisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40C0F2123224D67000B44C0 /* AdvertisTableViewCell.xib */; };
 		C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C3D7522F140BE00BDE6A3 /* LoginViewController.m */; };
@@ -50,6 +50,16 @@
 		C40F055822FD06C400942908 /* MobilePhoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40F055622FD06C400942908 /* MobilePhoneTableViewCell.xib */; };
 		C410607E230A536F003EE4B2 /* CountryCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C410607D230A536F003EE4B2 /* CountryCodeModel.m */; };
 		C4106082230A96F1003EE4B2 /* CapitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4106081230A96F1003EE4B2 /* CapitalModel.m */; };
+		C4124D622325DEC000A42905 /* CalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D612325DEC000A42905 /* CalendarHeaderView.m */; };
+		C4124D642325DECA00A42905 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4124D632325DECA00A42905 /* CalendarHeaderView.xib */; };
+		C4124D672325EAE100A42905 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D662325EAE100A42905 /* CalendarViewController.m */; };
+		C4124D702325EF2400A42905 /* CalendarDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D6E2325EF2400A42905 /* CalendarDataTableViewCell.m */; };
+		C4124D712325EF2400A42905 /* CalendarDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4124D6F2325EF2400A42905 /* CalendarDataTableViewCell.xib */; };
+		C4124D752325EF4600A42905 /* CalendareventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D732325EF4600A42905 /* CalendareventTableViewCell.m */; };
+		C4124D762325EF4600A42905 /* CalendareventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4124D742325EF4600A42905 /* CalendareventTableViewCell.xib */; };
+		C4124D7A2325EF9700A42905 /* CalendarholidayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D782325EF9700A42905 /* CalendarholidayTableViewCell.m */; };
+		C4124D7B2325EF9700A42905 /* CalendarholidayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4124D792325EF9700A42905 /* CalendarholidayTableViewCell.xib */; };
+		C4124D7E2326363A00A42905 /* CalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4124D7D2326363A00A42905 /* CalendarModel.m */; };
 		C412A42222EFD2690090E4F1 /* AccountSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */; };
 		C412A42322EFD2690090E4F1 /* AccountSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */; };
 		C412A42C22EFE7FD0090E4F1 /* OurVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C412A42A22EFE7FD0090E4F1 /* OurVersionViewController.m */; };
@@ -240,9 +250,9 @@
 		C40C0F1023223173000B44C0 /* LettersMarketTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LettersMarketTableViewCell.h; sourceTree = "<group>"; };
 		C40C0F1123223173000B44C0 /* LettersMarketTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LettersMarketTableViewCell.m; sourceTree = "<group>"; };
 		C40C0F1223223173000B44C0 /* LettersMarketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LettersMarketTableViewCell.xib; sourceTree = "<group>"; };
-		C40C0F1A232243B1000B44C0 /* CalendarTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarTableViewCell.h; sourceTree = "<group>"; };
-		C40C0F1B232243B1000B44C0 /* CalendarTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewCell.m; sourceTree = "<group>"; };
-		C40C0F1C232243B1000B44C0 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
+		C40C0F1A232243B1000B44C0 /* ReleaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTableViewCell.h; sourceTree = "<group>"; };
+		C40C0F1B232243B1000B44C0 /* ReleaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTableViewCell.m; sourceTree = "<group>"; };
+		C40C0F1C232243B1000B44C0 /* ReleaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTableViewCell.xib; sourceTree = "<group>"; };
 		C40C0F1F23224D67000B44C0 /* AdvertisTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvertisTableViewCell.h; sourceTree = "<group>"; };
 		C40C0F2023224D67000B44C0 /* AdvertisTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisTableViewCell.m; sourceTree = "<group>"; };
 		C40C0F2123224D67000B44C0 /* AdvertisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvertisTableViewCell.xib; sourceTree = "<group>"; };
@@ -284,6 +294,22 @@
 		C410607D230A536F003EE4B2 /* CountryCodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryCodeModel.m; sourceTree = "<group>"; };
 		C4106080230A96F1003EE4B2 /* CapitalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapitalModel.h; sourceTree = "<group>"; };
 		C4106081230A96F1003EE4B2 /* CapitalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapitalModel.m; sourceTree = "<group>"; };
+		C4124D602325DEC000A42905 /* CalendarHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarHeaderView.h; sourceTree = "<group>"; };
+		C4124D612325DEC000A42905 /* CalendarHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarHeaderView.m; sourceTree = "<group>"; };
+		C4124D632325DECA00A42905 /* CalendarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
+		C4124D652325EAE100A42905 /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		C4124D662325EAE100A42905 /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		C4124D6D2325EF2400A42905 /* CalendarDataTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDataTableViewCell.h; sourceTree = "<group>"; };
+		C4124D6E2325EF2400A42905 /* CalendarDataTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDataTableViewCell.m; sourceTree = "<group>"; };
+		C4124D6F2325EF2400A42905 /* CalendarDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDataTableViewCell.xib; sourceTree = "<group>"; };
+		C4124D722325EF4600A42905 /* CalendareventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendareventTableViewCell.h; sourceTree = "<group>"; };
+		C4124D732325EF4600A42905 /* CalendareventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendareventTableViewCell.m; sourceTree = "<group>"; };
+		C4124D742325EF4600A42905 /* CalendareventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendareventTableViewCell.xib; sourceTree = "<group>"; };
+		C4124D772325EF9700A42905 /* CalendarholidayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarholidayTableViewCell.h; sourceTree = "<group>"; };
+		C4124D782325EF9700A42905 /* CalendarholidayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarholidayTableViewCell.m; sourceTree = "<group>"; };
+		C4124D792325EF9700A42905 /* CalendarholidayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarholidayTableViewCell.xib; sourceTree = "<group>"; };
+		C4124D7C2326363A00A42905 /* CalendarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarModel.h; sourceTree = "<group>"; };
+		C4124D7D2326363A00A42905 /* CalendarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarModel.m; sourceTree = "<group>"; };
 		C412A41F22EFD2690090E4F1 /* AccountSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSetTableViewCell.h; sourceTree = "<group>"; };
 		C412A42022EFD2690090E4F1 /* AccountSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSetTableViewCell.m; sourceTree = "<group>"; };
 		C412A42122EFD2690090E4F1 /* AccountSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSetTableViewCell.xib; sourceTree = "<group>"; };
@@ -605,12 +631,24 @@
 				C4DF9C9923224EFC006C2C18 /* InformationTableViewCell.h */,
 				C4DF9C9A23224EFC006C2C18 /* InformationTableViewCell.m */,
 				C4DF9C9B23224EFC006C2C18 /* InformationTableViewCell.xib */,
-				C40C0F1A232243B1000B44C0 /* CalendarTableViewCell.h */,
-				C40C0F1B232243B1000B44C0 /* CalendarTableViewCell.m */,
-				C40C0F1C232243B1000B44C0 /* CalendarTableViewCell.xib */,
+				C40C0F1A232243B1000B44C0 /* ReleaseTableViewCell.h */,
+				C40C0F1B232243B1000B44C0 /* ReleaseTableViewCell.m */,
+				C40C0F1C232243B1000B44C0 /* ReleaseTableViewCell.xib */,
 				C40C0F1F23224D67000B44C0 /* AdvertisTableViewCell.h */,
 				C40C0F2023224D67000B44C0 /* AdvertisTableViewCell.m */,
 				C40C0F2123224D67000B44C0 /* AdvertisTableViewCell.xib */,
+				C4124D602325DEC000A42905 /* CalendarHeaderView.h */,
+				C4124D612325DEC000A42905 /* CalendarHeaderView.m */,
+				C4124D632325DECA00A42905 /* CalendarHeaderView.xib */,
+				C4124D6D2325EF2400A42905 /* CalendarDataTableViewCell.h */,
+				C4124D6E2325EF2400A42905 /* CalendarDataTableViewCell.m */,
+				C4124D6F2325EF2400A42905 /* CalendarDataTableViewCell.xib */,
+				C4124D722325EF4600A42905 /* CalendareventTableViewCell.h */,
+				C4124D732325EF4600A42905 /* CalendareventTableViewCell.m */,
+				C4124D742325EF4600A42905 /* CalendareventTableViewCell.xib */,
+				C4124D772325EF9700A42905 /* CalendarholidayTableViewCell.h */,
+				C4124D782325EF9700A42905 /* CalendarholidayTableViewCell.m */,
+				C4124D792325EF9700A42905 /* CalendarholidayTableViewCell.xib */,
 			);
 			name = Views;
 			path = xasq/DisCovery/Views;
@@ -619,6 +657,8 @@
 		C40C0F0823222B7C000B44C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4124D7C2326363A00A42905 /* CalendarModel.h */,
+				C4124D7D2326363A00A42905 /* CalendarModel.m */,
 			);
 			name = Models;
 			path = xasq/DisCovery/Models;
@@ -631,6 +671,8 @@
 				C40C0F0B23222B7C000B44C0 /* DiscoveryViewController.m */,
 				C40C0F0A23222B7C000B44C0 /* LettersViewController.h */,
 				C40C0F0C23222B7C000B44C0 /* LettersViewController.m */,
+				C4124D652325EAE100A42905 /* CalendarViewController.h */,
+				C4124D662325EAE100A42905 /* CalendarViewController.m */,
 			);
 			name = Controllers;
 			path = xasq/DisCovery/Controllers;
@@ -1363,6 +1405,7 @@
 				C48B104E22EAC80C00FDFDED /* Localizable.strings in Resources */,
 				C4B9FCFC230578FD007C1137 /* TaskViewController.xib in Resources */,
 				C4D5EEE222F7FF2500C94D9F /* PaymentsRecordsTableViewCell.xib in Resources */,
+				C4124D7B2325EF9700A42905 /* CalendarholidayTableViewCell.xib in Resources */,
 				C4B9FCE62302852E007C1137 /* TaskViewCell.xib in Resources */,
 				C414004022F2B02D0010A463 /* HomeNewsViewCell.xib in Resources */,
 				C4E32C632306603E0095B6FE /* ContactViewCell.xib in Resources */,
@@ -1386,7 +1429,7 @@
 				C412A42D22EFE7FD0090E4F1 /* OurVersionViewController.xib in Resources */,
 				C41B126A22F2898100375560 /* CredentialsViewController.xib in Resources */,
 				C412A43222F00BA40090E4F1 /* LivingProofViewController.xib in Resources */,
-				C40C0F1E232243B1000B44C0 /* CalendarTableViewCell.xib in Resources */,
+				C40C0F1E232243B1000B44C0 /* ReleaseTableViewCell.xib in Resources */,
 				C43B6BC522F92AE400312286 /* HomeRankViewCell.xib in Resources */,
 				C48B102722EAC5DD00FDFDED /* LaunchScreen.storyboard in Resources */,
 				C43B6BD522F948F400312286 /* LaunchViewController.xib in Resources */,
@@ -1401,12 +1444,15 @@
 				C473B92222F40F820013E77D /* CommunityDynamicTableViewCell.xib in Resources */,
 				C43B6BEF22F9732000312286 /* InviteCodeView.xib in Resources */,
 				C43B6BCA22F92BED00312286 /* HomeViewController.xib in Resources */,
+				C4124D712325EF2400A42905 /* CalendarDataTableViewCell.xib in Resources */,
 				C473B91D22F40A1F0013E77D /* AccountUpgradeTableViewCell.xib in Resources */,
 				C40C0F1423223173000B44C0 /* LettersMarketTableViewCell.xib in Resources */,
+				C4124D762325EF4600A42905 /* CalendareventTableViewCell.xib in Resources */,
 				C43B6BF422F981F300312286 /* MinerInfomationView.xib in Resources */,
 				C41B127E22F2B55400375560 /* PayAndLoginPasswordViewController.xib in Resources */,
 				C48B102422EAC5DD00FDFDED /* Assets.xcassets in Resources */,
 				C41B128322F2CCF500375560 /* UserHeaderView.xib in Resources */,
+				C4124D642325DECA00A42905 /* CalendarHeaderView.xib in Resources */,
 				C4DFE3E322EED96000C41B2B /* UserTableViewCell.xib in Resources */,
 				C40C3D7D22F164C800BDE6A3 /* RegisterViewController.xib in Resources */,
 			);
@@ -1503,6 +1549,7 @@
 				C43B6C0322FAA7CD00312286 /* UserStepManager.m in Sources */,
 				C4DFE3E222EED96000C41B2B /* UserTableViewCell.m in Sources */,
 				C4D5EEC422F7B96A00C94D9F /* MentionMoneyViewController.m in Sources */,
+				C4124D622325DEC000A42905 /* CalendarHeaderView.m in Sources */,
 				C4C2CABA22EECBA60086761A /* TacticsObject.m in Sources */,
 				C40D6E99230B936E00D9697A /* PaymentsRecordModel.m in Sources */,
 				C4B9FCE52302852E007C1137 /* TaskViewCell.m in Sources */,
@@ -1539,12 +1586,13 @@
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
+				C4124D7E2326363A00A42905 /* CalendarModel.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */,
 				C4E32C622306603E0095B6FE /* ContactViewCell.m in Sources */,
 				C412A43622F00E9A0090E4F1 /* AlterNicknameViewController.m in Sources */,
 				C4B9FCEC2303DAE9007C1137 /* FriendsViewController.m in Sources */,
-				C40C0F1D232243B1000B44C0 /* CalendarTableViewCell.m in Sources */,
+				C40C0F1D232243B1000B44C0 /* ReleaseTableViewCell.m in Sources */,
 				C4DFE3DE22EED41800C41B2B /* UIImage+Color.m in Sources */,
 				C4C2CAB522EECB300086761A /* TacticsViewCell.m in Sources */,
 				C48B107222EADE1100FDFDED /* AppDelegate.m in Sources */,
@@ -1556,6 +1604,7 @@
 				C45391202306A44F000EBBA2 /* SignSuccessView.m in Sources */,
 				C40C3D7C22F164C800BDE6A3 /* RegisterViewController.m in Sources */,
 				C473B91722F400D50013E77D /* AssetDynamicTableViewCell.m in Sources */,
+				C4124D672325EAE100A42905 /* CalendarViewController.m in Sources */,
 				C414003B22F2AE110010A463 /* MoreNewsViewController.m in Sources */,
 				C414003F22F2B02D0010A463 /* HomeNewsViewCell.m in Sources */,
 				C4106082230A96F1003EE4B2 /* CapitalModel.m in Sources */,
@@ -1567,10 +1616,12 @@
 				C45F4378231E3E3F002BFB92 /* NSDate+Change.m in Sources */,
 				C43B6BED22F9731400312286 /* InviteCodeView.m in Sources */,
 				C40C3D7722F140BE00BDE6A3 /* LoginViewController.m in Sources */,
+				C4124D702325EF2400A42905 /* CalendarDataTableViewCell.m in Sources */,
 				C418F49422F42732005EFD81 /* CapitalKindViewController.m in Sources */,
 				C48B108B22EAEB0700FDFDED /* NetworkManager.m in Sources */,
 				C418F49022F4199A005EFD81 /* CapitalTopView.m in Sources */,
 				C40C0F0123220DE8000B44C0 /* WMScrollView.m in Sources */,
+				C4124D7A2325EF9700A42905 /* CalendarholidayTableViewCell.m in Sources */,
 				C40C0EFF23220DE8000B44C0 /* WMPageController.m in Sources */,
 				C4A1EE8222EFD83100A1DE8C /* DeviceInformation.m in Sources */,
 				C49621782303E8200086A959 /* ChangePhoneAndEmailViewController.m in Sources */,
@@ -1584,6 +1635,7 @@
 				C43B6BC122F929FB00312286 /* HomeRankView.m in Sources */,
 				C40C0F0323220DE8000B44C0 /* WMProgressView.m in Sources */,
 				C4B9FCF72303FF0F007C1137 /* CapitalDataManager.m in Sources */,
+				C4124D752325EF4600A42905 /* CalendareventTableViewCell.m in Sources */,
 				C43B6BBE22F8343E00312286 /* HomeBannerView.m in Sources */,
 				C40DEF0F22FBFDEC00E43F8C /* XLPasswordInputView.m in Sources */,
 				C496217C23042C5C0086A959 /* TaskRecordViewController.m in Sources */,

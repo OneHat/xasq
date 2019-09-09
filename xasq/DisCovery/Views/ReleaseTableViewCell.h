@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CalendarTableViewCell : UITableViewCell
+@interface ReleaseTableViewCell : UITableViewCell
 
 @end
 

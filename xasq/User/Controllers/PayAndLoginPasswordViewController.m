@@ -88,7 +88,7 @@
             templateCode = @"user_11";
         } else {
             if ([UserDataManager shareManager].usermodel.existFundPassWord) {
-                templateCode = @"user_17";
+                templateCode = @"user_20";
             } else {
                 templateCode = @"user_14";
             }
@@ -114,7 +114,7 @@
             templateCode = @"user_12";
         } else {
             if ([UserDataManager shareManager].usermodel.existFundPassWord) {
-                templateCode = @"user_18";
+                templateCode = @"user_21";
             } else {
                 templateCode = @"user_15";
             }

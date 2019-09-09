@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarholidayTableViewCell" id="KGk-i7-Jjw" customClass="CalendarholidayTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery_usa" translatesAutoresizingMaskIntoConstraints="NO" id="L3f-cb-YyJ">
+                        <rect key="frame" x="20" y="18" width="25" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="O0A-ql-5ce"/>
+                            <constraint firstAttribute="width" constant="25" id="sS2-f1-vC6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国/中秋节" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFJ-zq-mvG">
+                        <rect key="frame" x="55" y="16.5" width="65.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="PaK-rT-7jY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海黄金交易所不进行夜盘交易。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyO-rR-Dx3">
+                        <rect key="frame" x="18" y="41.5" width="347" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="yL8-QN-YRP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yFJ-zq-mvG" firstAttribute="leading" secondItem="L3f-cb-YyJ" secondAttribute="trailing" constant="10" id="6Ga-Id-Niy"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qyO-rR-Dx3" secondAttribute="bottom" id="PWc-VP-HSe"/>
+                    <constraint firstItem="L3f-cb-YyJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="QQO-cy-2qN"/>
+                    <constraint firstItem="L3f-cb-YyJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZoB-34-3Np"/>
+                    <constraint firstItem="qyO-rR-Dx3" firstAttribute="top" secondItem="yFJ-zq-mvG" secondAttribute="bottom" constant="5" id="bjV-Oj-6d0"/>
+                    <constraint firstItem="qyO-rR-Dx3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="j2N-q6-FYx"/>
+                    <constraint firstItem="yFJ-zq-mvG" firstAttribute="centerY" secondItem="L3f-cb-YyJ" secondAttribute="centerY" id="jhS-Qn-chI"/>
+                    <constraint firstAttribute="trailing" secondItem="qyO-rR-Dx3" secondAttribute="trailing" constant="10" id="wma-ER-aDl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="countryImageV" destination="L3f-cb-YyJ" id="YCf-P0-F0S"/>
+                <outlet property="holidayLB" destination="yFJ-zq-mvG" id="mIl-ZE-Jv6"/>
+                <outlet property="titleLB" destination="qyO-rR-Dx3" id="AiP-Fe-Duc"/>
+            </connections>
+            <point key="canvasLocation" x="48.550724637681164" y="35.491071428571423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="discovery_usa" width="32" height="21"/>
+    </resources>
+</document>

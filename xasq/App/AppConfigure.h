@@ -20,10 +20,12 @@
 #define NavBarHeight        44.0
 #define BottomHeight        (IphoneX ? 34.0 : 0.0)
 #define NavHeight           (NavBarHeight + StatusBarHeight)
+#define BarHeight           (49 + BottomHeight)
 
 #pragma mark -
 /// 主题颜色
 #define ThemeColorBlue        HexColor(@"#2688D0")
+#define ThemeColorRed         HexColor(@"#E74C3C")
 #define ThemeColorBackground  HexColor(@"#F7F7F7")
 #define ThemeColorTextGray    HexColor(@"#999999")
 #define ThemeColorGray        HexColor(@"#666666")

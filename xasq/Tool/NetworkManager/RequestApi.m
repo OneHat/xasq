@@ -50,8 +50,8 @@ NSString *const OperationUploadImage = @"oper/upload/image";
 
 NSString *const MessageSysList = @"msg/sys/list";
 NSString *const MessageSysUnreadNum = @"msg/sys/unread/num";
-NSString *const MessageSysRead = @"msg/sys/readAll";
-NSString *const MessageSysClear = @"msg/sys/clear";
+NSString *const MessageSysRead = @"msg/sys/read/all";
+NSString *const MessageSysClear = @"msg/sys/clear/all";
 
 NSString *const CommunityCapitalWaterDynamics = @"comm/capital/water/dynamics";
 NSString *const CommunityCapitalWater = @"comm/capital/water";
@@ -82,6 +82,10 @@ NSString *const CommunityPowerRankMyself = @"comm/power/rank/myself";
 NSString *const CommunityRankFriends = @"comm/power/rank/friends";
 
 NSString *const OperCategoryList = @"oper/category/list";
+NSString *const OperEconomicDataList = @"oper/economic/data/list";
+NSString *const OperEconomicEventList = @"oper/economic/event/list";
+NSString *const OperEconomicHolidayList = @"oper/economic/holiday/list";
+NSString *const OperEconomicCalendarList = @"oper/economic/calendar/list";
 
 
 NSInteger const E010141 = 10141;

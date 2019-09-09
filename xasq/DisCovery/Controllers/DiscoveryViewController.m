@@ -8,6 +8,7 @@
 
 #import "DiscoveryViewController.h"
 #import "LettersViewController.h"
+#import "CalendarViewController.h"
 
 @interface DiscoveryViewController ()
 @property (nonatomic, copy) NSArray *controllerArr;
@@ -31,7 +32,7 @@
         self.itemMargin = 15;
         self.progressHeight = 3;
         self.menuViewColor = [UIColor whiteColor];
-        UIViewController *vc0 = [[UIViewController alloc] init];
+        LettersViewController *vc0 = [[LettersViewController alloc] init];
         vc0.title = @"西岸快报";
         
         UIViewController *vc1 = [[UIViewController alloc] init];
@@ -40,7 +41,7 @@
         UIViewController *vc2 = [[UIViewController alloc] init];
         vc2.title = @"加密货币";
         
-        UIViewController *vc3 = [[UIViewController alloc] init];
+        CalendarViewController *vc3 = [[CalendarViewController alloc] init];
         vc3.title = @"财经日历";
         
         self.controllerArr = @[vc0, vc1, vc2, vc3];
@@ -70,6 +71,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.hideNavBarWhenDisappear = NO;
+    [self getOperCategoryList];
 }
 
 - (void)changeDiscoveryHideAnimation {
@@ -77,7 +79,7 @@
 }
 
 - (void)getOperCategoryList {
-    NSDictionary *dict = @{@"type"   : @"1",
+    NSDictionary *dict = @{@"fatherId"   : @"1",
                            @"client" : @"app",
                            };
     [[NetworkManager sharedManager] getRequest:OperCategoryList parameters:dict success:^(NSDictionary * _Nonnull data) {
