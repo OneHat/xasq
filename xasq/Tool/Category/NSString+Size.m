@@ -25,7 +25,7 @@
     return [pinyin uppercaseString];
 }
 
-// MD5加密
+#pragma mark - MD5加密
 + (NSString *)md5:(NSString *)str {
     const char *cStr = [str UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
@@ -35,6 +35,17 @@
         [hash appendFormat:@"%02X", result[i]];
     }
     return [hash lowercaseString];
+}
+#pragma mark - 字符串高度计算
++ (NSInteger)stringHeightCalculateWithTitle:(NSString *)title width:(NSInteger)width font:(UIFont *)font defaultHeight:(NSInteger)defaultHeight {
+    // 创建字体大小的字典 (记得设置label的字体大小)
+    NSDictionary *fontDic = @{NSFontAttributeName : font};
+    CGRect textRect = [title boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDic context:nil];
+    if (textRect.size.height > defaultHeight) {
+        return textRect.size.height;
+    } else {
+        return defaultHeight;
+    }
 }
 
 @end

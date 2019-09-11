@@ -89,8 +89,15 @@
                 [self.dateArray addObject:model];
             }
             if (self.type == 0) {
+                if (self.dateArray.count > 0) {
+                    [self.tableView hideEmptyView];
+                } else {
+                    [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无数据" refreshBlock:nil];
+                }
                 [self.tableView reloadData];
             }
+        } else {
+            [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无数据" refreshBlock:nil];
         }
     } failure:^(NSError * _Nonnull error) {
         
@@ -102,8 +109,15 @@
                 [self.eventArray addObject:model];
             }
             if (self.type == 1) {
+                if (self.eventArray.count > 0) {
+                    [self.tableView hideEmptyView];
+                } else {
+                    [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无事件" refreshBlock:nil];
+                }
                 [self.tableView reloadData];
             }
+        } else {
+            [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无事件" refreshBlock:nil];
         }
     } failure:^(NSError * _Nonnull error) {
         
@@ -115,8 +129,15 @@
                 [self.holidayArray addObject:model];
             }
             if (self.type == 2) {
+                if (self.holidayArray.count > 0) {
+                    [self.tableView hideEmptyView];
+                } else {
+                    [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无假期" refreshBlock:nil];
+                }
                 [self.tableView reloadData];
             }
+        } else {
+            [self.tableView showEmptyView:EmptyViewReasonNoData msg:@"当天无假期" refreshBlock:nil];
         }
     } failure:^(NSError * _Nonnull error) {
         

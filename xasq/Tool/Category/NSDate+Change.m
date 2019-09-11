@@ -30,13 +30,58 @@
     }
 }
 
+#pragma mark - 获取当前时间（标准格式）
++ (NSString *)getStandardTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+//    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+//    [formatter setTimeZone:timeZone];
+    NSDate *datenow = [NSDate date];
+    NSString *nowtimeStr = [formatter stringFromDate:datenow];
+    return nowtimeStr;
+}
+
 #pragma mark 年月日转换成Date
-+ (NSDate *)stringTransferToDate:(NSString *)string{
++ (NSDate *)stringTransferToDate:(NSString *)string {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YY-MM-dd HH:mm:ss"];
     NSDate *date = [dateFormatter dateFromString:string];
     return date;
 }
 
+#pragma mark YYYY-MM-DD hh:mm:ss 返回 hh:mm:ss
++ (NSString *)timeTransferWithString:(NSString *)string {
+    NSString *time = @"";
+    if (string.length >= 17) {
+        time = [string substringFromIndex:11];
+    }
+    return time;
+}
+
+/**
+ *YYYY-MM-DD hh:mm:ss 返回 DD
+ *
+ */
++ (NSString *)dayTransferWithString:(NSString *)string {
+    NSString *day = @"";
+    if (string.length >= 17) {
+        day = [string substringWithRange:NSMakeRange(8, 2)];
+    }
+    return day;
+}
+
+/**
+ *YYYY-MM-DD hh:mm:ss 返回 MM
+ *
+ */
++ (NSString *)monthTransferWithString:(NSString *)string {
+    NSString *month = @"";
+    if (string.length >= 17) {
+        month = [string substringWithRange:NSMakeRange(5, 2)];
+    }
+    return month;
+}
 
 @end

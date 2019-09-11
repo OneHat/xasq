@@ -17,11 +17,29 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)compareDate:(NSDate *)date;
 /**
+ *  获取当前时间（标准格式）
+ */
++ (NSString *)getStandardTime;
+/**
  *年月日转换成Date
  *
  */
 + (NSDate *)stringTransferToDate:(NSString *)string;
-
+/**
+ *YYYY-MM-DD hh:mm:ss 返回 hh:mm:ss
+ *
+ */
++ (NSString *)timeTransferWithString:(NSString *)string;
+/**
+ *YYYY-MM-DD hh:mm:ss 返回 DD
+ *
+ */
++ (NSString *)dayTransferWithString:(NSString *)string;
+/**
+ *YYYY-MM-DD hh:mm:ss 返回 MM
+ *
+ */
++ (NSString *)monthTransferWithString:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -86,6 +86,7 @@ NSString *const OperEconomicDataList = @"oper/economic/data/list";
 NSString *const OperEconomicEventList = @"oper/economic/event/list";
 NSString *const OperEconomicHolidayList = @"oper/economic/holiday/list";
 NSString *const OperEconomicCalendarList = @"oper/economic/calendar/list";
+NSString *const OperInformationList = @"oper/information/list";
 
 
 NSInteger const E010141 = 10141;

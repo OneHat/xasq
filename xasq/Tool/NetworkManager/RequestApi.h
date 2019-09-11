@@ -167,7 +167,8 @@ FOUNDATION_EXPORT NSString *const OperEconomicEventList;
 FOUNDATION_EXPORT NSString *const OperEconomicHolidayList;
 /// 财经日期 GET
 FOUNDATION_EXPORT NSString *const OperEconomicCalendarList;
-
+/// 获取资讯列表 GET
+FOUNDATION_EXPORT NSString *const OperInformationList;
 //********************************错误码
 FOUNDATION_EXPORT NSInteger const E010141;
 FOUNDATION_EXPORT NSInteger const E010145;

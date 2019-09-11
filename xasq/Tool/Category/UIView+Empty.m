@@ -14,7 +14,7 @@ static char EmptyBlockKey;
 
 @implementation UIView (Empty)
 
-- (void)showEmptyView:(EmptyViewReason)reason refreshBlock:(nullable RefreshBlock)block {
+- (void)showEmptyView:(EmptyViewReason)reason msg:(NSString *)msg refreshBlock:(nullable RefreshBlock)block {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     ///背景view
@@ -40,7 +40,11 @@ static char EmptyBlockKey;
         tipLabel.numberOfLines = 0;
         tipLabel.font = font;
         tipLabel.textAlignment = NSTextAlignmentCenter;
-        tipLabel.text = @"没有新的消息";
+        if (msg) {
+            tipLabel.text = msg;
+        } else {
+            tipLabel.text = @"没有新的消息";
+        }
         [contentView addSubview:tipLabel];
         
     } else if (reason == EmptyViewReasonNoNetwork) {
@@ -52,7 +56,11 @@ static char EmptyBlockKey;
         
         UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10 + CGRectGetMaxY(imageView.frame), contentView.frame.size.width, 30)];
         tipLabel.textAlignment = NSTextAlignmentCenter;
-        tipLabel.text = @"网络出错啦，请点击按钮重新加载";
+        if (msg) {
+            tipLabel.text = msg;
+        } else {
+            tipLabel.text = @"网络出错啦，请点击按钮重新加载";
+        }
         tipLabel.font = font;
         tipLabel.textColor = ThemeColorText;
         [contentView addSubview:tipLabel];
@@ -87,6 +95,31 @@ static char EmptyBlockKey;
     if (block) {
         block();
     }
+}
+
+/**
+ *  画虚线
+ */
++ (void)drawDashLine:(UIView *)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor {
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setBounds:lineView.bounds];
+    [shapeLayer setPosition:CGPointMake(0, CGRectGetHeight(lineView.frame)/2)];
+    [shapeLayer setFillColor:[UIColor clearColor].CGColor];
+    //  设置虚线颜色为blackColor
+    [shapeLayer setStrokeColor:lineColor.CGColor];
+    //  设置虚线宽度
+    [shapeLayer setLineWidth:1];
+    [shapeLayer setLineJoin:kCALineJoinRound];
+    //  设置线宽，线间距
+    [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineLength], [NSNumber numberWithInt:lineSpacing], nil]];
+    //  设置路径
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 0);
+    CGPathAddLineToPoint(path, NULL,0, CGRectGetHeight(lineView.frame));
+    [shapeLayer setPath:path];
+    CGPathRelease(path);
+    //  把绘制好的虚线添加上来
+    [lineView.layer addSublayer:shapeLayer];
 }
 
 @end

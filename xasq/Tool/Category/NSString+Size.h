@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  MD5加密
  */
 + (NSString *)md5:(NSString *)str;
+/**
+ *  字符串高度计算
+ *  title  字符串
+ *  width  字符串宽度
+ *  font   字符串大小
+ *  defaultHeight 字符串默认高度
+ */
++ (NSInteger)stringHeightCalculateWithTitle:(NSString *)title width:(NSInteger)width font:(UIFont *)font defaultHeight:(NSInteger)defaultHeight;
 
 @end
 

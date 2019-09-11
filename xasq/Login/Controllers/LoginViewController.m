@@ -176,6 +176,7 @@
             [UserDataManager shareManager].loginAccount = self.accountTF.text;
             // 获取用户信息
             NSDictionary *loginDict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
+                                        @"type"            :   @"1"
                                    };
             [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:loginDict success:^(NSDictionary * _Nonnull data) {
                 self.loginBtn.userInteractionEnabled = YES;

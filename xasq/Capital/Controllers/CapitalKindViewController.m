@@ -175,7 +175,7 @@
             [self.tableView hideEmptyView];
         } else {
             if (self.pageNo == 1) {
-                [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+                [self.tableView showEmptyView:EmptyViewReasonNoData msg:nil refreshBlock:nil];
             }
         }
         [self.tableView endRefresh];

@@ -228,6 +228,7 @@
                                @"password"      : [NSString md5:_passwordTF.text],
                                @"validCode"     : _codeTF.text,
                                @"validCodeType" : nameStr,
+                               @"type"          : @"1",	
                                };
         [[NetworkManager sharedManager] postRequest:UserFundpwdSet parameters:dict success:^(NSDictionary * _Nonnull data) {
             [self hideHUD];

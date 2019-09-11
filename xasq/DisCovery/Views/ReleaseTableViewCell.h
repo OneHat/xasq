@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiscoveryModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReleaseTableViewCell : UITableViewCell
+
+- (void)setDataModel:(DiscoveryModel *)model;
+
 
 @end
 

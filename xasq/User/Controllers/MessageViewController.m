@@ -82,7 +82,7 @@
     [[NetworkManager sharedManager] postRequest:MessageSysClear parameters:nil success:^(NSDictionary * _Nonnull data) {
         [self showMessage:@"清除成功"];
         [self.messages removeAllObjects];
-        [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+        [self.tableView showEmptyView:EmptyViewReasonNoData msg:nil refreshBlock:nil];
         [self.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
         [self showMessage:@"清除失败"];
@@ -110,13 +110,13 @@
         
         [self.tableView endRefresh];
         if (self.messages.count == 0) {
-            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            [self.tableView showEmptyView:EmptyViewReasonNoData msg:nil refreshBlock:nil];
         }
         
     } failure:^(NSError * _Nonnull error) {
         [self.tableView endRefresh];
         if (self.messages.count == 0) {
-            [self.tableView showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+            [self.tableView showEmptyView:EmptyViewReasonNoData msg:nil refreshBlock:nil];
         }
     }];
 }

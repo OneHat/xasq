@@ -111,6 +111,7 @@
 
 - (void)getUserinfoData {
     NSDictionary *dict = @{@"sysVersion"      :   [AppVersion stringByReplacingOccurrencesOfString:@"." withString:@""],
+                           @"type"            :   @"1"
                            };
     [[NetworkManager sharedManager] getRequest:UserHomePageInfo parameters:dict success:^(NSDictionary * _Nonnull data) {
         NSDictionary *userData = data[@"data"];

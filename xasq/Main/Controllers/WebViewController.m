@@ -38,7 +38,7 @@
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [self hideHUD];
-    [self.view showEmptyView:EmptyViewReasonNoData refreshBlock:nil];
+    [self.view showEmptyView:EmptyViewReasonNoData msg:nil refreshBlock:nil];
 }
 
 @end

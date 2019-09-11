@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C400439422FC229C00DC4B80 /* AlipayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439322FC229C00DC4B80 /* AlipayOrder.m */; };
 		C400439822FC28CE00DC4B80 /* WechatShare.m in Sources */ = {isa = PBXBuildFile; fileRef = C400439722FC28CE00DC4B80 /* WechatShare.m */; };
+		C4041CD0232737CD00D69A3F /* DiscoveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4041CCF232737CD00D69A3F /* DiscoveryModel.m */; };
 		C40A17C5231E0E0600BCEDAE /* SetReplacePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A17C3231E0E0600BCEDAE /* SetReplacePhoneViewController.m */; };
 		C40A17C6231E0E0600BCEDAE /* SetReplacePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A17C4231E0E0600BCEDAE /* SetReplacePhoneViewController.xib */; };
 		C40A17CA231E2DA500BCEDAE /* SetReplaceEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A17C8231E2DA500BCEDAE /* SetReplaceEmailViewController.m */; };
@@ -224,6 +225,8 @@
 		C400439322FC229C00DC4B80 /* AlipayOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlipayOrder.m; sourceTree = "<group>"; };
 		C400439622FC28CE00DC4B80 /* WechatShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatShare.h; sourceTree = "<group>"; };
 		C400439722FC28CE00DC4B80 /* WechatShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatShare.m; sourceTree = "<group>"; };
+		C4041CCE232737CD00D69A3F /* DiscoveryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryModel.h; sourceTree = "<group>"; };
+		C4041CCF232737CD00D69A3F /* DiscoveryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryModel.m; sourceTree = "<group>"; };
 		C40A17C2231E0E0600BCEDAE /* SetReplacePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetReplacePhoneViewController.h; sourceTree = "<group>"; };
 		C40A17C3231E0E0600BCEDAE /* SetReplacePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetReplacePhoneViewController.m; sourceTree = "<group>"; };
 		C40A17C4231E0E0600BCEDAE /* SetReplacePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetReplacePhoneViewController.xib; sourceTree = "<group>"; };
@@ -659,6 +662,8 @@
 			children = (
 				C4124D7C2326363A00A42905 /* CalendarModel.h */,
 				C4124D7D2326363A00A42905 /* CalendarModel.m */,
+				C4041CCE232737CD00D69A3F /* DiscoveryModel.h */,
+				C4041CCF232737CD00D69A3F /* DiscoveryModel.m */,
 			);
 			name = Models;
 			path = xasq/DisCovery/Models;
@@ -1586,6 +1591,7 @@
 				C4E5B65722FBAD15005C5EB9 /* TaskViewController.m in Sources */,
 				C4143D46230524EF0071236F /* FriendsHeaderView.m in Sources */,
 				C40DEF0D22FBFDEC00E43F8C /* XLRandomKeyboard.m in Sources */,
+				C4041CD0232737CD00D69A3F /* DiscoveryModel.m in Sources */,
 				C4124D7E2326363A00A42905 /* CalendarModel.m in Sources */,
 				C43B6BF222F981DE00312286 /* MinerInfomationView.m in Sources */,
 				C4B9FCF02303DBA4007C1137 /* FriendsRankViewCell.m in Sources */,
